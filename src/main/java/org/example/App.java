@@ -8,6 +8,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Reset Nico !" );
+        System.out.println( "Reset Gala !" );
     }
 }
