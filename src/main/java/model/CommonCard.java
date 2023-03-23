@@ -4,7 +4,7 @@ package model;
  */
 public class CommonCard extends Card {
     private String players[];
-    public int getPoints(Token shelf[][]) {
+    public int getPoints(Token[][] shelf) {
 
     }
     public String[] getPlayers() {
