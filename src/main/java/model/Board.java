@@ -14,7 +14,7 @@ public class Board {
     private Bag bag;
 
     /**
-     * Class constructor.
+     * Sets the usable tiles based on the number of players and fills the board with tokens.
      * @author Giorgio Massimo Fontanive
      * @param numberOfPlayers the number of players in this game, determines the usable tiles.
      */
@@ -29,6 +29,24 @@ public class Board {
     }
 
     /**
+     * Checks whether the board needs to be filled with tokens.
+     * @author Giorgio Massimo Fontanive
+     * @return true if there are no tokens touching each other.
+     */
+    private boolean isResetNeeded() {
+        boolean resetNeeded = true;
+        for (int i = 0; i < tiles.length && resetNeeded; i++)
+            for (int j = 0; j < tiles.length && resetNeeded; j++)
+                if (usableTiles[i][j] && (
+                        tiles[i - 1][j] != Token.NOTHING ||
+                                tiles[i + 1][j] != Token.NOTHING ||
+                                tiles[i][j - 1] != Token.NOTHING ||
+                                tiles[i][j + 1] != Token.NOTHING))
+                    resetNeeded = false;
+        return  resetNeeded;
+    }
+
+    /**
      * Fills the board with tokens in all available spaces.
      * @author Giorgio Massimo Fontanive
      */
@@ -40,21 +58,18 @@ public class Board {
     }
 
     /**
-     * Checks whether the board needs to be filled with tokens.
-     * @author Giorgio Massimo Fontanive
-     * @return true if there are no tokens touching each other.
+     * Checks whether the tile can be selected by the player.
+     * @author Giorgio Massimo Fontainve
+     * @param row the tile's row in the board.
+     * @param column the tile's column in the board.
+     * @return true if the tile has a free side and is not empty.
      */
-    private boolean isResetNeeded() {
-        boolean resetNeeded = true;
-        for (int i = 0; i < tiles.length && resetNeeded; i++)
-            for (int j = 0; j < tiles.length && resetNeeded; j++)
-                if (usableTiles[i][j] &&
-                tiles[i - 1][j] != Token.NOTHING ||
-                tiles[i + 1][j] != Token.NOTHING ||
-                tiles[i][j - 1] != Token.NOTHING ||
-                tiles[i][j + 1] != Token.NOTHING)
-                    resetNeeded = false;
-        return  resetNeeded;
+    private boolean isTokenSelectable(int row, int column) {
+        return usableTiles[row][column] && tiles[row][column] != Token.NOTHING && (
+                tiles[row - 1][column] == Token.NOTHING ||
+                        tiles[row + 1][column] == Token.NOTHING ||
+                        tiles[row][column - 1] == Token.NOTHING ||
+                        tiles[row][column + 1] == Token.NOTHING);
     }
 
     /**
@@ -63,6 +78,7 @@ public class Board {
      * @return true if the tiles are in an available position and if they are in a line.
      */
     private boolean isMoveLegal(boolean[][] selectedTiles) {
+        //Checks whether each tile is selectable by itself.
         boolean legal = true;
         int selectedAmount = 0;
         for (int i = 0; i < tiles.length && legal; i++)
@@ -75,7 +91,7 @@ public class Board {
         if (selectedAmount <= 0 || selectedAmount > 3)
             legal = false;
 
-        //TODO: Find a way to verify that selected tiles are in a row
+        //Finds the position of the top left most selected tile.
         int firstTileRow = -1;
         int firstTileColumn = -1;
         boolean isFirstFound = false;
@@ -87,29 +103,18 @@ public class Board {
                     isFirstFound = true;
                 }
             }
-//        for (int i = 0; i < selectedAmount && legal; i++)
-//            if (!selectedTiles[firstTileRow][firstTileColumn + i])
-//                legal = false;
-//        for (int i = 0; i < selectedAmount && legal; i++)
-//            if (!selectedTiles[firstTileRow + i][firstTileColumn])
-//                legal = false;
 
-        return legal;
-    }
+        //Checks wether the chosen tiles are in a vertical or horizontal line.
+        boolean horizontalLine = true;
+        boolean verticalLine = true;
+        for (int i = 0; i < selectedAmount && legal; i++)
+            if (!selectedTiles[firstTileRow][firstTileColumn + i])
+                horizontalLine = false;
+        for (int i = 0; i < selectedAmount && legal; i++)
+            if (!selectedTiles[firstTileRow + i][firstTileColumn])
+                verticalLine = false;
 
-    /**
-     * Checks whether the tile can be selected by the player.
-     * @author Giorgio Massimo Fontainve
-     * @param row the tile's row in the board.
-     * @param column the tile's column in the board.
-     * @return true if the tile has a free side and is not empty.
-     */
-    private boolean isTokenSelectable(int row, int column) {
-        return usableTiles[row][column] && tiles[row][column] != Token.NOTHING &&
-                tiles[row - 1][column] == Token.NOTHING ||
-                tiles[row + 1][column] == Token.NOTHING ||
-                tiles[row][column - 1] == Token.NOTHING ||
-                tiles[row][column + 1] == Token.NOTHING;
+        return legal && (horizontalLine || verticalLine);
     }
 
     /**

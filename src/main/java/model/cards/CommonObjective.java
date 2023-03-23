@@ -1,4 +1,7 @@
-package model;
+package model.cards;
+
+import model.Token;
+
 /**
  @author Niccolò Giuliani
  */
