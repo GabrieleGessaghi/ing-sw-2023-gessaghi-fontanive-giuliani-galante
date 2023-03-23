@@ -10,23 +10,21 @@ import java.util.ArrayList;
  */
 public class Bag {
     private static final int NUMBER_OF_TYPES = 6;
-    private static final int TOKENS_PER_TYPE = 12;
+    private static final int TOKENS_PER_TYPE = 22;
     private final List<Token> tokens;
 
     /**
      * Class constructor.
-     * The tokens array has 12 tokens of each type.
+     * The tokens array has 22 tokens of each type.
      * @author Giorgio Massimo Fontanive
      */
     public Bag() {
         tokens = new ArrayList<>();
         Token[] tokenIndexes = Token.values();
 
-        for (int tokenType = 1; tokenType <= NUMBER_OF_TYPES; tokenType++) {
-            for (int i = 0; i < TOKENS_PER_TYPE; i++) {
+        for (int tokenType = 1; tokenType <= NUMBER_OF_TYPES; tokenType++)
+            for (int i = 0; i < TOKENS_PER_TYPE; i++)
                 tokens.add(tokenIndexes[tokenType]);
-            }
-        }
 
         shuffle();
     }
