@@ -46,8 +46,8 @@ public class Board {
      */
     private boolean isResetNeeded() {
         boolean resetNeeded = true;
-        for (int i = 0; i < tiles.length; i++)
-            for (int j = 0; j < tiles.length; j++)
+        for (int i = 0; i < tiles.length && resetNeeded; i++)
+            for (int j = 0; j < tiles.length && resetNeeded; j++)
                 if (usableTiles[i][j] &&
                 tiles[i - 1][j] != Token.NOTHING ||
                 tiles[i + 1][j] != Token.NOTHING ||
@@ -76,6 +76,23 @@ public class Board {
             legal = false;
 
         //TODO: Find a way to verify that selected tiles are in a row
+        int firstTileRow = -1;
+        int firstTileColumn = -1;
+        boolean isFirstFound = false;
+        for (int i = 0; i < tiles.length && !isFirstFound; i++)
+            for (int j = 0; j < tiles.length && !isFirstFound; j++) {
+                if (selectedTiles[i][j]) {
+                    firstTileRow = i;
+                    firstTileColumn = j;
+                    isFirstFound = true;
+                }
+            }
+//        for (int i = 0; i < selectedAmount && legal; i++)
+//            if (!selectedTiles[firstTileRow][firstTileColumn + i])
+//                legal = false;
+//        for (int i = 0; i < selectedAmount && legal; i++)
+//            if (!selectedTiles[firstTileRow + i][firstTileColumn])
+//                legal = false;
 
         return legal;
     }
