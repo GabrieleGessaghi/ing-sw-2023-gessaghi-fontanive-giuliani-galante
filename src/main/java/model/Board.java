@@ -6,20 +6,30 @@ package model;
  */
 public class Board {
     private final static int BOARD_SIZE = 9;
+    private final static int MAX_TOKENS_PER_TURN = 3;
     private boolean[][] usableTiles;
     private Token[][] tiles;
     private Bag bag;
 
+    /**
+     * Class constructor.
+     * @author Giorgio Massimo Fontanive
+     * @param numberOfPlayers the number of players in this game, determines the usable tiles.
+     */
     public Board(int numberOfPlayers) {
         usableTiles = new boolean[BOARD_SIZE][BOARD_SIZE];
         tiles = new Token[BOARD_SIZE][BOARD_SIZE];
         bag = new Bag();
 
-        //Create usable tiles
+        //TODO: Create usable tiles based on number of players
 
         reset();
     }
 
+    /**
+     * Fills the board with tokens in all available spaces.
+     * @author Giorgio Massimo Fontanive
+     */
     private void reset() {
         for (int i = 0; i < usableTiles.length; i++)
             for (int j = 0; j < usableTiles.length; j++)
@@ -27,6 +37,11 @@ public class Board {
                     tiles[i][j] = bag.drawToken();
     }
 
+    /**
+     * Checks whether the board needs to be filled with tokens.
+     * @author Giorgio Massimo Fontanive
+     * @return true if there are no tokens touching each other.
+     */
     private boolean isResetNeeded() {
         boolean resetNeeded = true;
         for (int i = 0; i < tiles.length; i++)
@@ -40,45 +55,86 @@ public class Board {
         return  resetNeeded;
     }
 
+    /**
+     * Checks whether the chosen tiles can be selected within the rules of the game.
+     * @param selectedTiles a boolean matrix with true in the positions of the chosen tiles.
+     * @return true if the tiles are in an available position and if they are in a line.
+     */
     private boolean isMoveLegal(boolean[][] selectedTiles) {
         boolean legal = true;
         int selectedAmount = 0;
-
         for (int i = 0; i < tiles.length && legal; i++)
             for (int j = 0; j < tiles.length && legal; j++)
                 if (selectedTiles[i][j])
-                    if (!isTokenSelectable(i, j))
-                        legal = false;
-                    else
+                    if (isTokenSelectable(i, j))
                         selectedAmount++;
+                    else
+                        legal = false;
         if (selectedAmount <= 0 || selectedAmount > 3)
             legal = false;
 
-
+        //TODO: Find a way to verify that selected tiles are in a row
 
         return legal;
     }
 
+    /**
+     * Checks whether the tile can be selected by the player.
+     * @author Giorgio Massimo Fontainve
+     * @param row the tile's row in the board.
+     * @param column the tile's column in the board.
+     * @return true if the tile has a free side and is not empty.
+     */
     private boolean isTokenSelectable(int row, int column) {
-        return usableTiles[row][column] &&
+        return usableTiles[row][column] && tiles[row][column] != Token.NOTHING &&
                 tiles[row - 1][column] == Token.NOTHING ||
                 tiles[row + 1][column] == Token.NOTHING ||
                 tiles[row][column - 1] == Token.NOTHING ||
                 tiles[row][column + 1] == Token.NOTHING;
     }
 
+    /**
+     * Getter for the tiles' matrix.
+     * @author Giorgio Massimo Fontanive
+     * @return the tiles' matrix.
+     */
     public Token[][] getTiles() {
         return tiles;
     }
 
+    /**
+     * Converts the selected tiles into an ordered array of tokens.
+     * @param selectedTiles a matrix with -1 for the tiles not chosen and
+     *                      the order of choice for the other ones.
+     * @return an array with the select tiles in order.
+     */
     public Token[] selectTiles(int[][] selectedTiles) {
-        return null;
+        Token[] selectedTokens = new Token[MAX_TOKENS_PER_TURN];
+        boolean[][] selectedTilesBoolean = new boolean[tiles.length][tiles.length];
+        for (int i = 0; i < tiles.length; i++)
+            for (int j = 0; j < tiles.length; j++)
+                if (selectedTiles[i][j] != -1) {
+                    selectedTokens[selectedTiles[i][j]] = tiles[i][j];
+                    selectedTilesBoolean[i][j] = true;
+                }
+        if (isMoveLegal(selectedTilesBoolean))
+            return selectedTokens;
+        else
+            //TODO: Add exception
+//            throw IllegalMoveException;
+            return null;
     }
 
+    /**
+     * Empties the board of the selected tiles.
+     * @param selectedTiles a boolean matrix with true in the positions of the tiles to be emptied.
+     */
     public void removeTiles(boolean[][] selectedTiles) {
         for (int i = 0; i < tiles.length; i++)
             for (int j = 0; j < tiles.length; j++)
                 if (selectedTiles[i][j])
                     tiles[i][j] = Token.NOTHING;
+        if (isResetNeeded())
+            reset();
     }
 }
