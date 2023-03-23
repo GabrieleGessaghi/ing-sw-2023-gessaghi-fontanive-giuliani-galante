@@ -1,5 +1,7 @@
 package model;
 
+import model.exceptions.IllegalMoveException;
+
 /**
  * The board on which the game is played.
  * @author Giorgio Massimo Fontanive
@@ -104,11 +106,12 @@ public class Board {
 
     /**
      * Converts the selected tiles into an ordered array of tokens.
+     * @throws IllegalMoveException when a move breaks the rules (check isMoveLegal).
      * @param selectedTiles a matrix with -1 for the tiles not chosen and
      *                      the order of choice for the other ones.
      * @return an array with the select tiles in order.
      */
-    public Token[] selectTiles(int[][] selectedTiles) {
+    public Token[] selectTiles(int[][] selectedTiles) throws IllegalMoveException {
         Token[] selectedTokens = new Token[MAX_TOKENS_PER_TURN];
         boolean[][] selectedTilesBoolean = new boolean[tiles.length][tiles.length];
         for (int i = 0; i < tiles.length; i++)
@@ -120,9 +123,7 @@ public class Board {
         if (isMoveLegal(selectedTilesBoolean))
             return selectedTokens;
         else
-            //TODO: Add exception
-//            throw IllegalMoveException;
-            return null;
+            throw new IllegalMoveException("This combination of tiles is forbidden!");
     }
 
     /**
