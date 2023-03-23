@@ -3,7 +3,7 @@ package model;
  @author Niccolò Giuliani
  */
 public class CommonCard extends Card {
-    private String players[];
+    private String[] players;
     public int getPoints(Token[][] shelf) {
 
     }
