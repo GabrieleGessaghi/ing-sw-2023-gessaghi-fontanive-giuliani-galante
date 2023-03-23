@@ -4,6 +4,7 @@ import model.Token;
 
 /**
  @author Niccolò Giuliani
+ common objective cards of the game
  */
 public class CommonCard extends Card {
     private String[] players;

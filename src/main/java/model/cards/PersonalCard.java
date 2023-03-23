@@ -4,6 +4,7 @@ import model.Token;
 
 /**
  @author Niccolò Giuliani
+ personal objective cards
  */
 public class PersonalCard extends Card {
 
