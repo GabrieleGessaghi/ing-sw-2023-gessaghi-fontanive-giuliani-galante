@@ -8,7 +8,7 @@ import java.util.List;
  * @author Giorgio Massimo Fontanive
  */
 public class Chat {
-    private List<String> messages;
+    private final List<String> messages;
 
     /**
      * Chat constructor.

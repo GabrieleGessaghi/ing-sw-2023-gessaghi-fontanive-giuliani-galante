@@ -9,9 +9,9 @@ import model.exceptions.IllegalMoveException;
 public class Board {
     private final static int BOARD_SIZE = 9;
     private final static int MAX_TOKENS_PER_TURN = 3;
-    private boolean[][] usableTiles;
-    private Token[][] tiles;
-    private Bag bag;
+    private final boolean[][] usableTiles;
+    private final Token[][] tiles;
+    private final Bag bag;
 
     /**
      * Sets the usable tiles based on the number of players and fills the board with tokens.
@@ -107,10 +107,10 @@ public class Board {
         //Checks wether the chosen tiles are in a vertical or horizontal line.
         boolean horizontalLine = true;
         boolean verticalLine = true;
-        for (int i = 0; i < selectedAmount && legal; i++)
+        for (int i = 0; i < selectedAmount && horizontalLine; i++)
             if (!selectedTiles[firstTileRow][firstTileColumn + i])
                 horizontalLine = false;
-        for (int i = 0; i < selectedAmount && legal; i++)
+        for (int i = 0; i < selectedAmount && verticalLine; i++)
             if (!selectedTiles[firstTileRow + i][firstTileColumn])
                 verticalLine = false;
 
