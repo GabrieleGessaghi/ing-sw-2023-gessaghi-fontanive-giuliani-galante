@@ -1,4 +1,8 @@
 package model.cards.concrteobjectives;
+
+import model.Token;
+import model.cards.CommonObjective;
+
 /**
  * @author Niccolò Giuliani
  * Four lines each formed by 5 tiles of
@@ -6,5 +10,11 @@ package model.cards.concrteobjectives;
  * line can show the same or a different
  * combination of another line.
  */
-public class FourRows {
+public class FourRows implements CommonObjective {
+
+    @Override
+    public int getPoints(Token[][] shelf) {
+
+        return 0;
+    }
 }

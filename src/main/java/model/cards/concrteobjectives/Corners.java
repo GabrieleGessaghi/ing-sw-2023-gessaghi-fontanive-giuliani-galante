@@ -13,7 +13,7 @@ public class Corners implements CommonObjective {
 
     public int getPoints(Token[][] shelf){
 
-        if(shelf[0][0]==shelf[ROWS][0] && shelf[0][0]==shelf[0][COLUMNS] && shelf[0][0]==shelf[ROWS][COLUMNS])
+        if(shelf[0][0] == shelf[ROWS][0] && shelf[0][0] == shelf[0][COLUMNS] && shelf[0][0] == shelf[ROWS][COLUMNS])
             return 1;
         else
             return 0;
