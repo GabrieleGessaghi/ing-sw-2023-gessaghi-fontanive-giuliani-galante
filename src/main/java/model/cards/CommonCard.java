@@ -10,8 +10,9 @@ public class CommonCard extends Card {
     private String[] players;
     private CommonObjective objective;
     /**
-     @author Niccolò Giuliani
-     constructor
+     * @author Niccolò Giuliani
+     * @param objective
+     * constructor
      */
     public CommonCard(CommonObjective objective) {
 
@@ -22,8 +23,8 @@ public class CommonCard extends Card {
         return -1;
     }
     /**
-     @author Niccolò Giuliani
-     method to know which players have took the card
+     * @author Niccolò Giuliani
+     * method to know which players have took the card
      */
     public String[] getPlayers() {
         return null;
@@ -31,8 +32,9 @@ public class CommonCard extends Card {
 
 
     /**
-     @author Niccolò Giuliani
-     method to add a player
+     * @author Niccolò Giuliani
+     * @param nickname
+     * method to add a player
      */
     public void addPlayer(String nickname){
 

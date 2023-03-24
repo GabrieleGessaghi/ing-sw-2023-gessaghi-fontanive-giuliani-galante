@@ -1,7 +1,7 @@
 package model;
 /**
- @author Niccolò Giuliani
- type of tokens
+ * @author Niccolò Giuliani
+ * type of tokens
  */
 public enum Token {
     NOTHING,
