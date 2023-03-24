@@ -8,21 +8,15 @@ import model.Token;
  */
 public class CommonCard extends Card {
     private String[] players;
-
+    private CommonObjective objective;
     /**
      @author Niccolò Giuliani
      constructor
      */
-    public CommonCard() {
+    public CommonCard(CommonObjective objective) {
 
     }
-    /**
-     @author Niccolò Giuliani
-     method to set the type of the card
-     */
-    public void setCommonObjective(CommonObjective objective) {
 
-    }
 
     public int getPoints(Token[][] shelf) {
         return -1;
