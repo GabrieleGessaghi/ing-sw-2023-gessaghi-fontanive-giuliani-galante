@@ -7,7 +7,13 @@ import model.Token;
  general card of the game
  */
 public abstract class Card {
+
     protected int points[];
+
+    /**
+     @author Niccolò Giuliani
+     method to know the points
+     */
     public abstract int getPoints(Token[][]shelf);
 
 
