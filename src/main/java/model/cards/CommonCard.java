@@ -1,6 +1,6 @@
 package model.cards;
 import java.util.*;
-import java.util.function.Supplier
+import java.util.function.Supplier;
 import model.Token;
 
 /**
