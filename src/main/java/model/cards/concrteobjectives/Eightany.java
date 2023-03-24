@@ -16,9 +16,8 @@ public class Eightany implements CommonObjective {
         int countNothing =0, countCat=0, countBook=0, countToy=0, countTrophy=0, countFrame=0, countPlant=0;
         for (int i = 0; i < ROWS; i++){
             for (int j = 0; j < COLUMNS; j++){
-                if (shelf[i][j] == Token.NOTHING)
-                    countNothing++;
-                else if (shelf[i][j] == Token.CAT)
+
+                if (shelf[i][j] == Token.CAT)
                     countCat++;
                 else if (shelf[i][j] == Token.BOOK)
                     countBook++;
@@ -32,7 +31,7 @@ public class Eightany implements CommonObjective {
                     countPlant++;
             }
         }
-        if(countNothing >= 8 || countCat >= 8 || countBook >= 8 || countToy >= 8 || countTrophy >=8 || countFrame >=8 || countPlant >=8 )
+        if( countCat >= 8 || countBook >= 8 || countToy >= 8 || countTrophy >=8 || countFrame >=8 || countPlant >=8 )
             return 1;
         else
             return 0;
