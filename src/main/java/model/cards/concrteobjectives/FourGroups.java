@@ -1,5 +1,8 @@
 package model.cards.concrteobjectives;
 
+import model.Token;
+import model.cards.CommonObjective;
+
 /**
  * @author Niccolò Giuliani
  * Four groups each containing at least
@@ -8,5 +11,9 @@ package model.cards.concrteobjectives;
  * The tiles of one group can be different
  * from those of another group.
  */
-public class FourGroups {
+public class FourGroups implements CommonObjective {
+    @Override
+    public int getPoints(Token[][] shelf) {
+        return 0;
+    }
 }

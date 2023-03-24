@@ -1,4 +1,8 @@
 package model.cards.concrteobjectives;
+
+import model.Token;
+import model.cards.CommonObjective;
+
 /**
  * @author Niccolò Giuliani
  * Two groups each containing 4 tiles of
@@ -6,5 +10,9 @@ package model.cards.concrteobjectives;
  * of one square can be different from
  * those of the other square.
  */
-public class TwoSquares {
+public class TwoSquares implements CommonObjective {
+    @Override
+    public int getPoints(Token[][] shelf) {
+        return 0;
+    }
 }

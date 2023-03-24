@@ -1,4 +1,8 @@
 package model.cards.concrteobjectives;
+
+import model.Token;
+import model.cards.CommonObjective;
+
 /**
  * @author Niccolò Giuliani
  * Two lines each formed by 5 different
@@ -6,5 +10,9 @@ package model.cards.concrteobjectives;
  * same or a different combination of the
  * other line.
  */
-public class TwoRows {
+public class TwoRows implements CommonObjective {
+    @Override
+    public int getPoints(Token[][] shelf) {
+        return 0;
+    }
 }
