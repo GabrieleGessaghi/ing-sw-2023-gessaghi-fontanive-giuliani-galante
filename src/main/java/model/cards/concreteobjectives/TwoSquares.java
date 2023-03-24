@@ -1,4 +1,4 @@
-package model.cards.concrteobjectives;
+package model.cards.concreteobjectives;
 
 import model.Token;
 import model.cards.CommonObjective;

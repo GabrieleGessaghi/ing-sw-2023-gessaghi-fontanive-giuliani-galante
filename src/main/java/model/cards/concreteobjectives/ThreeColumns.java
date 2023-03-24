@@ -1,27 +1,27 @@
-package model.cards.concrteobjectives;
+package model.cards.concreteobjectives;
 
 import model.Token;
 import model.cards.CommonObjective;
 
 /**
  * @author Niccolò Giuliani
- * Two lines each formed by 5 different
- * types of tiles. One line can show the
- * same or a different combination of the
- * other line.
+ * Three columns each formed by 6 tiles Five tiles of the same type forming an X.
+ * of maximum three different types. One
+ * column can show the same or a different
+ * combination of another column.
  */
-public class TwoRows implements CommonObjective {
+public class ThreeColumns implements CommonObjective {
     @Override
     public int getPoints(Token[][] shelf) {
         int[] counter;
         int differentType;
         counter = new int[7];
-        int AtLeastTwo = 0;
-        for(int i=0; i < ROWS ; i++){
+        int AtLeastThree = 0;
+        for(int i=0; i < COLUMNS ; i++){
             for(int w=0; w < 7 ; w++)
                 counter[w]=0;
             differentType = 0;
-            for(int j=0; j < COLUMNS ; j++){
+            for(int j=0; j < ROWS ; j++){
                 if(shelf[i][j] == Token.CAT )
                     counter[0]++;
                 else if(shelf[i][j] == Token.BOOK)
@@ -41,13 +41,14 @@ public class TwoRows implements CommonObjective {
                 if(counter[n] > 0)
                     differentType++;
             }
-            if(differentType == 5 && counter[6] == 0)
-                AtLeastTwo++;
+            if(differentType <= 3 && counter[6] == 0)
+                AtLeastThree++;
         }
 
-        if(AtLeastTwo >= 2)
+        if(AtLeastThree >= 3)
             return 1;
         else
             return 0;
+
     }
 }
