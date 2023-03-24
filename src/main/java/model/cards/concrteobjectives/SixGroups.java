@@ -8,4 +8,5 @@ package model.cards.concrteobjectives;
  * from those of another group.
  */
 public class SixGroups {
+
 }

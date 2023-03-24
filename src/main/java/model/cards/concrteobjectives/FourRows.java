@@ -14,7 +14,39 @@ public class FourRows implements CommonObjective {
 
     @Override
     public int getPoints(Token[][] shelf) {
+        int[] counter;
+        int differentType;
+        counter = new int[6];
+        int AtLeastFour = 0;
+        for(int i=0; i < ROWS ; i++){
+            for(int w=0; w < 6 ; w++)
+                counter[w]=0;
+            differentType = 0;
+            for(int j=0; j < COLUMNS ; j++){
+                if(shelf[i][j] == Token.CAT )
+                    counter[0]++;
+                else if(shelf[i][j] == Token.BOOK)
+                    counter[1]++;
+                else if(shelf[i][j] == Token.TOY)
+                    counter[2]++;
+                else if(shelf[i][j] == Token.TROPHY)
+                    counter[3]++;
+                else if(shelf[i][j] == Token.FRAME)
+                    counter[4]++;
+                else if(shelf[i][j] == Token.PLANT)
+                    counter[5]++;
+            }
+            for(int n=0; n < 6; n++){
+                if(counter[n] > 0)
+                    differentType++;
+            }
+            if(differentType <= 3)
+                AtLeastFour++;
+        }
 
-        return 0;
+        if(AtLeastFour >= 4)
+            return 1;
+        else
+            return 0;
     }
 }
