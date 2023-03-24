@@ -2,6 +2,7 @@ package model.cards.concreteobjectives;
 
 import model.Token;
 import model.cards.CommonObjective;
+import model.cards.CommonType;
 
 /**
  * @author Niccolò Giuliani
@@ -64,5 +65,9 @@ public class TwoSquares implements CommonObjective {
         else if(x == Token.NOTHING)
             return 6;
         return -1;
+    }
+
+    public CommonType name(){
+        return CommonType.TWOSQUARES;
     }
 }

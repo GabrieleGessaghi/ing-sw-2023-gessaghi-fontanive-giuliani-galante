@@ -11,14 +11,16 @@ public class CommonCard extends Card {
     private List<String> players = new ArrayList();
     private CommonObjective objective;
     private int numberOfPlayers;
+    private CommonType name;
     /**
      * @author Niccolò Giuliani
      * @param obj
      * constructor
      */
     public CommonCard(CommonObjective obj, int number) {
-        this.objective=obj;
+        this.objective = obj;
         this.numberOfPlayers=number;
+        this.name=obj.name();
     }
 
 

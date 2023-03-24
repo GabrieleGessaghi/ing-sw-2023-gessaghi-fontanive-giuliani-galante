@@ -2,6 +2,7 @@ package model.cards.concreteobjectives;
 
 import model.Token;
 import model.cards.CommonObjective;
+import model.cards.CommonType;
 
 /**
  * @author Niccolò Giuliani
@@ -21,5 +22,9 @@ public class XShape implements CommonObjective {
             }
         }
         return 0;
+    }
+
+    public CommonType name(){
+        return CommonType.XSHAPE;
     }
 }

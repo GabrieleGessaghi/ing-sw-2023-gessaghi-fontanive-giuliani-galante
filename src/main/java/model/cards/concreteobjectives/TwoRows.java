@@ -2,6 +2,7 @@ package model.cards.concreteobjectives;
 
 import model.Token;
 import model.cards.CommonObjective;
+import model.cards.CommonType;
 
 /**
  * @author Niccolò Giuliani
@@ -49,5 +50,9 @@ public class TwoRows implements CommonObjective {
             return 1;
         else
             return 0;
+    }
+
+    public CommonType name(){
+        return CommonType.TWOROWS;
     }
 }
