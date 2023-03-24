@@ -16,18 +16,28 @@ public class SixGroups implements CommonObjective {
     @Override
     public int getPoints(Token[][] shelf) {
         int counter = 0;
-
-        for (int i = 0; i < ROWS && counter < 6; i++){
-            for (int j = 0; j < COLUMNS ; j++){
-                if(shelf[i][j] != Token.NOTHING) {
-                    if (shelf[i][j] == shelf[i][j + 1])
+        int flag = 0;
+        boolean [][] check;
+        check = new boolean[ROWS][COLUMNS];
+        for(int i = 0; i < ROWS ; i++)
+            for(int j = 0; j< COLUMNS ; j++)
+                check[i][j] = false;
+        for (int i = 0; i < ROWS - 1 && counter < 6; i++){
+            for (int j = 0; j < COLUMNS - 1 ; j++){
+                flag = 0;
+                if(shelf[i][j] != Token.NOTHING && check[i][j] == false) {
+                    if (shelf[i][j] == shelf[i][j + 1]) {
                         counter++;
-                    if (shelf[i][j] == shelf[i + 1][j])
+                        flag = 1;
+                        check[i][j +1] = true;
+                    }
+                    if (shelf[i][j] == shelf[i + 1][j] && flag == 0)
                         counter++;
+                        check[i + 1][j] = true;
                 }
             }
         }
-        if(counter > 6)
+        if(counter >= 4)
             return 1;
         else
             return 0;
