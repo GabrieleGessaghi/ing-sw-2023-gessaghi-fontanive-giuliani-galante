@@ -16,10 +16,10 @@ public class FourRows implements CommonObjective {
     public int getPoints(Token[][] shelf) {
         int[] counter;
         int differentType;
-        counter = new int[6];
+        counter = new int[7];
         int AtLeastFour = 0;
         for(int i=0; i < ROWS ; i++){
-            for(int w=0; w < 6 ; w++)
+            for(int w=0; w < 7 ; w++)
                 counter[w]=0;
             differentType = 0;
             for(int j=0; j < COLUMNS ; j++){
@@ -35,12 +35,14 @@ public class FourRows implements CommonObjective {
                     counter[4]++;
                 else if(shelf[i][j] == Token.PLANT)
                     counter[5]++;
+                else if(shelf[i][j] == Token.NOTHING)
+                    counter[6]++;
             }
             for(int n=0; n < 6; n++){
                 if(counter[n] > 0)
                     differentType++;
             }
-            if(differentType <= 3)
+            if(differentType <= 3 && counter[6] == 0)
                 AtLeastFour++;
         }
 
