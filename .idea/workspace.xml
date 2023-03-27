@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3729b865-6f2b-4611-8166-807305a77089" name="Changes" comment="modified isSatisfied in concreteobjectives classes" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2M69w06uBvBWevFZjuiNlkJPFbI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3729b865-6f2b-4611-8166-807305a77089" name="Changes" comment="" />
+      <created>1677077399555</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677077399555</updated>
+      <workItem from="1677077406922" duration="912000" />
+      <workItem from="1677078344090" duration="776000" />
+      <workItem from="1677079136978" duration="112000" />
+      <workItem from="1677079282862" duration="316000" />
+      <workItem from="1677079604078" duration="1237000" />
+      <workItem from="1679491532382" duration="3690000" />
+      <workItem from="1679559749931" duration="32443000" />
+      <workItem from="1679898545065" duration="3396000" />
+    </task>
+    <task id="LOCAL-00001" summary="Prima prova Nico Giuliani">
+      <created>1677077576337</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677077576337</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Prima prova Nico Giuliani">
+      <created>1677078765995</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677078765995</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Seconda prova Nico Giuliani">
+      <created>1677078799305</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677078799305</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Terza prova Nico Giuliani">
+      <created>1677080048199</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677080048199</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Card class&#10;Niccolò Giuliani">
+      <created>1679492001487</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679492001487</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Created:&#10;-PersonalCard &#10;-CommonObjective&#10;-CommonCard&#10;-ConcreteObjective">
+      <created>1679492661577</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679492661577</updated>
+    </task>
+    <task id="LOCAL-00007" summary="writing some methods for Cards">
+      <created>1679493716978</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679493716978</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changing some declaration">
+      <created>1679560143035</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679560143035</updated>
+    </task>
+    <task id="LOCAL-00009" summary="changing some declaration">
+      <created>1679560180955</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1679560180955</updated>
+    </task>
+    <task id="LOCAL-00010" summary="javadoc">
+      <created>1679579145593</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1679579145593</updated>
+    </task>
+    <task id="LOCAL-00011" summary="javadoc&#10;CommonType declaration">
+      <created>1679644546566</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1679644546566</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ConcreteObjectives">
+      <created>1679645773685</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1679645773685</updated>
+    </task>
+    <task id="LOCAL-00013" summary="deleted setCommandObjective and modified the constructor of class CommonCard">
+      <created>1679646835408</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1679646835408</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Corners.getPoints&#10;Diagonal.getPoints">
+      <created>1679656763257</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1679656763257</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Eightany.getPoints">
+      <created>1679666711174</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1679666711175</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Modify CommonType">
+      <created>1679667049908</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1679667049908</updated>
+    </task>
+    <task id="LOCAL-00017" summary="FourRows.getPoints">
+      <created>1679668231308</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1679668231308</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Stairs.getPoints&#10;SixGroups.getPoints">
+      <created>1679669598149</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1679669598149</updated>
+    </task>
+    <task id="LOCAL-00019" summary="FourGroups definition">
+      <created>1679670097733</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1679670097733</updated>
+    </task>
+    <task id="LOCAL-00020" summary="CommmonObjective modified">
+      <created>1679671134883</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1679671134883</updated>
+    </task>
+    <task id="LOCAL-00021" summary="TwoSquares.getPoints&#10;XShape.getPoints">
+      <created>1679677456286</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1679677456286</updated>
+    </task>
+    <task id="LOCAL-00022" summary="corrected typo">
+      <created>1679678237261</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1679678237261</updated>
+    </task>
+    <task id="LOCAL-00023" summary="CommonCard.getPoints">
+      <created>1679679549329</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1679679549329</updated>
+    </task>
+    <task id="LOCAL-00024" summary="corrected typo">
+      <created>1679679594066</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1679679594066</updated>
+    </task>
+    <task id="LOCAL-00025" summary="modified CoomnCard&#10;added method nam to CommonObjective">
+      <created>1679681035964</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1679681035964</updated>
+    </task>
+    <task id="LOCAL-00026" summary="modified some javadoc">
+      <created>1679903331105</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1679903331105</updated>
+    </task>
+    <task id="LOCAL-00027" summary="modified some javadoc">
+      <created>1679903412712</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1679903412712</updated>
+    </task>
+    <task id="LOCAL-00028" summary="modified isSatisfied in concreteobjectives classes">
+      <created>1679905867460</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1679905867460</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Seconda prova Nico Giuliani" />
+    <MESSAGE value="Terza prova Nico Giuliani" />
+    <MESSAGE value="Creazione classe Card&#10;Niccolò Giuliani" />
+    <MESSAGE value="Card class&#10;Niccolò Giuliani" />
+    <MESSAGE value="Created:&#10;-PersonalCard &#10;-CommonObjective&#10;-CommonCard&#10;-ConcreteObjective" />
+    <MESSAGE value="writing some methods for Cards" />
+    <MESSAGE value="changing some declaration" />
+    <MESSAGE value="javadoc" />
+    <MESSAGE value="javadoc&#10;CommonType declaration" />
+    <MESSAGE value="ConcreteObjectives" />
+    <MESSAGE value="deleted setCommandObjective and modified the constructor of class CommonCard" />
+    <MESSAGE value="Corners.getPoints&#10;Diagonal.getPoints" />
+    <MESSAGE value="Eightany.getPoints" />
+    <MESSAGE value="Modify CommonType" />
+    <MESSAGE value="FourRows.getPoints" />
+    <MESSAGE value="Stairs.getPoints" />
+    <MESSAGE value="Stairs.getPoints&#10;SixGroups.getPoints" />
+    <MESSAGE value="FourGroups definition" />
+    <MESSAGE value="CommmonObjective modified" />
+    <MESSAGE value="TwoSquares.getPoints&#10;XShape.getPoints" />
+    <MESSAGE value="CommonCard.getPoints" />
+    <MESSAGE value="corrected typo" />
+    <MESSAGE value="modified CoomnCard&#10;added method nam to CommonObjective" />
+    <MESSAGE value="modified some javadoc" />
+    <MESSAGE value="modified isSatisfied in concreteobjectives classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified isSatisfied in concreteobjectives classes" />
+  </component>
+</project>
