@@ -10,15 +10,10 @@ import model.cards.CommonType;
  */
 public class Corners implements CommonObjective {
     public boolean isSatisfied(Token[][] shelf){
-
-        if(shelf[0][0] != Token.NOTHING &&
+        return shelf[0][0] != Token.NOTHING &&
                 shelf[0][0] == shelf[ROWS][0] &&
                 shelf[0][0] == shelf[0][COLUMNS] &&
-                shelf[0][0] == shelf[ROWS][COLUMNS])
-            return true;
-        else
-            return false;
-
+                shelf[0][0] == shelf[ROWS][COLUMNS];
     }
 
     public CommonType getName(){

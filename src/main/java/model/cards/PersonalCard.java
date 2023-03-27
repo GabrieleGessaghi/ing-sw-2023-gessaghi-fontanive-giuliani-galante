@@ -3,14 +3,14 @@ package model.cards;
 import model.Token;
 
 /**
- * Personal objective cards
+ * Personal objective cards.
  * @author Niccolò Giuliani
  */
 public class PersonalCard extends Card {
     private Token[][] correctTiles;
 
     /**
-     * constructor
+     * Class constructor.
      * @author Niccolò Giuliani
      */
     public PersonalCard(Token[] correctTiles) {
