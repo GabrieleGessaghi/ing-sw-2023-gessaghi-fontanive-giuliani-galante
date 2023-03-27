@@ -2,6 +2,9 @@ package model;
 
 import model.cards.Card;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Handles players' shelves and cards.
  * @author Niccolò Galante
@@ -11,14 +14,12 @@ public class Player {
     private int points;
     private boolean isFirstPlayer;
     public boolean isConnected;
-    public Card[] playerCards; //array used for common and personal cards
-    private final static int NUMBER_OF_CARDS = 3; //size of array
+    public List<Card> cards; //array used for common and personal cards
     private Shelf playerShelf; //reference to player's shelf
 
     public Player(String nickname) {
-        playerCards = new Card[NUMBER_OF_CARDS];
+        cards = new ArrayList<>();
         this.nickname = nickname;
-
     }
 
     /**
@@ -55,11 +56,10 @@ public class Player {
     public void updatePoints(){
         int tempPoints;
         tempPoints = points;
-        for(int i=0; i<NUMBER_OF_CARDS; i++){
-            //tempPoints = tempPoints + playerCards[i].getPoints(playerShelf);
+        for(Card card: cards){
+            tempPoints = tempPoints + card.getPoints(playerShelf.getTiles()); //sum of points for each card
         }
-
-
+        //TODO: check if player has already obtained points from specific card
     }
 
     /**
