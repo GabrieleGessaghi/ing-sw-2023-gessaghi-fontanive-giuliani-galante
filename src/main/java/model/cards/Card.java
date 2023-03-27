@@ -3,21 +3,17 @@ package model.cards;
 import model.Token;
 
 /**
- *  general card of the game
- *  @author Niccolò Giuliani
+ * Each card calculates the number of points a given matrix of tokens will obtain.
+ * @author Niccolò Giuliani
  */
 public abstract class Card {
-
     protected int points[];
 
     /**
-     * method to know the points
+     * Returns the number of points the given shelf will get.
      * @author Niccolò Giuliani
-     * @param shelf personal shelf of the player
-     * @return points
+     * @param shelf a matrix of Tokens taken from a player's shelf.
+     * @return the number of points this shelf will get.
      */
     public abstract int getPoints(Token[][]shelf);
-
-
-
 }
