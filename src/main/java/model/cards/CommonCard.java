@@ -4,8 +4,8 @@ import java.util.function.Supplier;
 import model.Token;
 
 /**
- @author Niccolò Giuliani
- common objective cards of the game
+ * common objective cards of the game
+ * @author Niccolò Giuliani
  */
 public class CommonCard extends Card {
     private int numberOfTokensLeft;
