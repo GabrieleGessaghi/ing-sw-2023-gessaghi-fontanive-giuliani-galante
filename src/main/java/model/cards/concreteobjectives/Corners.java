@@ -6,9 +6,9 @@ import model.cards.CommonType;
 
 
 /**
- @author Niccolò Giuliani
- Four tiles of the same type in the four
- corners of the bookshelf.
+ *  Four tiles of the same type in the four
+ *  corners of the bookshelf.
+ * @author Niccolò Giuliani
  */
 public class Corners implements CommonObjective {
 
