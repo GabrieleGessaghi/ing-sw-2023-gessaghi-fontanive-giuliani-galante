@@ -3,17 +3,18 @@ package model.cards;
 import model.Token;
 
 /**
- * @author Niccolò Giuliani
- * general card of the game
+ *  general card of the game
+ *  @author Niccolò Giuliani
  */
 public abstract class Card {
 
     protected int points[];
 
     /**
-     * @author Niccolò Giuliani
-     * @param shelf
      * method to know the points
+     * @author Niccolò Giuliani
+     * @param shelf personal shelf of the player
+     * @return points
      */
     public abstract int getPoints(Token[][]shelf);
 

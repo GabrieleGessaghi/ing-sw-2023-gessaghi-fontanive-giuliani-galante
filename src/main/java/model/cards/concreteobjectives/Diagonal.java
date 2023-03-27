@@ -37,7 +37,7 @@ public class Diagonal implements CommonObjective {
             }
         }
 
-        if(flag==1)
+        if(flag == 1)
             return 0;
         else
             return 1;

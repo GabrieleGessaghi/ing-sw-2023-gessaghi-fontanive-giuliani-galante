@@ -4,8 +4,8 @@ import java.util.function.Supplier;
 import model.Token;
 
 /**
- @author Niccolò Giuliani
- common objective cards of the game
+ * common objective cards of the game
+ * @author Niccolò Giuliani
  */
 public class CommonCard extends Card {
     private List<String> players = new ArrayList();
@@ -13,9 +13,9 @@ public class CommonCard extends Card {
     private int numberOfPlayers;
     private CommonType name;
     /**
-     * @author Niccolò Giuliani
-     * @param obj
      * constructor
+     * @author Niccolò Giuliani
+     * @param obj objective of the card
      */
     public CommonCard(CommonObjective obj, int number) {
         this.objective = obj;
@@ -56,8 +56,9 @@ public class CommonCard extends Card {
         return -1;
     }
     /**
-     * @author Niccolò Giuliani
      * method to know which players have took the card
+     * @author Niccolò Giuliani
+     * @return players who completed the objective
      */
     public List getPlayers() {
         return players;
@@ -65,9 +66,9 @@ public class CommonCard extends Card {
 
 
     /**
-     * @author Niccolò Giuliani
-     * @param nickname
      * method to add a player
+     * @author Niccolò Giuliani
+     * @param nickname nickname of the player
      */
     public void addPlayer(String nickname){
         players.add(nickname);
