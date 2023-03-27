@@ -3,22 +3,26 @@ package model.cards;
 import model.Token;
 
 /**
+ * Interface for implementing the strategy pattern.
  * @author Niccolò Giuliani
- * interface for common card
  */
 public interface CommonObjective {
+     //TODO: Move these to the shelf class
      static final int ROWS=6;
      static final int COLUMNS=5;
 
      /**
+      * Checks whether a player's shelf satisfies the card's objective.
       * @author Niccolò Giuliani
-      * @param shelf
-      * @return 1 if the condition is respect, 0 otherwise
+      * @param shelf a matrix of Tokens
+      * @return true if the given shelf satisfies the algorithm.
       */
-     public int getPoints(Token[][] shelf) ;
+     public boolean isSatisfied(Token[][] shelf) ;
+
      /**
+      * Getter for the card's name.
       * @author Niccolò Giuliani
-      * @return the name of the card
+      * @return the card's name.
       */
-     public CommonType name();
+     public CommonType getName();
 }

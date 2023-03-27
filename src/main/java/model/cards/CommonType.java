@@ -1,7 +1,8 @@
 package model.cards;
+
 /**
+ * Common objectives' names.
  * @author Niccolò Giuliani
- * common objective type
  */
 public enum CommonType {
     SIXGROUPS,
@@ -16,6 +17,4 @@ public enum CommonType {
     XSHAPE,
     EIGHTANY,
     STAIRS
-
-
 }
