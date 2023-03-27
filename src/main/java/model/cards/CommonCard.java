@@ -52,7 +52,7 @@ public class CommonCard extends Card {
                     else if(players.size() == 3)
                         return 2;
             }
-        return -1;
+        return 0;
     }
 
     /**
