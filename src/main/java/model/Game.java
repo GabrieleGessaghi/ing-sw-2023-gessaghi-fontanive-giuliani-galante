@@ -1,6 +1,6 @@
 package model;
 
-import java.util.List;
+import model.chat.Chat;
 
 public class Game {
 
