@@ -19,24 +19,24 @@ public class FourRows implements CommonObjective {
         int differentType;
         counter = new int[7];
         int AtLeastFour = 0;
-        for(int i=0; i < ROWS ; i++){
+        for(int i=0; i < COLUMNS ; i++){
             for(int w=0; w < 7 ; w++)
                 counter[w]=0;
             differentType = 0;
-            for(int j=0; j < COLUMNS ; j++){
-                if(shelf[i][j] == Token.CAT )
+            for(int j=0; j < ROWS ; j++){
+                if(shelf[j][i] == Token.CAT )
                     counter[0]++;
-                else if(shelf[i][j] == Token.BOOK)
+                else if(shelf[j][i] == Token.BOOK)
                     counter[1]++;
-                else if(shelf[i][j] == Token.TOY)
+                else if(shelf[j][i] == Token.TOY)
                     counter[2]++;
-                else if(shelf[i][j] == Token.TROPHY)
+                else if(shelf[j][i] == Token.TROPHY)
                     counter[3]++;
-                else if(shelf[i][j] == Token.FRAME)
+                else if(shelf[j][i] == Token.FRAME)
                     counter[4]++;
-                else if(shelf[i][j] == Token.PLANT)
+                else if(shelf[j][i] == Token.PLANT)
                     counter[5]++;
-                else if(shelf[i][j] == Token.NOTHING)
+                else if(shelf[j][i] == Token.NOTHING)
                     counter[6]++;
             }
             for(int n=0; n < 6; n++){
