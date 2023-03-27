@@ -7,15 +7,15 @@ import java.util.Arrays;
 public class Shelf {
     private final static int COLUMNS = 5;
     private final static int ROWS = 6;
-    private Token [][] tiles;
+    private final Token [][] tiles;
 
     /**
      * Class constructor, all the shelf positions are set to NOTHING token type.
      * @author Gabriele Gessaghi
      */
-    public Shelf () {
+    public Shelf() {
         tiles = new Token[ROWS][COLUMNS];
-        for ( Token[] row: tiles)
+        for (Token[] row: tiles)
             Arrays.fill(row, Token.NOTHING);
     }
 
@@ -24,7 +24,9 @@ public class Shelf {
      * @author Gabriele Gessaghi
      * @return the tiles matrix of Tokens.
      */
-    public Token [][] getTiles () { return tiles;}
+    public Token[][] getTiles() {
+        return tiles;
+    }
 
     /**
      * Insert the new token inside the first free cell of the selected column.
@@ -32,8 +34,8 @@ public class Shelf {
      * @param token token to be inserted inside the shelf.
      * @param column column where the token has to bbe inserted.
      */
-    public void insertToken (Token token, int column) throws FullColumnException {
-        for (int i=0; i<ROWS; i++)
+    public void insertToken(Token token, int column) throws FullColumnException {
+        for (int i = 0; i < ROWS; i++)
             if (tiles[i][column].equals((Token.NOTHING))) {
                 tiles[i][column] = token;
                 return;
@@ -46,8 +48,8 @@ public class Shelf {
      * @author Gabriele Gessaghi
      * @param column column where the token has to bbe inserted.
      */
-    public void removeToken (int column) {
-        for (int i=ROWS; i>=0; i--)
+    public void removeToken(int column) {
+        for (int i = ROWS; i >= 0; i--)
             if (!tiles[i][column].equals((Token.NOTHING))) {
                 tiles[i][column] = Token.NOTHING;
                 return;
@@ -59,11 +61,10 @@ public class Shelf {
      * @author Gabriele Gessaghi
      * @return true only if NOTHING token type is not present in the shelf.
      */
-    public boolean isFull () {
-        for ( Token[] row: tiles)
-            if (Arrays.stream(row).anyMatch(tmp -> tmp.equals(Token.NOTHING)))
+    public boolean isFull() {
+        for (Token[] row: tiles)
+            if (Arrays.asList(row).contains(Token.NOTHING))
                 return false;
-
         return true;
     }
 }
