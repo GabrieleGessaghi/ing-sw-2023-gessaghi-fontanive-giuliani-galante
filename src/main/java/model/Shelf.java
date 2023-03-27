@@ -42,6 +42,19 @@ public class Shelf {
     }
 
     /**
+     * Remove the last inserted token of a given column
+     * @author Gabriele Gessaghi
+     * @param column column where the token has to bbe inserted
+     */
+    public void removeToken (int column) {
+        for (int i=ROWS; i>=0; i--)
+            if (!tiles[i][column].equals((Token.NOTHING))) {
+                tiles[i][column] = Token.NOTHING;
+                return;
+            }
+    }
+
+    /**
      * Check if there is a NOTHING token inside the shelf (an empty space)
      * @author Gabriele Gessaghi
      * @return true only if NOTHING token type is not present in the shelf
