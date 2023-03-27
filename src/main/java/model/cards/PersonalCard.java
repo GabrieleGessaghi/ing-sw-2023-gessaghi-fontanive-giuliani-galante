@@ -14,6 +14,7 @@ public class PersonalCard extends Card {
      * @author Niccolò Giuliani
      */
     public PersonalCard(Token[] correctTiles) {
+        points = new int[]{1, 2, 4, 6, 9, 12};
         //TODO: Implement different personal cards.
     }
 

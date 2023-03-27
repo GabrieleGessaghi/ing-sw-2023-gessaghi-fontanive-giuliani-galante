@@ -15,7 +15,7 @@ public class CommonCard extends Card {
 
     /**
      * Class constructor
-     *
+     * @author Niccolò Giuliani
      * @param objective       the algorithm for this card.
      * @param numberOfPlayers the number of players playing this game.
      * @author Niccolò Giuliani
@@ -26,6 +26,12 @@ public class CommonCard extends Card {
         this.numberOfPlayers = numberOfPlayers;
     }
 
+    /**
+     * Gives players' the points they deserve and removes the points token.
+     * @author Giorgio Massimo Fontanive
+     * @param shelf a matrix of Tokens taken from a player's shelf.
+     * @return the number of points the player gets.
+     */
     public int getPoints(Token[][] shelf) {
         boolean satisfied;
         int points = 0;
@@ -33,17 +39,21 @@ public class CommonCard extends Card {
         if (satisfied) {
             switch (numberOfPlayers) {
                 case 2:
-                    if (players.size() == 0)
-                        return 8;
-                    else if (players.size() == 1)
-                        return 4;
+                    switch (numberOfTokensLeft) {
+                        case 2:
+                            points = 8;
+                        case 1:
+                            points = 4;
+                    }
                 case 3:
-                    if (players.size() == 0)
-                        return 8;
-                    else if (players.size() == 1)
-                        return 6;
-                    else if (players.size() == 2)
-                        return 4;
+                    switch (numberOfTokensLeft) {
+                        case 3:
+                            points = 8;
+                        case 2:
+                            points = 6;
+                        case 1:
+                            points = 4;
+                    }
                 case 4:
                     switch (numberOfTokensLeft) {
                         case 4:
