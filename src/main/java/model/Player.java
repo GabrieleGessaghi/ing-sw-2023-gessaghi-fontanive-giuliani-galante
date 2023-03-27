@@ -20,6 +20,7 @@ public class Player {
     public Player(String nickname) {
         cards = new ArrayList<>();
         this.nickname = nickname;
+        playerShelf = new Shelf();
     }
 
     /**

@@ -2,17 +2,22 @@ package model;
 
 import model.chat.Chat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
 
     private String currentPlayer;
     private Board gameBoard;
-    //private final List <Player>;
+    private final List<Player> playerList;
     private Chat messages;
     /**
      * Class constructor
      * @author Gabriele Gessaghi
      */
-    public Game () {}
+    public Game () {
+        playerList = new ArrayList<>();
+    }
 
     /**
      * Save the game state in case of disconnections or other problems

@@ -5,7 +5,6 @@ import model.exceptions.FullColumnException;
 import java.util.Arrays;
 
 public class Shelf {
-
     private final static int COLUMNS = 5;
     private final static int ROWS = 6;
     private Token [][] tiles;
@@ -39,6 +38,19 @@ public class Shelf {
                 return;
             }
         throw new FullColumnException("The selected column is full!");
+    }
+
+    /**
+     * Remove the last inserted token of a given column
+     * @author Gabriele Gessaghi
+     * @param column column where the token has to bbe inserted
+     */
+    public void removeToken (int column) {
+        for (int i=ROWS; i>=0; i--)
+            if (!tiles[i][column].equals((Token.NOTHING))) {
+                tiles[i][column] = Token.NOTHING;
+                return;
+            }
     }
 
     /**
