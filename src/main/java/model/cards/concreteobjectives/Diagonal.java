@@ -5,9 +5,9 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Five tiles of the same type forming a
  * diagonal.
+ * @author Niccolò Giuliani
  */
 public class Diagonal implements CommonObjective {
 
