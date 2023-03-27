@@ -69,7 +69,9 @@ public class Player {
      * @author Niccolò Galante.
      */
     public void insertTokens(Token[] tokens, int column){
-
+        //Si selezionano fino a 3 token (array); i token vanno inseriti uno ad uno, controllando ogni volta
+        //che la colonna scelta non sia piena (vedi FullColumnException di Shelf => si deve usare try e catch);
+        //con catch si può usare IllegalMoveException
     }
 
 }
