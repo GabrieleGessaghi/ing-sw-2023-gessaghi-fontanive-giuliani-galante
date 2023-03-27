@@ -12,7 +12,7 @@ import model.cards.CommonType;
 public class Stairs implements CommonObjective {
 
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int []counter;
         counter = new int[ROWS];
         int flagRight = 0;
@@ -34,12 +34,12 @@ public class Stairs implements CommonObjective {
                  flagLeft=1;
 
         if(flagRight == 0 || flagLeft == 0 )
-            return 1;
+            return true;
         else
-            return 0;
+            return false;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.STAIRS;
     }
 }

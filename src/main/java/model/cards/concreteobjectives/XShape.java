@@ -10,7 +10,7 @@ import model.cards.CommonType;
  */
 public class XShape implements CommonObjective {
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int flag = 0;
         for (int i = 0; i < ROWS && flag == 0; i++){
             for (int j = 0; j < COLUMNS && flag == 0; j++){
@@ -21,10 +21,13 @@ public class XShape implements CommonObjective {
                 }
             }
         }
-        return 0;
+        if(flag == 1)
+            return true;
+        else
+            return false;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.XSHAPE;
     }
 }

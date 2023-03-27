@@ -12,7 +12,7 @@ import model.cards.CommonType;
 public class Diagonal implements CommonObjective {
 
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int flag = 0;
         int i = 0;
         for (int k = 0; k < 2 && flag == 0; k++) {
@@ -38,12 +38,12 @@ public class Diagonal implements CommonObjective {
         }
 
         if(flag == 1)
-            return 0;
+            return false;
         else
-            return 1;
+            return true;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.DIAGONAL;
     }
 }

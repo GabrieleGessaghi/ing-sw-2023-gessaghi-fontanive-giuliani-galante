@@ -13,7 +13,7 @@ import model.cards.CommonType;
  */
 public class ThreeColumns implements CommonObjective {
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int[] counter;
         int differentType;
         counter = new int[7];
@@ -47,13 +47,13 @@ public class ThreeColumns implements CommonObjective {
         }
 
         if(AtLeastThree >= 3)
-            return 1;
+            return true;
         else
-            return 0;
+            return false;
 
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.THREECOLUMNS;
     }
 }

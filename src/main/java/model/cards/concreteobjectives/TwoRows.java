@@ -13,7 +13,7 @@ import model.cards.CommonType;
  */
 public class TwoRows implements CommonObjective {
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int[] counter;
         int differentType;
         counter = new int[7];
@@ -47,12 +47,12 @@ public class TwoRows implements CommonObjective {
         }
 
         if(AtLeastTwo >= 2)
-            return 1;
+            return true;
         else
-            return 0;
+            return false;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.TWOROWS;
     }
 }

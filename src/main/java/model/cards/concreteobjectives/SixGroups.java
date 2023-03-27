@@ -15,7 +15,7 @@ import model.cards.CommonType;
 public class SixGroups implements CommonObjective {
 
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int counter = 0;
         int flag = 0;
         boolean [][] check;
@@ -39,12 +39,12 @@ public class SixGroups implements CommonObjective {
             }
         }
         if(counter >= 4)
-            return 1;
+            return true;
         else
-            return 0;
+            return false;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.SIXGROUPS;
     }
 }

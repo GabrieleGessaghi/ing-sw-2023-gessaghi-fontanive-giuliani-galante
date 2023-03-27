@@ -13,7 +13,7 @@ import model.cards.CommonType;
  */
 public class TwoSquares implements CommonObjective {
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int flag = 0;
         boolean [][]check;
         check = new boolean[ROWS][COLUMNS];
@@ -44,9 +44,9 @@ public class TwoSquares implements CommonObjective {
         }
 
         if (flag == 1)
-            return 1;
+            return true;
         else
-            return 0;
+            return false;
     }
 
     private int function(Token x){
@@ -67,7 +67,7 @@ public class TwoSquares implements CommonObjective {
         return -1;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.TWOSQUARES;
     }
 }
