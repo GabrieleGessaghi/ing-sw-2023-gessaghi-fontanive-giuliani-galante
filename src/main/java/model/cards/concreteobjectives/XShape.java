@@ -5,26 +5,29 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Five tiles of the same type forming an X.
+ * @author Niccolò Giuliani
  */
 public class XShape implements CommonObjective {
     @Override
-    public int getPoints(Token[][] shelf) {
-        int flag = 0;
-        for (int i = 0; i < ROWS && flag == 0; i++){
-            for (int j = 0; j < COLUMNS && flag == 0; j++){
+    public boolean isSatisfied(Token[][] shelf) {
+        boolean flag = false;
+        for (int i = 0; i < ROWS && flag == false; i++){
+            for (int j = 0; j < COLUMNS && flag == false; j++){
                 if(shelf[i][j] != Token.NOTHING && i < 4 && j < 3){
                     if(shelf[i][j] == shelf[i][j + 2] && shelf[i][j] == shelf[i + 1][j + 1] && shelf[i][j] == shelf[i + 2][j]&&
                     shelf[i][j] == shelf[i + 2][j + 2])
-                        flag=1;
+                        flag=true;
                 }
             }
         }
-        return 0;
+        if(flag == true)
+            return true;
+        else
+            return false;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.XSHAPE;
     }
 }

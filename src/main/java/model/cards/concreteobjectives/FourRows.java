@@ -5,16 +5,16 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Four lines each formed by 5 tiles of
  * maximum three different types. One
  * line can show the same or a different
  * combination of another line.
+ * @author Niccolò Giuliani
  */
 public class FourRows implements CommonObjective {
 
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int[] counter;
         int differentType;
         counter = new int[7];
@@ -48,12 +48,12 @@ public class FourRows implements CommonObjective {
         }
 
         if(AtLeastFour >= 4)
-            return 1;
+            return true;
         else
-            return 0;
+            return false;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.FOURROWS;
     }
 

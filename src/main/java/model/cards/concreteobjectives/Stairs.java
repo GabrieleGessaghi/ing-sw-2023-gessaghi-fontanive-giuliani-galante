@@ -5,18 +5,18 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Five tiles of the same type forming a
  * diagonal.
+ * @author Niccolò Giuliani
  */
 public class Stairs implements CommonObjective {
 
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int []counter;
         counter = new int[ROWS];
-        int flagRight = 0;
-        int flagLeft = 0;
+        boolean flagRight = false;
+        boolean flagLeft = false;
         for(int i = 0; i< ROWS; i++)
             counter[i] = 0;
         for (int i = 0; i < ROWS ; i++){
@@ -28,18 +28,18 @@ public class Stairs implements CommonObjective {
         }
         for (int i=0; i < ROWS-1; i++)
             if(counter[i] < counter[i]+1)
-                 flagRight=1;
+                 flagRight = true;
          for(int i=0; i < ROWS-1; i++)
              if(counter[i] > counter[i]+1)
-                 flagLeft=1;
+                 flagLeft = true;
 
-        if(flagRight == 0 || flagLeft == 0 )
-            return 1;
+        if(flagRight == false || flagLeft == false )
+            return true;
         else
-            return 0;
+            return false;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.STAIRS;
     }
 }

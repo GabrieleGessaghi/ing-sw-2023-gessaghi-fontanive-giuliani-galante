@@ -5,15 +5,15 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Three columns each formed by 6 tiles Five tiles of the same type forming an X.
  * of maximum three different types. One
  * column can show the same or a different
  * combination of another column.
+ * @author Niccolò Giuliani
  */
 public class ThreeColumns implements CommonObjective {
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
         int[] counter;
         int differentType;
         counter = new int[7];
@@ -47,13 +47,13 @@ public class ThreeColumns implements CommonObjective {
         }
 
         if(AtLeastThree >= 3)
-            return 1;
+            return true;
         else
-            return 0;
+            return false;
 
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.THREECOLUMNS;
     }
 }

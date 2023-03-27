@@ -5,16 +5,16 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Two groups each containing 4 tiles of
  * the same type in a 2x2 square. The tiles
  * of one square can be different from
  * those of the other square.
+ * @author Niccolò Giuliani
  */
 public class TwoSquares implements CommonObjective {
     @Override
-    public int getPoints(Token[][] shelf) {
-        int flag = 0;
+    public boolean isSatisfied(Token[][] shelf) {
+        boolean flag = false;
         boolean [][]check;
         check = new boolean[ROWS][COLUMNS];
         int []atLeastTwo;
@@ -38,15 +38,15 @@ public class TwoSquares implements CommonObjective {
                 }
             }
         }
-        for (int i = 0; i < 7 && flag == 0; i++){
+        for (int i = 0; i < 7 && flag == false; i++){
             if(atLeastTwo[i] >= 2)
-                flag=1;
+                flag=true;
         }
 
-        if (flag == 1)
-            return 1;
+        if (flag == true)
+            return true;
         else
-            return 0;
+            return false;
     }
 
     private int function(Token x){
@@ -67,7 +67,7 @@ public class TwoSquares implements CommonObjective {
         return -1;
     }
 
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.TWOSQUARES;
     }
 }

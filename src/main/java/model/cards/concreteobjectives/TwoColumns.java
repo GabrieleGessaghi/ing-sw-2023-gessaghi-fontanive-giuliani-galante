@@ -5,13 +5,13 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Two columns each formed by 6
  * different types of tiles.
+ * @author Niccolò Giuliani
  */
 public class TwoColumns implements CommonObjective {
     @Override
-    public int getPoints(Token[][] shelf) {
+    public boolean isSatisfied(Token[][] shelf) {
 
             int[] counter;
             int differentType;
@@ -46,12 +46,12 @@ public class TwoColumns implements CommonObjective {
             }
 
             if(AtLeastTwo >= 2)
-                return 1;
+                return true;
             else
-                return 0;
+                return false;
 
     }
-    public CommonType name(){
+    public CommonType getName(){
         return CommonType.TWOCOLUMNS;
     }
 
