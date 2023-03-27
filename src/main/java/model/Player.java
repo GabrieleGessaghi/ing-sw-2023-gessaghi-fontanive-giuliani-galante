@@ -15,7 +15,7 @@ public class Player {
     private boolean isFirstPlayer;
     public boolean isConnected;
     public List<Card> cards; //array used for common and personal cards
-    private Shelf playerShelf; //reference to player's shelf
+    private final Shelf playerShelf; //reference to player's shelf
 
     public Player(String nickname) {
         cards = new ArrayList<>();
@@ -56,7 +56,7 @@ public class Player {
      */
     public void updatePoints(){
         int tempPoints;
-        tempPoints = points;
+        tempPoints = 0;
         for(Card card: cards){
             tempPoints = tempPoints + card.getPoints(playerShelf.getTiles()); //sum of points for each card
         }
@@ -70,9 +70,10 @@ public class Player {
      * @author Niccolò Galante.
      */
     public void insertTokens(Token[] tokens, int column){
-        //Si selezionano fino a 3 token (array); i token vanno inseriti uno ad uno, controllando ogni volta
+        //Si selezionano fino a 3 token (array); i token vanno inseriti uno ad uno controllano che non siano NOTHING, controllando ogni volta
         //che la colonna scelta non sia piena (vedi FullColumnException di Shelf => si deve usare try e catch);
         //con catch si può usare IllegalMoveException
+        //se è piena bisogna eliminare i token già inseriti
     }
 
 }

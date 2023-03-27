@@ -10,7 +10,7 @@ public class Shelf {
     private Token [][] tiles;
 
     /**
-     * Class constructor, all the shelf positions are set to NOTHING token type
+     * Class constructor, all the shelf positions are set to NOTHING token type.
      * @author Gabriele Gessaghi
      */
     public Shelf () {
@@ -20,16 +20,17 @@ public class Shelf {
     }
 
     /**
-     * Return the current state of the shelf
+     * Getter for the current state of the shelf.
      * @author Gabriele Gessaghi
+     * @return the tiles matrix of Tokens.
      */
     public Token [][] getTiles () { return tiles;}
 
     /**
-     * Insert the new token inside the first free cell of the selected column
+     * Insert the new token inside the first free cell of the selected column.
      * @author Gabriele Gessaghi
-     * @param token token to be inserted inside the shelf
-     * @param column column where the token has to bbe inserted
+     * @param token token to be inserted inside the shelf.
+     * @param column column where the token has to bbe inserted.
      */
     public void insertToken (Token token, int column) throws FullColumnException {
         for (int i=0; i<ROWS; i++)
@@ -41,9 +42,9 @@ public class Shelf {
     }
 
     /**
-     * Remove the last inserted token of a given column
+     * Remove the last inserted token of a given column.
      * @author Gabriele Gessaghi
-     * @param column column where the token has to bbe inserted
+     * @param column column where the token has to bbe inserted.
      */
     public void removeToken (int column) {
         for (int i=ROWS; i>=0; i--)
@@ -54,9 +55,9 @@ public class Shelf {
     }
 
     /**
-     * Check if there is a NOTHING token inside the shelf (an empty space)
+     * Check if there is a NOTHING token inside the shelf (an empty space).
      * @author Gabriele Gessaghi
-     * @return true only if NOTHING token type is not present in the shelf
+     * @return true only if NOTHING token type is not present in the shelf.
      */
     public boolean isFull () {
         for ( Token[] row: tiles)
