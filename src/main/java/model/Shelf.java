@@ -5,7 +5,6 @@ import model.exceptions.FullColumnException;
 import java.util.Arrays;
 
 public class Shelf {
-
     private final static int COLUMNS = 5;
     private final static int ROWS = 6;
     private Token [][] tiles;

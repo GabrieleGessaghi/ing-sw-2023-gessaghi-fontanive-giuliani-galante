@@ -1,18 +1,21 @@
 package model;
 
 import model.chat.Chat;
+import java.util.List;
 
 public class Game {
 
     private String currentPlayer;
     private Board gameBoard;
-    //private final List <Player>;
+    private final Player [] playerList;
     private Chat messages;
     /**
      * Class constructor
      * @author Gabriele Gessaghi
      */
-    public Game () {}
+    public Game (int numberOfPlayers) {
+        playerList = new Player[numberOfPlayers];
+    }
 
     /**
      * Save the game state in case of disconnections or other problems

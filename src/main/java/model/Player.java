@@ -18,7 +18,7 @@ public class Player {
     public Player(String nickname) {
         playerCards = new Card[NUMBER_OF_CARDS];
         this.nickname = nickname;
-
+        playerShelf = new Shelf();
     }
 
     /**
@@ -58,8 +58,6 @@ public class Player {
         for(int i=0; i<NUMBER_OF_CARDS; i++){
             //tempPoints = tempPoints + playerCards[i].getPoints(playerShelf);
         }
-
-
     }
 
     /**
