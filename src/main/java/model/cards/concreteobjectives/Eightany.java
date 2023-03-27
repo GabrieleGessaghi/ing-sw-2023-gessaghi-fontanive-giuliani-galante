@@ -5,10 +5,10 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Eight tiles of the same type. There’s no
  * restriction about the position of these
  * tiles.
+ * @author Niccolò Giuliani
  */
 public class Eightany implements CommonObjective {
 

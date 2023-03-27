@@ -5,11 +5,11 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Four lines each formed by 5 tiles of
  * maximum three different types. One
  * line can show the same or a different
  * combination of another line.
+ * @author Niccolò Giuliani
  */
 public class FourRows implements CommonObjective {
 

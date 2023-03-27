@@ -5,11 +5,11 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Two lines each formed by 5 different
  * types of tiles. One line can show the
  * same or a different combination of the
  * other line.
+ * @author Niccolò Giuliani
  */
 public class TwoRows implements CommonObjective {
     @Override

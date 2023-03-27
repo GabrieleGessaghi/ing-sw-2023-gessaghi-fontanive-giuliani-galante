@@ -13,31 +13,31 @@ public class Diagonal implements CommonObjective {
 
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        int flag = 0;
+        boolean flag = false;
         int i = 0;
-        for (int k = 0; k < 2 && flag == 0; k++) {
+        for (int k = 0; k < 2 && flag == false; k++) {
             i = k;
             if(shelf[k][0] != Token.NOTHING) {
-                for (int j = 0; j < COLUMNS && flag == 0; j++) {
+                for (int j = 0; j < COLUMNS && flag == false; j++) {
                     if (shelf[k][0] != shelf[i][j])
-                        flag = 1;
+                        flag = true;
                     i++;
                 }
             }
         }
 
-        for (int k = 0; k < 2 && flag == 0; k++) {
+        for (int k = 0; k < 2 && flag == false; k++) {
             i = k;
             if(shelf[k][5] != Token.NOTHING) {
-                for (int j = COLUMNS; j > 0 && flag == 0; i--) {
+                for (int j = COLUMNS; j > 0 && flag == false; i--) {
                     if (shelf[k][5] != shelf[i][j])
-                        flag = 1;
+                        flag = true;
                     i++;
                 }
             }
         }
 
-        if(flag == 1)
+        if(flag == true)
             return false;
         else
             return true;

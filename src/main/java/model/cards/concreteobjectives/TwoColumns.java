@@ -5,9 +5,9 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * @author Niccolò Giuliani
  * Two columns each formed by 6
  * different types of tiles.
+ * @author Niccolò Giuliani
  */
 public class TwoColumns implements CommonObjective {
     @Override
