@@ -27,10 +27,10 @@ public class Stairs implements CommonObjective {
             }
         }
         for (int i=0; i < ROWS-1; i++)
-            if(counter[i] < counter[i]+1)
+            if(counter[i] <= counter[i]+1)
                  flagRight = true;
          for(int i=0; i < ROWS-1; i++)
-             if(counter[i] > counter[i]+1)
+             if(counter[i] >= counter[i]+1)
                  flagLeft = true;
 
         if(flagRight == false || flagLeft == false )
