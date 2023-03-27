@@ -4,17 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="3729b865-6f2b-4611-8166-807305a77089" name="Changes" comment="modified isSatisfied in concreteobjectives classes" />
+=======
+    <list default="true" id="3aec560a-ea57-47f5-8c02-809b7120d9a7" name="Changes" comment="Pom and gitignore update">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    </list>
+>>>>>>> origin/main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
         <option value="Enum" />
+=======
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+>>>>>>> origin/main
         <option value="Class" />
       </list>
     </option>
@@ -25,11 +42,16 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectId" id="2M69w06uBvBWevFZjuiNlkJPFbI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+=======
+  <component name="ProjectId" id="2M5pUMbTFEoCuMDwDbVJPOr5n4J" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+>>>>>>> origin/main
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,14 +60,20 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+<<<<<<< HEAD
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+=======
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+>>>>>>> origin/main
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="3729b865-6f2b-4611-8166-807305a77089" name="Changes" comment="" />
       <created>1677077399555</created>
       <option name="number" value="Default" />
@@ -257,6 +285,39 @@
       <updated>1679905867460</updated>
     </task>
     <option name="localTasksCounter" value="29" />
+=======
+      <changelist id="3aec560a-ea57-47f5-8c02-809b7120d9a7" name="Changes" comment="" />
+      <created>1677067317616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677067317616</updated>
+      <workItem from="1677067320552" duration="1176000" />
+      <workItem from="1678801819264" duration="628000" />
+      <workItem from="1679903726719" duration="1597000" />
+    </task>
+    <task id="LOCAL-00001" summary="Reset progetto">
+      <created>1677079639406</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677079639406</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Reset progetto">
+      <created>1677079906961</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677079906961</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Pom and gitignore update">
+      <created>1678802597873</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678802597873</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+>>>>>>> origin/main
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +335,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
     <MESSAGE value="Seconda prova Nico Giuliani" />
     <MESSAGE value="Terza prova Nico Giuliani" />
     <MESSAGE value="Creazione classe Card&#10;Niccolò Giuliani" />
@@ -300,5 +362,10 @@
     <MESSAGE value="modified some javadoc" />
     <MESSAGE value="modified isSatisfied in concreteobjectives classes" />
     <option name="LAST_COMMIT_MESSAGE" value="modified isSatisfied in concreteobjectives classes" />
+=======
+    <MESSAGE value="Reset progetto" />
+    <MESSAGE value="Pom and gitignore update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pom and gitignore update" />
+>>>>>>> origin/main
   </component>
 </project>
