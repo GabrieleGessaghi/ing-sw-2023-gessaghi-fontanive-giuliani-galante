@@ -11,8 +11,9 @@ public class Player {
     private int points;
     private boolean isFirstPlayer;
     public boolean isConnected;
-    public Card[] playerCards;
-    private Shelf playerShelf;
+    public Card[] playerCards; //array used for common and personal cards
+    private final static int NUMBER_OF_CARDS = 3; //size of array
+    private Shelf playerShelf; //reference to player's shelf
 
     public Player(String nickname) {
         this.nickname = nickname;
@@ -46,12 +47,13 @@ public class Player {
     }
 
     /**
-     * Getter for boolean to indicate if player is first.
-     * @author Niccolò Galante
-     * @return true if player is first.
+     * Updates players' points.
+     * @author Niccolò Galante.
      */
     public void updatePoints(){
 
     }
+
+
 
 }
