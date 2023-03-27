@@ -16,7 +16,9 @@ public class Player {
     private Shelf playerShelf; //reference to player's shelf
 
     public Player(String nickname) {
+        playerCards = new Card[NUMBER_OF_CARDS];
         this.nickname = nickname;
+
     }
 
     /**
@@ -51,9 +53,23 @@ public class Player {
      * @author Niccolò Galante.
      */
     public void updatePoints(){
+        int tempPoints;
+        tempPoints = points;
+        for(int i=0; i<NUMBER_OF_CARDS; i++){
+            //tempPoints = tempPoints + playerCards[i].getPoints(playerShelf);
+        }
+
 
     }
 
+    /**
+     * Inserts tokens.
+     * @param tokens
+     * @param column
+     * @author Niccolò Galante.
+     */
+    public void insertTokens(Token[] tokens, int column){
 
+    }
 
 }
