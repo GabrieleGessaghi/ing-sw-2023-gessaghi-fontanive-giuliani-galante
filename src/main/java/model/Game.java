@@ -7,6 +7,7 @@ import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Game implements Serializable {
@@ -69,11 +70,33 @@ public class Game implements Serializable {
      * @throws IllegalMoveException
      * @throws FullColumnException
      */
-    public void playerTurn (int [][] selectedTiles, int column) throws IllegalMoveException, FullColumnException {
+    public void playerTurn (int [][] selectedTiles, int column){
         if (players[currentPlayerIndex].isConnected) {
-            Token[] selectedTokens = board.selectTiles(selectedTiles);
-            players[currentPlayerIndex].insertTokens(selectedTokens, column);
-            //TODO: Handle exceptions
+            Token[] selectedTokens = null;
+            try{
+                selectedTokens = board.selectTiles(selectedTiles);
+            }catch (IllegalMoveException e){
+                System.out.println("The selected tokens are not valid!");
+                return;
+            }
+            boolean [][] isSelected = new boolean[selectedTiles.length][selectedTiles[0].length];
+            for (int i=0; i< isSelected.length; i++){
+                for (int j=0; j< isSelected[0].length; j++){
+                    if (selectedTiles[i][j]!=0)
+                        isSelected[i][j] = true;
+                }
+            }
+            board.removeTiles(isSelected);
+
+            try{
+                players[currentPlayerIndex].insertTokens(selectedTokens, column);
+            }catch (FullColumnException e1) {
+                System.out.println("The selected column can't store all the selected tokens!");
+                return;
+            }
+
+            //If is all ok
+            currentPlayerIndex++;
         }
     }
 
