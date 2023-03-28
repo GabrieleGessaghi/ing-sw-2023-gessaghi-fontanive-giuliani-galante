@@ -7,8 +7,6 @@ import model.Token;
  * @author Niccolò Giuliani
  */
 public abstract class Card {
-    protected int points[];
-
     /**
      * Returns the number of points the given shelf will get.
      * @author Niccolò Giuliani
