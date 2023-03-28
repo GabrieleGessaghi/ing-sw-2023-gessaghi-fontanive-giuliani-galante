@@ -18,7 +18,8 @@ public class Player {
     private final Shelf playerShelf; //reference to player's shelf
 
     public Player(String nickname) {
-        //TODO: Add isfirst player and cards as parameters
+        //TODO: Add isfirstplayer player and cards as parameters
+
         cards = new ArrayList<>();
         this.nickname = nickname;
         playerShelf = new Shelf();
