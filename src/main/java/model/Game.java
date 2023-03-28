@@ -50,7 +50,11 @@ public class Game implements Serializable {
         currentPlayerIndex = 0;
     }
 
-
+    /**
+     * Generates two random commonCard for the current game
+     * @param numberOfPlayers is the number of player for the current game
+     * @return a list with the coomonCoard objects
+     */
     private ArrayList<CommonCard> genCommonCard (int numberOfPlayers){
         ArrayList<CommonType> types = new ArrayList<CommonType>(Arrays.asList(CommonType.values()));
 
