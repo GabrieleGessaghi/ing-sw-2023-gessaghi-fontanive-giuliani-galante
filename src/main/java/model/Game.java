@@ -1,14 +1,16 @@
 package model;
 
+import model.cards.CommonCard;
+import model.cards.CommonObjective;
+import model.cards.CommonType;
+import model.cards.concreteobjectives.*;
 import model.chat.Chat;
 import model.exceptions.FullColumnException;
 import model.exceptions.IllegalMoveException;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
+import java.util.*;
 
 public class Game implements Serializable {
 
@@ -41,11 +43,62 @@ public class Game implements Serializable {
             throw new RuntimeException(e);
         }
 
-        //TODO: Add cards and other thing for player initialization
+        genCommonCard(numberOfPlayers);;
 
         for (int i = 0; i < numberOfPlayers; i++)
             players[i] = new Player(playerNicknames.get(i));
         currentPlayerIndex = 0;
+    }
+
+    /**
+     * Generates two random commonCard for the current game
+     * @param numberOfPlayers is the number of player for the current game
+     * @return a list with the coomonCoard objects
+     */
+    private ArrayList<CommonCard> genCommonCard (int numberOfPlayers){
+        ArrayList<CommonType> types = new ArrayList<CommonType>(Arrays.asList(CommonType.values()));
+
+        Collections.shuffle(types);
+        CommonType commonType1 = types.get(0);
+        CommonType commonType2 = types.get(1);
+        CommonObjective commonObj1 = null;
+        CommonObjective commonObj2 = null;
+
+        switch (commonType1){
+            case STAIRS -> commonObj1 = new Stairs();
+            case XSHAPE -> commonObj1 = new XShape();
+            case CORNERS -> commonObj1 = new Corners();
+            case TWOROWS -> commonObj1 = new TwoRows();
+            case DIAGONAL -> commonObj1 = new Diagonal();
+            case EIGHTANY -> commonObj1 = new Eightany();
+            case FOURROWS -> commonObj1 = new FourRows();
+            case SIXGROUPS -> commonObj1 = new SixGroups();
+            case FOURGROUPS -> commonObj1 = new FourGroups();
+            case TWOCOLUMNS -> commonObj1 = new TwoColumns();
+            case TWOSQUARES -> commonObj1 = new TwoSquares();
+            case THREECOLUMNS -> commonObj1 = new ThreeColumns();
+        }
+
+        switch (commonType2){
+            case STAIRS -> commonObj2 = new Stairs();
+            case XSHAPE -> commonObj2 = new XShape();
+            case CORNERS -> commonObj2 = new Corners();
+            case TWOROWS -> commonObj2 = new TwoRows();
+            case DIAGONAL -> commonObj2 = new Diagonal();
+            case EIGHTANY -> commonObj2 = new Eightany();
+            case FOURROWS -> commonObj2 = new FourRows();
+            case SIXGROUPS -> commonObj2 = new SixGroups();
+            case FOURGROUPS -> commonObj2 = new FourGroups();
+            case TWOCOLUMNS -> commonObj2 = new TwoColumns();
+            case TWOSQUARES -> commonObj2 = new TwoSquares();
+            case THREECOLUMNS -> commonObj2 = new ThreeColumns();
+        }
+
+        ArrayList <CommonCard> commonCards = new ArrayList<>();
+        commonCards.add(new CommonCard(commonObj1, numberOfPlayers));
+        commonCards.add(new CommonCard(commonObj2, numberOfPlayers));
+
+        return commonCards;
     }
 
     /**

@@ -4,7 +4,7 @@ import model.Token;
 
 /**
  * Personal objective cards.
- * @author Niccolò Giuliani
+ * @author Niccolò Galante
  */
 public class PersonalCard extends Card {
     private static final int[] points = new int[]{1, 2, 4, 6, 9, 12};
@@ -12,7 +12,7 @@ public class PersonalCard extends Card {
 
     /**
      * Class constructor.
-     * @author Niccolò Giuliani
+     * @author Niccolò Galante
      */
     public PersonalCard(Token[] correctTiles) {
         //TODO: Implement different personal cards.

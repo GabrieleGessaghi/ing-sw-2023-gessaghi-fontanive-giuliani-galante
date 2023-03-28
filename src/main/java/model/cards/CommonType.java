@@ -16,5 +16,7 @@ public enum CommonType {
     THREECOLUMNS,
     XSHAPE,
     EIGHTANY,
-    STAIRS
+    STAIRS;
+
+    public static final int numberOfTypes = 12;
 }
