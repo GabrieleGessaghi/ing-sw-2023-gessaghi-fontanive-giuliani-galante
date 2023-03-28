@@ -6,21 +6,29 @@ import model.exceptions.IllegalMoveException;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Game implements Serializable {
 
     private String gameID;
-    private Player currentPlayer;
-    private Board gameBoard;
-    private final Player[] playerList;
-    private Chat messages;
+    private int currentPlayerIndex;
+    private Board board;
+    private final Player[] players;
+    private Chat chat;
+
     /**
-     * Class constructor, currentPlayer is set to player with firstPlayer true
+     * Class constructor, currentPlayer is set to player with firstPlayer true.
      * @author Gabriele Gessaghi
-     * @param numberOfPlayer is the number of player of the game session
+     * @param numberOfPlayers is the number of players of the game session.
+     * @param playerNicknames
      */
-    public Game (int numberOfPlayer) {
+    public Game(int numberOfPlayers, ArrayList<String> playerNicknames) {
+        chat = new Chat();
+        players = new Player[numberOfPlayers];
+        board = new Board(numberOfPlayers);
+
+        //File creation
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             Date now = new Date();
@@ -31,51 +39,54 @@ public class Game implements Serializable {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-        playerList = new Player[numberOfPlayer];
-        gameBoard = new Board(numberOfPlayer);
-        messages = new Chat();
-        for (Player p : playerList)
-            if (p.getIsFirstPlayer())
-                currentPlayer = p;
+
+        //TODO: Add cards and other thing for player initialization
+
+        for (int i = 0; i < numberOfPlayers; i++)
+            players[i] = new Player(playerNicknames.get(i));
+        currentPlayerIndex = 0;
     }
 
     /**
-     * Save the game state in case of disconnections or other problems
+     * Save the game state in case of disconnections or other problems.
      * @author Gabriele Gessaghi
+     * @throws IOException
      */
-    private void saveGame () throws IOException {
+    private void saveGame() throws IOException {
         String fileName = String.format("/game-%s.txt",gameID);
         FileOutputStream fout = new FileOutputStream(new File(fileName));
         ObjectOutputStream out = new ObjectOutputStream(fout);
         out.writeObject(this);
         out.close();
         fout.close();
-
     }
 
     /**
-     * Collect the selected tiles from the game board and update the current player shelf
+     * Collect the selected tiles from the game board and update the current player shelf.
      * @author Gabriele Gessaghi
+     * @param selectedTiles
+     * @param column
+     * @throws IllegalMoveException
+     * @throws FullColumnException
      */
     public void playerTurn (int [][] selectedTiles, int column) throws IllegalMoveException, FullColumnException {
-        if (currentPlayer.isConnected) {
-            Token [] selectedTokens = gameBoard.selectTiles(selectedTiles);
-            currentPlayer.insertTokens(selectedTokens, column);
-            //TODO : gestire qual'ora la colonna non possa ospitare tutte le tiles
-            //TODO : gestire qual'ora le tiles selezionate non vadano bene
+        if (players[currentPlayerIndex].isConnected) {
+            Token[] selectedTokens = board.selectTiles(selectedTiles);
+            players[currentPlayerIndex].insertTokens(selectedTokens, column);
+            //TODO: Handle exceptions
         }
     }
 
     /**
-     * end the game and return the winner
+     * End the game and return the winner.
      * @author Gabriele Gessaghi
+     * @return the nickname of the winner.
      */
-    public String endGame () { return "tmp";}
+    public String endGame() { return "";}
 
     /**
-     * reload a saved state of a previous game
+     * Reload a saved state of a previous game.
      * @author Gabriele Gessaghi
      */
-    public void loadGame () {}
-
+    public void loadGame() {}
 }
