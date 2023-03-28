@@ -1,6 +1,7 @@
 package model;
 
 import model.cards.Card;
+import model.exceptions.FullColumnException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +72,10 @@ public class Player {
      * @param column
      * @author Niccolò Galante.
      */
-    public void insertTokens(Token[] tokens, int column){
+    public void insertTokens(Token[] tokens, int column) throws FullColumnException {
+        for (Token t: tokens)
+            playerShelf.insertToken(t, column);
+
         //Si selezionano fino a 3 token (array); i token vanno inseriti uno ad uno controllano che non siano NOTHING, controllando ogni volta
         //che la colonna scelta non sia piena (vedi FullColumnException di Shelf => si deve usare try e catch);
         //con catch si può usare IllegalMoveException
