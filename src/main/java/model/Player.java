@@ -59,7 +59,7 @@ public class Player {
      */
     public void updatePoints(){
         int tempPoints;
-        tempPoints = 0;
+        tempPoints = points;
         for(Card card: cards){
             tempPoints = tempPoints + card.getPoints(playerShelf.getTiles()); //sum of points for each card
         }
@@ -68,18 +68,17 @@ public class Player {
 
     /**
      * Inserts tokens.
-     * @param tokens
-     * @param column
+     * @param tokens tokens to insert in shelf.
+     * @param column column in which tokens are to be inserted.
      * @author Niccolò Galante.
      */
     public void insertTokens(Token[] tokens, int column) throws FullColumnException {
         for (Token t: tokens)
             playerShelf.insertToken(t, column);
 
-        //Si selezionano fino a 3 token (array); i token vanno inseriti uno ad uno controllano che non siano NOTHING, controllando ogni volta
-        //che la colonna scelta non sia piena (vedi FullColumnException di Shelf => si deve usare try e catch);
-        //con catch si può usare IllegalMoveException
-        //se è piena bisogna eliminare i token già inseriti
+        //Si selezionano fino a 3 token (array); i token vanno inseriti uno ad uno controllando che non siano NOTHING,
+        //controllando ogni volta che la colonna scelta non sia piena (vedi FullColumnException di Shelf => si deve usare
+        //try e catch) con catch si può usare IllegalMoveException; se column è piena bisogna eliminare i token già inseriti ()
     }
 
 }
