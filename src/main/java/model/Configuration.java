@@ -1,6 +1,7 @@
 package model;
+
 /**
- * configuration class
+ * Configuration class.
  * @author Niccolò Giuliani
 */
 public class Configuration {

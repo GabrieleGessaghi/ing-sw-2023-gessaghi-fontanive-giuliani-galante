@@ -1,12 +1,8 @@
 package model;
 
 import com.google.gson.Gson;
-import model.Bag;
-import model.Token;
 import model.exceptions.IllegalMoveException;
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -126,7 +122,7 @@ public class Board {
                 }
             }
 
-        //Checks wether the chosen tiles are in a vertical or horizontal line.
+        //Checks whether the chosen tiles are in a vertical or horizontal line.
         boolean horizontalLine = true;
         boolean verticalLine = true;
         for (int i = 0; i < selectedAmount && horizontalLine; i++)
