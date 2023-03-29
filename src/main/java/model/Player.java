@@ -18,6 +18,7 @@ public class Player {
     private int points;
     private boolean isFirstPlayer;
     public boolean isConnected;
+    public boolean firstToFinish;
     public List<Card> cards; // array used for common and personal cards
     public boolean[] isCompleted; // array used to check if a card's objective has been completed
     private final Shelf playerShelf; // reference to player's shelf
@@ -77,9 +78,13 @@ public class Player {
         for(Card card: tempCards)
             tempPoints = tempPoints + card.getPoints(playerShelf.getTiles()); // sum of points for each card
 
-        //TODO: check if player has already obtained points from specific card
+        if(firstToFinish) // adds bonus point if player is first to reach end game
+            tempPoints++;
+
+        points = tempPoints;
+
         //TODO: add points based on number of adjacent tiles of the same type
-        //TODO: check if player arrives at endgame first (adds 1 point)
+
     }
 
     /**
