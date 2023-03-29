@@ -9,4 +9,5 @@ public class Configuration {
     public static int[] THREEPLAYERS_COMMONCARD_POINTS;
     public static int[] FOURPLAYERS_COMMONCARD_POINTS;
 
+
 }
