@@ -3,16 +3,20 @@ import java.util.*;
 import java.util.function.Supplier;
 import model.Token;
 
+import static model.Configuration.COMMONCARD_POINTS;
+
 /**
  * common objective cards of the game
  * @author Niccolò Giuliani
  */
 public class CommonCard extends Card {
+
     private int numberOfTokensLeft;
     private int numberOfPlayers;
     private CommonObjective objective;
     private CommonType name;
 
+    private int[][] common_points;
     /**
      * Class constructor
      * @author Niccolò Giuliani
@@ -24,6 +28,12 @@ public class CommonCard extends Card {
         this.objective = objective;
         this.name = objective.getName();
         this.numberOfPlayers = numberOfPlayers;
+        this.numberOfTokensLeft = numberOfPlayers;
+        common_points = new int[4][4];
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 4; j++)
+                common_points[i][j] = COMMONCARD_POINTS[i][j];
+        }
     }
 
     /**
@@ -37,33 +47,34 @@ public class CommonCard extends Card {
         int points = 0;
         satisfied = objective.isSatisfied(shelf);
         if (satisfied) {
+
             switch (numberOfPlayers) {
                 case 2:
                     switch (numberOfTokensLeft) {
                         case 2:
-                            points = 8;
+                            points = common_points[0][0];
                         case 1:
-                            points = 4;
+                            points = common_points[0][1];
                     }
                 case 3:
                     switch (numberOfTokensLeft) {
                         case 3:
-                            points = 8;
+                            points = common_points[1][0];
                         case 2:
-                            points = 6;
+                            points = common_points[1][1];
                         case 1:
-                            points = 4;
+                            points = common_points[1][2];
                     }
                 case 4:
                     switch (numberOfTokensLeft) {
                         case 4:
-                            points = 8;
+                            points = common_points[2][0];
                         case 3:
-                            points = 6;
+                            points = common_points[2][1];
                         case 2:
-                            points = 4;
+                            points = common_points[2][2];
                         case 1:
-                            points = 2;
+                            points = common_points[2][3];
                     }
             }
             numberOfTokensLeft--;
