@@ -13,7 +13,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class Game implements Serializable {
-
     private String gameID;
     private int currentPlayerIndex;
     private Board board;

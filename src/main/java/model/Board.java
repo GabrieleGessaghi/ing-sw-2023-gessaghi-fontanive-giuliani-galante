@@ -5,14 +5,14 @@ import model.exceptions.IllegalMoveException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import static model.Configuration.MAX_TOKENS_PER_TURN;
+import static model.Configuration.BOARD_SIZE;
 
 /**
  * The board on which the game is played.
  * @author Giorgio Massimo Fontanive
  */
 public class Board {
-    private final static int BOARD_SIZE = 9;
-    private final static int MAX_TOKENS_PER_TURN = 3;
     private boolean[][] usableTiles;
     private final Token[][] tiles;
     private final Bag bag;
