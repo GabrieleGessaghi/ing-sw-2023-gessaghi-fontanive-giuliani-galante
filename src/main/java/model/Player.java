@@ -1,6 +1,8 @@
 package model;
 
 import model.cards.Card;
+import model.cards.CommonCard;
+import model.cards.PersonalCard;
 import model.exceptions.FullColumnException;
 
 import java.util.ArrayList;
@@ -11,19 +13,24 @@ import java.util.List;
  * @author Niccolò Galante
  */
 public class Player {
+    private final static int NUMBER_OF_CARDS = 3;
     private final String nickname;
     private int points;
     private boolean isFirstPlayer;
     public boolean isConnected;
-    public List<Card> cards; //array used for common and personal cards
-    private final Shelf playerShelf; //reference to player's shelf
+    public List<Card> cards; // array used for common and personal cards
+    public boolean[] isCompleted; // array used to check if a card's objective has been completed
+    private final Shelf playerShelf; // reference to player's shelf
 
-    public Player(String nickname) {
-        //TODO: Add isfirstplayer player and cards as parameters
+    public Player(String nickname, boolean isFirst, PersonalCard personal, List<CommonCard> common) {
         cards = new ArrayList<>();
         playerShelf = new Shelf();
+        isCompleted = new boolean[NUMBER_OF_CARDS]; // all false by default
         this.nickname = nickname;
-
+        isFirstPlayer = isFirst;
+        cards.set(0, personal);
+        cards.set(1, common.get(0));
+        cards.set(2, common.get(1));
     }
 
     /**
@@ -59,11 +66,20 @@ public class Player {
      */
     public void updatePoints(){
         int tempPoints;
+        List<Card> tempCards;
+        tempCards = cards;
         tempPoints = points;
-        for(Card card: cards){
-            tempPoints = tempPoints + card.getPoints(playerShelf.getTiles()); //sum of points for each card
-        }
+
+        for(int i = 0; i< tempCards.size(); i++)
+            if(isCompleted[i])
+                tempCards.remove(i);
+
+        for(Card card: tempCards)
+            tempPoints = tempPoints + card.getPoints(playerShelf.getTiles()); // sum of points for each card
+
         //TODO: check if player has already obtained points from specific card
+        //TODO: add points based on number of adjacent tiles of the same type
+        //TODO: check if player arrives at endgame first (adds 1 point)
     }
 
     /**
@@ -73,12 +89,17 @@ public class Player {
      * @author Niccolò Galante.
      */
     public void insertTokens(Token[] tokens, int column) throws FullColumnException {
-        for (Token t: tokens)
-            playerShelf.insertToken(t, column);
+        int tokensInserted = 0;
 
-        //Si selezionano fino a 3 token (array); i token vanno inseriti uno ad uno controllando che non siano NOTHING,
-        //controllando ogni volta che la colonna scelta non sia piena (vedi FullColumnException di Shelf => si deve usare
-        //try e catch) con catch si può usare IllegalMoveException; se column è piena bisogna eliminare i token già inseriti ()
+        for (Token t: tokens)
+            if(!t.equals(Token.NOTHING))
+                try {
+                    playerShelf.insertToken(t, column);
+                    tokensInserted++;
+                }catch(FullColumnException e){
+                    for(int i=0; i<tokensInserted; i++)
+                        playerShelf.removeToken(column);
+                }
     }
 
 }
