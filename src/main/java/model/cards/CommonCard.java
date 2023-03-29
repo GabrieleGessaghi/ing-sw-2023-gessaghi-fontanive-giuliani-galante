@@ -30,8 +30,8 @@ public class CommonCard extends Card {
         this.numberOfPlayers = numberOfPlayers;
         this.numberOfTokensLeft = numberOfPlayers;
         common_points = new int[4][4];
-        for(int i = 0;i < 3; i++){
-            for(int j = 0;j < 4;j++)
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 4; j++)
                 common_points[i][j] = COMMONCARD_POINTS[i][j];
         }
     }
