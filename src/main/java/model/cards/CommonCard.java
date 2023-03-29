@@ -1,8 +1,8 @@
 package model.cards;
 
 import model.Token;
-
 import static model.Configuration.COMMONCARD_POINTS;
+import static model.Configuration.MIN_PLAYERS;
 
 /**
  * Common objective cards of the game.
@@ -13,7 +13,6 @@ public class CommonCard extends Card {
     private final int numberOfPlayers;
     private final CommonObjective objective;
     private final CommonType name;
-    private final int[][] common_points;
 
     /**
      * Class constructor
@@ -24,14 +23,9 @@ public class CommonCard extends Card {
      */
     public CommonCard(CommonObjective objective, int numberOfPlayers) {
         this.objective = objective;
-        this.name = objective.getName();
         this.numberOfPlayers = numberOfPlayers;
         this.numberOfTokensLeft = numberOfPlayers;
-        common_points = new int[4][4];
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 4; j++)
-                common_points[i][j] = COMMONCARD_POINTS[i][j];
-        }
+        this.name = objective.getName();
     }
 
     /**
@@ -45,48 +39,7 @@ public class CommonCard extends Card {
         int points = 0;
         satisfied = objective.isSatisfied(shelf);
         if (satisfied) {
-
-            switch (numberOfPlayers) {
-                case 2:
-                    switch (numberOfTokensLeft) {
-                        case 2:
-                            points = common_points[0][0];
-                            break;
-                        case 1:
-                            points = common_points[0][1];
-                            break;
-                    }
-                    break;
-                case 3:
-                    switch (numberOfTokensLeft) {
-                        case 3:
-                            points = common_points[1][0];
-                            break;
-                        case 2:
-                            points = common_points[1][1];
-                            break;
-                        case 1:
-                            points = common_points[1][2];
-                            break;
-                    }
-                    break;
-                case 4:
-                    switch (numberOfTokensLeft) {
-                        case 4:
-                            points = common_points[2][0];
-                            break;
-                        case 3:
-                            points = common_points[2][1];
-                            break;
-                        case 2:
-                            points = common_points[2][2];
-                            break;
-                        case 1:
-                            points = common_points[2][3];
-                            break;
-                    }
-                    break;
-            }
+            points = COMMONCARD_POINTS[numberOfPlayers - MIN_PLAYERS][numberOfPlayers - numberOfTokensLeft];
             numberOfTokensLeft--;
         }
         return points;
