@@ -1,8 +1,14 @@
 package model.board;
 
+import com.google.gson.Gson;
 import model.Bag;
 import model.Token;
 import model.exceptions.IllegalMoveException;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * The board on which the game is played.
@@ -11,7 +17,7 @@ import model.exceptions.IllegalMoveException;
 public class Board {
     private final static int BOARD_SIZE = 9;
     private final static int MAX_TOKENS_PER_TURN = 3;
-    private final boolean[][] usableTiles;
+    private boolean[][] usableTiles;
     private final Token[][] tiles;
     private final Bag bag;
 
@@ -25,7 +31,21 @@ public class Board {
         tiles = new Token[BOARD_SIZE][BOARD_SIZE];
         bag = new Bag();
 
-        //TODO: Create usable tiles based on number of players
+        //Initialized the board's usable tiles based on number of players
+        String jsonFile = "";
+        String jsonFilePath = "";
+        Gson gson = new Gson();
+        switch (numberOfPlayers) {
+            case 2 -> jsonFilePath = "/src/main/resources/boards/twoplayersboard.json";
+            case 3 -> jsonFilePath = "/src/main/resources/boards/threeplayersboard.json";
+            case 4 -> jsonFilePath = "/src/main/resources/boards/fourplayersboard.json";
+        }
+        try {
+            jsonFile = Files.readString(Paths.get(jsonFilePath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        usableTiles = gson.fromJson(jsonFile, usableTiles.getClass());
 
         reset();
     }

@@ -59,7 +59,7 @@ public class Game implements Serializable {
      */
     private ArrayList<CommonCard> genCommonCard (int numberOfPlayers){
         ArrayList<CommonType> types = new ArrayList<CommonType>(Arrays.asList(CommonType.values()));
-
+        //TODO: Avoid duplicating code
         Collections.shuffle(types);
         CommonType commonType1 = types.get(0);
         CommonType commonType2 = types.get(1);
