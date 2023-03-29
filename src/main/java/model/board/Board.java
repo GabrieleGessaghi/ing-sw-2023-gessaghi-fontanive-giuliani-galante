@@ -1,5 +1,7 @@
-package model;
+package model.board;
 
+import model.Bag;
+import model.Token;
 import model.exceptions.IllegalMoveException;
 
 /**
