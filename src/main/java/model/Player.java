@@ -20,10 +20,10 @@ public class Player {
 
     public Player(String nickname) {
         //TODO: Add isfirstplayer player and cards as parameters
-
         cards = new ArrayList<>();
-        this.nickname = nickname;
         playerShelf = new Shelf();
+        this.nickname = nickname;
+
     }
 
     /**
