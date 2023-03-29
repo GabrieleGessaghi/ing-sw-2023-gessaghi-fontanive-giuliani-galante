@@ -16,10 +16,15 @@ class CornersTest {
         var firstCorner = new Corners();
         Token[][] shelf;
         Token type;
+
         shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+
         Random randomType = new Random();
         type=Token.values()[randomType.nextInt(Token.values().length)];
-        shelf[0][0] = shelf[0][COLUMNS_SHELF-1] = shelf[ROWS_SHELF][0] = shelf[ROWS_SHELF][COLUMNS_SHELF] = type;
+        shelf[0][0] = type;
+        shelf[0][COLUMNS_SHELF-1] = type;
+        shelf[ROWS_SHELF-1][0] = type;
+        shelf[ROWS_SHELF-1][COLUMNS_SHELF-1] = type;
 
         for(int i = 1; i < ROWS_SHELF-2; i++){
             for(int j = 1; j < COLUMNS_SHELF-2; j++) {
