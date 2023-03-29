@@ -30,4 +30,5 @@ class CornersTest {
         assertEquals(true,firstCorner.isSatisfied(shelf));
     }
 
+
 }
