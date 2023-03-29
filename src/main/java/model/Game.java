@@ -1,6 +1,5 @@
 package model;
 
-import model.board.Board;
 import model.cards.CommonCard;
 import model.cards.CommonObjective;
 import model.cards.CommonType;

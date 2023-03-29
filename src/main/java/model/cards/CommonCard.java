@@ -1,22 +1,20 @@
 package model.cards;
-import java.util.*;
-import java.util.function.Supplier;
+
 import model.Token;
 
 import static model.Configuration.COMMONCARD_POINTS;
 
 /**
- * common objective cards of the game
+ * Common objective cards of the game.
  * @author Niccolò Giuliani
  */
 public class CommonCard extends Card {
-
     private int numberOfTokensLeft;
-    private int numberOfPlayers;
-    private CommonObjective objective;
-    private CommonType name;
+    private final int numberOfPlayers;
+    private final CommonObjective objective;
+    private final CommonType name;
+    private final int[][] common_points;
 
-    private int[][] common_points;
     /**
      * Class constructor
      * @author Niccolò Giuliani
@@ -53,29 +51,41 @@ public class CommonCard extends Card {
                     switch (numberOfTokensLeft) {
                         case 2:
                             points = common_points[0][0];
+                            break;
                         case 1:
                             points = common_points[0][1];
+                            break;
                     }
+                    break;
                 case 3:
                     switch (numberOfTokensLeft) {
                         case 3:
                             points = common_points[1][0];
+                            break;
                         case 2:
                             points = common_points[1][1];
+                            break;
                         case 1:
                             points = common_points[1][2];
+                            break;
                     }
+                    break;
                 case 4:
                     switch (numberOfTokensLeft) {
                         case 4:
                             points = common_points[2][0];
+                            break;
                         case 3:
                             points = common_points[2][1];
+                            break;
                         case 2:
                             points = common_points[2][2];
+                            break;
                         case 1:
                             points = common_points[2][3];
+                            break;
                     }
+                    break;
             }
             numberOfTokensLeft--;
         }

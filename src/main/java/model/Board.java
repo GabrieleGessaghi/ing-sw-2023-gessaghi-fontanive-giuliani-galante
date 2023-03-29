@@ -1,4 +1,4 @@
-package model.board;
+package model;
 
 import com.google.gson.Gson;
 import model.Bag;
