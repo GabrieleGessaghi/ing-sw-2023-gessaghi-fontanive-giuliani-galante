@@ -27,26 +27,23 @@ public class TwoSquares implements CommonObjective {
 
         for(int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                if(check[i][j] == false && shelf[i][j] != Token.NOTHING && i < 5 && j < 4){
+                if(!check[i][j] && shelf[i][j] != Token.NOTHING && i < 5 && j < 4){
                     if(shelf[i][j] == shelf[i][j + 1] && shelf[i][j] == shelf[i + 1][j] && shelf[i][j] == shelf[i +1][j + 1]
-                    && check[i][j + 1] == false && check[i + 1][j] == false && check [i + 1][j + 1] == false)
+                    && !check[i][j + 1] && !check[i + 1][j] && !check[i + 1][j + 1]) {
                         atLeastTwo[function(shelf[i][j])]++;
-                        check[i][j]=true;
-                        check[i][j+1]=true;
-                        check[i + 1][j]=true;
-                        check[i + 1][j + 1]=true;
+                        check[i][j] = true;
+                        check[i][j + 1] = true;
+                        check[i + 1][j] = true;
+                        check[i + 1][j + 1] = true;
+                    }
                 }
             }
         }
-        for (int i = 0; i < 7 && flag == false; i++){
+        for (int i = 0; i < 7 && !flag; i++){
             if(atLeastTwo[i] >= 2)
                 flag=true;
         }
-
-        if (flag == true)
-            return true;
-        else
-            return false;
+        return flag;
     }
 
     private int function(Token x){
