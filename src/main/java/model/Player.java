@@ -66,8 +66,8 @@ public class Player {
     public void updatePoints(){
         int tempPoints;
         tempPoints = points;
-        for(int i = 1; cards.get(i)!=(null); i++)
-            if(cards.get(i).getPoints(playerShelf.getTiles())!=0) {
+        for(int i = 1; cards.get(i) != (null); i++)
+            if(cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
                 tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
                 cards.remove(i);
                 i--;

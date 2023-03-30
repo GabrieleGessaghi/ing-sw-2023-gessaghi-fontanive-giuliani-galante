@@ -18,7 +18,6 @@ import static model.Configuration.ROWS_SHELF;
 public class FourGroups implements CommonObjective {
     private int counterInterIsland;
 
-
     @Override
     public boolean isSatisfied(Token[][] shelf) {
         int generalCounter = 0;
@@ -29,7 +28,7 @@ public class FourGroups implements CommonObjective {
 
     private int checkType(Token type, Token[][] shelf){
         int counterPerToken = 0;
-        boolean visited[][] = new boolean[ROWS_SHELF][COLUMNS_SHELF];
+        boolean[][] visited = new boolean[ROWS_SHELF][COLUMNS_SHELF];
         for(int i = 0; i < ROWS_SHELF; i++)
             for(int j = 0; j < COLUMNS_SHELF; j++)
                 visited[i][j] = false;
@@ -44,10 +43,10 @@ public class FourGroups implements CommonObjective {
         return counterPerToken;
     }
     private void DFS(Token M[][], int row, int col,
-                     boolean visited[][],Token type){
-        int rowNbr[]
+                     boolean[][] visited, Token type){
+        int[] rowNbr
                 = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
-        int colNbr[]
+        int[] colNbr
                 = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 };
 
         // Mark this cell as visited
@@ -63,8 +62,8 @@ public class FourGroups implements CommonObjective {
             }
     }
 
-    boolean isSafe(Token M[][], int row, int col,
-                   boolean visited[][], Token type)
+    boolean isSafe(Token[][] M, int row, int col,
+                   boolean[][] visited, Token type)
     {
         // row number is in range, column number is in range
         // and value is 1 and not yet visited
