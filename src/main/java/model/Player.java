@@ -25,7 +25,6 @@ public class Player {
     public Player(String nickname, boolean isFirstPlayer, PersonalCard personal, List<CommonCard> common) {
         cards = new ArrayList<>();
         playerShelf = new Shelf();
-        isCompleted = new boolean[NUMBER_OF_CARDS]; // all false by default
         this.nickname = nickname;
         this.isFirstPlayer = isFirstPlayer;
         cards.add(personal);
@@ -71,7 +70,7 @@ public class Player {
         tempPoints = points;
 
         for(int i = 0; i < tempCards.size(); i++)
-            if(isCompleted[i]) {
+            if(tempCards.get(i).getPoints(playerShelf.getTiles())==0) {
                 tempCards.remove(i);
                 i--;
             }
