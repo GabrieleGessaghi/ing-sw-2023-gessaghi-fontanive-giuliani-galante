@@ -33,7 +33,7 @@ class EightanyTest {
                 indexRow = randomIndexRow.nextInt(5);
                 Random randomIndexColumn = new Random();
                 indexColumn= randomIndexColumn.nextInt(4);
-            }while(shelf[indexRow][indexColumn] == Token.NOTHING)
+            }while(shelf[indexRow][indexColumn] == Token.NOTHING);
             shelf[indexRow][indexColumn]=type;
         }
 

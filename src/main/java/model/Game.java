@@ -45,7 +45,7 @@ public class Game implements Serializable {
         genCommonCard(numberOfPlayers);
 
         for (int i = 0; i < numberOfPlayers; i++)
-            players[i] = new Player(playerNicknames.get(i));
+            players[i] = new Player(playerNicknames.get(i),false,null,null);
         currentPlayerIndex = 0;
         //TODO: add method to determine whether player is first or not; necessary for constructor
         //TODO: add personal and common cards as parameters
