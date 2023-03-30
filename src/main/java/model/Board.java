@@ -12,7 +12,6 @@ import static model.Configuration.BOARD_SIZE;
  * The board on which the game is played.
  * @author Giorgio Massimo Fontanive
  */
-//Test
 public class Board {
     private boolean[][] usableTiles;
     private final Token[][] tiles;
