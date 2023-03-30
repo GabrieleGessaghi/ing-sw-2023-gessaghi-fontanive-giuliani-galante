@@ -4,6 +4,9 @@ import model.Token;
 import model.cards.CommonObjective;
 import model.cards.CommonType;
 
+import static model.Configuration.COLUMNS_SHELF;
+import static model.Configuration.ROWS_SHELF;
+
 /**
  * Four groups each containing at least
  * 4 tiles of the same type (not necessarily
@@ -13,45 +16,63 @@ import model.cards.CommonType;
  * @author Niccolò Giuliani
  */
 public class FourGroups implements CommonObjective {
+    private int counterInterIsland;
+
+
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        int counter = 0;
-        boolean flag=false;
-        boolean [][] check;
-        check = new boolean[ROWS][COLUMNS];
-        for(int i = 0; i < ROWS ; i++)
-            for(int j = 0; j< COLUMNS ; j++)
-                check[i][j] = false;
-        for (int i = 0; i < ROWS - 3 && counter < 6; i++){
-            for (int j = 0; j < COLUMNS - 3 ; j++){
-                flag=false;
-                if(shelf[i][j] != Token.NOTHING && check[i][j]!= true) {
-                    if (shelf[i][j] == shelf[i][j + 1] && shelf[i][j] == shelf[i][j + 2] && shelf[i][j] == shelf[i][j + 3] &&
-                            check[i][j + 1] == false && check[i][j + 2] == false && check[i][j + 3] == false){
-                        flag=true;
-                        counter++;
-                        check[i][j] = true;
-                        check[i][j + 1] = true;
-                        check[i][j + 2] = true;
-                        check[i][j + 3] = true;
-                    }
-
-                    if (shelf[i][j] == shelf[i + 1][j] && shelf[i][j] == shelf[i + 2][j] && shelf[i][j] == shelf[i + 3][j] && flag == false  &&
-                            check[i + 1][j] == false && check[i + 2][j] == false && check[i + 3][j] == false ) {
-                        counter++;
-                        check[i][j] = true;
-                        check[i + 1][j] = true;
-                        check[i + 2][j] = true;
-                        check[i + 3][j] = true;
-                    }
-                }
-            }
-        }
-        if(counter >= 4)
-            return true;
-        else
-            return false;
+        int generalCounter = 0;
+        generalCounter = checkType(Token.CAT, shelf) + checkType(Token.CAT, shelf) + checkType(Token.BOOK, shelf) +
+                checkType(Token.TROPHY, shelf) + checkType(Token.FRAME, shelf) + checkType(Token.PLANT, shelf);
+        return generalCounter > 4;
     }
+
+    private int checkType(Token type, Token[][] shelf){
+        int counterPerToken = 0;
+        boolean visited[][] = new boolean[ROWS_SHELF][COLUMNS_SHELF];
+        for(int i = 0; i < ROWS_SHELF; i++)
+            for(int j = 0; j < COLUMNS_SHELF; j++)
+                visited[i][j] = false;
+        for(int i = 0; i < ROWS_SHELF; i++){
+            for(int j = 0; j < COLUMNS_SHELF; j++)
+                if(shelf[i][j] == type && !visited[i][j]){
+                    counterInterIsland = 0;
+                    DFS(shelf, i, j, visited, type);
+                    counterPerToken += counterInterIsland/4;
+                }
+        }
+        return counterPerToken;
+    }
+    private void DFS(Token M[][], int row, int col,
+                     boolean visited[][],Token type){
+        int rowNbr[]
+                = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
+        int colNbr[]
+                = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 };
+
+        // Mark this cell as visited
+        visited[row][col] = true;
+
+        // Recur for all connected neighbours
+        for (int k = 0; k < 8; k++)
+            if (isSafe(M, row + rowNbr[k], col + colNbr[k],
+                    visited,  type)) {
+                counterInterIsland++;
+                DFS(M, row + rowNbr[k], col + colNbr[k],
+                        visited, type);
+            }
+    }
+
+    boolean isSafe(Token M[][], int row, int col,
+                   boolean visited[][], Token type)
+    {
+        // row number is in range, column number is in range
+        // and value is 1 and not yet visited
+        return (row >= 0) && (row < ROWS_SHELF) && (col >= 0)
+                && (col < COLUMNS_SHELF)
+                && (M[row][col] == type && !visited[row][col]);
+    }
+
 
     public CommonType getName(){
         return CommonType.FOURGROUPS;

@@ -39,7 +39,7 @@ class CornersTest {
     void WrongScenario(){
         var firstCorner = new Corners();
         Token[][] shelf;
-        Token type;
+
 
         shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
 
