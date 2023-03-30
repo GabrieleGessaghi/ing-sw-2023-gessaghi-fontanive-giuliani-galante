@@ -33,7 +33,7 @@ public class Player {
     }
 
     /**
-     * Getter for players' nickname.
+     * Getter for player's nickname.
      * @author Niccolò Galante
      * @return player's nickname.
      */
@@ -42,7 +42,7 @@ public class Player {
     }
 
     /**
-     * Getter for players' points.
+     * Getter for player's points.
      * @author Niccolò Galante
      * @return player's points.
      */
@@ -60,7 +60,7 @@ public class Player {
     }
 
     /**
-     * Updates players' points.
+     * Updates player's points.
      * @author Niccolò Galante.
      */
     public void updatePoints(){
