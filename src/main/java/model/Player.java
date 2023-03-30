@@ -25,7 +25,6 @@ public class Player {
     public Player(String nickname, boolean isFirstPlayer, PersonalCard personal, List<CommonCard> common) {
         cards = new ArrayList<>();
         playerShelf = new Shelf();
-        isCompleted = new boolean[NUMBER_OF_CARDS]; // all false by default
         this.nickname = nickname;
         this.isFirstPlayer = isFirstPlayer;
         cards.add(personal);
@@ -34,7 +33,7 @@ public class Player {
     }
 
     /**
-     * Getter for players' nickname.
+     * Getter for player's nickname.
      * @author Niccolò Galante
      * @return player's nickname.
      */
@@ -43,7 +42,7 @@ public class Player {
     }
 
     /**
-     * Getter for players' points.
+     * Getter for player's points.
      * @author Niccolò Galante
      * @return player's points.
      */
@@ -61,25 +60,18 @@ public class Player {
     }
 
     /**
-     * Updates players' points.
+     * Updates player's points.
      * @author Niccolò Galante.
      */
     public void updatePoints(){
         int tempPoints;
-        List<Card> tempCards;
-        tempCards = cards;
         tempPoints = points;
-
-        for(int i = 0; i < tempCards.size(); i++)
-            if(isCompleted[i]) {
-                tempCards.remove(i);
+        for(int i = 1; cards.get(i)!=(null); i++)
+            if(cards.get(i).getPoints(playerShelf.getTiles())!=0) {
+                tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
+                cards.remove(i);
                 i--;
             }
-
-        for(Card card: tempCards)
-            tempPoints += card.getPoints(playerShelf.getTiles()); // sum of points for each card
-
-        //TODO: check if player has already obtained points from specific card
         //TODO: add points based on number of adjacent tiles of the same type
         //TODO: check if player arrives at endgame first (adds 1 point)
 
