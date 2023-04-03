@@ -2,8 +2,8 @@ package model.cards;
 
 import model.Token;
 
-import static model.Configurations.COLUMNS_SHELF;
-import static model.Configurations.ROWS_SHELF;
+import static model.Configurations.SHELF_COLUMNS;
+import static model.Configurations.SHELF_ROWS;
 
 /**
  * Interface for implementing the strategy pattern.
@@ -11,8 +11,8 @@ import static model.Configurations.ROWS_SHELF;
  */
 public interface CommonObjective {
      //TODO: Move these to the shelf class
-      int ROWS=ROWS_SHELF;
-      int COLUMNS=COLUMNS_SHELF;
+      int ROWS= SHELF_ROWS;
+      int COLUMNS= SHELF_COLUMNS;
 
      /**
       * Checks whether a player's shelf satisfies the card's objective.

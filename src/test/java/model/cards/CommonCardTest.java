@@ -5,10 +5,8 @@ import model.Token;
 import model.cards.concreteobjectives.Corners;
 import org.junit.jupiter.api.Test;
 
-import javax.security.auth.login.Configuration;
-
-import static model.Configurations.ROWS_SHELF;
-import static model.Configurations.COLUMNS_SHELF;
+import static model.Configurations.SHELF_ROWS;
+import static model.Configurations.SHELF_COLUMNS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommonCardTest {
@@ -18,11 +16,11 @@ class CommonCardTest {
         int one,two,three;
         CommonObjective objective = new Corners();
         Card card = new CommonCard(objective,numberOfPlayers );
-        Token[][] firstShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        Token[][] secondShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        Token[][] thirdShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        for(int i = 0; i < ROWS_SHELF; i++)
-            for(int j = 0; j < COLUMNS_SHELF; j++) {
+        Token[][] firstShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        Token[][] secondShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        Token[][] thirdShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        for(int i = 0; i < SHELF_ROWS; i++)
+            for(int j = 0; j < SHELF_COLUMNS; j++) {
                 firstShelf[i][j] = Token.NOTHING;
                 secondShelf[i][j] = Token.NOTHING;
                 thirdShelf[i][j] = Token.NOTHING;
@@ -57,11 +55,11 @@ class CommonCardTest {
         int one,two,three;
         CommonObjective objective = new Corners();
         Card card = new CommonCard(objective,numberOfPlayers );
-        Token[][] firstShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        Token[][] secondShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        Token[][] thirdShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        for(int i = 0; i < ROWS_SHELF; i++)
-            for(int j = 0; j < COLUMNS_SHELF; j++) {
+        Token[][] firstShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        Token[][] secondShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        Token[][] thirdShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        for(int i = 0; i < SHELF_ROWS; i++)
+            for(int j = 0; j < SHELF_COLUMNS; j++) {
                 firstShelf[i][j] = Token.NOTHING;
                 secondShelf[i][j] = Token.NOTHING;
                 thirdShelf[i][j] = Token.NOTHING;
@@ -97,12 +95,12 @@ class CommonCardTest {
         int one,two,three,four;
         CommonObjective objective = new Corners();
         Card card = new CommonCard(objective,numberOfPlayers );
-        Token[][] firstShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        Token[][] secondShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        Token[][] thirdShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        Token[][] fourthShelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        for(int i = 0; i < ROWS_SHELF; i++)
-            for(int j = 0; j < COLUMNS_SHELF; j++) {
+        Token[][] firstShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        Token[][] secondShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        Token[][] thirdShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        Token[][] fourthShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        for(int i = 0; i < SHELF_ROWS; i++)
+            for(int j = 0; j < SHELF_COLUMNS; j++) {
                 firstShelf[i][j] = Token.NOTHING;
                 secondShelf[i][j] = Token.NOTHING;
                 thirdShelf[i][j] = Token.NOTHING;

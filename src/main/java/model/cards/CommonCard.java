@@ -2,7 +2,7 @@ package model.cards;
 
 import model.Token;
 import static model.Configurations.COMMONCARD_POINTS;
-import static model.Configurations.MIN_PLAYERS;
+import static model.Configurations.PLAYERS_MIN;
 
 /**
  * Common objective cards of the game.
@@ -39,7 +39,7 @@ public class CommonCard extends Card {
         int points = 0;
         satisfied = objective.isSatisfied(shelf);
         if (satisfied) {
-            points = COMMONCARD_POINTS[numberOfPlayers - MIN_PLAYERS][numberOfPlayers - numberOfTokensLeft];
+            points = COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
             numberOfTokensLeft--;
         }
         return points;

@@ -3,18 +3,18 @@ package model.cards.concreteobjectives;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
-import static model.Configurations.COLUMNS_SHELF;
-import static model.Configurations.ROWS_SHELF;
+import static model.Configurations.SHELF_COLUMNS;
+import static model.Configurations.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FourGroupsTest {
     @Test
     void FourIslands(){
         var fourGroups = new FourGroups();
-        Token[][] shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
-        for(int i = 0; i < ROWS_SHELF; i++)
-            for(int j = 0; j < COLUMNS_SHELF; j++)
+        for(int i = 0; i < SHELF_ROWS; i++)
+            for(int j = 0; j < SHELF_COLUMNS; j++)
                 shelf[i][j] = Token.NOTHING;
 
         shelf[0][0] = Token.CAT;
@@ -53,10 +53,10 @@ class FourGroupsTest {
     @Test
     void ThreeIslands(){
         var fourGroups = new FourGroups();
-        Token[][] shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
-        for(int i = 0; i < ROWS_SHELF; i++)
-            for(int j = 0; j < COLUMNS_SHELF; j++)
+        for(int i = 0; i < SHELF_ROWS; i++)
+            for(int j = 0; j < SHELF_COLUMNS; j++)
                 shelf[i][j] = Token.NOTHING;
 
         shelf[0][0] = Token.NOTHING;

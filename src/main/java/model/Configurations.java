@@ -1,30 +1,65 @@
 package model;
 
+import com.google.gson.stream.JsonReader;
+import java.io.IOException;
+import java.io.StringReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 /**
- * Configuration class.
- * @author Niccolò Giuliani
+ * Handles configuration constants.
+ * @author Giorgio Massimo Fontanive
 */
 public class Configurations {
-    public static int BOARD_SIZE, MAX_TOKENS_PER_TURN,  MIN_PLAYERS = 2, MAX_PLAYERS = 4;
-    public static int ROWS_SHELF=6;
-    public static int COLUMNS_SHELF=5;
-    public static int [][] COMMONCARD_POINTS;
-    public Configurations(){
-        COMMONCARD_POINTS = new int [3][4];
-        COMMONCARD_POINTS[0][0] = 8;
-        COMMONCARD_POINTS[0][1] = 4;
-        COMMONCARD_POINTS[0][2] = 0;
-        COMMONCARD_POINTS[0][3] = 0;
-        COMMONCARD_POINTS[1][0] = 8;
-        COMMONCARD_POINTS[1][1] = 6;
-        COMMONCARD_POINTS[1][2] = 4;
-        COMMONCARD_POINTS[1][3] = 0;
-        COMMONCARD_POINTS[2][0] = 8;
-        COMMONCARD_POINTS[2][1] = 6;
-        COMMONCARD_POINTS[2][2] = 4;
-        COMMONCARD_POINTS[2][3] = 2;
+    public static int BOARD_SIZE;
+    public static int SHELF_ROWS;
+    public static int SHELF_COLUMNS;
+    public static int MAX_TOKENS_PER_TURN;
+    public static int PLAYERS_MIN;
+    public static int PLAYERS_MAX;
+    public static int[][] COMMONCARD_POINTS;
 
+    /**
+     * Initializes all constants.
+     * @author Giorgio Massimo Fontanive
+     * @param configurationFilePath The path of the json configuration file.
+     */
+    public static void loadConfiguration(String configurationFilePath) {
+        String jsonFile;
+        String field;
+        try {
+            jsonFile = Files.readString(Paths.get(configurationFilePath));
+            JsonReader jsonReader = new JsonReader(new StringReader(jsonFile));
+            jsonReader.beginObject();
+            while(jsonReader.hasNext()) {
+                field = jsonReader.nextName();
+                switch (field) {
+                    case "BOARD_SIZE" -> BOARD_SIZE = jsonReader.nextInt();
+                    case "MAX_TOKENS_PER_TURN" -> MAX_TOKENS_PER_TURN = jsonReader.nextInt();
+                    case "SHELF_ROWS" -> SHELF_ROWS = jsonReader.nextInt();
+                    case "SHELF_COLUMNS" -> SHELF_COLUMNS = jsonReader.nextInt();
+                    case "PLAYERS_MIN" -> PLAYERS_MIN = jsonReader.nextInt();
+                    case "PLAYERS_MAX" -> PLAYERS_MAX = jsonReader.nextInt();
+                    case "COMMONCARD_POINTS" -> COMMONCARD_POINTS = readMatrix(jsonReader);
+                    default -> jsonReader.skipValue();
+                }
+            }
+            jsonReader.endObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    /**
+     * Reads a matrix from a json file.
+     * @author Giorgio Massimo Fontanive
+     * @param jsonReader The json reader being used.
+     * @return The matrix read from the json file.
+     * @throws IOException When the reader has an issue.
+     */
+    public static int[][] readMatrix(JsonReader jsonReader) throws IOException {
+        int[][] matrix = new int[0][0];
 
+        return matrix;
+    }
 }

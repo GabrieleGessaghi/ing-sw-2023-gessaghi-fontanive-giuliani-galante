@@ -4,8 +4,8 @@ import model.Token;
 import model.cards.CommonObjective;
 import model.cards.CommonType;
 
-import static model.Configurations.COLUMNS_SHELF;
-import static model.Configurations.ROWS_SHELF;
+import static model.Configurations.SHELF_COLUMNS;
+import static model.Configurations.SHELF_ROWS;
 
 /**
  * Four groups each containing at least
@@ -30,8 +30,8 @@ public class FourGroups implements CommonObjective {
         int counterPerToken = 0;
         counterInterIsland = 0;
         boolean[][] checked = new boolean[ROWS][COLUMNS];
-        for(int i = 0; i < ROWS_SHELF; i++)
-            for(int j = 0; j < COLUMNS_SHELF; j++)
+        for(int i = 0; i < SHELF_ROWS; i++)
+            for(int j = 0; j < SHELF_COLUMNS; j++)
                 checked[i][j] = false;
         for(int i = 0; i < ROWS; i++){
             for(int j = 0; j < COLUMNS; j++)

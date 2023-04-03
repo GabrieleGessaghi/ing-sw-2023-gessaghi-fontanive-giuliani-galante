@@ -29,6 +29,7 @@ public class Game implements Serializable {
         chat = new Chat();
         players = new Player[numberOfPlayers];
         board = new Board(numberOfPlayers);
+        Configurations.loadConfiguration("/src/main/resources/configuration.json");
 
         //File creation
         try {

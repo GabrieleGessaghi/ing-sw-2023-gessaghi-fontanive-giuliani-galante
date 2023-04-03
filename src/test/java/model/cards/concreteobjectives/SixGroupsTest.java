@@ -3,15 +3,15 @@ package model.cards.concreteobjectives;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
-import static model.Configurations.COLUMNS_SHELF;
-import static model.Configurations.ROWS_SHELF;
+import static model.Configurations.SHELF_COLUMNS;
+import static model.Configurations.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SixGroupsTest {
     @Test
     public void sixCase(){
         SixGroups sixgroups = new SixGroups();
-        Token[][] shelf= new Token[ROWS_SHELF][COLUMNS_SHELF];
+        Token[][] shelf= new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[0][0] = Token.TROPHY;
         shelf[0][1] = Token.TROPHY;
         shelf[0][2] = Token.CAT;
@@ -47,7 +47,7 @@ class SixGroupsTest {
     @Test
     public void fiveCase(){
         SixGroups sixgroups = new SixGroups();
-        Token[][] shelf= new Token[ROWS_SHELF][COLUMNS_SHELF];
+        Token[][] shelf= new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[0][0] = Token.TROPHY;
         shelf[0][1] = Token.TROPHY;
         shelf[0][2] = Token.CAT;
