@@ -128,17 +128,17 @@ public class Game implements Serializable {
 
             //Gets the tiles from the board.
             Token[] selectedTokens;
-            try{
+            try {
                 selectedTokens = board.selectTiles(selectedTiles);
-            }catch (IllegalMoveException e1){
+            } catch (IllegalMoveException e1){
                 System.out.println("The selected tokens are not valid!");
                 return;
             }
 
             //Inserts the tokens in the shelf.
-            try{
+            try {
                 players[currentPlayerIndex].insertTokens(selectedTokens, column);
-            }catch (FullColumnException e2) {
+            } catch (FullColumnException e2) {
                 System.out.println("The selected column can't store all the selected tokens!");
                 return;
             }

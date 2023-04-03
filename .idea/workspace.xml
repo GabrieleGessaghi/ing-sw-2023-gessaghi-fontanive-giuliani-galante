@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Finished Configuration class">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Fixed typos">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Bag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Bag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/CommonObjective.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/CommonObjective.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/PersonalCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/PersonalCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,7 +403,28 @@
       <option name="project" value="LOCAL" />
       <updated>1680523141501</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fixed small issues in Game class">
+      <created>1680523395137</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1680523395137</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Fixed typos">
+      <created>1680523491223</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1680523491223</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Fixed typos">
+      <created>1680523601599</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1680523601599</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +442,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="modified javadoc in Diagonal" />
     <MESSAGE value="modified javadoc and isSatisfied in concreteobjectives" />
     <MESSAGE value="modified return CommonCard.getPoints" />
     <MESSAGE value="edited javadoc" />
@@ -440,7 +465,9 @@
     <MESSAGE value="changed Configuration in Configurations" />
     <MESSAGE value="Implemented loading of configuration file" />
     <MESSAGE value="Finished Configuration class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Configuration class" />
+    <MESSAGE value="Fixed small issues in Game class" />
+    <MESSAGE value="Fixed typos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed typos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

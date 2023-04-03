@@ -17,8 +17,8 @@ public interface CommonObjective {
      /**
       * Checks whether a player's shelf satisfies the card's objective.
       * @author Niccolò Giuliani
-      * @param shelf a matrix of Tokens
-      * @return true if the given shelf satisfies the algorithm.
+      * @param shelf A matrix of Tokens
+      * @return True if the given shelf satisfies the algorithm.
       */
      public boolean isSatisfied(Token[][] shelf) ;
 

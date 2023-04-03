@@ -1,7 +1,8 @@
 package model;
+
 /**
+ * The tokens which get placed on the board and in the shelves.
  * @author Niccolò Giuliani
- * type of tokens
  */
 public enum Token {
     NOTHING,
