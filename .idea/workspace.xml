@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Created ConfigurationsTest">
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/ConfigurationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/ConfigurationsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Modified updatePoints">
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +68,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTest.constructorTest">
+  <component name="RunManager" selected="JUnit.ConfigurationsTest.loadConfigurationTest">
     <configuration name="BoardTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -153,8 +151,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BoardTest.constructorTest" />
         <item itemvalue="JUnit.ConfigurationsTest.loadConfigurationTest" />
+        <item itemvalue="JUnit.BoardTest.constructorTest" />
         <item itemvalue="JUnit.BoardTest.isResetNeededTest" />
         <item itemvalue="JUnit.CommonCardTest.fourPlayers" />
         <item itemvalue="JUnit.CommonCardTest.threePlayers" />
@@ -352,7 +350,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680502116489</updated>
       <workItem from="1680502117922" duration="1082000" />
-      <workItem from="1680531715978" duration="2045000" />
+      <workItem from="1680531715978" duration="1355000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -473,12 +471,12 @@
       <option name="project" value="LOCAL" />
       <updated>1680527221553</updated>
     </task>
-    <task id="LOCAL-00044" summary="Created ConfigurationsTest">
-      <created>1680533099792</created>
+    <task id="LOCAL-00044" summary="Modified updatePoints">
+      <created>1680533337643</created>
       <option name="number" value="00044" />
       <option name="presentableId" value="LOCAL-00044" />
       <option name="project" value="LOCAL" />
-      <updated>1680533099792</updated>
+      <updated>1680533337643</updated>
     </task>
     <option name="localTasksCounter" value="45" />
     <servers />
@@ -537,8 +535,8 @@
     <MESSAGE value="Fixed typos" />
     <MESSAGE value="Fixed formatting" />
     <MESSAGE value="Created BoardTest class" />
-    <MESSAGE value="Created ConfigurationsTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created ConfigurationsTest" />
+    <MESSAGE value="Modified updatePoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified updatePoints" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

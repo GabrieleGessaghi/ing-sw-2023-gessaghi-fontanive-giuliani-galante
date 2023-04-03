@@ -17,7 +17,7 @@ import static model.Configurations.SHELF_ROWS;
  */
 public class FourGroups implements CommonObjective {
     private int counterInterIsland; //counter of the instances of the island
-    //TODO: Document class
+
 
     @Override
     public boolean isSatisfied(Token[][] shelf) {

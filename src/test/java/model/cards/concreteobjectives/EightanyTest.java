@@ -1,5 +1,6 @@
 package model.cards.concreteobjectives;
 
+import model.Configurations;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EightanyTest {
     @Test
     void trueScenario(){
+        Configurations.loadConfiguration("src/main/resources/configuration.json");
         var trueS = new Eightany();
         int indexRow;
         int indexColumn;
@@ -45,6 +47,7 @@ class EightanyTest {
 
     @Test
     void wrongScenario(){
+        Configurations.loadConfiguration("src/main/resources/configuration.json");
         var wrong = new Eightany();
         Token[][] shelf;
         Random random =new Random();
