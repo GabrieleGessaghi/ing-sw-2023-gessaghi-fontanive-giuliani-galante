@@ -66,12 +66,15 @@ public class Player {
     public void updatePoints(){
         int tempPoints;
         tempPoints = points;
-        for(int i = 1; cards.get(i)!=(null); i++)
-            if(cards.get(i).getPoints(playerShelf.getTiles())!=0) {
+
+        for(int i = 0; cards.get(i)!=(null); i++)
+            if(cards.get(i).getPoints(playerShelf.getTiles())!=0)
+                isCompleted[i] = true;
+
+        for(int i = 0; cards.get(i)!=(null); i++)
+            if(!isCompleted[i])
                 tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
-                cards.remove(i);
-                i--;
-            }
+
         //TODO: add points based on number of adjacent tiles of the same type
         //TODO: check if player arrives at endgame first (adds 1 point)
 
