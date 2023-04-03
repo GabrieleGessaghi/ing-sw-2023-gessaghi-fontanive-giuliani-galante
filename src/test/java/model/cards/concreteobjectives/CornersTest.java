@@ -1,5 +1,6 @@
 package model.cards.concreteobjectives;
 
+import model.Configurations;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,7 @@ class CornersTest {
 
     @Test
     void trueScenario(){
+        Configurations.loadConfiguration("src/main/resources/configuration.json");
         var firstCorner = new Corners();
         Token[][] shelf;
         Token type;
@@ -35,8 +37,9 @@ class CornersTest {
 
         assertEquals(true,firstCorner.isSatisfied(shelf));
     }
-
+    @Test
     void WrongScenario(){
+        Configurations.loadConfiguration("src/main/resources/configuration.json");
         var firstCorner = new Corners();
         Token[][] shelf;
 
@@ -51,7 +54,7 @@ class CornersTest {
             }
         }
         shelf[0][0]=Token.CAT;
-        shelf[6][0]=Token.BOOK;
+        shelf[5][0]=Token.BOOK;
         assertEquals(false,firstCorner.isSatisfied(shelf));
     }
 
