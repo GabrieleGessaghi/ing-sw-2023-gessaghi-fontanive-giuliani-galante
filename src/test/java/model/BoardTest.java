@@ -21,6 +21,7 @@ class BoardTest {
     public void selectTilesTest() {
         Configurations.loadConfiguration("src/main/resources/configuration.json");
         Board board = new Board(2);
+
         Token[] selectedTokens;
         int[][] selectedTiles = new int[][] {
             {-1, -1, -1, -1, -1, -1, -1, -1, -1},
@@ -45,6 +46,24 @@ class BoardTest {
 
     @Test
     public void removeTilesTest() {
+        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        Board board = new Board(2);
 
+        Token[][] testTokens;
+        testTokens = board.getTiles();
+        assertNotEquals(Token.NOTHING, testTokens[3][3]);
+        boolean[][] selectedTiles = new boolean[][] {
+                {false, false, false, false, false, false, false, false, false},
+                {false, false, false, false, false, false, false, false, false},
+                {false, false, false, false, false, false, false, false, false},
+                {false, false, false, true, false, false, false, false, false},
+                {false, false, false, false, false, false, false, false, false},
+                {false, false, false, false, false, false, false, false, false},
+                {false, false, false, false, false, false, false, false, false},
+                {false, false, false, false, false, false, false, false, false},
+                {false, false, false, false, false, false, false, false, false}
+        };
+        board.removeTiles(selectedTiles);
+        assertEquals(Token.NOTHING, testTokens[3][3]);
     }
 }
