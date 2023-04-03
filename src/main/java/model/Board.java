@@ -45,7 +45,7 @@ public class Board {
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            usableTiles = convertSelection(Configurations.readMatrix(jsonReader, BOARD_SIZE, BOARD_SIZE), 0);
+            usableTiles = Board.convertSelection(Configurations.readMatrix(jsonReader, BOARD_SIZE, BOARD_SIZE), 0);
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -76,8 +76,8 @@ public class Board {
      * @author Giorgio Massimo Fontanive
      */
     private void reset() {
-        for (int i = 0; i < BOARD_SIZE; i++)
-            for (int j = 0; j < BOARD_SIZE; j++) {
+        for (int i = 0; i < tiles.length; i++)
+            for (int j = 0; j < tiles.length; j++) {
                 if (tiles[i][j] == null)
                     tiles[i][j] = Token.NOTHING;
                 if (usableTiles[i][j] && tiles[i][j] == Token.NOTHING)
@@ -171,10 +171,9 @@ public class Board {
         Arrays.fill(selectedTokens, Token.NOTHING);
         for (int i = 0; i < tiles.length; i++)
             for (int j = 0; j < tiles.length; j++)
-                if (selectedTiles[i][j] != -1) {
+                if (selectedTiles[i][j] != -1)
                     selectedTokens[selectedTiles[i][j]] = tiles[i][j];
-                    selectedTilesBoolean[i][j] = true;
-                }
+        selectedTilesBoolean = Board.convertSelection(selectedTiles, -1);
         if (isMoveLegal(selectedTilesBoolean))
             return selectedTokens;
         else

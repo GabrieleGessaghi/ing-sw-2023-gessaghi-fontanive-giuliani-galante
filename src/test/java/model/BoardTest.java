@@ -42,4 +42,9 @@ class BoardTest {
             fail();
         }
     }
+
+    @Test
+    public void removeTilesTest() {
+
+    }
 }
