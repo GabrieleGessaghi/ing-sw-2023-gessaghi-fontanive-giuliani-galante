@@ -1,8 +1,10 @@
 package model;
 
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import model.exceptions.IllegalMoveException;
 import java.io.IOException;
+import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import static model.Configurations.MAX_TOKENS_PER_TURN;
@@ -27,22 +29,25 @@ public class Board {
         tiles = new Token[BOARD_SIZE][BOARD_SIZE];
         bag = new Bag();
 
-        //Initializes the board's usable tiles based on number of players
+        //Initializes the board's usable tiles based on number of players.
         String jsonFile = "";
         String jsonFilePath = "";
-        Gson gson = new Gson();
+        JsonReader jsonReader;
         switch (numberOfPlayers) {
-            case 2 -> jsonFilePath = "/src/main/resources/boards/twoplayersboard.json";
-            case 3 -> jsonFilePath = "/src/main/resources/boards/threeplayersboard.json";
-            case 4 -> jsonFilePath = "/src/main/resources/boards/fourplayersboard.json";
+            case 2 -> jsonFilePath = "src/main/resources/Boards/twoPlayersBoard.json";
+            case 3 -> jsonFilePath = "src/main/resources/Boards/threePlayersBoard.json";
+            case 4 -> jsonFilePath = "src/main/resources/Boards/fourPlayersBoard.json";
         }
         try {
             jsonFile = Files.readString(Paths.get(jsonFilePath));
+            jsonReader = new JsonReader(new StringReader(jsonFile));
+            jsonReader.beginObject();
+            jsonReader.nextName();
+            usableTiles = convertSelection(Configurations.readMatrix(jsonReader));
+            jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        usableTiles = gson.fromJson(jsonFile, usableTiles.getClass());
-
         reset();
     }
 
@@ -92,6 +97,7 @@ public class Board {
 
     /**
      * Checks whether the chosen tiles can be selected within the rules of the game.
+     * @author Giorgio Massimo Fontanive
      * @param selectedTiles A boolean matrix with true in the positions of the chosen tiles.
      * @return True if the tiles are in an available position and if they are in a line.
      */
@@ -147,6 +153,7 @@ public class Board {
 
     /**
      * Converts the selected tiles into an ordered array of tokens.
+     * @author Giorgio Massimo Fontanive
      * @throws IllegalMoveException When a move breaks the rules (check isMoveLegal).
      * @param selectedTiles A matrix with -1 for the tiles not chosen and
      *                      the order of choice for the other ones.
@@ -169,6 +176,7 @@ public class Board {
 
     /**
      * Empties the board of the selected tiles.
+     * @author Giorgio Massimo Fontanive
      * @param selectedTiles A boolean matrix with true in the positions of the tiles to be emptied.
      */
     public void removeTiles(boolean[][] selectedTiles) {
@@ -178,5 +186,20 @@ public class Board {
                     tiles[i][j] = Token.NOTHING;
         if (isResetNeeded())
             reset();
+    }
+
+    /**
+     * Converts a matrix of integers into booleans.
+     * @author Giorgio Massimo Fontanive
+     * @param selectedTiles A matrix with -1 for the tiles not chosen.
+     * @return A matrix with true in the position of the chosen tiles.
+     */
+    public static boolean[][] convertSelection(int[][] selectedTiles) {
+        boolean[][] convertedSelection = new boolean[selectedTiles.length][selectedTiles.length];
+        for (int i = 0; i < selectedTiles.length; i++)
+            for (int j = 0; j < selectedTiles[i].length; j++)
+                if (selectedTiles[i][j] != -1)
+                    convertedSelection[i][j] = true;
+        return convertedSelection;
     }
 }

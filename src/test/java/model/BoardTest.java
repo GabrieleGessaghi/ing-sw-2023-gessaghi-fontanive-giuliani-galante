@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
 
-     @Test
-    public void removeTilesTest() {
-
-     }
+    @Test
+    public void constructorTest() {
+        Board twoPlayersBoard = new Board(2);
+    }
 }
