@@ -96,6 +96,7 @@ public class Board {
      * @return true if the tiles are in an available position and if they are in a line.
      */
     private boolean isMoveLegal(boolean[][] selectedTiles) {
+
         //Checks whether each tile is selectable by itself.
         boolean legal = true;
         int selectedAmount = 0;

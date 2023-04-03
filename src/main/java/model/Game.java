@@ -31,7 +31,7 @@ public class Game implements Serializable {
         board = new Board(numberOfPlayers);
         Configurations.loadConfiguration("/src/main/resources/configuration.json");
 
-        //File creation
+        //File creation with unique name
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             Date now = new Date();
@@ -44,26 +44,21 @@ public class Game implements Serializable {
         }
 
         genCommonCard(numberOfPlayers);
-
         //TODO: Add personal card generation
-
         for (int i = 0; i < numberOfPlayers; i++)
+            //TODO: Add personal and common cards as parameters
             players[i] = new Player(playerNicknames.get(i),false,null,null);
         currentPlayerIndex = 0;
-
-        //TODO: Add personal and common cards as parameters
     }
 
     /**
      * Generates two random commonCard for the current game.
-     * @param numberOfPlayers is the number of player for the current game.
      * @author Gabriele Gessaghi
+     * @param numberOfPlayers The number of player for the current game.
      */
     private ArrayList<CommonCard> genCommonCard (int numberOfPlayers){
         ArrayList<CommonType> types = new ArrayList<CommonType>(Arrays.asList(CommonType.values()));
-
         //TODO: Avoid duplicating code
-
         Collections.shuffle(types);
         CommonType commonType1 = types.get(0);
         CommonType commonType2 = types.get(1);
@@ -109,12 +104,13 @@ public class Game implements Serializable {
     /**
      * Save the game state in case of disconnections or other problems.
      * @author Gabriele Gessaghi
-     * @throws IOException when there's an error in the file creation.
+     * @throws IOException When there's an error in the file creation.
      */
     private void saveGame() throws IOException {
         String fileName = String.format("/game-%s.txt",gameID);
         FileOutputStream fout = new FileOutputStream(new File(fileName));
         ObjectOutputStream out = new ObjectOutputStream(fout);
+        //TODO: Ensure that everything is saved, not just the Game class
         out.writeObject(this);
         out.close();
         fout.close();
@@ -123,9 +119,9 @@ public class Game implements Serializable {
     /**
      * Collect the selected tiles from the game board and update the current player shelf.
      * @author Gabriele Gessaghi
-     * @param selectedTiles a matrix with -1 for the tiles not chosen and
-     *      *               the order of choice for the other ones.
-     * @param column the column on which the player wants to put the new tiles.
+     * @param selectedTiles A matrix with -1 for the tiles not chosen and
+     *                      the order of choice for the other ones.
+     * @param column The column on which the player wants to put the new tiles.
      */
     public void playerTurn (int [][] selectedTiles, int column){
         if (players[currentPlayerIndex].isConnected) {
@@ -163,7 +159,7 @@ public class Game implements Serializable {
     /**
      * End the game and return the winner.
      * @author Gabriele Gessaghi
-     * @return the nickname of the winner.
+     * @return The nickname of the winner.
      */
     public String endGame() { return "";}
 
