@@ -21,13 +21,14 @@ public class FourGroups implements CommonObjective {
     @Override
     public boolean isSatisfied(Token[][] shelf) {
         int generalCounter = 0;
-        generalCounter = checkType(Token.CAT, shelf) + checkType(Token.CAT, shelf) + checkType(Token.BOOK, shelf) +
+        generalCounter = checkType(Token.CAT, shelf) + checkType(Token.TOY, shelf) + checkType(Token.BOOK, shelf) +
                 checkType(Token.TROPHY, shelf) + checkType(Token.FRAME, shelf) + checkType(Token.PLANT, shelf);
-        return generalCounter > 4;
+        return generalCounter >= 4;
     }
 
     private int checkType(Token type, Token[][] shelf){
         int counterPerToken = 0;
+        counterInterIsland = 0;
         boolean[][] visited = new boolean[ROWS_SHELF][COLUMNS_SHELF];
         for(int i = 0; i < ROWS_SHELF; i++)
             for(int j = 0; j < COLUMNS_SHELF; j++)
@@ -35,11 +36,13 @@ public class FourGroups implements CommonObjective {
         for(int i = 0; i < ROWS_SHELF; i++){
             for(int j = 0; j < COLUMNS_SHELF; j++)
                 if(shelf[i][j] == type && !visited[i][j]){
-                    counterInterIsland = 0;
+                    counterInterIsland = 1;
                     DFS(shelf, i, j, visited, type);
-                    counterPerToken += counterInterIsland/4;
+                    if(counterInterIsland >= 4)
+                        counterPerToken ++;
                 }
         }
+        System.out.println("\n");
         return counterPerToken;
     }
 

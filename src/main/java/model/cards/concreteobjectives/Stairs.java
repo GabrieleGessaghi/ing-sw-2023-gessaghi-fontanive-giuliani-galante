@@ -16,26 +16,25 @@ public class Stairs implements CommonObjective {
 
     public boolean isSatisfied(Token[][] shelf) {
         int []counter;
-        counter = new int[ROWS];
+        counter = new int[COLUMNS];
         boolean flagRight = false;
         boolean flagLeft = false;
-        for(int i = 0; i< ROWS; i++)
+        for(int i = 0; i < COLUMNS; i++)
             counter[i] = 0;
-        for (int i = 0; i < ROWS ; i++){
-            for (int j = 0; j < COLUMNS ; j++) {
-                if (shelf[i][j] != Token.NOTHING) {
+        for (int i = 0; i < COLUMNS ; i++){
+            for (int j = 0; j < ROWS ; j++) {
+                if (shelf[j][i] != Token.NOTHING) {
                     counter[i]++;
                 }
             }
         }
-        for (int i=0; i < ROWS-1; i++)
-            if(counter[i] < counter[i]+1)
-                if(counter[i] <= counter[i]+1)
-                    flagRight = true;
-        for(int i=0; i < ROWS-1; i++)
-            if(counter[i] > counter[i]+1)
-                if(counter[i] >= counter[i]+1)
+        for (int i = 0; i < COLUMNS-1; i++)
+            if(counter[i] != counter[i + 1] + 1 )
                     flagLeft = true;
+
+        for(int i = 0; i < COLUMNS-1; i++)
+            if(counter[i] != counter[i + 1] - 1)
+                    flagRight = true;
 
         if( !flagRight || !flagLeft )
             return true;

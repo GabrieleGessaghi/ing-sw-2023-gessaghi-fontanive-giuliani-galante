@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Fixed warnings">
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="edited Stairs">
+      <change afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/Stairs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/Stairs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/StairsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/StairsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/SixGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/SixGroups.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Stairs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Stairs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoSquares.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoSquares.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +56,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,9 +76,9 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EightanyTest.trueScenario">
-    <configuration name="CornersTest.trueScenario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+  <component name="RunManager" selected="JUnit.FourGroupsTest">
+    <configuration name="FourGroupsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="model.cards.concreteobjectives.*" />
@@ -73,30 +86,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.CornersTest" />
-      <option name="METHOD_NAME" value="trueScenario" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DiagonalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.DiagonalTest" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourGroupsTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EightanyTest.trueScenario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+    <configuration name="FourGroupsTest.FourIslands" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="model.cards.concreteobjectives.*" />
@@ -104,8 +101,55 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.EightanyTest" />
-      <option name="METHOD_NAME" value="trueScenario" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourGroupsTest" />
+      <option name="METHOD_NAME" value="FourIslands" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FourGroupsTest.ThreeIslands" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourGroupsTest" />
+      <option name="METHOD_NAME" value="ThreeIslands" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StairsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.StairsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StairsTest.wrongScenario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.StairsTest" />
+      <option name="METHOD_NAME" value="wrongScenario" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -113,9 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EightanyTest.trueScenario" />
-        <item itemvalue="JUnit.DiagonalTest" />
-        <item itemvalue="JUnit.CornersTest.trueScenario" />
+        <item itemvalue="JUnit.FourGroupsTest" />
+        <item itemvalue="JUnit.FourGroupsTest.FourIslands" />
+        <item itemvalue="JUnit.FourGroupsTest.ThreeIslands" />
+        <item itemvalue="JUnit.StairsTest" />
+        <item itemvalue="JUnit.StairsTest.wrongScenario" />
       </list>
     </recent_temporary>
   </component>
@@ -311,7 +357,14 @@
       <updated>1680502116489</updated>
       <workItem from="1680502117922" duration="1082000" />
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="edited Stairs">
+      <created>1680506631932</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1680506631932</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +399,24 @@
     <MESSAGE value="EightanyTest" />
     <MESSAGE value="Fixed small issues in Player class" />
     <MESSAGE value="Fixed warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed warnings" />
+    <MESSAGE value="edited Stairs" />
+    <option name="LAST_COMMIT_MESSAGE" value="edited Stairs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/StairsTest.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
