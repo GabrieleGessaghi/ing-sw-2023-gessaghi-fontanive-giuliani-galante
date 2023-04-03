@@ -4,6 +4,8 @@ import model.cards.Card;
 import model.cards.CommonCard;
 import model.cards.PersonalCard;
 import model.exceptions.FullColumnException;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +14,14 @@ import java.util.List;
  * @author Niccolò Galante
  */
 public class Player {
+    private final static int NUMBER_OF_CARDS = 3;
     private final String nickname;
     private int points;
     private final boolean isFirstPlayer;
     private List<Card> cards;
     private final Shelf playerShelf;
     public boolean isConnected;
+    public boolean[] isComplete;
 
     public Player(String nickname, boolean isFirstPlayer, PersonalCard personal, List<CommonCard> common) {
         cards = new ArrayList<>();
@@ -61,12 +65,15 @@ public class Player {
      * @author Niccolò Galante.
      */
     public void updatePoints(){
-        int tempPoints = 0;
-        for(int i = 1; cards.get(i) != null; i++)
-            if(cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
+        int tempPoints = points;
+        isComplete = new boolean[NUMBER_OF_CARDS];
+
+        for(int i = 0; cards.get(i) != null; i++){
+            if(cards.get(i).getPoints(playerShelf.getTiles()) != 0)
+                isComplete[i] = true;
+
+            if(isComplete[i])
                 tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
-                cards.remove(i);
-                i--;
             }
         //TODO: Ensure points from common cards are updated correctly.
         //TODO: Add points based on number of adjacent tiles of the same type
