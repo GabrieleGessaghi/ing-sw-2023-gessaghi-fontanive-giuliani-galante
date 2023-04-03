@@ -29,15 +29,15 @@ public class FourGroups implements CommonObjective {
     private int checkType(Token type, Token[][] shelf){
         int counterPerToken = 0;
         counterInterIsland = 0;
-        boolean[][] visited = new boolean[ROWS_SHELF][COLUMNS_SHELF];
+        boolean[][] checked = new boolean[ROWS_SHELF][COLUMNS_SHELF];
         for(int i = 0; i < ROWS_SHELF; i++)
             for(int j = 0; j < COLUMNS_SHELF; j++)
-                visited[i][j] = false;
+                checked[i][j] = false;
         for(int i = 0; i < ROWS_SHELF; i++){
             for(int j = 0; j < COLUMNS_SHELF; j++)
-                if(shelf[i][j] == type && !visited[i][j]){
+                if(shelf[i][j] == type && !checked[i][j]){
                     counterInterIsland = 1;
-                    DFS(shelf, i, j, visited, type);
+                    findIsland(shelf, i, j, checked, type);
                     if(counterInterIsland >= 4)
                         counterPerToken ++;
                 }
@@ -46,34 +46,27 @@ public class FourGroups implements CommonObjective {
         return counterPerToken;
     }
 
-    private void DFS(Token[][] M, int row, int col,
-                     boolean[][] visited, Token type){
-        int[] rowNbr
-                = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
-        int[] colNbr
-                = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 };
+    private void findIsland(Token[][] M, int row, int col,
+                     boolean[][] checked, Token type){
 
-        // Mark this cell as visited
-        visited[row][col] = true;
+        int[] rowIndex = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
+        int[] colIndex = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 };
 
-        // Recur for all connected neighbours
-        for (int k = 0; k < 8; k++)
-            if (isSafe(M, row + rowNbr[k], col + colNbr[k],
-                    visited,  type)) {
+        checked[row][col] = true;
+
+        for (int i = 0; i < 8; i++)
+            if (isOk(M, row + rowIndex[i], col + colIndex[i],
+                    checked,  type)) {
                 counterInterIsland++;
-                DFS(M, row + rowNbr[k], col + colNbr[k],
-                        visited, type);
+                findIsland(M, row + rowIndex[i], col + colIndex[i], checked, type);
             }
     }
 
-    boolean isSafe(Token[][] M, int row, int col,
-                   boolean[][] visited, Token type)
+    boolean isOk(Token[][] M, int row, int col,
+                   boolean[][] checked, Token type)
     {
-        // row number is in range, column number is in range
-        // and value is 1 and not yet visited
-        return (row >= 0) && (row < ROWS_SHELF) && (col >= 0)
-                && (col < COLUMNS_SHELF)
-                && (M[row][col] == type && !visited[row][col]);
+        return (row >= 0) && (row < ROWS_SHELF) && (col >= 0) && (col < COLUMNS_SHELF)
+                && (M[row][col] == type && !checked[row][col]);
     }
 
 
