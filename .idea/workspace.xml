@@ -5,7 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Created BoardTest class">
+      <change afterPath="$PROJECT_DIR$/src/test/java/model/ConfigurationsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/configuration.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Shelf.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Shelf.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Token.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/CommonCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/CommonCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/CommonObjective.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/CommonObjective.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/CommonType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/CommonType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/PersonalCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/PersonalCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Corners.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Corners.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Diagonal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Diagonal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Eightany.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Eightany.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourRows.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourRows.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/SixGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/SixGroups.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Stairs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/Stairs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoColumns.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoColumns.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoRows.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoRows.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoSquares.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoSquares.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/XShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/XShape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/CornersTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/CornersTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/DiagonalTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/DiagonalTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/EightanyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/EightanyTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +97,39 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CommonCardTest.fourPlayers">
+  <component name="RunManager" selected="JUnit.ConfigurationsTest.loadConfigurationTest">
+    <configuration name="BoardTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.BoardTest" />
+      <option name="METHOD_NAME" value="constructorTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardTest.isResetNeededTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.BoardTest" />
+      <option name="METHOD_NAME" value="isResetNeededTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CommonCardTest.fourPlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -101,60 +162,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommonCardTest.twoPlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ConfigurationsTest.loadConfigurationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.cards.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model.cards" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.CommonCardTest" />
-      <option name="METHOD_NAME" value="twoPlayers" />
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.ConfigurationsTest" />
+      <option name="METHOD_NAME" value="loadConfigurationTest" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FourRowsTest.threeCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourRowsTest" />
-      <option name="METHOD_NAME" value="threeCase" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SixGroupsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.SixGroupsTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ConfigurationsTest.loadConfigurationTest" />
+        <item itemvalue="JUnit.BoardTest.constructorTest" />
+        <item itemvalue="JUnit.BoardTest.isResetNeededTest" />
         <item itemvalue="JUnit.CommonCardTest.fourPlayers" />
         <item itemvalue="JUnit.CommonCardTest.threePlayers" />
-        <item itemvalue="JUnit.CommonCardTest.twoPlayers" />
-        <item itemvalue="JUnit.FourRowsTest.threeCase" />
-        <item itemvalue="JUnit.SixGroupsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -349,6 +379,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680502116489</updated>
       <workItem from="1680502117922" duration="1082000" />
+      <workItem from="1680531715978" duration="1355000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -462,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680526976990</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Created BoardTest class">
+      <created>1680527221553</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1680527221553</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
