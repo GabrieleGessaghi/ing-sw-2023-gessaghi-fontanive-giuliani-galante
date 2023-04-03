@@ -39,7 +39,7 @@ public class SixGroups implements CommonObjective {
                 }
             }
         }
-        return counter >= 4;
+        return counter >= 6;
     }
 
     public CommonType getName(){
