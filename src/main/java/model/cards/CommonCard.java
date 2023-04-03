@@ -1,11 +1,11 @@
 package model.cards;
 
 import model.Token;
-import static model.Configuration.COMMONCARD_POINTS;
-import static model.Configuration.MIN_PLAYERS;
+import static model.Configurations.COMMONCARD_POINTS;
+import static model.Configurations.PLAYERS_MIN;
 
 /**
- * Common objective cards of the game.
+ * Common objective card of the game.
  * @author Niccolò Giuliani
  */
 public class CommonCard extends Card {
@@ -15,11 +15,10 @@ public class CommonCard extends Card {
     private final CommonType name;
 
     /**
-     * Class constructor
+     * Class constructor.
      * @author Niccolò Giuliani
-     * @param objective       the algorithm for this card.
-     * @param numberOfPlayers the number of players playing this game.
-     * @author Niccolò Giuliani
+     * @param objective The algorithm for this card.
+     * @param numberOfPlayers The number of players playing this game.
      */
     public CommonCard(CommonObjective objective, int numberOfPlayers) {
         this.objective = objective;
@@ -31,15 +30,15 @@ public class CommonCard extends Card {
     /**
      * Gives players' the points they deserve and removes the points token.
      * @author Giorgio Massimo Fontanive
-     * @param shelf a matrix of Tokens taken from a player's shelf.
-     * @return the number of points the player gets.
+     * @param shelf A matrix of Tokens taken from a player's shelf.
+     * @return The number of points the player gets.
      */
     public int getPoints(Token[][] shelf) {
         boolean satisfied;
         int points = 0;
         satisfied = objective.isSatisfied(shelf);
         if (satisfied) {
-            points = COMMONCARD_POINTS[numberOfPlayers - MIN_PLAYERS][numberOfPlayers - numberOfTokensLeft];
+            points = COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
             numberOfTokensLeft--;
         }
         return points;

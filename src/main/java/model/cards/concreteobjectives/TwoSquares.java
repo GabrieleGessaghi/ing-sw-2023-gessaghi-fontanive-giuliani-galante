@@ -12,59 +12,48 @@ import model.cards.CommonType;
  * @author Niccolò Giuliani
  */
 public class TwoSquares implements CommonObjective {
+
     @Override
     public boolean isSatisfied(Token[][] shelf) {
         boolean flag = false;
-        boolean [][]check;
-        check = new boolean[ROWS][COLUMNS];
-        int []atLeastTwo;
-        atLeastTwo = new int[7];
+        boolean[][] check = new boolean[ROWS][COLUMNS];
+        int[] atLeastTwo = new int[7];
         for (int i = 0; i < ROWS; i++)
-            for(int j=0; j< COLUMNS; j++)
+            for (int j=0; j< COLUMNS; j++)
                 check[i][j] = false;
-        for(int i = 0; i < 7; i++)
+        for (int i = 0; i < 7; i++)
             atLeastTwo[i]=0;
-
-        for(int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; j++) {
-                if(check[i][j] == false && shelf[i][j] != Token.NOTHING && i < 5 && j < 4){
-                    if(shelf[i][j] == shelf[i][j + 1] && shelf[i][j] == shelf[i + 1][j] && shelf[i][j] == shelf[i +1][j + 1]
-                    && check[i][j + 1] == false && check[i + 1][j] == false && check [i + 1][j + 1] == false)
-                        atLeastTwo[function(shelf[i][j])]++;
-                        check[i][j]=true;
-                        check[i][j+1]=true;
-                        check[i + 1][j]=true;
-                        check[i + 1][j + 1]=true;
+        for (int i = 0; i < ROWS - 1; i++) {
+            for (int j = 0; j < COLUMNS - 1; j++) {
+                if (!check[i][j] && shelf[i][j] != Token.NOTHING && i < 5 && j < 4){
+                    if (shelf[i][j] == shelf[i][j + 1] && shelf[i][j] == shelf[i + 1][j] && shelf[i][j] == shelf[i +1][j + 1]
+                    && !check[i][j + 1] && !check[i + 1][j] && !check[i + 1][j + 1]) {
+                        atLeastTwo[fromTokenToInt(shelf[i][j])]++;
+                        check[i][j] = true;
+                        check[i][j + 1] = true;
+                        check[i + 1][j] = true;
+                        check[i + 1][j + 1] = true;
+                    }
                 }
             }
         }
-        for (int i = 0; i < 7 && flag == false; i++){
+        for (int i = 0; i < 7 && !flag; i++){
             if(atLeastTwo[i] >= 2)
                 flag=true;
         }
-
-        if (flag == true)
-            return true;
-        else
-            return false;
+        return flag;
     }
 
-    private int function(Token x){
-        if(x == Token.CAT)
-            return 0;
-        else if(x == Token.BOOK)
-            return 1;
-        else if(x == Token.TOY)
-            return 2;
-        else if(x == Token.TROPHY)
-            return 3;
-        else if(x == Token.FRAME)
-            return 4;
-        else if(x == Token.PLANT)
-            return 5;
-        else if(x == Token.NOTHING)
-            return 6;
-        return -1;
+    private int fromTokenToInt(Token x){
+        return switch (x) {
+            case CAT -> 0;
+            case BOOK -> 1;
+            case TOY -> 2;
+            case TROPHY -> 3;
+            case FRAME -> 4;
+            case PLANT -> 5;
+            case NOTHING -> 6;
+        };
     }
 
     public CommonType getName(){

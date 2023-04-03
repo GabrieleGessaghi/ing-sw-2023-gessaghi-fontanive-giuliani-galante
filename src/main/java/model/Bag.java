@@ -37,7 +37,7 @@ public class Bag {
     /**
      * Removes and returns the first token in the bag.
      * @author Giorgio Massimo Fontanive
-     * @return the first token in the bag's list;
+     * @return The first token in the bag's list;
      */
     public Token drawToken() {
         return tokens.remove(0);

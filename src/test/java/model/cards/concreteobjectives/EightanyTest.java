@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static model.Configuration.COLUMNS_SHELF;
-import static model.Configuration.ROWS_SHELF;
+import static model.Configurations.SHELF_COLUMNS;
+import static model.Configurations.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EightanyTest {
@@ -15,15 +15,15 @@ class EightanyTest {
         var trueS = new Eightany();
         int indexRow;
         int indexColumn;
-        Token shelf[][];
+        Token[][] shelf;
         Token type;
         Random random =new Random();
-        shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         type = Token.CAT;
         int rand = random.nextInt(20);
         rand = rand + 8;
-        for(int i = 0; i < ROWS_SHELF; i++){
-            for (int j = 0;j < COLUMNS_SHELF; j++){
+        for(int i = 0; i < SHELF_ROWS; i++){
+            for (int j = 0; j < SHELF_COLUMNS; j++){
                 shelf[i][j] = Token.NOTHING;
             }
         }
@@ -46,12 +46,12 @@ class EightanyTest {
     @Test
     void wrongScenario(){
         var wrong = new Eightany();
-        Token shelf[][];
+        Token[][] shelf;
         Random random =new Random();
-        shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
-        for(int i = 0; i < ROWS_SHELF; i++){
-            for (int j = 0;j < COLUMNS_SHELF; j++){
+        for(int i = 0; i < SHELF_ROWS; i++){
+            for (int j = 0; j < SHELF_COLUMNS; j++){
                 shelf[i][j] = Token.NOTHING;
             }
         }

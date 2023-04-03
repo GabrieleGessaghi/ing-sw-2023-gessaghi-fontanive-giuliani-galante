@@ -4,7 +4,6 @@ import model.cards.Card;
 import model.cards.CommonCard;
 import model.cards.PersonalCard;
 import model.exceptions.FullColumnException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +12,12 @@ import java.util.List;
  * @author Niccolò Galante
  */
 public class Player {
-    private final static int NUMBER_OF_CARDS = 3;
     private final String nickname;
     private int points;
     private final boolean isFirstPlayer;
+    private List<Card> cards;
+    private final Shelf playerShelf;
     public boolean isConnected;
-    public List<Card> cards; // array used for common and personal cards
-    public boolean[] isCompleted; // array used to check if a card's objective has been completed
-    private final Shelf playerShelf; // reference to player's shelf
 
     public Player(String nickname, boolean isFirstPlayer, PersonalCard personal, List<CommonCard> common) {
         cards = new ArrayList<>();
@@ -35,7 +32,7 @@ public class Player {
     /**
      * Getter for player's nickname.
      * @author Niccolò Galante
-     * @return player's nickname.
+     * @return Player's nickname.
      */
     public String getNickname() {
         return nickname;
@@ -44,7 +41,7 @@ public class Player {
     /**
      * Getter for player's points.
      * @author Niccolò Galante
-     * @return player's points.
+     * @return Player's points.
      */
     public int getPoints() {
         return points;
@@ -53,7 +50,7 @@ public class Player {
     /**
      * Getter for boolean to indicate if player is first.
      * @author Niccolò Galante
-     * @return true if player is first.
+     * @return True if player is first.
      */
     public boolean getIsFirstPlayer() {
         return isFirstPlayer;
@@ -64,27 +61,23 @@ public class Player {
      * @author Niccolò Galante.
      */
     public void updatePoints(){
-        int tempPoints;
-        tempPoints = points;
-
-        for(int i = 0; cards.get(i)!=(null); i++)
-            if(cards.get(i).getPoints(playerShelf.getTiles())!=0)
-                isCompleted[i] = true;
-
-        for(int i = 0; cards.get(i)!=(null); i++)
-            if(!isCompleted[i])
+        int tempPoints = 0;
+        for(int i = 1; cards.get(i) != null; i++)
+            if(cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
                 tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
-
-        //TODO: add points based on number of adjacent tiles of the same type
-        //TODO: check if player arrives at endgame first (adds 1 point)
-
+                cards.remove(i);
+                i--;
+            }
+        //TODO: Ensure points from common cards are updated correctly.
+        //TODO: Add points based on number of adjacent tiles of the same type
+        //TODO: Check if player arrives at endgame first (adds 1 point)
         points = tempPoints;
     }
 
     /**
      * Inserts tokens.
-     * @param tokens tokens to insert in shelf.
-     * @param column column in which tokens are to be inserted.
+     * @param tokens Tokens to insert in shelf.
+     * @param column Column in which tokens are to be inserted.
      * @author Niccolò Galante.
      */
     public void insertTokens(Token[] tokens, int column) throws FullColumnException {

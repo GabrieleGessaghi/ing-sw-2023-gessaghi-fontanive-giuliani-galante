@@ -4,8 +4,8 @@ import model.Token;
 import model.cards.CommonObjective;
 import model.cards.CommonType;
 
-import static model.Configuration.COLUMNS_SHELF;
-import static model.Configuration.ROWS_SHELF;
+import static model.Configurations.SHELF_COLUMNS;
+import static model.Configurations.SHELF_ROWS;
 
 /**
  * Four groups each containing at least
@@ -17,62 +17,52 @@ import static model.Configuration.ROWS_SHELF;
  */
 public class FourGroups implements CommonObjective {
     private int counterInterIsland;
-
+    //TODO: Document class
 
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        int generalCounter = 0;
-        generalCounter = checkType(Token.CAT, shelf) + checkType(Token.CAT, shelf) + checkType(Token.BOOK, shelf) +
+        int generalCounter;
+        generalCounter = checkType(Token.CAT, shelf) + checkType(Token.TOY, shelf) + checkType(Token.BOOK, shelf) +
                 checkType(Token.TROPHY, shelf) + checkType(Token.FRAME, shelf) + checkType(Token.PLANT, shelf);
-        return generalCounter > 4;
+        return generalCounter >= 4;
     }
 
     private int checkType(Token type, Token[][] shelf){
         int counterPerToken = 0;
-        boolean visited[][] = new boolean[ROWS_SHELF][COLUMNS_SHELF];
-        for(int i = 0; i < ROWS_SHELF; i++)
-            for(int j = 0; j < COLUMNS_SHELF; j++)
-                visited[i][j] = false;
-        for(int i = 0; i < ROWS_SHELF; i++){
-            for(int j = 0; j < COLUMNS_SHELF; j++)
-                if(shelf[i][j] == type && !visited[i][j]){
-                    counterInterIsland = 0;
-                    DFS(shelf, i, j, visited, type);
-                    counterPerToken += counterInterIsland/4;
+        counterInterIsland = 0;
+        boolean[][] checked = new boolean[ROWS][COLUMNS];
+        for (int i = 0; i < SHELF_ROWS; i++)
+            for (int j = 0; j < SHELF_COLUMNS; j++)
+                checked[i][j] = false;
+        for (int i = 0; i < ROWS; i++)
+            for (int j = 0; j < COLUMNS; j++)
+                if (shelf[i][j] == type && !checked[i][j]){
+                    counterInterIsland = 1;
+                    findIsland(shelf, i, j, checked, type);
+                    if (counterInterIsland >= 4)
+                        counterPerToken ++;
                 }
-        }
         return counterPerToken;
     }
-    private void DFS(Token M[][], int row, int col,
-                     boolean visited[][],Token type){
-        int rowNbr[]
-                = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
-        int colNbr[]
-                = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 };
 
-        // Mark this cell as visited
-        visited[row][col] = true;
+    private void findIsland(Token[][] M, int row, int col, boolean[][] checked, Token type) {
+        int[] rowIndex = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
+        int[] colIndex = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 };
 
-        // Recur for all connected neighbours
-        for (int k = 0; k < 8; k++)
-            if (isSafe(M, row + rowNbr[k], col + colNbr[k],
-                    visited,  type)) {
+        checked[row][col] = true;
+
+        for (int i = 0; i < 8; i++)
+            if (isOk(M, row + rowIndex[i], col + colIndex[i],
+                    checked,  type)) {
                 counterInterIsland++;
-                DFS(M, row + rowNbr[k], col + colNbr[k],
-                        visited, type);
+                findIsland(M, row + rowIndex[i], col + colIndex[i], checked, type);
             }
     }
 
-    boolean isSafe(Token M[][], int row, int col,
-                   boolean visited[][], Token type)
-    {
-        // row number is in range, column number is in range
-        // and value is 1 and not yet visited
-        return (row >= 0) && (row < ROWS_SHELF) && (col >= 0)
-                && (col < COLUMNS_SHELF)
-                && (M[row][col] == type && !visited[row][col]);
+    boolean isOk(Token[][] M, int row, int col, boolean[][] checked, Token type) {
+        return (row >= 0) && (row < ROWS) && (col >= 0) && (col < COLUMNS)
+                && (M[row][col] == type && !checked[row][col]);
     }
-
 
     public CommonType getName(){
         return CommonType.FOURGROUPS;

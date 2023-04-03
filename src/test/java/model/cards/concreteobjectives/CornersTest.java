@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static model.Configuration.COLUMNS_SHELF;
-import static model.Configuration.ROWS_SHELF;
+import static model.Configurations.SHELF_COLUMNS;
+import static model.Configurations.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CornersTest {
@@ -17,21 +17,21 @@ class CornersTest {
         Token[][] shelf;
         Token type;
 
-        shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
         Random randomType = new Random();
         type=Token.values()[randomType.nextInt(Token.values().length)];
 
-        for(int i = 0; i < ROWS_SHELF-1; i++){
-            for(int j = 0; j < COLUMNS_SHELF-1; j++) {
+        for(int i = 0; i < SHELF_ROWS -1; i++){
+            for(int j = 0; j < SHELF_COLUMNS -1; j++) {
                 Random random = new Random();
                 shelf[i][j]=Token.values()[random.nextInt(Token.values().length)];
             }
         }
         shelf[0][0] = type;
-        shelf[0][COLUMNS_SHELF-1] = type;
-        shelf[ROWS_SHELF-1][0] = type;
-        shelf[ROWS_SHELF-1][COLUMNS_SHELF-1] = type;
+        shelf[0][SHELF_COLUMNS -1] = type;
+        shelf[SHELF_ROWS -1][0] = type;
+        shelf[SHELF_ROWS -1][SHELF_COLUMNS -1] = type;
 
         assertEquals(true,firstCorner.isSatisfied(shelf));
     }
@@ -41,11 +41,11 @@ class CornersTest {
         Token[][] shelf;
 
 
-        shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
 
-        for(int i = 0; i < ROWS_SHELF; i++){
-            for(int j = 0; j < COLUMNS_SHELF; j++) {
+        for(int i = 0; i < SHELF_ROWS; i++){
+            for(int j = 0; j < SHELF_COLUMNS; j++) {
                 Random random = new Random();
                 shelf[i][j]=Token.values()[random.nextInt(Token.values().length)];
             }

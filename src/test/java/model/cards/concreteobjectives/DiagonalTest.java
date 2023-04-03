@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static model.Configuration.COLUMNS_SHELF;
-import static model.Configuration.ROWS_SHELF;
+import static model.Configurations.SHELF_COLUMNS;
+import static model.Configurations.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiagonalTest {
@@ -14,8 +14,8 @@ class DiagonalTest {
     @Test
     void leftDiagonalOne(){
         var leftDiagonal = new Diagonal();
-        Token shelf[][];
-        shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        Token[][] shelf;
+        shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[0][0]=Token.CAT;
         shelf[1][1]=Token.CAT;
         shelf[2][2]=Token.CAT;
@@ -27,8 +27,8 @@ class DiagonalTest {
     @Test
     void leftDiagonalTwo(){
         var leftDiagonal = new Diagonal();
-        Token shelf[][];
-        shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        Token[][] shelf;
+        shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[1][0]=Token.CAT;
         shelf[2][1]=Token.CAT;
         shelf[3][2]=Token.CAT;
@@ -40,8 +40,8 @@ class DiagonalTest {
     @Test
     void rightDiagonalOne(){
         var rightDiagonal = new Diagonal();
-        Token shelf[][];
-        shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        Token[][] shelf;
+        shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[0][4]=Token.CAT;
         shelf[1][3]=Token.CAT;
         shelf[2][2]=Token.CAT;
@@ -52,8 +52,8 @@ class DiagonalTest {
     @Test
     void rightDiagonalTwo(){
         var rightDiagonal = new Diagonal();
-        Token shelf[][];
-        shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
+        Token[][] shelf;
+        shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[1][4]=Token.CAT;
         shelf[2][3]=Token.CAT;
         shelf[3][2]=Token.CAT;
@@ -65,10 +65,10 @@ class DiagonalTest {
     @Test
     void wrongScenario(){
         var wrong = new Diagonal();
-        Token shelf[][];
-        shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
-        for(int i = 0; i < ROWS_SHELF; i++){
-            for(int j = 0; j < COLUMNS_SHELF; j++) {
+        Token[][] shelf;
+        shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
+        for(int i = 0; i < SHELF_ROWS; i++){
+            for(int j = 0; j < SHELF_COLUMNS; j++) {
                 Random random = new Random();
                 shelf[i][j]=Token.values()[random.nextInt(Token.values().length)];
             }

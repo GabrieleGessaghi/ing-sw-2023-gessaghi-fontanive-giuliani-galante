@@ -5,8 +5,8 @@ import model.exceptions.IllegalMoveException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import static model.Configuration.MAX_TOKENS_PER_TURN;
-import static model.Configuration.BOARD_SIZE;
+import static model.Configurations.MAX_TOKENS_PER_TURN;
+import static model.Configurations.BOARD_SIZE;
 
 /**
  * The board on which the game is played.
@@ -20,14 +20,14 @@ public class Board {
     /**
      * Sets the usable tiles based on the number of players and fills the board with tokens.
      * @author Giorgio Massimo Fontanive
-     * @param numberOfPlayers the number of players in this game, determines the usable tiles.
+     * @param numberOfPlayers The number of players in this game, determines the usable tiles.
      */
     public Board(int numberOfPlayers) {
         usableTiles = new boolean[BOARD_SIZE][BOARD_SIZE];
         tiles = new Token[BOARD_SIZE][BOARD_SIZE];
         bag = new Bag();
 
-        //Initialized the board's usable tiles based on number of players
+        //Initializes the board's usable tiles based on number of players
         String jsonFile = "";
         String jsonFilePath = "";
         Gson gson = new Gson();
@@ -49,7 +49,7 @@ public class Board {
     /**
      * Checks whether the board needs to be filled with tokens.
      * @author Giorgio Massimo Fontanive
-     * @return true if there are no tokens touching each other.
+     * @return True if there are no tokens touching each other.
      */
     private boolean isResetNeeded() {
         boolean resetNeeded = true;
@@ -78,9 +78,9 @@ public class Board {
     /**
      * Checks whether the tile can be selected by the player.
      * @author Giorgio Massimo Fontainve
-     * @param row the tile's row in the board.
-     * @param column the tile's column in the board.
-     * @return true if the tile has a free side and is not empty.
+     * @param row The tile's row in the board.
+     * @param column The tile's column in the board.
+     * @return True if the tile has a free side and is not empty.
      */
     private boolean isTokenSelectable(int row, int column) {
         return usableTiles[row][column] && tiles[row][column] != Token.NOTHING && (
@@ -92,10 +92,11 @@ public class Board {
 
     /**
      * Checks whether the chosen tiles can be selected within the rules of the game.
-     * @param selectedTiles a boolean matrix with true in the positions of the chosen tiles.
-     * @return true if the tiles are in an available position and if they are in a line.
+     * @param selectedTiles A boolean matrix with true in the positions of the chosen tiles.
+     * @return True if the tiles are in an available position and if they are in a line.
      */
     private boolean isMoveLegal(boolean[][] selectedTiles) {
+
         //Checks whether each tile is selectable by itself.
         boolean legal = true;
         int selectedAmount = 0;
@@ -138,7 +139,7 @@ public class Board {
     /**
      * Getter for the tiles' matrix.
      * @author Giorgio Massimo Fontanive
-     * @return the tiles' matrix.
+     * @return The tiles' matrix.
      */
     public Token[][] getTiles() {
         return tiles;
@@ -146,10 +147,10 @@ public class Board {
 
     /**
      * Converts the selected tiles into an ordered array of tokens.
-     * @throws IllegalMoveException when a move breaks the rules (check isMoveLegal).
-     * @param selectedTiles a matrix with -1 for the tiles not chosen and
+     * @throws IllegalMoveException When a move breaks the rules (check isMoveLegal).
+     * @param selectedTiles A matrix with -1 for the tiles not chosen and
      *                      the order of choice for the other ones.
-     * @return an array with the select tiles in order.
+     * @return An array with the select tiles in order.
      */
     public Token[] selectTiles(int[][] selectedTiles) throws IllegalMoveException {
         Token[] selectedTokens = new Token[MAX_TOKENS_PER_TURN];
@@ -168,7 +169,7 @@ public class Board {
 
     /**
      * Empties the board of the selected tiles.
-     * @param selectedTiles a boolean matrix with true in the positions of the tiles to be emptied.
+     * @param selectedTiles A boolean matrix with true in the positions of the tiles to be emptied.
      */
     public void removeTiles(boolean[][] selectedTiles) {
         for (int i = 0; i < tiles.length; i++)

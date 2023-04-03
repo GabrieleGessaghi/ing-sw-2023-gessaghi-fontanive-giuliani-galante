@@ -1,14 +1,15 @@
 {
-  "BOARD_SIZE": 9,
-  "MAX_TOKENS_PER_TURN": 3,
-  "ROWS_SHELF": 6,
-  "COLUMNS_SHELF": 5,
-  "MIN_PLAYERS" : 2,
-  "MAX_PLAYERS" : 4,
-  "COMMONCARD_POINTS":
+  "BOARD_SIZE" : 9,
+  "MAX_TOKENS_PER_TURN" : 3,
+  "SHELF_ROWS" : 6,
+  "SHELF_COLUMNS" : 5,
+  "PLAYERS_MIN" : 2,
+  "PLAYERS_MAX" : 4,
+  "COMMONCARD_POINTS" :
   [
     [8,4,0,0],
     [8,6,4,0],
     [8,6,4,2]
-  ]
+  ],
+  "PERSONALCARD_POINTS" : [1, 2, 4, 6, 9, 12]
 }
