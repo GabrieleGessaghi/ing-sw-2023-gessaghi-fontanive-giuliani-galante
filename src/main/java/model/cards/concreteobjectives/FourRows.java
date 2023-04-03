@@ -35,7 +35,6 @@ public class FourRows implements CommonObjective {
             for (int n = 0; n < 6; n++)
                 if(counter[n] > 0)
                     differentType++;
-
             if (differentType <= 3 && counter[6] == 0)
                 atLeastFour++;
         }

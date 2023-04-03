@@ -18,6 +18,7 @@ public class ThreeColumns implements CommonObjective {
         for (int i = 0; i < COLUMNS; i++) {
             for (int w=0; w < 7 ; w++)
                 counter[w]=0;
+            differentType = 0;
             for (int j=0; j < ROWS ; j++)
                 switch (shelf[i][j]) {
                     case CAT -> counter[0]++;
@@ -28,7 +29,6 @@ public class ThreeColumns implements CommonObjective {
                     case PLANT -> counter[5]++;
                     case NOTHING -> counter[6]++;
                 }
-            differentType = 0;
             for (int n = 0; n < 6; n++)
                 if (counter[n] > 0)
                     differentType++;
