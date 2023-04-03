@@ -7,6 +7,7 @@ class ConfigurationsTest {
 
     @Test
     public void loadConfigurationTest() {
+        assertNotEquals(Configurations.BOARD_SIZE, 9);
         Configurations.loadConfiguration("src/main/resources/configuration.json");
         assertEquals(Configurations.BOARD_SIZE, 9);
     }
