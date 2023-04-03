@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * @author Giorgio Massimo Fontanive
  */
 public class Bag {
+    //TODO: Put these constants in configuration file
     private static final int NUMBER_OF_TYPES = 6;
     private static final int TOKENS_PER_TYPE = 22;
     private final List<Token> tokens;

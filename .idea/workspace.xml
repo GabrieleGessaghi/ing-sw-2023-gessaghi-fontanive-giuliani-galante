@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Updated playerTurn in Game">
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Fixed small issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Configurations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Configurations.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/ConfigurationsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/ConfigurationsTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -489,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680534601099</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Fixed small issues">
+      <created>1680534952994</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1680534952994</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,7 +531,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added configuration.json" />
     <MESSAGE value="added Gson dependency" />
     <MESSAGE value="added configuration files" />
     <MESSAGE value="modified some typo" />
@@ -547,7 +555,8 @@
     <MESSAGE value="Created BoardTest class" />
     <MESSAGE value="Modified updatePoints" />
     <MESSAGE value="Updated playerTurn in Game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated playerTurn in Game" />
+    <MESSAGE value="Fixed small issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

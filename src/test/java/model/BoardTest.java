@@ -13,7 +13,7 @@ class BoardTest {
         Board fourPlayersBoard = new Board(4);
         Token[][] testTokens;
         testTokens = twoPlayersBoard.getTiles();
-        assertEquals(testTokens[0][0], Token.NOTHING);
-        assertNotEquals(testTokens[3][3], Token.NOTHING);
+        assertEquals(Token.NOTHING, testTokens[0][0]);
+        assertNotEquals(Token.NOTHING, testTokens[3][3]);
     }
 }

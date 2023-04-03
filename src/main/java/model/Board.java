@@ -74,10 +74,13 @@ public class Board {
      * @author Giorgio Massimo Fontanive
      */
     private void reset() {
-        for (int i = 0; i < usableTiles.length; i++)
-            for (int j = 0; j < usableTiles.length; j++)
+        for (int i = 0; i < BOARD_SIZE; i++)
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                if (tiles[i][j] == null)
+                    tiles[i][j] = Token.NOTHING;
                 if (usableTiles[i][j] && tiles[i][j] == Token.NOTHING)
                     tiles[i][j] = bag.drawToken();
+            }
     }
 
     /**
