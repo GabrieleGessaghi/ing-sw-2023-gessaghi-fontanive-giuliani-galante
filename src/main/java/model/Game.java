@@ -144,13 +144,8 @@ public class Game implements Serializable {
             }
 
             //Removes tiles from the board.
-            boolean [][] isSelected = new boolean[selectedTiles.length][selectedTiles[0].length];
-            for (int i = 0; i < isSelected.length; i++){
-                for (int j = 0; j < isSelected[0].length; j++){
-                    if (selectedTiles[i][j] != -1)
-                        isSelected[i][j] = true;
-                }
-            }
+            boolean[][] isSelected = new boolean[selectedTiles.length][selectedTiles[0].length];
+            isSelected = Board.convertSelection(selectedTiles);
             board.removeTiles(isSelected);
         }
         currentPlayerIndex++;
