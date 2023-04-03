@@ -5,95 +5,43 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * Five tiles of the same type forming a
- * diagonal.
+ * Five columns of increasing or decreasing
+ * height. Starting from the first column on
+ * the left or on the right, each next column
+ * must be made of exactly one more tile.
+ * Tiles can be of any type
  * @author Niccolò Giuliani
  */
 public class Stairs implements CommonObjective {
 
-    @Override
     public boolean isSatisfied(Token[][] shelf) {
-       return checkType(shelf,Token.CAT) || checkType(shelf,Token.BOOK) || checkType(shelf,Token.TOY) || checkType(shelf,Token.TROPHY)
-        || checkType(shelf,Token.FRAME) || checkType(shelf,Token.PLANT);
-    }
-    private boolean checkType(Token[][] shelf,Token type){
         int []counter;
         counter = new int[ROWS];
-        int k,w;
         boolean flagRight = false;
         boolean flagLeft = false;
-        boolean flagRvsdRight = false;
-        boolean flagRvsdfLeft = false;
-        k=0;
-        w=1;
-        for(k = 0,w = 1; k < 2 && flagLeft; k++, w--) {
-            flagLeft=false;
-            for (int j = 0; j < COLUMNS; j++) {
-                for (int i = k; i < ROWS - w - j; i++) {
-                    if (shelf[i][j] != type)
-                        flagLeft = true;
-
+        for(int i = 0; i< ROWS; i++)
+            counter[i] = 0;
+        for (int i = 0; i < ROWS ; i++){
+            for (int j = 0; j < COLUMNS ; j++) {
+                if (shelf[i][j] != Token.NOTHING) {
+                    counter[i]++;
                 }
             }
-
         }
+        for (int i=0; i < ROWS-1; i++)
+            if(counter[i] < counter[i]+1)
+                if(counter[i] <= counter[i]+1)
+                    flagRight = true;
+        for(int i=0; i < ROWS-1; i++)
+            if(counter[i] > counter[i]+1)
+                if(counter[i] >= counter[i]+1)
+                    flagLeft = true;
 
-        if(!flagLeft)
+        if( !flagRight || !flagLeft )
             return true;
-        else{
-            for(k = 0,w = 0; k < 2 && flagLeft; k++, w++) {
-                flagRight=false;
-                for (int j = 0; j < COLUMNS; j++) {
-                    for (int i = k; i < j + 1 + w; i++) {
-                        if (shelf[i][j] != type)
-                            flagRight = true;
-
-                    }
-                }
-
-            }
-            if(!flagRight)
-                return true;
-            else{
-                for(k = 0,w = 0; k < 2 && flagLeft; k++, w++) {
-                    flagRvsdfLeft=false;
-                    for (int j = 0; j < COLUMNS; j++) {
-                        for (int i = 4 + k; i > j + 1 + w; i--) {
-                            if (shelf[i][j] != type)
-                                flagRvsdfLeft = true;
-
-                        }
-                    }
-
-                }
-                if(!flagRvsdfLeft)
-                    return true;
-                else{
-                    for(k = 0,w = 0; k < 2 && flagLeft; k++, w++) {
-                        flagRvsdRight=false;
-                        for (int j = 0; j < COLUMNS; j++) {
-                            for (int i = 4 + k; i > 4 - j + w + 1; i--) {
-                                if (shelf[i][j] != type)
-                                    flagRvsdRight = true;
-
-                            }
-                        }
-
-                    }
-                    if(!flagRvsdRight)
-                        return true;
-                    else
-                        return false;
-                }
-            }
-
-        }
-
-
-
-
+        else
+            return false;
     }
-
     public CommonType getName(){
         return CommonType.STAIRS;
     }
