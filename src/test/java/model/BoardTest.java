@@ -14,5 +14,6 @@ class BoardTest {
         Token[][] testTokens;
         testTokens = twoPlayersBoard.getTiles();
         assertEquals(testTokens[0][0], Token.NOTHING);
+        assertNotEquals(testTokens[3][3], Token.NOTHING);
     }
 }
