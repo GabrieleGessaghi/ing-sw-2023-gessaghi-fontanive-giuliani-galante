@@ -13,6 +13,6 @@ class BoardTest {
         Board fourPlayersBoard = new Board(4);
         Token[][] testTokens;
         testTokens = twoPlayersBoard.getTiles();
-        assertEquals(testTokens[][]);
+        assertEquals(testTokens[0][0], Token.NOTHING);
     }
 }
