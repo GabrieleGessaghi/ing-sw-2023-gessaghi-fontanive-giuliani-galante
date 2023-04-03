@@ -18,24 +18,24 @@ public class TwoRows implements CommonObjective {
         int differentType;
         counter = new int[7];
         int AtLeastTwo = 0;
-        for(int i=0; i < COLUMNS ; i++){
+        for(int i=0; i < ROWS ; i++){
             for(int w=0; w < 7 ; w++)
                 counter[w]=0;
             differentType = 0;
-            for(int j=0; j < ROWS ; j++){
-                if(shelf[j][i] == Token.CAT )
+            for(int j=0; j < COLUMNS ; j++){
+                if(shelf[i][j] == Token.CAT )
                     counter[0]++;
-                else if(shelf[j][i] == Token.BOOK)
+                else if(shelf[i][j] == Token.BOOK)
                     counter[1]++;
-                else if(shelf[j][i] == Token.TOY)
+                else if(shelf[i][j] == Token.TOY)
                     counter[2]++;
-                else if(shelf[j][i] == Token.TROPHY)
+                else if(shelf[i][j] == Token.TROPHY)
                     counter[3]++;
-                else if(shelf[j][i] == Token.FRAME)
+                else if(shelf[i][j] == Token.FRAME)
                     counter[4]++;
-                else if(shelf[j][i] == Token.PLANT)
+                else if(shelf[i][j] == Token.PLANT)
                     counter[5]++;
-                else if(shelf[j][i] == Token.NOTHING)
+                else if(shelf[i][j] == Token.NOTHING)
                     counter[6]++;
             }
             for(int n=0; n < 6; n++){

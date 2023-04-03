@@ -25,8 +25,8 @@ public class TwoSquares implements CommonObjective {
         for(int i = 0; i < 7; i++)
             atLeastTwo[i]=0;
 
-        for(int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; j++) {
+        for(int i = 0; i < ROWS - 1; i++) {
+            for (int j = 0; j < COLUMNS - 1; j++) {
                 if(!check[i][j] && shelf[i][j] != Token.NOTHING && i < 5 && j < 4){
                     if(shelf[i][j] == shelf[i][j + 1] && shelf[i][j] == shelf[i + 1][j] && shelf[i][j] == shelf[i +1][j + 1]
                     && !check[i][j + 1] && !check[i + 1][j] && !check[i + 1][j + 1]) {
