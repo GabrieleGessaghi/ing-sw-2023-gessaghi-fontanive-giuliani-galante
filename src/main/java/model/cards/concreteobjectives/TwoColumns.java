@@ -12,48 +12,33 @@ import model.cards.CommonType;
 public class TwoColumns implements CommonObjective {
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-
-            int[] counter;
-            int differentType;
-            counter = new int[7];
-            int AtLeastTwo = 0;
-            for(int i=0; i < COLUMNS ; i++){
-                for(int w=0; w < 7 ; w++)
-                    counter[w]=0;
-                differentType = 0;
-                for(int j=0; j < ROWS ; j++){
-                    if(shelf[i][j] == Token.CAT )
-                        counter[0]++;
-                    else if(shelf[i][j] == Token.BOOK)
-                        counter[1]++;
-                    else if(shelf[i][j] == Token.TOY)
-                        counter[2]++;
-                    else if(shelf[i][j] == Token.TROPHY)
-                        counter[3]++;
-                    else if(shelf[i][j] == Token.FRAME)
-                        counter[4]++;
-                    else if(shelf[i][j] == Token.PLANT)
-                        counter[5]++;
-                    else if(shelf[i][j] == Token.NOTHING)
-                        counter[6]++;
+        int[] counter = new int[7];
+        int differentType;
+        int atLeastTwo = 0;
+        for(int i = 0; i < COLUMNS ; i++) {
+            for(int w = 0; w < 7 ; w++)
+                counter[w]=0;
+            differentType = 0;
+            for(int j=0; j < ROWS ; j++)
+                switch (shelf[i][j]) {
+                    case CAT -> counter[0]++;
+                    case BOOK -> counter[1]++;
+                    case TOY -> counter[2]++;
+                    case TROPHY -> counter[3]++;
+                    case FRAME -> counter[4]++;
+                    case PLANT -> counter[5]++;
+                    case NOTHING -> counter[6]++;
                 }
-                for(int n=0; n < 6; n++){
-                    if(counter[n] > 0)
-                        differentType++;
-                }
-                if(differentType == 6 && counter[6] == 0)
-                    AtLeastTwo++;
-            }
-
-            if(AtLeastTwo >= 2)
-                return true;
-            else
-                return false;
-
+            for (int n=0; n < 6; n++)
+                if(counter[n] > 0)
+                    differentType++;
+            if (differentType == 6 && counter[6] == 0)
+                atLeastTwo++;
+        }
+        return atLeastTwo >= 2;
     }
+
     public CommonType getName(){
         return CommonType.TWOCOLUMNS;
     }
-
-
 }

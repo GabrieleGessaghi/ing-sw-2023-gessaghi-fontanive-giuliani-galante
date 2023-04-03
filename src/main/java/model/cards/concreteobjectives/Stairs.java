@@ -15,31 +15,23 @@ import model.cards.CommonType;
 public class Stairs implements CommonObjective {
 
     public boolean isSatisfied(Token[][] shelf) {
-        int []counter;
+        int[] counter;
         counter = new int[COLUMNS];
         boolean flagRight = false;
         boolean flagLeft = false;
-        for(int i = 0; i < COLUMNS; i++)
+        for (int i = 0; i < COLUMNS; i++)
             counter[i] = 0;
-        for (int i = 0; i < COLUMNS ; i++){
-            for (int j = 0; j < ROWS ; j++) {
-                if (shelf[j][i] != Token.NOTHING) {
+        for (int i = 0; i < COLUMNS ; i++)
+            for (int j = 0; j < ROWS ; j++)
+                if (shelf[j][i] != Token.NOTHING)
                     counter[i]++;
-                }
-            }
-        }
-        for (int i = 0; i < COLUMNS-1; i++)
+        for (int i = 0; i < COLUMNS - 1; i++)
             if(counter[i] != counter[i + 1] + 1 )
                     flagLeft = true;
-
-        for(int i = 0; i < COLUMNS-1; i++)
-            if(counter[i] != counter[i + 1] - 1)
+        for (int i = 0; i < COLUMNS - 1; i++)
+            if (counter[i] != counter[i + 1] - 1)
                     flagRight = true;
-
-        if( !flagRight || !flagLeft )
-            return true;
-        else
-            return false;
+        return !flagRight || !flagLeft;
     }
     public CommonType getName(){
         return CommonType.STAIRS;

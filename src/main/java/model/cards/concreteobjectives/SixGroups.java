@@ -17,16 +17,16 @@ public class SixGroups implements CommonObjective {
     @Override
     public boolean isSatisfied(Token[][] shelf) {
         int counter = 0;
-        boolean flag = false;
+        boolean flag;
         boolean [][] check;
         check = new boolean[ROWS][COLUMNS];
-        for(int i = 0; i < ROWS ; i++)
-            for(int j = 0; j< COLUMNS ; j++)
+        for (int i = 0; i < ROWS ; i++)
+            for (int j = 0; j< COLUMNS ; j++)
                 check[i][j] = false;
         for (int i = 0; i < ROWS - 1 && counter < 6; i++){
             for (int j = 0; j < COLUMNS - 1 ; j++){
                 flag = false;
-                if(shelf[i][j] != Token.NOTHING && !check[i][j]) {
+                if (shelf[i][j] != Token.NOTHING && !check[i][j]) {
                     if (shelf[i][j] == shelf[i][j + 1]) {
                         counter++;
                         flag = true;

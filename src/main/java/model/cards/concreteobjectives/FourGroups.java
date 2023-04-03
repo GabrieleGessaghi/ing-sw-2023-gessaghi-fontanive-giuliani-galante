@@ -31,18 +31,17 @@ public class FourGroups implements CommonObjective {
         int counterPerToken = 0;
         counterInterIsland = 0;
         boolean[][] checked = new boolean[ROWS][COLUMNS];
-        for(int i = 0; i < SHELF_ROWS; i++)
-            for(int j = 0; j < SHELF_COLUMNS; j++)
+        for (int i = 0; i < SHELF_ROWS; i++)
+            for (int j = 0; j < SHELF_COLUMNS; j++)
                 checked[i][j] = false;
-        for(int i = 0; i < ROWS; i++){
-            for(int j = 0; j < COLUMNS; j++)
-                if(shelf[i][j] == type && !checked[i][j]){
+        for (int i = 0; i < ROWS; i++)
+            for (int j = 0; j < COLUMNS; j++)
+                if (shelf[i][j] == type && !checked[i][j]){
                     counterInterIsland = 1;
                     findIsland(shelf, i, j, checked, type);
-                    if(counterInterIsland >= 4)
+                    if (counterInterIsland >= 4)
                         counterPerToken ++;
                 }
-        }
         return counterPerToken;
     }
 
