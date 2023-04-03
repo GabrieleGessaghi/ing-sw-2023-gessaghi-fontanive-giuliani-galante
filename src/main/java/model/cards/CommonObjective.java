@@ -10,7 +10,8 @@ import static model.Configurations.SHELF_ROWS;
  * @author Niccolò Giuliani
  */
 public interface CommonObjective {
-     //TODO: Move these to the shelf class
+
+      //TODO: USE CONFIGURATION CONSTANTS
       int ROWS= SHELF_ROWS;
       int COLUMNS= SHELF_COLUMNS;
 
@@ -25,7 +26,7 @@ public interface CommonObjective {
      /**
       * Getter for the card's name.
       * @author Niccolò Giuliani
-      * @return the card's name.
+      * @return The card's name.
       */
      public CommonType getName();
 }

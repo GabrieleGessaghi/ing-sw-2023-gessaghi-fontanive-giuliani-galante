@@ -10,8 +10,8 @@ public abstract class Card {
     /**
      * Returns the number of points the given shelf will get.
      * @author Niccolò Giuliani
-     * @param shelf a matrix of Tokens taken from a player's shelf.
-     * @return the number of points this shelf will get.
+     * @param shelf A matrix of Tokens taken from a player's shelf.
+     * @return The number of points this shelf would get.
      */
     public abstract int getPoints(Token[][]shelf);
 }
