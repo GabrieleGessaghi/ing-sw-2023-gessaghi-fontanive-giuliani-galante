@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static model.Configuration.COLUMNS_SHELF;
-import static model.Configuration.ROWS_SHELF;
+import static model.Configurations.COLUMNS_SHELF;
+import static model.Configurations.ROWS_SHELF;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiagonalTest {
@@ -14,7 +14,7 @@ class DiagonalTest {
     @Test
     void leftDiagonalOne(){
         var leftDiagonal = new Diagonal();
-        Token shelf[][];
+        Token[][] shelf;
         shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
         shelf[0][0]=Token.CAT;
         shelf[1][1]=Token.CAT;
@@ -27,7 +27,7 @@ class DiagonalTest {
     @Test
     void leftDiagonalTwo(){
         var leftDiagonal = new Diagonal();
-        Token shelf[][];
+        Token[][] shelf;
         shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
         shelf[1][0]=Token.CAT;
         shelf[2][1]=Token.CAT;
@@ -40,7 +40,7 @@ class DiagonalTest {
     @Test
     void rightDiagonalOne(){
         var rightDiagonal = new Diagonal();
-        Token shelf[][];
+        Token[][] shelf;
         shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
         shelf[0][4]=Token.CAT;
         shelf[1][3]=Token.CAT;
@@ -52,7 +52,7 @@ class DiagonalTest {
     @Test
     void rightDiagonalTwo(){
         var rightDiagonal = new Diagonal();
-        Token shelf[][];
+        Token[][] shelf;
         shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
         shelf[1][4]=Token.CAT;
         shelf[2][3]=Token.CAT;
@@ -65,7 +65,7 @@ class DiagonalTest {
     @Test
     void wrongScenario(){
         var wrong = new Diagonal();
-        Token shelf[][];
+        Token[][] shelf;
         shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
         for(int i = 0; i < ROWS_SHELF; i++){
             for(int j = 0; j < COLUMNS_SHELF; j++) {

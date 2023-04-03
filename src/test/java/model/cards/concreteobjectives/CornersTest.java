@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static model.Configuration.COLUMNS_SHELF;
-import static model.Configuration.ROWS_SHELF;
+import static model.Configurations.COLUMNS_SHELF;
+import static model.Configurations.ROWS_SHELF;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CornersTest {

@@ -5,8 +5,8 @@ import model.exceptions.IllegalMoveException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import static model.Configuration.MAX_TOKENS_PER_TURN;
-import static model.Configuration.BOARD_SIZE;
+import static model.Configurations.MAX_TOKENS_PER_TURN;
+import static model.Configurations.BOARD_SIZE;
 
 /**
  * The board on which the game is played.

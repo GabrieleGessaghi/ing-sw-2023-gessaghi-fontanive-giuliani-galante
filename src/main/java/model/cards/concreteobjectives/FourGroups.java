@@ -4,8 +4,8 @@ import model.Token;
 import model.cards.CommonObjective;
 import model.cards.CommonType;
 
-import static model.Configuration.COLUMNS_SHELF;
-import static model.Configuration.ROWS_SHELF;
+import static model.Configurations.COLUMNS_SHELF;
+import static model.Configurations.ROWS_SHELF;
 
 /**
  * Four groups each containing at least
@@ -29,12 +29,12 @@ public class FourGroups implements CommonObjective {
     private int checkType(Token type, Token[][] shelf){
         int counterPerToken = 0;
         counterInterIsland = 0;
-        boolean[][] checked = new boolean[ROWS_SHELF][COLUMNS_SHELF];
+        boolean[][] checked = new boolean[ROWS][COLUMNS];
         for(int i = 0; i < ROWS_SHELF; i++)
             for(int j = 0; j < COLUMNS_SHELF; j++)
                 checked[i][j] = false;
-        for(int i = 0; i < ROWS_SHELF; i++){
-            for(int j = 0; j < COLUMNS_SHELF; j++)
+        for(int i = 0; i < ROWS; i++){
+            for(int j = 0; j < COLUMNS; j++)
                 if(shelf[i][j] == type && !checked[i][j]){
                     counterInterIsland = 1;
                     findIsland(shelf, i, j, checked, type);
@@ -65,7 +65,7 @@ public class FourGroups implements CommonObjective {
     boolean isOk(Token[][] M, int row, int col,
                    boolean[][] checked, Token type)
     {
-        return (row >= 0) && (row < ROWS_SHELF) && (col >= 0) && (col < COLUMNS_SHELF)
+        return (row >= 0) && (row < ROWS) && (col >= 0) && (col < COLUMNS)
                 && (M[row][col] == type && !checked[row][col]);
     }
 

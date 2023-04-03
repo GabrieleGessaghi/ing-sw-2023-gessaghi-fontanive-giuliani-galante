@@ -1,8 +1,8 @@
 package model.cards;
 
 import model.Token;
-import static model.Configuration.COMMONCARD_POINTS;
-import static model.Configuration.MIN_PLAYERS;
+import static model.Configurations.COMMONCARD_POINTS;
+import static model.Configurations.MIN_PLAYERS;
 
 /**
  * Common objective cards of the game.

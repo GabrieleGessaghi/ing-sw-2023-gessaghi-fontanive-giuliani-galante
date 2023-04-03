@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="created FourRowsTest and SixGroupsTest">
-      <change afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourRowsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/SixGroupsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Configurations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourRows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourRows.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/SixGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/SixGroups.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourRows.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourRows.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/SixGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/SixGroups.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Configuration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/CommonCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,21 +67,22 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="model.cards" />
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FourRowsTest.threeCase">
-    <configuration name="FourRowsTest.fourCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CommonCardTest.twoPlayers">
+    <configuration name="CommonCardTest.twoPlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="PATTERN" value="model.cards.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourRowsTest" />
-      <option name="METHOD_NAME" value="fourCase" />
+      <option name="PACKAGE_NAME" value="model.cards" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.CommonCardTest" />
+      <option name="METHOD_NAME" value="twoPlayers" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -155,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CommonCardTest.twoPlayers" />
         <item itemvalue="JUnit.FourRowsTest.threeCase" />
         <item itemvalue="JUnit.SixGroupsTest" />
         <item itemvalue="JUnit.SixGroupsTest.fiveCase" />
         <item itemvalue="JUnit.SixGroupsTest.sixCase" />
-        <item itemvalue="JUnit.FourRowsTest.fourCase" />
       </list>
     </recent_temporary>
   </component>
@@ -376,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680511950742</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="created FourRowsTest and SixGroupsTest">
+      <created>1680515298223</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1680515298223</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

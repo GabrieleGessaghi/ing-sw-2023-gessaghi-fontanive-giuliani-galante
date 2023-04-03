@@ -2,8 +2,8 @@ package model.cards;
 
 import model.Token;
 
-import static model.Configuration.COLUMNS_SHELF;
-import static model.Configuration.ROWS_SHELF;
+import static model.Configurations.COLUMNS_SHELF;
+import static model.Configurations.ROWS_SHELF;
 
 /**
  * Interface for implementing the strategy pattern.

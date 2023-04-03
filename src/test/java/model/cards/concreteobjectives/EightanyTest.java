@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static model.Configuration.COLUMNS_SHELF;
-import static model.Configuration.ROWS_SHELF;
+import static model.Configurations.COLUMNS_SHELF;
+import static model.Configurations.ROWS_SHELF;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EightanyTest {
@@ -15,7 +15,7 @@ class EightanyTest {
         var trueS = new Eightany();
         int indexRow;
         int indexColumn;
-        Token shelf[][];
+        Token[][] shelf;
         Token type;
         Random random =new Random();
         shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
@@ -46,7 +46,7 @@ class EightanyTest {
     @Test
     void wrongScenario(){
         var wrong = new Eightany();
-        Token shelf[][];
+        Token[][] shelf;
         Random random =new Random();
         shelf = new Token[ROWS_SHELF][COLUMNS_SHELF];
 
