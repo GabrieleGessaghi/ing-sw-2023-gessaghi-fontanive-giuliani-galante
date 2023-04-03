@@ -58,8 +58,18 @@ public class Configurations {
      * @throws IOException When the reader has an issue.
      */
     public static int[][] readMatrix(JsonReader jsonReader) throws IOException {
-        int[][] matrix = new int[0][0];
-
+        int columns = PLAYERS_MAX;
+        int rows = PLAYERS_MAX - PLAYERS_MIN + 1;
+        int[][] matrix = new int[rows][columns];
+        jsonReader.beginArray();
+        for (int i = 0; jsonReader.hasNext(); i++) {
+            jsonReader.beginArray();
+            for (int j = 0; jsonReader.hasNext(); j++) {
+                matrix[i][j] = jsonReader.nextInt();
+            }
+            jsonReader.endArray();
+        }
+        jsonReader.endArray();
         return matrix;
     }
 }

@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="changed Configuration in Configurations">
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Implemented loading of configuration file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Configurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/CommonCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/CommonObjective.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/CommonObjective.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/configuration.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/CornersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/CornersTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/DiagonalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/DiagonalTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/EightanyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/EightanyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourRowsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourRowsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/SixGroupsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/SixGroupsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/StairsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/StairsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680517748002</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Implemented loading of configuration file">
+      <created>1680522468518</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1680522468518</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,7 +433,8 @@
     <MESSAGE value="edited FourGropus" />
     <MESSAGE value="created FourRowsTest and SixGroupsTest" />
     <MESSAGE value="changed Configuration in Configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed Configuration in Configurations" />
+    <MESSAGE value="Implemented loading of configuration file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented loading of configuration file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
