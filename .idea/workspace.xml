@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Fixed formatting">
-      <change afterPath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/configuration.json" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Created BoardTest class">
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -457,7 +455,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680526082008</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Created BoardTest class">
+      <created>1680526976990</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1680526976990</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,7 +495,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edited javadoc" />
     <MESSAGE value="edited Stairs.isSatisfied" />
     <MESSAGE value="edited TwoRows.isSatisfied and FourRows.isSatisfied" />
     <MESSAGE value="added configuration.json" />
@@ -515,7 +519,8 @@
     <MESSAGE value="Added TODOs" />
     <MESSAGE value="Fixed typos" />
     <MESSAGE value="Fixed formatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed formatting" />
+    <MESSAGE value="Created BoardTest class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created BoardTest class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
