@@ -1,12 +1,11 @@
 package model;
 
 import model.exceptions.FullColumnException;
-
 import java.util.Arrays;
+import static model.Configurations.SHELF_COLUMNS;
+import static model.Configurations.SHELF_ROWS;
 
 public class Shelf {
-    private final static int COLUMNS = 5;
-    private final static int ROWS = 6;
     private final Token [][] tiles;
 
     /**
@@ -14,7 +13,7 @@ public class Shelf {
      * @author Gabriele Gessaghi
      */
     public Shelf() {
-        tiles = new Token[ROWS][COLUMNS];
+        tiles = new Token[SHELF_ROWS][SHELF_COLUMNS];
         for (Token[] row: tiles)
             Arrays.fill(row, Token.NOTHING);
     }
@@ -22,7 +21,7 @@ public class Shelf {
     /**
      * Getter for the current state of the shelf.
      * @author Gabriele Gessaghi
-     * @return the tiles matrix of Tokens.
+     * @return The tiles matrix of Tokens.
      */
     public Token[][] getTiles() {
         return tiles;
@@ -31,11 +30,11 @@ public class Shelf {
     /**
      * Insert the new token inside the first free cell of the selected column.
      * @author Gabriele Gessaghi
-     * @param token token to be inserted inside the shelf.
-     * @param column column where the token has to bbe inserted.
+     * @param token Token to be inserted inside the shelf.
+     * @param column Column where the token has to bbe inserted.
      */
     public void insertToken(Token token, int column) throws FullColumnException {
-        for (int i = 0; i < ROWS; i++)
+        for (int i = 0; i < SHELF_ROWS; i++)
             if (tiles[i][column].equals((Token.NOTHING))) {
                 tiles[i][column] = token;
                 return;
@@ -46,10 +45,10 @@ public class Shelf {
     /**
      * Remove the last inserted token of a given column.
      * @author Gabriele Gessaghi
-     * @param column column where the token has to bbe inserted.
+     * @param column Column where the token has to be inserted.
      */
     public void removeToken(int column) {
-        for (int i = ROWS; i >= 0; i--)
+        for (int i = SHELF_ROWS; i >= 0; i--)
             if (!tiles[i][column].equals((Token.NOTHING))) {
                 tiles[i][column] = Token.NOTHING;
                 return;
