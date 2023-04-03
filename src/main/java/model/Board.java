@@ -43,7 +43,7 @@ public class Board {
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            usableTiles = convertSelection(Configurations.readMatrix(jsonReader, BOARD_SIZE, BOARD_SIZE));
+            usableTiles = convertSelection(Configurations.readMatrix(jsonReader, BOARD_SIZE, BOARD_SIZE), 0);
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -195,13 +195,14 @@ public class Board {
      * Converts a matrix of integers into booleans.
      * @author Giorgio Massimo Fontanive
      * @param selectedTiles A matrix with -1 for the tiles not chosen.
+     * @param exclusionNumber The number which sets the tile to false.
      * @return A matrix with true in the position of the chosen tiles.
      */
-    public static boolean[][] convertSelection(int[][] selectedTiles) {
+    public static boolean[][] convertSelection(int[][] selectedTiles, int exclusionNumber) {
         boolean[][] convertedSelection = new boolean[selectedTiles.length][selectedTiles.length];
         for (int i = 0; i < selectedTiles.length; i++)
             for (int j = 0; j < selectedTiles[i].length; j++)
-                if (selectedTiles[i][j] != -1)
+                if (selectedTiles[i][j] != exclusionNumber)
                     convertedSelection[i][j] = true;
         return convertedSelection;
     }

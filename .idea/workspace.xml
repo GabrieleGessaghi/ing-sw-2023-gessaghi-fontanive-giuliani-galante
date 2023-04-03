@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Fixed small issues">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Updated Board.reset">
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Configurations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Configurations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/ConfigurationsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/ConfigurationsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Bag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bag.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -498,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680534952994</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Updated Board.reset">
+      <created>1680535415356</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1680535415356</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,7 +534,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added Gson dependency" />
     <MESSAGE value="added configuration files" />
     <MESSAGE value="modified some typo" />
     <MESSAGE value="add CornersTest" />
@@ -556,7 +558,8 @@
     <MESSAGE value="Modified updatePoints" />
     <MESSAGE value="Updated playerTurn in Game" />
     <MESSAGE value="Fixed small issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issues" />
+    <MESSAGE value="Updated Board.reset" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Board.reset" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
