@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="created FourRowsTest and SixGroupsTest">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Configurations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="changed Configuration in Configurations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Configuration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/CommonCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Configurations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +69,39 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CommonCardTest.twoPlayers">
+  <component name="RunManager" selected="JUnit.CommonCardTest.fourPlayers">
+    <configuration name="CommonCardTest.fourPlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.CommonCardTest" />
+      <option name="METHOD_NAME" value="fourPlayers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommonCardTest.threePlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.CommonCardTest" />
+      <option name="METHOD_NAME" value="threePlayers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CommonCardTest.twoPlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -119,45 +149,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SixGroupsTest.fiveCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.SixGroupsTest" />
-      <option name="METHOD_NAME" value="fiveCase" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SixGroupsTest.sixCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.SixGroupsTest" />
-      <option name="METHOD_NAME" value="sixCase" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CommonCardTest.fourPlayers" />
+        <item itemvalue="JUnit.CommonCardTest.threePlayers" />
         <item itemvalue="JUnit.CommonCardTest.twoPlayers" />
         <item itemvalue="JUnit.FourRowsTest.threeCase" />
         <item itemvalue="JUnit.SixGroupsTest" />
-        <item itemvalue="JUnit.SixGroupsTest.fiveCase" />
-        <item itemvalue="JUnit.SixGroupsTest.sixCase" />
       </list>
     </recent_temporary>
   </component>
@@ -381,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680515298223</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="changed Configuration in Configurations">
+      <created>1680517748002</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1680517748002</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +425,8 @@
     <MESSAGE value="edited FourGropus and created  FourGroupsTest" />
     <MESSAGE value="edited FourGropus" />
     <MESSAGE value="created FourRowsTest and SixGroupsTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="created FourRowsTest and SixGroupsTest" />
+    <MESSAGE value="changed Configuration in Configurations" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed Configuration in Configurations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

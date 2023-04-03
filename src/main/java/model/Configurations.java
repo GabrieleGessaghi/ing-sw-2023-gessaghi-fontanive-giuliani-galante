@@ -5,7 +5,7 @@ package model;
  * @author Niccolò Giuliani
 */
 public class Configurations {
-    public static int BOARD_SIZE, MAX_TOKENS_PER_TURN,  MIN_PLAYERS, MAX_PLAYERS;
+    public static int BOARD_SIZE, MAX_TOKENS_PER_TURN,  MIN_PLAYERS = 2, MAX_PLAYERS = 4;
     public static int ROWS_SHELF=6;
     public static int COLUMNS_SHELF=5;
     public static int [][] COMMONCARD_POINTS;
@@ -23,9 +23,8 @@ public class Configurations {
         COMMONCARD_POINTS[2][1] = 6;
         COMMONCARD_POINTS[2][2] = 4;
         COMMONCARD_POINTS[2][3] = 2;
+
     }
-    public int ok(){
-        return 0;
-    }
+
 
 }
