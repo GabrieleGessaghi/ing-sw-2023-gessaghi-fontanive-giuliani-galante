@@ -40,7 +40,7 @@ public class Configurations {
                     case "SHELF_COLUMNS" -> SHELF_COLUMNS = jsonReader.nextInt();
                     case "PLAYERS_MIN" -> PLAYERS_MIN = jsonReader.nextInt();
                     case "PLAYERS_MAX" -> PLAYERS_MAX = jsonReader.nextInt();
-                    case "COMMONCARD_POINTS" -> COMMONCARD_POINTS = readMatrix(jsonReader);
+                    case "COMMONCARD_POINTS" -> COMMONCARD_POINTS = readMatrix(jsonReader, PLAYERS_MAX - PLAYERS_MIN + 1, PLAYERS_MAX);
                     default -> jsonReader.skipValue();
                 }
             }
@@ -57,9 +57,7 @@ public class Configurations {
      * @return The matrix read from the json file.
      * @throws IOException When the reader has an issue.
      */
-    public static int[][] readMatrix(JsonReader jsonReader) throws IOException {
-        int columns = PLAYERS_MAX;
-        int rows = PLAYERS_MAX - PLAYERS_MIN + 1;
+    public static int[][] readMatrix(JsonReader jsonReader, int rows, int columns) throws IOException {
         int[][] matrix = new int[rows][columns];
         jsonReader.beginArray();
         for (int i = 0; jsonReader.hasNext(); i++) {

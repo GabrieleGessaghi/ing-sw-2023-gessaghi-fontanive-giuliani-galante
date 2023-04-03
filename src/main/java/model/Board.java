@@ -43,7 +43,7 @@ public class Board {
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            usableTiles = convertSelection(Configurations.readMatrix(jsonReader));
+            usableTiles = convertSelection(Configurations.readMatrix(jsonReader, BOARD_SIZE, BOARD_SIZE));
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
