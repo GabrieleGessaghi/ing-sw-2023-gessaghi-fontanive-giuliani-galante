@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Updated Board.reset">
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Fixed convertSelection">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Bag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +72,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTest.constructorTest">
+  <component name="RunManager" selected="JUnit.BoardTest.selectTilesTest">
     <configuration name="BoardTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -103,6 +105,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BoardTest.selectTilesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.BoardTest" />
+      <option name="METHOD_NAME" value="selectTilesTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CommonCardTest.fourPlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -114,22 +132,6 @@
       <option name="PACKAGE_NAME" value="model.cards" />
       <option name="MAIN_CLASS_NAME" value="model.cards.CommonCardTest" />
       <option name="METHOD_NAME" value="fourPlayers" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommonCardTest.threePlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.CommonCardTest" />
-      <option name="METHOD_NAME" value="threePlayers" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -153,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BoardTest.selectTilesTest" />
         <item itemvalue="JUnit.BoardTest.constructorTest" />
         <item itemvalue="JUnit.ConfigurationsTest.loadConfigurationTest" />
         <item itemvalue="JUnit.BoardTest.isResetNeededTest" />
         <item itemvalue="JUnit.CommonCardTest.fourPlayers" />
-        <item itemvalue="JUnit.CommonCardTest.threePlayers" />
       </list>
     </recent_temporary>
   </component>
@@ -501,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680535415356</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Fixed convertSelection">
+      <created>1680535741210</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1680535741211</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +543,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added configuration files" />
     <MESSAGE value="modified some typo" />
     <MESSAGE value="add CornersTest" />
     <MESSAGE value="junit 5.9.2" />
@@ -559,7 +567,8 @@
     <MESSAGE value="Updated playerTurn in Game" />
     <MESSAGE value="Fixed small issues" />
     <MESSAGE value="Updated Board.reset" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Board.reset" />
+    <MESSAGE value="Fixed convertSelection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed convertSelection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

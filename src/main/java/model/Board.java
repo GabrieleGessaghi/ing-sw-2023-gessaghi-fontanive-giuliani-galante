@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+
 import static model.Configurations.MAX_TOKENS_PER_TURN;
 import static model.Configurations.BOARD_SIZE;
 
@@ -163,8 +165,10 @@ public class Board {
      * @return An array with the select tiles in order.
      */
     public Token[] selectTiles(int[][] selectedTiles) throws IllegalMoveException {
+        //TODO: Use convertSelection
         Token[] selectedTokens = new Token[MAX_TOKENS_PER_TURN];
         boolean[][] selectedTilesBoolean = new boolean[tiles.length][tiles.length];
+        Arrays.fill(selectedTokens, Token.NOTHING);
         for (int i = 0; i < tiles.length; i++)
             for (int j = 0; j < tiles.length; j++)
                 if (selectedTiles[i][j] != -1) {
