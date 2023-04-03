@@ -13,17 +13,17 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class Game implements Serializable {
-    private String gameID;
+    private final String gameID;
     private int currentPlayerIndex;
-    private Board board;
+    private final Board board;
     private final Player[] players;
-    private Chat chat;
+    private final Chat chat;
 
     /**
      * Class constructor, currentPlayer is set to player with firstPlayer true.
      * @author Gabriele Gessaghi
      * @param numberOfPlayers is the number of players of the game session.
-     * @param playerNicknames
+     * @param playerNicknames a list of all the players' nicknames
      */
     public Game(int numberOfPlayers, ArrayList<String> playerNicknames) {
         chat = new Chat();
@@ -36,7 +36,7 @@ public class Game implements Serializable {
             Date now = new Date();
             String input = now.toString();
             byte[] hash = md.digest(input.getBytes());
-            int code = Math.abs(hash.hashCode()) % 10000;
+            int code = Math.abs(Arrays.hashCode(hash)) % 10000;
             gameID = String.format("%04d", code);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
@@ -44,23 +44,25 @@ public class Game implements Serializable {
 
         genCommonCard(numberOfPlayers);
 
+        //TODO: Add personal card generation
+
         for (int i = 0; i < numberOfPlayers; i++)
             players[i] = new Player(playerNicknames.get(i),false,null,null);
         currentPlayerIndex = 0;
-        //TODO: add method to determine whether player is first or not; necessary for constructor
-        //TODO: add personal and common cards as parameters
 
+        //TODO: Add personal and common cards as parameters
     }
 
     /**
      * Generates two random commonCard for the current game.
-     * @author Gabriele Gessaghi
      * @param numberOfPlayers is the number of player for the current game.
-     * @return a list with the commonCard objects.
+     * @author Gabriele Gessaghi
      */
     private ArrayList<CommonCard> genCommonCard (int numberOfPlayers){
         ArrayList<CommonType> types = new ArrayList<CommonType>(Arrays.asList(CommonType.values()));
+
         //TODO: Avoid duplicating code
+
         Collections.shuffle(types);
         CommonType commonType1 = types.get(0);
         CommonType commonType2 = types.get(1);
@@ -100,14 +102,13 @@ public class Game implements Serializable {
         ArrayList <CommonCard> commonCards = new ArrayList<>();
         commonCards.add(new CommonCard(commonObj1, numberOfPlayers));
         commonCards.add(new CommonCard(commonObj2, numberOfPlayers));
-
         return commonCards;
     }
 
     /**
      * Save the game state in case of disconnections or other problems.
      * @author Gabriele Gessaghi
-     * @throws IOException
+     * @throws IOException when there's an error in the file creation.
      */
     private void saveGame() throws IOException {
         String fileName = String.format("/game-%s.txt",gameID);
@@ -121,39 +122,41 @@ public class Game implements Serializable {
     /**
      * Collect the selected tiles from the game board and update the current player shelf.
      * @author Gabriele Gessaghi
-     * @param selectedTiles
-     * @param column
-     * @throws IllegalMoveException
-     * @throws FullColumnException
+     * @param selectedTiles a matrix with -1 for the tiles not chosen and
+     *      *               the order of choice for the other ones.
+     * @param column the column on which the player wants to put the new tiles.
      */
     public void playerTurn (int [][] selectedTiles, int column){
         if (players[currentPlayerIndex].isConnected) {
-            Token[] selectedTokens = null;
+
+            //Gets the tiles from the board.
+            Token[] selectedTokens;
             try{
                 selectedTokens = board.selectTiles(selectedTiles);
-            }catch (IllegalMoveException e){
+            }catch (IllegalMoveException e1){
                 System.out.println("The selected tokens are not valid!");
                 return;
             }
-            boolean [][] isSelected = new boolean[selectedTiles.length][selectedTiles[0].length];
-            for (int i=0; i< isSelected.length; i++){
-                for (int j=0; j< isSelected[0].length; j++){
-                    if (selectedTiles[i][j]!=0)
-                        isSelected[i][j] = true;
-                }
-            }
-            board.removeTiles(isSelected);
 
+            //Inserts the tokens in the shelf.
             try{
                 players[currentPlayerIndex].insertTokens(selectedTokens, column);
-            }catch (FullColumnException e1) {
+            }catch (FullColumnException e2) {
                 System.out.println("The selected column can't store all the selected tokens!");
                 return;
             }
 
-            //If is all ok
-            currentPlayerIndex++;
+            //Removes tiles from the board.
+            boolean [][] isSelected = new boolean[selectedTiles.length][selectedTiles[0].length];
+            for (int i = 0; i < isSelected.length; i++){
+                for (int j = 0; j < isSelected[0].length; j++){
+                    if (selectedTiles[i][j] != -1)
+                        isSelected[i][j] = true;
+                }
+            }
+            board.removeTiles(isSelected);
         }
+        currentPlayerIndex++;
     }
 
     /**

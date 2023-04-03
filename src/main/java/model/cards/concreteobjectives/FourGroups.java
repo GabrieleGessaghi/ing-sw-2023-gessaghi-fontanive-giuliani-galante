@@ -42,7 +42,8 @@ public class FourGroups implements CommonObjective {
         }
         return counterPerToken;
     }
-    private void DFS(Token M[][], int row, int col,
+
+    private void DFS(Token[][] M, int row, int col,
                      boolean[][] visited, Token type){
         int[] rowNbr
                 = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
