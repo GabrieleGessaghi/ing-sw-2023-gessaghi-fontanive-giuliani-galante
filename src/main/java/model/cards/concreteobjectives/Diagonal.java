@@ -15,10 +15,10 @@ public class Diagonal implements CommonObjective {
     public boolean isSatisfied(Token[][] shelf) {
         boolean flag = false;
         int i = 0;
-        for (int k = 0; k < 2 && flag == false; k++) {
+        for (int k = 0; k < 2 && !flag; k++) {
             i = k;
             if(shelf[k][0] != Token.NOTHING) {
-                for (int j = 0; j < COLUMNS && flag == false; j++,i++) {
+                for (int j = 0; j < COLUMNS && !flag; j++,i++) {
                     if (shelf[k][0] != shelf[i][j]) {
                         flag = true;
 
@@ -28,10 +28,10 @@ public class Diagonal implements CommonObjective {
         }
         if(flag) {
             flag = false;
-            for (int k = 0; k < 2 && flag == false; k++) {
+            for (int k = 0; k < 2 && !flag; k++) {
                 i = k;
                 if (shelf[k][4] != Token.NOTHING) {
-                    for (int j = COLUMNS-1; j >= 0 && flag == false; j--) {
+                    for (int j = COLUMNS - 1; j >= 0 && !flag; j--) {
                         if (shelf[k][4] != shelf[i][j])
                             flag = true;
                         i++;
@@ -39,10 +39,7 @@ public class Diagonal implements CommonObjective {
                 }
             }
         }
-        if(flag == true)
-            return false;
-        else
-            return true;
+        return !flag;
     }
 
     public CommonType getName(){

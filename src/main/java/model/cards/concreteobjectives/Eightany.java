@@ -14,29 +14,20 @@ public class Eightany implements CommonObjective {
 
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        int countNothing =0, countCat=0, countBook=0, countToy=0, countTrophy=0, countFrame=0, countPlant=0;
-        for (int i = 0; i < ROWS; i++){
-            for (int j = 0; j < COLUMNS; j++){
-
-                if (shelf[i][j] == Token.CAT)
-                    countCat++;
-                else if (shelf[i][j] == Token.BOOK)
-                    countBook++;
-                else if (shelf[i][j] == Token.TOY)
-                    countToy++;
-                else if (shelf[i][j] == Token.TROPHY)
-                    countTrophy++;
-                else if (shelf[i][j] == Token.FRAME)
-                    countFrame++;
-                else if (shelf[i][j] == Token.PLANT)
-                    countPlant++;
-            }
-        }
-        if( countCat >= 8 || countBook >= 8 || countToy >= 8 || countTrophy >=8 || countFrame >=8 || countPlant >=8 )
-            return true;
-        else
-            return false;
+        int countNothing = 0, countCat = 0, countBook = 0, countToy = 0, countTrophy = 0, countFrame = 0, countPlant = 0;
+        for (int i = 0; i < ROWS; i++)
+            for (int j = 0; j < COLUMNS; j++)
+                switch (shelf[i][j]) {
+                    case CAT -> countCat++;
+                    case BOOK -> countBook++;
+                    case TOY -> countToy++;
+                    case TROPHY -> countTrophy++;
+                    case FRAME -> countFrame++;
+                    case PLANT -> countPlant++;
+                }
+        return countCat >= 8 || countBook >= 8 || countToy >= 8 || countTrophy >= 8 || countFrame >= 8 || countPlant >= 8;
     }
+
     public CommonType getName(){
         return CommonType.EIGHTANY;
     }

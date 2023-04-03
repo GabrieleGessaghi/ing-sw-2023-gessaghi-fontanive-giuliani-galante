@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Added TODOs">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/CommonObjective.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/CommonObjective.java" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Fixed typos">
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -427,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680524329914</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Fixed typos">
+      <created>1680524499683</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1680524499683</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,6 +445,21 @@
         <entry key="MAIN">
           <value>
             <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
@@ -468,9 +489,9 @@
     <MESSAGE value="Implemented loading of configuration file" />
     <MESSAGE value="Finished Configuration class" />
     <MESSAGE value="Fixed small issues in Game class" />
-    <MESSAGE value="Fixed typos" />
     <MESSAGE value="Added TODOs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added TODOs" />
+    <MESSAGE value="Fixed typos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed typos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

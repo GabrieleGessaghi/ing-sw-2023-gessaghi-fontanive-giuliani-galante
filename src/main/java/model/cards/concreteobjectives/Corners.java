@@ -9,11 +9,12 @@ import model.cards.CommonType;
  * @author Niccolò Giuliani
  */
 public class Corners implements CommonObjective {
-    public boolean isSatisfied(Token[][] shelf){
+
+    public boolean isSatisfied(Token[][] shelf) {
         return shelf[0][0] != Token.NOTHING &&
-                shelf[0][0] == shelf[ROWS-1][0] &&
-                shelf[0][0] == shelf[0][COLUMNS-1] &&
-                shelf[0][0] == shelf[ROWS-1][COLUMNS-1];
+                shelf[0][0] == shelf[ROWS - 1][0] &&
+                shelf[0][0] == shelf[0][COLUMNS - 1] &&
+                shelf[0][0] == shelf[ROWS - 1][COLUMNS - 1];
     }
 
     public CommonType getName(){

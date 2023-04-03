@@ -17,10 +17,11 @@ import static model.Configurations.SHELF_ROWS;
  */
 public class FourGroups implements CommonObjective {
     private int counterInterIsland;
+    //TODO: Document class
 
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        int generalCounter = 0;
+        int generalCounter;
         generalCounter = checkType(Token.CAT, shelf) + checkType(Token.TOY, shelf) + checkType(Token.BOOK, shelf) +
                 checkType(Token.TROPHY, shelf) + checkType(Token.FRAME, shelf) + checkType(Token.PLANT, shelf);
         return generalCounter >= 4;
@@ -42,13 +43,10 @@ public class FourGroups implements CommonObjective {
                         counterPerToken ++;
                 }
         }
-        System.out.println("\n");
         return counterPerToken;
     }
 
-    private void findIsland(Token[][] M, int row, int col,
-                     boolean[][] checked, Token type){
-
+    private void findIsland(Token[][] M, int row, int col, boolean[][] checked, Token type) {
         int[] rowIndex = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
         int[] colIndex = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 };
 
@@ -62,13 +60,10 @@ public class FourGroups implements CommonObjective {
             }
     }
 
-    boolean isOk(Token[][] M, int row, int col,
-                   boolean[][] checked, Token type)
-    {
+    boolean isOk(Token[][] M, int row, int col, boolean[][] checked, Token type) {
         return (row >= 0) && (row < ROWS) && (col >= 0) && (col < COLUMNS)
                 && (M[row][col] == type && !checked[row][col]);
     }
-
 
     public CommonType getName(){
         return CommonType.FOURGROUPS;
