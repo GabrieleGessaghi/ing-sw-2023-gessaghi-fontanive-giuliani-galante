@@ -68,13 +68,12 @@ public class Player {
         int tempPoints = points;
         isComplete = new boolean[NUMBER_OF_CARDS];
 
-        for(int i = 0; cards.get(i) != null; i++){
-            if(cards.get(i).getPoints(playerShelf.getTiles()) != 0)
+        for(int i = 0; cards.get(i) != null && !isComplete[i]; i++){
+            if(cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
                 isComplete[i] = true;
-
-            if(isComplete[i])
                 tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
             }
+        }
         //TODO: Ensure points from common cards are updated correctly.
         //TODO: Add points based on number of adjacent tiles of the same type
         //TODO: Check if player arrives at endgame first (adds 1 point)
