@@ -1,16 +1,16 @@
 package model.cards;
 
 import model.Token;
+
 import static model.Configurations.SHELF_COLUMNS;
 import static model.Configurations.SHELF_ROWS;
+import static model.Configurations.PERSONALCARD_POINTS;
 
 /**
  * Personal objective cards.
  * @author Niccolò Galante
  */
 public class PersonalCard extends Card {
-    //TODO: Move to configuration file (Giorgio)
-    private static final int[] points = new int[]{1, 2, 4, 6, 9, 12};
     private Token[][] correctTiles;
 
     /**
@@ -21,27 +21,18 @@ public class PersonalCard extends Card {
         //TODO: Implement different personal cards through Json
     }
 
+    /**
+     *
+     * @author Niccolò Galante
+     * @param shelf A matrix of Tokens taken from a player's shelf.
+     * @return
+     */
     public int getPoints(Token[][] shelf) {
         int countCorrect = 0;
-
-        for(int i=0; i<SHELF_ROWS; i++)
-            for(int j=0; j<SHELF_COLUMNS; j++)
-                if(shelf[i][j] != Token.NOTHING &&shelf[i][j] == correctTiles[i][j])
+        for(int i = 0; i < SHELF_ROWS; i++)
+            for(int j = 0; j < SHELF_COLUMNS; j++)
+                if(shelf[i][j] != Token.NOTHING && shelf[i][j] == correctTiles[i][j])
                     countCorrect++;
-
-        if(countCorrect == 1)
-            return 1;
-        else if(countCorrect == 2)
-            return 2;
-        else if(countCorrect == 3)
-            return 4;
-        else if(countCorrect == 4)
-            return 6;
-        else if(countCorrect == 5)
-            return 9;
-        else if(countCorrect == 6)
-            return 12;
-
-        return 0;
+        return (countCorrect == 0 ? 0 : PERSONALCARD_POINTS[countCorrect - 1]);
     }
 }
