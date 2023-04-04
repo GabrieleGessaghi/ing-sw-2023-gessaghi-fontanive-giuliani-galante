@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Added method to read array from json">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Removed extra requirements for reading matrices from json files">
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Configurations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,13 +161,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00006" summary="edited TwoRows.isSatisfied and FourRows.isSatisfied">
-      <created>1679939044326</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1679939044326</updated>
-    </task>
     <task id="LOCAL-00007" summary="added configuration.json">
       <created>1680083816729</created>
       <option name="number" value="00007" />
@@ -317,7 +309,7 @@
       <updated>1680502116489</updated>
       <workItem from="1680502117922" duration="1082000" />
       <workItem from="1680531715978" duration="1355000" />
-      <workItem from="1680588065575" duration="2134000" />
+      <workItem from="1680588065575" duration="2380000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -515,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680589439951</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Removed extra requirements for reading matrices from json files">
+      <created>1680590334729</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1680590334729</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed small issues in Player class" />
     <MESSAGE value="Fixed warnings" />
     <MESSAGE value="edited Stairs" />
     <MESSAGE value="edited FourGropus and created  FourGroupsTest" />
@@ -573,7 +571,8 @@
     <MESSAGE value="Tested Board's automatic reset" />
     <MESSAGE value="Added more constants to configuration file" />
     <MESSAGE value="Added method to read array from json" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added method to read array from json" />
+    <MESSAGE value="Removed extra requirements for reading matrices from json files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed extra requirements for reading matrices from json files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

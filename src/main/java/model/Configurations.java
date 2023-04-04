@@ -47,7 +47,7 @@ public class Configurations {
                     case "MAX_TOKENS_PER_TURN" -> MAX_TOKENS_PER_TURN = jsonReader.nextInt();
                     case "NUMBER_OF_TOKEN_TYPES" -> NUMBER_OF_TOKEN_TYPES = jsonReader.nextInt();
                     case "TOKENS_PER_TYPE" -> TOKENS_PER_TYPE = jsonReader.nextInt();
-                    case "COMMONCARD_POINTS" -> COMMONCARD_POINTS = readMatrix(jsonReader, PLAYERS_MAX - PLAYERS_MIN + 1, PLAYERS_MAX);
+                    case "COMMONCARD_POINTS" -> COMMONCARD_POINTS = readMatrix(jsonReader);
                     //case "PERSONALCARD_POINTS" -> PERSONALCARD_POINTS =
                     default -> jsonReader.skipValue();
                 }
@@ -62,17 +62,16 @@ public class Configurations {
      * Reads an array from a json file.
      * @author Giorgio Massimo Fontanive
      * @param jsonReader The json reader being used. (Must have already started object)
-     * @param length The length of the array.
      * @return The array read from the json file.
      * @throws IOException When the reader has an issue.
      */
-    public static int[] readArray(JsonReader jsonReader, int length) throws IOException {
-        int[] array = new int[length];
+    public static int[] readArray(JsonReader jsonReader) throws IOException {
+        List<Integer> listArray= new ArrayList<>();
         jsonReader.beginArray();
         for (int i = 0; jsonReader.hasNext(); i++)
-            array[i] = jsonReader.nextInt();
+            listArray.add(jsonReader.nextInt());
         jsonReader.endArray();
-        return array;
+        return listArray.stream().mapToInt(x -> x).toArray();
     }
 
     /**
@@ -82,7 +81,7 @@ public class Configurations {
      * @return The matrix read from the json file.
      * @throws IOException When the reader has an issue.
      */
-    public static int[][] readMatrix(JsonReader jsonReader, int rows, int columns) throws IOException {
+    public static int[][] readMatrix(JsonReader jsonReader) throws IOException {
         List<List<Integer>> listMatrix = new ArrayList<>();
         jsonReader.beginArray();
         for (int i = 0; jsonReader.hasNext(); i++) {
