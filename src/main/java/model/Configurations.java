@@ -48,7 +48,7 @@ public class Configurations {
                     case "NUMBER_OF_TOKEN_TYPES" -> NUMBER_OF_TOKEN_TYPES = jsonReader.nextInt();
                     case "TOKENS_PER_TYPE" -> TOKENS_PER_TYPE = jsonReader.nextInt();
                     case "COMMONCARD_POINTS" -> COMMONCARD_POINTS = readMatrix(jsonReader);
-                    //case "PERSONALCARD_POINTS" -> PERSONALCARD_POINTS =
+                    case "PERSONALCARD_POINTS" -> PERSONALCARD_POINTS = readArray(jsonReader);
                     default -> jsonReader.skipValue();
                 }
             }

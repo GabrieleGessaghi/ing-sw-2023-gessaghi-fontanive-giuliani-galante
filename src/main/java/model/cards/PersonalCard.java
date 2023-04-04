@@ -2,13 +2,13 @@ package model.cards;
 
 import model.Token;
 
+import static model.Configurations.PERSONALCARD_POINTS;
+
 /**
  * Personal objective cards.
  * @author Niccolò Galante
  */
 public class PersonalCard extends Card {
-    //TODO: Move to configuration file (Giorgio)
-    private static final int[] points = new int[]{1, 2, 4, 6, 9, 12};
     private Token[][] correctTiles;
 
     /**
@@ -20,7 +20,7 @@ public class PersonalCard extends Card {
     }
 
     public int getPoints(Token[][] shelf) {
-        //TODO: Implement the method
+        //TODO: Implement the method (use PERSONALCARD_POINTS[])
         return 0;
     }
 }
