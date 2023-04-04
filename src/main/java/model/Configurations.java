@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Handles configuration constants.
@@ -81,15 +83,19 @@ public class Configurations {
      * @throws IOException When the reader has an issue.
      */
     public static int[][] readMatrix(JsonReader jsonReader, int rows, int columns) throws IOException {
-        int[][] matrix = new int[rows][columns];
+        List<List<Integer>> listMatrix = new ArrayList<>();
         jsonReader.beginArray();
         for (int i = 0; jsonReader.hasNext(); i++) {
+            listMatrix.add(new ArrayList<>());
             jsonReader.beginArray();
-            for (int j = 0; jsonReader.hasNext(); j++)
-                matrix[i][j] = jsonReader.nextInt();
+            while (jsonReader.hasNext())
+                listMatrix.get(i).add(jsonReader.nextInt());
             jsonReader.endArray();
         }
         jsonReader.endArray();
+        int[][] matrix = new int[listMatrix.size()][];
+        for (int i = 0; i < listMatrix.size(); i++)
+            matrix[i] = listMatrix.get(i).stream().mapToInt(x -> x).toArray();
         return matrix;
     }
 }

@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Added more constants to configuration file">
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Added method to read array from json">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Configurations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,13 +162,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00005" summary="edited Stairs.isSatisfied">
-      <created>1679938513072</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1679938513072</updated>
-    </task>
     <task id="LOCAL-00006" summary="edited TwoRows.isSatisfied and FourRows.isSatisfied">
       <created>1679939044326</created>
       <option name="number" value="00006" />
@@ -323,7 +317,7 @@
       <updated>1680502116489</updated>
       <workItem from="1680502117922" duration="1082000" />
       <workItem from="1680531715978" duration="1355000" />
-      <workItem from="1680588065575" duration="1091000" />
+      <workItem from="1680588065575" duration="2134000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -514,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680588879956</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Added method to read array from json">
+      <created>1680589439951</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1680589439951</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +548,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="EightanyTest" />
     <MESSAGE value="Fixed small issues in Player class" />
     <MESSAGE value="Fixed warnings" />
     <MESSAGE value="edited Stairs" />
@@ -572,7 +572,8 @@
     <MESSAGE value="Completed Board and Configurations testing" />
     <MESSAGE value="Tested Board's automatic reset" />
     <MESSAGE value="Added more constants to configuration file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more constants to configuration file" />
+    <MESSAGE value="Added method to read array from json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added method to read array from json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
