@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Tested Board's automatic reset">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/configuration.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Added more constants to configuration file">
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Configurations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,13 +161,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00004" summary="edited javadoc">
-      <created>1679929096546</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1679929096546</updated>
-    </task>
     <task id="LOCAL-00005" summary="edited Stairs.isSatisfied">
       <created>1679938513072</created>
       <option name="number" value="00005" />
@@ -332,7 +323,7 @@
       <updated>1680502116489</updated>
       <workItem from="1680502117922" duration="1082000" />
       <workItem from="1680531715978" duration="1355000" />
-      <workItem from="1680588065575" duration="694000" />
+      <workItem from="1680588065575" duration="1091000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -516,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680588308307</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Added more constants to configuration file">
+      <created>1680588879956</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1680588879956</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="DiagonalTest" />
     <MESSAGE value="EightanyTest" />
     <MESSAGE value="Fixed small issues in Player class" />
     <MESSAGE value="Fixed warnings" />
@@ -574,7 +571,8 @@
     <MESSAGE value="Fixed small issue in Board" />
     <MESSAGE value="Completed Board and Configurations testing" />
     <MESSAGE value="Tested Board's automatic reset" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tested Board's automatic reset" />
+    <MESSAGE value="Added more constants to configuration file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more constants to configuration file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
