@@ -69,8 +69,8 @@ public class Player {
         isComplete = new boolean[NUMBER_OF_CARDS];
 
         //Checks if card objectives have been reached
-        for(int i = 0; i<NUMBER_OF_CARDS && !isComplete[i]; i++){
-            if(cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
+        for(int i = 0; i<NUMBER_OF_CARDS; i++){
+            if(!isComplete[i] && cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
                 isComplete[i] = true;
                 tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
             }

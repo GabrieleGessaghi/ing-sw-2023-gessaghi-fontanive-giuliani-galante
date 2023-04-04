@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Removed extra requirements for reading arrays from json files">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Configurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/PersonalCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/PersonalCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/configuration.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Configurations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Configurations.class" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Implemented getPoints for PersonalCard class">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
