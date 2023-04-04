@@ -18,7 +18,7 @@ public class Player {
     private final String nickname;
     private int points;
     private final boolean isFirstPlayer;
-    private List<Card> cards;
+    private final List<Card> cards;
     private final Shelf playerShelf;
     public boolean isConnected;
     public boolean[] isComplete;
@@ -68,8 +68,9 @@ public class Player {
         int tempPoints = points;
         isComplete = new boolean[NUMBER_OF_CARDS];
 
-        for(int i = 0; i<NUMBER_OF_CARDS && !isComplete[i]; i++){
-            if(cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
+        //TODO: Move !isComplete[i] somewhere else otherwise you skip the next cards
+        for (int i = 0; i < NUMBER_OF_CARDS && !isComplete[i]; i++) {
+            if (cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
                 isComplete[i] = true;
                 tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
             }
