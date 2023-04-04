@@ -4,13 +4,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
+import static model.Configurations.NUMBER_OF_TOKEN_TYPES;
+import static model.Configurations.TOKENS_PER_TYPE;
+
 /**
  * Bag of tokens for the game's board
  * @author Giorgio Massimo Fontanive
  */
 public class Bag {
-    private static final int NUMBER_OF_TYPES = 6;
-    private static final int TOKENS_PER_TYPE = 22;
     private final List<Token> tokens;
 
     /**
@@ -20,7 +21,7 @@ public class Bag {
     public Bag() {
         tokens = new ArrayList<>();
         Token[] tokenIndexes = Token.values();
-        for (int tokenType = 1; tokenType <= NUMBER_OF_TYPES; tokenType++)
+        for (int tokenType = 1; tokenType <= NUMBER_OF_TOKEN_TYPES; tokenType++)
             for (int i = 0; i < TOKENS_PER_TYPE; i++)
                 tokens.add(tokenIndexes[tokenType]);
         shuffle();

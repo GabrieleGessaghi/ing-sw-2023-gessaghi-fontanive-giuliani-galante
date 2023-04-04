@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+
 import static model.Configurations.MAX_TOKENS_PER_TURN;
 import static model.Configurations.BOARD_SIZE;
 
@@ -43,7 +45,7 @@ public class Board {
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            usableTiles = convertSelection(Configurations.readMatrix(jsonReader, BOARD_SIZE, BOARD_SIZE));
+            usableTiles = Board.convertSelection(Configurations.readMatrix(jsonReader), 0);
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -74,10 +76,13 @@ public class Board {
      * @author Giorgio Massimo Fontanive
      */
     private void reset() {
-        for (int i = 0; i < usableTiles.length; i++)
-            for (int j = 0; j < usableTiles.length; j++)
+        for (int i = 0; i < tiles.length; i++)
+            for (int j = 0; j < tiles.length; j++) {
+                if (tiles[i][j] == null)
+                    tiles[i][j] = Token.NOTHING;
                 if (usableTiles[i][j] && tiles[i][j] == Token.NOTHING)
                     tiles[i][j] = bag.drawToken();
+            }
     }
 
     /**
@@ -161,13 +166,13 @@ public class Board {
      */
     public Token[] selectTiles(int[][] selectedTiles) throws IllegalMoveException {
         Token[] selectedTokens = new Token[MAX_TOKENS_PER_TURN];
-        boolean[][] selectedTilesBoolean = new boolean[tiles.length][tiles.length];
+        boolean[][] selectedTilesBoolean;
+        Arrays.fill(selectedTokens, Token.NOTHING);
         for (int i = 0; i < tiles.length; i++)
             for (int j = 0; j < tiles.length; j++)
-                if (selectedTiles[i][j] != -1) {
+                if (selectedTiles[i][j] != -1)
                     selectedTokens[selectedTiles[i][j]] = tiles[i][j];
-                    selectedTilesBoolean[i][j] = true;
-                }
+        selectedTilesBoolean = Board.convertSelection(selectedTiles, -1);
         if (isMoveLegal(selectedTilesBoolean))
             return selectedTokens;
         else
@@ -192,13 +197,14 @@ public class Board {
      * Converts a matrix of integers into booleans.
      * @author Giorgio Massimo Fontanive
      * @param selectedTiles A matrix with -1 for the tiles not chosen.
+     * @param exclusionNumber The number which sets the tile to false.
      * @return A matrix with true in the position of the chosen tiles.
      */
-    public static boolean[][] convertSelection(int[][] selectedTiles) {
+    public static boolean[][] convertSelection(int[][] selectedTiles, int exclusionNumber) {
         boolean[][] convertedSelection = new boolean[selectedTiles.length][selectedTiles.length];
         for (int i = 0; i < selectedTiles.length; i++)
             for (int j = 0; j < selectedTiles[i].length; j++)
-                if (selectedTiles[i][j] != -1)
+                if (selectedTiles[i][j] != exclusionNumber)
                     convertedSelection[i][j] = true;
         return convertedSelection;
     }
