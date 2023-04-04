@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Implemented getPoints for PersonalCard class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Configurations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Configurations.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +70,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTest.automaticResetTest">
+  <component name="RunManager" selected="JUnit.FourGroupsTest">
     <configuration name="BoardTest.automaticResetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -81,22 +82,6 @@
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.BoardTest" />
       <option name="METHOD_NAME" value="automaticResetTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BoardTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.BoardTest" />
-      <option name="METHOD_NAME" value="constructorTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,17 +119,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConfigurationsTest.loadConfigurationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FourGroupsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.ConfigurationsTest" />
-      <option name="METHOD_NAME" value="loadConfigurationTest" />
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourGroupsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FourGroupsTest.FourIslands" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourGroupsTest" />
+      <option name="METHOD_NAME" value="FourIslands" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -152,11 +152,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FourGroupsTest" />
+        <item itemvalue="JUnit.FourGroupsTest.FourIslands" />
         <item itemvalue="JUnit.BoardTest.automaticResetTest" />
         <item itemvalue="JUnit.BoardTest.removeTilesTest" />
         <item itemvalue="JUnit.BoardTest.selectTilesTest" />
-        <item itemvalue="JUnit.BoardTest.constructorTest" />
-        <item itemvalue="JUnit.ConfigurationsTest.loadConfigurationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -522,15 +522,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -542,6 +533,15 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>

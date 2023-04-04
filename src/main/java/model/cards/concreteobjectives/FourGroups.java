@@ -63,12 +63,12 @@ public class FourGroups implements CommonObjective {
      */
     private void findIsland(Token[][] M, int row, int col, boolean[][] checked, Token type) {
         //arrays for the position of the neighbors
-        int[] rowIndex = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
-        int[] colIndex = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 };
+        int[] rowIndex = new int[] {-1, 0, 0, 1 };
+        int[] colIndex = new int[] { 0,-1, 1, 0 };
 
         checked[row][col] = true;
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 4; i++)
             if (isOk(M, row + rowIndex[i], col + colIndex[i],
                     checked,  type)) {
                 counterInterIsland++;
