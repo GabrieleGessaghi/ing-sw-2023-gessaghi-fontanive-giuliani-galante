@@ -165,9 +165,8 @@ public class Board {
      * @return An array with the select tiles in order.
      */
     public Token[] selectTiles(int[][] selectedTiles) throws IllegalMoveException {
-        //TODO: Use convertSelection
         Token[] selectedTokens = new Token[MAX_TOKENS_PER_TURN];
-        boolean[][] selectedTilesBoolean = new boolean[tiles.length][tiles.length];
+        boolean[][] selectedTilesBoolean;
         Arrays.fill(selectedTokens, Token.NOTHING);
         for (int i = 0; i < tiles.length; i++)
             for (int j = 0; j < tiles.length; j++)

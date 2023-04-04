@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Completed Board and Configurations testing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" afterDir="false" />
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Tested Board's automatic reset">
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/configuration.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,13 +163,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00003" summary="modified return CommonCard.getPoints">
-      <created>1679907569007</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1679907569007</updated>
-    </task>
     <task id="LOCAL-00004" summary="edited javadoc">
       <created>1679929096546</created>
       <option name="number" value="00004" />
@@ -338,7 +332,7 @@
       <updated>1680502116489</updated>
       <workItem from="1680502117922" duration="1082000" />
       <workItem from="1680531715978" duration="1355000" />
-      <workItem from="1680588065575" duration="206000" />
+      <workItem from="1680588065575" duration="694000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -515,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680537371364</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Tested Board's automatic reset">
+      <created>1680588308307</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1680588308307</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +549,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="CornerTest" />
     <MESSAGE value="DiagonalTest" />
     <MESSAGE value="EightanyTest" />
     <MESSAGE value="Fixed small issues in Player class" />
@@ -573,7 +573,8 @@
     <MESSAGE value="Tested Board" />
     <MESSAGE value="Fixed small issue in Board" />
     <MESSAGE value="Completed Board and Configurations testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed Board and Configurations testing" />
+    <MESSAGE value="Tested Board's automatic reset" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tested Board's automatic reset" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
