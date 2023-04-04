@@ -21,6 +21,12 @@ public class PersonalCard extends Card {
         //TODO: Implement different personal cards through Json
     }
 
+    /**
+     *
+     * @author Niccolò Galante
+     * @param shelf A matrix of Tokens taken from a player's shelf.
+     * @return
+     */
     public int getPoints(Token[][] shelf) {
         int countCorrect = 0;
         for(int i = 0; i < SHELF_ROWS; i++)
