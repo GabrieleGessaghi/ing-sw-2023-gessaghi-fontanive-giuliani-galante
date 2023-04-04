@@ -66,4 +66,26 @@ class BoardTest {
         board.removeTiles(selectedTiles);
         assertEquals(Token.NOTHING, testTokens[3][3]);
     }
+
+    @Test
+    public void automaticResetTest() {
+        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        Board board = new Board(2);
+
+        Token[][] testTiles = board.getTiles();
+        boolean[][] selectedTiles = new boolean[][] {
+                {true, true, true, true, true, true, true, true, true},
+                {true, true, true, true, true, true, true, true, true},
+                {true, true, true, true, true, true, true, true, true},
+                {true, true, true, true, true, true, true, true, true},
+                {true, true, true, true, true, true, true, true, true},
+                {true, true, true, true, true, true, true, true, true},
+                {true, true, true, true, true, true, true, true, true},
+                {true, true, true, true, true, true, true, true, true},
+                {true, true, true, true, true, true, true, true, true}
+        };
+        board.removeTiles(selectedTiles);
+        testTiles = board.getTiles();
+        assertNotEquals(Token.NOTHING, testTiles[3][3]);
+    }
 }

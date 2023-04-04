@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Fixed small issue in Board">
+    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Completed Board and Configurations testing">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/BoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +69,23 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTest.removeTilesTest">
+  <component name="RunManager" selected="JUnit.BoardTest.automaticResetTest">
+    <configuration name="BoardTest.automaticResetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.BoardTest" />
+      <option name="METHOD_NAME" value="automaticResetTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BoardTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -80,22 +97,6 @@
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.BoardTest" />
       <option name="METHOD_NAME" value="constructorTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BoardTest.isResetNeededTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.BoardTest" />
-      <option name="METHOD_NAME" value="isResetNeededTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -151,23 +152,16 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BoardTest.automaticResetTest" />
         <item itemvalue="JUnit.BoardTest.removeTilesTest" />
         <item itemvalue="JUnit.BoardTest.selectTilesTest" />
         <item itemvalue="JUnit.BoardTest.constructorTest" />
         <item itemvalue="JUnit.ConfigurationsTest.loadConfigurationTest" />
-        <item itemvalue="JUnit.BoardTest.isResetNeededTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00002" summary="modified javadoc and isSatisfied in concreteobjectives">
-      <created>1679907157750</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1679907157750</updated>
-    </task>
     <task id="LOCAL-00003" summary="modified return CommonCard.getPoints">
       <created>1679907569007</created>
       <option name="number" value="00003" />
@@ -344,6 +338,7 @@
       <updated>1680502116489</updated>
       <workItem from="1680502117922" duration="1082000" />
       <workItem from="1680531715978" duration="1355000" />
+      <workItem from="1680588065575" duration="206000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -513,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680537187720</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Completed Board and Configurations testing">
+      <created>1680537371364</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1680537371364</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,7 +548,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="junit 5.9.2" />
     <MESSAGE value="CornerTest" />
     <MESSAGE value="DiagonalTest" />
     <MESSAGE value="EightanyTest" />
@@ -571,7 +572,8 @@
     <MESSAGE value="Fixed convertSelection" />
     <MESSAGE value="Tested Board" />
     <MESSAGE value="Fixed small issue in Board" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issue in Board" />
+    <MESSAGE value="Completed Board and Configurations testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed Board and Configurations testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
