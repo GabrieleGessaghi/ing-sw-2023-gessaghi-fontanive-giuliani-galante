@@ -1,6 +1,14 @@
 package model.cards;
 
+import com.google.gson.stream.JsonReader;
+import model.Configurations;
 import model.Token;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.io.StringReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static model.Configurations.SHELF_COLUMNS;
 import static model.Configurations.SHELF_ROWS;
@@ -10,22 +18,54 @@ import static model.Configurations.PERSONALCARD_POINTS;
  * Personal objective cards.
  * @author Niccolò Galante
  */
-public class PersonalCard extends Card {
-    private Token[][] correctTiles;
+public class PersonalCard extends Card implements Serializable {
+    private final Token[][] correctTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
     /**
      * Class constructor.
      * @author Niccolò Galante
      */
-    public PersonalCard(Token[] correctTiles) {
-        //TODO: Implement different personal cards through Json
+    public PersonalCard(int index) {
+        int[][] intTiles;
+        String jsonFile = "";
+        String jsonFilePath = "";
+        JsonReader jsonReader;
+        switch (index) {
+            case 1 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal1.json";
+            case 2 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal2.json";
+            case 3 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal3.json";
+            case 4 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal4.json";
+            case 5 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal5.json";
+            case 6 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal6.json";
+            case 7 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal7.json";
+            case 8 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal8.json";
+            case 9 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal9.json";
+            case 10 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoa10.json";
+            case 11 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal11.json";
+            case 12 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal12.json";
+        }
+        try {
+            jsonFile = Files.readString(Paths.get(jsonFilePath));
+            jsonReader = new JsonReader(new StringReader(jsonFile));
+            jsonReader.beginObject();
+            jsonReader.nextName();
+            intTiles = Configurations.readMatrix(jsonReader);
+            jsonReader.endObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        for (int i = 0; i<SHELF_ROWS; i++)
+            for (int j = 0; j<SHELF_COLUMNS; j++)
+                correctTiles[i][j] = intToToken(intTiles[i][j]);
+
     }
 
     /**
-     *
+     * Returns points from cards.
      * @author Niccolò Galante
      * @param shelf A matrix of Tokens taken from a player's shelf.
-     * @return
+     * @return number of points based on number of tokens correctly placed.
      */
     public int getPoints(Token[][] shelf) {
         int countCorrect = 0;
@@ -34,5 +74,25 @@ public class PersonalCard extends Card {
                 if(shelf[i][j] != Token.NOTHING && shelf[i][j] == correctTiles[i][j])
                     countCorrect++;
         return (countCorrect == 0 ? 0 : PERSONALCARD_POINTS[countCorrect - 1]);
+    }
+
+
+    /**
+     * Converts integer to token type.
+     * @author Niccolò Galante
+     * @param tile Tile that is being read from personal card.
+     * @return token type.
+     */
+    public Token intToToken(int tile){
+        Token type = Token.NOTHING;
+        switch (tile){
+            case 1 -> type = Token.CAT;
+            case 2 -> type = Token.BOOK;
+            case 3 -> type = Token.TOY;
+            case 4 -> type = Token.TROPHY;
+            case 5 -> type = Token.FRAME;
+            case 6 -> type = Token.PLANT;
+        }
+        return type;
     }
 }

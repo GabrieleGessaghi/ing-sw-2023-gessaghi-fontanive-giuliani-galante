@@ -1,6 +1,9 @@
 package model.cards;
 
 import model.Token;
+
+import java.io.Serializable;
+
 import static model.Configurations.COMMONCARD_POINTS;
 import static model.Configurations.PLAYERS_MIN;
 
@@ -8,7 +11,7 @@ import static model.Configurations.PLAYERS_MIN;
  * Common objective card of the game.
  * @author Niccolò Giuliani
  */
-public class CommonCard extends Card {
+public class CommonCard extends Card implements Serializable {
     private int numberOfTokensLeft;
     private final int numberOfPlayers;
     private final CommonObjective objective;

@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Added json files for personal cards">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal10.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal11.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal12.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal7.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal8.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal9.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_28_2023_1_35_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_28_2023_1_35_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Completed Player class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/PersonalCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/PersonalCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +69,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTest.automaticResetTest">
+  <component name="RunManager" selected="JUnit.BoardTest.constructorTest">
     <configuration name="BoardTest.automaticResetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -159,23 +152,16 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BoardTest.constructorTest" />
         <item itemvalue="JUnit.BoardTest.automaticResetTest" />
         <item itemvalue="JUnit.BoardTest.removeTilesTest" />
         <item itemvalue="JUnit.BoardTest.selectTilesTest" />
-        <item itemvalue="JUnit.BoardTest.constructorTest" />
         <item itemvalue="JUnit.ConfigurationsTest.loadConfigurationTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00011" summary="added configuration files">
-      <created>1680087654266</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1680087654266</updated>
-    </task>
     <task id="LOCAL-00012" summary="added configuration files">
       <created>1680087722512</created>
       <option name="number" value="00012" />
@@ -523,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680603632090</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Completed Player class">
+      <created>1680705672298</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1680705672298</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -556,7 +549,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created FourRowsTest and SixGroupsTest" />
     <MESSAGE value="changed Configuration in Configurations" />
     <MESSAGE value="Implemented loading of configuration file" />
     <MESSAGE value="Finished Configuration class" />
@@ -581,7 +573,8 @@
     <MESSAGE value="Implemented global variable for PersonalCard" />
     <MESSAGE value="Added description" />
     <MESSAGE value="Added json files for personal cards" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added json files for personal cards" />
+    <MESSAGE value="Completed Player class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed Player class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

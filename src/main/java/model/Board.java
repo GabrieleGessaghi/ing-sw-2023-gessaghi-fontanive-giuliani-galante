@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import model.exceptions.IllegalMoveException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,7 +17,7 @@ import static model.Configurations.BOARD_SIZE;
  * The board on which the game is played.
  * @author Giorgio Massimo Fontanive
  */
-public class Board {
+public class Board implements Serializable {
     private boolean[][] usableTiles;
     private final Token[][] tiles;
     private final Bag bag;
