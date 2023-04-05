@@ -54,12 +54,12 @@ public class FourGroups implements CommonObjective {
 
     /**
      * recursive method to detect the islands starting from an unchecked cell
+     * @author Niccolò Giuliani
      * @param M matrix
      * @param row row of the initial cell
      * @param col column of the initial cell
      * @param checked matrix of checked cells
      * @param type type of Token
-     * @author Niccolò Giuliani
      */
     private void findIsland(Token[][] M, int row, int col, boolean[][] checked, Token type) {
         //arrays for the position of the neighbors
