@@ -3,6 +3,7 @@ package model;
 import model.cards.CommonCard;
 import model.cards.CommonObjective;
 import model.cards.CommonType;
+import model.cards.PersonalCard;
 import model.cards.concreteobjectives.*;
 import model.chat.Chat;
 import model.exceptions.FullColumnException;
@@ -31,7 +32,7 @@ public class Game implements Serializable {
         board = new Board(numberOfPlayers);
         Configurations.loadConfiguration("/src/main/resources/configuration.json");
 
-        //File creation with unique name
+        //generates the unique 4 digit code for the current game
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             Date now = new Date();
@@ -43,12 +44,43 @@ public class Game implements Serializable {
             throw new RuntimeException(e);
         }
 
-        genCommonCard(numberOfPlayers);
-        //TODO: Add personal card generation
+        ArrayList<CommonCard> currentGameCommonCard = genCommonCard(numberOfPlayers);
+
+        // using a set to ensures having 3 different numbers
+        Set<Integer> randomNumbers = new HashSet<>();
+        while(randomNumbers.size()<3){
+            // using System.currentTimeMillis() as Random seeds for consistency in random generation of the numbers
+            randomNumbers.add(new Random(System.currentTimeMillis()).nextInt(12));
+        }
+
+        int[] personalCardsIndexes = randomNumbers.stream().mapToInt(Integer::intValue).toArray();
         for (int i = 0; i < numberOfPlayers; i++)
-            //TODO: Add personal and common cards as parameters
-            players[i] = new Player(playerNicknames.get(i),false,null,null);
+            // PersonalCard personalCard = new PersonalCard(personalCardsIndexes[i]);
+            players[i] = new Player(playerNicknames.get(i),false,null,currentGameCommonCard);
         currentPlayerIndex = 0;
+    }
+
+    /**
+     * generates the correct constructor for the given commonType
+     * @param commonType is the commonType type
+     * @return the correct constructor
+     */
+    private static CommonObjective createCommonObj(CommonType commonType) {
+        return switch (commonType) {
+            case STAIRS -> new Stairs();
+            case XSHAPE -> new XShape();
+            case CORNERS -> new Corners();
+            case TWOROWS -> new TwoRows();
+            case DIAGONAL -> new Diagonal();
+            case EIGHTANY -> new Eightany();
+            case FOURROWS -> new FourRows();
+            case SIXGROUPS -> new SixGroups();
+            case FOURGROUPS -> new FourGroups();
+            case TWOCOLUMNS -> new TwoColumns();
+            case TWOSQUARES -> new TwoSquares();
+            case THREECOLUMNS -> new ThreeColumns();
+            default -> throw new IllegalArgumentException("Invalid commonType: " + commonType);
+        };
     }
 
     /**
@@ -62,39 +94,8 @@ public class Game implements Serializable {
         Collections.shuffle(types);
         CommonType commonType1 = types.get(0);
         CommonType commonType2 = types.get(1);
-        CommonObjective commonObj1 = null;
-        CommonObjective commonObj2 = null;
-
-        switch (commonType1){
-            case STAIRS -> commonObj1 = new Stairs();
-            case XSHAPE -> commonObj1 = new XShape();
-            case CORNERS -> commonObj1 = new Corners();
-            case TWOROWS -> commonObj1 = new TwoRows();
-            case DIAGONAL -> commonObj1 = new Diagonal();
-            case EIGHTANY -> commonObj1 = new Eightany();
-            case FOURROWS -> commonObj1 = new FourRows();
-            case SIXGROUPS -> commonObj1 = new SixGroups();
-            case FOURGROUPS -> commonObj1 = new FourGroups();
-            case TWOCOLUMNS -> commonObj1 = new TwoColumns();
-            case TWOSQUARES -> commonObj1 = new TwoSquares();
-            case THREECOLUMNS -> commonObj1 = new ThreeColumns();
-        }
-
-        switch (commonType2){
-            case STAIRS -> commonObj2 = new Stairs();
-            case XSHAPE -> commonObj2 = new XShape();
-            case CORNERS -> commonObj2 = new Corners();
-            case TWOROWS -> commonObj2 = new TwoRows();
-            case DIAGONAL -> commonObj2 = new Diagonal();
-            case EIGHTANY -> commonObj2 = new Eightany();
-            case FOURROWS -> commonObj2 = new FourRows();
-            case SIXGROUPS -> commonObj2 = new SixGroups();
-            case FOURGROUPS -> commonObj2 = new FourGroups();
-            case TWOCOLUMNS -> commonObj2 = new TwoColumns();
-            case TWOSQUARES -> commonObj2 = new TwoSquares();
-            case THREECOLUMNS -> commonObj2 = new ThreeColumns();
-        }
-
+        CommonObjective commonObj1 = createCommonObj(commonType1);
+        CommonObjective commonObj2 = createCommonObj(commonType2);
         ArrayList <CommonCard> commonCards = new ArrayList<>();
         commonCards.add(new CommonCard(commonObj1, numberOfPlayers));
         commonCards.add(new CommonCard(commonObj2, numberOfPlayers));
