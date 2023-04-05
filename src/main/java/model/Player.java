@@ -128,6 +128,7 @@ public class Player implements Serializable {
                     else if(cellsPerIsland == 3)
                         pointsPerType += 2;
                 }
+        //TODO: Take these values from configuration file (Giorgio)
         return pointsPerType;
     }
 

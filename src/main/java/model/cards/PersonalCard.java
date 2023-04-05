@@ -57,8 +57,7 @@ public class PersonalCard extends Card implements Serializable {
 
         for (int i = 0; i<SHELF_ROWS; i++)
             for (int j = 0; j<SHELF_COLUMNS; j++)
-                correctTiles[i][j] = intToToken(intTiles[i][j]);
-
+                correctTiles[i][j] = Token.values()[intTiles[i][j]];
     }
 
     /**
@@ -76,23 +75,22 @@ public class PersonalCard extends Card implements Serializable {
         return (countCorrect == 0 ? 0 : PERSONALCARD_POINTS[countCorrect - 1]);
     }
 
-
-    /**
-     * Converts integer to token type.
-     * @author Niccolò Galante
-     * @param tile Tile that is being read from personal card.
-     * @return token type.
-     */
-    public Token intToToken(int tile){
-        Token type = Token.NOTHING;
-        switch (tile){
-            case 1 -> type = Token.CAT;
-            case 2 -> type = Token.BOOK;
-            case 3 -> type = Token.TOY;
-            case 4 -> type = Token.TROPHY;
-            case 5 -> type = Token.FRAME;
-            case 6 -> type = Token.PLANT;
-        }
-        return type;
-    }
+//    /**
+//     * Converts integer to token type.
+//     * @author Niccolò Galante
+//     * @param tile Tile that is being read from personal card.
+//     * @return Token type.
+//     */
+//    public static Token intToToken(int tile){
+//        Token type = Token.NOTHING;
+//        switch (tile){
+//            case 1 -> type = Token.CAT;
+//            case 2 -> type = Token.BOOK;
+//            case 3 -> type = Token.TOY;
+//            case 4 -> type = Token.TROPHY;
+//            case 5 -> type = Token.FRAME;
+//            case 6 -> type = Token.PLANT;
+//        }
+//        return type;
+//    }
 }
