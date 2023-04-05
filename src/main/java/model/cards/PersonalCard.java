@@ -1,7 +1,6 @@
 package model.cards;
 
 import com.google.gson.stream.JsonReader;
-import model.Board;
 import model.Configurations;
 import model.Token;
 
@@ -20,13 +19,14 @@ import static model.Configurations.PERSONALCARD_POINTS;
  * @author Niccolò Galante
  */
 public class PersonalCard extends Card implements Serializable {
-    private Token[][] correctTiles;
+    private final Token[][] correctTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
     /**
      * Class constructor.
      * @author Niccolò Galante
      */
     public PersonalCard(int index) {
+        int[][] intTiles;
         String jsonFile = "";
         String jsonFilePath = "";
         JsonReader jsonReader;
@@ -43,25 +43,26 @@ public class PersonalCard extends Card implements Serializable {
             case 10 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoa10.json";
             case 11 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal11.json";
             case 12 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal12.json";
-
-
         }
         try {
             jsonFile = Files.readString(Paths.get(jsonFilePath));
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            //correctTiles = Board.convertSelection(Configurations.readMatrix(jsonReader), 0);
+            intTiles = Configurations.readMatrix(jsonReader);
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //reset();
-        //TODO: Implement different personal cards through Json
+
+        for (int i = 0; i<SHELF_ROWS; i++)
+            for (int j = 0; j<SHELF_COLUMNS; j++)
+                correctTiles[i][j] = intToToken(intTiles[i][j]);
+
     }
 
     /**
-     *
+     * Returns points from cards.
      * @author Niccolò Galante
      * @param shelf A matrix of Tokens taken from a player's shelf.
      * @return number of points based on number of tokens correctly placed.
@@ -73,5 +74,25 @@ public class PersonalCard extends Card implements Serializable {
                 if(shelf[i][j] != Token.NOTHING && shelf[i][j] == correctTiles[i][j])
                     countCorrect++;
         return (countCorrect == 0 ? 0 : PERSONALCARD_POINTS[countCorrect - 1]);
+    }
+
+
+    /**
+     * Converts integer to token type.
+     * @author Niccolò Galante
+     * @param tile Tile that is being read from personal card.
+     * @return token type.
+     */
+    public Token intToToken(int tile){
+        Token type = Token.NOTHING;
+        switch (tile){
+            case 1 -> type = Token.CAT;
+            case 2 -> type = Token.BOOK;
+            case 3 -> type = Token.TOY;
+            case 4 -> type = Token.TROPHY;
+            case 5 -> type = Token.FRAME;
+            case 6 -> type = Token.PLANT;
+        }
+        return type;
     }
 }
