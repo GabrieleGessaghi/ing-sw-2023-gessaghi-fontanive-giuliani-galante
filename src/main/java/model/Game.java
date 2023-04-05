@@ -14,10 +14,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class Game implements Serializable {
-    private final String gameID;
+    private String gameID;
     private int currentPlayerIndex;
-    private final Board board;
-    private final Player[] players;
+    private Board board;
+    private Player[] players;
     private final Chat chat;
 
     /**
@@ -54,9 +54,14 @@ public class Game implements Serializable {
         }
 
         int[] personalCardsIndexes = randomNumbers.stream().mapToInt(Integer::intValue).toArray();
-        for (int i = 0; i < numberOfPlayers; i++)
-            // PersonalCard personalCard = new PersonalCard(personalCardsIndexes[i]);
-            players[i] = new Player(playerNicknames.get(i),false,null,currentGameCommonCard);
+        PersonalCard personalCard = null;
+        boolean isFirstPlayer = true;
+        for (int i = 0; i < numberOfPlayers; i++) {
+            personalCard = new PersonalCard(personalCardsIndexes[i]);
+            if (i!=0)
+                isFirstPlayer = false;
+            players[i] = new Player(playerNicknames.get(i), isFirstPlayer, personalCard, currentGameCommonCard);
+        }
         currentPlayerIndex = 0;
     }
 
@@ -108,13 +113,14 @@ public class Game implements Serializable {
      * @throws IOException When there's an error in the file creation.
      */
     private void saveGame() throws IOException {
-        String fileName = String.format("/game-%s.txt",gameID);
-        FileOutputStream fout = new FileOutputStream(new File(fileName));
-        ObjectOutputStream out = new ObjectOutputStream(fout);
-        //TODO: Ensure that everything is saved, not just the Game class
+        String fileName = String.format("/src/data/game-%s.txt",gameID);
+        FileOutputStream fOut = new FileOutputStream(new File(fileName));
+        ObjectOutputStream out = new ObjectOutputStream(fOut);
         out.writeObject(this);
         out.close();
-        fout.close();
+        fOut.close();
+
+        // TODO: check when testing advanced functionalities
     }
 
     /**
@@ -163,5 +169,19 @@ public class Game implements Serializable {
      * Reload a saved state of a previous game.
      * @author Gabriele Gessaghi
      */
-    public void loadGame() {}
+    public void loadGame(String fileName) throws FileNotFoundException {
+        try {
+            FileInputStream fIn = new FileInputStream(fileName);
+            ObjectInputStream in = new ObjectInputStream(fIn);
+            Game loadedData = (Game)in.readObject();
+            gameID = loadedData.gameID;
+            board = loadedData.board;
+            currentPlayerIndex = loadedData.currentPlayerIndex;
+            players = loadedData.players;
+        }catch (FileNotFoundException e){
+            System.out.println("Game files not found!");
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -6,6 +6,7 @@ import model.cards.PersonalCard;
 import model.exceptions.FullColumnException;
 
 import javax.swing.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * Handles players' shelves and cards.
  * @author Niccolò Galante
  */
-public class Player {
+public class Player implements Serializable {
     private final static int NUMBER_OF_CARDS = 3;
     private final String nickname;
     private int points;
