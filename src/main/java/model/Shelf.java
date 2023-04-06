@@ -36,7 +36,7 @@ public class Shelf implements Serializable {
      * @param column Column where the token has to bbe inserted.
      */
     public void insertToken(Token token, int column) throws FullColumnException {
-        for (int i = 0; i < SHELF_ROWS; i++)
+        for (int i = SHELF_ROWS-1; i>=0 ; i--)
             if (tiles[i][column].equals((Token.NOTHING))) {
                 tiles[i][column] = token;
                 return;
@@ -50,7 +50,7 @@ public class Shelf implements Serializable {
      * @param column Column where the token has to be inserted.
      */
     public void removeToken(int column) {
-        for (int i = SHELF_ROWS; i >= 0; i--)
+        for (int i = 0; i < SHELF_ROWS; i++)
             if (!tiles[i][column].equals((Token.NOTHING))) {
                 tiles[i][column] = Token.NOTHING;
                 return;
