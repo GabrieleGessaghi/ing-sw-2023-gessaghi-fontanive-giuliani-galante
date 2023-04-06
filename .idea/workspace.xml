@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Completed Player class">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added TODO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/PersonalCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/PersonalCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class_diagram.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/class_diagram.drawio" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,13 +162,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00012" summary="added configuration files">
-      <created>1680087722512</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1680087722512</updated>
-    </task>
     <task id="LOCAL-00013" summary="added configuration files">
       <created>1680089420192</created>
       <option name="number" value="00013" />
@@ -269,7 +261,7 @@
       <updated>1680194589515</updated>
     </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="473c3873-6c81-4183-9f2e-521c70d57b29" name="Changes" comment="Fixed warnings" />
+      <changelist id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added TODO" />
       <created>1680502116489</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -278,6 +270,7 @@
       <workItem from="1680531715978" duration="1355000" />
       <workItem from="1680588065575" duration="2608000" />
       <workItem from="1680690350808" duration="969000" />
+      <workItem from="1680771183796" duration="610000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -517,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680705672298</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Added TODO">
+      <created>1680711864164</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1680711864164</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changed Configuration in Configurations" />
     <MESSAGE value="Implemented loading of configuration file" />
     <MESSAGE value="Finished Configuration class" />
     <MESSAGE value="Fixed small issues in Game class" />
@@ -575,7 +574,8 @@
     <MESSAGE value="Added description" />
     <MESSAGE value="Added json files for personal cards" />
     <MESSAGE value="Completed Player class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed Player class" />
+    <MESSAGE value="Added TODO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added TODO" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
