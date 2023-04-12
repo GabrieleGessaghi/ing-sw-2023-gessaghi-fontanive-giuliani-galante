@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added observer and observable interfaces" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Moved Configurations to controller">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +65,9 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="controller" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="model" />
       <recent name="model.cards" />
@@ -73,7 +79,7 @@
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -89,7 +95,7 @@
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,7 +111,7 @@
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,7 +127,7 @@
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -137,7 +143,7 @@
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -161,20 +167,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00018" summary="junit 5.9.2">
-      <created>1680097137864</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1680097137864</updated>
-    </task>
-    <task id="LOCAL-00019" summary="junit 5.9.2">
-      <created>1680097702074</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1680097702074</updated>
-    </task>
     <task id="LOCAL-00020" summary="CornerTest">
       <created>1680100389254</created>
       <option name="number" value="00020" />
@@ -235,7 +227,7 @@
       <workItem from="1680588065575" duration="2608000" />
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
-      <workItem from="1681279263760" duration="1193000" />
+      <workItem from="1681279263760" duration="1983000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -517,7 +509,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681280163481</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Created TurnController">
+      <created>1681280654818</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1681280654818</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Moved Configurations to controller">
+      <created>1681280708420</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1681280708420</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,8 +557,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added TODOs" />
-    <MESSAGE value="Fixed typos" />
     <MESSAGE value="Fixed formatting" />
     <MESSAGE value="Created BoardTest class" />
     <MESSAGE value="Modified updatePoints" />
@@ -576,7 +580,9 @@
     <MESSAGE value="Fixed small issues" />
     <MESSAGE value="Created Event class" />
     <MESSAGE value="Added observer and observable interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added observer and observable interfaces" />
+    <MESSAGE value="Created TurnController" />
+    <MESSAGE value="Moved Configurations to controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved Configurations to controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
