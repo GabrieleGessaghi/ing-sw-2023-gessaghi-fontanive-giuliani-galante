@@ -12,7 +12,7 @@ import static controller.Configurations.*;
  * Receives data for a new turn and acts once it's ready.
  * @author Giorgio Massimo Fontanive
  */
-public class TurnController implements Observer{
+public class TurnController implements Observer {
     private int[][] selectedTiles;
     private int selectedColumn;
     private final Game game;

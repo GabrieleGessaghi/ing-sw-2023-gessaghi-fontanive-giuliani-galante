@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added checks for legal input in TurnController">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added documentantion">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/exceptions/IllegalColumnSelectionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/exceptions/IllegalTileSelectionException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +19,8 @@
       <list>
         <option value="package.json" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -167,13 +168,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00022" summary="DiagonalTest">
-      <created>1680103905464</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1680103905464</updated>
-    </task>
     <task id="LOCAL-00023" summary="EightanyTest">
       <created>1680105315684</created>
       <option name="number" value="00023" />
@@ -213,7 +207,7 @@
       <workItem from="1680588065575" duration="2608000" />
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
-      <workItem from="1681279263760" duration="4320000" />
+      <workItem from="1681279263760" duration="4696000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -523,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681283194806</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Added documentantion">
+      <created>1681283805888</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1681283805888</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -557,7 +558,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modified updatePoints" />
     <MESSAGE value="Updated playerTurn in Game" />
     <MESSAGE value="Updated Board.reset" />
     <MESSAGE value="Fixed convertSelection" />
@@ -582,7 +582,8 @@
     <MESSAGE value="Moved Configurations to controller" />
     <MESSAGE value="Added update method to TurnController" />
     <MESSAGE value="Added checks for legal input in TurnController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added checks for legal input in TurnController" />
+    <MESSAGE value="Added documentantion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added documentantion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
