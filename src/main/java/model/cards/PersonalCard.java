@@ -1,7 +1,7 @@
 package model.cards;
 
 import com.google.gson.stream.JsonReader;
-import model.Configurations;
+import controller.Configurations;
 import model.Token;
 
 import java.io.IOException;
@@ -10,9 +10,9 @@ import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static model.Configurations.SHELF_COLUMNS;
-import static model.Configurations.SHELF_ROWS;
-import static model.Configurations.PERSONALCARD_POINTS;
+import static controller.Configurations.SHELF_COLUMNS;
+import static controller.Configurations.SHELF_ROWS;
+import static controller.Configurations.PERSONALCARD_POINTS;
 
 /**
  * Personal objective cards.

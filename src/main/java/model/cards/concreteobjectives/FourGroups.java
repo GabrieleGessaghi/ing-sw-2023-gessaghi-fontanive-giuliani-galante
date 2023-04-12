@@ -4,8 +4,8 @@ import model.Token;
 import model.cards.CommonObjective;
 import model.cards.CommonType;
 
-import static model.Configurations.SHELF_COLUMNS;
-import static model.Configurations.SHELF_ROWS;
+import static controller.Configurations.SHELF_COLUMNS;
+import static controller.Configurations.SHELF_ROWS;
 
 /**
  * Four groups each containing at least

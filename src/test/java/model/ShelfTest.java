@@ -1,5 +1,6 @@
 package model;
 
+import controller.Configurations;
 import model.exceptions.FullColumnException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

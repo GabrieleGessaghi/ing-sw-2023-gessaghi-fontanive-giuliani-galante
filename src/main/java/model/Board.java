@@ -1,7 +1,7 @@
 package model;
 
-import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import controller.Configurations;
 import model.exceptions.IllegalMoveException;
 import java.io.IOException;
 import java.io.Serializable;
@@ -10,8 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-import static model.Configurations.MAX_TOKENS_PER_TURN;
-import static model.Configurations.BOARD_SIZE;
+import static controller.Configurations.MAX_TOKENS_PER_TURN;
+import static controller.Configurations.BOARD_SIZE;
 
 /**
  * The board on which the game is played.

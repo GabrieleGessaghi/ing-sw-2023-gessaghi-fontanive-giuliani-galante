@@ -4,15 +4,13 @@ import model.cards.Card;
 import model.cards.CommonCard;
 import model.cards.PersonalCard;
 import model.exceptions.FullColumnException;
-import model.Token;
 
-import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static model.Configurations.SHELF_COLUMNS;
-import static model.Configurations.SHELF_ROWS;
+import static controller.Configurations.SHELF_COLUMNS;
+import static controller.Configurations.SHELF_ROWS;
 
 /**
  * Handles players' shelves and cards.

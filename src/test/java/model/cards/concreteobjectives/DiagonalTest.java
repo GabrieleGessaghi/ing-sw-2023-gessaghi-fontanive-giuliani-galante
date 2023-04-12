@@ -1,13 +1,13 @@
 package model.cards.concreteobjectives;
 
-import model.Configurations;
+import controller.Configurations;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static model.Configurations.SHELF_COLUMNS;
-import static model.Configurations.SHELF_ROWS;
+import static controller.Configurations.SHELF_COLUMNS;
+import static controller.Configurations.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiagonalTest {

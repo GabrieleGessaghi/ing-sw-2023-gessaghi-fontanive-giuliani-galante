@@ -1,12 +1,12 @@
 package model.cards;
 
-import model.Configurations;
+import controller.Configurations;
 import model.Token;
 import model.cards.concreteobjectives.Corners;
 import org.junit.jupiter.api.Test;
 
-import static model.Configurations.SHELF_ROWS;
-import static model.Configurations.SHELF_COLUMNS;
+import static controller.Configurations.SHELF_ROWS;
+import static controller.Configurations.SHELF_COLUMNS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommonCardTest {

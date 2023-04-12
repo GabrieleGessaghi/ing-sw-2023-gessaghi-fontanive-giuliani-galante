@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import com.google.gson.stream.JsonReader;
 import java.io.IOException;

@@ -1,5 +1,6 @@
 package model;
 
+import controller.Configurations;
 import model.cards.CommonCard;
 import model.cards.CommonObjective;
 import model.cards.CommonType;
