@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Observable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Observer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" afterDir="false" />
-    </list>
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added observer and observable interfaces" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,13 +161,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00017" summary="junit 5.9.2">
-      <created>1680096863354</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1680096863354</updated>
-    </task>
     <task id="LOCAL-00018" summary="junit 5.9.2">
       <created>1680097137864</created>
       <option name="number" value="00018" />
@@ -248,7 +235,7 @@
       <workItem from="1680588065575" duration="2608000" />
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
-      <workItem from="1681279263760" duration="879000" />
+      <workItem from="1681279263760" duration="1193000" />
     </task>
     <task id="LOCAL-00027" summary="edited Stairs">
       <created>1680506631932</created>
@@ -523,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681279798311</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Added observer and observable interfaces">
+      <created>1681280163481</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1681280163481</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -557,7 +551,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed small issues in Game class" />
     <MESSAGE value="Added TODOs" />
     <MESSAGE value="Fixed typos" />
     <MESSAGE value="Fixed formatting" />
@@ -582,7 +575,8 @@
     <MESSAGE value="Updated class diagram" />
     <MESSAGE value="Fixed small issues" />
     <MESSAGE value="Created Event class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Event class" />
+    <MESSAGE value="Added observer and observable interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added observer and observable interfaces" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
