@@ -8,7 +8,7 @@ import static model.Configurations.NUMBER_OF_TOKEN_TYPES;
 import static model.Configurations.TOKENS_PER_TYPE;
 
 /**
- * Bag of tokens for the game's board
+ * Bag of tokens for the game's board.
  * @author Giorgio Massimo Fontanive
  */
 public class Bag {
