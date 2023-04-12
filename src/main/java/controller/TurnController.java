@@ -71,6 +71,7 @@ public class TurnController implements Observer {
 
         if (isMatrixLegal() && isColumnLegal())
             game.playerTurn(selectedTiles, selectedColumn);
+            //TODO: Reset the object (or delete it)
         //TODO: Maybe throw an exception
     }
 }
