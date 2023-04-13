@@ -77,7 +77,7 @@ public class Player implements Serializable {
      * Updates player's points.
      * @author Niccolò Galante.
      */
-    public void updatePoints() {
+    private void updatePoints() {
         int tempPoints = points - adjacentPoints;
         isComplete = new boolean[NUMBER_OF_CARDS];
 

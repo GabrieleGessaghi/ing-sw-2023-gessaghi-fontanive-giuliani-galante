@@ -75,7 +75,16 @@ public class PersonalCard extends Card implements Serializable {
         return (countCorrect == 0 ? 0 : PERSONALCARD_POINTS[countCorrect - 1]);
     }
 
-//    /**
+    /**
+     * Returns tiles from personal card.
+     * @author Niccolò Galante
+     * @return tiles from personal card.
+     */
+    public Token[][] getCorrectTiles() {
+        return correctTiles;
+    }
+
+    //    /**
 //     * Converts integer to token type.
 //     * @author Niccolò Galante
 //     * @param tile Tile that is being read from personal card.
