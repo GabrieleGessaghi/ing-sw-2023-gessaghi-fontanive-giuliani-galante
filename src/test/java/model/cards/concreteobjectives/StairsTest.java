@@ -12,7 +12,7 @@ class StairsTest {
     @Test
     void stairLeft(){
         Configurations.loadConfiguration("src/main/resources/configuration.json");
-        var stair= new Stairs();
+        var stair = new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
 

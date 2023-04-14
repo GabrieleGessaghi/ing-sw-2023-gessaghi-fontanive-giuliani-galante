@@ -20,7 +20,7 @@ public class ThreeColumns implements CommonObjective {
                 counter[w]=0;
             differentType = 0;
             for (int j=0; j < ROWS ; j++)
-                switch (shelf[i][j]) {
+                switch (shelf[j][i]) {
                     case CAT -> counter[0]++;
                     case BOOK -> counter[1]++;
                     case TOY -> counter[2]++;
