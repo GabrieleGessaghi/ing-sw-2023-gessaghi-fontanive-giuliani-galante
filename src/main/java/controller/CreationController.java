@@ -8,9 +8,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 
-
-
-
 /**
  * Controller of the creation of the game
  * @author Niccolò Giuliani
@@ -20,12 +17,12 @@ public class CreationController implements Observer {
     private ArrayList<String> playersNicknames;
     private boolean isGameReady;
 
-
     public CreationController(){
         playersNicknames = new ArrayList<String>();
         int playersNumber = 0;
         isGameReady = false;
     }
+
     @Override
     public void update(Event event) {
         String jsonMessage = event.getJsonMessage();
@@ -37,10 +34,8 @@ public class CreationController implements Observer {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-
-                        case "playersNumber" -> setPlayerNumber(jsonReader.nextInt());
-                        case "playersNickname" -> addPlayer(jsonReader.nextString());
-
+                    case "playersNumber" -> setPlayerNumber(jsonReader.nextInt());
+                    case "playersNickname" -> addPlayer(jsonReader.nextString());
                 }
                 if(playersNumber < playersNicknames.size())
                     throw new TooManyPlayersException("Too many players trying to play the game");

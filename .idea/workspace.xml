@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested PersonalCard">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_04_23__17_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_04_23__17_55__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_04_23__09_28__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_04_23__09_28__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_23__11_10__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_23__11_10__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/ThreeColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/ThreeColumns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/StairsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/StairsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/ThreeColumnsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/ThreeColumnsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/CommonCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/CommonCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/CommonObjective.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/CommonObjective.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/ConfigurationsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/ConfigurationsTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/CommonCardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/CommonCardTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/CornersTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/CornersTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/DiagonalTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/DiagonalTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/EightanyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/EightanyTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/FourGroupsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/FourGroupsTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/FourRowsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/FourRowsTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/SixGroupsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/SixGroupsTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/StairsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/StairsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/exceptions/TooManyPlayersException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/exceptions/TooManyPlayersException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +76,22 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ThreeColumnsTest.isSatisfiedTestFalse">
+  <component name="RunManager" selected="JUnit.PersonalCardTest.getPointsTestOne">
+    <configuration name="PersonalCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.PersonalCardTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PersonalCardTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <extension name="coverage">
@@ -142,33 +140,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreeColumnsTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+    <configuration name="ShelfTest.isFullTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.ThreeColumnsTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ThreeColumnsTest.isSatisfiedTestTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.ThreeColumnsTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestTrue" />
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.ShelfTest" />
+      <option name="METHOD_NAME" value="isFullTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -176,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ThreeColumnsTest.isSatisfiedTestFalse" />
-        <item itemvalue="JUnit.ThreeColumnsTest.isSatisfiedTestTrue" />
         <item itemvalue="JUnit.PersonalCardTest.getPointsTestOne" />
         <item itemvalue="JUnit.PersonalCardTest.getPointsTestTwo" />
         <item itemvalue="JUnit.PersonalCardTest.constructorTest" />
+        <item itemvalue="JUnit.PersonalCardTest" />
+        <item itemvalue="JUnit.ShelfTest.isFullTest" />
       </list>
     </recent_temporary>
   </component>
