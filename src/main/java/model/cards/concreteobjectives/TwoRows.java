@@ -5,7 +5,7 @@ import model.cards.CommonObjective;
 import model.cards.CommonType;
 
 /**
- * Two lines each formed by 5 different
+ * Two rows each formed by 5 different
  * types of tiles. One line can show the
  * same or a different combination of the
  * other line.
@@ -34,7 +34,7 @@ public class TwoRows implements CommonObjective {
             for (int n = 0; n < 6; n++)
                 if (counter[n] > 0)
                     differentType++;
-            if (differentType == 5 && counter[6] == 0)
+            if (differentType == 5)
                 atLeastTwo++;
         }
         return atLeastTwo >= 2;
