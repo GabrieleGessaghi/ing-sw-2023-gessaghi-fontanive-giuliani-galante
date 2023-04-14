@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested PersonalCard">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/exceptions/TooManyPlayersException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/exceptions/TooManyPlayersException.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested ThreeColumns">
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/TwoColumnsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/TwoColumnsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,22 +75,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PersonalCardTest.getPointsTestOne">
-    <configuration name="PersonalCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.PersonalCardTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TwoColumnsTest.isSatisfiedTestFalse">
     <configuration name="PersonalCardTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <extension name="coverage">
@@ -140,17 +124,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShelfTest.isFullTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
+    <configuration name="TwoColumnsTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.ShelfTest" />
-      <option name="METHOD_NAME" value="isFullTest" />
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoColumnsTest" />
+      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwoColumnsTest.isSatisfiedTestTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoColumnsTest" />
+      <option name="METHOD_NAME" value="isSatisfiedTestTrue" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -158,23 +158,16 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestFalse" />
+        <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestTrue" />
         <item itemvalue="JUnit.PersonalCardTest.getPointsTestOne" />
         <item itemvalue="JUnit.PersonalCardTest.getPointsTestTwo" />
         <item itemvalue="JUnit.PersonalCardTest.constructorTest" />
-        <item itemvalue="JUnit.PersonalCardTest" />
-        <item itemvalue="JUnit.ShelfTest.isFullTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00025" summary="Fixed warnings">
-      <created>1680194489233</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1680194489234</updated>
-    </task>
     <task id="LOCAL-00026" summary="Fixed warnings">
       <created>1680194589515</created>
       <option name="number" value="00026" />
@@ -524,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681397170216</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Tested ThreeColumns">
+      <created>1681478244285</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1681478244285</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -558,7 +558,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed convertSelection" />
     <MESSAGE value="Tested Board" />
     <MESSAGE value="Fixed small issue in Board" />
     <MESSAGE value="Completed Board and Configurations testing" />
@@ -583,7 +582,8 @@
     <MESSAGE value="Added documentantion" />
     <MESSAGE value="Added 2 controller exceptions" />
     <MESSAGE value="Tested PersonalCard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tested PersonalCard" />
+    <MESSAGE value="Tested ThreeColumns" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tested ThreeColumns" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
