@@ -14,12 +14,12 @@ import java.util.ArrayList;
  */
 public class CreationController implements Observer {
     private int playersNumber;
-    private ArrayList<String> playersNicknames;
+    private final ArrayList<String> playersNicknames;
     private boolean isGameReady;
 
     public CreationController(){
         playersNicknames = new ArrayList<String>();
-        int playersNumber = 0;
+        playersNumber = 0;
         isGameReady = false;
     }
 
