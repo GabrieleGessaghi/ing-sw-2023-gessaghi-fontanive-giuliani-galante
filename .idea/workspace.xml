@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested TwoColumns">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_04_23,_17_55_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_04_23__17_55__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/TwoSquaresTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/TwoSquaresTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/XShapeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/XShapeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoRows.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoRows.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,55 +77,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TwoRowsTest.isSatisfiedTestFalse">
-    <configuration name="PersonalCardTest.getPointsTestOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.PersonalCardTest" />
-      <option name="METHOD_NAME" value="getPointsTestOne" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TwoColumnsTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoColumnsTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TwoColumnsTest.isSatisfiedTestTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoColumnsTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestTrue" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.XShapeTest.isSatisfiedTestFalse">
     <configuration name="TwoRowsTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <extension name="coverage">
@@ -157,13 +110,61 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TwoSquaresTest.isSatisfiedTestTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoSquaresTest" />
+      <option name="METHOD_NAME" value="isSatisfiedTestTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="XShapeTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.XShapeTest" />
+      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="XShapeTest.isSatisfiedTestTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.XShapeTest" />
+      <option name="METHOD_NAME" value="isSatisfiedTestTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.XShapeTest.isSatisfiedTestFalse" />
+        <item itemvalue="JUnit.XShapeTest.isSatisfiedTestTrue" />
+        <item itemvalue="JUnit.TwoSquaresTest.isSatisfiedTestTrue" />
         <item itemvalue="JUnit.TwoRowsTest.isSatisfiedTestFalse" />
         <item itemvalue="JUnit.TwoRowsTest.isSatisfiedTestTrue" />
-        <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestFalse" />
-        <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestTrue" />
-        <item itemvalue="JUnit.PersonalCardTest.getPointsTestOne" />
       </list>
     </recent_temporary>
   </component>
@@ -532,6 +533,15 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -543,15 +553,6 @@
                 </option>
               </RecentGroup>
             </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
           </value>
         </entry>
       </map>
