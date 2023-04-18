@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested TwoColumns">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/TwoSquaresTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/TwoSquaresTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/XShapeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/XShapeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoRows.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/TwoRows.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoSquares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoSquares.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -533,15 +530,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -553,6 +541,15 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>
