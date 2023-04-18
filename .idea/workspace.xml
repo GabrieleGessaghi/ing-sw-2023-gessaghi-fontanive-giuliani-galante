@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested TwoColumns">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoSquares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoSquares.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested XShape">
+      <change afterPath="$PROJECT_DIR$/src/test/java/model/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +75,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.XShapeTest.isSatisfiedTestFalse">
+  <component name="RunManager" selected="JUnit.TwoSquaresTest.isSatisfiedTestFalse">
     <configuration name="TwoRowsTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <extension name="coverage">
@@ -91,7 +92,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TwoRowsTest.isSatisfiedTestTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TwoSquaresTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <extension name="coverage">
         <pattern>
@@ -100,8 +101,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoRowsTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestTrue" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoSquaresTest" />
+      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -157,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TwoSquaresTest.isSatisfiedTestFalse" />
+        <item itemvalue="JUnit.TwoSquaresTest.isSatisfiedTestTrue" />
         <item itemvalue="JUnit.XShapeTest.isSatisfiedTestFalse" />
         <item itemvalue="JUnit.XShapeTest.isSatisfiedTestTrue" />
-        <item itemvalue="JUnit.TwoSquaresTest.isSatisfiedTestTrue" />
         <item itemvalue="JUnit.TwoRowsTest.isSatisfiedTestFalse" />
-        <item itemvalue="JUnit.TwoRowsTest.isSatisfiedTestTrue" />
       </list>
     </recent_temporary>
   </component>
@@ -179,13 +180,6 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
-    </task>
-    <task id="LOCAL-00027" summary="edited Stairs">
-      <created>1680506631932</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1680506631932</updated>
     </task>
     <task id="LOCAL-00028" summary="edited FourGropus and created  FourGroupsTest">
       <created>1680511451355</created>
@@ -523,13 +517,29 @@
       <option name="project" value="LOCAL" />
       <updated>1681478924383</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Tested XShape">
+      <created>1681807893259</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1681807893260</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -545,19 +555,9 @@
         </entry>
       </map>
     </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed small issue in Board" />
     <MESSAGE value="Completed Board and Configurations testing" />
     <MESSAGE value="Tested Board's automatic reset" />
     <MESSAGE value="Added more constants to configuration file" />
@@ -582,7 +582,8 @@
     <MESSAGE value="Tested PersonalCard" />
     <MESSAGE value="Tested ThreeColumns" />
     <MESSAGE value="Tested TwoColumns" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tested TwoColumns" />
+    <MESSAGE value="Tested XShape" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tested XShape" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -17,8 +17,8 @@ public class TwoSquaresTest {
 
         Token[][] testShelfTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];
         int[][] testShelfInt = new int[][]{
-                {3, 1, 1, 0, 4},
-                {3, 1, 1, 4, 4},
+                {1, 1, 2, 0, 4},
+                {1, 1, 6, 4, 4},
                 {3, 4, 2, 0, 5},
                 {4, 6, 3, 3, 5},
                 {5, 5, 3, 3, 0},
@@ -38,7 +38,7 @@ public class TwoSquaresTest {
 
         Token[][] testShelfTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];
         int[][] testShelfInt = new int[][]{
-                {2, 2, 2, 6, 5},
+                {1, 2, 2, 6, 5},
                 {2, 2, 0, 6, 0},
                 {4, 5, 0, 6, 0},
                 {3, 4, 0, 6, 0},
