@@ -1,4 +1,6 @@
-package controller;
+package view;
+
+import controller.Event;
 
 public class OutputSender {
 
