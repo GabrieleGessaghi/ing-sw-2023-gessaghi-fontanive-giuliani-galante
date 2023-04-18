@@ -17,18 +17,17 @@ public class TwoSquares implements CommonObjective {
     public boolean isSatisfied(Token[][] shelf) {
         boolean flag = false;
         boolean[][] check = new boolean[ROWS][COLUMNS];
-        int[] atLeastTwo = new int[7];
+        int atLeastTwo = 0;
         for (int i = 0; i < ROWS; i++)
             for (int j=0; j< COLUMNS; j++)
                 check[i][j] = false;
-        for (int i = 0; i < 7; i++)
-            atLeastTwo[i]=0;
+
         for (int i = 0; i < ROWS - 1; i++) {
             for (int j = 0; j < COLUMNS - 1; j++) {
                 if (!check[i][j] && shelf[i][j] != Token.NOTHING && i < 5 && j < 4){
                     if (shelf[i][j] == shelf[i][j + 1] && shelf[i][j] == shelf[i + 1][j] && shelf[i][j] == shelf[i +1][j + 1]
                     && !check[i][j + 1] && !check[i + 1][j] && !check[i + 1][j + 1]) {
-                        atLeastTwo[fromTokenToInt(shelf[i][j])]++;
+                        atLeastTwo++;
                         check[i][j] = true;
                         check[i][j + 1] = true;
                         check[i + 1][j] = true;
@@ -37,11 +36,9 @@ public class TwoSquares implements CommonObjective {
                 }
             }
         }
-        for (int i = 0; i < 7 && !flag; i++){
-            if(atLeastTwo[i] >= 2)
-                flag=true;
-        }
-        return flag;
+
+
+        return atLeastTwo >= 2;
     }
 
     private int fromTokenToInt(Token x){

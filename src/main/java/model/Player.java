@@ -163,7 +163,7 @@ public class Player implements Serializable {
      * @param type Type of token.
      * @return true if the cell is equal the token type
      */
-    boolean isOk(Token[][] shelf, int row, int col, boolean[][] checked, Token type) {
+    private boolean isOk(Token[][] shelf, int row, int col, boolean[][] checked, Token type) {
         return (row >= 0) && (row < SHELF_ROWS) && (col >= 0) && (col < SHELF_COLUMNS)
                 && (shelf[row][col] == type && !checked[row][col]);
     }

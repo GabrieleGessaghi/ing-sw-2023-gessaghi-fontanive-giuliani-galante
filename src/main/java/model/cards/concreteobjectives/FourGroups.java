@@ -86,7 +86,7 @@ public class FourGroups implements CommonObjective {
      * @param type
      * @return true if the cell is equal the Token type
      */
-    boolean isOk(Token[][] M, int row, int col, boolean[][] checked, Token type) {
+    private boolean isOk(Token[][] M, int row, int col, boolean[][] checked, Token type) {
         return (row >= 0) && (row < ROWS) && (col >= 0) && (col < COLUMNS)
                 && (M[row][col] == type && !checked[row][col]);
     }
