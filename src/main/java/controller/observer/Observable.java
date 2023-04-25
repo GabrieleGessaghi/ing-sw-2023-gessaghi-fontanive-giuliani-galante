@@ -1,4 +1,4 @@
-package controller;
+package controller.observer;
 
 /**
  * Sends an event to every object subscribed to this.

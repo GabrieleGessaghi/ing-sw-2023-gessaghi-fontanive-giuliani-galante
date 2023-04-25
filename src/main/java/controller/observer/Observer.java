@@ -1,4 +1,4 @@
-package controller;
+package controller.observer;
 
 /**
  * Lets observable objects send an event to others implementing this.

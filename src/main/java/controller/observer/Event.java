@@ -1,4 +1,4 @@
-package controller;
+package controller.observer;
 
 /**
  * Holds information for a data update.

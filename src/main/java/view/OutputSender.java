@@ -1,6 +1,6 @@
 package view;
 
-import controller.Event;
+import controller.observer.Event;
 
 public class OutputSender {
 

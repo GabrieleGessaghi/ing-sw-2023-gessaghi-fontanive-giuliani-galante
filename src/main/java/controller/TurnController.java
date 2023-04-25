@@ -1,6 +1,8 @@
 package controller;
 
 import com.google.gson.stream.JsonReader;
+import controller.observer.Event;
+import controller.observer.Observer;
 import model.Game;
 
 import java.io.IOException;
