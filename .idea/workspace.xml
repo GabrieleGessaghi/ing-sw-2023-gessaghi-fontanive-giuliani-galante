@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested XShape">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Modified UML diagrams">
+      <change afterPath="$PROJECT_DIR$/.$sequence_diagram_common.drawio.bkp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.$sequence_diagram_selection.drawio.bkp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.$class_diagram.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/.$class_diagram.drawio.bkp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.$sequence_diagram_login.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/.$sequence_diagram_login.drawio.bkp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class_diagram.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/class_diagram.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sequence_diagram_common.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/sequence_diagram_common.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sequence_diagram_login.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/sequence_diagram_login.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sequence_diagram_selection.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/sequence_diagram_selection.drawio" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,29 +52,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "inlay.hints",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="controller.observer" />
       <recent name="controller" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
@@ -181,27 +189,6 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
-    </task>
-    <task id="LOCAL-00028" summary="edited FourGropus and created  FourGroupsTest">
-      <created>1680511451355</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1680511451355</updated>
-    </task>
-    <task id="LOCAL-00029" summary="edited FourGropus">
-      <created>1680511950742</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1680511950742</updated>
-    </task>
-    <task id="LOCAL-00030" summary="created FourRowsTest and SixGroupsTest">
-      <created>1680515298223</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1680515298223</updated>
     </task>
     <task id="LOCAL-00031" summary="changed Configuration in Configurations">
       <created>1680517748002</created>
@@ -525,7 +512,28 @@
       <option name="project" value="LOCAL" />
       <updated>1681807893260</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Created observer package">
+      <created>1682402719283</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1682402719283</updated>
+    </task>
+    <task id="LOCAL-00078" summary=".">
+      <created>1682402824961</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1682402824961</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Modified UML diagrams">
+      <created>1682405476458</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1682405476458</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -559,9 +567,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Completed Board and Configurations testing" />
-    <MESSAGE value="Tested Board's automatic reset" />
-    <MESSAGE value="Added more constants to configuration file" />
     <MESSAGE value="Added method to read array from json" />
     <MESSAGE value="Removed extra requirements for reading matrices from json files" />
     <MESSAGE value="Removed extra requirements for reading arrays from json files" />
@@ -584,7 +589,10 @@
     <MESSAGE value="Tested ThreeColumns" />
     <MESSAGE value="Tested TwoColumns" />
     <MESSAGE value="Tested XShape" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tested XShape" />
+    <MESSAGE value="Created observer package" />
+    <MESSAGE value="." />
+    <MESSAGE value="Modified UML diagrams" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified UML diagrams" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
