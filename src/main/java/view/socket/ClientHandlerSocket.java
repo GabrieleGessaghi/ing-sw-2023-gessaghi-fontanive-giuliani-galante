@@ -20,8 +20,8 @@ public class ClientHandlerSocket extends ClientHandler {
     private Socket s;
 
     private ArrayList<Observer> observers;
-    public ClientHandlerSocket(ArrayList<Observer> observers, int port,Socket s, InputStream inputStream, OutputStream outputStream){
-        this.observers = observers;
+    public ClientHandlerSocket(int port,Socket s, InputStream inputStream, OutputStream outputStream){
+
         this.port = port;
         this.s = s;
         this.inputStream = inputStream;
@@ -62,11 +62,16 @@ public class ClientHandlerSocket extends ClientHandler {
                 if(itIsARequest){
                     switch (lastRequest) {
                         case NICKNAME -> out.write("{requestNickname:true}");
+                        case PLAYERSNUMBER -> out.write("{requestPlayersNumber:true}");
+                        case TOKENS -> out.write("requestTokens:true");
+                        case COLUMN -> out.write("requestColumn:true");
                     }
                 }
-
-                Event event = new Event(buffer.readLine()));
-                updateObservers(event);
+                String line = buffer.readLine();
+                if(line != null) {
+                    Event event = new Event(buffer.readLine());
+                    updateObservers(event);
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();
