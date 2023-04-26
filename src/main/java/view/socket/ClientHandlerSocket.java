@@ -4,6 +4,9 @@ import controller.observer.Event;
 import controller.observer.Observer;
 import view.ClientHandler;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class ClientHandlerSocket extends ClientHandler {
     private int port;
     private InputStream inputstream;
