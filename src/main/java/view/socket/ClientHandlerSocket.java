@@ -13,18 +13,20 @@ import java.util.ArrayList;
 
 public class ClientHandlerSocket extends ClientHandler {
     private Promt lastRequest;
-    private boolean itIsARequest;
-    private InputStream inputStream;
-    private OutputStream outputStream;
+    private final boolean itIsARequest;
+    private final InputStream inputStream;
+    private final OutputStream outputStream;
     private Socket s;
 
-    private ArrayList<Observer> observers;
+    private final ArrayList<Observer> observers;
     public ClientHandlerSocket(Socket s, InputStream inputStream, OutputStream outputStream){
         this.s = s;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
         this.lastRequest = Promt.NICKNAME;
         this.itIsARequest = true;
+        this.observers = new ArrayList<>();
+
     }
     @Override
     public void updateObservers(Event event) {
