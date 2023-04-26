@@ -561,7 +561,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Removed extra requirements for reading arrays from json files" />
     <MESSAGE value="Implemented global variable for PersonalCard" />
     <MESSAGE value="Added description" />
     <MESSAGE value="Added json files for personal cards" />
@@ -586,7 +585,8 @@
     <MESSAGE value="Modified UML diagrams" />
     <MESSAGE value="created ClientHandler" />
     <MESSAGE value="added Javadoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Javadoc" />
+    <MESSAGE value="Created Server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Server" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
