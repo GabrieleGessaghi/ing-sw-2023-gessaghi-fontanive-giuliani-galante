@@ -42,7 +42,7 @@ public class ClientHandlerSocket extends ClientHandler {
 
     @Override
     public void registerObserver(Observer observer) {
-
+        observers.add(observer);
     }
 
 
