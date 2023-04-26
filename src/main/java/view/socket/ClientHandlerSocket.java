@@ -61,8 +61,8 @@ public class ClientHandlerSocket extends ClientHandler {
                     switch (lastRequest) {
                         case NICKNAME -> out.write("{requestNickname:true}");
                         case PLAYERSNUMBER -> out.write("{requestPlayersNumber:true}");
-                        case TOKENS -> out.write("requestTokens:true");
-                        case COLUMN -> out.write("requestColumn:true");
+                        case TOKENS -> out.write("{requestTokens:true}");
+                        case COLUMN -> out.write("{requestColumn:true}");
                     }
                 }
                 String line = buffer.readLine();
