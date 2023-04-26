@@ -54,25 +54,20 @@ public class ClientHandlerSocket extends ClientHandler {
 
     @Override
     public void run() {
-        boolean requestSent = false;
         while(true) {
             try{
                 OutputStreamWriter out = new OutputStreamWriter(outputStream);
                 InputStreamReader in = new InputStreamReader(inputStream);
                 BufferedReader buffer = new BufferedReader(in);
                 if(itIsARequest){
-                    if(lastRequest == Promt.NICKNAME) {
-                        out.write("{requestNickname:true}");
-                        requestSent = true;
+                    switch (lastRequest) {
+                        case NICKNAME -> out.write("{requestNickname:true}");
                     }
                 }
-                String line = buffer.readLine();
 
-                if(requestSent  && lastRequest == Promt.NICKNAME) {
-                    Event nickname = new Event(buffer.readLine());
-                    updateObservers(nickname);
-                    requestSent = false;
-                }
+                Event event = new Event(buffer.readLine()));
+                updateObservers(event);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
