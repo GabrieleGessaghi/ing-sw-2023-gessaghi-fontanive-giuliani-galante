@@ -56,6 +56,7 @@ public class ClientHandlerSocket extends ClientHandler {
         this.lastRequest = promt;
     }
 
+    //TODO : exit condition and closing the resources
     @Override
     public void run() {
         OutputStreamWriter out = new OutputStreamWriter(outputStream);
