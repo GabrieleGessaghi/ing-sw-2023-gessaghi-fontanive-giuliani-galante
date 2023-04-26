@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Updated UML diagrams">
-      <change afterPath="$PROJECT_DIR$/diagrams/.$class_diagram.drawio.bkp" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="added Javadoc">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/socket/NetworkHandlerSocket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diagrams/class_diagram.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/diagrams/class_diagram.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +19,8 @@
         <option value="package.json" />
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -185,7 +183,6 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
-      <workItem from="1682504901710" duration="2050000" />
     </task>
     <task id="LOCAL-00033" summary="Finished Configuration class">
       <created>1680523141501</created>

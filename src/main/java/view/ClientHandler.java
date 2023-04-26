@@ -15,7 +15,7 @@ public abstract class ClientHandler extends Thread implements Observer, Observab
 
     public abstract void registerObserver(Observer observer);
 
-    public abstract  void notifyObservers(Event event);
+
 
     /**
      * method to request an input to the Client
