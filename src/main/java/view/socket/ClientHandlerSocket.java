@@ -3,6 +3,7 @@ package view.socket;
 import controller.observer.Event;
 import controller.observer.Observer;
 import view.ClientHandler;
+import view.Promt;
 
 import java.io.InputStream;
 import java.io.OutputStream;
