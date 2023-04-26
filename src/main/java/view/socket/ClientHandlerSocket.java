@@ -11,6 +11,10 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
+/**
+ * socket class to handle the Client
+ * @author Niccolò Giuliani
+ */
 public class ClientHandlerSocket extends ClientHandler {
     private Promt lastRequest;
     private final boolean itIsARequest;
