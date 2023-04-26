@@ -19,10 +19,9 @@ import java.util.ArrayList;
  * @author Giorgio Massimo Fontanive
  */
 public class Server {
-    private static boolean isGameRunning;
-    private static ArrayList<ClientHandlerSocket> clientHandlers = new ArrayList<>();
+    private static Controller controller;
     public static void main() throws IOException {
-        reset();
+        controller = new Controller();
         while (true) {
             Socket socket = null;
             try {
@@ -32,17 +31,13 @@ public class Server {
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 ClientHandlerSocket clientHandler = new ClientHandlerSocket(socket, dataInputStream, dataOutputStream);
                 clientHandler.start();
-                clientHandlers.add(clientHandler);
+                controller.addClient(clientHandler);
+                //TODO: Register observers
             } catch (Exception e) {
                 if (socket != null)
                     socket.close();
                 e.printStackTrace();
             }
         }
-    }
-
-    private static void reset() {
-        isGameRunning = false;
-        clientHandlers = new ArrayList<>();
     }
 }

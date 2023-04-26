@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Updated Server and ClientHandler">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Created Controller">
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,13 +182,6 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
-    </task>
-    <task id="LOCAL-00036" summary="Fixed typos">
-      <created>1680523601599</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1680523601599</updated>
     </task>
     <task id="LOCAL-00037" summary="Added TODOs">
       <created>1680524329914</created>
@@ -527,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682510232764</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Created Controller">
+      <created>1682510709820</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1682510709820</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,7 +560,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added json files for personal cards" />
     <MESSAGE value="Completed Player class" />
     <MESSAGE value="Added TODO" />
     <MESSAGE value="Updated class diagram" />
@@ -586,7 +584,8 @@
     <MESSAGE value="ClientHandlerSocket.run() implementation" />
     <MESSAGE value="Updated Server" />
     <MESSAGE value="Updated Server and ClientHandler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Server and ClientHandler" />
+    <MESSAGE value="Created Controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
