@@ -1,19 +1,20 @@
 package view.socket;
 
+import com.google.gson.stream.JsonReader;
+import controller.exceptions.TooManyPlayersException;
 import controller.observer.Event;
 import controller.observer.Observer;
 import view.ClientHandler;
 import view.Promt;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
 public class ClientHandlerSocket extends ClientHandler {
     private int port;
-    private Promt lastPromt;
+    private Promt lastRequest;
+    private boolean itIsARequest;
     private InputStream inputStream;
     private OutputStream outputStream;
     private Socket s;
@@ -25,7 +26,8 @@ public class ClientHandlerSocket extends ClientHandler {
         this.s = s;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
-
+        this.lastRequest = Promt.NICKNAME;
+        this.itIsARequest = true;
     }
     @Override
     public void updateObservers(Event event) {
@@ -47,19 +49,32 @@ public class ClientHandlerSocket extends ClientHandler {
 
     @Override
     public void requestInput(Promt promt) {
-        this.lastPromt = promt;
+        this.lastRequest = promt;
     }
 
     @Override
     public void run() {
-      /*  while(true){
+        while(true) {
             try{
+                OutputStreamWriter out = new OutputStreamWriter(outputStream);
+                InputStreamReader in = new InputStreamReader(inputStream);
+                BufferedReader buffer = new BufferedReader(in);
+                if(itIsARequest){
+                    switch (lastRequest) {
+                        case NICKNAME -> out.write("{requestNickname:true}");
+                    }
+                }
 
+                Event event = new Event(buffer.readLine()));
+                updateObservers(event);
 
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }*/
+
+        }
+
+
     }
 
     @Override
