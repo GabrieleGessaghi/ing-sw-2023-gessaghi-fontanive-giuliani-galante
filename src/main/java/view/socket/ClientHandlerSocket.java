@@ -1,19 +1,20 @@
 package view.socket;
 
+import com.google.gson.stream.JsonReader;
+import controller.exceptions.TooManyPlayersException;
 import controller.observer.Event;
 import controller.observer.Observer;
 import view.ClientHandler;
 import view.Promt;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
 public class ClientHandlerSocket extends ClientHandler {
     private int port;
-    private Promt lastPromt;
+    private Promt lastRequest;
+    private boolean itIsARequest;
     private InputStream inputStream;
     private OutputStream outputStream;
     private Socket s;
@@ -25,7 +26,8 @@ public class ClientHandlerSocket extends ClientHandler {
         this.s = s;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
-
+        this.lastRequest = Promt.NICKNAME;
+        this.itIsARequest = true;
     }
     @Override
     public void updateObservers(Event event) {
@@ -47,19 +49,37 @@ public class ClientHandlerSocket extends ClientHandler {
 
     @Override
     public void requestInput(Promt promt) {
-        this.lastPromt = promt;
+        this.lastRequest = promt;
     }
 
     @Override
     public void run() {
-      /*  while(true){
+        boolean requestSent = false;
+        while(true) {
             try{
+                OutputStreamWriter out = new OutputStreamWriter(outputStream);
+                InputStreamReader in = new InputStreamReader(inputStream);
+                BufferedReader buffer = new BufferedReader(in);
+                if(itIsARequest){
+                    if(lastRequest == Promt.NICKNAME) {
+                        out.write("{requestNickname:true}");
+                        requestSent = true;
+                    }
+                }
+                String line = buffer.readLine();
 
-
-            } catch (IOException e){
+                if(requestSent  && lastRequest == Promt.NICKNAME) {
+                    Event nickname = new Event(buffer.readLine());
+                    updateObservers(nickname);
+                    requestSent = false;
+                }
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }*/
+
+        }
+
+
     }
 
     @Override
