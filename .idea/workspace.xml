@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="fixed small issues">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="ClientHandlerSocket.run() implementation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/socket/ClientHandlerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/socket/ClientHandlerSocket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,6 +185,27 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
+    </task>
+    <task id="LOCAL-00034" summary="Fixed small issues in Game class">
+      <created>1680523395137</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1680523395137</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Fixed typos">
+      <created>1680523491223</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1680523491223</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Fixed typos">
+      <created>1680523601599</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1680523601599</updated>
     </task>
     <task id="LOCAL-00037" summary="Added TODOs">
       <created>1680524329914</created>
@@ -506,34 +529,22 @@
       <option name="project" value="LOCAL" />
       <updated>1682507576967</updated>
     </task>
-    <task id="LOCAL-00083" summary="fixed small issues">
-      <created>1682508408472</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1682508408472</updated>
-    </task>
-    <task id="LOCAL-00084" summary="fixed small issues">
-      <created>1682509723367</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1682509723367</updated>
-    </task>
-    <task id="LOCAL-00085" summary="fixed small issues">
-      <created>1682509843124</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1682509843124</updated>
-    </task>
-    <option name="localTasksCounter" value="86" />
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -549,18 +560,10 @@
         </entry>
       </map>
     </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Implemented global variable for PersonalCard" />
     <MESSAGE value="Added description" />
     <MESSAGE value="Added json files for personal cards" />
     <MESSAGE value="Completed Player class" />
@@ -585,8 +588,7 @@
     <MESSAGE value="created ClientHandler" />
     <MESSAGE value="added Javadoc" />
     <MESSAGE value="ClientHandlerSocket.run() implementation" />
-    <MESSAGE value="fixed small issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed small issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="ClientHandlerSocket.run() implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
