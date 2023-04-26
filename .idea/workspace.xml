@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Modified UML diagrams">
-      <change afterPath="$PROJECT_DIR$/.$sequence_diagram_common.drawio.bkp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.$sequence_diagram_selection.drawio.bkp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.$class_diagram.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/.$class_diagram.drawio.bkp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.$sequence_diagram_login.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/.$sequence_diagram_login.drawio.bkp" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="created ClientHandler">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/socket/ClientHandlerSocket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_diagram.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/class_diagram.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sequence_diagram_common.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/sequence_diagram_common.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sequence_diagram_login.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/sequence_diagram_login.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sequence_diagram_selection.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/sequence_diagram_selection.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ClientHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,13 +183,6 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
-    </task>
-    <task id="LOCAL-00031" summary="changed Configuration in Configurations">
-      <created>1680517748002</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1680517748002</updated>
     </task>
     <task id="LOCAL-00032" summary="Implemented loading of configuration file">
       <created>1680522468518</created>
@@ -533,22 +520,20 @@
       <option name="project" value="LOCAL" />
       <updated>1682405476458</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="created ClientHandler">
+      <created>1682495073724</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1682495073725</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -564,10 +549,18 @@
         </entry>
       </map>
     </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added method to read array from json" />
     <MESSAGE value="Removed extra requirements for reading matrices from json files" />
     <MESSAGE value="Removed extra requirements for reading arrays from json files" />
     <MESSAGE value="Implemented global variable for PersonalCard" />
@@ -592,7 +585,8 @@
     <MESSAGE value="Created observer package" />
     <MESSAGE value="." />
     <MESSAGE value="Modified UML diagrams" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified UML diagrams" />
+    <MESSAGE value="created ClientHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="created ClientHandler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
