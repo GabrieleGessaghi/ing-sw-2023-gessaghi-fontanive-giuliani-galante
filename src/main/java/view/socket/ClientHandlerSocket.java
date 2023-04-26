@@ -36,7 +36,12 @@ public class ClientHandlerSocket extends ClientHandler {
 
     @Override
     public void update(Event event) {
-
+        OutputStreamWriter out = new OutputStreamWriter(outputStream);
+        try{
+            out.write(event.getJsonMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -84,6 +89,11 @@ public class ClientHandlerSocket extends ClientHandler {
 
     @Override
     protected void showOutput(String jsonMessage) {
-
+        OutputStreamWriter out = new OutputStreamWriter(outputStream);
+        try{
+            out.write(jsonMessage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
