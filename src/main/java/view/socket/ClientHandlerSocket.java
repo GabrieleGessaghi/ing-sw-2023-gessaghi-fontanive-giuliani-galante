@@ -54,11 +54,12 @@ public class ClientHandlerSocket extends ClientHandler {
 
     @Override
     public void run() {
+        OutputStreamWriter out = new OutputStreamWriter(outputStream);
+        InputStreamReader in = new InputStreamReader(inputStream);
+        BufferedReader buffer = new BufferedReader(in);
         while(true) {
             try{
-                OutputStreamWriter out = new OutputStreamWriter(outputStream);
-                InputStreamReader in = new InputStreamReader(inputStream);
-                BufferedReader buffer = new BufferedReader(in);
+
                 if(itIsARequest){
                     switch (lastRequest) {
                         case NICKNAME -> out.write("{requestNickname:true}");
