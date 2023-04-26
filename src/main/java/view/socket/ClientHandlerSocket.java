@@ -12,7 +12,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class ClientHandlerSocket extends ClientHandler {
-    private int port;
     private Promt lastRequest;
     private boolean itIsARequest;
     private InputStream inputStream;
@@ -20,9 +19,7 @@ public class ClientHandlerSocket extends ClientHandler {
     private Socket s;
 
     private ArrayList<Observer> observers;
-    public ClientHandlerSocket(int port,Socket s, InputStream inputStream, OutputStream outputStream){
-
-        this.port = port;
+    public ClientHandlerSocket(Socket s, InputStream inputStream, OutputStream outputStream){
         this.s = s;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
