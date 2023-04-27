@@ -3,8 +3,6 @@ package controller;
 import controller.observer.Event;
 import controller.observer.Observer;
 import model.Game;
-import view.ClientHandler;
-import view.Promt;
 import view.socket.ClientHandlerSocket;
 
 import java.util.ArrayList;

@@ -1,5 +1,6 @@
 package view;
 
+import controller.Promt;
 import controller.observer.Observable;
 import controller.observer.Observer;
 import controller.observer.Event;

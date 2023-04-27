@@ -1,6 +1,6 @@
 package view.socket;
 
-import view.Promt;
+import controller.Promt;
 
 import java.io.*;
 import java.net.Socket;

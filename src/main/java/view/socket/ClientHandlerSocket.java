@@ -1,11 +1,9 @@
 package view.socket;
 
-import com.google.gson.stream.JsonReader;
-import controller.exceptions.TooManyPlayersException;
 import controller.observer.Event;
 import controller.observer.Observer;
 import view.ClientHandler;
-import view.Promt;
+import controller.Promt;
 
 import java.io.*;
 import java.net.Socket;
