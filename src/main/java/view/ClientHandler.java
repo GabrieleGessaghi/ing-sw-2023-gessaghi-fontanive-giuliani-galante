@@ -32,7 +32,7 @@ public abstract class ClientHandler extends Thread implements Observer, Observab
      * @author Niccolò Giuliani
      * @param jsonMessage String to show
      */
-    protected abstract void showOutput(String jsonMessage);
+    public abstract void showOutput(String jsonMessage);
 
 
 }

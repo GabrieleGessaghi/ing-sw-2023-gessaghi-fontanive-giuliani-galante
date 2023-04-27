@@ -4,6 +4,7 @@ import com.google.gson.stream.JsonReader;
 import controller.observer.Event;
 import controller.observer.Observer;
 import model.Game;
+import view.ClientHandler;
 import view.socket.ClientHandlerSocket;
 
 import java.io.IOException;
@@ -51,15 +52,19 @@ public class Controller extends Thread implements Observer {
                 } catch (Exception e) {
                     currentClient.showOutput("\"errorMessage\":\"Generic error!\"");
                 }
-                if (turnController.isGameOver())
+                if (turnController.isGameOver()) { //TODO: Improve this
+                    for (ClientHandler client : clientHandlers) {
+                        //client.showOutput("\"errorMessage\":\"Game over!\n" + + "is the winner!\"");
+                        //CLOSE CONNECTION
+                    }
                     reset();
+                }
             }
         }
     }
 
     @Override
     public void update(Event event) {
-        //TODO: Check that input comes from correct client
         boolean correctClient = false;
         boolean receivedTiles = false;
         boolean receivedColumn = false;
@@ -101,7 +106,6 @@ public class Controller extends Thread implements Observer {
         if (!isGameRunning && creationController.isGameReady()) {
             Game game = creationController.createGame();
             turnController = new TurnController(game);
-            //TODO: Add observer
             isGameRunning = true;
         }
     }
@@ -114,7 +118,6 @@ public class Controller extends Thread implements Observer {
         isGameRunning = false;
         turnController = null;
         creationController = new CreationController();
-        //TODO: Add observer
         clientHandlers = new ArrayList<>();
         clientHandlerIndexes = new HashMap<>();
         waitingForTiles = false;
