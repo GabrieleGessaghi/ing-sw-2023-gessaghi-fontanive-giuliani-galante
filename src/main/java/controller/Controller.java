@@ -30,35 +30,27 @@ public class Controller extends Thread implements Observer {
     private ClientHandlerSocket currentClient;
 
     public Controller() {
-        creationController = new CreationController();
-        clientHandlers = new ArrayList<>();
-        clientHandlerIndexes = new HashMap<>();
-        isGameRunning = false;
-        waitingForTiles = false;
-        waitingForColumn = false;
+        reset();
     }
 
     @Override
     public void run() {
-        currentClient = clientHandlers.get(0);
+        //TODO: Add wait/notify
         int clientsListIndex = 0;
         while (true) {
             if (isGameRunning) {
-
-                //Gets input from the player
                 currentClient = clientHandlers.get(clientsListIndex);
                 try {
                     currentClient.requestInput(Prompt.TOKENS);
                     waitingForTiles = true;
-                    while(waitingForTiles) {}
+                    //WAIT FOR TILES
                     currentClient.requestInput(Prompt.COLUMN);
                     waitingForColumn = true;
-                    while(waitingForColumn) {}
+                    //WAIT FOR COLUMN
                     clientsListIndex++;
                 } catch (Exception e) {
                     currentClient.showOutput("\"errorMessage\":\"Generic error!\"");
                 }
-
                 if (turnController.isGameOver())
                     reset();
             }
@@ -67,6 +59,10 @@ public class Controller extends Thread implements Observer {
 
     @Override
     public void update(Event event) {
+        //TODO: Check that input comes from correct client
+        boolean correctClient = false;
+        boolean receivedTiles = false;
+        boolean receivedColumn = false;
         String jsonMessage = event.getJsonMessage();
         String field;
         JsonReader jsonReader;
@@ -76,11 +72,17 @@ public class Controller extends Thread implements Observer {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "tilesSelection" -> waitingForTiles = false;
-                    case "column" -> waitingForColumn = false;
+                    case "tilesSelection" -> receivedTiles = true;
+                    case "column" -> receivedColumn = true;
+                    case "clientIndex" -> {
+                        if(jsonReader.nextInt() == clientHandlerIndexes.get(currentClient)) correctClient = true;
+                    }
                 }
             }
             jsonReader.endObject();
+            waitingForTiles = !(receivedTiles && correctClient);
+            waitingForColumn = !(receivedColumn && correctClient);
+            //NOTIFY ALL
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -99,6 +101,7 @@ public class Controller extends Thread implements Observer {
         if (!isGameRunning && creationController.isGameReady()) {
             Game game = creationController.createGame();
             turnController = new TurnController(game);
+            //TODO: Add observer
             isGameRunning = true;
         }
     }
@@ -109,5 +112,12 @@ public class Controller extends Thread implements Observer {
      */
     private void reset() {
         isGameRunning = false;
+        turnController = null;
+        creationController = new CreationController();
+        //TODO: Add observer
+        clientHandlers = new ArrayList<>();
+        clientHandlerIndexes = new HashMap<>();
+        waitingForTiles = false;
+        waitingForColumn = false;
     }
 }
