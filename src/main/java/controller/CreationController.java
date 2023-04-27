@@ -11,7 +11,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 /**
- * Controller of the creation of the game
+ * Controller of the creation of the game.
  * @author Niccolò Giuliani
  */
 public class CreationController implements Observer {
@@ -46,17 +46,24 @@ public class CreationController implements Observer {
         } catch (IOException | TooManyPlayersException e) {
             throw new RuntimeException(e);
         }
-        isGameReady = playersNicknames.size() == playersNumber;
-
     }
 
     /**
-     * getter of the state of the game (ready or not ready)
+     * Getter of the state of the game (ready or not ready)
      * @return true if game is ready
      * @author Niccolò Giuliani
      */
-    public boolean getIsGameReady(){
-         return isGameReady;
+    public boolean isGameReady(){
+         return playersNicknames.size() == playersNumber;
+    }
+
+    /**
+     * Checks whether there's only one player.
+     * @return True if there's only one player connected.
+     * @author Giorgio Massimo Fontanive
+     */
+    public boolean isThereOnlyOnePlayer() {
+        return playersNicknames.size() == 1;
     }
 
     /**

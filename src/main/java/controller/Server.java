@@ -1,8 +1,5 @@
 package controller;
 
-import controller.observer.Event;
-import controller.observer.Observer;
-import model.Game;
 import view.socket.ClientHandlerSocket;
 
 import java.io.DataInputStream;
@@ -10,21 +7,20 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-
-//TODO: Add port in configuartions file
 
 /**
- *
+ * Accepts new connections and starts the game controller.
  * @author Giorgio Massimo Fontanive
  */
 public class Server {
     private static Controller controller;
     public static void main() throws IOException {
         controller = new Controller();
+        controller.start();
         while (true) {
             Socket socket = null;
             try {
+                //TODO: Add port in configuartions file
                 ServerSocket serverSocket = new ServerSocket(1234);
                 socket = serverSocket.accept();
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
