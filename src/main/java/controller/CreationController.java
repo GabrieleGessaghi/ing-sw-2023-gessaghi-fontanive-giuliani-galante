@@ -92,4 +92,8 @@ public class CreationController implements Observer {
     private void addPlayer(String nickname) {
             playersNicknames.add(nickname);
     }
+
+    private void reset() {
+        //RESET
+    }
 }

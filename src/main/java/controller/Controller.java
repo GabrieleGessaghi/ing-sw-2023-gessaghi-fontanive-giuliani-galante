@@ -68,4 +68,8 @@ public class Controller extends Thread implements Observer {
     public void addClient(ClientHandlerSocket clientHandler) {
         clientHandlers.add(clientHandler);
     }
+
+    private void reset() {
+        //TODO: Reset tutto
+    }
 }

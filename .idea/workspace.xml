@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Modified CliendHandler run method">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Updated Controller">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,13 +185,7 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
-    </task>
-    <task id="LOCAL-00046" summary="Fixed small issues">
-      <created>1680534952994</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1680534952994</updated>
+      <workItem from="1682601461318" duration="785000" />
     </task>
     <task id="LOCAL-00047" summary="Updated Board.reset">
       <created>1680535415356</created>
@@ -527,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682597286286</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Updated Controller">
+      <created>1682597847368</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1682597847368</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -584,9 +587,9 @@
     <MESSAGE value="Refactored Prompt" />
     <MESSAGE value="Fixed prompt typo" />
     <MESSAGE value="Fixed typos" />
-    <MESSAGE value="Updated Controller" />
     <MESSAGE value="Modified CliendHandler run method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified CliendHandler run method" />
+    <MESSAGE value="Updated Controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
