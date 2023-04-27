@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_4_27_2023_2_26_PM_[Changes]" date="1682598400540" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_27_2023_2_26_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 4/27/2023 2:26 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/model/cards/CommonCardTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/model/cards/CommonCardTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_27_2023_2_26_PM_[Changes]/CommonCardTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/model/Player.class" />
+    <option name="AFTER_PATH" value="target/classes/model/Player.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_27_2023_2_26_PM_[Changes]/Player.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/model/cards/concreteobjectives/FourGroups.class" />
+    <option name="AFTER_PATH" value="target/classes/model/cards/concreteobjectives/FourGroups.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_27_2023_2_26_PM_[Changes]/FourGroups.class" />
+  </binary>
+</changelist>
