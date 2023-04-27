@@ -1,6 +1,6 @@
 package controller;
 
-public enum Promt {
+public enum Prompt {
     NICKNAME,
     PLAYERSNUMBER,
     TOKENS,

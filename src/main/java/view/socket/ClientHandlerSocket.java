@@ -3,7 +3,7 @@ package view.socket;
 import controller.observer.Event;
 import controller.observer.Observer;
 import view.ClientHandler;
-import controller.Promt;
+import controller.Prompt;
 
 import java.io.*;
 import java.net.Socket;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Niccolò Giuliani
  */
 public class ClientHandlerSocket extends ClientHandler {
-    private Promt lastRequest;
+    private Prompt lastRequest;
     private final boolean itIsARequest;
     private final InputStream inputStream;
     private final OutputStream outputStream;
@@ -25,7 +25,7 @@ public class ClientHandlerSocket extends ClientHandler {
         this.s = s;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
-        this.lastRequest = Promt.NICKNAME;
+        this.lastRequest = Prompt.NICKNAME;
         this.itIsARequest = true;
         this.observers = new ArrayList<>();
 
@@ -54,8 +54,8 @@ public class ClientHandlerSocket extends ClientHandler {
 
 
     @Override
-    public void requestInput(Promt promt) {
-        this.lastRequest = promt;
+    public void requestInput(Prompt prompt) {
+        this.lastRequest = prompt;
     }
 
     //TODO : exit condition and closing the resources

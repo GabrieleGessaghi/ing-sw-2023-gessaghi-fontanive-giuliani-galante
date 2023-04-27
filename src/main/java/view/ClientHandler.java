@@ -1,6 +1,6 @@
 package view;
 
-import controller.Promt;
+import controller.Prompt;
 import controller.observer.Observable;
 import controller.observer.Observer;
 import controller.observer.Event;
@@ -21,9 +21,9 @@ public abstract class ClientHandler extends Thread implements Observer, Observab
     /**
      * method to request an input to the Client
      * @author Niccolò Giuliani
-     * @param promt type of request
+     * @param prompt type of request
      */
-    public abstract  void requestInput(Promt promt);
+    public abstract  void requestInput(Prompt prompt);
 
     public abstract  void run();
 

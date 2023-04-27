@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="added TODO">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Refactored Prompt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Promt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Prompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/socket/NetworkHandlerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/socket/NetworkHandlerSocket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,20 +186,6 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
-    </task>
-    <task id="LOCAL-00041" summary="Fixed formatting">
-      <created>1680526082008</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1680526082008</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Created BoardTest class">
-      <created>1680526976990</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1680526976990</updated>
     </task>
     <task id="LOCAL-00043" summary="Created BoardTest class">
       <created>1680527221553</created>
@@ -529,7 +516,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682517993550</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Updated Controller and CreationController">
+      <created>1682594693989</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1682594693990</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Refactored Prompt">
+      <created>1682594746048</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1682594746048</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,8 +564,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Updated class diagram" />
-    <MESSAGE value="Fixed small issues" />
     <MESSAGE value="Created Event class" />
     <MESSAGE value="Added observer and observable interfaces" />
     <MESSAGE value="Created TurnController" />
@@ -588,7 +587,9 @@
     <MESSAGE value="Created Controller" />
     <MESSAGE value="fixed small issues" />
     <MESSAGE value="added TODO" />
-    <option name="LAST_COMMIT_MESSAGE" value="added TODO" />
+    <MESSAGE value="Updated Controller and CreationController" />
+    <MESSAGE value="Refactored Prompt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Prompt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

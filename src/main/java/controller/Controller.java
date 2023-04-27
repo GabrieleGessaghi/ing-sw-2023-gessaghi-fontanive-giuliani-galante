@@ -29,7 +29,7 @@ public class Controller extends Thread implements Observer {
     public void addClient(ClientHandlerSocket clientHandler) {
         clientHandlers.add(clientHandler);
         if (creationController.isThereOnlyOnePlayer()) {
-            clientHandlers.get(0).requestInput(Promt.NICKNAME);
+            clientHandlers.get(0).requestInput(Prompt.NICKNAME);
         }
     }
 

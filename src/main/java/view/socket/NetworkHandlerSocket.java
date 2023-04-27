@@ -1,6 +1,6 @@
 package view.socket;
 
-import controller.Promt;
+import controller.Prompt;
 
 import java.io.*;
 import java.net.Socket;
@@ -8,7 +8,7 @@ import java.net.Socket;
 public class NetworkHandlerSocket extends Thread{
 
     private Socket clientSocket;
-    private Promt lastPromt;
+    private Prompt lastPrompt;
 
     private DataInputStream dis;
     private DataOutputStream dos;
@@ -20,7 +20,7 @@ public class NetworkHandlerSocket extends Thread{
      */
     public NetworkHandlerSocket () {
         clientSocket = new Socket();
-        lastPromt = null;
+        lastPrompt = null;
     }
 
     public boolean ping () {
