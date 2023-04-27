@@ -85,7 +85,6 @@ public class Game implements Serializable {
             case TWOCOLUMNS -> new TwoColumns();
             case TWOSQUARES -> new TwoSquares();
             case THREECOLUMNS -> new ThreeColumns();
-            default -> throw new IllegalArgumentException("Invalid commonType: " + commonType);
         };
     }
 
@@ -131,7 +130,8 @@ public class Game implements Serializable {
      *                      the order of choice for the other ones.
      * @param column The column on which the player wants to put the new tiles.
      */
-    public void playerTurn (int [][] selectedTiles, int column){
+    public void playerTurn (int [][] selectedTiles, int column) {
+        //TODO: Throw exceptions when input is wrong
         if (players[currentPlayerIndex].isConnected) {
 
             //Gets the tiles from the board.
@@ -160,11 +160,11 @@ public class Game implements Serializable {
     }
 
     /**
-     * End the game and return the winner.
+     * Return the winner if the game is over.
      * @author Gabriele Gessaghi
-     * @return The nickname of the winner.
+     * @return The nickname of the winner or null if not over yet.
      */
-    public String endGame() { return "";}
+    public String endGame() { return null;}
 
     /**
      * Reload a saved state of a previous game.

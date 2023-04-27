@@ -33,7 +33,7 @@ public class TurnController implements Observer {
         boolean matrixFlag = true;
         for (int i = 0; i < SHELF_ROWS && matrixFlag; i++)
             for (int j = 0; j < SHELF_COLUMNS && matrixFlag; j++)
-                if (selectedTiles[i][j] < -1 || selectedTiles[i][j] > MAX_TOKENS_PER_TURN)
+                if (selectedTiles[i][j] < -1 || selectedTiles[i][j] > MAX_TOKENS_PER_TURN - 1)
                     matrixFlag = false;
         return matrixFlag;
     }
@@ -72,6 +72,7 @@ public class TurnController implements Observer {
         }
 
         if (isMatrixLegal() && isColumnLegal()) {
+            //TODO: Insert try catch
             game.playerTurn(selectedTiles, selectedColumn);
             reset();
         }

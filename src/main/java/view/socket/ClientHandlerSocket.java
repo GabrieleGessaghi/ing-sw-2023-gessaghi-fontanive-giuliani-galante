@@ -105,7 +105,7 @@ public class ClientHandlerSocket extends ClientHandler {
     }
 
     @Override
-    protected void showOutput(String jsonMessage) {
+    public void showOutput(String jsonMessage) {
         OutputStreamWriter out = new OutputStreamWriter(outputStream);
         try{
             out.write(jsonMessage);
