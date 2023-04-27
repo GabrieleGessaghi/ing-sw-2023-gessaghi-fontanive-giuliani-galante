@@ -71,7 +71,7 @@ public class CreationController implements Observer {
      * @return the Game created
      * @author Niccolò Giuliani
      */
-    public  Game createGame(){
+    public Game createGame(){
         return new Game(playersNumber, playersNicknames);
     }
 

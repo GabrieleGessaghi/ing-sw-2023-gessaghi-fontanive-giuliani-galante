@@ -18,7 +18,6 @@ public class Controller extends Thread implements Observer {
     private CreationController creationController;
     private TurnController turnController;
     private ArrayList<ClientHandlerSocket> clientHandlers;
-    private Map<String, ClientHandlerSocket> clientHandlersNicknames;
 
     public Controller() {
         creationController = new CreationController();

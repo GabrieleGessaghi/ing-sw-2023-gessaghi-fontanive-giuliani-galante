@@ -25,7 +25,7 @@ public class Server {
                 socket = serverSocket.accept();
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                ClientHandlerSocket clientHandler = new ClientHandlerSocket(socket, dataInputStream, dataOutputStream);
+                ClientHandlerSocket clientHandler = new ClientHandlerSocket(0, socket, dataInputStream, dataOutputStream);
                 clientHandler.start();
                 controller.addClient(clientHandler);
                 //TODO: Register observers

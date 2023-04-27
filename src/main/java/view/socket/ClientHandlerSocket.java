@@ -1,5 +1,6 @@
 package view.socket;
 
+import com.google.gson.JsonObject;
 import controller.observer.Event;
 import controller.observer.Observer;
 import view.ClientHandler;
@@ -14,14 +15,16 @@ import java.util.ArrayList;
  * @author Niccolò Giuliani
  */
 public class ClientHandlerSocket extends ClientHandler {
+    private final int index;
     private Prompt lastRequest;
-    private final boolean isThereRequest;
+    private boolean isThereRequest;
     private final InputStream inputStream;
     private final OutputStream outputStream;
     private final Socket s;
     private final ArrayList<Observer> observers;
 
-    public ClientHandlerSocket(Socket s, InputStream inputStream, OutputStream outputStream){
+    public ClientHandlerSocket(int index, Socket s, InputStream inputStream, OutputStream outputStream){
+        this.index = index;
         this.s = s;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
@@ -33,6 +36,9 @@ public class ClientHandlerSocket extends ClientHandler {
 
     @Override
     public void updateObservers(Event event) {
+        JsonObject jsonObject = new JsonObject();
+        String jsonMessage = event.getJsonMessage();
+        //TODO: Add index to event
         for(Observer o : observers)
             o.update(event);
     }
@@ -55,6 +61,7 @@ public class ClientHandlerSocket extends ClientHandler {
     @Override
     public void requestInput(Prompt prompt) {
         this.lastRequest = prompt;
+        isThereRequest = true;
     }
 
     //TODO: Exit condition and closing the resources
@@ -65,13 +72,16 @@ public class ClientHandlerSocket extends ClientHandler {
         BufferedReader buffer = new BufferedReader(in);
         while(true) {
             try{
-                if(isThereRequest){
+                if(isThereRequest) {
+                    JsonObject jsonObject = new JsonObject();
                     switch (lastRequest) {
-                        case NICKNAME -> out.write("{requestNickname:true}");
-                        case PLAYERSNUMBER -> out.write("{requestPlayersNumber:true}");
-                        case TOKENS -> out.write("{requestTokens:true}");
-                        case COLUMN -> out.write("{requestColumn:true}");
+                        case NICKNAME -> jsonObject.addProperty("requestNickname", true);
+                        case PLAYERSNUMBER -> jsonObject.addProperty("requestPlayerNumber", true);
+                        case TOKENS -> jsonObject.addProperty("requestTokens", true);
+                        case COLUMN -> jsonObject.addProperty("requestColumn", true);
                     }
+                    out.write(jsonObject.toString());
+                    isThereRequest = false;
                 }
                 String line = buffer.readLine();
                 if(line != null) {
