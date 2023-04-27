@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Refactored Prompt">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed typos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Promt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Prompt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/socket/NetworkHandlerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/socket/NetworkHandlerSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/socket/ClientHandlerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/socket/ClientHandlerSocket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,13 +184,6 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
-    </task>
-    <task id="LOCAL-00043" summary="Created BoardTest class">
-      <created>1680527221553</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1680527221553</updated>
     </task>
     <task id="LOCAL-00044" summary="Modified updatePoints">
       <created>1680533337643</created>
@@ -530,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682594746048</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Fixed prompt typo">
+      <created>1682594914002</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1682594914002</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,8 +562,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Created Event class" />
-    <MESSAGE value="Added observer and observable interfaces" />
     <MESSAGE value="Created TurnController" />
     <MESSAGE value="Moved Configurations to controller" />
     <MESSAGE value="Added update method to TurnController" />
@@ -589,7 +585,9 @@
     <MESSAGE value="added TODO" />
     <MESSAGE value="Updated Controller and CreationController" />
     <MESSAGE value="Refactored Prompt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored Prompt" />
+    <MESSAGE value="Fixed prompt typo" />
+    <MESSAGE value="Fixed typos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed typos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -15,21 +15,22 @@ import java.util.ArrayList;
  */
 public class ClientHandlerSocket extends ClientHandler {
     private Prompt lastRequest;
-    private final boolean itIsARequest;
+    private final boolean isThereRequest;
     private final InputStream inputStream;
     private final OutputStream outputStream;
-    private Socket s;
-
+    private final Socket s;
     private final ArrayList<Observer> observers;
+
     public ClientHandlerSocket(Socket s, InputStream inputStream, OutputStream outputStream){
         this.s = s;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
         this.lastRequest = Prompt.NICKNAME;
-        this.itIsARequest = true;
+        this.isThereRequest = true;
         this.observers = new ArrayList<>();
 
     }
+
     @Override
     public void updateObservers(Event event) {
         for(Observer o : observers)
@@ -51,14 +52,12 @@ public class ClientHandlerSocket extends ClientHandler {
         observers.add(observer);
     }
 
-
-
     @Override
     public void requestInput(Prompt prompt) {
         this.lastRequest = prompt;
     }
 
-    //TODO : exit condition and closing the resources
+    //TODO: Exit condition and closing the resources
     @Override
     public void run() {
         OutputStreamWriter out = new OutputStreamWriter(outputStream);
@@ -66,8 +65,7 @@ public class ClientHandlerSocket extends ClientHandler {
         BufferedReader buffer = new BufferedReader(in);
         while(true) {
             try{
-
-                if(itIsARequest){
+                if(isThereRequest){
                     switch (lastRequest) {
                         case NICKNAME -> out.write("{requestNickname:true}");
                         case PLAYERSNUMBER -> out.write("{requestPlayersNumber:true}");
@@ -84,10 +82,7 @@ public class ClientHandlerSocket extends ClientHandler {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
-
-
     }
 
     @Override

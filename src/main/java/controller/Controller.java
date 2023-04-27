@@ -26,26 +26,28 @@ public class Controller extends Thread implements Observer {
         isGameRunning = false;
     }
 
-    public void addClient(ClientHandlerSocket clientHandler) {
-        clientHandlers.add(clientHandler);
-        if (creationController.isThereOnlyOnePlayer()) {
-            clientHandlers.get(0).requestInput(Prompt.NICKNAME);
-        }
-    }
-
     @Override
     public void run() {
         while (true) {
+
+            //HANDLE TURNS
 
         }
     }
 
     @Override
     public void update(Event event) {
+
+        //PARSE JSON
+
         if (!isGameRunning && creationController.isGameReady()) {
             Game game = creationController.createGame();
             turnController = new TurnController(game);
             isGameRunning = true;
         }
+    }
+
+    public void addClient(ClientHandlerSocket clientHandler) {
+        clientHandlers.add(clientHandler);
     }
 }
