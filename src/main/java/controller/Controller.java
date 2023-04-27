@@ -21,7 +21,8 @@ import static controller.Configurations.readMatrix;
  */
 public class Controller extends Thread implements Observer {
     private boolean isGameRunning;
-    private boolean isWaitingForInput;
+    private boolean waitingForTiles;
+    private boolean waitingForColumn;
     private CreationController creationController;
     private TurnController turnController;
     private List<ClientHandlerSocket> clientHandlers;
@@ -33,7 +34,8 @@ public class Controller extends Thread implements Observer {
         clientHandlers = new ArrayList<>();
         clientHandlerIndexes = new HashMap<>();
         isGameRunning = false;
-        isWaitingForInput = false;
+        waitingForTiles = false;
+        waitingForColumn = false;
     }
 
     @Override
@@ -47,40 +49,41 @@ public class Controller extends Thread implements Observer {
                 currentClient = clientHandlers.get(clientsListIndex);
                 try {
                     currentClient.requestInput(Prompt.TOKENS);
-                    isWaitingForInput = true;
-                    //WAIT INPUT
+                    waitingForTiles = true;
+                    while(waitingForTiles) {}
                     currentClient.requestInput(Prompt.COLUMN);
-                    isWaitingForInput = true;
-                    //WAIT INPUT
+                    waitingForColumn = true;
+                    while(waitingForColumn) {}
                     clientsListIndex++;
                 } catch (Exception e) {
                     currentClient.showOutput("\"errorMessage\":\"Generic error!\"");
                 }
 
-                //CHECK IF GAME IS OVER
-                    //RESET EVERYTHING
+                if (turnController.isGameOver())
+                    reset();
             }
         }
     }
 
     @Override
     public void update(Event event) {
-//        String jsonMessage = event.getJsonMessage();
-//        String field;
-//        JsonReader jsonReader;
-//        try {
-//            jsonReader = new JsonReader(new StringReader(jsonMessage));
-//            jsonReader.beginObject();
-//            while(jsonReader.hasNext()) {
-//                field = jsonReader.nextName();
-//                switch (field) {
-//                    //PARSE JSON
-//                }
-//            }
-//            jsonReader.endObject();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        String jsonMessage = event.getJsonMessage();
+        String field;
+        JsonReader jsonReader;
+        try {
+            jsonReader = new JsonReader(new StringReader(jsonMessage));
+            jsonReader.beginObject();
+            while(jsonReader.hasNext()) {
+                field = jsonReader.nextName();
+                switch (field) {
+                    case "tilesSelection" -> waitingForTiles = false;
+                    case "column" -> waitingForColumn = false;
+                }
+            }
+            jsonReader.endObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         startGame();
     }
@@ -88,6 +91,8 @@ public class Controller extends Thread implements Observer {
     public void addClient(int index, ClientHandlerSocket clientHandler) {
         clientHandlerIndexes.put(clientHandler, index);
         clientHandlers.add(clientHandler);
+        if (clientHandlers.size() == 1)
+            clientHandler.requestInput(Prompt.PLAYERSNUMBER);
     }
 
     private void startGame() {
@@ -98,8 +103,11 @@ public class Controller extends Thread implements Observer {
         }
     }
 
+    /**
+     * Resets the object to initial state.
+     * @author Giorgio Massimo Fontanive
+     */
     private void reset() {
         isGameRunning = false;
-        //TODO: Reset tutto
     }
 }

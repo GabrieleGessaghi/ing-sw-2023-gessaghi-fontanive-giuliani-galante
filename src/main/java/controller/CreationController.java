@@ -17,12 +17,10 @@ import java.util.ArrayList;
 public class CreationController implements Observer {
     private int playersNumber;
     private final ArrayList<String> playersNicknames;
-    private boolean isGameReady;
 
     public CreationController(){
         playersNicknames = new ArrayList<String>();
         playersNumber = 0;
-        isGameReady = false;
     }
 
     @Override
@@ -91,9 +89,5 @@ public class CreationController implements Observer {
      */
     private void addPlayer(String nickname) {
             playersNicknames.add(nickname);
-    }
-
-    private void reset() {
-        //RESET
     }
 }

@@ -74,12 +74,11 @@ public class TurnController implements Observer {
         if (isMatrixLegal() && isColumnLegal()) {
             //TODO: Insert try catch
             game.playerTurn(selectedTiles, selectedColumn);
-            reset();
         }
         //TODO: Maybe throw an exception
     }
 
-    private void reset() {
-        //RESET
+    public boolean isGameOver() {
+        return game.endGame() == null;
     }
 }
