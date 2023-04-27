@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Updated Controller">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_27_2023_2_26_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/socket/ClientHandlerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/socket/ClientHandlerSocket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,14 +186,8 @@
       <workItem from="1680690350808" duration="969000" />
       <workItem from="1680771183796" duration="610000" />
       <workItem from="1681279263760" duration="4928000" />
-      <workItem from="1682601461318" duration="785000" />
-    </task>
-    <task id="LOCAL-00047" summary="Updated Board.reset">
-      <created>1680535415356</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1680535415356</updated>
+      <workItem from="1682601461318" duration="1413000" />
+      <workItem from="1682604793549" duration="1022000" />
     </task>
     <task id="LOCAL-00048" summary="Fixed convertSelection">
       <created>1680535741210</created>
@@ -530,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682597847368</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Updated Controller">
+      <created>1682603459301</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1682603459301</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

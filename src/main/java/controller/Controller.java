@@ -9,6 +9,7 @@ import view.socket.ClientHandlerSocket;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import static controller.Configurations.readMatrix;
@@ -23,40 +24,42 @@ public class Controller extends Thread implements Observer {
     private CreationController creationController;
     private TurnController turnController;
     private ArrayList<ClientHandlerSocket> clientHandlers;
+    private Map<Integer, ClientHandlerSocket> clientHandlerIndexes;
 
     public Controller() {
         creationController = new CreationController();
         clientHandlers = new ArrayList<>();
+        clientHandlerIndexes = new HashMap<>();
         isGameRunning = false;
     }
 
     @Override
     public void run() {
         while (true) {
+            if (isGameRunning) {
 
-            //HANDLE TURNS
-
+            }
         }
     }
 
     @Override
     public void update(Event event) {
-        String jsonMessage = event.getJsonMessage();
-        String field;
-        JsonReader jsonReader;
-        try {
-            jsonReader = new JsonReader(new StringReader(jsonMessage));
-            jsonReader.beginObject();
-            while(jsonReader.hasNext()) {
-                field = jsonReader.nextName();
-                switch (field) {
-                    //PARSE JSON
-                }
-            }
-            jsonReader.endObject();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        String jsonMessage = event.getJsonMessage();
+//        String field;
+//        JsonReader jsonReader;
+//        try {
+//            jsonReader = new JsonReader(new StringReader(jsonMessage));
+//            jsonReader.beginObject();
+//            while(jsonReader.hasNext()) {
+//                field = jsonReader.nextName();
+//                switch (field) {
+//                    //PARSE JSON
+//                }
+//            }
+//            jsonReader.endObject();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
         if (!isGameRunning && creationController.isGameReady()) {
             Game game = creationController.createGame();
@@ -65,8 +68,9 @@ public class Controller extends Thread implements Observer {
         }
     }
 
-    public void addClient(ClientHandlerSocket clientHandler) {
+    public void addClient(int index, ClientHandlerSocket clientHandler) {
         clientHandlers.add(clientHandler);
+        clientHandlerIndexes.put(index, clientHandler);
     }
 
     private void reset() {

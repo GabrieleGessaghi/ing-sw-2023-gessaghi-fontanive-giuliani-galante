@@ -1,5 +1,7 @@
 package view.socket;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import controller.observer.Event;
 import controller.observer.Observer;
@@ -34,13 +36,20 @@ public class ClientHandlerSocket extends ClientHandler {
 
     }
 
+    /**
+     *
+     * @param event
+     * @author Giorgio Massimo Fontanive
+     */
     @Override
     public void updateObservers(Event event) {
-        JsonObject jsonObject = new JsonObject();
         String jsonMessage = event.getJsonMessage();
-        //TODO: Add index to event
+        JsonElement jsonElement = new Gson().fromJson(jsonMessage, JsonElement.class);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        jsonObject.addProperty("clientIndex", index);
+        Event indexedEvent = new Event(jsonObject.toString());
         for(Observer o : observers)
-            o.update(event);
+            o.update(indexedEvent);
     }
 
     @Override
