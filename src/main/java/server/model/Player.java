@@ -17,6 +17,8 @@ import java.util.List;
  * @author Niccolò Galante
  */
 public class Player implements Serializable {
+
+    //TODO: Load this from configurations file
     private final static int NUMBER_OF_CARDS = 3;
     private final String nickname;
     private int points;

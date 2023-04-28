@@ -228,10 +228,10 @@ public class Board implements Observable, Savable {
     @Override
     public String getState() {
         Map<String, Object> elements = new HashMap<>();
-        int[][] tilesInteger = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
-        int[][] usableTilesInteger = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
 
         //Converts the matrices into integer ones.
+        int[][] tilesInteger = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+        int[][] usableTilesInteger = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
         for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
             for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++) {
                 tilesInteger[i][j] = tiles[i][j].ordinal();
@@ -247,10 +247,10 @@ public class Board implements Observable, Savable {
     public void loadState(String jsonMessage) {
         Map<String, Object> elements = JsonTools.parseJson(jsonMessage);
         try {
-            int[][] tilesInteger = JsonTools.readMatrix((JsonReader) elements.get("tiles"));
-            int[][] usableTilesInteger = JsonTools.readMatrix((JsonReader) elements.get("usableTiles"));
 
             //Converts the integer matrices into usable ones.
+            int[][] tilesInteger = JsonTools.readMatrix((JsonReader) elements.get("boardTiles"));
+            int[][] usableTilesInteger = JsonTools.readMatrix((JsonReader) elements.get("boardUsableTiles"));
             Token[] tokenValues = Token.values();
             for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
                 for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++) {

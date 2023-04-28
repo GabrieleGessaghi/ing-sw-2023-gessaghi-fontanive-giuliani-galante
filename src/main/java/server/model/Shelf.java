@@ -1,13 +1,20 @@
 package server.model;
 
+import com.google.gson.stream.JsonReader;
+import server.controller.observer.Event;
+import server.controller.observer.Observable;
+import server.controller.observer.Observer;
+import server.controller.utilities.JsonTools;
 import server.model.exceptions.FullColumnException;
 import server.controller.utilities.ConfigLoader;
 
+import java.io.IOException;
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.*;
 
-public class Shelf implements Serializable {
-    private final Token [][] tiles;
+public class Shelf implements Savable, Observable {
+    private final Token[][] tiles;
+    private final List<Observer> observers;
 
     /**
      * Class constructor, all the shelf positions are set to NOTHING token type.
@@ -15,6 +22,7 @@ public class Shelf implements Serializable {
      */
     public Shelf() {
         tiles = new Token[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
+        observers = new ArrayList<>();
         for (Token[] row: tiles)
             Arrays.fill(row, Token.NOTHING);
     }
@@ -66,5 +74,50 @@ public class Shelf implements Serializable {
             if (Arrays.asList(row).contains(Token.NOTHING))
                 return false;
         return true;
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void updateObservers(Event event) {
+        for (Observer observer : observers)
+            if (observer != null)
+                observer.update(event);
+    }
+
+    @Override
+    public String getState() {
+        Map<String, Object> elements = new HashMap<>();
+
+        //Converts the matrices into integer ones.
+        int[][] tilesInteger = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+        for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
+            for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++)
+                tilesInteger[i][j] = tiles[i][j].ordinal();
+
+        elements.put("shelfTiles", JsonTools.createJsonMatrix(tilesInteger));
+        return JsonTools.createJson(elements);
+    }
+
+    @Override
+    public void loadState(String jsonMessage) {
+        Map<String, Object> elements = JsonTools.parseJson(jsonMessage);
+        try {
+
+            //Converts the integer matrices into usable ones.
+            int[][] tilesInteger = JsonTools.readMatrix((JsonReader) elements.get("shelfTiles"));
+            Token[] tokenValues = Token.values();
+            for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
+                for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++)
+                    tiles[i][j] = tokenValues[tilesInteger[i][j]];
+
+        } catch (IOException e) {
+            String errorMessage = "Failed to load a Shelf's save state!";
+            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
+            throw new RuntimeException(e);
+        }
     }
 }
