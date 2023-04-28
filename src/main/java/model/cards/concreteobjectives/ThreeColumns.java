@@ -3,6 +3,7 @@ package model.cards.concreteobjectives;
 import model.Token;
 import model.cards.CommonObjective;
 import model.cards.CommonType;
+import model.cards.ModelUtil;
 
 /**
  * Three columns each formed by 6 tiles of maximum three different types.
@@ -35,6 +36,7 @@ public class ThreeColumns implements CommonObjective {
             if (differentType <= 3 && counter[6] == 0)
                 atLeastThree++;
         }
+        ModelUtil util = new ModelUtil();
         return atLeastThree >= 3;
     }
 

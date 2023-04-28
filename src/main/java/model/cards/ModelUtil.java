@@ -8,7 +8,7 @@ import static controller.utilities.ConfigLoader.SHELF_ROWS;
 public class ModelUtil {
     private int counterInterIsland; //counter of the instances of the island
     /**
-     * count the islands containing at least four instances a particular type
+     * if modality is true count adjent point per Player, if modality is false count number of islands of at least four items dor FourGroups
      * @author Niccolò Giuliani
      * @param type
      * @param shelf
@@ -85,9 +85,80 @@ public class ModelUtil {
                 && (M[row][col] == type && !checked[row][col]);
     }
 
-    public CommonType getName(){
-        return CommonType.FOURGROUPS;
-    }
+    /**
+     * function for TwoRows and FourRows
+     * @author Niccolò Giuliani
+     * @param shelf shelf to check
+     * @param modality modality false for FourRows, modality true for TwoRows
+     * @return
+     */
+   public int rowsChecker(Token[][] shelf, boolean modality){
+       int[] counter = new int[7];
+       int differentType;
+       int atLeast = 0;
+       for (int i = 0; i < SHELF_ROWS ; i++){
+           for (int w = 0; w < 7 ; w++)
+               counter[w]=0;
+           differentType = 0;
+           for (int j = 0; j < SHELF_COLUMNS ; j++)
+               switch (shelf[i][j]) {
+                   case CAT -> counter[0]++;
+                   case BOOK -> counter[1]++;
+                   case TOY -> counter[2]++;
+                   case TROPHY -> counter[3]++;
+                   case FRAME -> counter[4]++;
+                   case PLANT -> counter[5]++;
+                   case NOTHING -> counter[6]++;
+
+               }
+           for (int n = 0; n < 7; n++)
+               if(counter[n] > 0)
+                   differentType++;
+           if(!modality) {
+               if (differentType <= 3 && counter[6] == 0)
+                   atLeast++;
+           }else{
+               if (differentType == 5)
+                   atLeast++;
+           }
+
+       }
+       return atLeast;
+   }
+
+   public int columnsChecker(Token[][] shelf, boolean modality){
+       int[] counter = new int[7];
+       int differentType;
+       int atLeast = 0;
+       for (int i = 0; i < SHELF_ROWS; i++) {
+           for (int w=0; w < 7 ; w++)
+               counter[w]=0;
+           differentType = 0;
+           for (int j=0; j < SHELF_COLUMNS ; j++)
+               switch (shelf[j][i]) {
+                   case CAT -> counter[0]++;
+                   case BOOK -> counter[1]++;
+                   case TOY -> counter[2]++;
+                   case TROPHY -> counter[3]++;
+                   case FRAME -> counter[4]++;
+                   case PLANT -> counter[5]++;
+                   case NOTHING -> counter[6]++;
+               }
+           for (int n = 0; n < 7; n++)
+               if (counter[n] > 0)
+                   differentType++;
+           if(!modality) {
+               if (differentType <= 3 && counter[6] == 0)
+                   atLeast++;
+           } else {
+               if (differentType == 6 && counter[6] == 0)
+                   atLeast++;
+           }
+       }
+       return atLeast;
+   }
+
+
 
 
 
