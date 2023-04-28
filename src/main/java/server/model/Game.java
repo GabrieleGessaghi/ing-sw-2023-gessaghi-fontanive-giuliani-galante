@@ -5,11 +5,10 @@ import server.model.cards.CommonCard;
 import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
 import server.model.cards.PersonalCard;
-import model.cards.concreteobjectives.*;
+import server.model.cards.concreteobjectives.*;
 import server.model.chat.Chat;
 import server.model.exceptions.FullColumnException;
 import server.model.exceptions.IllegalMoveException;
-import server.model.cards.concreteobjectives.*;
 
 import java.io.*;
 import java.security.MessageDigest;

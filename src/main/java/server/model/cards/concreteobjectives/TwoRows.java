@@ -3,7 +3,7 @@ package server.model.cards.concreteobjectives;
 import server.model.Token;
 import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
-import server.model.cards.ModelUtil;
+import server.model.cards.TokenTools;
 
 /**
  * Two rows each formed by 5 different
@@ -15,7 +15,7 @@ import server.model.cards.ModelUtil;
 public class TwoRows implements CommonObjective {
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        ModelUtil util = new ModelUtil();
+        TokenTools util = new TokenTools();
         return util.rowsChecker(shelf, true) >= 2;
     }
 

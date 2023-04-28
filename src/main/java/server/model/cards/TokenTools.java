@@ -4,9 +4,10 @@ import server.model.Token;
 import server.controller.utilities.ConfigLoader;
 
 /**
- * class to group model code
+ * Provides functions to help counting points.
+ * @author Niccolò Giuliani
  */
-public class ModelUtil {
+public class TokenTools {
     private int counterInterIsland; //counter of the instances of the island
     /**
      * if modality is true count adjent point per Player, if modality is false count number of islands of at least four items dor FourGroups

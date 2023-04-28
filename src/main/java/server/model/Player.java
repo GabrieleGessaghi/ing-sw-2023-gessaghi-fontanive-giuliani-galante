@@ -2,7 +2,7 @@ package server.model;
 
 import server.model.cards.Card;
 import server.model.cards.CommonCard;
-import server.model.cards.ModelUtil;
+import server.model.cards.TokenTools;
 import server.model.cards.PersonalCard;
 import server.model.exceptions.FullColumnException;
 
@@ -92,7 +92,7 @@ public class Player implements Serializable {
 
         //Checks if tiles of same type are adjacent
         adjacentPoints = 0;
-        ModelUtil util = new ModelUtil();
+        TokenTools util = new TokenTools();
         adjacentPoints = util.counterIslandType(Token.CAT, playerShelf.getTiles(),true) + util.counterIslandType(Token.BOOK, playerShelf.getTiles(),true) +
                 util.counterIslandType(Token.TOY, playerShelf.getTiles(),true) + util.counterIslandType(Token.TROPHY, playerShelf.getTiles(),true) +
                 util.counterIslandType(Token.FRAME, playerShelf.getTiles(),true) + util.counterIslandType(Token.PLANT, playerShelf.getTiles(),true);

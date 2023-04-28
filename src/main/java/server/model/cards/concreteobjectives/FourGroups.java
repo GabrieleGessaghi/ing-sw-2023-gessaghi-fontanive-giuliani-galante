@@ -3,7 +3,7 @@ package server.model.cards.concreteobjectives;
 import server.model.Token;
 import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
-import server.model.cards.ModelUtil;
+import server.model.cards.TokenTools;
 
 
 
@@ -22,7 +22,7 @@ public class FourGroups implements CommonObjective {
     @Override
     public boolean isSatisfied(Token[][] shelf) {
         int generalCounter; //general counter of the groups
-        ModelUtil util = new ModelUtil();
+        TokenTools util = new TokenTools();
         generalCounter = util.counterIslandType(Token.CAT, shelf,false)  + util.counterIslandType(Token.TOY, shelf,false) + util.counterIslandType(Token.BOOK, shelf,false) +
                 util.counterIslandType(Token.TROPHY, shelf,false) + util.counterIslandType(Token.FRAME, shelf,false) + util.counterIslandType(Token.PLANT, shelf,false);
         return generalCounter >= 4;

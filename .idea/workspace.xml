@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Documented interfaces">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/utilities/JsonTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/utilities/JsonTools.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Separated Client and Server packages">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,20 +186,6 @@
       <workItem from="1682601461318" duration="1413000" />
       <workItem from="1682604793549" duration="5190000" />
       <workItem from="1682661263149" duration="2708000" />
-    </task>
-    <task id="LOCAL-00061" summary="Added TODO">
-      <created>1680711864164</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1680711864164</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Updated class diagram">
-      <created>1680854946880</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1680854946880</updated>
     </task>
     <task id="LOCAL-00063" summary="Fixed small issues">
       <created>1680855129010</created>
@@ -529,7 +516,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682698722101</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="Documented JsonTools">
+      <created>1682699210182</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1682699210183</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Separated Client and Server packages">
+      <created>1682699335161</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1682699335161</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,8 +564,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added Javadoc" />
-    <MESSAGE value="ClientHandlerSocket.run() implementation" />
     <MESSAGE value="Updated Server" />
     <MESSAGE value="Updated Server and ClientHandler" />
     <MESSAGE value="Created Controller" />
@@ -588,19 +587,21 @@
     <MESSAGE value="Finished JsonTools" />
     <MESSAGE value="Finished implementing interfaces into Board" />
     <MESSAGE value="Documented interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="Documented interfaces" />
+    <MESSAGE value="Documented JsonTools" />
+    <MESSAGE value="Separated Client and Server packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separated Client and Server packages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java</url>
-          <line>14</line>
+          <line>15</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java</url>
-          <line>10</line>
+          <line>11</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

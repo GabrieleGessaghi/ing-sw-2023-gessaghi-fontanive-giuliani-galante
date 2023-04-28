@@ -3,7 +3,7 @@ package server.model.cards.concreteobjectives;
 import server.model.Token;
 import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
-import server.model.cards.ModelUtil;
+import server.model.cards.TokenTools;
 
 /**
  * Four lines each formed by 5 tiles of
@@ -16,7 +16,7 @@ public class FourRows implements CommonObjective {
 
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        ModelUtil util = new ModelUtil();
+        TokenTools util = new TokenTools();
         return util.rowsChecker(shelf, false) >= 4;
     }
 
