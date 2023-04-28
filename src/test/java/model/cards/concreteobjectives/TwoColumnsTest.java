@@ -34,7 +34,7 @@ public class TwoColumnsTest {
     @Test
     public void isSatisfiedTestFalse(){
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        ThreeColumns threeC = new ThreeColumns();
+        TwoColumns twoC = new TwoColumns();
 
         Token[][] testShelfTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];
         int[][] testShelfInt = new int[][]{
@@ -49,6 +49,6 @@ public class TwoColumnsTest {
             for(int j = 0; j < SHELF_COLUMNS; j++)
                 testShelfTiles[i][j] = Token.values()[testShelfInt[i][j]];
 
-        assertFalse(threeC.isSatisfied(testShelfTiles));
+        assertFalse(twoC.isSatisfied(testShelfTiles));
     }
 }

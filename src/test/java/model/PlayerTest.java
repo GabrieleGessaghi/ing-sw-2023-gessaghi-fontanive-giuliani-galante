@@ -1,6 +1,6 @@
 package model;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.cards.*;
 import model.cards.concreteobjectives.*;
 import model.exceptions.FullColumnException;
@@ -14,7 +14,7 @@ import java.util.List;
 public class PlayerTest {
     @Test
     public void insertTokensTestOne() throws FullColumnException {
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         PersonalCard pc = new PersonalCard(1);
 
         CommonObjective obj1 = new Corners();
@@ -43,7 +43,7 @@ public class PlayerTest {
 
     @Test
     public void insertTokensTestTwo() throws FullColumnException {
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         PersonalCard pc = new PersonalCard(1);
 
         CommonObjective obj1 = new Corners();

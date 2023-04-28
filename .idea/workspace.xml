@@ -94,33 +94,35 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TwoColumnsTest">
-    <configuration name="FourGroupsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
+  <component name="RunManager" selected="JUnit.TwoColumnsTest.isSatisfiedTestFalse">
+    <configuration name="PlayerTest.insertTokensTestOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourGroupsTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.PlayerTest" />
+      <option name="METHOD_NAME" value="insertTokensTestOne" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FourRowsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
+    <configuration name="PlayerTest.insertTokensTestTwo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourRowsTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.PlayerTest" />
+      <option name="METHOD_NAME" value="insertTokensTestTwo" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -155,8 +157,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TwoColumnsTest.isSatisfiedTestTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
+    <configuration name="TwoColumnsTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="model.cards.concreteobjectives.*" />
@@ -165,7 +167,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
       <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoColumnsTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestTrue" />
+      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -173,11 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestFalse" />
+        <item itemvalue="JUnit.PlayerTest.insertTokensTestTwo" />
+        <item itemvalue="JUnit.PlayerTest.insertTokensTestOne" />
         <item itemvalue="JUnit.TwoColumnsTest" />
         <item itemvalue="JUnit.ThreeColumnsTest" />
-        <item itemvalue="JUnit.FourGroupsTest" />
-        <item itemvalue="JUnit.FourRowsTest" />
-        <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestTrue" />
       </list>
     </recent_temporary>
   </component>
