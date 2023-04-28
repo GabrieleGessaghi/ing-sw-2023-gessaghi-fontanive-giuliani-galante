@@ -20,7 +20,6 @@ public class PlayerTest {
     @Test
     public void insertTokensTestOne() throws FullColumnException {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        PersonalCard pc = new PersonalCard(1);
 
         CommonObjective obj1 = new Corners();
         CommonObjective obj2 = new Corners();
@@ -32,7 +31,7 @@ public class PlayerTest {
         commonCards.add(0, common1);
         commonCards.add(1, common2);
 
-        Player testPlayer = new Player("nick", false, pc, commonCards);
+        Player testPlayer = new Player("nick", false, 1, commonCards);
 
         Token[] testFill = new Token[6];
 
@@ -49,7 +48,6 @@ public class PlayerTest {
     @Test
     public void insertTokensTestTwo() throws FullColumnException {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        PersonalCard pc = new PersonalCard(1);
 
         CommonObjective obj1 = new Corners();
         CommonObjective obj2 = new Diagonal();
@@ -61,7 +59,7 @@ public class PlayerTest {
         commonCards.add(0, common1);
         commonCards.add(1, common2);
 
-        Player testPlayer = new Player("nick", false, pc, commonCards);
+        Player testPlayer = new Player("nick", false, 1, commonCards);
 
         Token[] testFill = new Token[6];
 

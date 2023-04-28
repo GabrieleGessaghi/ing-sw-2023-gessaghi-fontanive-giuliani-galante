@@ -22,10 +22,11 @@ import java.util.Map;
 public class Player implements Savable, Observable {
     private final String nickname;
     private int points;
-    private final boolean isFirstPlayer;
-    private final Map<Card, Boolean> cards;
     private final Shelf playerShelf;
+    private final Card personalCard;
+    private final Map<Card, Boolean> commonCards;
     private final List<Observer> observers;
+    private final boolean isFirstPlayer;
     public boolean isConnected;
 
     /**
@@ -33,20 +34,20 @@ public class Player implements Savable, Observable {
      * @author Niccolò Galante
      * @param nickname Player's nickname.
      * @param isFirstPlayer Indicates whether player is first or not.
-     * @param personal Player's personal card.
+     * @param personalCardIndex Player's personal card's index.
      * @param common Common cards.
      */
-    public Player(String nickname, boolean isFirstPlayer, PersonalCard personal, List<CommonCard> common) {
-        cards = new HashMap<>();
-        cards.put(personal, true);
-        cards.put(common.get(0), true);
-        cards.put(common.get(1), true);
+    public Player(String nickname, boolean isFirstPlayer, int personalCardIndex, List<CommonCard> common) {
+        commonCards = new HashMap<>();
+        commonCards.put(common.get(0), true);
+        commonCards.put(common.get(1), true);
+        personalCard = new PersonalCard(personalCardIndex);
         playerShelf = new Shelf();
+        points = 0;
         this.nickname = nickname;
         this.isFirstPlayer = isFirstPlayer;
-        isConnected = true;
+        this.isConnected = true;
         observers = new ArrayList<>();
-        points = 0;
     }
 
     /**
@@ -64,7 +65,7 @@ public class Player implements Savable, Observable {
      * @return Player's points.
      */
     public int getPoints() {
-        return points;
+        return points + personalCard.getPoints(playerShelf.getTiles());
     }
 
     /**
@@ -85,11 +86,11 @@ public class Player implements Savable, Observable {
         int cardPoints = 0;
 
         //Checks if card objectives have been reached
-        for (Card card : cards.keySet()) {
-            if (cards.get(card))
+        for (Card card : commonCards.keySet()) {
+            if (commonCards.get(card))
                 cardPoints = card.getPoints(playerShelf.getTiles());
             if (cardPoints > 0)
-                cards.replace(card, false);
+                commonCards.replace(card, false);
             points += cardPoints;
         }
 //        for (int i = 0; i < NUMBER_OF_CARDS; i++)
@@ -141,11 +142,19 @@ public class Player implements Savable, Observable {
 
     @Override
     public String getState() {
+        //SALVARE NICKNAME
+        //SALVARE SHELF
+        //SALVARE PUNTI senza getpoints
+        //SALVARE PERSONAL CARD INDEX
         return null;
     }
 
     @Override
     public void loadState(String jsonMessage) {
-
+        //CARICARE NICKNAME
+        //CARICARE SHELF
+        //CARICARE PUNTI
+        //CARICARE PERSONAL CARD E CREARLA
+        //CARICARE COMMON CARDS
     }
 }

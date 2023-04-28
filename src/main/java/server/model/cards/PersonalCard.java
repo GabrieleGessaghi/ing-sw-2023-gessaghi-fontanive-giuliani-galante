@@ -16,6 +16,7 @@ import java.nio.file.Paths;
  * @author Niccolò Galante
  */
 public class PersonalCard extends Card implements Serializable {
+    int index;
     private final Token[][] correctTiles = new Token[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
 
     /**
@@ -23,6 +24,7 @@ public class PersonalCard extends Card implements Serializable {
      * @author Niccolò Galante
      */
     public PersonalCard(int index) {
+        this.index = index;
         int[][] intTiles;
         String jsonFile = "";
         String jsonFilePath = "";
@@ -81,6 +83,9 @@ public class PersonalCard extends Card implements Serializable {
         return correctTiles;
     }
 
+    public int getIndex() {
+        return index;
+    }
     //    /**
 //     * Converts integer to token type.
 //     * @author Niccolò Galante

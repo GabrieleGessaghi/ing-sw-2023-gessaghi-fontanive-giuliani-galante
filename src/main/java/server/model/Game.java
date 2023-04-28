@@ -56,13 +56,11 @@ public class Game implements Serializable {
         }
 
         int[] personalCardsIndexes = randomNumbers.stream().mapToInt(Integer::intValue).toArray();
-        PersonalCard personalCard = null;
         boolean isFirstPlayer = true;
         for (int i = 0; i < numberOfPlayers; i++) {
-            personalCard = new PersonalCard(personalCardsIndexes[i]);
             if (i!=0)
                 isFirstPlayer = false;
-            players[i] = new Player(playerNicknames.get(i), isFirstPlayer, personalCard, currentGameCommonCard);
+            players[i] = new Player(playerNicknames.get(i), isFirstPlayer, personalCardsIndexes[i], currentGameCommonCard);
         }
         currentPlayerIndex = 0;
     }
