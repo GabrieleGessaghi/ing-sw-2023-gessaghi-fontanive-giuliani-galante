@@ -1,4 +1,4 @@
-package model;
+package server.model;
 
 import server.controller.utilities.ConfigLoader;
 import org.junit.jupiter.api.Test;

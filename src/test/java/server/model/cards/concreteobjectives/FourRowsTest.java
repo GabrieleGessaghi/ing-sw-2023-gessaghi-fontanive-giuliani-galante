@@ -1,4 +1,4 @@
-package model.cards.concreteobjectives;
+package server.model.cards.concreteobjectives;
 
 import server.controller.utilities.ConfigLoader;
 import server.model.Token;

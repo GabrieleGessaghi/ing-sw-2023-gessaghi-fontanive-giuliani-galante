@@ -1,4 +1,4 @@
-package model.cards;
+package server.model.cards;
 
 import server.controller.utilities.ConfigLoader;
 import server.model.Token;
