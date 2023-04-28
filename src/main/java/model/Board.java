@@ -20,7 +20,7 @@ import static controller.utilities.ConfigLoader.BOARD_SIZE;
  * The board on which the game is played.
  * @author Giorgio Massimo Fontanive
  */
-public class Board implements Observable, Saveable {
+public class Board implements Observable, Savable {
     private boolean[][] usableTiles;
     private final Token[][] tiles;
     private final Bag bag;
