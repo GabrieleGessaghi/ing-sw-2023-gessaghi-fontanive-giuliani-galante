@@ -3,6 +3,7 @@ package controller;
 import com.google.gson.stream.JsonReader;
 import controller.observer.Event;
 import controller.observer.Observer;
+import controller.utilities.JsonTools;
 import model.Game;
 
 import java.io.IOException;
@@ -62,7 +63,7 @@ public class TurnController implements Observer {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "selectedTiles" -> selectedTiles = readMatrix(jsonReader);
+                    case "selectedTiles" -> selectedTiles = JsonTools.readMatrix(jsonReader);
                     case "selectedColumn" -> selectedColumn = jsonReader.nextInt();
                 }
             }

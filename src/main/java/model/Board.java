@@ -1,7 +1,7 @@
 package model;
 
 import com.google.gson.stream.JsonReader;
-import controller.utilities.ConfigLoader;
+import controller.utilities.JsonTools;
 import model.exceptions.IllegalMoveException;
 import java.io.IOException;
 import java.io.Serializable;
@@ -46,7 +46,7 @@ public class Board implements Serializable {
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            usableTiles = Board.convertSelection(ConfigLoader.readMatrix(jsonReader), 0);
+            usableTiles = Board.convertSelection(JsonTools.readMatrix(jsonReader), 0);
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);

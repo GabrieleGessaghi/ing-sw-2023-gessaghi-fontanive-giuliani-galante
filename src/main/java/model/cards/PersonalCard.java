@@ -1,7 +1,7 @@
 package model.cards;
 
 import com.google.gson.stream.JsonReader;
-import controller.utilities.ConfigLoader;
+import controller.utilities.JsonTools;
 import model.Token;
 
 import java.io.IOException;
@@ -49,7 +49,7 @@ public class PersonalCard extends Card implements Serializable {
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            intTiles = ConfigLoader.readMatrix(jsonReader);
+            intTiles = JsonTools.readMatrix(jsonReader);
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);

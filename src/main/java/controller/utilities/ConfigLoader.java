@@ -5,14 +5,13 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Handles configuration constants.
  * @author Giorgio Massimo Fontanive
 */
 public class ConfigLoader {
+
     public static int SHELF_ROWS;
     public static int SHELF_COLUMNS;
     public static int BOARD_SIZE;
@@ -47,8 +46,8 @@ public class ConfigLoader {
                     case "MAX_TOKENS_PER_TURN" -> MAX_TOKENS_PER_TURN = jsonReader.nextInt();
                     case "NUMBER_OF_TOKEN_TYPES" -> NUMBER_OF_TOKEN_TYPES = jsonReader.nextInt();
                     case "TOKENS_PER_TYPE" -> TOKENS_PER_TYPE = jsonReader.nextInt();
-                    case "COMMONCARD_POINTS" -> COMMONCARD_POINTS = readMatrix(jsonReader);
-                    case "PERSONALCARD_POINTS" -> PERSONALCARD_POINTS = readArray(jsonReader);
+                    case "COMMONCARD_POINTS" -> COMMONCARD_POINTS = JsonTools.readMatrix(jsonReader);
+                    case "PERSONALCARD_POINTS" -> PERSONALCARD_POINTS = JsonTools.readArray(jsonReader);
                     default -> jsonReader.skipValue();
                 }
             }
@@ -56,45 +55,5 @@ public class ConfigLoader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Reads an array from a json file.
-     * @author Giorgio Massimo Fontanive
-     * @param jsonReader The json reader being used. (Must have already started object)
-     * @return The array read from the json file.
-     * @throws IOException When the reader has an issue.
-     */
-    public static int[] readArray(JsonReader jsonReader) throws IOException {
-        List<Integer> listArray= new ArrayList<>();
-        jsonReader.beginArray();
-        for (int i = 0; jsonReader.hasNext(); i++)
-            listArray.add(jsonReader.nextInt());
-        jsonReader.endArray();
-        return listArray.stream().mapToInt(x -> x).toArray();
-    }
-
-    /**
-     * Reads a matrix from a json file.
-     * @author Giorgio Massimo Fontanive
-     * @param jsonReader The json reader being used. (Must have already started object)
-     * @return The matrix read from the json file.
-     * @throws IOException When the reader has an issue.
-     */
-    public static int[][] readMatrix(JsonReader jsonReader) throws IOException {
-        List<List<Integer>> listMatrix = new ArrayList<>();
-        jsonReader.beginArray();
-        for (int i = 0; jsonReader.hasNext(); i++) {
-            listMatrix.add(new ArrayList<>());
-            jsonReader.beginArray();
-            while (jsonReader.hasNext())
-                listMatrix.get(i).add(jsonReader.nextInt());
-            jsonReader.endArray();
-        }
-        jsonReader.endArray();
-        int[][] matrix = new int[listMatrix.size()][];
-        for (int i = 0; i < listMatrix.size(); i++)
-            matrix[i] = listMatrix.get(i).stream().mapToInt(x -> x).toArray();
-        return matrix;
     }
 }
