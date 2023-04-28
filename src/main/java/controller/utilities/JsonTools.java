@@ -9,7 +9,11 @@ import java.util.Map;
 
 public class JsonTools {
 
-    public static String createJson(Map<String, String> elements) {
+    public static String createJson(Map<String, Object> elements) {
+        return null;
+    }
+
+    public static Map<String, Object> parseJson(String jsonMessage) {
         return null;
     }
 
@@ -23,7 +27,7 @@ public class JsonTools {
     public static int[] readArray(JsonReader jsonReader) throws IOException {
         List<Integer> listArray= new ArrayList<>();
         jsonReader.beginArray();
-        for (int i = 0; jsonReader.hasNext(); i++)
+        while (jsonReader.hasNext())
             listArray.add(jsonReader.nextInt());
         jsonReader.endArray();
         return listArray.stream().mapToInt(x -> x).toArray();

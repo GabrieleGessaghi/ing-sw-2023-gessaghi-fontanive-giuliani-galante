@@ -1,14 +1,19 @@
 package model;
 
 import com.google.gson.stream.JsonReader;
+import controller.observer.Event;
+import controller.observer.Observer;
 import controller.utilities.JsonTools;
+import controller.observer.Observable
 import model.exceptions.IllegalMoveException;
+
 import java.io.IOException;
-import java.io.Serializable;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static controller.utilities.ConfigLoader.MAX_TOKENS_PER_TURN;
 import static controller.utilities.ConfigLoader.BOARD_SIZE;
@@ -17,10 +22,11 @@ import static controller.utilities.ConfigLoader.BOARD_SIZE;
  * The board on which the game is played.
  * @author Giorgio Massimo Fontanive
  */
-public class Board implements Serializable {
+public class Board implements Observable, Saveable {
     private boolean[][] usableTiles;
     private final Token[][] tiles;
     private final Bag bag;
+    private final List<Observer> observers;
 
     /**
      * Sets the usable tiles based on the number of players and fills the board with tokens.
@@ -31,6 +37,7 @@ public class Board implements Serializable {
         usableTiles = new boolean[BOARD_SIZE][BOARD_SIZE];
         tiles = new Token[BOARD_SIZE][BOARD_SIZE];
         bag = new Bag();
+        observers = new ArrayList<>();
 
         //Initializes the board's usable tiles based on number of players.
         String jsonFile = "";
@@ -208,5 +215,27 @@ public class Board implements Serializable {
                 if (selectedTiles[i][j] != exclusionNumber)
                     convertedSelection[i][j] = true;
         return convertedSelection;
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void updateObservers(Event event) {
+        for (Observer observer : observers)
+            if (observer != null)
+                observer.update(event);
+    }
+
+    @Override
+    public String getState() {
+        return null;
+    }
+
+    @Override
+    public void loadState(String jsonMessage) {
+
     }
 }
