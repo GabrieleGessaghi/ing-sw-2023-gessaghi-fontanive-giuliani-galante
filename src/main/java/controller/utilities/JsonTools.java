@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import controller.exceptions.JsonCreationException;
+import controller.observer.Event;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -48,12 +49,7 @@ public class JsonTools {
                 switch (jsonReader.peek()) {
                     case NUMBER -> elements.put(field, jsonReader.nextInt());
                     case STRING -> elements.put(field, jsonReader.nextString());
-                    case BEGIN_ARRAY -> {
-                        if (jsonReader.peek() == JsonToken.BEGIN_ARRAY)
-                            elements.put(field, readMatrix(jsonReader));
-                        else
-                            elements.put(field, readArray(jsonReader));
-                    }
+                    case BEGIN_ARRAY -> elements.put(field, jsonReader);
                 }
             }
             jsonReader.endObject();
@@ -75,6 +71,12 @@ public class JsonTools {
         for (int[] i : matrix)
             jsonArray.add(createJsonArray(i));
         return jsonArray;
+    }
+
+    public static String createMessage(String message) {
+        Map<String, Object> element = new HashMap<>();
+        element.put("message", message);
+        return createJson(element);
     }
 
     /**

@@ -11,9 +11,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static controller.utilities.ConfigLoader.MAX_TOKENS_PER_TURN;
 import static controller.utilities.ConfigLoader.BOARD_SIZE;
@@ -53,7 +51,7 @@ public class Board implements Observable, Saveable {
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            usableTiles = Board.convertSelection(JsonTools.readMatrix(jsonReader), 0);
+            usableTiles = Board.convertIntegerMatrix(JsonTools.readMatrix(jsonReader), 0);
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -180,7 +178,7 @@ public class Board implements Observable, Saveable {
             for (int j = 0; j < tiles.length; j++)
                 if (selectedTiles[i][j] != -1)
                     selectedTokens[selectedTiles[i][j]] = tiles[i][j];
-        selectedTilesBoolean = Board.convertSelection(selectedTiles, -1);
+        selectedTilesBoolean = Board.convertIntegerMatrix(selectedTiles, -1);
         if (isMoveLegal(selectedTilesBoolean))
             return selectedTokens;
         else
@@ -208,7 +206,7 @@ public class Board implements Observable, Saveable {
      * @param exclusionNumber The number which sets the tile to false.
      * @return A matrix with true in the position of the chosen tiles.
      */
-    public static boolean[][] convertSelection(int[][] selectedTiles, int exclusionNumber) {
+    public static boolean[][] convertIntegerMatrix(int[][] selectedTiles, int exclusionNumber) {
         boolean[][] convertedSelection = new boolean[selectedTiles.length][selectedTiles.length];
         for (int i = 0; i < selectedTiles.length; i++)
             for (int j = 0; j < selectedTiles[i].length; j++)
@@ -231,13 +229,41 @@ public class Board implements Observable, Saveable {
 
     @Override
     public String getState() {
+        Map<String, Object> elements = new HashMap<>();
+        int[][] tilesInteger = new int[BOARD_SIZE][BOARD_SIZE];
+        int[][] usableTilesInteger = new int[BOARD_SIZE][BOARD_SIZE];
 
+        //Converts the matrices into integer ones.
+        for (int i = 0; i < BOARD_SIZE; i++)
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                tilesInteger[i][j] = tiles[i][j].ordinal();
+                usableTilesInteger[i][j] = usableTiles[i][j] ? 1 : 0;
+            }
 
-        return null;
+        elements.put("tiles", JsonTools.createJsonMatrix(tilesInteger));
+        elements.put("usableTiles", JsonTools.createJsonMatrix(usableTilesInteger));
+        return JsonTools.createJson(elements);
     }
 
     @Override
     public void loadState(String jsonMessage) {
+        Map<String, Object> elements = JsonTools.parseJson(jsonMessage);
+        try {
+            int[][] tilesInteger = JsonTools.readMatrix((JsonReader) elements.get("tiles"));
+            int[][] usableTilesInteger = JsonTools.readMatrix((JsonReader) elements.get("usableTiles"));
 
+            //Converts the integer matrices into usable ones.
+            Token[] tokenValues = Token.values();
+            for (int i = 0; i < BOARD_SIZE; i++)
+                for (int j = 0; j < BOARD_SIZE; j++) {
+                    tiles[i][j] = tokenValues[tilesInteger[i][j]];
+                    usableTiles[i][j] = usableTilesInteger[i][j] == 1;
+                }
+
+        } catch (IOException e) {
+            String errorMessage = "Failed to load Board's save state!";
+            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
+            throw new RuntimeException(e);
+        }
     }
 }
