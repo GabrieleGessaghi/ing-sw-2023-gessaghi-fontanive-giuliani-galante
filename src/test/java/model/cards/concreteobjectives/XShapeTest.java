@@ -1,18 +1,18 @@
 package model.cards.concreteobjectives;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
-import static controller.Configurations.SHELF_COLUMNS;
-import static controller.Configurations.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class XShapeTest {
     @Test
     public void isSatisfiedTestTrue(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         XShape X = new XShape();
 
         Token[][] testShelfTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -33,7 +33,7 @@ public class XShapeTest {
 
     @Test
     public void isSatisfiedTestFalse(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         XShape X = new XShape();
 
         Token[][] testShelfTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];

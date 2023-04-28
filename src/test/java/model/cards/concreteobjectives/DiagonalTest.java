@@ -1,20 +1,20 @@
 package model.cards.concreteobjectives;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static controller.Configurations.SHELF_COLUMNS;
-import static controller.Configurations.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiagonalTest {
 
     @Test
     void leftDiagonalOne(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var leftDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -28,7 +28,7 @@ class DiagonalTest {
 
     @Test
     void leftDiagonalTwo(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var leftDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -42,7 +42,7 @@ class DiagonalTest {
 
     @Test
     void rightDiagonalOne(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var rightDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -55,7 +55,7 @@ class DiagonalTest {
     }
     @Test
     void rightDiagonalTwo(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var rightDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -69,7 +69,7 @@ class DiagonalTest {
 
     @Test
     void wrongScenario(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var wrong = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];

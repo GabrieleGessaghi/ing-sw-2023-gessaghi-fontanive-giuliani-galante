@@ -1,6 +1,6 @@
 package model;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.exceptions.FullColumnException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +9,7 @@ public class ShelfTest {
 
     @Test
     public void constructorTest (){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         Shelf testShelf = new Shelf();
         Token[][] generatedTiles = testShelf.getTiles();
         for (Token[] generatedTile : generatedTiles) {
@@ -22,7 +22,7 @@ public class ShelfTest {
 
     @Test
     public void insertionTest () {
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         Shelf testShelf = new Shelf();
         assertEquals(Token.NOTHING, testShelf.getTiles()[5][0]);
         try {
@@ -35,7 +35,7 @@ public class ShelfTest {
 
     @Test
     public void removeTest (){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         Shelf testShelf = new Shelf();
         try {
             testShelf.insertToken(Token.TOY, 0);
@@ -48,7 +48,7 @@ public class ShelfTest {
 
     @Test
     public void isFullTest () throws FullColumnException {
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         Shelf testShelf = new Shelf();
 
         testShelf.insertToken(Token.TOY,0);

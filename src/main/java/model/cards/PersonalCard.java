@@ -1,7 +1,7 @@
 package model.cards;
 
 import com.google.gson.stream.JsonReader;
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.Token;
 
 import java.io.IOException;
@@ -10,9 +10,9 @@ import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static controller.Configurations.SHELF_COLUMNS;
-import static controller.Configurations.SHELF_ROWS;
-import static controller.Configurations.PERSONALCARD_POINTS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.PERSONALCARD_POINTS;
 
 /**
  * Personal objective cards.
@@ -49,7 +49,7 @@ public class PersonalCard extends Card implements Serializable {
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            intTiles = Configurations.readMatrix(jsonReader);
+            intTiles = ConfigLoader.readMatrix(jsonReader);
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);

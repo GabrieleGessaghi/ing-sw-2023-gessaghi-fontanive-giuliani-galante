@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
-import static controller.Configurations.NUMBER_OF_TOKEN_TYPES;
-import static controller.Configurations.TOKENS_PER_TYPE;
+import static controller.utilities.ConfigLoader.NUMBER_OF_TOKEN_TYPES;
+import static controller.utilities.ConfigLoader.TOKENS_PER_TYPE;
 
 /**
  * Bag of tokens for the game's board.

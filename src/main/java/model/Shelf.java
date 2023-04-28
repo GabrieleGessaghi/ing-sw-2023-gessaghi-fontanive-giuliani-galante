@@ -4,8 +4,8 @@ import model.exceptions.FullColumnException;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import static controller.Configurations.SHELF_COLUMNS;
-import static controller.Configurations.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
 
 public class Shelf implements Serializable {
     private final Token [][] tiles;

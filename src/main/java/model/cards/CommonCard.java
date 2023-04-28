@@ -4,8 +4,8 @@ import model.Token;
 
 import java.io.Serializable;
 
-import static controller.Configurations.COMMONCARD_POINTS;
-import static controller.Configurations.PLAYERS_MIN;
+import static controller.utilities.ConfigLoader.COMMONCARD_POINTS;
+import static controller.utilities.ConfigLoader.PLAYERS_MIN;
 
 /**
  * Common objective card of the game.

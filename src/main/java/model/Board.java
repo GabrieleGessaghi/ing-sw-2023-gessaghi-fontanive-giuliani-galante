@@ -1,7 +1,7 @@
 package model;
 
 import com.google.gson.stream.JsonReader;
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.exceptions.IllegalMoveException;
 import java.io.IOException;
 import java.io.Serializable;
@@ -10,8 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-import static controller.Configurations.MAX_TOKENS_PER_TURN;
-import static controller.Configurations.BOARD_SIZE;
+import static controller.utilities.ConfigLoader.MAX_TOKENS_PER_TURN;
+import static controller.utilities.ConfigLoader.BOARD_SIZE;
 
 /**
  * The board on which the game is played.
@@ -46,7 +46,7 @@ public class Board implements Serializable {
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
-            usableTiles = Board.convertSelection(Configurations.readMatrix(jsonReader), 0);
+            usableTiles = Board.convertSelection(ConfigLoader.readMatrix(jsonReader), 0);
             jsonReader.endObject();
         } catch (IOException e) {
             throw new RuntimeException(e);

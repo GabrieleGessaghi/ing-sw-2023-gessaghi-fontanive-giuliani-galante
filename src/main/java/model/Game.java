@@ -1,6 +1,6 @@
 package model;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.cards.CommonCard;
 import model.cards.CommonObjective;
 import model.cards.CommonType;
@@ -31,7 +31,7 @@ public class Game implements Serializable {
         chat = new Chat();
         players = new Player[numberOfPlayers];
         board = new Board(numberOfPlayers);
-        Configurations.loadConfiguration("/src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");
 
         //generates the unique 4 digit code for the current game
         try {

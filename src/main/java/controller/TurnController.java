@@ -8,7 +8,7 @@ import model.Game;
 import java.io.IOException;
 import java.io.StringReader;
 
-import static controller.Configurations.*;
+import static controller.utilities.ConfigLoader.*;
 
 /**
  * Receives data for a new turn and acts once it's ready.

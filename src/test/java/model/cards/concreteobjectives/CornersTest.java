@@ -1,20 +1,20 @@
 package model.cards.concreteobjectives;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static controller.Configurations.SHELF_COLUMNS;
-import static controller.Configurations.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CornersTest {
 
     @Test
     void trueScenario(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var firstCorner = new Corners();
         Token[][] shelf;
         Token type;
@@ -39,7 +39,7 @@ class CornersTest {
     }
     @Test
     void WrongScenario(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var firstCorner = new Corners();
         Token[][] shelf;
 

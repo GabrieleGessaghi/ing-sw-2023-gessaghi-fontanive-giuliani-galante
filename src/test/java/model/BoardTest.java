@@ -1,6 +1,6 @@
 package model;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.exceptions.IllegalMoveException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +9,7 @@ class BoardTest {
 
     @Test
     public void constructorTest() {
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         Board board = new Board(2);
 
         Token[][] testTokens;
@@ -20,7 +20,7 @@ class BoardTest {
 
     @Test
     public void selectTilesTest() {
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         Board board = new Board(2);
 
         Token[] selectedTokens;
@@ -47,7 +47,7 @@ class BoardTest {
 
     @Test
     public void removeTilesTest() {
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         Board board = new Board(2);
 
         Token[][] testTokens;
@@ -70,7 +70,7 @@ class BoardTest {
 
     @Test
     public void automaticResetTest() {
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         Board board = new Board(2);
 
         Token[][] testTiles = board.getTiles();

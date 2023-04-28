@@ -1,17 +1,17 @@
 package model.cards.concreteobjectives;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
-import static controller.Configurations.SHELF_COLUMNS;
-import static controller.Configurations.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FourRowsTest {
     @Test
     public void fourCase(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         FourRows fourrows = new FourRows();
         Token [][]shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[0][0] = Token.TROPHY;
@@ -48,7 +48,7 @@ class FourRowsTest {
     }
     @Test
     public void threeCase(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         FourRows fourrows = new FourRows();
         Token [][]shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[0][0] = Token.TROPHY;

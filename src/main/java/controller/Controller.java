@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static controller.Configurations.readMatrix;
-
 /**
  * Handles the game flow on a different thread.
  * @author Giorgio Massimo Fontanive

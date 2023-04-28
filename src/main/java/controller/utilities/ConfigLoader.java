@@ -1,4 +1,4 @@
-package controller;
+package controller.utilities;
 
 import com.google.gson.stream.JsonReader;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.util.List;
  * Handles configuration constants.
  * @author Giorgio Massimo Fontanive
 */
-public class Configurations {
+public class ConfigLoader {
     public static int SHELF_ROWS;
     public static int SHELF_COLUMNS;
     public static int BOARD_SIZE;

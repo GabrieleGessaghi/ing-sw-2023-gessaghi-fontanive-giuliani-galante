@@ -1,17 +1,17 @@
 package model.cards.concreteobjectives;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
-import static controller.Configurations.SHELF_COLUMNS;
-import static controller.Configurations.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StairsTest {
     @Test
     void stairLeft(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair = new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
@@ -33,7 +33,7 @@ class StairsTest {
     }
     @Test
     void stairRight(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair= new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         for(int i = 0; i < SHELF_ROWS; i++)
@@ -53,7 +53,7 @@ class StairsTest {
     }
     @Test
     void stairLeftUp(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair= new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         for(int i = 0; i < SHELF_ROWS; i++)
@@ -73,7 +73,7 @@ class StairsTest {
     }
     @Test
     void stairRightUp(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair= new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         for(int i = 0; i < SHELF_ROWS; i++)
@@ -93,7 +93,7 @@ class StairsTest {
     }
     @Test
     void wrongScenario(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair= new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         for (int i = 0; i < SHELF_ROWS; i++)

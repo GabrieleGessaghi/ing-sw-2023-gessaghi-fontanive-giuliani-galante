@@ -1,17 +1,17 @@
 package model.cards.concreteobjectives;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
-import static controller.Configurations.SHELF_COLUMNS;
-import static controller.Configurations.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FourGroupsTest {
     @Test
     void FourIslands(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var fourGroups = new FourGroups();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
@@ -54,7 +54,7 @@ class FourGroupsTest {
     }
     @Test
     void ThreeIslands(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var fourGroups = new FourGroups();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 

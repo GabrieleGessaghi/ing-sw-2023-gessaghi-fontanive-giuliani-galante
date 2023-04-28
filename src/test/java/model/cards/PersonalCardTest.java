@@ -1,18 +1,18 @@
 package model.cards;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.Token;
 import org.junit.jupiter.api.Test;
 
-import static controller.Configurations.SHELF_COLUMNS;
-import static controller.Configurations.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonalCardTest {
 
     @Test
     public void constructorTest(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         PersonalCard pc = new PersonalCard(6);
 
         Token[][] testTokens = pc.getCorrectTiles();
@@ -22,7 +22,7 @@ class PersonalCardTest {
 
     @Test
     public void getPointsTestOne(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         PersonalCard pc = new PersonalCard(6);
 
         Token[][] testTokens = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -43,7 +43,7 @@ class PersonalCardTest {
 
     @Test
     public void getPointsTestTwo(){
-        Configurations.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         PersonalCard pc = new PersonalCard(6);
 
         Token[][] testTokens = new Token[SHELF_ROWS][SHELF_COLUMNS];

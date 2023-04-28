@@ -1,12 +1,12 @@
 package model.cards;
 
-import controller.Configurations;
+import controller.utilities.ConfigLoader;
 import model.Token;
 import model.cards.concreteobjectives.Corners;
 import org.junit.jupiter.api.Test;
 
-import static controller.Configurations.SHELF_ROWS;
-import static controller.Configurations.SHELF_COLUMNS;
+import static controller.utilities.ConfigLoader.SHELF_ROWS;
+import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommonCardTest {
@@ -38,7 +38,7 @@ class CommonCardTest {
         thirdShelf[0][4] = Token.CAT;
         thirdShelf[5][4] = Token.CAT;
 
-        Configurations conf= new Configurations();
+        ConfigLoader conf= new ConfigLoader();
         one = card.getPoints(firstShelf);
         two = card.getPoints(secondShelf);
         three = card.getPoints(thirdShelf);
@@ -77,7 +77,7 @@ class CommonCardTest {
         thirdShelf[0][4] = Token.CAT;
         thirdShelf[5][4] = Token.CAT;
 
-        Configurations conf= new Configurations();
+        ConfigLoader conf= new ConfigLoader();
         one = card.getPoints(firstShelf);
         two = card.getPoints(secondShelf);
         three = card.getPoints(thirdShelf);
@@ -122,7 +122,7 @@ class CommonCardTest {
         fourthShelf[0][4] = Token.CAT;
         fourthShelf[5][4] = Token.CAT;
 
-        Configurations conf= new Configurations();
+        ConfigLoader conf= new ConfigLoader();
         one = card.getPoints(firstShelf);
         two = card.getPoints(secondShelf);
         three = card.getPoints(thirdShelf);
