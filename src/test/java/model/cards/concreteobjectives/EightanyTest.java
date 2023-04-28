@@ -1,13 +1,14 @@
 package model.cards.concreteobjectives;
 
-import controller.utilities.ConfigLoader;
-import model.Token;
+import server.controller.utilities.ConfigLoader;
+import server.model.Token;
 import org.junit.jupiter.api.Test;
+import server.model.cards.concreteobjectives.Eightany;
 
 import java.util.Random;
 
-import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
-import static controller.utilities.ConfigLoader.SHELF_ROWS;
+import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static server.controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EightanyTest {
