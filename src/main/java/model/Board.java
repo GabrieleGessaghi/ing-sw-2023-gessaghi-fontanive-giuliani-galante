@@ -4,7 +4,7 @@ import com.google.gson.stream.JsonReader;
 import controller.observer.Event;
 import controller.observer.Observer;
 import controller.utilities.JsonTools;
-import controller.observer.Observable
+import controller.observer.Observable;
 import model.exceptions.IllegalMoveException;
 
 import java.io.IOException;
@@ -231,6 +231,8 @@ public class Board implements Observable, Saveable {
 
     @Override
     public String getState() {
+
+
         return null;
     }
 

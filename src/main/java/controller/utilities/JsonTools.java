@@ -1,5 +1,8 @@
 package controller.utilities;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import java.io.IOException;
@@ -9,12 +12,30 @@ import java.util.Map;
 
 public class JsonTools {
 
+    private void addProperty(JsonObject jsonObject, String field, Object property) {
+
+    }
+
     public static String createJson(Map<String, Object> elements) {
         return null;
     }
 
     public static Map<String, Object> parseJson(String jsonMessage) {
         return null;
+    }
+
+    public static JsonArray createJsonArray(int[] array) {
+        JsonArray jsonArray = new JsonArray();
+        for (int i : array)
+            jsonArray.add(i);
+        return jsonArray;
+    }
+
+    public static JsonArray createJsonMatrix(int[][] matrix) {
+        JsonArray jsonArray = new JsonArray();
+        for (int[] i : matrix)
+            jsonArray.add(createJsonArray(i));
+        return jsonArray;
     }
 
     /**
