@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Creates Saveable and implemented Observable in Board">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added createJsonArray and createJsonMatrix to jsonTools">
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/utilities/JsonTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/utilities/JsonTools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,14 +187,7 @@
       <workItem from="1681279263760" duration="4928000" />
       <workItem from="1682601461318" duration="1413000" />
       <workItem from="1682604793549" duration="5190000" />
-      <workItem from="1682661263149" duration="2316000" />
-    </task>
-    <task id="LOCAL-00056" summary="Removed extra requirements for reading arrays from json files">
-      <created>1680590502970</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1680590502970</updated>
+      <workItem from="1682661263149" duration="2708000" />
     </task>
     <task id="LOCAL-00057" summary="Implemented global variable for PersonalCard">
       <created>1680601596253</created>
@@ -534,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682662472675</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Added createJsonArray and createJsonMatrix to jsonTools">
+      <created>1682663599701</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1682663599701</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +566,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Tested XShape" />
     <MESSAGE value="Created observer package" />
     <MESSAGE value="." />
     <MESSAGE value="Modified UML diagrams" />
@@ -593,7 +590,8 @@
     <MESSAGE value="Refactored ConfigLoader" />
     <MESSAGE value="Created JsonTools" />
     <MESSAGE value="Creates Saveable and implemented Observable in Board" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creates Saveable and implemented Observable in Board" />
+    <MESSAGE value="Added createJsonArray and createJsonMatrix to jsonTools" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added createJsonArray and createJsonMatrix to jsonTools" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

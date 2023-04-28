@@ -12,9 +12,17 @@ import java.util.Map;
 
 public class JsonTools {
 
-    private void addProperty(JsonObject jsonObject, String field, Object property) {
-
-    }
+//    private void addProperty(JsonObject jsonObject, String field, Object property) {
+//        if (property.getClass().equals(Integer.class))
+//            jsonObject.addProperty(field, (Integer) property);
+//        else if (property.getClass().equals(String.class))
+//            jsonObject.addProperty(field, (String) property);
+//        else if (property.getClass().equals(ArrayList.class)) {
+//            ArrayList<Integer> list = (ArrayList<Integer>) property;
+//            int[] array = list.stream().mapToInt(x -> x).toArray();
+//            jsonObject.add(field, createJsonArray(array));
+//        }
+//    }
 
     public static String createJson(Map<String, Object> elements) {
         return null;
