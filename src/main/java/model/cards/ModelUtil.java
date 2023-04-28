@@ -1,57 +1,47 @@
-package model.cards.concreteobjectives;
+package model.cards;
 
 import model.Token;
-import model.cards.CommonObjective;
-import model.cards.CommonType;
-import model.cards.ModelUtil;
 
 import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
 import static controller.utilities.ConfigLoader.SHELF_ROWS;
 
-/**
- * Four groups each containing at least
- * 4 tiles of the same type (not necessarily
- * in the depicted shape).
- * The tiles of one group can be different
- * from those of another group.
- * @author Niccolò Giuliani
- */
-public class FourGroups implements CommonObjective {
-    //private int counterInterIsland; //counter of the instances of the island
-
-
-    @Override
-    public boolean isSatisfied(Token[][] shelf) {
-        int generalCounter; //general counter of the groups
-        ModelUtil util = new ModelUtil();
-        generalCounter = util.counterIslandType(Token.CAT, shelf,false)  + util.counterIslandType(Token.TOY, shelf,false) + util.counterIslandType(Token.BOOK, shelf,false) +
-                util.counterIslandType(Token.TROPHY, shelf,false) + util.counterIslandType(Token.FRAME, shelf,false) + util.counterIslandType(Token.PLANT, shelf,false);
-        return generalCounter >= 4;
-    }
-
-    /*
+public class ModelUtil {
+    private int counterInterIsland; //counter of the instances of the island
     /**
      * count the islands containing at least four instances a particular type
      * @author Niccolò Giuliani
      * @param type
      * @param shelf
+     * @param modality false for FourGroups, true for Player
      * @return the count of the islands
-
-    private int checkType(Token type, Token[][] shelf){
+     */
+    public int counterIslandType(Token type, Token[][] shelf, boolean modality){
         int counterPerToken = 0; //counter of islands per type
         counterInterIsland = 0;
-        ModelUtil util = new ModelUtil();
-        boolean[][] checked = new boolean[ROWS][COLUMNS];
+        boolean[][] checked = new boolean[SHELF_ROWS][SHELF_COLUMNS];
         for (int i = 0; i < SHELF_ROWS; i++)
             for (int j = 0; j < SHELF_COLUMNS; j++)
                 checked[i][j] = false;
-        for (int i = 0; i < ROWS; i++)
-            for (int j = 0; j < COLUMNS; j++)
+        for (int i = 0; i < SHELF_ROWS; i++)
+            for (int j = 0; j < SHELF_COLUMNS; j++)
                 if (shelf[i][j] == type && !checked[i][j]){
                     counterInterIsland = 1;
                     findIsland(shelf, i, j, checked, type);
-                    if (counterInterIsland >= 4)
-                        counterPerToken ++;
+                    if(!modality) {
+                        if (counterInterIsland >= 4)
+                            counterPerToken++;
+                    }
+                    else if(modality){
+                        if(counterInterIsland >= 6)
+                            counterPerToken += 8;
+                        else if(counterInterIsland == 5)
+                            counterPerToken += 5;
+                        else if(counterInterIsland == 4)
+                            counterPerToken += 3;
+                        else if(counterInterIsland== 3)
+                            counterPerToken += 2;
+                        }
+
                 }
         return counterPerToken;
     }
@@ -64,7 +54,7 @@ public class FourGroups implements CommonObjective {
      * @param col column of the initial cell
      * @param checked matrix of checked cells
      * @param type type of Token
-
+     */
     private void findIsland(Token[][] M, int row, int col, boolean[][] checked, Token type) {
         //arrays for the position of the neighbors
         int[] rowIndex = new int[] {-1, 0, 0, 1 };
@@ -89,14 +79,17 @@ public class FourGroups implements CommonObjective {
      * @param checked
      * @param type
      * @return true if the cell is equal the Token type
-
+     */
     private boolean isOk(Token[][] M, int row, int col, boolean[][] checked, Token type) {
-        return (row >= 0) && (row < ROWS) && (col >= 0) && (col < COLUMNS)
+        return (row >= 0) && (row < SHELF_ROWS) && (col >= 0) && (col < SHELF_COLUMNS)
                 && (M[row][col] == type && !checked[row][col]);
     }
-*/
+
     public CommonType getName(){
         return CommonType.FOURGROUPS;
     }
+
+
+
 
 }

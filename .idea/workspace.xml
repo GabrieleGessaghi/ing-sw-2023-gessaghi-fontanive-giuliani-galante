@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added createJsonArray and createJsonMatrix to jsonTools">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/utilities/JsonTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/utilities/JsonTools.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/cards/ModelUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/CreationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/CreationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/TurnController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/TurnController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Bag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/NetworkHandlerSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/socket/NetworkHandlerSocket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/BoardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/PlayerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/PlayerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/ShelfTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/ShelfTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/PersonalCardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/PersonalCardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/ThreeColumnsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/ThreeColumnsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/TwoColumnsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/TwoColumnsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/TwoRowsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/TwoRowsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/TwoSquaresTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/TwoSquaresTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/XShapeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/concreteobjectives/XShapeTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +38,8 @@
         <option value="package.json" />
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,9 +100,9 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TwoSquaresTest.isSatisfiedTestFalse">
-    <configuration name="TwoRowsTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+  <component name="RunManager" selected="JUnit.FourGroupsTest">
+    <configuration name="FourGroupsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="model.cards.concreteobjectives.*" />
@@ -90,8 +110,39 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoRowsTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourGroupsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FourGroupsTest.FourIslands" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourGroupsTest" />
+      <option name="METHOD_NAME" value="FourIslands" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FourGroupsTest.ThreeIslands" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.FourGroupsTest" />
+      <option name="METHOD_NAME" value="ThreeIslands" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -129,45 +180,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="XShapeTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.XShapeTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="XShapeTest.isSatisfiedTestTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.XShapeTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestTrue" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FourGroupsTest" />
+        <item itemvalue="JUnit.FourGroupsTest.FourIslands" />
+        <item itemvalue="JUnit.FourGroupsTest.ThreeIslands" />
         <item itemvalue="JUnit.TwoSquaresTest.isSatisfiedTestFalse" />
         <item itemvalue="JUnit.TwoSquaresTest.isSatisfiedTestTrue" />
-        <item itemvalue="JUnit.XShapeTest.isSatisfiedTestFalse" />
-        <item itemvalue="JUnit.XShapeTest.isSatisfiedTestTrue" />
-        <item itemvalue="JUnit.TwoRowsTest.isSatisfiedTestFalse" />
       </list>
     </recent_temporary>
   </component>
@@ -539,15 +558,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -559,6 +569,15 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>
