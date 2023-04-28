@@ -1,7 +1,9 @@
 package model;
 
-import controller.utilities.ConfigLoader;
-import model.exceptions.FullColumnException;
+import server.controller.utilities.ConfigLoader;
+import server.model.Shelf;
+import server.model.Token;
+import server.model.exceptions.FullColumnException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested Player">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed small issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/ModelUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/ModelUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/ThreeColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/ThreeColumns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoColumns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/TokenTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/TokenTools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,48 +189,6 @@
       <workItem from="1682601461318" duration="1413000" />
       <workItem from="1682604793549" duration="5190000" />
       <workItem from="1682661263149" duration="2708000" />
-    </task>
-    <task id="LOCAL-00058" summary="Added description">
-      <created>1680601660880</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1680601660880</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Added json files for personal cards">
-      <created>1680603632090</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1680603632090</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Completed Player class">
-      <created>1680705672298</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1680705672298</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Added TODO">
-      <created>1680711864164</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1680711864164</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Updated class diagram">
-      <created>1680854946880</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1680854946880</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Fixed small issues">
-      <created>1680855129010</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1680855129010</updated>
     </task>
     <task id="LOCAL-00064" summary="Created Event class">
       <created>1681279762155</created>
@@ -537,13 +491,64 @@
       <option name="project" value="LOCAL" />
       <updated>1682685776286</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Finished JsonTools">
+      <created>1682696446880</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1682696446880</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Finished implementing interfaces into Board">
+      <created>1682698415964</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1682698415964</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Documented interfaces">
+      <created>1682698722101</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1682698722101</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Documented JsonTools">
+      <created>1682699210182</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1682699210183</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Separated Client and Server packages">
+      <created>1682699335161</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1682699335161</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Fixed small issue">
+      <created>1682699542705</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1682699542705</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -559,24 +564,9 @@
         </entry>
       </map>
     </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="." />
-    <MESSAGE value="Modified UML diagrams" />
-    <MESSAGE value="created ClientHandler" />
-    <MESSAGE value="added Javadoc" />
-    <MESSAGE value="ClientHandlerSocket.run() implementation" />
-    <MESSAGE value="Updated Server" />
     <MESSAGE value="Updated Server and ClientHandler" />
     <MESSAGE value="Created Controller" />
     <MESSAGE value="fixed small issues" />
@@ -596,19 +586,25 @@
     <MESSAGE value="Creates Saveable and implemented Observable in Board" />
     <MESSAGE value="Added createJsonArray and createJsonMatrix to jsonTools" />
     <MESSAGE value="added Modelutil class" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Modelutil class" />
+    <MESSAGE value="Finished JsonTools" />
+    <MESSAGE value="Finished implementing interfaces into Board" />
+    <MESSAGE value="Documented interfaces" />
+    <MESSAGE value="Documented JsonTools" />
+    <MESSAGE value="Separated Client and Server packages" />
+    <MESSAGE value="Fixed small issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java</url>
-          <line>14</line>
+          <line>15</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java</url>
-          <line>10</line>
+          <line>11</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

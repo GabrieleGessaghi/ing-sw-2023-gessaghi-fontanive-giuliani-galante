@@ -1,7 +1,9 @@
 package model;
 
-import controller.utilities.ConfigLoader;
-import model.exceptions.IllegalMoveException;
+import server.controller.utilities.ConfigLoader;
+import server.model.Board;
+import server.model.Token;
+import server.model.exceptions.IllegalMoveException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

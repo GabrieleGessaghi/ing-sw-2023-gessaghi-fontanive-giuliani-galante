@@ -1,9 +1,14 @@
 package model;
 
-import controller.utilities.ConfigLoader;
-import model.cards.*;
-import model.cards.concreteobjectives.*;
-import model.exceptions.FullColumnException;
+import server.controller.utilities.ConfigLoader;
+import server.model.Player;
+import server.model.Token;
+import server.model.cards.CommonCard;
+import server.model.cards.CommonObjective;
+import server.model.cards.PersonalCard;
+import server.model.cards.concreteobjectives.Corners;
+import server.model.cards.concreteobjectives.Diagonal;
+import server.model.exceptions.FullColumnException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
