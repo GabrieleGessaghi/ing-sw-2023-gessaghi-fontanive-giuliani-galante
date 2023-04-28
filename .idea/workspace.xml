@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed small issues">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested Player">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/ModelUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/ModelUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/ThreeColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/ThreeColumns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoColumns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,9 +88,9 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TwoColumnsTest.isSatisfiedTestFalse">
-    <configuration name="PlayerTest.insertTokensTestOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+  <component name="RunManager" selected="JUnit.ThreeColumnsTest">
+    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="model.*" />
@@ -92,8 +99,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.PlayerTest" />
-      <option name="METHOD_NAME" value="insertTokensTestOne" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -162,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ThreeColumnsTest" />
+        <item itemvalue="JUnit.TwoColumnsTest" />
+        <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestFalse" />
         <item itemvalue="JUnit.PlayerTest.insertTokensTestTwo" />
-        <item itemvalue="JUnit.PlayerTest.insertTokensTestOne" />
-        <item itemvalue="JUnit.TwoColumnsTest" />
-        <item itemvalue="JUnit.ThreeColumnsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -187,6 +193,20 @@
       <workItem from="1682601461318" duration="1413000" />
       <workItem from="1682604793549" duration="5190000" />
       <workItem from="1682661263149" duration="2708000" />
+    </task>
+    <task id="LOCAL-00058" summary="Added description">
+      <created>1680601660880</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1680601660880</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Added json files for personal cards">
+      <created>1680603632090</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1680603632090</updated>
     </task>
     <task id="LOCAL-00060" summary="Completed Player class">
       <created>1680705672298</created>
@@ -517,36 +537,13 @@
       <option name="project" value="LOCAL" />
       <updated>1682685776286</updated>
     </task>
-    <task id="LOCAL-00107" summary="Fixed small issues">
-      <created>1682688622420</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1682688622420</updated>
-    </task>
-    <task id="LOCAL-00108" summary="Fixed small issues">
-      <created>1682688864068</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1682688864068</updated>
-    </task>
-    <option name="localTasksCounter" value="109" />
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -562,9 +559,19 @@
         </entry>
       </map>
     </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="." />
     <MESSAGE value="Modified UML diagrams" />
     <MESSAGE value="created ClientHandler" />
     <MESSAGE value="added Javadoc" />
@@ -589,8 +596,7 @@
     <MESSAGE value="Creates Saveable and implemented Observable in Board" />
     <MESSAGE value="Added createJsonArray and createJsonMatrix to jsonTools" />
     <MESSAGE value="added Modelutil class" />
-    <MESSAGE value="Fixed small issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Modelutil class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

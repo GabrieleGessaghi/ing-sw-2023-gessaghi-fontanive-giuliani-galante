@@ -5,13 +5,16 @@ import model.Token;
 import static controller.utilities.ConfigLoader.SHELF_COLUMNS;
 import static controller.utilities.ConfigLoader.SHELF_ROWS;
 
+/**
+ * class to group model code
+ */
 public class ModelUtil {
     private int counterInterIsland; //counter of the instances of the island
     /**
      * if modality is true count adjent point per Player, if modality is false count number of islands of at least four items dor FourGroups
      * @author Niccolò Giuliani
-     * @param type
-     * @param shelf
+     * @param type type of Token
+     * @param shelf shelf to check
      * @param modality false for FourGroups, true for Player
      * @return the count of the islands
      */
@@ -31,7 +34,7 @@ public class ModelUtil {
                         if (counterInterIsland >= 4)
                             counterPerToken++;
                     }
-                    else if(modality){
+                    else {
                         if(counterInterIsland >= 6)
                             counterPerToken += 8;
                         else if(counterInterIsland == 5)
@@ -73,11 +76,11 @@ public class ModelUtil {
     /**
      * check if the cell is equal to the Token type
      * @author Niccolò Giuliani
-     * @param M
-     * @param row
-     * @param col
-     * @param checked
-     * @param type
+     * @param M Matrix to check
+     * @param row row to check
+     * @param col column to check
+     * @param checked matrix of checked cells
+     * @param type type of token
      * @return true if the cell is equal the Token type
      */
     private boolean isOk(Token[][] M, int row, int col, boolean[][] checked, Token type) {
@@ -86,11 +89,11 @@ public class ModelUtil {
     }
 
     /**
-     * function for TwoRows and FourRows
+     * method for TwoRows and FourRows
      * @author Niccolò Giuliani
      * @param shelf shelf to check
      * @param modality modality false for FourRows, modality true for TwoRows
-     * @return
+     * @return number of rows that satisfy the objective
      */
    public int rowsChecker(Token[][] shelf, boolean modality){
        int[] counter = new int[7];
@@ -126,15 +129,21 @@ public class ModelUtil {
        return atLeast;
    }
 
+    /**
+     * method for TwoColumns and ThreeColumns
+     * @param shelf shelf to check
+     * @param modality modality false for ThreeColumns, modality true for TwoColumns
+     * @return number of columns that satisfy the objective
+     */
    public int columnsChecker(Token[][] shelf, boolean modality){
        int[] counter = new int[7];
        int differentType;
        int atLeast = 0;
-       for (int i = 0; i < SHELF_ROWS; i++) {
+       for (int i = 0; i < SHELF_COLUMNS; i++) {
            for (int w=0; w < 7 ; w++)
                counter[w]=0;
            differentType = 0;
-           for (int j=0; j < SHELF_COLUMNS ; j++)
+           for (int j=0; j < SHELF_ROWS ; j++)
                switch (shelf[j][i]) {
                    case CAT -> counter[0]++;
                    case BOOK -> counter[1]++;
