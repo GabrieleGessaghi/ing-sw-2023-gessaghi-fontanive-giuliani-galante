@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested Player">
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/CreationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/CreationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/ModelUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/ModelUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/ThreeColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/ThreeColumns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cards/concreteobjectives/TwoColumns.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ClientHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/OutputSender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/Promt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/CommonCardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/CommonCardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/ThreeColumns.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,9 +88,9 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TwoColumnsTest.isSatisfiedTestFalse">
-    <configuration name="PlayerTest.insertTokensTestOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+  <component name="RunManager" selected="JUnit.ThreeColumnsTest">
+    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="model.*" />
@@ -105,8 +99,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.PlayerTest" />
-      <option name="METHOD_NAME" value="insertTokensTestOne" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -175,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ThreeColumnsTest" />
+        <item itemvalue="JUnit.TwoColumnsTest" />
+        <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestFalse" />
         <item itemvalue="JUnit.PlayerTest.insertTokensTestTwo" />
-        <item itemvalue="JUnit.PlayerTest.insertTokensTestOne" />
-        <item itemvalue="JUnit.TwoColumnsTest" />
-        <item itemvalue="JUnit.ThreeColumnsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -551,15 +544,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -571,6 +555,15 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>
