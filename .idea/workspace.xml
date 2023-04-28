@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Finished implementing interfaces into Board">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/observer/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/observer/Observable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/observer/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/observer/Observer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Saveable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Savable.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Documented interfaces">
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/utilities/JsonTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/utilities/JsonTools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,13 +185,6 @@
       <workItem from="1682601461318" duration="1413000" />
       <workItem from="1682604793549" duration="5190000" />
       <workItem from="1682661263149" duration="2708000" />
-    </task>
-    <task id="LOCAL-00060" summary="Completed Player class">
-      <created>1680705672298</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1680705672298</updated>
     </task>
     <task id="LOCAL-00061" summary="Added TODO">
       <created>1680711864164</created>
@@ -533,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682698415964</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Documented interfaces">
+      <created>1682698722101</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1682698722101</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +563,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="created ClientHandler" />
     <MESSAGE value="added Javadoc" />
     <MESSAGE value="ClientHandlerSocket.run() implementation" />
     <MESSAGE value="Updated Server" />
@@ -592,7 +587,8 @@
     <MESSAGE value="added Modelutil class" />
     <MESSAGE value="Finished JsonTools" />
     <MESSAGE value="Finished implementing interfaces into Board" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing interfaces into Board" />
+    <MESSAGE value="Documented interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="Documented interfaces" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

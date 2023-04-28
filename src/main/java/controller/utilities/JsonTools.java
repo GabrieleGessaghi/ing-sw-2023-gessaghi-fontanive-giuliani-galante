@@ -14,6 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Provides methods to help with the reading and creation of JSON strings.
+ * @author Giorgio Massimo Fontanive
+ */
 public class JsonTools {
 
     private static void addProperty(JsonObject jsonObject, String field, Object property) throws JsonCreationException {
@@ -23,9 +27,15 @@ public class JsonTools {
             jsonObject.addProperty(field, (String) property);
         else if (property.getClass().equals(JsonArray.class))
             jsonObject.add(field, (JsonArray) property);
-        else throw new JsonCreationException("Unknows property class!");
+        else throw new JsonCreationException("Unknown property class!");
     }
 
+    /**
+     * Converts a map into a JSON string.
+     * @author Giorgio Massimo Fontanive
+     * @param elements A map containing every field and their respective value.
+     * @return A string in JSON format containing all the map's fields and values.
+     */
     public static String createJson(Map<String, Object> elements) {
         JsonObject jsonObject = new JsonObject();
         for (String field : elements.keySet()) {
@@ -38,6 +48,12 @@ public class JsonTools {
         return jsonObject.toString();
     }
 
+    /**
+     * Converts a JSON string into a map.
+     * @author Giorgio Massimo Fontanive
+     * @param jsonMessage The JSON message from which to generate the map.
+     * @return A HashMap containing all JSON fields and values.
+     */
     public static HashMap<String, Object> parseJson(String jsonMessage) {
         HashMap<String, Object> elements = new HashMap<>();
         try {
@@ -59,6 +75,12 @@ public class JsonTools {
         return elements;
     }
 
+    /**
+     * Creates a JSON array.
+     * @author Giorgio Massimo Fontanive
+     * @param array The array from which to create the JsonArray.
+     * @return A JsonArray object containing all values.
+     */
     public static JsonArray createJsonArray(int[] array) {
         JsonArray jsonArray = new JsonArray();
         for (int i : array)
@@ -66,6 +88,12 @@ public class JsonTools {
         return jsonArray;
     }
 
+    /**
+     * Creates a JSON array containing other JSON arrays.
+     * @author Giorgio Massimo Fontanive
+     * @param matrix The matrix from which to create the JsonArrays.
+     * @return A JsonArray object containing all values.
+     */
     public static JsonArray createJsonMatrix(int[][] matrix) {
         JsonArray jsonArray = new JsonArray();
         for (int[] i : matrix)
@@ -73,6 +101,12 @@ public class JsonTools {
         return jsonArray;
     }
 
+    /**
+     * Creates a JSON string with only the field message
+     * @author Giorgio Massimo Fontanive
+     * @param message The message to be put into the JSON string.
+     * @return The final JSON string containing only the field "message".
+     */
     public static String createMessage(String message) {
         Map<String, Object> element = new HashMap<>();
         element.put("message", message);
