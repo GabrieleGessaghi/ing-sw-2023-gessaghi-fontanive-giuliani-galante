@@ -63,6 +63,7 @@ public class ModelUtil {
         int[] rowIndex = new int[] {-1, 0, 0, 1 };
         int[] colIndex = new int[] { 0,-1, 1, 0 };
 
+
         checked[row][col] = true;
 
         for (int i = 0; i < 4; i++)
