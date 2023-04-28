@@ -15,7 +15,7 @@ class CommonCardTest {
         int numberOfPlayers = 2;
         int one,two,three;
         CommonObjective objective = new Corners();
-        Card card = new CommonCard(objective,numberOfPlayers );
+        Card card = new CommonCard(objective, numberOfPlayers);
         Token[][] firstShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         Token[][] secondShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         Token[][] thirdShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -45,10 +45,8 @@ class CommonCardTest {
         assertEquals(8,one);
         assertEquals(0,two);
         assertEquals(4,three);
-
-
-
     }
+
     @Test
     public void threePlayers(){
         int numberOfPlayers = 3;

@@ -21,7 +21,7 @@ public class Player implements Serializable {
     private final String nickname;
     private int points;
     private final boolean isFirstPlayer;
-    private List<Card> cards;
+    private final List<Card> cards;
     private final Shelf playerShelf;
     public boolean isConnected;
     public boolean[] isComplete;
@@ -41,9 +41,12 @@ public class Player implements Serializable {
         playerShelf = new Shelf();
         this.nickname = nickname;
         this.isFirstPlayer = isFirstPlayer;
-        cards.add(personal);
-        cards.add(common.get(0));
-        cards.add(common.get(1));
+        cards.add(0, personal);
+        cards.add(1, common.get(0));
+        cards.add(2, common.get(1));
+        points = 0;
+        adjacentPoints = 0;
+        isComplete = new boolean[NUMBER_OF_CARDS];
     }
 
     /**
@@ -79,15 +82,13 @@ public class Player implements Serializable {
      */
     private void updatePoints() {
         int tempPoints = points - adjacentPoints;
-        isComplete = new boolean[NUMBER_OF_CARDS];
 
         //Checks if card objectives have been reached
-        for (int i = 0; i < NUMBER_OF_CARDS; i++) {
+        for (int i = 0; i < NUMBER_OF_CARDS; i++)
             if (!isComplete[i] && cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
                 isComplete[i] = true;
                 tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
             }
-        }
 
         //Checks if tiles of same type are adjacent
         adjacentPoints = 0;
