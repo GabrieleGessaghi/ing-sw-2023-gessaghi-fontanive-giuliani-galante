@@ -84,7 +84,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ThreeColumnsTest">
+  <component name="RunManager" selected="JUnit.ShelfTest">
     <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -100,8 +100,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest.insertTokensTestTwo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+    <configuration name="ShelfTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="model.*" />
@@ -109,9 +109,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.PlayerTest" />
-      <option name="METHOD_NAME" value="insertTokensTestTwo" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="model.ShelfTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -164,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ShelfTest" />
         <item itemvalue="JUnit.ThreeColumnsTest" />
         <item itemvalue="JUnit.TwoColumnsTest" />
         <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestFalse" />
-        <item itemvalue="JUnit.PlayerTest.insertTokensTestTwo" />
       </list>
     </recent_temporary>
   </component>
