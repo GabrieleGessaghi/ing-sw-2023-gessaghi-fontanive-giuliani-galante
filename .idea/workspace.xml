@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Tested Player">
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/cards/CommonCardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/CreationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/CreationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/cards/concreteobjectives/FourGroups.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ClientHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/OutputSender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/Promt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/model/cards/CommonCardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/model/cards/CommonCardTest.class" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed small issues">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,20 +187,6 @@
       <workItem from="1682601461318" duration="1413000" />
       <workItem from="1682604793549" duration="5190000" />
       <workItem from="1682661263149" duration="2708000" />
-    </task>
-    <task id="LOCAL-00058" summary="Added description">
-      <created>1680601660880</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1680601660880</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Added json files for personal cards">
-      <created>1680603632090</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1680603632090</updated>
     </task>
     <task id="LOCAL-00060" summary="Completed Player class">
       <created>1680705672298</created>
@@ -544,7 +517,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682685776286</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Fixed small issues">
+      <created>1682688622420</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1682688622420</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Fixed small issues">
+      <created>1682688864068</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1682688864068</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +565,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="." />
     <MESSAGE value="Modified UML diagrams" />
     <MESSAGE value="created ClientHandler" />
     <MESSAGE value="added Javadoc" />
@@ -603,7 +589,8 @@
     <MESSAGE value="Creates Saveable and implemented Observable in Board" />
     <MESSAGE value="Added createJsonArray and createJsonMatrix to jsonTools" />
     <MESSAGE value="added Modelutil class" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Modelutil class" />
+    <MESSAGE value="Fixed small issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

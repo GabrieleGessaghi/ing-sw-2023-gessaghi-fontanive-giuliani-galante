@@ -5,8 +5,10 @@ import controller.Prompt;
 import view.socket.NetworkHandlerSocket;
 
 import java.awt.desktop.SystemEventListener;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import static controller.utilities.ConfigLoader.BOARD_SIZE;
 
 
 /**
@@ -16,6 +18,7 @@ import java.util.Scanner;
 public class Client {
     private final String nickname;
     private NetworkHandlerSocket nhs;
+
 
     public Client(String nick){
         this.nickname = nick;
@@ -42,7 +45,6 @@ public class Client {
         }
     }
 
-
     public void selectConnectionType(){
         Scanner scn = new Scanner(System.in);
         int selection;
@@ -57,7 +59,6 @@ public class Client {
 
         if(selection == 0)
             nhs = new NetworkHandlerSocket();
-
     }
 
     private void requestNickname(){
@@ -95,7 +96,12 @@ public class Client {
     private void selectTokens(){
         Scanner scn = new Scanner(System.in);
         int numberOfTokens;
-        String tokenCoordinates;
+        char[] tokenCoordinates = new char[2];
+        int[] selectionInt = new int[2];
+        int[][] selectedTokens = new int[BOARD_SIZE][BOARD_SIZE];
+        for(int i = 0; i < BOARD_SIZE; i++)
+            for(int j = 0; j < BOARD_SIZE; j++)
+                selectedTokens[i][j] = -1;
 
         System.out.println("How many tokens would you like to select?\n");
         numberOfTokens = scn.nextInt();
@@ -107,9 +113,32 @@ public class Client {
         }
 
         for(int i = 0; i < numberOfTokens; i++){
-            tokenCoordinates = scn.nextLine();
-            //TODO: scan coordinates and check whether selection is legal or not (first value has to be between "a" and "i", second between 1 and 9)
+            for(int j = 0; j < 2; j++) {
+                System.out.println("Insert x coordinate\n");
+                tokenCoordinates[0] = scn.next().charAt(0);
+
+                while(tokenCoordinates[0] < 'a' || tokenCoordinates[0] > 'i'){
+                    System.out.println("Invalid x coordinate!\n");
+                    System.out.println("Insert x coordinate\n");
+                    tokenCoordinates[0] = scn.next().charAt(0);
+                }
+
+                System.out.println("Insert y coordinate\n");
+                tokenCoordinates[1] = scn.next().charAt(1);
+                while(tokenCoordinates[1] < '1' || tokenCoordinates[1] > '9'){
+                    System.out.println("Invalid y coordinate!\n");
+                    System.out.println("Insert y coordinate\n");
+                    tokenCoordinates[1] = scn.next().charAt(0);
+                }
+            }
+
+            selectionInt[0] = tokenCoordinates[0] - 'a';
+            selectionInt[1] = tokenCoordinates[1] - '1';
+
+
+            //TODO: specify in matrix the order in which tokens have been selected (0, 1, 2)
         }
 
     }
+
 }
