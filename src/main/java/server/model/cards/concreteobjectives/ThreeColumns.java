@@ -13,8 +13,7 @@ import server.model.cards.TokenTools;
 public class ThreeColumns implements CommonObjective {
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        TokenTools util = new TokenTools();
-        return util.columnsChecker(shelf,false) >= 3;
+        return TokenTools.columnsChecker(shelf,false) >= 3;
     }
 
     public CommonType getName(){

@@ -83,9 +83,8 @@ public class Player implements Savable, Observable {
 
         //Checks if tiles of same type are adjacent
         int adjacentPoints = 0;
-        TokenTools util = new TokenTools();
         for (Token tokenType : Token.values())
-            adjacentPoints += util.counterIslandType(tokenType, playerShelf.getTiles(), true);
+            adjacentPoints += TokenTools.counterIslandType(tokenType, playerShelf.getTiles(), true);
         points += adjacentPoints;
 
         return points + adjacentPoints + personalCard.getPoints(playerShelf.getTiles());

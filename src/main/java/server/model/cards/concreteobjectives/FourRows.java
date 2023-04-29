@@ -16,8 +16,7 @@ public class FourRows implements CommonObjective {
 
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        TokenTools util = new TokenTools();
-        return util.rowsChecker(shelf, false) >= 4;
+        return TokenTools.rowsChecker(shelf, false) >= 4;
     }
 
     public CommonType getName(){

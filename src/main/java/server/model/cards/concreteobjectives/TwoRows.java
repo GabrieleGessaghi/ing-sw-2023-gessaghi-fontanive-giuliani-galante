@@ -15,8 +15,7 @@ import server.model.cards.TokenTools;
 public class TwoRows implements CommonObjective {
     @Override
     public boolean isSatisfied(Token[][] shelf) {
-        TokenTools util = new TokenTools();
-        return util.rowsChecker(shelf, true) >= 2;
+        return TokenTools.rowsChecker(shelf, true) >= 2;
     }
 
     public CommonType getName(){
