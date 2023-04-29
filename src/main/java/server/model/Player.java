@@ -1,5 +1,8 @@
 package server.model;
 
+import server.controller.observer.Event;
+import server.controller.observer.Observable;
+import server.controller.observer.Observer;
 import server.model.cards.Card;
 import server.model.cards.CommonCard;
 import server.model.cards.TokenTools;
@@ -8,47 +11,43 @@ import server.model.exceptions.FullColumnException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-
+import java.util.Map;
 
 /**
  * Handles players' shelves and cards.
  * @author Niccolò Galante
  */
-public class Player implements Serializable {
-
-    //TODO: Load this from configurations file
-    private final static int NUMBER_OF_CARDS = 3;
+public class Player implements Savable, Observable {
     private final String nickname;
     private int points;
-    private final boolean isFirstPlayer;
-    private final List<Card> cards;
     private final Shelf playerShelf;
+    private final Card personalCard;
+    private final Map<Card, Boolean> commonCards;
+    private final List<Observer> observers;
+    private final boolean isFirstPlayer;
     public boolean isConnected;
-    public boolean[] isComplete;
-    private int adjacentPoints;
-
 
     /**
      * Class constructor.
      * @author Niccolò Galante
      * @param nickname Player's nickname.
      * @param isFirstPlayer Indicates whether player is first or not.
-     * @param personal Player's personal card.
+     * @param personalCardIndex Player's personal card's index.
      * @param common Common cards.
      */
-    public Player(String nickname, boolean isFirstPlayer, PersonalCard personal, List<CommonCard> common) {
-        cards = new ArrayList<>();
+    public Player(String nickname, boolean isFirstPlayer, int personalCardIndex, List<CommonCard> common) {
+        commonCards = new HashMap<>();
+        commonCards.put(common.get(0), true);
+        commonCards.put(common.get(1), true);
+        personalCard = new PersonalCard(personalCardIndex);
         playerShelf = new Shelf();
+        points = 0;
         this.nickname = nickname;
         this.isFirstPlayer = isFirstPlayer;
-        cards.add(0, personal);
-        cards.add(1, common.get(0));
-        cards.add(2, common.get(1));
-        points = 0;
-        adjacentPoints = 0;
-        isComplete = new boolean[NUMBER_OF_CARDS];
+        this.isConnected = true;
+        observers = new ArrayList<>();
     }
 
     /**
@@ -66,7 +65,7 @@ public class Player implements Serializable {
      * @return Player's points.
      */
     public int getPoints() {
-        return points;
+        return points + personalCard.getPoints(playerShelf.getTiles());
     }
 
     /**
@@ -83,26 +82,31 @@ public class Player implements Serializable {
      * @author Niccolò Galante.
      */
     private void updatePoints() {
-        int tempPoints = points - adjacentPoints;
+        int adjacentPoints = 0;
+        int cardPoints = 0;
 
         //Checks if card objectives have been reached
-        for (int i = 0; i < NUMBER_OF_CARDS; i++)
-            if (!isComplete[i] && cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
-                isComplete[i] = true;
-                tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
-            }
+        for (Card card : commonCards.keySet()) {
+            if (commonCards.get(card))
+                cardPoints = card.getPoints(playerShelf.getTiles());
+            if (cardPoints > 0)
+                commonCards.replace(card, false);
+            points += cardPoints;
+        }
+//        for (int i = 0; i < NUMBER_OF_CARDS; i++)
+//            if (!isComplete[i] && cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
+//                isComplete[i] = true;
+//                tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
+//            }
 
         //Checks if tiles of same type are adjacent
-        adjacentPoints = 0;
         TokenTools util = new TokenTools();
-        adjacentPoints = util.counterIslandType(Token.CAT, playerShelf.getTiles(),true) + util.counterIslandType(Token.BOOK, playerShelf.getTiles(),true) +
-                util.counterIslandType(Token.TOY, playerShelf.getTiles(),true) + util.counterIslandType(Token.TROPHY, playerShelf.getTiles(),true) +
-                util.counterIslandType(Token.FRAME, playerShelf.getTiles(),true) + util.counterIslandType(Token.PLANT, playerShelf.getTiles(),true);
-        points = tempPoints + adjacentPoints;
+        for (Token tokenType : Token.values())
+            adjacentPoints += util.counterIslandType(tokenType, playerShelf.getTiles(), true);
+        points += adjacentPoints;
+
         //TODO: Check if player arrives at endgame first (adds 1 point)
     }
-
-
 
     /**
      * Inserts tokens.
@@ -122,5 +126,35 @@ public class Player implements Serializable {
                         playerShelf.removeToken(column);
                 }
         updatePoints();
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void updateObservers(Event event) {
+        for (Observer observer : observers)
+            if (observer != null)
+                observer.update(event);
+    }
+
+    @Override
+    public String getState() {
+        //SALVARE NICKNAME
+        //SALVARE SHELF
+        //SALVARE PUNTI senza getpoints
+        //SALVARE PERSONAL CARD INDEX
+        return null;
+    }
+
+    @Override
+    public void loadState(String jsonMessage) {
+        //CARICARE NICKNAME
+        //CARICARE SHELF
+        //CARICARE PUNTI
+        //CARICARE PERSONAL CARD E CREARLA
+        //CARICARE COMMON CARDS
     }
 }
