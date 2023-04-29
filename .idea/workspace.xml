@@ -6,10 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed issues in Player">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/PersonalCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/PersonalCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/TokenTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/TokenTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ChatController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/CreationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/Prompt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/TurnController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/exceptions/IllegalColumnSelectionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/exceptions/IllegalTileSelectionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/exceptions/TooManyPlayersException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/observer/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/observer/Observable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/observer/Observer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/utilities/ConfigLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/utilities/JsonTools.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Saveable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/ModelUtil$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/ModelUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/Client$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/ClientHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/NetworkHandlerSocket.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,17 +105,32 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ShelfTest">
-    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PlayerTest (1)">
+    <configuration name="FourGroupsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="server.model.cards.concreteobjectives.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.PlayerTest" />
+      <option name="PACKAGE_NAME" value="server.model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="server.model.cards.concreteobjectives.FourGroupsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server.model" />
+      <option name="MAIN_CLASS_NAME" value="server.model.PlayerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,29 +181,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TwoColumnsTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoColumnsTest" />
-      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlayerTest (1)" />
+        <item itemvalue="JUnit.FourGroupsTest" />
         <item itemvalue="JUnit.ShelfTest" />
         <item itemvalue="JUnit.ThreeColumnsTest" />
         <item itemvalue="JUnit.TwoColumnsTest" />
-        <item itemvalue="JUnit.PlayerTest" />
-        <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestFalse" />
       </list>
     </recent_temporary>
   </component>
@@ -539,15 +559,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -559,6 +570,15 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>

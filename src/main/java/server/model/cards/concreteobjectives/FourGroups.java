@@ -22,9 +22,8 @@ public class FourGroups implements CommonObjective {
     @Override
     public boolean isSatisfied(Token[][] shelf) {
         int generalCounter; //general counter of the groups
-        TokenTools util = new TokenTools();
-        generalCounter = util.counterIslandType(Token.CAT, shelf,false)  + util.counterIslandType(Token.TOY, shelf,false) + util.counterIslandType(Token.BOOK, shelf,false) +
-                util.counterIslandType(Token.TROPHY, shelf,false) + util.counterIslandType(Token.FRAME, shelf,false) + util.counterIslandType(Token.PLANT, shelf,false);
+        generalCounter = TokenTools.counterIslandType(Token.CAT, shelf,false)  + TokenTools.counterIslandType(Token.TOY, shelf,false) + TokenTools.counterIslandType(Token.BOOK, shelf,false) +
+                TokenTools.counterIslandType(Token.TROPHY, shelf,false) + TokenTools.counterIslandType(Token.FRAME, shelf,false) + TokenTools.counterIslandType(Token.PLANT, shelf,false);
         return generalCounter >= 4;
     }
 

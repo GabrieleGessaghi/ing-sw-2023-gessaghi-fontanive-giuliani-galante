@@ -8,7 +8,7 @@ import server.controller.utilities.ConfigLoader;
  * @author Niccolò Giuliani
  */
 public class TokenTools {
-    private int counterInterIsland; //counter of the instances of the island
+    static private int counterInterIsland; //counter of the instances of the island
     /**
      * if modality is true count adjent point per Player, if modality is false count number of islands of at least four items dor FourGroups
      * @author Niccolò Giuliani
@@ -17,7 +17,7 @@ public class TokenTools {
      * @param modality false for FourGroups, true for Player
      * @return the count of the islands
      */
-    public int counterIslandType(Token type, Token[][] shelf, boolean modality){
+    static public int counterIslandType(Token type, Token[][] shelf, boolean modality){
         int counterPerToken = 0; //counter of islands per type
         counterInterIsland = 0;
         boolean[][] checked = new boolean[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
@@ -57,7 +57,7 @@ public class TokenTools {
      * @param checked matrix of checked cells
      * @param type type of Token
      */
-    private void findIsland(Token[][] M, int row, int col, boolean[][] checked, Token type) {
+    private static void findIsland(Token[][] M, int row, int col, boolean[][] checked, Token type) {
         //arrays for the position of the neighbors
         int[] rowIndex = new int[] {-1, 0, 0, 1 };
         int[] colIndex = new int[] { 0,-1, 1, 0 };
@@ -83,7 +83,7 @@ public class TokenTools {
      * @param type type of token
      * @return true if the cell is equal the Token type
      */
-    private boolean isOk(Token[][] M, int row, int col, boolean[][] checked, Token type) {
+    private static boolean isOk(Token[][] M, int row, int col, boolean[][] checked, Token type) {
         return (row >= 0) && (row < ConfigLoader.SHELF_ROWS) && (col >= 0) && (col < ConfigLoader.SHELF_COLUMNS)
                 && (M[row][col] == type && !checked[row][col]);
     }
@@ -95,7 +95,7 @@ public class TokenTools {
      * @param modality modality false for FourRows, modality true for TwoRows
      * @return number of rows that satisfy the objective
      */
-   public int rowsChecker(Token[][] shelf, boolean modality){
+   public static int rowsChecker(Token[][] shelf, boolean modality){
        int[] counter = new int[7];
        int differentType;
        int atLeast = 0;
@@ -135,7 +135,7 @@ public class TokenTools {
      * @param modality modality false for ThreeColumns, modality true for TwoColumns
      * @return number of columns that satisfy the objective
      */
-   public int columnsChecker(Token[][] shelf, boolean modality){
+   public static int columnsChecker(Token[][] shelf, boolean modality){
        int[] counter = new int[7];
        int differentType;
        int atLeast = 0;
