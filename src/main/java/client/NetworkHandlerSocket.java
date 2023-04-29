@@ -9,26 +9,34 @@ public class NetworkHandlerSocket extends Thread{
 
     private Socket clientSocket;
     private Prompt lastPrompt;
-
-    private DataInputStream dis;
-    private DataOutputStream dos;
-
+    private Client client;
 
     /**
      * Class constructor
      * @author Gabriele Gessaghi
      */
-    public NetworkHandlerSocket () {
-        clientSocket = new Socket();
-        lastPrompt = null;
-    }
+    public NetworkHandlerSocket () {}
 
+    /**
+     *
+     * @Author Gabriele Gessaghi
+     * @return
+     */
     public boolean ping () {
         return true;
     }
 
+    /**
+     *
+     * @Author Gabriele Gessaghi
+     */
     @Override
     public void run () {}
 
+    /**
+     *
+     * @Author Gabriele Gessaghi
+     * @param input
+     */
     public void sendInput (String input) {}
 }
