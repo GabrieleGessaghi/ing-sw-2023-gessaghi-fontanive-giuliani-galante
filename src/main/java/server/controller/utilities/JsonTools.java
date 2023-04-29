@@ -25,6 +25,8 @@ public class JsonTools {
             jsonObject.addProperty(field, (String) property);
         else if (property.getClass().equals(JsonArray.class))
             jsonObject.add(field, (JsonArray) property);
+        else if (property.getClass().equals(JsonObject.class))
+            jsonObject.add(field, (JsonObject) property);
         else throw new JsonCreationException("Unknown property class!");
     }
 
@@ -34,7 +36,7 @@ public class JsonTools {
      * @param elements A map containing every field and their respective value.
      * @return A string in JSON format containing all the map's fields and values.
      */
-    public static String createJson(Map<String, Object> elements) {
+    public static JsonObject createJson(Map<String, Object> elements) {
         JsonObject jsonObject = new JsonObject();
         for (String field : elements.keySet()) {
             try {
@@ -43,7 +45,7 @@ public class JsonTools {
                 throw new RuntimeException(e);
             }
         }
-        return jsonObject.toString();
+        return jsonObject;
     }
 
     /**
@@ -63,7 +65,27 @@ public class JsonTools {
                 switch (jsonReader.peek()) {
                     case NUMBER -> elements.put(field, jsonReader.nextInt());
                     case STRING -> elements.put(field, jsonReader.nextString());
-                    case BEGIN_ARRAY -> elements.put(field, jsonReader);
+                    case BEGIN_ARRAY, BEGIN_OBJECT -> elements.put(field, jsonReader);
+                }
+            }
+            jsonReader.endObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return elements;
+    }
+
+    public static HashMap<String, Object> parseJson(JsonReader jsonReader) {
+        HashMap<String, Object> elements = new HashMap<>();
+        try {
+            String field;
+            jsonReader.beginObject();
+            while(jsonReader.hasNext()) {
+                field = jsonReader.nextName();
+                switch (jsonReader.peek()) {
+                    case NUMBER -> elements.put(field, jsonReader.nextInt());
+                    case STRING -> elements.put(field, jsonReader.nextString());
+                    case BEGIN_ARRAY, BEGIN_OBJECT -> elements.put(field, jsonReader);
                 }
             }
             jsonReader.endObject();

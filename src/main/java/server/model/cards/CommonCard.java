@@ -44,4 +44,8 @@ public class CommonCard extends Card implements Serializable {
         }
         return points;
     }
+
+    public int getIndex() {
+        return name.ordinal();
+    }
 }

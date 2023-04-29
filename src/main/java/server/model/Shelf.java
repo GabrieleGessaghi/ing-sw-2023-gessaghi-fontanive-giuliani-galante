@@ -99,7 +99,7 @@ public class Shelf implements Savable, Observable {
                 tilesInteger[i][j] = tiles[i][j].ordinal();
 
         elements.put("shelfTiles", JsonTools.createJsonMatrix(tilesInteger));
-        return JsonTools.createJson(elements);
+        return JsonTools.createJson(elements).toString();
     }
 
     @Override
