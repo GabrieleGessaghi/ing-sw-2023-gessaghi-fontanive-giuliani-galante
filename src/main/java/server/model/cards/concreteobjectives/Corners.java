@@ -20,4 +20,9 @@ public class Corners implements CommonObjective {
     public CommonType getName(){
         return CommonType.CORNERS;
     }
+
+    @Override
+    public String getDescription() {
+        return "Four tiles of the same type in the four corners of the bookshelf.";
+    }
 }

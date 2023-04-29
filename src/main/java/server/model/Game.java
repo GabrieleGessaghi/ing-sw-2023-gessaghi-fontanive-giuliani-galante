@@ -1,10 +1,10 @@
 package server.model;
 
-import server.controller.utilities.ConfigLoader;
+import server.controller.observer.Event;
+import server.controller.observer.Observable;
+import server.controller.observer.Observer;
 import server.model.cards.CommonCard;
-import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
-import server.model.cards.concreteobjectives.*;
 import server.model.exceptions.FullColumnException;
 import server.model.exceptions.IllegalMoveException;
 
@@ -13,11 +13,15 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
-public class Game implements Serializable {
+import static server.controller.utilities.ConfigLoader.NUMBER_OF_COMMON_CARDS;
+
+public class Game implements Savable, Observable {
     private String gameID;
     private int currentPlayerIndex;
+    private int numberOfPlayers;
     private Board board;
     private Player[] players;
+    private final List<Observer> observers;
 
     /**
      * Class constructor, currentPlayer is set to player with firstPlayer true.
@@ -28,6 +32,8 @@ public class Game implements Serializable {
     public Game(int numberOfPlayers, ArrayList<String> playerNicknames) {
         players = new Player[numberOfPlayers];
         board = new Board(numberOfPlayers);
+        observers = new ArrayList<>();
+        this.numberOfPlayers = numberOfPlayers;
 
         //generates the unique 4 digit code for the current game
         try {
@@ -68,11 +74,9 @@ public class Game implements Serializable {
     private ArrayList<CommonCard> genCommonCard (int numberOfPlayers){
         ArrayList<CommonType> types = new ArrayList<CommonType>(Arrays.asList(CommonType.values()));
         Collections.shuffle(types);
-        CommonType commonType1 = types.get(0);
-        CommonType commonType2 = types.get(1);
         ArrayList <CommonCard> commonCards = new ArrayList<>();
-        commonCards.add(new CommonCard(commonType1, numberOfPlayers));
-        commonCards.add(new CommonCard(commonType2, numberOfPlayers));
+        for (int i = 0; i < NUMBER_OF_COMMON_CARDS; i++)
+            commonCards.add(new CommonCard(types.get(i), numberOfPlayers));
         return commonCards;
     }
 
@@ -153,5 +157,32 @@ public class Game implements Serializable {
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void updateObservers(Event event) {
+        for (Observer observer : observers)
+            if (observer != null)
+                observer.update(event);
+    }
+
+    @Override
+    public String getState() {
+        Map<String, Object> elements = new HashMap<>();
+        elements.put("numberOfPlayers", numberOfPlayers);
+        elements.put("currentPlayerIndex", currentPlayerIndex);
+        elements.put("currentPlayerNickname", players[currentPlayerIndex].getNickname());
+        //PUT ALL PLAYERS NICKNAMES
+        return null;
+    }
+
+    @Override
+    public void loadState(String jsonMessage) {
+
     }
 }
