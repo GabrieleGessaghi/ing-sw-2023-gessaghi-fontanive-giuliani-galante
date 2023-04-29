@@ -4,9 +4,7 @@ import server.controller.utilities.ConfigLoader;
 import server.model.cards.CommonCard;
 import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
-import server.model.cards.PersonalCard;
 import server.model.cards.concreteobjectives.*;
-import server.model.chat.Chat;
 import server.model.exceptions.FullColumnException;
 import server.model.exceptions.IllegalMoveException;
 
@@ -20,7 +18,6 @@ public class Game implements Serializable {
     private int currentPlayerIndex;
     private Board board;
     private Player[] players;
-    private final Chat chat;
 
     /**
      * Class constructor, currentPlayer is set to player with firstPlayer true.
@@ -29,10 +26,8 @@ public class Game implements Serializable {
      * @param playerNicknames a list of all the players' nicknames
      */
     public Game(int numberOfPlayers, ArrayList<String> playerNicknames) {
-        chat = new Chat();
         players = new Player[numberOfPlayers];
         board = new Board(numberOfPlayers);
-        ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");
 
         //generates the unique 4 digit code for the current game
         try {
@@ -66,43 +61,18 @@ public class Game implements Serializable {
     }
 
     /**
-     * generates the correct constructor for the given commonType
-     * @param commonType is the commonType type
-     * @return the correct constructor
-     */
-    private static CommonObjective createCommonObj(CommonType commonType) {
-        return switch (commonType) {
-            case STAIRS -> new Stairs();
-            case XSHAPE -> new XShape();
-            case CORNERS -> new Corners();
-            case TWOROWS -> new TwoRows();
-            case DIAGONAL -> new Diagonal();
-            case EIGHTANY -> new Eightany();
-            case FOURROWS -> new FourRows();
-            case SIXGROUPS -> new SixGroups();
-            case FOURGROUPS -> new FourGroups();
-            case TWOCOLUMNS -> new TwoColumns();
-            case TWOSQUARES -> new TwoSquares();
-            case THREECOLUMNS -> new ThreeColumns();
-        };
-    }
-
-    /**
      * Generates two random commonCard for the current game.
      * @author Gabriele Gessaghi
      * @param numberOfPlayers The number of player for the current game.
      */
     private ArrayList<CommonCard> genCommonCard (int numberOfPlayers){
         ArrayList<CommonType> types = new ArrayList<CommonType>(Arrays.asList(CommonType.values()));
-        //TODO: Avoid duplicating code
         Collections.shuffle(types);
         CommonType commonType1 = types.get(0);
         CommonType commonType2 = types.get(1);
-        CommonObjective commonObj1 = createCommonObj(commonType1);
-        CommonObjective commonObj2 = createCommonObj(commonType2);
         ArrayList <CommonCard> commonCards = new ArrayList<>();
-        commonCards.add(new CommonCard(commonObj1, numberOfPlayers));
-        commonCards.add(new CommonCard(commonObj2, numberOfPlayers));
+        commonCards.add(new CommonCard(commonType1, numberOfPlayers));
+        commonCards.add(new CommonCard(commonType2, numberOfPlayers));
         return commonCards;
     }
 

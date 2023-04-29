@@ -5,6 +5,7 @@ import server.model.Player;
 import server.model.Token;
 import server.model.cards.CommonCard;
 import server.model.cards.CommonObjective;
+import server.model.cards.CommonType;
 import server.model.cards.PersonalCard;
 import server.model.cards.concreteobjectives.Corners;
 import server.model.cards.concreteobjectives.Diagonal;
@@ -21,12 +22,10 @@ public class PlayerTest {
     public void insertTokensTestOne() throws FullColumnException {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
 
-        CommonObjective obj1 = new Corners();
-        CommonObjective obj2 = new Corners();
         List<CommonCard> commonCards = new ArrayList<>(2);
 
-        CommonCard common1 = new CommonCard(obj1, 2);
-        CommonCard common2 = new CommonCard(obj2, 2);
+        CommonCard common1 = new CommonCard(CommonType.CORNERS, 2);
+        CommonCard common2 = new CommonCard(CommonType.CORNERS, 2);
 
         commonCards.add(0, common1);
         commonCards.add(1, common2);
@@ -49,12 +48,10 @@ public class PlayerTest {
     public void insertTokensTestTwo() throws FullColumnException {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
 
-        CommonObjective obj1 = new Corners();
-        CommonObjective obj2 = new Diagonal();
         List<CommonCard> commonCards = new ArrayList<>(2);
 
-        CommonCard common1 = new CommonCard(obj1, 2);
-        CommonCard common2 = new CommonCard(obj2, 2);
+        CommonCard common1 = new CommonCard(CommonType.CORNERS, 2);
+        CommonCard common2 = new CommonCard(CommonType.DIAGONAL, 2);
 
         commonCards.add(0, common1);
         commonCards.add(1, common2);

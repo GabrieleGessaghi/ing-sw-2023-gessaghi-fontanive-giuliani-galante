@@ -1,5 +1,6 @@
 package server.controller;
 
+import server.controller.utilities.ConfigLoader;
 import server.view.ClientHandlerSocket;
 
 import java.io.DataInputStream;
@@ -13,13 +14,13 @@ import java.net.Socket;
  * @author Giorgio Massimo Fontanive
  */
 public class Server {
-    private static Controller controller;
-    private static int connectionsCount;
     public static void main() throws IOException {
-        //TODO: Load configurations
-        controller = new Controller();
+        //TODO: Maybe put on different method
+        //TODO: Implement updateObserver calls in model
+        ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");
+        Controller controller = new Controller();
         controller.start();
-        connectionsCount = 0;
+        int connectionsCount = 0;
         while (true) {
             Socket socket = null;
             try {

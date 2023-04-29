@@ -20,6 +20,7 @@ public class ConfigLoader {
     public static int MAX_TOKENS_PER_TURN;
     public static int NUMBER_OF_TOKEN_TYPES;
     public static int TOKENS_PER_TYPE;
+    public static int NUMBER_OF_COMMON_CARDS; //TODO: Add this in json file
     public static int[] PERSONALCARD_POINTS;
     public static int[][] COMMONCARD_POINTS;
 

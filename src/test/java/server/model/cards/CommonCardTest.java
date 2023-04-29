@@ -17,8 +17,7 @@ class CommonCardTest {
     public void twoPlayers(){
         int numberOfPlayers = 2;
         int one,two,three;
-        CommonObjective objective = new Corners();
-        Card card = new CommonCard(objective, numberOfPlayers);
+        Card card = new CommonCard(CommonType.CORNERS, numberOfPlayers);
         Token[][] firstShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         Token[][] secondShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         Token[][] thirdShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -54,8 +53,7 @@ class CommonCardTest {
     public void threePlayers(){
         int numberOfPlayers = 3;
         int one,two,three;
-        CommonObjective objective = new Corners();
-        Card card = new CommonCard(objective,numberOfPlayers );
+        Card card = new CommonCard(CommonType.CORNERS,numberOfPlayers );
         Token[][] firstShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         Token[][] secondShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         Token[][] thirdShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -94,8 +92,7 @@ class CommonCardTest {
     public void fourPlayers(){
         int numberOfPlayers = 4;
         int one,two,three,four;
-        CommonObjective objective = new Corners();
-        Card card = new CommonCard(objective,numberOfPlayers );
+        Card card = new CommonCard(CommonType.CORNERS,numberOfPlayers );
         Token[][] firstShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         Token[][] secondShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         Token[][] thirdShelf = new Token[SHELF_ROWS][SHELF_COLUMNS];

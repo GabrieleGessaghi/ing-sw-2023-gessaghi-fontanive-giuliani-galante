@@ -8,10 +8,8 @@ import server.controller.utilities.ConfigLoader;
  * @author Niccolò Giuliani
  */
 public interface CommonObjective {
-
-      //TODO: USE CONFIGURATION CONSTANTS
-      int ROWS= ConfigLoader.SHELF_ROWS;
-      int COLUMNS= ConfigLoader.SHELF_COLUMNS;
+      int ROWS = ConfigLoader.SHELF_ROWS;
+      int COLUMNS = ConfigLoader.SHELF_COLUMNS;
 
      /**
       * Checks whether a player's shelf satisfies the card's objective.
@@ -27,4 +25,6 @@ public interface CommonObjective {
       * @return The card's name.
       */
      public CommonType getName();
+
+     public String getDescription();
 }
