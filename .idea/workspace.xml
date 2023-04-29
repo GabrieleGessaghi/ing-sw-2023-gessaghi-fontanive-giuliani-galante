@@ -4,33 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed issues in Player">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented interfaces in Player and created method getIndex in Card">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/TokenTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/TokenTools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ChatController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/CreationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Prompt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/TurnController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/exceptions/IllegalColumnSelectionException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/exceptions/IllegalTileSelectionException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/exceptions/TooManyPlayersException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/observer/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/observer/Observable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/observer/Observer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/utilities/ConfigLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/utilities/JsonTools.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Saveable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/ModelUtil$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/cards/ModelUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/Client$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/ClientHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/ClientHandlerSocket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/socket/NetworkHandlerSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/utilities/JsonTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/utilities/JsonTools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,32 +81,17 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerTest (1)">
-    <configuration name="FourGroupsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ShelfTest">
+    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.model.cards.concreteobjectives.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="server.model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="server.model.cards.concreteobjectives.FourGroupsTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="server.model" />
-      <option name="MAIN_CLASS_NAME" value="server.model.PlayerTest" />
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.PlayerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -181,13 +142,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TwoColumnsTest.isSatisfiedTestFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.cards.concreteobjectives.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.cards.concreteobjectives" />
+      <option name="MAIN_CLASS_NAME" value="model.cards.concreteobjectives.TwoColumnsTest" />
+      <option name="METHOD_NAME" value="isSatisfiedTestFalse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlayerTest (1)" />
-        <item itemvalue="JUnit.FourGroupsTest" />
         <item itemvalue="JUnit.ShelfTest" />
         <item itemvalue="JUnit.ThreeColumnsTest" />
         <item itemvalue="JUnit.TwoColumnsTest" />
+        <item itemvalue="JUnit.PlayerTest" />
+        <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestFalse" />
       </list>
     </recent_temporary>
   </component>
@@ -208,34 +185,7 @@
       <workItem from="1682601461318" duration="1413000" />
       <workItem from="1682604793549" duration="5190000" />
       <workItem from="1682661263149" duration="2708000" />
-    </task>
-    <task id="LOCAL-00066" summary="Added observer and observable interfaces">
-      <created>1681280163481</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1681280163481</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Created TurnController">
-      <created>1681280654818</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1681280654818</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Moved Configurations to controller">
-      <created>1681280708420</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1681280708420</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Added update method to TurnController">
-      <created>1681281295176</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1681281295177</updated>
+      <workItem from="1682749112175" duration="2433000" />
     </task>
     <task id="LOCAL-00070" summary="Added checks for legal input in TurnController">
       <created>1681283194806</created>
@@ -552,13 +502,50 @@
       <option name="project" value="LOCAL" />
       <updated>1682702975809</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="Modified Player to better save its state">
+      <created>1682704755274</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1682704755274</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Tested few classes again">
+      <created>1682704823429</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1682704823429</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Fixed small issues in folder structure">
+      <created>1682704876399</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1682704876399</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Implemented interfaces in Player and created method getIndex in Card">
+      <created>1682751341968</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1682751341969</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -574,22 +561,9 @@
         </entry>
       </map>
     </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed small issues" />
-    <MESSAGE value="added TODO" />
-    <MESSAGE value="Updated Controller and CreationController" />
-    <MESSAGE value="Refactored Prompt" />
     <MESSAGE value="Fixed prompt typo" />
     <MESSAGE value="Fixed typos" />
     <MESSAGE value="Modified CliendHandler run method" />
@@ -611,18 +585,22 @@
     <MESSAGE value="Fixed small issue" />
     <MESSAGE value="Implemented interfaces in Board" />
     <MESSAGE value="Fixed issues in Player" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed issues in Player" />
+    <MESSAGE value="Modified Player to better save its state" />
+    <MESSAGE value="Tested few classes again" />
+    <MESSAGE value="Fixed small issues in folder structure" />
+    <MESSAGE value="Implemented interfaces in Player and created method getIndex in Card" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented interfaces in Player and created method getIndex in Card" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/FourGroupsTest.java</url>
           <line>15</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/model/cards/concreteobjectives/FourGroupsTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/FourGroupsTest.java</url>
           <line>11</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>

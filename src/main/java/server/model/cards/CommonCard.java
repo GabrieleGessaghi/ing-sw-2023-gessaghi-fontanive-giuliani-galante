@@ -1,5 +1,9 @@
 package server.model.cards;
 
+import server.controller.observer.Event;
+import server.controller.observer.Observable;
+import server.controller.observer.Observer;
+import server.model.Savable;
 import server.model.Token;
 import server.controller.utilities.ConfigLoader;
 
@@ -9,7 +13,7 @@ import java.io.Serializable;
  * Common objective card of the game.
  * @author Niccolò Giuliani
  */
-public class CommonCard extends Card implements Serializable {
+public class CommonCard extends Card implements Savable, Observable {
     private int numberOfTokensLeft;
     private final int numberOfPlayers;
     private final CommonObjective objective;
@@ -43,5 +47,29 @@ public class CommonCard extends Card implements Serializable {
             numberOfTokensLeft--;
         }
         return points;
+    }
+
+    public int getIndex() {
+        return name.ordinal();
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void updateObservers(Event event) {
+
+    }
+
+    @Override
+    public String getState() {
+        return null;
+    }
+
+    @Override
+    public void loadState(String jsonMessage) {
+
     }
 }

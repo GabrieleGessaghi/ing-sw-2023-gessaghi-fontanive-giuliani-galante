@@ -240,7 +240,7 @@ public class Board implements Observable, Savable {
 
         elements.put("tiles", JsonTools.createJsonMatrix(tilesInteger));
         elements.put("usableTiles", JsonTools.createJsonMatrix(usableTilesInteger));
-        return JsonTools.createJson(elements);
+        return JsonTools.createJson(elements).toString();
     }
 
     @Override

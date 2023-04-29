@@ -14,4 +14,6 @@ public abstract class Card {
      * @return The number of points this shelf would get.
      */
     public abstract int getPoints(Token[][]shelf);
+
+    public abstract int getIndex();
 }
