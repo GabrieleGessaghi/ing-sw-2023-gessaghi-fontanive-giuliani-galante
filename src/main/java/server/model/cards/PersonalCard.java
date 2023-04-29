@@ -15,7 +15,7 @@ import java.nio.file.Paths;
  * Personal objective cards.
  * @author Niccolò Galante
  */
-public class PersonalCard extends Card implements Serializable {
+public class PersonalCard extends Card {
     int index;
     private final Token[][] correctTiles = new Token[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
 

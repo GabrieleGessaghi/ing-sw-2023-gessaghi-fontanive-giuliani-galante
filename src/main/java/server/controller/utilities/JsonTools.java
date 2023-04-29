@@ -31,10 +31,10 @@ public class JsonTools {
     }
 
     /**
-     * Converts a map into a JSON string.
+     * Converts a map into a JSON object.
      * @author Giorgio Massimo Fontanive
      * @param elements A map containing every field and their respective value.
-     * @return A string in JSON format containing all the map's fields and values.
+     * @return A JsonObject containing all the map's fields and values.
      */
     public static JsonObject createJson(Map<String, Object> elements) {
         JsonObject jsonObject = new JsonObject();
@@ -59,26 +59,6 @@ public class JsonTools {
         try {
             String field;
             JsonReader jsonReader = new JsonReader(new StringReader(jsonMessage));
-            jsonReader.beginObject();
-            while(jsonReader.hasNext()) {
-                field = jsonReader.nextName();
-                switch (jsonReader.peek()) {
-                    case NUMBER -> elements.put(field, jsonReader.nextInt());
-                    case STRING -> elements.put(field, jsonReader.nextString());
-                    case BEGIN_ARRAY, BEGIN_OBJECT -> elements.put(field, jsonReader);
-                }
-            }
-            jsonReader.endObject();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return elements;
-    }
-
-    public static HashMap<String, Object> parseJson(JsonReader jsonReader) {
-        HashMap<String, Object> elements = new HashMap<>();
-        try {
-            String field;
             jsonReader.beginObject();
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
@@ -130,7 +110,7 @@ public class JsonTools {
     public static String createMessage(String message) {
         Map<String, Object> element = new HashMap<>();
         element.put("message", message);
-        return createJson(element);
+        return createJson(element).toString();
     }
 
     /**

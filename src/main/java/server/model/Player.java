@@ -164,6 +164,7 @@ public class Player implements Savable, Observable {
         elements.put("totalPoints", getPoints());
         elements.put("personalCardIndex", personalCard.getIndex());
         elements.put("shelf", JsonTools.createJson(JsonTools.parseJson(playerShelf.getState())));
+        //TODO: Save which cards have already been completed
         return JsonTools.createJson(elements).toString();
     }
 
@@ -176,5 +177,6 @@ public class Player implements Savable, Observable {
         personalCard = new PersonalCard((Integer) elements.get("personalCardIndex"));
         playerShelf = new Shelf();
         playerShelf.loadState(elements.get("shelf").toString());
+        //TODO: Get which cards have already been completed
     }
 }
