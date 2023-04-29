@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Giorgio Massimo Fontanive
  */
 public class JsonTools {
-
+    //TODO: CHECK IF THERE ARE BETTER WAYS TO IMPLEMENT THIS
     private static void addProperty(JsonObject jsonObject, String field, Object property) throws JsonCreationException {
         if (property.getClass().equals(Integer.class))
             jsonObject.addProperty(field, (Integer) property);

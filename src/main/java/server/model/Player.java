@@ -28,7 +28,7 @@ public class Player implements Savable, Observable {
     private Card personalCard;
     private final Map<Card, Boolean> commonCards;
     private final List<Observer> observers;
-    private final boolean isFirstPlayer;
+    private boolean isFirstPlayer;
     public boolean isConnected;
 
     /**
@@ -163,6 +163,7 @@ public class Player implements Savable, Observable {
         elements.put("totalPoints", getPoints());
         elements.put("personalCardIndex", personalCard.getIndex());
         elements.put("shelf", JsonTools.createJson(JsonTools.parseJson(playerShelf.getState())));
+        elements.put("isFirstPlayer", isFirstPlayer ? 1 : 0);
         //TODO: Save which cards have already been completed
         return JsonTools.createJson(elements).toString();
     }
@@ -174,6 +175,7 @@ public class Player implements Savable, Observable {
         nickname = (String) elements.get("nickname");
         points = (Integer) elements.get("commonCardPoints");
         personalCard = new PersonalCard((Integer) elements.get("personalCardIndex"));
+        isFirstPlayer = (Integer) elements.get("isFirstPlayer") == 1;
         playerShelf = new Shelf();
         playerShelf.loadState(elements.get("shelf").toString());
         //TODO: Get which cards have already been completed

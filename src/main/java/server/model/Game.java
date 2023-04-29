@@ -3,6 +3,7 @@ package server.model;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
+import server.controller.utilities.JsonTools;
 import server.model.cards.CommonCard;
 import server.model.cards.CommonType;
 import server.model.exceptions.FullColumnException;
@@ -177,12 +178,24 @@ public class Game implements Savable, Observable {
         elements.put("numberOfPlayers", numberOfPlayers);
         elements.put("currentPlayerIndex", currentPlayerIndex);
         elements.put("currentPlayerNickname", players[currentPlayerIndex].getNickname());
-        //PUT ALL PLAYERS NICKNAMES
-        return null;
+        for (int i = 0; i < players.length; i++)
+            elements.put("player" + i, JsonTools.createJson(JsonTools.parseJson(players[i].getState())));
+        elements.put("board", JsonTools.createJson(JsonTools.parseJson(board.getState())));
+        //TODO: Save common cards
+        return JsonTools.createJson(elements).toString();
     }
 
     @Override
     public void loadState(String jsonMessage) {
-
+        Map<String, Object> elements;
+        elements = JsonTools.parseJson(jsonMessage);
+        numberOfPlayers = (Integer) elements.get("numberOfPlayers");
+        currentPlayerIndex = (Integer) elements.get("currentPlayerIndex");
+        board = new Board(numberOfPlayers);
+        board.loadState(elements.get("board").toString());
+        players = new Player[numberOfPlayers];
+        //TODO: Load common cards
+        for (int i = 0; i < numberOfPlayers; i++)
+            players[i] = new Player(elements.get("player" + i).toString(), null);
     }
 }
