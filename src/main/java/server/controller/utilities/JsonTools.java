@@ -65,6 +65,7 @@ public class JsonTools {
                 switch (jsonReader.peek()) {
                     case NUMBER -> elements.put(field, jsonReader.nextInt());
                     case STRING -> elements.put(field, jsonReader.nextString());
+                    //TODO: Fix this
                     case BEGIN_ARRAY, BEGIN_OBJECT -> elements.put(field, jsonReader);
                 }
             }
