@@ -8,6 +8,7 @@ import client.NetworkHandlerSocket;
 
 import java.util.Scanner;
 
+import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
 import static server.controller.utilities.JsonTools.createJsonMatrix;
 
 
@@ -29,7 +30,8 @@ public class Client {
     }
 
     public void main(){
-
+        requestConnectionType();
+        // while(connection is active/it's player's turn){requestInput}
     }
 
     /**
@@ -173,7 +175,7 @@ public class Client {
         System.out.println("Insert column in which you want to insert the selected tokens:\n");
         selectedColumn = scn.nextInt();
 
-        while(/*Column is full*/){
+        while(selectedColumn < 0 || selectedColumn > SHELF_COLUMNS - 1){
             System.out.println("Column not valid!\n");
             System.out.println("Insert column in which you want to insert the selected tokens:\n");
             selectedColumn = scn.nextInt();
