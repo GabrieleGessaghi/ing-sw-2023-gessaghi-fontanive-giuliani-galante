@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Updated interfaces in Model">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed small issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Corners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Corners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Diagonal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Diagonal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Eightany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Eightany.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourRows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourRows.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/SixGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/SixGroups.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Stairs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Stairs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/ThreeColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/ThreeColumns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoColumns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoRows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoRows.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoSquares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoSquares.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/XShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/XShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +81,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ShelfTest">
+  <component name="RunManager" selected="JUnit.PlayerTest">
     <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -199,13 +188,6 @@
       <workItem from="1682749112175" duration="7370000" />
       <workItem from="1682860377909" duration="959000" />
       <workItem from="1682920782466" duration="3425000" />
-    </task>
-    <task id="LOCAL-00075" summary="Tested TwoColumns">
-      <created>1681478924383</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1681478924383</updated>
     </task>
     <task id="LOCAL-00076" summary="Tested XShape">
       <created>1681807893259</created>
@@ -543,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682923466840</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="Fixed small issue">
+      <created>1682928416134</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1682928416135</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +579,6 @@
     <MESSAGE value="Documented interfaces" />
     <MESSAGE value="Documented JsonTools" />
     <MESSAGE value="Separated Client and Server packages" />
-    <MESSAGE value="Fixed small issue" />
     <MESSAGE value="Implemented interfaces in Board" />
     <MESSAGE value="Fixed issues in Player" />
     <MESSAGE value="Modified Player to better save its state" />
@@ -602,7 +590,8 @@
     <MESSAGE value="Added interfaces to Game" />
     <MESSAGE value="Added methods to Client" />
     <MESSAGE value="Updated interfaces in Model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated interfaces in Model" />
+    <MESSAGE value="Fixed small issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
