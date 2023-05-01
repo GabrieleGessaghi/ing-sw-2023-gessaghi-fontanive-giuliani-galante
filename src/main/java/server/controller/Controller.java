@@ -1,32 +1,23 @@
 package server.controller;
 
-import com.google.gson.stream.JsonReader;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
+import server.controller.utilities.JsonTools;
 import server.model.Game;
-import server.view.ClientHandlerSocket;
 import server.view.ClientHandler;
 
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Handles the game flow on a different thread.
  * @author Giorgio Massimo Fontanive
  */
-public class Controller extends Thread implements Observer {
+public class Controller implements Observer, Runnable {
     private boolean isGameRunning;
-    private boolean waitingForTiles;
-    private boolean waitingForColumn;
     private CreationController creationController;
     private TurnController turnController;
-    private List<ClientHandlerSocket> clientHandlers;
-    private Map<ClientHandlerSocket, Integer> clientHandlerIndexes;
-    private ClientHandlerSocket currentClient;
+    private List<ClientHandler> clientHandlers;
+    private Game game;
 
     public Controller() {
         reset();
@@ -34,78 +25,42 @@ public class Controller extends Thread implements Observer {
 
     @Override
     public void run() {
-        //TODO: Add wait/notify
-        int clientsListIndex = 0;
-        while (true) {
+        isGameRunning = false;
+        creationController = new CreationController();
+        ListIterator<ClientHandler> listIterator = clientHandlers.listIterator();
+        while(true) {
             if (isGameRunning) {
-                currentClient = clientHandlers.get(clientsListIndex);
-                try {
-                    currentClient.requestInput(Prompt.TOKENS);
-                    waitingForTiles = true;
-                    //WAIT FOR TILES
-                    currentClient.requestInput(Prompt.COLUMN);
-                    waitingForColumn = true;
-                    //WAIT FOR COLUMN
-                    clientsListIndex++;
-                } catch (Exception e) {
-                    currentClient.showOutput("\"errorMessage\":\"Generic error!\"");
-                }
-                if (turnController.isGameOver()) { //TODO: Improve this
-                    for (ClientHandler client : clientHandlers) {
-                        //client.showOutput("\"errorMessage\":\"Game over!\n" + + "is the winner!\"");
-                        //CLOSE CONNECTION
-                    }
+                if (!listIterator.hasNext())
+                    listIterator = clientHandlers.listIterator();
+                ClientHandler currentClient = listIterator.next();
+                turnController = new TurnController(game, currentClient);
+                currentClient.registerObserver(turnController);
+                if (game.gameOver())
                     reset();
-                }
             }
         }
     }
 
     @Override
     public void update(Event event) {
-        boolean correctClient = false;
-        boolean receivedTiles = false;
-        boolean receivedColumn = false;
-        String jsonMessage = event.getJsonMessage();
-        String field;
-        JsonReader jsonReader;
-        try {
-            jsonReader = new JsonReader(new StringReader(jsonMessage));
-            jsonReader.beginObject();
-            while(jsonReader.hasNext()) {
-                field = jsonReader.nextName();
-                switch (field) {
-                    case "tilesSelection" -> receivedTiles = true;
-                    case "column" -> receivedColumn = true;
-                    case "clientIndex" -> {
-                        if(jsonReader.nextInt() == clientHandlerIndexes.get(currentClient)) correctClient = true;
-                    }
-                }
+        if (!isGameRunning)
+            if (creationController.isGameReady()) {
+                game = creationController.createGame();
+                isGameRunning = true;
+                for (ClientHandler clientHandler : clientHandlers)
+                    game.registerObserver(clientHandler);
             }
-            jsonReader.endObject();
-            waitingForTiles = !(receivedTiles && correctClient);
-            waitingForColumn = !(receivedColumn && correctClient);
-            //NOTIFY ALL
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        startGame();
     }
 
-    public void addClient(int index, ClientHandlerSocket clientHandler) {
-        clientHandlerIndexes.put(clientHandler, index);
-        clientHandlers.add(clientHandler);
-        if (clientHandlers.size() == 1)
-            clientHandler.requestInput(Prompt.PLAYERSNUMBER);
-    }
-
-    private void startGame() {
-        if (!isGameRunning && creationController.isGameReady()) {
-            Game game = creationController.createGame();
-            turnController = new TurnController(game);
-            isGameRunning = true;
-        }
+    public void addClient(ClientHandler clientHandler) {
+        if (!isGameRunning && creationController.isSpotAvailable()) {
+            clientHandlers.add(clientHandler);
+            clientHandler.registerObserver(this);
+            clientHandler.registerObserver(creationController);
+            if (clientHandlers.size() == 1)
+                clientHandler.requestInput(Prompt.PLAYERSNUMBER);
+        } else
+            clientHandler.showOutput(JsonTools.createMessage("The game is full, please exit!"));
     }
 
     /**
@@ -117,8 +72,5 @@ public class Controller extends Thread implements Observer {
         turnController = null;
         creationController = new CreationController();
         clientHandlers = new ArrayList<>();
-        clientHandlerIndexes = new HashMap<>();
-        waitingForTiles = false;
-        waitingForColumn = false;
     }
 }

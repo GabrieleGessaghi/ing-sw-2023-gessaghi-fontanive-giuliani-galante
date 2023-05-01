@@ -1,20 +1,21 @@
 package server.model.cards;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
-import server.controller.utilities.JsonTools;
-import server.model.Game;
 import server.model.Savable;
 import server.model.Token;
-import server.controller.utilities.ConfigLoader;
 import server.model.cards.concreteobjectives.*;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static server.controller.utilities.ConfigLoader.COMMONCARD_POINTS;
+import static server.controller.utilities.ConfigLoader.PLAYERS_MIN;
 
 /**
  * Common objective card of the game.
@@ -41,6 +42,12 @@ public class CommonCard extends Card implements Savable, Observable {
         observers = new ArrayList<>();
     }
 
+    public CommonCard(String jsonState, int numberOfPlayers) {
+        this.numberOfPlayers = numberOfPlayers;
+        observers = new ArrayList<>();
+        loadState(JsonParser.parseString(jsonState).getAsJsonObject());
+    }
+
     /**
      * Gives players' the points they deserve and removes the points token.
      * @author Giorgio Massimo Fontanive
@@ -52,8 +59,9 @@ public class CommonCard extends Card implements Savable, Observable {
         int points = 0;
         satisfied = objective.isSatisfied(shelf);
         if (satisfied) {
-            points = ConfigLoader.COMMONCARD_POINTS[numberOfPlayers - ConfigLoader.PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
+            points = COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
             numberOfTokensLeft--;
+            updateObservers(new Event(getState().toString()));
         }
         return points;
     }
@@ -98,19 +106,20 @@ public class CommonCard extends Card implements Savable, Observable {
     }
 
     @Override
-    public String getState() {
-        Map<String, Object> elements = new HashMap<>();
-        elements.put("numberOfTokensLeft", numberOfTokensLeft);
-        elements.put("objectiveType", name.ordinal());
-        return JsonTools.createJson(elements).toString();
+    public JsonObject getState() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("objectiveType", name.ordinal());
+        jsonObject.addProperty("objectiveDescription", objective.getDescription());
+        jsonObject.addProperty("numberOfTokensLeft", numberOfTokensLeft);
+        jsonObject.addProperty("nextPointsAvailable", COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft]);
+        return jsonObject;
     }
 
     @Override
-    public void loadState(String jsonMessage) {
-        Map<String, Object> elements;
-        elements = JsonTools.parseJson(jsonMessage);
-        numberOfTokensLeft = (Integer) elements.get("numberOfTokensLeft");
-        name = CommonType.values()[((Integer) elements.get("objectiveType"))];
+    public void loadState(JsonObject jsonObject) {
+        Map<String, JsonElement> elements = jsonObject.asMap();
+        numberOfTokensLeft = elements.get("numberOfTokensLeft").getAsInt();
+        name = CommonType.values()[(elements.get("objectiveType").getAsInt())];
         objective = createCommonObjective(name);
     }
 }

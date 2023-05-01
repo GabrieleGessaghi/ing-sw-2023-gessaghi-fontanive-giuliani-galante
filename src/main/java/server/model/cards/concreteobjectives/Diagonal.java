@@ -5,8 +5,7 @@ import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
 
 /**
- * Five tiles of the same type forming a
- * diagonal.
+ * Five tiles of the same type forming a diagonal.
  * @author Niccolò Giuliani
  */
 public class Diagonal implements CommonObjective {
@@ -42,7 +41,13 @@ public class Diagonal implements CommonObjective {
         return !flag;
     }
 
+    @Override
     public CommonType getName(){
         return CommonType.DIAGONAL;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Five tiles of the same type forming a diagonal.";
     }
 }

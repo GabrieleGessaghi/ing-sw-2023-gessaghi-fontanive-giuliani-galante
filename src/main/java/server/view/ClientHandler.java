@@ -9,8 +9,8 @@ import server.controller.observer.Event;
  * Handler of the Client
  * @author Niccolò Giuliani
  */
-public abstract class ClientHandler extends Thread implements Observer, Observable {
-    private String playerNickname;
+public abstract class ClientHandler implements Observer, Observable, Runnable {
+    protected int index;
 
     public abstract void update(Event event);
 
@@ -34,5 +34,7 @@ public abstract class ClientHandler extends Thread implements Observer, Observab
      */
     public abstract void showOutput(String jsonMessage);
 
-
+    public int getIndex() {
+        return index;
+    }
 }

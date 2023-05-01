@@ -1,7 +1,6 @@
 package server.controller;
 
 import com.google.gson.stream.JsonReader;
-import server.controller.exceptions.TooManyPlayersException;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.model.Game;
@@ -19,7 +18,7 @@ public class CreationController implements Observer {
     private final ArrayList<String> playersNicknames;
 
     public CreationController(){
-        playersNicknames = new ArrayList<String>();
+        playersNicknames = new ArrayList<>();
         playersNumber = 0;
     }
 
@@ -37,11 +36,9 @@ public class CreationController implements Observer {
                     case "playersNumber" -> setPlayerNumber(jsonReader.nextInt());
                     case "playersNickname" -> addPlayer(jsonReader.nextString());
                 }
-                if(playersNumber < playersNicknames.size())
-                    throw new TooManyPlayersException("Too many players trying to play the game");
             }
             jsonReader.endObject();
-        } catch (IOException | TooManyPlayersException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -56,12 +53,12 @@ public class CreationController implements Observer {
     }
 
     /**
-     * Checks whether there's only one player.
-     * @return True if there's only one player connected.
+     * Checks whether there's a spot available.
+     * @return True if there's space for more players.
      * @author Giorgio Massimo Fontanive
      */
-    public boolean isThereOnlyOnePlayer() {
-        return playersNicknames.size() == 1;
+    public boolean isSpotAvailable() {
+        return playersNumber == -1 || playersNicknames.size() < playersNumber;
     }
 
     /**
@@ -88,6 +85,6 @@ public class CreationController implements Observer {
      * @author Niccolò Giuliani
      */
     private void addPlayer(String nickname) {
-            playersNicknames.add(nickname);
+        playersNicknames.add(nickname);
     }
 }

@@ -22,7 +22,13 @@ public class XShape implements CommonObjective {
         return flag;
     }
 
+    @Override
     public CommonType getName(){
         return CommonType.XSHAPE;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Five tiles of the same type forming an X.";
     }
 }

@@ -7,6 +7,7 @@ import server.model.Token;
  * @author Niccolò Giuliani
  */
 public abstract class Card {
+
     /**
      * Returns the number of points the given shelf will get.
      * @author Niccolò Giuliani
@@ -15,5 +16,9 @@ public abstract class Card {
      */
     public abstract int getPoints(Token[][]shelf);
 
+    /**
+     * Gets the card's index in their respective set.
+     * @return The card's index.
+     */
     public abstract int getIndex();
 }

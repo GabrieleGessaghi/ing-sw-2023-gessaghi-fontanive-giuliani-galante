@@ -11,7 +11,7 @@ import java.nio.file.Paths;
  * @author Giorgio Massimo Fontanive
 */
 public class ConfigLoader {
-
+    public static int SERVER_PORT;
     public static int SHELF_ROWS;
     public static int SHELF_COLUMNS;
     public static int BOARD_SIZE;
@@ -20,7 +20,7 @@ public class ConfigLoader {
     public static int MAX_TOKENS_PER_TURN;
     public static int NUMBER_OF_TOKEN_TYPES;
     public static int TOKENS_PER_TYPE;
-    public static int NUMBER_OF_COMMON_CARDS; //TODO: Add this in json file
+    public static int NUMBER_OF_COMMON_CARDS;
     public static int[] PERSONALCARD_POINTS;
     public static int[][] COMMONCARD_POINTS;
 
@@ -49,6 +49,8 @@ public class ConfigLoader {
                     case "TOKENS_PER_TYPE" -> TOKENS_PER_TYPE = jsonReader.nextInt();
                     case "COMMONCARD_POINTS" -> COMMONCARD_POINTS = JsonTools.readMatrix(jsonReader);
                     case "PERSONALCARD_POINTS" -> PERSONALCARD_POINTS = JsonTools.readArray(jsonReader);
+                    case "NUMBER_OF_COMMON_CARDS" -> NUMBER_OF_COMMON_CARDS = jsonReader.nextInt();
+                    case "SERVER_PORT" -> SERVER_PORT = jsonReader.nextInt();
                     default -> jsonReader.skipValue();
                 }
             }

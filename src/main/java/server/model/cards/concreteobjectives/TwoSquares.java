@@ -5,10 +5,8 @@ import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
 
 /**
- * Two groups each containing 4 tiles of
- * the same type in a 2x2 square. The tiles
- * of one square can be different from
- * those of the other square.
+ * Two groups each containing 4 tiles of the same type in a 2x2 square.
+ * The tiles of one square can be different from those of the other square.
  * @author Niccolò Giuliani
  */
 public class TwoSquares implements CommonObjective {
@@ -41,19 +39,14 @@ public class TwoSquares implements CommonObjective {
         return atLeastTwo >= 2;
     }
 
-    private int fromTokenToInt(Token x){
-        return switch (x) {
-            case CAT -> 0;
-            case BOOK -> 1;
-            case TOY -> 2;
-            case TROPHY -> 3;
-            case FRAME -> 4;
-            case PLANT -> 5;
-            case NOTHING -> 6;
-        };
-    }
-
+    @Override
     public CommonType getName(){
         return CommonType.TWOSQUARES;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Two groups each containing 4 tiles of the same type in a 2x2 square.\n" +
+                "The tiles of one square can be different from those of the other square.";
     }
 }

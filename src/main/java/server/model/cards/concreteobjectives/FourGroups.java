@@ -8,11 +8,8 @@ import server.model.cards.TokenTools;
 
 
 /**
- * Four groups each containing at least
- * 4 tiles of the same type (not necessarily
- * in the depicted shape).
- * The tiles of one group can be different
- * from those of another group.
+ * Four groups each containing at least 4 tiles of the same type.
+ * The tiles of one group can be different from those of another group.
  * @author Niccolò Giuliani
  */
 public class FourGroups implements CommonObjective {
@@ -27,8 +24,13 @@ public class FourGroups implements CommonObjective {
         return generalCounter >= 4;
     }
 
+    @Override
     public CommonType getName(){
         return CommonType.FOURGROUPS;
     }
 
+    @Override
+    public String getDescription() {
+        return  "Four groups each containing at least 4 tiles of the same type.\nThe tiles of one group can be different from those of another group";
+    }
 }

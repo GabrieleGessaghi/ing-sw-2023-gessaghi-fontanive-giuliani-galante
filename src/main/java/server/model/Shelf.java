@@ -1,20 +1,19 @@
 package server.model;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
-import server.controller.observer.Event;
-import server.controller.observer.Observable;
-import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
-import server.model.exceptions.FullColumnException;
+import server.model.exceptions.IllegalColumnException;
 import server.controller.utilities.ConfigLoader;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.*;
 
-public class Shelf implements Savable, Observable {
+public class Shelf implements Savable {
     private final Token[][] tiles;
-    private final List<Observer> observers;
 
     /**
      * Class constructor, all the shelf positions are set to NOTHING token type.
@@ -22,9 +21,13 @@ public class Shelf implements Savable, Observable {
      */
     public Shelf() {
         tiles = new Token[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
-        observers = new ArrayList<>();
         for (Token[] row: tiles)
             Arrays.fill(row, Token.NOTHING);
+    }
+
+    public Shelf(String jsonState) {
+        tiles = new Token[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
+        loadState(JsonParser.parseString(jsonState).getAsJsonObject());
     }
 
     /**
@@ -42,13 +45,13 @@ public class Shelf implements Savable, Observable {
      * @param token Token to be inserted inside the shelf.
      * @param column Column where the token has to bbe inserted.
      */
-    public void insertToken(Token token, int column) throws FullColumnException {
+    public void insertToken(Token token, int column) throws IllegalColumnException {
         for (int i = ConfigLoader.SHELF_ROWS-1; i>=0 ; i--)
             if (tiles[i][column].equals((Token.NOTHING))) {
                 tiles[i][column] = token;
                 return;
             }
-        throw new FullColumnException("The selected column is full!");
+        throw new IllegalColumnException("The selected column is full!");
     }
 
     /**
@@ -77,20 +80,8 @@ public class Shelf implements Savable, Observable {
     }
 
     @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void updateObservers(Event event) {
-        for (Observer observer : observers)
-            if (observer != null)
-                observer.update(event);
-    }
-
-    @Override
-    public String getState() {
-        Map<String, Object> elements = new HashMap<>();
+    public JsonObject getState() {
+        JsonObject jsonObject = new JsonObject();
 
         //Converts the matrices into integer ones.
         int[][] tilesInteger = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
@@ -98,25 +89,21 @@ public class Shelf implements Savable, Observable {
             for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++)
                 tilesInteger[i][j] = tiles[i][j].ordinal();
 
-        elements.put("shelfTiles", JsonTools.createJsonMatrix(tilesInteger));
-        return JsonTools.createJson(elements).toString();
+        jsonObject.add("shelfTiles", JsonTools.createJsonMatrix(tilesInteger));
+        return jsonObject;
     }
 
     @Override
-    public void loadState(String jsonMessage) {
-        Map<String, Object> elements = JsonTools.parseJson(jsonMessage);
+    public void loadState(JsonObject jsonObject) {
+        Map<String, JsonElement> elements = jsonObject.asMap();
         try {
-
-            //Converts the integer matrices into usable ones.
-            int[][] tilesInteger = JsonTools.readMatrix((JsonReader) elements.get("shelfTiles"));
+            int[][] tilesInteger = JsonTools.readMatrix(elements.get("shelfTiles").getAsJsonArray());
             Token[] tokenValues = Token.values();
             for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
                 for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++)
                     tiles[i][j] = tokenValues[tilesInteger[i][j]];
 
         } catch (IOException e) {
-            String errorMessage = "Failed to load a Shelf's save state!";
-            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
             throw new RuntimeException(e);
         }
     }

@@ -6,37 +6,32 @@ import java.io.*;
 import java.net.Socket;
 
 public class NetworkHandlerSocket extends Thread{
-
-    private Socket clientSocket;
-    private Prompt lastPrompt;
+    private Socket serverSocket;
+    private DataInputStream dis;
+    private DataOutputStream dos;
     private Client client;
 
-    /**
-     * Class constructor
-     * @author Gabriele Gessaghi
-     */
-    public NetworkHandlerSocket () {}
+    //NEL COSTRUTTORE PASSA SOLO CLIENT
 
-    /**
-     *
-     * @Author Gabriele Gessaghi
-     * @return
-     */
+    //LASCIARE STARE PER ORA
     public boolean ping () {
         return true;
     }
 
-    /**
-     *
-     * @Author Gabriele Gessaghi
-     */
     @Override
-    public void run () {}
+    public void run () {
+        //TRY
+            //CONNETTITI AL SERVER "LOCALHOST" CON PORTA 1234 CREANDO IL SOCKET
+            //CREA GLI OGGETTI DATAINPUTSTREAM E DATAOUTPUTSTREAM
+            //WHILE TRUE
+                //RICEVI IN INGRESSO UNA STRINGA DAL CLIENTHANDLER
+                //PARSARE IL JSON
+                //NEL CASO CI SIANO CAMPI DI RICHIESTA (VEDI MESSAGGIO WHATSAPP)
+                    //CHIAMARE IL METODO requestInput DI CLIENT CON IL GIUSTO PROMPT (Non ancora implementato)
+                //ALTRIMENTI MANDARE A showOutput DI CLIENT PASSANDO LA STRINGA
+    }
 
-    /**
-     *
-     * @Author Gabriele Gessaghi
-     * @param input
-     */
-    public void sendInput (String input) {}
+    public void sendInput (String input) {
+        //MANDA LA STRINGA CON L'OGGETTO DATAOUTPUTSTREAM
+    }
 }

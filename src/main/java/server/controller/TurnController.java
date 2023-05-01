@@ -6,6 +6,9 @@ import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
 import server.controller.utilities.ConfigLoader;
+import server.model.exceptions.IllegalColumnException;
+import server.model.exceptions.IllegalMoveException;
+import server.view.ClientHandler;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -18,11 +21,14 @@ public class TurnController implements Observer {
     private int[][] selectedTiles;
     private int selectedColumn;
     private final Game game;
+    private final ClientHandler currentClientHandler;
 
-    public TurnController(Game game) {
-        selectedTiles = new int[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
+    public TurnController(Game game, ClientHandler currentClient) {
+        selectedTiles = null;
         selectedColumn = -1;
+        currentClientHandler = currentClient;
         this.game = game;
+        newTurn();
     }
 
     /**
@@ -47,12 +53,43 @@ public class TurnController implements Observer {
         return selectedColumn >= 0 && selectedColumn <= ConfigLoader.SHELF_COLUMNS;
     }
 
+    private void newTurn() {
+        currentClientHandler.requestInput(Prompt.TOKENS);
+        while (selectedTiles == null) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        currentClientHandler.requestInput(Prompt.COLUMN);
+        while (selectedColumn == -1) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    private void finalizeTurn() {
+        try {
+            game.playerTurn(selectedTiles, selectedColumn);
+        } catch (IllegalMoveException | IllegalColumnException e) {
+            currentClientHandler.showOutput(JsonTools.createMessage(e.getMessage()));
+            newTurn();
+        }
+    }
+
     /**
      * Reads the JSON message and makes a new turn once all data is ready.
      * @author Giorgio Massimo Fontanive
      * @param event The event received from the observable object to which this is subscribed.
      */
     public void update(Event event) {
+        boolean correctClient = false;
+        int[][] tempSelectedTiles = null;
+        int tempSelectedColumn = -1;
         String jsonMessage = event.getJsonMessage();
         String field;
         JsonReader jsonReader;
@@ -62,23 +99,22 @@ public class TurnController implements Observer {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "selectedTiles" -> selectedTiles = JsonTools.readMatrix(jsonReader);
-                    case "selectedColumn" -> selectedColumn = jsonReader.nextInt();
+                    case "clientIndex" -> correctClient = jsonReader.nextInt() == currentClientHandler.getIndex();
+                    case "selectedTiles" -> tempSelectedTiles = JsonTools.readMatrix(jsonReader);
+                    case "selectedColumn" -> tempSelectedColumn = jsonReader.nextInt();
                 }
             }
             jsonReader.endObject();
+            if (correctClient) {
+                selectedTiles = tempSelectedTiles;
+                selectedColumn = tempSelectedColumn;
+                notifyAll();
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        if (isMatrixLegal() && isColumnLegal()) {
-            //TODO: Insert try catch
-            game.playerTurn(selectedTiles, selectedColumn);
-        }
-        //TODO: Maybe throw an exception
-    }
-
-    public boolean isGameOver() {
-        return game.endGame() == null;
+        if (isMatrixLegal() && isColumnLegal())
+            finalizeTurn();
     }
 }

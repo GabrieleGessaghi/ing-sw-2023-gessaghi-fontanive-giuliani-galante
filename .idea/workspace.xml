@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added interfaces to Game">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed small issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/NetworkHandlerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/NetworkHandlerSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +84,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ShelfTest">
+  <component name="RunManager" selected="JUnit.PlayerTest">
     <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -186,84 +189,8 @@
       <workItem from="1682604793549" duration="5190000" />
       <workItem from="1682661263149" duration="2708000" />
       <workItem from="1682749112175" duration="7370000" />
-      <workItem from="1682757463240" duration="1469000" />
-    </task>
-    <task id="LOCAL-00073" summary="Tested PersonalCard">
-      <created>1681397170216</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1681397170216</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Tested ThreeColumns">
-      <created>1681478244285</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1681478244285</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Tested TwoColumns">
-      <created>1681478924383</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1681478924383</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Tested XShape">
-      <created>1681807893259</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1681807893260</updated>
-    </task>
-    <task id="LOCAL-00077" summary="Created observer package">
-      <created>1682402719283</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1682402719283</updated>
-    </task>
-    <task id="LOCAL-00078" summary=".">
-      <created>1682402824961</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1682402824961</updated>
-    </task>
-    <task id="LOCAL-00079" summary="Modified UML diagrams">
-      <created>1682405476458</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1682405476458</updated>
-    </task>
-    <task id="LOCAL-00080" summary="created ClientHandler">
-      <created>1682495073724</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1682495073725</updated>
-    </task>
-    <task id="LOCAL-00081" summary="added Javadoc">
-      <created>1682496827486</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1682496827486</updated>
-    </task>
-    <task id="LOCAL-00082" summary="ClientHandlerSocket.run() implementation">
-      <created>1682507576967</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1682507576967</updated>
-    </task>
-    <task id="LOCAL-00083" summary="Updated Server">
-      <created>1682510036991</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1682510036991</updated>
+      <workItem from="1682860377909" duration="959000" />
+      <workItem from="1682920782466" duration="3425000" />
     </task>
     <task id="LOCAL-00084" summary="Updated Server and ClientHandler">
       <created>1682510232764</created>
@@ -531,7 +458,84 @@
       <option name="project" value="LOCAL" />
       <updated>1682754410883</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="Added methods to Client">
+      <created>1682782037345</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1682782037346</updated>
+    </task>
+    <task id="LOCAL-00123" summary="Updated interfaces in Model">
+      <created>1682923466840</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1682923466840</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Fixed small issue">
+      <created>1682928416134</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1682928416135</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Partially implemented error management in controller">
+      <created>1682934558432</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1682934558432</updated>
+    </task>
+    <task id="LOCAL-00126" summary="Updated controller">
+      <created>1682935249233</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1682935249233</updated>
+    </task>
+    <task id="LOCAL-00127" summary="Updated controller">
+      <created>1682939742819</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1682939742819</updated>
+    </task>
+    <task id="LOCAL-00128" summary="Finished controller">
+      <created>1682941335683</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1682941335683</updated>
+    </task>
+    <task id="LOCAL-00129" summary="Implemented victory condition">
+      <created>1682942889764</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1682942889764</updated>
+    </task>
+    <task id="LOCAL-00130" summary="Added wait for user input in TurnController">
+      <created>1682943535938</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1682943535938</updated>
+    </task>
+    <task id="LOCAL-00131" summary="Added constants to ConfigLoader">
+      <created>1682943893122</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1682943893122</updated>
+    </task>
+    <task id="LOCAL-00132" summary="Fixed small issues">
+      <created>1682944336728</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1682944336728</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,22 +569,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added indexed to clientHandlers" />
-    <MESSAGE value="Update Controller run" />
-    <MESSAGE value="Finished Controller main cycle" />
-    <MESSAGE value="Added check for right client in Controller" />
-    <MESSAGE value="Updated Controller" />
-    <MESSAGE value="Refactored ConfigLoader" />
-    <MESSAGE value="Created JsonTools" />
-    <MESSAGE value="Creates Saveable and implemented Observable in Board" />
-    <MESSAGE value="Added createJsonArray and createJsonMatrix to jsonTools" />
     <MESSAGE value="added Modelutil class" />
     <MESSAGE value="Finished JsonTools" />
     <MESSAGE value="Finished implementing interfaces into Board" />
     <MESSAGE value="Documented interfaces" />
     <MESSAGE value="Documented JsonTools" />
     <MESSAGE value="Separated Client and Server packages" />
-    <MESSAGE value="Fixed small issue" />
     <MESSAGE value="Implemented interfaces in Board" />
     <MESSAGE value="Fixed issues in Player" />
     <MESSAGE value="Modified Player to better save its state" />
@@ -590,7 +584,17 @@
     <MESSAGE value="Added interfaces to CommonCard" />
     <MESSAGE value="Implemented interfaces in CommonCard" />
     <MESSAGE value="Added interfaces to Game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added interfaces to Game" />
+    <MESSAGE value="Added methods to Client" />
+    <MESSAGE value="Updated interfaces in Model" />
+    <MESSAGE value="Fixed small issue" />
+    <MESSAGE value="Partially implemented error management in controller" />
+    <MESSAGE value="Updated controller" />
+    <MESSAGE value="Finished controller" />
+    <MESSAGE value="Implemented victory condition" />
+    <MESSAGE value="Added wait for user input in TurnController" />
+    <MESSAGE value="Added constants to ConfigLoader" />
+    <MESSAGE value="Fixed small issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
