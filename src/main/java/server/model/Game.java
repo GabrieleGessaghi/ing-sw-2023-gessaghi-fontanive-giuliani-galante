@@ -139,8 +139,12 @@ public class Game implements Savable, Observable {
             boolean[][] isSelected = Board.convertIntegerMatrix(selectedTiles, -1);
             board.removeTiles(isSelected);
 
-            if (players[currentPlayerIndex].isShelfFull())
+            if (players[currentPlayerIndex].isShelfFull()) {
                 isLastRound = true;
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("message", "This is the last round.\n" +
+                        players[currentPlayerIndex].getNickname() + " has filled their shelf!");
+            }
         }
 
         currentPlayerIndex++;

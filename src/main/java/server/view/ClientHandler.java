@@ -9,7 +9,7 @@ import server.controller.observer.Event;
  * Handler of the Client
  * @author Niccolò Giuliani
  */
-public abstract class ClientHandler extends Thread implements Observer, Observable {
+public abstract class ClientHandler implements Observer, Observable, Runnable {
     protected int index;
 
     public abstract void update(Event event);
