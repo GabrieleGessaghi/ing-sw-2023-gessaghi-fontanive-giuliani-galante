@@ -1,9 +1,7 @@
 package server.model;
 
 import server.controller.utilities.ConfigLoader;
-import server.model.Shelf;
-import server.model.Token;
-import server.model.exceptions.FullColumnException;
+import server.model.exceptions.IllegalColumnException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +28,7 @@ public class ShelfTest {
         try {
             testShelf.insertToken(Token.TOY, 0);
             assertEquals(Token.TOY, testShelf.getTiles()[5][0]);
-        }catch (FullColumnException e){
+        }catch (IllegalColumnException e){
             System.out.println(e);
         }
     }
@@ -41,7 +39,7 @@ public class ShelfTest {
         Shelf testShelf = new Shelf();
         try {
             testShelf.insertToken(Token.TOY, 0);
-        }catch (FullColumnException e){
+        }catch (IllegalColumnException e){
             System.out.println(e);
         }
         testShelf.removeToken(0);
@@ -49,7 +47,7 @@ public class ShelfTest {
     }
 
     @Test
-    public void isFullTest () throws FullColumnException {
+    public void isFullTest () throws IllegalColumnException {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         Shelf testShelf = new Shelf();
 

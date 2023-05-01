@@ -179,8 +179,10 @@ public class Board implements Observable, Savable {
         selectedTilesBoolean = Board.convertIntegerMatrix(selectedTiles, -1);
         if (isMoveLegal(selectedTilesBoolean))
             return selectedTokens;
-        else
-            throw new IllegalMoveException("This combination of tiles is forbidden!");
+        else {
+            String errorMessage = "This combination of tiles is forbidden!";
+            throw new IllegalMoveException(errorMessage);
+        }
     }
 
     /**
@@ -195,6 +197,7 @@ public class Board implements Observable, Savable {
                     tiles[i][j] = Token.NOTHING;
         if (isResetNeeded())
             reset();
+        updateObservers(new Event(getState()));
     }
 
     /**
@@ -259,8 +262,6 @@ public class Board implements Observable, Savable {
                 }
 
         } catch (IOException e) {
-            String errorMessage = "Failed to load Board's save state!";
-            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
             throw new RuntimeException(e);
         }
     }

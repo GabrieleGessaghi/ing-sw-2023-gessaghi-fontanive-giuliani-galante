@@ -1,15 +1,9 @@
 package server.model;
 
 import server.controller.utilities.ConfigLoader;
-import server.model.Player;
-import server.model.Token;
 import server.model.cards.CommonCard;
-import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
-import server.model.cards.PersonalCard;
-import server.model.cards.concreteobjectives.Corners;
-import server.model.cards.concreteobjectives.Diagonal;
-import server.model.exceptions.FullColumnException;
+import server.model.exceptions.IllegalColumnException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,7 +13,7 @@ import java.util.List;
 
 public class PlayerTest {
     @Test
-    public void insertTokensTestOne() throws FullColumnException {
+    public void insertTokensTestOne() throws IllegalColumnException {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
 
         List<CommonCard> commonCards = new ArrayList<>(2);
@@ -45,7 +39,7 @@ public class PlayerTest {
 
 
     @Test
-    public void insertTokensTestTwo() throws FullColumnException {
+    public void insertTokensTestTwo() throws IllegalColumnException {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
 
         List<CommonCard> commonCards = new ArrayList<>(2);

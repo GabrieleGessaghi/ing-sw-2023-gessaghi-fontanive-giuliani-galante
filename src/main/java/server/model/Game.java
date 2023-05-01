@@ -4,9 +4,10 @@ import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
+import server.model.cards.Card;
 import server.model.cards.CommonCard;
 import server.model.cards.CommonType;
-import server.model.exceptions.FullColumnException;
+import server.model.exceptions.IllegalColumnException;
 import server.model.exceptions.IllegalMoveException;
 
 import java.io.*;
@@ -22,6 +23,7 @@ public class Game implements Savable, Observable {
     private int numberOfPlayers;
     private Board board;
     private Player[] players;
+    private CommonCard[] commonCards;
     private final List<Observer> observers;
 
     /**
@@ -33,6 +35,7 @@ public class Game implements Savable, Observable {
     public Game(int numberOfPlayers, ArrayList<String> playerNicknames) {
         players = new Player[numberOfPlayers];
         board = new Board(numberOfPlayers);
+        commonCards = new CommonCard[NUMBER_OF_COMMON_CARDS];
         observers = new ArrayList<>();
         this.numberOfPlayers = numberOfPlayers;
 
@@ -48,7 +51,7 @@ public class Game implements Savable, Observable {
             throw new RuntimeException(e);
         }
 
-        ArrayList<CommonCard> currentGameCommonCard = genCommonCard(numberOfPlayers);
+        commonCards = genCommonCard(numberOfPlayers);
 
         // using a set to ensures having 3 different numbers
         Set<Integer> randomNumbers = new HashSet<>();
@@ -62,7 +65,7 @@ public class Game implements Savable, Observable {
         for (int i = 0; i < numberOfPlayers; i++) {
             if (i!=0)
                 isFirstPlayer = false;
-            players[i] = new Player(playerNicknames.get(i), isFirstPlayer, personalCardsIndexes[i], currentGameCommonCard);
+            players[i] = new Player(playerNicknames.get(i), isFirstPlayer, personalCardsIndexes[i], List.of(commonCards));
         }
         currentPlayerIndex = 0;
     }
@@ -72,12 +75,12 @@ public class Game implements Savable, Observable {
      * @author Gabriele Gessaghi
      * @param numberOfPlayers The number of player for the current game.
      */
-    private ArrayList<CommonCard> genCommonCard (int numberOfPlayers){
+    private CommonCard[] genCommonCard (int numberOfPlayers){
         ArrayList<CommonType> types = new ArrayList<CommonType>(Arrays.asList(CommonType.values()));
         Collections.shuffle(types);
-        ArrayList <CommonCard> commonCards = new ArrayList<>();
+        commonCards = new CommonCard[NUMBER_OF_COMMON_CARDS];
         for (int i = 0; i < NUMBER_OF_COMMON_CARDS; i++)
-            commonCards.add(new CommonCard(types.get(i), numberOfPlayers));
+            commonCards[i] = new CommonCard(types.get(i), numberOfPlayers);
         return commonCards;
     }
 
@@ -89,12 +92,8 @@ public class Game implements Savable, Observable {
     private void saveGame() throws IOException {
         String fileName = String.format("/src/data/game-%s.txt",gameID);
         FileOutputStream fOut = new FileOutputStream(new File(fileName));
-        ObjectOutputStream out = new ObjectOutputStream(fOut);
-        out.writeObject(this);
-        out.close();
-        fOut.close();
 
-        // TODO: check when testing advanced functionalities
+        fOut.close();
     }
 
     /**
@@ -120,7 +119,7 @@ public class Game implements Savable, Observable {
             //Inserts the tokens in the shelf.
             try {
                 players[currentPlayerIndex].insertTokens(selectedTokens, column);
-            } catch (FullColumnException e2) {
+            } catch (IllegalColumnException e2) {
                 System.out.println("The selected column can't store all the selected tokens!");
                 return;
             }
@@ -147,16 +146,11 @@ public class Game implements Savable, Observable {
     public void loadGame(String fileName) throws FileNotFoundException {
         try {
             FileInputStream fIn = new FileInputStream(fileName);
-            ObjectInputStream in = new ObjectInputStream(fIn);
-            Game loadedData = (Game)in.readObject();
-            gameID = loadedData.gameID;
-            board = loadedData.board;
-            currentPlayerIndex = loadedData.currentPlayerIndex;
-            players = loadedData.players;
-        }catch (FileNotFoundException e){
-            System.out.println("Game files not found!");
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+
+        } catch (FileNotFoundException e){
+            String errorMessage = "Game files not found!";
+            System.out.println(errorMessage);
+            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
         }
     }
 
@@ -178,10 +172,11 @@ public class Game implements Savable, Observable {
         elements.put("numberOfPlayers", numberOfPlayers);
         elements.put("currentPlayerIndex", currentPlayerIndex);
         elements.put("currentPlayerNickname", players[currentPlayerIndex].getNickname());
+        elements.put("board", JsonTools.createJson(JsonTools.parseJson(board.getState())));
         for (int i = 0; i < players.length; i++)
             elements.put("player" + i, JsonTools.createJson(JsonTools.parseJson(players[i].getState())));
-        elements.put("board", JsonTools.createJson(JsonTools.parseJson(board.getState())));
-        //TODO: Save common cards
+        for (int i =0; i < commonCards.length; i++)
+            elements.put("commonCard" + i, JsonTools.createJson(JsonTools.parseJson(commonCards[i].getState())));
         return JsonTools.createJson(elements).toString();
     }
 
@@ -194,8 +189,9 @@ public class Game implements Savable, Observable {
         board = new Board(numberOfPlayers);
         board.loadState(elements.get("board").toString());
         players = new Player[numberOfPlayers];
-        //TODO: Load common cards
+        for (int i = 0; i < NUMBER_OF_COMMON_CARDS; i++)
+            commonCards[i] = new CommonCard(elements.get("commonCard" + i).toString());
         for (int i = 0; i < numberOfPlayers; i++)
-            players[i] = new Player(elements.get("player" + i).toString(), null);
+            players[i] = new Player(elements.get("player" + i).toString(), List.of(commonCards));
     }
 }

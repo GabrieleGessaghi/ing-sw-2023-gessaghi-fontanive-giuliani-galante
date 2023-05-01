@@ -1,6 +1,5 @@
 package server.model;
 
-import com.google.gson.JsonObject;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
@@ -9,13 +8,14 @@ import server.model.cards.Card;
 import server.model.cards.CommonCard;
 import server.model.cards.TokenTools;
 import server.model.cards.PersonalCard;
-import server.model.exceptions.FullColumnException;
+import server.model.exceptions.IllegalColumnException;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static server.controller.utilities.ConfigLoader.NUMBER_OF_COMMON_CARDS;
 
 /**
  * Handles players' shelves and cards.
@@ -26,7 +26,7 @@ public class Player implements Savable, Observable {
     private int points;
     private Shelf playerShelf;
     private Card personalCard;
-    private final Map<Card, Boolean> commonCards;
+    private Map<Card, Boolean> commonCards;
     private final List<Observer> observers;
     private boolean isFirstPlayer;
     public boolean isConnected;
@@ -129,18 +129,19 @@ public class Player implements Savable, Observable {
      * @param column Column in which tokens are to be inserted.
      * @author Niccolò Galante.
      */
-    public void insertTokens(Token[] tokens, int column) throws FullColumnException {
+    public void insertTokens(Token[] tokens, int column) throws IllegalColumnException {
         int tokensInserted = 0;
         for (Token t: tokens)
             if(!t.equals(Token.NOTHING))
                 try {
                     playerShelf.insertToken(t, column);
                     tokensInserted++;
-                } catch(FullColumnException e) {
+                } catch(IllegalColumnException e) {
                     for(int i = 0; i < tokensInserted; i++)
                         playerShelf.removeToken(column);
                 }
         updateCommonCardPoints();
+        updateObservers(new Event(getState()));
     }
 
     @Override
@@ -164,7 +165,14 @@ public class Player implements Savable, Observable {
         elements.put("personalCardIndex", personalCard.getIndex());
         elements.put("shelf", JsonTools.createJson(JsonTools.parseJson(playerShelf.getState())));
         elements.put("isFirstPlayer", isFirstPlayer ? 1 : 0);
-        //TODO: Save which cards have already been completed
+
+        //Saves which cards have already been completed
+        int i = 0;
+        for (Card card : commonCards.keySet()) {
+            elements.put("commonCard" + i, commonCards.get(card) ? 1 : 0);
+            i++;
+        }
+
         return JsonTools.createJson(elements).toString();
     }
 
@@ -178,6 +186,13 @@ public class Player implements Savable, Observable {
         isFirstPlayer = (Integer) elements.get("isFirstPlayer") == 1;
         playerShelf = new Shelf();
         playerShelf.loadState(elements.get("shelf").toString());
-        //TODO: Get which cards have already been completed
+
+        //Loads which cards have already been completed
+        int i = 0;
+        for (Card card : commonCards.keySet()) {
+            boolean completed = (Integer) elements.get("commonCard" + i) == 1;
+            commonCards.replace(card, completed);
+            i++;
+        }
     }
 }

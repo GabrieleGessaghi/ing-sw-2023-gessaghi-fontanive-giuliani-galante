@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added methods to Client">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added pseudocode in NetworkHandler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/exceptions/FullColumnException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/exceptions/IllegalColumnException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/exceptions/SaveLoadingFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/exceptions/FailedLoadingException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/ShelfTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/ShelfTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +196,7 @@
       <workItem from="1682661263149" duration="2708000" />
       <workItem from="1682749112175" duration="7370000" />
       <workItem from="1682860377909" duration="959000" />
+      <workItem from="1682920782466" duration="2653000" />
     </task>
     <task id="LOCAL-00074" summary="Tested ThreeColumns">
       <created>1681478244285</created>

@@ -1,20 +1,15 @@
 package server.model;
 
 import com.google.gson.stream.JsonReader;
-import server.controller.observer.Event;
-import server.controller.observer.Observable;
-import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
-import server.model.exceptions.FullColumnException;
+import server.model.exceptions.IllegalColumnException;
 import server.controller.utilities.ConfigLoader;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.*;
 
-public class Shelf implements Savable, Observable {
+public class Shelf implements Savable {
     private final Token[][] tiles;
-    private final List<Observer> observers;
 
     /**
      * Class constructor, all the shelf positions are set to NOTHING token type.
@@ -22,7 +17,6 @@ public class Shelf implements Savable, Observable {
      */
     public Shelf() {
         tiles = new Token[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
-        observers = new ArrayList<>();
         for (Token[] row: tiles)
             Arrays.fill(row, Token.NOTHING);
     }
@@ -42,13 +36,13 @@ public class Shelf implements Savable, Observable {
      * @param token Token to be inserted inside the shelf.
      * @param column Column where the token has to bbe inserted.
      */
-    public void insertToken(Token token, int column) throws FullColumnException {
+    public void insertToken(Token token, int column) throws IllegalColumnException {
         for (int i = ConfigLoader.SHELF_ROWS-1; i>=0 ; i--)
             if (tiles[i][column].equals((Token.NOTHING))) {
                 tiles[i][column] = token;
                 return;
             }
-        throw new FullColumnException("The selected column is full!");
+        throw new IllegalColumnException("The selected column is full!");
     }
 
     /**
@@ -74,18 +68,6 @@ public class Shelf implements Savable, Observable {
             if (Arrays.asList(row).contains(Token.NOTHING))
                 return false;
         return true;
-    }
-
-    @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void updateObservers(Event event) {
-        for (Observer observer : observers)
-            if (observer != null)
-                observer.update(event);
     }
 
     @Override
@@ -115,8 +97,6 @@ public class Shelf implements Savable, Observable {
                     tiles[i][j] = tokenValues[tilesInteger[i][j]];
 
         } catch (IOException e) {
-            String errorMessage = "Failed to load a Shelf's save state!";
-            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
             throw new RuntimeException(e);
         }
     }

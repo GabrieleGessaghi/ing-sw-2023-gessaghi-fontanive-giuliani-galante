@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class CommonCard extends Card implements Savable, Observable {
     private int numberOfTokensLeft;
-    private final int numberOfPlayers;
+    private int numberOfPlayers;
     private CommonObjective objective;
     private CommonType name;
     private final List<Observer> observers;
@@ -41,6 +41,11 @@ public class CommonCard extends Card implements Savable, Observable {
         observers = new ArrayList<>();
     }
 
+    public CommonCard(String jsonState) {
+        loadState(jsonState);
+        observers = new ArrayList<>();
+    }
+
     /**
      * Gives players' the points they deserve and removes the points token.
      * @author Giorgio Massimo Fontanive
@@ -54,6 +59,7 @@ public class CommonCard extends Card implements Savable, Observable {
         if (satisfied) {
             points = ConfigLoader.COMMONCARD_POINTS[numberOfPlayers - ConfigLoader.PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
             numberOfTokensLeft--;
+            updateObservers(new Event(getState()));
         }
         return points;
     }
@@ -100,8 +106,10 @@ public class CommonCard extends Card implements Savable, Observable {
     @Override
     public String getState() {
         Map<String, Object> elements = new HashMap<>();
-        elements.put("numberOfTokensLeft", numberOfTokensLeft);
         elements.put("objectiveType", name.ordinal());
+        elements.put("objectiveDescription", objective.getDescription());
+        elements.put("numberOfTokensLeft", numberOfTokensLeft);
+        elements.put("numberOfPlayers", numberOfPlayers);
         return JsonTools.createJson(elements).toString();
     }
 
@@ -112,5 +120,6 @@ public class CommonCard extends Card implements Savable, Observable {
         numberOfTokensLeft = (Integer) elements.get("numberOfTokensLeft");
         name = CommonType.values()[((Integer) elements.get("objectiveType"))];
         objective = createCommonObjective(name);
+        numberOfPlayers = (Integer) elements.get("numberOfPlayers");
     }
 }
