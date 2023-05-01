@@ -7,6 +7,7 @@ import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import client.NetworkHandlerSocket;
 import server.controller.utilities.JsonTools;
+import server.model.Token;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -222,13 +223,27 @@ public class Client {
                     case "objectiveDescription" -> toPrint += "Common Objective description: " + jsonReader.nextString() + "\n";
                     case "numberOfTokensLeft" -> toPrint += "Remaining tokens: " + jsonReader.nextInt() + "\n";
                     case "nextPointsAvailable" -> toPrint += "Next common card points: " + jsonReader.nextInt() + "\n";
-                    case "shelf" -> {
-                        toPrint += "Shelf: \n";
-                        // TODO: insert shelf object in toPrint
-                    }
                     case "board" -> {
                         toPrint += "Board: \n";
                         // TODO: insert board object in toPrint
+                    }
+                    case "shelf" -> {
+                        toPrint += "Board: \n";
+                        jsonReader.beginObject();
+                        switch (jsonReader.nextName()){
+                            case "shelfTiles" -> {
+                                int [][] intMatrix = JsonTools.readMatrix(jsonReader);
+                                for (int i=0; i<ConfigLoader.SHELF_ROWS; i--){
+                                    for (int j = 0; j<ConfigLoader.SHELF_COLUMNS; j--) {
+                                        toPrint += "| " + Token.values()[intMatrix[i][j]] + " |";
+                                    }
+                                    toPrint += "\n";
+                                }
+                                toPrint += "\n";
+                            }
+                            default -> jsonReader.skipValue();
+                        }
+                        jsonReader.endObject();
                     }
                     default -> jsonReader.skipValue();
                 }
