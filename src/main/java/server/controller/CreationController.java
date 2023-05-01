@@ -1,7 +1,6 @@
 package server.controller;
 
 import com.google.gson.stream.JsonReader;
-import server.controller.exceptions.TooManyPlayersException;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.model.Game;

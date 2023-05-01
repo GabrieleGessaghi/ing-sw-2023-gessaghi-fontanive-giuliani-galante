@@ -24,7 +24,7 @@ public class TurnController implements Observer {
     private final ClientHandler currentClientHandler;
 
     public TurnController(Game game, ClientHandler currentClient) {
-        selectedTiles = new int[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
+        selectedTiles = null;
         selectedColumn = -1;
         currentClientHandler = currentClient;
         this.game = game;
@@ -55,9 +55,21 @@ public class TurnController implements Observer {
 
     private void newTurn() {
         currentClientHandler.requestInput(Prompt.TOKENS);
-        //WAIT FOR RESPONSE
+        while (selectedTiles == null) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
         currentClientHandler.requestInput(Prompt.COLUMN);
-        //WAIT FOR RESPONSE
+        while (selectedColumn == -1) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     private void finalizeTurn() {
@@ -99,6 +111,7 @@ public class TurnController implements Observer {
             if (correctClient) {
                 selectedTiles = tempSelectedTiles;
                 selectedColumn = tempSelectedColumn;
+                notifyAll();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
