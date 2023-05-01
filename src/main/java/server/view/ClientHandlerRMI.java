@@ -36,12 +36,13 @@ public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMII
 
     @Override
     public void registerObserver(Observer observer) {
-
+        observers.add(observer);
     }
 
     @Override
     public void requestInput(Prompt prompt) {
-
+        this.lastRequest = prompt;
+        this.isThereRequest = true;
     }
 
     @Override
