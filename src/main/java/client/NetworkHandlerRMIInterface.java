@@ -1,9 +1,10 @@
 package client;
 
+import server.controller.Prompt;
+
 import java.rmi.Remote;
 
 public interface NetworkHandlerRMIInterface extends Remote {
-    public void receiveInput(String Input);
-    public void sendInput(String Input);
-
+     void receiveInput(Prompt Input);
+     void showOutput(String output);
 }

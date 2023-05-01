@@ -1,23 +1,32 @@
 package client;
 
+import server.controller.Prompt;
 import server.view.ClientHandlerRMIInterface;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class NetworkHandlerRMI extends Thread implements NetworkHandlerRMIInterface {
-   private Client client;
-   public void NetworkHandlerRMI(Client client){
+   private final Client client;
+   ClientHandlerRMIInterface server;
+   public  NetworkHandlerRMI(Client client){
+       this.server = null;
        this.client = client;
    }
 
     @Override
-    public void receiveInput(String input) {
+    public void receiveInput(Prompt input) {
+       client.requestInput(input);
+    }
+
+
+    public void sendInput(String input) {
+        server.sendInput(input);
     }
 
     @Override
-    public void sendInput(String Input) {
-
+    public void showOutput(String output) {
+        client.showOutput(output);
     }
 
     public void run(){
@@ -25,7 +34,7 @@ public class NetworkHandlerRMI extends Thread implements NetworkHandlerRMIInterf
     i = 0;
        try {
            Registry registry = LocateRegistry.getRegistry();
-           ClientHandlerRMIInterface server;
+
            do {
                 server = (ClientHandlerRMIInterface) registry.lookup("ServerRMI" + i);
                i++;

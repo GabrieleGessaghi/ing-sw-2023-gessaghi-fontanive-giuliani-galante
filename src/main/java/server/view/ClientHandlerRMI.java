@@ -1,12 +1,13 @@
 package server.view;
 
 import client.NetworkHandlerRMI;
-import client.NetworkHandlerRMIInterface;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import server.controller.Prompt;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
+
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -19,13 +20,15 @@ public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMII
     private Prompt lastRequest;
     private boolean isThereRequest;
     private final ArrayList<Observer> observers;
+    NetworkHandlerRMI client;
     private String clientName;
     public ClientHandlerRMI(int index){
-        this.observers = null;
         this.isThereRequest = true;
         this.index = index;
         this.lastRequest = Prompt.NICKNAME;
         this.available = true;
+        this.client = null;
+        this.observers = new ArrayList<>();
     }
     @Override
     public void updateObservers(Event event) {
@@ -39,7 +42,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMII
 
     @Override
     public void update(Event event) {
-
+        client.showOutput(event.getJsonMessage());
     }
 
     @Override
@@ -55,19 +58,28 @@ public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMII
 
     @Override
     public void run() {
+
         try {
             Registry registry = LocateRegistry.getRegistry();
-            NetworkHandlerRMI client = (NetworkHandlerRMI) registry.lookup(clientName);
+            client = (NetworkHandlerRMI) registry.lookup(clientName);
         }catch(Exception e){
             System.out.println("[System] Client failed: " + e);
+        }
+        while(true){
+            if(isThereRequest) {
+                client.receiveInput(lastRequest);
+                isThereRequest = false;
+            }
+
 
         }
     }
 
-    @Override
     public void showOutput(String jsonMessage) {
-
+        client.showOutput(jsonMessage);
     }
+
+
     @Override
     public boolean isAvailable(){
         return this.available;
@@ -77,6 +89,10 @@ public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMII
     public void setAvailable(String clientName) {
         this.clientName = clientName;
         available = false;
+    }
+
+    public void sendInput(String input){
+        updateObservers(new Event(input));
     }
 
 }
