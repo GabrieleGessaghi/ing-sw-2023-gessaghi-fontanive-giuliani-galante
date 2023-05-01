@@ -31,7 +31,6 @@ public class Client {
 
     public void main(){
         requestConnectionType();
-        // while(connection is active/it's player's turn){requestInput}
     }
 
     /**
@@ -45,13 +44,12 @@ public class Client {
             case PLAYERSNUMBER -> requestNumberOfPlayers();
             case TOKENS -> requestTokenSelection();
             case COLUMN -> requestColumnSelection();
-            //case CONNECTIONTYPE -> selectConnectionType;
-            //TODO: move connection type selection to main
+
         }
     }
 
     /**
-     * Asks player to select connection type (either socket or RMI)
+     * Asks player to select connection type (either socket or RMI).
      * @author Niccolò Galante
      */
     public void requestConnectionType(){
@@ -68,8 +66,15 @@ public class Client {
 
         if(selection == 0)
             nhs = new NetworkHandlerSocket();
+        else
+            //nhs = new RMIHandlerSocket();
+        nhs.start();
     }
 
+    /**
+     * Asks player to insert nickname.
+     * @author Niccolò Galante
+     */
     private void requestNickname(){
         Scanner scn = new Scanner(System.in);
         JsonObject jsonObject = new JsonObject();
