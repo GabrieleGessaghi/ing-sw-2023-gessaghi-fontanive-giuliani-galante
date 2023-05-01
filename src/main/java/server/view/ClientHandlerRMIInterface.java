@@ -11,5 +11,7 @@ public interface ClientHandlerRMIInterface extends Remote {
     public void update(Event event);
     public void requestInput(Prompt prompt);
     public void showOutput(String jsonMessage);
+    public boolean isAvailable();
+    public void setAvailable(String nickname);
 
 }
