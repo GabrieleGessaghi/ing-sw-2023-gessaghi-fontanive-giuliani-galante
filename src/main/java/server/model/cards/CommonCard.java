@@ -6,18 +6,16 @@ import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
-import server.controller.utilities.JsonTools;
-import server.model.Game;
 import server.model.Savable;
 import server.model.Token;
-import server.controller.utilities.ConfigLoader;
 import server.model.cards.concreteobjectives.*;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static server.controller.utilities.ConfigLoader.COMMONCARD_POINTS;
+import static server.controller.utilities.ConfigLoader.PLAYERS_MIN;
 
 /**
  * Common objective card of the game.
@@ -25,7 +23,7 @@ import java.util.Map;
  */
 public class CommonCard extends Card implements Savable, Observable {
     private int numberOfTokensLeft;
-    private int numberOfPlayers;
+    private final int numberOfPlayers;
     private CommonObjective objective;
     private CommonType name;
     private final List<Observer> observers;
@@ -61,7 +59,7 @@ public class CommonCard extends Card implements Savable, Observable {
         int points = 0;
         satisfied = objective.isSatisfied(shelf);
         if (satisfied) {
-            points = ConfigLoader.COMMONCARD_POINTS[numberOfPlayers - ConfigLoader.PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
+            points = COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
             numberOfTokensLeft--;
             updateObservers(new Event(getState().toString()));
         }
@@ -113,7 +111,7 @@ public class CommonCard extends Card implements Savable, Observable {
         jsonObject.addProperty("objectiveType", name.ordinal());
         jsonObject.addProperty("objectiveDescription", objective.getDescription());
         jsonObject.addProperty("numberOfTokensLeft", numberOfTokensLeft);
-        //TODO: Include next points available
+        jsonObject.addProperty("nextPointsAvailable", COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft]);
         return jsonObject;
     }
 
