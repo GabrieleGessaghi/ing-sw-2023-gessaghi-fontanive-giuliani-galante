@@ -75,11 +75,8 @@ public class TurnController implements Observer {
     private void finalizeTurn() {
         try {
             game.playerTurn(selectedTiles, selectedColumn);
-        } catch (IllegalMoveException e) {
-            currentClientHandler.showOutput(JsonTools.createMessage("This combination of tiles cannot be selected!"));
-            newTurn();
-        } catch (IllegalColumnException e) {
-            currentClientHandler.showOutput(JsonTools.createMessage("This column cannot be selected!"));
+        } catch (IllegalMoveException | IllegalColumnException e) {
+            currentClientHandler.showOutput(JsonTools.createMessage(e.getMessage()));
             newTurn();
         }
     }

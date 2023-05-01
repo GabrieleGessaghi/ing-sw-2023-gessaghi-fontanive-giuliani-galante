@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented victory condition">
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/exceptions/TooManyPlayersException.java" beforeDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added wait for user input in TurnController">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/utilities/ConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/utilities/ConfigLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/configuration.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,13 +190,6 @@
       <workItem from="1682749112175" duration="7370000" />
       <workItem from="1682860377909" duration="959000" />
       <workItem from="1682920782466" duration="3425000" />
-    </task>
-    <task id="LOCAL-00081" summary="added Javadoc">
-      <created>1682496827486</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1682496827486</updated>
     </task>
     <task id="LOCAL-00082" summary="ClientHandlerSocket.run() implementation">
       <created>1682507576967</created>
@@ -532,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682942889764</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="Added wait for user input in TurnController">
+      <created>1682943535938</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1682943535938</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -566,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Created JsonTools" />
     <MESSAGE value="Creates Saveable and implemented Observable in Board" />
     <MESSAGE value="Added createJsonArray and createJsonMatrix to jsonTools" />
     <MESSAGE value="added Modelutil class" />
@@ -591,7 +592,8 @@
     <MESSAGE value="Updated controller" />
     <MESSAGE value="Finished controller" />
     <MESSAGE value="Implemented victory condition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented victory condition" />
+    <MESSAGE value="Added wait for user input in TurnController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added wait for user input in TurnController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
