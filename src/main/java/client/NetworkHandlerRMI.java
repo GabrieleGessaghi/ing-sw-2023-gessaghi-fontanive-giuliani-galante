@@ -14,16 +14,30 @@ public class NetworkHandlerRMI extends Thread implements NetworkHandlerRMIInterf
        this.client = client;
    }
 
+    /**
+     * method for receiving the input from the server and to send to Client
+     * @author Niccolò Giuliani
+     * @param input input to Send to the client
+     */
     @Override
     public void receiveInput(Prompt input) {
        client.requestInput(input);
     }
 
-
+    /**
+     * method to send an input to the Sever
+     * @author Niccolò Giuliani
+     * @param input input to send to the server
+     */
     public void sendInput(String input) {
         server.sendInput(input);
     }
 
+    /**
+     * method to ask to Client to show the output
+     * author Niccolò Giuliani
+     * @param output output to show
+     */
     @Override
     public void showOutput(String output) {
         client.showOutput(output);

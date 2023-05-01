@@ -13,6 +13,10 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
 
+/**
+ * class for handle the RMI Clients
+ * @author Niccolò Giuliani
+ */
 public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMIInterface{
 
     private boolean available;
@@ -30,6 +34,12 @@ public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMII
         this.client = null;
         this.observers = new ArrayList<>();
     }
+
+    /**
+     * method to update the observers
+     * @author Niccolò Giuliani
+     * @param event The event to be sent to the observers.
+     */
     @Override
     public void updateObservers(Event event) {
         String jsonMessage = event.getJsonMessage();
@@ -49,6 +59,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMII
     public void registerObserver(Observer observer) {
         observers.add(observer);
     }
+
 
     @Override
     public void requestInput(Prompt prompt) {
@@ -80,17 +91,32 @@ public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMII
     }
 
 
+    /**
+     * method to know if the ClientHandler is available
+     * @author Niccolò Giuliani
+     * @return this.available
+     */
     @Override
     public boolean isAvailable(){
         return this.available;
     }
 
+    /**
+     * method to set the network-handler's name and put the client-handler not available
+     * @author Niccolò Giuliani
+     * @param clientName name of the network-handler
+     */
     @Override
     public void setAvailable(String clientName) {
         this.clientName = clientName;
         available = false;
     }
 
+    /**
+     * method to send the input to the class Server
+     * @author Niccolò Giuliani
+     * @param input input of the Client
+     */
     public void sendInput(String input){
         updateObservers(new Event(input));
     }
