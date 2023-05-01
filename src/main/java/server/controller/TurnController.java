@@ -60,12 +60,27 @@ public class TurnController implements Observer {
         //WAIT FOR RESPONSE
     }
 
+    private void finalizeTurn() {
+        try {
+            game.playerTurn(selectedTiles, selectedColumn);
+        } catch (IllegalMoveException e) {
+            currentClientHandler.showOutput(JsonTools.createMessage("This combination of tiles cannot be selected!"));
+            newTurn();
+        } catch (IllegalColumnException e) {
+            currentClientHandler.showOutput(JsonTools.createMessage("This column cannot be selected!"));
+            newTurn();
+        }
+    }
+
     /**
      * Reads the JSON message and makes a new turn once all data is ready.
      * @author Giorgio Massimo Fontanive
      * @param event The event received from the observable object to which this is subscribed.
      */
     public void update(Event event) {
+        boolean correctClient = false;
+        int[][] tempSelectedTiles = null;
+        int tempSelectedColumn = -1;
         String jsonMessage = event.getJsonMessage();
         String field;
         JsonReader jsonReader;
@@ -75,27 +90,22 @@ public class TurnController implements Observer {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "selectedTiles" -> selectedTiles = JsonTools.readMatrix(jsonReader);
-                    case "selectedColumn" -> selectedColumn = jsonReader.nextInt();
-                    //TODO: Check that currentClientIndex is correct
+                    case "clientIndex" -> correctClient = jsonReader.nextInt() == currentClientHandler.getIndex();
+                    case "selectedTiles" -> tempSelectedTiles = JsonTools.readMatrix(jsonReader);
+                    case "selectedColumn" -> tempSelectedColumn = jsonReader.nextInt();
                 }
             }
             jsonReader.endObject();
+            if (correctClient) {
+                selectedTiles = tempSelectedTiles;
+                selectedColumn = tempSelectedColumn;
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        if (isMatrixLegal() && isColumnLegal()) {
-            try {
-                game.playerTurn(selectedTiles, selectedColumn);
-            } catch (IllegalMoveException e) {
-                currentClientHandler.showOutput(JsonTools.createMessage("This combination of tiles cannot be selected!"));
-                newTurn();
-            } catch (IllegalColumnException e) {
-                currentClientHandler.showOutput(JsonTools.createMessage("This column cannot be selected!"));
-                newTurn();
-            }
-        }
+        if (isMatrixLegal() && isColumnLegal())
+            finalizeTurn();
     }
 
     public boolean isGameOver() {

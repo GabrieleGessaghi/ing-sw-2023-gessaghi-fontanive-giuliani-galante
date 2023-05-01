@@ -3,6 +3,7 @@ package server.view;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.Prompt;
@@ -42,8 +43,7 @@ public class ClientHandlerSocket extends ClientHandler {
     @Override
     public void updateObservers(Event event) {
         String jsonMessage = event.getJsonMessage();
-        JsonElement jsonElement = new Gson().fromJson(jsonMessage, JsonElement.class);
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
         jsonObject.addProperty("clientIndex", index);
         Event indexedEvent = new Event(jsonObject.toString());
         for(Observer o : observers)

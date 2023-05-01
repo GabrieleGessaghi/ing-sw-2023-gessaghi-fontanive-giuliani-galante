@@ -2,6 +2,7 @@ package server.controller;
 
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
+import server.controller.utilities.JsonTools;
 import server.model.Game;
 import server.view.ClientHandlerSocket;
 import server.view.ClientHandler;
@@ -26,16 +27,18 @@ public class Controller extends Thread implements Observer {
 
     @Override
     public void run() {
-        //TODO: Add wait/notify
-        //TODO: Add observers
         isGameRunning = false;
         creationController = new CreationController();
         ListIterator<ClientHandler> listIterator = clientHandlers.listIterator();
         while(true) {
             if (isGameRunning) {
-                if (listIterator.hasNext())
-                    currentClient = listIterator.next();
+                if (!listIterator.hasNext())
+                    listIterator = clientHandlers.listIterator();
+                currentClient = listIterator.next();
                 turnController = new TurnController(game, currentClient);
+                currentClient.registerObserver(turnController);
+                if (turnController.isGameOver())
+                    reset();
             }
         }
     }
@@ -46,15 +49,20 @@ public class Controller extends Thread implements Observer {
             if (creationController.isGameReady()) {
                 game = creationController.createGame();
                 isGameRunning = true;
+                for (ClientHandler clientHandler : clientHandlers)
+                    game.registerObserver(clientHandler);
             }
     }
 
-    public void addClient(int index, ClientHandler clientHandler) {
+    public void addClient(ClientHandler clientHandler) {
         if (!isGameRunning && creationController.isSpotAvailable()) {
             clientHandlers.add(clientHandler);
+            clientHandler.registerObserver(this);
+            clientHandler.registerObserver(creationController);
             if (clientHandlers.size() == 1)
                 clientHandler.requestInput(Prompt.PLAYERSNUMBER);
-        }
+        } else
+            clientHandler.showOutput(JsonTools.createMessage("The game is full, please exit!"));
     }
 
     /**

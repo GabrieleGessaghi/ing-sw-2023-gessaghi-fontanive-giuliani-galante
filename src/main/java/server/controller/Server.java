@@ -30,9 +30,8 @@ public class Server {
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 ClientHandlerSocket clientHandler = new ClientHandlerSocket(connectionsCount, socket, dataInputStream, dataOutputStream);
                 clientHandler.start();
-                controller.addClient(connectionsCount, clientHandler);
+                controller.addClient(clientHandler);
                 connectionsCount++;
-                //TODO: Register observers
             } catch (Exception e) {
                 if (socket != null)
                     socket.close();
