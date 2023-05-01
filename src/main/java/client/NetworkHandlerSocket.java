@@ -14,16 +14,30 @@ public class NetworkHandlerSocket implements Runnable{
 
     //NEL COSTRUTTORE PASSA SOLO CLIENT
 
+    /**
+     * Class constructor.
+     * @author Gabriele Gessaghi
+     * @param client : calling client
+     * @param host : server ip
+     */
     public NetworkHandlerSocket (Client client, String host){
         this.client = client;
         this.host = host;
     }
 
+    /**
+     *
+     * @author Gabriele Gessaghi
+     */
     //LASCIARE STARE PER ORA
     public boolean ping () {
         return true;
     }
 
+    /**
+     * Establish the server connection and check the received string, ask for client input or send to client the string.
+     * @author Gabriele Gessaghi
+     */
     @Override
     public void run () {
         //TRY
@@ -42,6 +56,7 @@ public class NetworkHandlerSocket implements Runnable{
         while (true){
             String receivedString = buffer.readLine();
             String field;
+            boolean exit = false;
             JsonReader jsonReader = new JsonReader(new StringReader(receivedString));
             jsonReader.beginObject();
             while(jsonReader.hasNext()) {
@@ -51,17 +66,29 @@ public class NetworkHandlerSocket implements Runnable{
                     case "requestPlayerNumber" -> client.requestInput(Prompt.PLAYERSNUMBER);
                     case "requestTileSelection" -> client.requestInput(Prompt.TOKENS);
                     case "requestColumn" -> client.requestInput(Prompt.COLUMN);
+                    case "closeConnecion" -> exit = true;
                     default -> client.showOutput(receivedString);
                 }
             }
             jsonReader.endObject();
+            if (exit) break;
+        }
+        try {
+            in.close();
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     } catch (IOException e) {
         throw new RuntimeException(e);
     }
-
     }
 
+    /**
+     * Send the string on the output buffer.
+     * @author Gabriele Gessaghi
+     * @param input : String to write on the output buffer.
+     */
     public void sendInput (String input) {
         //MANDA LA STRINGA CON L'OGGETTO DATAOUTPUTSTREAM
         try {
