@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added constants to ConfigLoader">
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="NetworkHandlerSocket class finished, TODO ping())">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/NetworkHandlerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/NetworkHandlerSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,20 +188,6 @@
       <workItem from="1682749112175" duration="7370000" />
       <workItem from="1682860377909" duration="959000" />
       <workItem from="1682920782466" duration="3425000" />
-    </task>
-    <task id="LOCAL-00083" summary="Updated Server">
-      <created>1682510036991</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1682510036991</updated>
-    </task>
-    <task id="LOCAL-00084" summary="Updated Server and ClientHandler">
-      <created>1682510232764</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1682510232764</updated>
     </task>
     <task id="LOCAL-00085" summary="Created Controller">
       <created>1682510709820</created>
@@ -533,7 +518,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682943893122</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="Fixed small issues">
+      <created>1682944336728</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1682944336728</updated>
+    </task>
+    <task id="LOCAL-00133" summary="NetworkHandlerSocket class finished, TODO ping())">
+      <created>1682950433196</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1682950433197</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,8 +566,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added createJsonArray and createJsonMatrix to jsonTools" />
-    <MESSAGE value="added Modelutil class" />
     <MESSAGE value="Finished JsonTools" />
     <MESSAGE value="Finished implementing interfaces into Board" />
     <MESSAGE value="Documented interfaces" />
@@ -592,7 +589,9 @@
     <MESSAGE value="Implemented victory condition" />
     <MESSAGE value="Added wait for user input in TurnController" />
     <MESSAGE value="Added constants to ConfigLoader" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added constants to ConfigLoader" />
+    <MESSAGE value="Fixed small issues" />
+    <MESSAGE value="NetworkHandlerSocket class finished, TODO ping())" />
+    <option name="LAST_COMMIT_MESSAGE" value="NetworkHandlerSocket class finished, TODO ping())" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

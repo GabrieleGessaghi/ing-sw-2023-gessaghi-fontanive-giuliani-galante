@@ -17,9 +17,11 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
  */
 public class Server {
     public static void main() throws IOException {
+        //TODO: Add javadoc
+        //TODO: Add connection to RMI
         ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");
         Controller controller = new Controller();
-        controller.start();
+        new Thread(controller).start();
         int connectionsCount = 0;
         while (true) {
             Socket socket = null;
@@ -29,7 +31,7 @@ public class Server {
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 ClientHandlerSocket clientHandler = new ClientHandlerSocket(connectionsCount, socket, dataInputStream, dataOutputStream);
-                clientHandler.start();
+                new Thread(clientHandler).start();
                 controller.addClient(clientHandler);
                 connectionsCount++;
             } catch (Exception e) {

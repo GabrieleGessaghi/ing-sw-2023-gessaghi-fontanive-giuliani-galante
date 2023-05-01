@@ -4,7 +4,6 @@ import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
-import server.view.ClientHandlerSocket;
 import server.view.ClientHandler;
 
 import java.util.*;
@@ -13,12 +12,11 @@ import java.util.*;
  * Handles the game flow on a different thread.
  * @author Giorgio Massimo Fontanive
  */
-public class Controller extends Thread implements Observer {
+public class Controller implements Observer, Runnable {
     private boolean isGameRunning;
     private CreationController creationController;
     private TurnController turnController;
     private List<ClientHandler> clientHandlers;
-    private ClientHandler currentClient;
     private Game game;
 
     public Controller() {
@@ -34,7 +32,7 @@ public class Controller extends Thread implements Observer {
             if (isGameRunning) {
                 if (!listIterator.hasNext())
                     listIterator = clientHandlers.listIterator();
-                currentClient = listIterator.next();
+                ClientHandler currentClient = listIterator.next();
                 turnController = new TurnController(game, currentClient);
                 currentClient.registerObserver(turnController);
                 if (game.gameOver())

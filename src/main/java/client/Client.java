@@ -65,7 +65,7 @@ public class Client {
         }
 
         if(selection == 0)
-            nhs = new NetworkHandlerSocket();
+            nhs = new NetworkHandlerSocket(this);
         else {}
             //nhs = new RMIHandlerSocket();
         nhs.start();
@@ -190,4 +190,6 @@ public class Client {
         input = jsonObject.toString();
         nhs.sendInput(input);
     }
+
+    public void showOutput (String toShow){}
 }
