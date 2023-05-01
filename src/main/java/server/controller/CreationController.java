@@ -37,11 +37,9 @@ public class CreationController implements Observer {
                     case "playersNumber" -> setPlayerNumber(jsonReader.nextInt());
                     case "playersNickname" -> addPlayer(jsonReader.nextString());
                 }
-                if(playersNumber < playersNicknames.size())
-                    throw new TooManyPlayersException("Too many players trying to play the game");
             }
             jsonReader.endObject();
-        } catch (IOException | TooManyPlayersException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -88,6 +86,10 @@ public class CreationController implements Observer {
      * @author Niccolò Giuliani
      */
     private void addPlayer(String nickname) {
+        if (playersNumber == -1 || playersNicknames.size() < playersNumber)
             playersNicknames.add(nickname);
+        else {
+            //WARN CLIENTHANDLER
+        }
     }
 }

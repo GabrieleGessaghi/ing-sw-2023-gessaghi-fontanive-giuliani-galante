@@ -9,14 +9,14 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import static server.controller.utilities.ConfigLoader.SERVER_PORT;
+
 /**
  * Accepts new connections and starts the game controller.
  * @author Giorgio Massimo Fontanive
  */
 public class Server {
     public static void main() throws IOException {
-        //TODO: Maybe put on different method
-        //TODO: Implement updateObserver calls in model
         ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");
         Controller controller = new Controller();
         controller.start();
@@ -24,8 +24,7 @@ public class Server {
         while (true) {
             Socket socket = null;
             try {
-                //TODO: Add port in configuartions file
-                ServerSocket serverSocket = new ServerSocket(1234);
+                ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
                 socket = serverSocket.accept();
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());

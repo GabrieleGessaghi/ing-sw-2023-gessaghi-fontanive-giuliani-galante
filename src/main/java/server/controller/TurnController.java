@@ -6,6 +6,8 @@ import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
 import server.controller.utilities.ConfigLoader;
+import server.model.exceptions.IllegalColumnException;
+import server.model.exceptions.IllegalMoveException;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -72,10 +74,12 @@ public class TurnController implements Observer {
         }
 
         if (isMatrixLegal() && isColumnLegal()) {
-            //TODO: Insert try catch
-            game.playerTurn(selectedTiles, selectedColumn);
+            try {
+                game.playerTurn(selectedTiles, selectedColumn);
+            } catch (IllegalMoveException | IllegalColumnException e) {
+                //WARN CLIENTHANDLER
+            }
         }
-        //TODO: Maybe throw an exception
     }
 
     public boolean isGameOver() {

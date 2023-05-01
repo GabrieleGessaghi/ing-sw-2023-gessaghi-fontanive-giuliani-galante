@@ -199,7 +199,7 @@ public class Board implements Observable, Savable {
                     tiles[i][j] = Token.NOTHING;
         if (isResetNeeded())
             reset();
-        updateObservers(new Event(getState()));
+        updateObservers(new Event(getState().toString()));
     }
 
     /**

@@ -11,7 +11,7 @@ import java.nio.file.Paths;
  * @author Giorgio Massimo Fontanive
 */
 public class ConfigLoader {
-
+    public static int SERVER_PORT;
     public static int SHELF_ROWS;
     public static int SHELF_COLUMNS;
     public static int BOARD_SIZE;

@@ -35,6 +35,7 @@ public class Controller extends Thread implements Observer {
     @Override
     public void run() {
         //TODO: Add wait/notify
+        //TODO: Add observers
         int clientsListIndex = 0;
         while (true) {
             if (isGameRunning) {
@@ -50,13 +51,13 @@ public class Controller extends Thread implements Observer {
                 } catch (Exception e) {
                     currentClient.showOutput("\"errorMessage\":\"Generic error!\"");
                 }
-                if (turnController.isGameOver()) { //TODO: Improve this
+                /*if (turnController.isGameOver()) { //TODO: Improve this
                     for (ClientHandler client : clientHandlers) {
                         //client.showOutput("\"errorMessage\":\"Game over!\n" + + "is the winner!\"");
                         //CLOSE CONNECTION
                     }
                     reset();
-                }
+                }*/
             }
         }
     }

@@ -105,30 +105,18 @@ public class Game implements Savable, Observable {
      *                      the order of choice for the other ones.
      * @param column The column on which the player wants to put the new tiles.
      */
-    public void playerTurn (int [][] selectedTiles, int column) {
-        //TODO: Throw exceptions when input is wrong
+    public void playerTurn (int [][] selectedTiles, int column) throws IllegalMoveException, IllegalColumnException{
         if (players[currentPlayerIndex].isConnected) {
 
             //Gets the tiles from the board.
             Token[] selectedTokens;
-            try {
-                selectedTokens = board.selectTiles(selectedTiles);
-            } catch (IllegalMoveException e1){
-                System.out.println("The selected tokens are not valid!");
-                return;
-            }
+            selectedTokens = board.selectTiles(selectedTiles);
 
             //Inserts the tokens in the shelf.
-            try {
-                players[currentPlayerIndex].insertTokens(selectedTokens, column);
-            } catch (IllegalColumnException e2) {
-                System.out.println("The selected column can't store all the selected tokens!");
-                return;
-            }
+            players[currentPlayerIndex].insertTokens(selectedTokens, column);
 
             //Removes tiles from the board.
-            boolean[][] isSelected = new boolean[selectedTiles.length][selectedTiles[0].length];
-            isSelected = Board.convertIntegerMatrix(selectedTiles, -1);
+            boolean[][] isSelected = Board.convertIntegerMatrix(selectedTiles, -1);
             board.removeTiles(isSelected);
         }
         currentPlayerIndex++;
