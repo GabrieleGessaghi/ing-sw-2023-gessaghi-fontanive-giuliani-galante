@@ -5,9 +5,7 @@ import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
 
 /**
- * Eight tiles of the same type. There’s no
- * restriction about the position of these
- * tiles.
+ * Eight tiles of the same type. There’s no restriction about the position of these tiles.
  * @author Niccolò Giuliani
  */
 public class Eightany implements CommonObjective {
@@ -28,7 +26,13 @@ public class Eightany implements CommonObjective {
         return countCat >= 8 || countBook >= 8 || countToy >= 8 || countTrophy >= 8 || countFrame >= 8 || countPlant >= 8;
     }
 
+    @Override
     public CommonType getName(){
         return CommonType.EIGHTANY;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Eight tiles of the same type. There’s no restriction about the position of these tiles.";
     }
 }

@@ -17,6 +17,7 @@ public class Corners implements CommonObjective {
                 shelf[0][0] == shelf[ROWS - 1][COLUMNS - 1];
     }
 
+    @Override
     public CommonType getName(){
         return CommonType.CORNERS;
     }

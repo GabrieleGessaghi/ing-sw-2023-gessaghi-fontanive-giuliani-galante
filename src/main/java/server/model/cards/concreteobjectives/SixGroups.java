@@ -5,11 +5,8 @@ import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
 
 /**
- * Six groups each containing at least
- * 2 tiles of the same type (not necessarily
- * in the depicted shape).
- * The tiles of one group can be different
- * from those of another group.
+ * Six groups each containing at least 2 tiles of the same type.
+ * The tiles of one group can be different from those of another group.
  * @author Niccolò Giuliani
  */
 public class SixGroups implements CommonObjective {
@@ -42,7 +39,13 @@ public class SixGroups implements CommonObjective {
         return counter >= 6;
     }
 
+    @Override
     public CommonType getName(){
         return CommonType.SIXGROUPS;
+    }
+
+    @Override
+    public String getDescription() {
+        return  "Six groups each containing at least 2 tiles of the same type.\nThe tiles of one group can be different from those of another group";
     }
 }

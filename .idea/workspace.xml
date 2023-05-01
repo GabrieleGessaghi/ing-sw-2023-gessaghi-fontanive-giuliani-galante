@@ -4,18 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added pseudocode in NetworkHandler">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Updated interfaces in Model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/exceptions/FullColumnException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/exceptions/IllegalColumnException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/exceptions/SaveLoadingFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/exceptions/FailedLoadingException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/ShelfTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/ShelfTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Corners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Corners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Diagonal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Diagonal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Eightany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Eightany.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourRows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/FourRows.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/SixGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/SixGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Stairs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/Stairs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/ThreeColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/ThreeColumns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoColumns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoRows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoRows.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoSquares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/TwoSquares.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/XShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/concreteobjectives/XShape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,14 +198,7 @@
       <workItem from="1682661263149" duration="2708000" />
       <workItem from="1682749112175" duration="7370000" />
       <workItem from="1682860377909" duration="959000" />
-      <workItem from="1682920782466" duration="2653000" />
-    </task>
-    <task id="LOCAL-00074" summary="Tested ThreeColumns">
-      <created>1681478244285</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1681478244285</updated>
+      <workItem from="1682920782466" duration="3425000" />
     </task>
     <task id="LOCAL-00075" summary="Tested TwoColumns">
       <created>1681478924383</created>
@@ -541,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682782037346</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="Updated interfaces in Model">
+      <created>1682923466840</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1682923466840</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +577,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Update Controller run" />
     <MESSAGE value="Finished Controller main cycle" />
     <MESSAGE value="Added check for right client in Controller" />
     <MESSAGE value="Updated Controller" />
@@ -600,7 +601,8 @@
     <MESSAGE value="Implemented interfaces in CommonCard" />
     <MESSAGE value="Added interfaces to Game" />
     <MESSAGE value="Added methods to Client" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added methods to Client" />
+    <MESSAGE value="Updated interfaces in Model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated interfaces in Model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

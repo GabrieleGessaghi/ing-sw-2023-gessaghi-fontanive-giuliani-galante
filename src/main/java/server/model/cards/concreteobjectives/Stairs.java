@@ -5,15 +5,14 @@ import server.model.cards.CommonObjective;
 import server.model.cards.CommonType;
 
 /**
- * Five columns of increasing or decreasing
- * height. Starting from the first column on
- * the left or on the right, each next column
- * must be made of exactly one more tile.
- * Tiles can be of any type
+ * Five columns of increasing or decreasing height.
+ * Starting from the first column on the left or on the right, each next column must be made of exactly one more tile.
+ * Tiles can be of any type.
  * @author Niccolò Giuliani
  */
 public class Stairs implements CommonObjective {
 
+    @Override
     public boolean isSatisfied(Token[][] shelf) {
         int[] counter;
         counter = new int[COLUMNS];
@@ -33,7 +32,16 @@ public class Stairs implements CommonObjective {
                     flagRight = true;
         return !flagRight || !flagLeft;
     }
+
+    @Override
     public CommonType getName(){
         return CommonType.STAIRS;
+    }
+
+    @Override
+    public String getDescription() {
+        return  "Five columns of increasing or decreasing height.\n" +
+                "Starting from the first column on the left or on the right, each next column must be made of exactly one more tile.\n" +
+                "Tiles can be of any type.";
     }
 }
