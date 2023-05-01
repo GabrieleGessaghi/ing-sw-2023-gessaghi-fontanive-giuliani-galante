@@ -20,13 +20,15 @@ import java.util.*;
 import static server.controller.utilities.ConfigLoader.NUMBER_OF_COMMON_CARDS;
 
 public class Game implements Savable, Observable {
-    private String gameID;
+    private final String gameID;
     private int currentPlayerIndex;
     private int numberOfPlayers;
     private Board board;
     private Player[] players;
     private CommonCard[] commonCards;
     private final List<Observer> observers;
+    private boolean isLastRound;
+    private boolean isGameFinished;
 
     /**
      * Class constructor, currentPlayer is set to player with firstPlayer true.
@@ -39,6 +41,8 @@ public class Game implements Savable, Observable {
         board = new Board(numberOfPlayers);
         commonCards = new CommonCard[NUMBER_OF_COMMON_CARDS];
         observers = new ArrayList<>();
+        isLastRound = false;
+        isGameFinished = false;
         this.numberOfPlayers = numberOfPlayers;
 
         //generates the unique 4 digit code for the current game
@@ -99,6 +103,22 @@ public class Game implements Savable, Observable {
     }
 
     /**
+     * Reload a saved state of a previous game.
+     * @author Gabriele Gessaghi
+     */
+    public void loadGame(String fileName) throws FileNotFoundException {
+        try {
+            FileInputStream fIn = new FileInputStream(fileName);
+
+        } catch (FileNotFoundException e){
+            String errorMessage = "Game files not found!";
+            System.out.println(errorMessage);
+            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
+        }
+    }
+
+
+    /**
      * Collect the selected tiles from the game board and update the current player shelf.
      * @author Gabriele Gessaghi
      * @param selectedTiles A matrix with -1 for the tiles not chosen and
@@ -118,30 +138,42 @@ public class Game implements Savable, Observable {
             //Removes tiles from the board.
             boolean[][] isSelected = Board.convertIntegerMatrix(selectedTiles, -1);
             board.removeTiles(isSelected);
+
+            if (players[currentPlayerIndex].isShelfFull())
+                isLastRound = true;
         }
+
         currentPlayerIndex++;
+        if (currentPlayerIndex == players.length)
+            if (!isLastRound)
+                currentPlayerIndex = 0;
+            else
+                isGameFinished = true;
+        //Save Game
     }
 
     /**
-     * Return the winner if the game is over.
+     * Returns the winner when the game is over.
      * @author Gabriele Gessaghi
-     * @return The nickname of the winner or null if not over yet.
+     * @return The nickname of the winner.
      */
-    public String endGame() { return null;}
+    public boolean gameOver() {
+        if (isGameFinished) {
+            int maxPoints = 0;
+            Player winner = players[0];
+            for (Player player : players)
+                if (player.getPoints() >= maxPoints) {
+                    maxPoints = player.getPoints();
+                    winner = player;
+                }
 
-    /**
-     * Reload a saved state of a previous game.
-     * @author Gabriele Gessaghi
-     */
-    public void loadGame(String fileName) throws FileNotFoundException {
-        try {
-            FileInputStream fIn = new FileInputStream(fileName);
-
-        } catch (FileNotFoundException e){
-            String errorMessage = "Game files not found!";
-            System.out.println(errorMessage);
-            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("winnerNickname", winner.getNickname());
+            jsonObject.addProperty("winnerPoints", winner.getPoints());
+            updateObservers(new Event(jsonObject.toString()));
+            return true;
         }
+        return false;
     }
 
     @Override

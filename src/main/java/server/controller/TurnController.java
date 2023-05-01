@@ -107,8 +107,4 @@ public class TurnController implements Observer {
         if (isMatrixLegal() && isColumnLegal())
             finalizeTurn();
     }
-
-    public boolean isGameOver() {
-        return game.endGame() == null;
-    }
 }

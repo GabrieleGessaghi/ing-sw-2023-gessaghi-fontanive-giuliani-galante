@@ -37,7 +37,7 @@ public class Controller extends Thread implements Observer {
                 currentClient = listIterator.next();
                 turnController = new TurnController(game, currentClient);
                 currentClient.registerObserver(turnController);
-                if (turnController.isGameOver())
+                if (game.gameOver())
                     reset();
             }
         }

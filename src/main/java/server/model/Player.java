@@ -119,8 +119,6 @@ public class Player implements Savable, Observable {
 //                isComplete[i] = true;
 //                tempPoints += cards.get(i).getPoints(shelf.getTiles());
 //            }
-
-        //TODO: Check if player arrives at endgame first (adds 1 point)
     }
 
     /**
@@ -139,9 +137,18 @@ public class Player implements Savable, Observable {
                 } catch(IllegalColumnException e) {
                     for(int i = 0; i < tokensInserted; i++)
                         shelf.removeToken(column);
+                    throw new IllegalColumnException("The column is full!");
                 }
         updateCommonCardPoints();
         updateObservers(new Event(getState().toString()));
+    }
+
+    public boolean isShelfFull() {
+        if (shelf.isFull()) {
+            commonCardPoints++;
+            return true;
+        }
+        return false;
     }
 
     @Override
