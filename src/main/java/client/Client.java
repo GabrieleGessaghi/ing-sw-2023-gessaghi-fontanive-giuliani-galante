@@ -30,7 +30,13 @@ public class Client {
     }
 
     public void main(){
-        requestConnectionType();
+        String hostIp = new String();
+        Scanner scn = new Scanner(System.in);
+
+        System.out.println("Insert host's IP address:\n");
+        hostIp = scn.nextLine();
+
+        requestConnectionType(hostIp);
     }
 
     /**
@@ -44,7 +50,6 @@ public class Client {
             case PLAYERSNUMBER -> requestNumberOfPlayers();
             case TOKENS -> requestTokenSelection();
             case COLUMN -> requestColumnSelection();
-
         }
     }
 
@@ -52,7 +57,7 @@ public class Client {
      * Asks player to select connection type (either socket or RMI).
      * @author Niccolò Galante
      */
-    public void requestConnectionType(){
+    public void requestConnectionType(String host){
         Scanner scn = new Scanner(System.in);
         int selection;
 
@@ -65,10 +70,10 @@ public class Client {
         }
 
         if(selection == 0)
-            nhs = new NetworkHandlerSocket(this);
+            nhs = new NetworkHandlerSocket(this, host);
         else {}
             //nhs = new RMIHandlerSocket();
-        nhs.start();
+        new Thread(nhs).start();
     }
 
     /**
@@ -160,7 +165,6 @@ public class Client {
             selectionInt[1] = tokenCoordinates[1] - '1';
 
             selectedTokens[selectionInt[0]][selectionInt[1]] = i;
-            //TODO: specify in matrix the order in which tokens have been selected (0, 1, 2)
         }
         jMatrix = createJsonMatrix(selectedTokens);
         jMatrixToSend.add("selectedTokens", jMatrix);
@@ -191,5 +195,7 @@ public class Client {
         nhs.sendInput(input);
     }
 
-    public void showOutput (String toShow){}
+    public void showOutput (String toShow){
+
+    }
 }
