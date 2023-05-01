@@ -2,10 +2,14 @@ package client;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import client.NetworkHandlerSocket;
+import server.controller.utilities.JsonTools;
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.Scanner;
 
 import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
@@ -196,6 +200,43 @@ public class Client {
     }
 
     public void showOutput (String toShow){
-
+        JsonReader jsonReader = new JsonReader(new StringReader(toShow));
+        String field;
+        String toPrint = "";
+        try {
+            jsonReader.beginObject();
+            while(jsonReader.hasNext()) {
+                field = jsonReader.nextName();
+                switch (field) {
+                    case "nickname" -> toPrint += "Player: " + jsonReader.nextString() + "\n";
+                    case "totalPoints" -> toPrint += "Points: " + jsonReader.nextInt() + "\n";
+                    case "isFirtPlayer" -> {
+                        if (jsonReader.nextBoolean()) {
+                            toPrint += "Frist player\n";
+                        }else {
+                            toPrint += "Not first Player\n";
+                        }
+                    }
+                    case "playerIndex" -> toPrint += "Player index: " + jsonReader.nextInt() + "\n";
+                    case "currentPlayerNickname" -> toPrint += "Current player: " + jsonReader.nextString() + "\n";
+                    case "objectiveDescription" -> toPrint += "Common Objective description: " + jsonReader.nextString() + "\n";
+                    case "numberOfTokensLeft" -> toPrint += "Remaining tokens: " + jsonReader.nextInt() + "\n";
+                    case "nextPointsAvailable" -> toPrint += "Next common card points: " + jsonReader.nextInt() + "\n";
+                    case "shelf" -> {
+                        toPrint += "Shelf: \n";
+                        // TODO: insert shelf object in toPrint
+                    }
+                    case "board" -> {
+                        toPrint += "Board: \n";
+                        // TODO: insert board object in toPrint
+                    }
+                    default -> jsonReader.skipValue();
+                }
+            }
+            jsonReader.endObject();
+            System.out.println(toPrint);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
