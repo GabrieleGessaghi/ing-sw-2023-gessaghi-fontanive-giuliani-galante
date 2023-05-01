@@ -1,5 +1,7 @@
 package server.model;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
@@ -229,8 +231,8 @@ public class Board implements Observable, Savable {
     }
 
     @Override
-    public String getState() {
-        Map<String, Object> elements = new HashMap<>();
+    public JsonObject getState() {
+        JsonObject jsonObject = new JsonObject();
 
         //Converts the matrices into integer ones.
         int[][] tilesInteger = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
@@ -241,26 +243,23 @@ public class Board implements Observable, Savable {
                 usableTilesInteger[i][j] = usableTiles[i][j] ? 1 : 0;
             }
 
-        elements.put("tiles", JsonTools.createJsonMatrix(tilesInteger));
-        elements.put("usableTiles", JsonTools.createJsonMatrix(usableTilesInteger));
-        return JsonTools.createJson(elements).toString();
+        jsonObject.add("tiles", JsonTools.createJsonMatrix(tilesInteger));
+        jsonObject.add("usableTiles", JsonTools.createJsonMatrix(usableTilesInteger));
+        return jsonObject;
     }
 
     @Override
-    public void loadState(String jsonMessage) {
-        Map<String, Object> elements = JsonTools.parseJson(jsonMessage);
+    public void loadState(JsonObject jsonObject) {
+        Map<String, JsonElement> elements = jsonObject.asMap();
         try {
-
-            //Converts the integer matrices into usable ones.
-            int[][] tilesInteger = JsonTools.readMatrix((JsonReader) elements.get("boardTiles"));
-            int[][] usableTilesInteger = JsonTools.readMatrix((JsonReader) elements.get("boardUsableTiles"));
+            int[][] tilesInteger = JsonTools.readMatrix(elements.get("boardTiles").getAsJsonArray());
+            int[][] usableTilesInteger = JsonTools.readMatrix(elements.get("boardUsableTiles").getAsJsonArray());
             Token[] tokenValues = Token.values();
             for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
                 for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++) {
                     tiles[i][j] = tokenValues[tilesInteger[i][j]];
                     usableTiles[i][j] = usableTilesInteger[i][j] == 1;
                 }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

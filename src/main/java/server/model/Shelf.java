@@ -1,5 +1,9 @@
 package server.model;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import server.controller.utilities.JsonTools;
 import server.model.exceptions.IllegalColumnException;
@@ -19,6 +23,11 @@ public class Shelf implements Savable {
         tiles = new Token[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
         for (Token[] row: tiles)
             Arrays.fill(row, Token.NOTHING);
+    }
+
+    public Shelf(String jsonState) {
+        tiles = new Token[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
+        loadState(JsonParser.parseString(jsonState).getAsJsonObject());
     }
 
     /**
@@ -71,8 +80,8 @@ public class Shelf implements Savable {
     }
 
     @Override
-    public String getState() {
-        Map<String, Object> elements = new HashMap<>();
+    public JsonObject getState() {
+        JsonObject jsonObject = new JsonObject();
 
         //Converts the matrices into integer ones.
         int[][] tilesInteger = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
@@ -80,17 +89,15 @@ public class Shelf implements Savable {
             for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++)
                 tilesInteger[i][j] = tiles[i][j].ordinal();
 
-        elements.put("shelfTiles", JsonTools.createJsonMatrix(tilesInteger));
-        return JsonTools.createJson(elements).toString();
+        jsonObject.add("shelfTiles", JsonTools.createJsonMatrix(tilesInteger));
+        return jsonObject;
     }
 
     @Override
-    public void loadState(String jsonMessage) {
-        Map<String, Object> elements = JsonTools.parseJson(jsonMessage);
+    public void loadState(JsonObject jsonObject) {
+        Map<String, JsonElement> elements = jsonObject.asMap();
         try {
-
-            //Converts the integer matrices into usable ones.
-            int[][] tilesInteger = JsonTools.readMatrix((JsonReader) elements.get("shelfTiles"));
+            int[][] tilesInteger = JsonTools.readMatrix(elements.get("shelfTiles").getAsJsonArray());
             Token[] tokenValues = Token.values();
             for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
                 for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++)

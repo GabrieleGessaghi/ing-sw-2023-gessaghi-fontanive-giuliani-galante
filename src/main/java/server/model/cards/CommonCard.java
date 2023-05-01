@@ -1,5 +1,8 @@
 package server.model.cards;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
@@ -41,9 +44,10 @@ public class CommonCard extends Card implements Savable, Observable {
         observers = new ArrayList<>();
     }
 
-    public CommonCard(String jsonState) {
-        loadState(jsonState);
+    public CommonCard(String jsonState, int numberOfPlayers) {
+        this.numberOfPlayers = numberOfPlayers;
         observers = new ArrayList<>();
+        loadState(JsonParser.parseString(jsonState).getAsJsonObject());
     }
 
     /**
@@ -59,7 +63,7 @@ public class CommonCard extends Card implements Savable, Observable {
         if (satisfied) {
             points = ConfigLoader.COMMONCARD_POINTS[numberOfPlayers - ConfigLoader.PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
             numberOfTokensLeft--;
-            updateObservers(new Event(getState()));
+            updateObservers(new Event(getState().toString()));
         }
         return points;
     }
@@ -104,22 +108,20 @@ public class CommonCard extends Card implements Savable, Observable {
     }
 
     @Override
-    public String getState() {
-        Map<String, Object> elements = new HashMap<>();
-        elements.put("objectiveType", name.ordinal());
-        elements.put("objectiveDescription", objective.getDescription());
-        elements.put("numberOfTokensLeft", numberOfTokensLeft);
-        elements.put("numberOfPlayers", numberOfPlayers);
-        return JsonTools.createJson(elements).toString();
+    public JsonObject getState() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("objectiveType", name.ordinal());
+        jsonObject.addProperty("objectiveDescription", objective.getDescription());
+        jsonObject.addProperty("numberOfTokensLeft", numberOfTokensLeft);
+        //TODO: Include next points available
+        return jsonObject;
     }
 
     @Override
-    public void loadState(String jsonMessage) {
-        Map<String, Object> elements;
-        elements = JsonTools.parseJson(jsonMessage);
-        numberOfTokensLeft = (Integer) elements.get("numberOfTokensLeft");
-        name = CommonType.values()[((Integer) elements.get("objectiveType"))];
+    public void loadState(JsonObject jsonObject) {
+        Map<String, JsonElement> elements = jsonObject.asMap();
+        numberOfTokensLeft = elements.get("numberOfTokensLeft").getAsInt();
+        name = CommonType.values()[(elements.get("objectiveType").getAsInt())];
         objective = createCommonObjective(name);
-        numberOfPlayers = (Integer) elements.get("numberOfPlayers");
     }
 }

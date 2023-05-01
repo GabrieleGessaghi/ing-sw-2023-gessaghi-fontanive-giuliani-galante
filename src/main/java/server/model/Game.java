@@ -1,5 +1,7 @@
 package server.model;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
@@ -167,30 +169,29 @@ public class Game implements Savable, Observable {
     }
 
     @Override
-    public String getState() {
-        Map<String, Object> elements = new HashMap<>();
-        elements.put("numberOfPlayers", numberOfPlayers);
-        elements.put("currentPlayerIndex", currentPlayerIndex);
-        elements.put("currentPlayerNickname", players[currentPlayerIndex].getNickname());
-        elements.put("board", JsonTools.createJson(JsonTools.parseJson(board.getState())));
+    public JsonObject getState() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("numberOfPlayers", numberOfPlayers);
+        jsonObject.addProperty("currentPlayerIndex", currentPlayerIndex);
+        jsonObject.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
+        jsonObject.add("board", board.getState());
         for (int i = 0; i < players.length; i++)
-            elements.put("player" + i, JsonTools.createJson(JsonTools.parseJson(players[i].getState())));
+            jsonObject.add("player" + i, players[i].getState());
         for (int i =0; i < commonCards.length; i++)
-            elements.put("commonCard" + i, JsonTools.createJson(JsonTools.parseJson(commonCards[i].getState())));
-        return JsonTools.createJson(elements).toString();
+            jsonObject.add("commonCard" + i, commonCards[i].getState());
+        return jsonObject;
     }
 
     @Override
-    public void loadState(String jsonMessage) {
-        Map<String, Object> elements;
-        elements = JsonTools.parseJson(jsonMessage);
-        numberOfPlayers = (Integer) elements.get("numberOfPlayers");
-        currentPlayerIndex = (Integer) elements.get("currentPlayerIndex");
+    public void loadState(JsonObject jsonObject) {
+        Map<String, JsonElement> elements = jsonObject.asMap();
         board = new Board(numberOfPlayers);
-        board.loadState(elements.get("board").toString());
         players = new Player[numberOfPlayers];
+        numberOfPlayers = elements.get("numberOfPlayers").getAsInt();
+        currentPlayerIndex = elements.get("currentPlayerIndex").getAsInt();
+        board.loadState(elements.get("board").getAsJsonObject());
         for (int i = 0; i < NUMBER_OF_COMMON_CARDS; i++)
-            commonCards[i] = new CommonCard(elements.get("commonCard" + i).toString());
+            commonCards[i] = new CommonCard(elements.get("commonCard" + i).toString(), numberOfPlayers);
         for (int i = 0; i < numberOfPlayers; i++)
             players[i] = new Player(elements.get("player" + i).toString(), List.of(commonCards));
     }

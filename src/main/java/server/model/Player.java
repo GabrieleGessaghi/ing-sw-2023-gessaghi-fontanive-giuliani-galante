@@ -1,9 +1,11 @@
 package server.model;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
-import server.controller.utilities.JsonTools;
 import server.model.cards.Card;
 import server.model.cards.CommonCard;
 import server.model.cards.TokenTools;
@@ -15,54 +17,52 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static server.controller.utilities.ConfigLoader.NUMBER_OF_COMMON_CARDS;
-
 /**
  * Handles players' shelves and cards.
  * @author Niccolò Galante
  */
 public class Player implements Savable, Observable {
     private String nickname;
-    private int points;
-    private Shelf playerShelf;
+    private Shelf shelf;
     private Card personalCard;
-    private Map<Card, Boolean> commonCards;
+    private final Map<Card, Boolean> commonCards;
     private final List<Observer> observers;
+    private int commonCardPoints;
     private boolean isFirstPlayer;
     public boolean isConnected;
 
     /**
      * Class constructor.
      * @author Niccolò Galante
-     * @param nickname Player's nickname.
-     * @param isFirstPlayer Indicates whether player is first or not.
+     * @param playerNickname Player's nickname.
+     * @param firstPlayer Indicates whether player is first or not.
      * @param personalCardIndex Player's personal card's index.
-     * @param common Common cards.
+     * @param commonCardsList Common cards.
      */
-    public Player(String nickname, boolean isFirstPlayer, int personalCardIndex, List<CommonCard> common) {
-        commonCards = new HashMap<>();
-        for (CommonCard commonCard : common)
-            commonCards.put(commonCard, true);
+    public Player(String playerNickname, boolean firstPlayer, int personalCardIndex, List<CommonCard> commonCardsList) {
+        nickname = playerNickname;
+        shelf = new Shelf();
         personalCard = new PersonalCard(personalCardIndex);
-        playerShelf = new Shelf();
-        points = 0;
-        this.nickname = nickname;
-        this.isFirstPlayer = isFirstPlayer;
-        this.isConnected = true;
+        commonCardPoints = 0;
+        isFirstPlayer = firstPlayer;
+        isConnected = true;
         observers = new ArrayList<>();
+        commonCards = new HashMap<>();
+        for (CommonCard commonCard : commonCardsList)
+            commonCards.put(commonCard, true);
     }
 
-    public Player(String jsonState, List<CommonCard> common) {
-        loadState(jsonState);
-        commonCards = new HashMap<>();
-        for (CommonCard commonCard : common)
-            commonCards.put(commonCard, true);
+    public Player(String jsonState, List<CommonCard> commonCardsList) {
         nickname = "";
-        playerShelf = new Shelf();
+        shelf = new Shelf();
         personalCard = null;
-        observers = new ArrayList<>();
         isFirstPlayer = false;
         isConnected = true;
+        observers = new ArrayList<>();
+        commonCards = new HashMap<>();
+        for (CommonCard commonCard : commonCardsList)
+            commonCards.put(commonCard, true);
+        loadState(JsonParser.parseString(jsonState).getAsJsonObject());
     }
 
     /**
@@ -75,19 +75,19 @@ public class Player implements Savable, Observable {
     }
 
     /**
-     * Getter for player's points.
+     * Getter for player's commonCardPoints.
      * @author Niccolò Galante
-     * @return Player's points.
+     * @return Player's commonCardPoints.
      */
     public int getPoints() {
 
         //Checks if tiles of same type are adjacent
         int adjacentPoints = 0;
         for (Token tokenType : Token.values())
-            adjacentPoints += TokenTools.counterIslandType(tokenType, playerShelf.getTiles(), true);
-        points += adjacentPoints;
+            adjacentPoints += TokenTools.counterIslandType(tokenType, shelf.getTiles(), true);
+        commonCardPoints += adjacentPoints;
 
-        return points + adjacentPoints + personalCard.getPoints(playerShelf.getTiles());
+        return commonCardPoints + adjacentPoints + personalCard.getPoints(shelf.getTiles());
     }
 
     /**
@@ -100,7 +100,7 @@ public class Player implements Savable, Observable {
     }
 
     /**
-     * Updates player's points.
+     * Updates player's commonCardPoints.
      * @author Niccolò Galante.
      */
     private void updateCommonCardPoints() {
@@ -109,15 +109,15 @@ public class Player implements Savable, Observable {
         int cardPoints = 0;
         for (Card card : commonCards.keySet()) {
             if (commonCards.get(card))
-                cardPoints = card.getPoints(playerShelf.getTiles());
+                cardPoints = card.getPoints(shelf.getTiles());
             if (cardPoints > 0)
                 commonCards.replace(card, false);
-            points += cardPoints;
+            commonCardPoints += cardPoints;
         }
 //        for (int i = 0; i < NUMBER_OF_CARDS; i++)
-//            if (!isComplete[i] && cards.get(i).getPoints(playerShelf.getTiles()) != 0) {
+//            if (!isComplete[i] && cards.get(i).getPoints(shelf.getTiles()) != 0) {
 //                isComplete[i] = true;
-//                tempPoints += cards.get(i).getPoints(playerShelf.getTiles());
+//                tempPoints += cards.get(i).getPoints(shelf.getTiles());
 //            }
 
         //TODO: Check if player arrives at endgame first (adds 1 point)
@@ -134,14 +134,14 @@ public class Player implements Savable, Observable {
         for (Token t: tokens)
             if(!t.equals(Token.NOTHING))
                 try {
-                    playerShelf.insertToken(t, column);
+                    shelf.insertToken(t, column);
                     tokensInserted++;
                 } catch(IllegalColumnException e) {
                     for(int i = 0; i < tokensInserted; i++)
-                        playerShelf.removeToken(column);
+                        shelf.removeToken(column);
                 }
         updateCommonCardPoints();
-        updateObservers(new Event(getState()));
+        updateObservers(new Event(getState().toString()));
     }
 
     @Override
@@ -157,40 +157,36 @@ public class Player implements Savable, Observable {
     }
 
     @Override
-    public String getState() {
-        Map<String, Object> elements = new HashMap<>();
-        elements.put("nickname", nickname);
-        elements.put("commonCardPoints", points);
-        elements.put("totalPoints", getPoints());
-        elements.put("personalCardIndex", personalCard.getIndex());
-        elements.put("shelf", JsonTools.createJson(JsonTools.parseJson(playerShelf.getState())));
-        elements.put("isFirstPlayer", isFirstPlayer ? 1 : 0);
-
-        //Saves which cards have already been completed
+    public JsonObject getState() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("nickname", nickname);
+        jsonObject.add("shelf", shelf.getState());
+        jsonObject.addProperty("totalPoints", getPoints());
+        jsonObject.addProperty("isFirstPlayer", isFirstPlayer);
+        jsonObject.addProperty("personalCardIndex", personalCard.getIndex());
+        jsonObject.addProperty("commonCardPoints", commonCardPoints);
         int i = 0;
         for (Card card : commonCards.keySet()) {
-            elements.put("commonCard" + i, commonCards.get(card) ? 1 : 0);
+            jsonObject.addProperty("commonCard" + i, commonCards.get(card));
             i++;
         }
-
-        return JsonTools.createJson(elements).toString();
+        return jsonObject;
     }
 
     @Override
-    public void loadState(String jsonMessage) {
-        Map<String, Object> elements;
-        elements = JsonTools.parseJson(jsonMessage);
-        nickname = (String) elements.get("nickname");
-        points = (Integer) elements.get("commonCardPoints");
-        personalCard = new PersonalCard((Integer) elements.get("personalCardIndex"));
-        isFirstPlayer = (Integer) elements.get("isFirstPlayer") == 1;
-        playerShelf = new Shelf();
-        playerShelf.loadState(elements.get("shelf").toString());
+    public void loadState(JsonObject jsonObject) {
+        Map<String, JsonElement> elements = jsonObject.asMap();
+        nickname = elements.get("nickname").toString();
+        personalCard = new PersonalCard(elements.get("personalCardIndex").getAsInt());
+        commonCardPoints = elements.get("commonCardPoints").getAsInt();
+        isFirstPlayer = elements.get("isFirstPlayer").getAsBoolean();
+        shelf = new Shelf();
+        shelf.loadState(elements.get("shelf").getAsJsonObject());
 
         //Loads which cards have already been completed
         int i = 0;
         for (Card card : commonCards.keySet()) {
-            boolean completed = (Integer) elements.get("commonCard" + i) == 1;
+            boolean completed = elements.get("commonCard" + i).getAsBoolean();
             commonCards.replace(card, completed);
             i++;
         }

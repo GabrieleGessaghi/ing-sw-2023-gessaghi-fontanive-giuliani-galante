@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Giorgio Massimo Fontanive
  */
 public class JsonTools {
-    //TODO: CHECK IF THERE ARE BETTER WAYS TO IMPLEMENT THIS
+    @Deprecated
     private static void addProperty(JsonObject jsonObject, String field, Object property) throws JsonCreationException {
         if (property.getClass().equals(Integer.class))
             jsonObject.addProperty(field, (Integer) property);
@@ -36,6 +36,7 @@ public class JsonTools {
      * @param elements A map containing every field and their respective value.
      * @return A JsonObject containing all the map's fields and values.
      */
+    @Deprecated
     public static JsonObject createJson(Map<String, Object> elements) {
         JsonObject jsonObject = new JsonObject();
         for (String field : elements.keySet()) {
@@ -54,6 +55,7 @@ public class JsonTools {
      * @param jsonMessage The JSON message from which to generate the map.
      * @return A HashMap containing all JSON fields and values.
      */
+    @Deprecated
     public static HashMap<String, Object> parseJson(String jsonMessage) {
         HashMap<String, Object> elements = new HashMap<>();
         try {
@@ -65,7 +67,6 @@ public class JsonTools {
                 switch (jsonReader.peek()) {
                     case NUMBER -> elements.put(field, jsonReader.nextInt());
                     case STRING -> elements.put(field, jsonReader.nextString());
-                    //TODO: Fix this
                     case BEGIN_ARRAY, BEGIN_OBJECT -> elements.put(field, jsonReader);
                 }
             }
@@ -152,5 +153,10 @@ public class JsonTools {
         for (int i = 0; i < listMatrix.size(); i++)
             matrix[i] = listMatrix.get(i).stream().mapToInt(x -> x).toArray();
         return matrix;
+    }
+
+    public static int[][] readMatrix(JsonArray jsonArray) throws IOException {
+        JsonReader jsonReader = new JsonReader(new StringReader(jsonArray.toString()));
+        return readMatrix(jsonReader);
     }
 }
