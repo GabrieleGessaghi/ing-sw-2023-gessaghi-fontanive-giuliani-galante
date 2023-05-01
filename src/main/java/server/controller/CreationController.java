@@ -19,7 +19,7 @@ public class CreationController implements Observer {
     private final ArrayList<String> playersNicknames;
 
     public CreationController(){
-        playersNicknames = new ArrayList<String>();
+        playersNicknames = new ArrayList<>();
         playersNumber = 0;
     }
 

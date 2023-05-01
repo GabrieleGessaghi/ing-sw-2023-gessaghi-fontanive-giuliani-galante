@@ -147,6 +147,11 @@ public class Game implements Savable, Observable {
     @Override
     public void registerObserver(Observer observer) {
         observers.add(observer);
+        board.registerObserver(observer);
+        for (Player player : players)
+            player.registerObserver(observer);
+        for (CommonCard commonCard : commonCards)
+            commonCard.registerObserver(observer);
     }
 
     @Override

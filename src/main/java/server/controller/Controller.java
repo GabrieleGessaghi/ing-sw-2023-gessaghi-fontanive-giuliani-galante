@@ -36,30 +36,7 @@ public class Controller extends Thread implements Observer {
     public void run() {
         //TODO: Add wait/notify
         //TODO: Add observers
-        int clientsListIndex = 0;
-        while (true) {
-            if (isGameRunning) {
-                currentClient = clientHandlers.get(clientsListIndex);
-                try {
-                    currentClient.requestInput(Prompt.TOKENS);
-                    waitingForTiles = true;
-                    //WAIT FOR TILES
-                    currentClient.requestInput(Prompt.COLUMN);
-                    waitingForColumn = true;
-                    //WAIT FOR COLUMN
-                    clientsListIndex++;
-                } catch (Exception e) {
-                    currentClient.showOutput("\"errorMessage\":\"Generic error!\"");
-                }
-                /*if (turnController.isGameOver()) { //TODO: Improve this
-                    for (ClientHandler client : clientHandlers) {
-                        //client.showOutput("\"errorMessage\":\"Game over!\n" + + "is the winner!\"");
-                        //CLOSE CONNECTION
-                    }
-                    reset();
-                }*/
-            }
-        }
+
     }
 
     @Override
