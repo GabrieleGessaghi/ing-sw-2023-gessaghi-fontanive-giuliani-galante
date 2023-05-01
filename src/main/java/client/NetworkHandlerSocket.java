@@ -6,9 +6,12 @@ import java.io.*;
 import java.net.Socket;
 
 public class NetworkHandlerSocket extends Thread{
-    private Socket clientSocket;
+    private Socket serverSocket;
     private DataInputStream dis;
     private DataOutputStream dos;
+    private Client client;
+
+    //NEL COSTRUTTORE PASSA SOLO CLIENT
 
     //LASCIARE STARE PER ORA
     public boolean ping () {

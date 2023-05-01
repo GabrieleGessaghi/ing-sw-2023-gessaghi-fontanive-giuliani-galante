@@ -66,7 +66,7 @@ public class Client {
 
         if(selection == 0)
             nhs = new NetworkHandlerSocket();
-        else
+        else {}
             //nhs = new RMIHandlerSocket();
         nhs.start();
     }
