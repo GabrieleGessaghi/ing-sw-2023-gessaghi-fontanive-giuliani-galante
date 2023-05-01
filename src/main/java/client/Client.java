@@ -45,8 +45,7 @@ public class Client {
             case PLAYERSNUMBER -> requestNumberOfPlayers();
             case TOKENS -> requestTokenSelection();
             case COLUMN -> requestColumnSelection();
-            //case CONNECTIONTYPE -> selectConnectionType;
-            //TODO: move connection type selection to main
+
         }
     }
 
