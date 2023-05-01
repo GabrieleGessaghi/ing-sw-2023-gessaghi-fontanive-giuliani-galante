@@ -8,6 +8,7 @@ import server.model.Game;
 import server.controller.utilities.ConfigLoader;
 import server.model.exceptions.IllegalColumnException;
 import server.model.exceptions.IllegalMoveException;
+import server.view.ClientHandler;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -20,11 +21,14 @@ public class TurnController implements Observer {
     private int[][] selectedTiles;
     private int selectedColumn;
     private final Game game;
+    private final ClientHandler currentClientHandler;
 
-    public TurnController(Game game) {
+    public TurnController(Game game, ClientHandler currentClient) {
         selectedTiles = new int[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
         selectedColumn = -1;
+        currentClientHandler = currentClient;
         this.game = game;
+        newTurn();
     }
 
     /**
@@ -49,6 +53,13 @@ public class TurnController implements Observer {
         return selectedColumn >= 0 && selectedColumn <= ConfigLoader.SHELF_COLUMNS;
     }
 
+    private void newTurn() {
+        currentClientHandler.requestInput(Prompt.TOKENS);
+        //WAIT FOR RESPONSE
+        currentClientHandler.requestInput(Prompt.COLUMN);
+        //WAIT FOR RESPONSE
+    }
+
     /**
      * Reads the JSON message and makes a new turn once all data is ready.
      * @author Giorgio Massimo Fontanive
@@ -66,6 +77,7 @@ public class TurnController implements Observer {
                 switch (field) {
                     case "selectedTiles" -> selectedTiles = JsonTools.readMatrix(jsonReader);
                     case "selectedColumn" -> selectedColumn = jsonReader.nextInt();
+                    //TODO: Check that currentClientIndex is correct
                 }
             }
             jsonReader.endObject();
@@ -76,8 +88,12 @@ public class TurnController implements Observer {
         if (isMatrixLegal() && isColumnLegal()) {
             try {
                 game.playerTurn(selectedTiles, selectedColumn);
-            } catch (IllegalMoveException | IllegalColumnException e) {
-                //WARN CLIENTHANDLER
+            } catch (IllegalMoveException e) {
+                currentClientHandler.showOutput(JsonTools.createMessage("This combination of tiles cannot be selected!"));
+                newTurn();
+            } catch (IllegalColumnException e) {
+                currentClientHandler.showOutput(JsonTools.createMessage("This column cannot be selected!"));
+                newTurn();
             }
         }
     }

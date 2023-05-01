@@ -17,7 +17,6 @@ import java.util.ArrayList;
  * @author Niccolò Giuliani
  */
 public class ClientHandlerSocket extends ClientHandler {
-    private final int index;
     private Prompt lastRequest;
     private boolean isThereRequest;
     private final InputStream inputStream;
@@ -33,7 +32,6 @@ public class ClientHandlerSocket extends ClientHandler {
         this.lastRequest = Prompt.NICKNAME;
         this.isThereRequest = true;
         this.observers = new ArrayList<>();
-
     }
 
     /**

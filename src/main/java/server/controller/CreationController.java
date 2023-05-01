@@ -54,12 +54,12 @@ public class CreationController implements Observer {
     }
 
     /**
-     * Checks whether there's only one player.
-     * @return True if there's only one player connected.
+     * Checks whether there's a spot available.
+     * @return True if there's space for more players.
      * @author Giorgio Massimo Fontanive
      */
-    public boolean isThereOnlyOnePlayer() {
-        return playersNicknames.size() == 1;
+    public boolean isSpotAvailable() {
+        return playersNumber == -1 || playersNicknames.size() < playersNumber;
     }
 
     /**
@@ -86,10 +86,6 @@ public class CreationController implements Observer {
      * @author Niccolò Giuliani
      */
     private void addPlayer(String nickname) {
-        if (playersNumber == -1 || playersNicknames.size() < playersNumber)
-            playersNicknames.add(nickname);
-        else {
-            //WARN CLIENTHANDLER
-        }
+        playersNicknames.add(nickname);
     }
 }
