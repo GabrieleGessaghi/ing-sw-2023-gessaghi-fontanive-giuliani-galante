@@ -24,7 +24,6 @@ public class Server {
     private static int connectionsCount;
     public static void main() throws IOException {
         //TODO: Add javadoc
-        //TODO: Add connection to RMI
         //TODO: Add abstract ClientHandler and maybe NetworkHandler
         connectionsCount = 0;
         ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");
@@ -61,14 +60,25 @@ public class Server {
 
     public static void acceptConnectionsRMI() {
         int connectionsIndex = 0;
-
-        Registry registry = LocateRegistry.createRegistry(SERVER_PORT);
+        Registry registry;
+        try {
+            registry = LocateRegistry.createRegistry(SERVER_PORT);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+        ClientHandlerRMI clientHandler = null;
         while (true) {
-            ClientHandlerRMI latestClientHandler = new ClientHandlerRMI(connectionsIndex);
-            registry.rebind("ServerRMI" + connectionsIndex, latestClientHandler);
-            connectionsIndex++;
-            while (latestClientHandler.isAvailable()) {
-
+            if (clientHandler == null || !clientHandler.isAvailable()) {
+                clientHandler = new ClientHandlerRMI(connectionsIndex);
+                try {
+                    registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
+                    new Thread(clientHandler).start();
+                    controller.addClient(clientHandler);
+                    connectionsCount++;
+                    connectionsIndex++;
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
