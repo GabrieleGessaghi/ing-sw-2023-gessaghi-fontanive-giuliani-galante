@@ -11,8 +11,10 @@ import server.model.Token;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.Arrays;
 import java.util.Scanner;
 
+import static server.controller.utilities.ConfigLoader.BOARD_SIZE;
 import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
 import static server.controller.utilities.JsonTools.createJsonMatrix;
 
@@ -207,11 +209,11 @@ public class Client {
                 switch (field) {
                     case "nickname" -> toPrint += "Player: " + jsonReader.nextString() + "\n";
                     case "totalPoints" -> toPrint += "Points: " + jsonReader.nextInt() + "\n";
-                    case "isFirtPlayer" -> {
+                    case "isFirstPlayer" -> {
                         if (jsonReader.nextBoolean()) {
-                            toPrint += "Frist player\n";
+                            toPrint += "First player\n";
                         }else {
-                            toPrint += "Not first Player\n";
+                            toPrint += "Not first player\n";
                         }
                     }
                     case "playerIndex" -> toPrint += "Player index: " + jsonReader.nextInt() + "\n";
@@ -221,10 +223,22 @@ public class Client {
                     case "nextPointsAvailable" -> toPrint += "Next common card points: " + jsonReader.nextInt() + "\n";
                     case "board" -> {
                         toPrint += "Board: \n";
-                        // TODO: insert board object in toPrint
+                        jsonReader.beginObject();
+                        int[][] intMatrix = JsonTools.readMatrix(jsonReader);
+                        char[][] charMatrix = new char[BOARD_SIZE][BOARD_SIZE];
+
+                        for(int i = 0; i < BOARD_SIZE; i++)
+                            for(int j = 0; j < BOARD_SIZE; j++)
+                                charMatrix[i][j] = intToTokenInitial(intMatrix[i][j]);
+
+                        System.out.println("  A B C D E F G H I\n");
+                        for(int i = 0; i < BOARD_SIZE; i++)
+                            System.out.println(i + "" + Arrays.toString(charMatrix[i]) + "\n");
+
+                        jsonReader.endObject();
                     }
                     case "shelf" -> {
-                        toPrint += "Board: \n";
+                        toPrint += "Shelf: \n";
                         jsonReader.beginObject();
                         switch (jsonReader.nextName()){
                             case "shelfTiles" -> {
@@ -250,4 +264,20 @@ public class Client {
             throw new RuntimeException(e);
         }
     }
+
+    private char intToTokenInitial(int value){
+        char tokenInitial;
+        tokenInitial = switch (value){
+            case 0 -> 'X'; // nothing
+            case 1 -> 'C'; // cat
+            case 2 -> 'B'; // book
+            case 3 -> 'Y'; // toy
+            case 4 -> 'T'; // trophy
+            case 5 -> 'F'; // frame
+            case 6 -> 'P'; // plant
+            default -> throw new IllegalStateException("Unexpected value: " + value);
+        };
+        return tokenInitial;
+    }
+
 }

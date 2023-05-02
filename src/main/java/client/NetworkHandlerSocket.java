@@ -66,7 +66,7 @@ public class NetworkHandlerSocket implements Runnable{
                     case "requestPlayerNumber" -> client.requestInput(Prompt.PLAYERSNUMBER);
                     case "requestTileSelection" -> client.requestInput(Prompt.TOKENS);
                     case "requestColumn" -> client.requestInput(Prompt.COLUMN);
-                    case "closeConnecion" -> exit = true;
+                    case "closeConnection" -> exit = true;
                     default -> client.showOutput(receivedString);
                 }
             }
