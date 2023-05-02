@@ -1,6 +1,7 @@
 package server.controller;
 
 import server.controller.utilities.ConfigLoader;
+import server.view.ClientHandlerRMI;
 import server.view.ClientHandlerSocket;
 
 import java.io.DataInputStream;
@@ -8,6 +9,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
@@ -56,8 +60,16 @@ public class Server {
     }
 
     public static void acceptConnectionsRMI() {
-        while (true) {
+        int connectionsIndex = 0;
 
+        Registry registry = LocateRegistry.createRegistry(SERVER_PORT);
+        while (true) {
+            ClientHandlerRMI latestClientHandler = new ClientHandlerRMI(connectionsIndex);
+            registry.rebind("ServerRMI" + connectionsIndex, latestClientHandler);
+            connectionsIndex++;
+            while (latestClientHandler.isAvailable()) {
+
+            }
         }
     }
 }
