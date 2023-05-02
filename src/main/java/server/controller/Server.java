@@ -25,6 +25,7 @@ public class Server {
     public static void main() throws IOException {
         //TODO: Add javadoc
         //TODO: Add abstract ClientHandler and maybe NetworkHandler
+        //TODO: Add observable to personalcard
         connectionsCount = 0;
         ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");
         controller = new Controller();

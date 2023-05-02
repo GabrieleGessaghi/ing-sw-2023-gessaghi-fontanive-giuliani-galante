@@ -8,7 +8,9 @@ import server.view.rmi.ClientUsable;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class NetworkHandlerRMI implements ServerUsable, Runnable {
+import static server.controller.utilities.ConfigLoader.SERVER_PORT;
+
+public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
    private final Client client;
    ClientUsable server;
    public  NetworkHandlerRMI(Client client){
@@ -49,7 +51,7 @@ public class NetworkHandlerRMI implements ServerUsable, Runnable {
     int i;
     i = 0;
        try {
-           Registry registry = LocateRegistry.getRegistry();
+           Registry registry = LocateRegistry.getRegistry(SERVER_PORT);
            do {
                server = (ClientUsable) registry.lookup("ServerRMI" + i);
                i++;
