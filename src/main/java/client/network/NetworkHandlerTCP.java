@@ -38,6 +38,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
         try {
             OutputStreamWriter out = new OutputStreamWriter(serverSocket.getOutputStream());
             out.write(input);
+            System.out.println("Sending input");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -55,23 +56,27 @@ public class NetworkHandlerTCP extends NetworkHandler {
             BufferedReader buffer = new BufferedReader(in);
             while (true){
                 String receivedString = buffer.readLine();
-                String field;
-                boolean exit = false;
-                JsonReader jsonReader = new JsonReader(new StringReader(receivedString));
-                jsonReader.beginObject();
-                while(jsonReader.hasNext()) {
-                    field = jsonReader.nextName();
-                    switch (field) {
-                        case "requestNickname" -> client.requestInput(Prompt.NICKNAME);
-                        case "requestPlayerNumber" -> client.requestInput(Prompt.PLAYERSNUMBER);
-                        case "requestTileSelection" -> client.requestInput(Prompt.TOKENS);
-                        case "requestColumn" -> client.requestInput(Prompt.COLUMN);
-                        case "closeConnection" -> exit = true;
-                        default -> client.showOutput(receivedString);
+                System.out.println(receivedString);
+                if (receivedString != null) {
+                    System.out.println("Received output");
+                    String field;
+                    boolean exit = false;
+                    JsonReader jsonReader = new JsonReader(new StringReader(receivedString));
+                    jsonReader.beginObject();
+                    while (jsonReader.hasNext()) {
+                        field = jsonReader.nextName();
+                        switch (field) {
+                            case "requestNickname" -> client.requestInput(Prompt.NICKNAME);
+                            case "requestPlayerNumber" -> client.requestInput(Prompt.PLAYERSNUMBER);
+                            case "requestTileSelection" -> client.requestInput(Prompt.TOKENS);
+                            case "requestColumn" -> client.requestInput(Prompt.COLUMN);
+                            case "closeConnection" -> exit = true;
+                            default -> client.showOutput(receivedString);
+                        }
                     }
+                    jsonReader.endObject();
+                    if (exit) break;
                 }
-                jsonReader.endObject();
-                if (exit) break;
             }
             try {
                 in.close();

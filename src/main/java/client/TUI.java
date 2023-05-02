@@ -22,11 +22,11 @@ public class TUI {
         System.out.print("Insert host's IP address: ");
         hostIp = scn.nextLine();
 
-        System.out.print("Select connection type:\n" + "0: socket\n" + "1: RMI\n");
+        System.out.print("Select connection type (0 TCP/1 RMI): ");
         selection = scn.nextInt();
         while(selection !=0 && selection != 1) {
             System.out.print("Connection type not valid!\n");
-            System.out.print("Select connection type:\n" + "0: socket\n" + "1: RMI\n");
+            System.out.print("Select connection type (0 TCP/1 RMI): ");
             selection = scn.nextInt();
         }
 

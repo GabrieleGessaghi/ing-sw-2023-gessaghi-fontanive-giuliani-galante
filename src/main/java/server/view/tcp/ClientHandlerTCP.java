@@ -56,15 +56,17 @@ public class ClientHandlerTCP extends ClientHandler {
                         case TOKENS -> jsonObject.addProperty("requestTokens", true);
                         case COLUMN -> jsonObject.addProperty("requestColumn", true);
                     }
+                    System.out.println("Sending request");
                     out.write(jsonObject.toString());
                     isThereRequest = false;
                 }
                 String line = buffer.readLine();
+                System.out.println(line);
                 if(line != null) {
-                    Event event = new Event(buffer.readLine());
+                    Event event = new Event(line);
                     updateObservers(event);
+                    System.out.println("Received: " + event.getJsonMessage());
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }

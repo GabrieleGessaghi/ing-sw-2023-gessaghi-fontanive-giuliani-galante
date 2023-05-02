@@ -20,7 +20,6 @@ import static server.controller.utilities.ConfigLoader.BOARD_SIZE;
 import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
 import static server.controller.utilities.JsonTools.createJsonMatrix;
 
-
 /**
  * Client class.
  * @author Niccolò Galante
