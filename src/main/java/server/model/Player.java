@@ -52,6 +52,12 @@ public class Player implements Savable, Observable {
             commonCards.put(commonCard, true);
     }
 
+    /**
+     * Initializes the player with a JSON string.
+     * @author Giorgio Massimo Fontanive
+     * @param jsonState The string containing the needed information.
+     * @param commonCardsList Common cards.
+     */
     public Player(String jsonState, List<CommonCard> commonCardsList) {
         nickname = "";
         shelf = new Shelf();
@@ -104,8 +110,6 @@ public class Player implements Savable, Observable {
      * @author Niccolò Galante.
      */
     private void updateCommonCardPoints() {
-
-        //Checks if common card objectives have been reached
         int cardPoints = 0;
         for (Card card : commonCards.keySet()) {
             if (commonCards.get(card))
@@ -114,11 +118,6 @@ public class Player implements Savable, Observable {
                 commonCards.replace(card, false);
             commonCardPoints += cardPoints;
         }
-//        for (int i = 0; i < NUMBER_OF_CARDS; i++)
-//            if (!isComplete[i] && cards.get(i).getPoints(shelf.getTiles()) != 0) {
-//                isComplete[i] = true;
-//                tempPoints += cards.get(i).getPoints(shelf.getTiles());
-//            }
     }
 
     /**
@@ -143,6 +142,11 @@ public class Player implements Savable, Observable {
         updateObservers(new Event(getState().toString()));
     }
 
+    /**
+     * Checks whether there's empty tiles in the player's shelf
+     * @author Giorgio Massimo Fontanive
+     * @return True if there's no more empty tiles.
+     */
     public boolean isShelfFull() {
         if (shelf.isFull()) {
             commonCardPoints++;

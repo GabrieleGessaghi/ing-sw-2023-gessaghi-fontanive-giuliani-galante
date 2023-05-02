@@ -10,7 +10,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 /**
- * class for handle the RMI Clients
+ * Class for handling the RMI clients.
  * @author Niccolò Giuliani
  */
 public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
@@ -18,12 +18,20 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
     NetworkHandlerRMI client;
     private String clientName;
 
+    /**
+     * Class constructor.
+     * @param index This client's unique identifier.
+     */
     public ClientHandlerRMI(int index){
         super(index);
         this.available = true;
         this.client = null;
     }
 
+    /**
+     * Looks for the client's NetworkHandler in the registry and starts sending requests.
+     * @author Niccolò Giuliani
+     */
     @Override
     public void run() {
         try {
@@ -45,32 +53,17 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
         client.showOutput(event.getJsonMessage());
     }
 
-    /**
-     * method to know if the ClientHandler is available
-     * @author Niccolò Giuliani
-     * @return this.available
-     */
     @Override
     public boolean isAvailable(){
         return this.available;
     }
 
-    /**
-     * method to set the network-handler's name and put the client-handler not available
-     * @author Niccolò Giuliani
-     * @param clientName name of the network-handler
-     */
     @Override
     public void setAvailable(String clientName) {
         this.clientName = clientName;
         available = false;
     }
 
-    /**
-     * method to send the input to the controller
-     * @author Niccolò Giuliani
-     * @param input input of the Client
-     */
     @Override
     public void sendInput(String input){
         updateObservers(new Event(input));
