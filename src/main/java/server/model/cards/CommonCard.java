@@ -58,10 +58,14 @@ public class CommonCard extends Card implements Savable {
         int points = 0;
         satisfied = objective.isSatisfied(shelf);
         if (satisfied) {
+
             points = COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
-            numberOfTokensLeft--;
             updateObservers(new Event(getState().toString()));
+            numberOfTokensLeft--;
+
+
         }
+
         return points;
     }
 

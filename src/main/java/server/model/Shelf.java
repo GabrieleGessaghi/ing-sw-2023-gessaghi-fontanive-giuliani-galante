@@ -82,11 +82,10 @@ public class Shelf implements Savable {
     @Override
     public JsonObject getState() {
         JsonObject jsonObject = new JsonObject();
-
         //Converts the matrices into integer ones.
-        int[][] tilesInteger = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
-        for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
-            for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++)
+        int[][] tilesInteger = new int[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
+        for (int i = 0; i < ConfigLoader.SHELF_ROWS; i++)
+            for (int j = 0; j < ConfigLoader.SHELF_COLUMNS; j++)
                 tilesInteger[i][j] = tiles[i][j].ordinal();
 
         jsonObject.add("shelfTiles", JsonTools.createJsonMatrix(tilesInteger));

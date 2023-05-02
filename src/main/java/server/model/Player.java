@@ -90,8 +90,8 @@ public class Player implements Savable, Observable {
         //Checks if tiles of same type are adjacent
         int adjacentPoints = 0;
         for (Token tokenType : Token.values())
-            adjacentPoints += TokenTools.counterIslandType(tokenType, shelf.getTiles(), true);
-        commonCardPoints += adjacentPoints;
+            if(tokenType != Token.NOTHING)
+             adjacentPoints += TokenTools.counterIslandType(tokenType, shelf.getTiles(), true);
 
         return commonCardPoints + adjacentPoints + personalCard.getPoints(shelf.getTiles());
     }
@@ -112,10 +112,10 @@ public class Player implements Savable, Observable {
     private void updateCommonCardPoints() {
         int cardPoints = 0;
         for (Card card : commonCards.keySet()) {
-            if (commonCards.get(card))
+            if (commonCards.get(card)){
                 cardPoints = card.getPoints(shelf.getTiles());
-            if (cardPoints > 0)
                 commonCards.replace(card, false);
+            }
             commonCardPoints += cardPoints;
         }
     }

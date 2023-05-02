@@ -21,9 +21,10 @@ class CornersTest {
         Token type;
 
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
-
-        Random randomType = new Random();
-        type=Token.values()[randomType.nextInt(Token.values().length)];
+        do {
+            Random randomType = new Random();
+            type = Token.values()[randomType.nextInt(Token.values().length)];
+        }while(type == Token.NOTHING);
 
         for(int i = 0; i < SHELF_ROWS -1; i++){
             for(int j = 0; j < SHELF_COLUMNS -1; j++) {

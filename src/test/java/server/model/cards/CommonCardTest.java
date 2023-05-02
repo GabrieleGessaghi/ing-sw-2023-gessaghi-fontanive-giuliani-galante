@@ -90,6 +90,8 @@ class CommonCardTest {
 
     @Test
     public void fourPlayers(){
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+
         int numberOfPlayers = 4;
         int one,two,three,four;
         Card card = new CommonCard(CommonType.CORNERS,numberOfPlayers );
@@ -120,11 +122,11 @@ class CommonCardTest {
         fourthShelf[0][4] = Token.CAT;
         fourthShelf[5][4] = Token.CAT;
 
-        ConfigLoader conf= new ConfigLoader();
+
         one = card.getPoints(firstShelf);
         two = card.getPoints(secondShelf);
         three = card.getPoints(thirdShelf);
-        four = card.getPoints(thirdShelf);
+        four = card.getPoints(fourthShelf);
         assertEquals(8,one);
         assertEquals(6,two);
         assertEquals(4,three);

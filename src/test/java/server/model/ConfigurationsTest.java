@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ConfigurationsTest {
 
     @Test
-    public void loadConfigurationTest() {
-        assertNotEquals(ConfigLoader.BOARD_SIZE, 9);
+    public void loadConfigurationTest0() {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         assertEquals(ConfigLoader.BOARD_SIZE, 9);
     }
+
 }
