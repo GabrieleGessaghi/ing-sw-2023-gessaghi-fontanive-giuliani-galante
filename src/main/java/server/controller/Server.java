@@ -24,7 +24,6 @@ public class Server {
     private static int connectionsCount;
 
     public static void main(String[] args) throws IOException {
-        //TODO: Add javadoc
         //TODO: Show player initial state of the game
         connectionsCount = 0;
         ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");

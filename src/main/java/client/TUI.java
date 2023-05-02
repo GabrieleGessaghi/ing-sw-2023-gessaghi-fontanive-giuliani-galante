@@ -1,0 +1,39 @@
+package client;
+
+import client.network.NetworkHandler;
+import client.network.NetworkHandlerRMI;
+import client.network.NetworkHandlerTCP;
+
+import java.util.Scanner;
+
+public class TUI {
+    public static void main(String[] args) {
+        NetworkHandler networkHandler;
+        String hostIp;
+        String nickname;
+        int selection;
+        Scanner scn = new Scanner(System.in);
+
+        System.out.print("Insert nickname: ");
+        nickname = scn.nextLine();
+
+        System.out.print("Insert host's IP address: ");
+        hostIp = scn.nextLine();
+
+        System.out.print("Select connection type:\n" + "0: socket\n" + "1: RMI\n");
+        selection = scn.nextInt();
+        while(selection !=0 && selection != 1) {
+            System.out.print("Connection type not valid!\n");
+            System.out.print("Select connection type:\n" + "0: socket\n" + "1: RMI\n");
+            selection = scn.nextInt();
+        }
+
+        Client client = new Client(nickname);
+        if(selection == 0)
+            networkHandler = new NetworkHandlerTCP(client, hostIp);
+        else
+            networkHandler = new NetworkHandlerRMI(client, hostIp);
+        new Thread(networkHandler).start();
+        client.setNetworkHandler(networkHandler);
+    }
+}

@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added javadoc">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed small issues">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/TUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/configuration.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,13 +191,6 @@
       <workItem from="1682749112175" duration="7370000" />
       <workItem from="1682860377909" duration="959000" />
       <workItem from="1682920782466" duration="3425000" />
-    </task>
-    <task id="LOCAL-00093" summary="Updated Controller">
-      <created>1682595180327</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1682595180327</updated>
     </task>
     <task id="LOCAL-00094" summary="Modified CliendHandler run method">
       <created>1682597286286</created>
@@ -531,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683031622453</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL-00142" summary="Fixed small issues">
+      <created>1683031870786</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1683031870786</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +585,6 @@
     <MESSAGE value="Implemented victory condition" />
     <MESSAGE value="Added wait for user input in TurnController" />
     <MESSAGE value="Added constants to ConfigLoader" />
-    <MESSAGE value="Fixed small issues" />
     <MESSAGE value="NetworkHandlerSocket class finished, TODO ping())" />
     <MESSAGE value="Client showOutput() method" />
     <MESSAGE value="Separated RMI and TCP connection acceptance" />
@@ -590,7 +593,8 @@
     <MESSAGE value="Added NetworkHandler implementation to Client" />
     <MESSAGE value="Added getState to PersonalCard" />
     <MESSAGE value="Added javadoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added javadoc" />
+    <MESSAGE value="Fixed small issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -26,21 +26,15 @@ import static server.controller.utilities.JsonTools.createJsonMatrix;
  * @author Niccolò Galante
  */
 public class Client {
-    private static String nickname;
-    private static NetworkHandler networkHandler;
+    private final String nickname;
+    private NetworkHandler networkHandler;
 
-    public static void main(String[] args) {
-        Client client = new Client();
-        String hostIp;
-        Scanner scn = new Scanner(System.in);
+    public Client(String nickname) {
+        this.nickname = nickname;
+    }
 
-        System.out.println("Insert host's IP address:\n");
-        hostIp = scn.nextLine();
-
-        client.requestConnectionType(hostIp);
-
-        System.out.println("Insert nickname:\n");
-        nickname = scn.nextLine();
+    public void setNetworkHandler(NetworkHandler networkHandler) {
+        this.networkHandler = networkHandler;
     }
 
     /**
@@ -48,7 +42,7 @@ public class Client {
      * @author Niccolò Galante
      * @param prompt type of information requested.
      */
-    public  void requestInput(Prompt prompt){
+    public void requestInput(Prompt prompt){
         switch (prompt) {
             case NICKNAME -> requestNickname();
             case PLAYERSNUMBER -> requestNumberOfPlayers();
@@ -58,35 +52,12 @@ public class Client {
     }
 
     /**
-     * Asks player to select connection type (either socket or RMI).
-     * @author Niccolò Galante
-     */
-    private void requestConnectionType(String host){
-        Scanner scn = new Scanner(System.in);
-        int selection;
-
-        System.out.println("Select connection type:\n" + "0: socket\n" + "1: RMI\n");
-        selection = scn.nextInt();
-        while(selection !=0 && selection != 1) {
-            System.out.println("Connection type not valid!\n");
-            System.out.println("Select connection type:\n" + "0: socket\n" + "1: RMI\n");
-            selection = scn.nextInt();
-        }
-
-        if(selection == 0)
-            networkHandler = new NetworkHandlerTCP(this, host);
-        else
-            networkHandler = new NetworkHandlerRMI(this, host);
-        new Thread(networkHandler).start();
-    }
-
-    /**
      * Asks player to insert nickname.
      * @author Niccolò Galante
      */
     private void requestNickname(){
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("Nickname", nickname);
+        jsonObject.addProperty("nickname", nickname);
         networkHandler.sendInput(jsonObject.toString());
     }
 
