@@ -21,12 +21,11 @@ import static server.controller.utilities.ConfigLoader.PLAYERS_MIN;
  * Common objective card of the game.
  * @author Niccolò Giuliani
  */
-public class CommonCard extends Card implements Savable, Observable {
+public class CommonCard extends Card implements Savable {
     private int numberOfTokensLeft;
     private final int numberOfPlayers;
     private CommonObjective objective;
     private CommonType name;
-    private final List<Observer> observers;
 
     /**
      * Class constructor.
@@ -91,18 +90,6 @@ public class CommonCard extends Card implements Savable, Observable {
             case TWOSQUARES -> new TwoSquares();
             case THREECOLUMNS -> new ThreeColumns();
         };
-    }
-
-    @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void updateObservers(Event event) {
-        for (Observer observer : observers)
-            if (observer != null)
-                observer.update(event);
     }
 
     @Override

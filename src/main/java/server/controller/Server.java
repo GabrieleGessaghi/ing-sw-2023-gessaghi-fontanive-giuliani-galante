@@ -24,8 +24,8 @@ public class Server {
     private static int connectionsCount;
     public static void main() throws IOException {
         //TODO: Add javadoc
-        //TODO: Add abstract ClientHandler and maybe NetworkHandler
         //TODO: Add observable to personalcard
+        //TODO: Show player initial state of the game
         connectionsCount = 0;
         ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");
         controller = new Controller();

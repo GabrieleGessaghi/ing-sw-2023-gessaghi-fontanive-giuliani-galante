@@ -1,6 +1,9 @@
 package server.model.cards;
 
+import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
+import server.controller.observer.Event;
+import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Token;
 import server.controller.utilities.ConfigLoader;
@@ -11,13 +14,16 @@ import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
+import static server.controller.utilities.ConfigLoader.SHELF_ROWS;
+
 /**
  * Personal objective cards.
  * @author Niccolò Galante
  */
 public class PersonalCard extends Card {
     int index;
-    private final Token[][] correctTiles = new Token[ConfigLoader.SHELF_ROWS][ConfigLoader.SHELF_COLUMNS];
+    private final Token[][] correctTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
     /**
      * Class constructor.
@@ -54,8 +60,8 @@ public class PersonalCard extends Card {
             throw new RuntimeException(e);
         }
 
-        for (int i = 0; i< ConfigLoader.SHELF_ROWS; i++)
-            for (int j = 0; j< ConfigLoader.SHELF_COLUMNS; j++)
+        for (int i = 0; i< SHELF_ROWS; i++)
+            for (int j = 0; j< SHELF_COLUMNS; j++)
                 correctTiles[i][j] = Token.values()[intTiles[i][j]];
     }
 
@@ -67,8 +73,8 @@ public class PersonalCard extends Card {
      */
     public int getPoints(Token[][] shelf) {
         int countCorrect = 0;
-        for(int i = 0; i < ConfigLoader.SHELF_ROWS; i++)
-            for(int j = 0; j < ConfigLoader.SHELF_COLUMNS; j++)
+        for(int i = 0; i < SHELF_ROWS; i++)
+            for(int j = 0; j < SHELF_COLUMNS; j++)
                 if(shelf[i][j] != Token.NOTHING && shelf[i][j] == correctTiles[i][j])
                     countCorrect++;
         return (countCorrect == 0 ? 0 : ConfigLoader.PERSONALCARD_POINTS[countCorrect - 1]);
@@ -86,22 +92,14 @@ public class PersonalCard extends Card {
     public int getIndex() {
         return index;
     }
-    //    /**
-//     * Converts integer to token type.
-//     * @author Niccolò Galante
-//     * @param tile Tile that is being read from personal card.
-//     * @return Token type.
-//     */
-//    public static Token intToToken(int tile){
-//        Token type = Token.NOTHING;
-//        switch (tile){
-//            case 1 -> type = Token.CAT;
-//            case 2 -> type = Token.BOOK;
-//            case 3 -> type = Token.TOY;
-//            case 4 -> type = Token.TROPHY;
-//            case 5 -> type = Token.FRAME;
-//            case 6 -> type = Token.PLANT;
-//        }
-//        return type;
-//    }
+
+    public JsonObject getState() {
+        JsonObject jsonObject = new JsonObject();
+        int[][] correctTilesIndex = new int[SHELF_ROWS][SHELF_COLUMNS];
+        for (int i = 0; i < SHELF_ROWS; i++)
+            for (int j = 0; j < SHELF_COLUMNS; j++)
+                correctTilesIndex[i][j] = correctTiles[i][j].ordinal();
+        jsonObject.add("correctTiles", JsonTools.createJsonMatrix(correctTilesIndex));
+        return jsonObject;
+    }
 }
