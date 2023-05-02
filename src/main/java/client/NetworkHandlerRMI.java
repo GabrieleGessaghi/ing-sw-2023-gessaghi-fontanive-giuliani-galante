@@ -50,11 +50,11 @@ public class NetworkHandlerRMI extends Thread implements NetworkHandlerRMIInterf
            Registry registry = LocateRegistry.getRegistry();
 
            do {
-                server = (ClientHandlerRMIInterface) registry.lookup("ServerRMI" + i);
+                server = (ClientHandlerRMIInterface) registry.lookup("ServerRMI" + Integer.toString(i));
                i++;
            }while(!server.isAvailable());
-           registry.rebind("ClientRmi"+i ,this);
-           server.setAvailable("ClientRMI"+i);
+           registry.rebind("ClientRmi"+Integer.toString(i-1) ,this);
+           server.setAvailable("ClientRMI"+Integer.toString(i-1));
 
        }catch(Exception e){
            System.out.println("[System] Server failed: " + e);
