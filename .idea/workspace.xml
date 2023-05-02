@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed small issues">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/TUI.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Created TUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/configuration.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/configuration.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +73,7 @@
       <recent name="controller.utilities.JsonTools" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="server" />
       <recent name="controller.observer" />
       <recent name="controller" />
     </key>
@@ -191,13 +190,6 @@
       <workItem from="1682749112175" duration="7370000" />
       <workItem from="1682860377909" duration="959000" />
       <workItem from="1682920782466" duration="3425000" />
-    </task>
-    <task id="LOCAL-00094" summary="Modified CliendHandler run method">
-      <created>1682597286286</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1682597286286</updated>
     </task>
     <task id="LOCAL-00095" summary="Updated Controller">
       <created>1682597847368</created>
@@ -535,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683031870786</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="Created TUI">
+      <created>1683032960985</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1683032960985</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modified Player to better save its state" />
     <MESSAGE value="Tested few classes again" />
     <MESSAGE value="Fixed small issues in folder structure" />
     <MESSAGE value="Implemented interfaces in Player and created method getIndex in Card" />
@@ -594,7 +592,8 @@
     <MESSAGE value="Added getState to PersonalCard" />
     <MESSAGE value="Added javadoc" />
     <MESSAGE value="Fixed small issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed small issues" />
+    <MESSAGE value="Created TUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created TUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

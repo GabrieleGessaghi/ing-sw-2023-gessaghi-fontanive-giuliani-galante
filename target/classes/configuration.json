@@ -1,5 +1,5 @@
 {
-  "SERVER_PORT" : 1234,
+  "SERVER_PORT" : 6512,
   "BOARD_SIZE" : 9,
   "SHELF_ROWS" : 6,
   "SHELF_COLUMNS" : 5,

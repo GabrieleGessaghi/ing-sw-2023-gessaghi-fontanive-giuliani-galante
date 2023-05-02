@@ -1,5 +1,6 @@
-package server.controller;
+package server;
 
+import server.controller.Controller;
 import server.controller.utilities.ConfigLoader;
 import server.view.rmi.ClientHandlerRMI;
 import server.view.tcp.ClientHandlerTCP;
@@ -26,7 +27,7 @@ public class Server {
     public static void main(String[] args) throws IOException {
         //TODO: Show player initial state of the game
         connectionsCount = 0;
-        ConfigLoader.loadConfiguration("/src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         controller = new Controller();
         new Thread(controller).start();
         new Thread(Server::acceptConnectionsTCP).start();
@@ -62,18 +63,18 @@ public class Server {
         int connectionsIndex = 0;
         Registry registry;
         try {
-            registry = LocateRegistry.createRegistry(SERVER_PORT);
+            registry = LocateRegistry.createRegistry(SERVER_PORT + 1);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-        ClientHandlerRMI clientHandler = null;
+        ClientHandlerRMI clientHandler = new ClientHandlerRMI(connectionsIndex);;
         while (true) {
-            if (clientHandler == null || !clientHandler.isAvailable()) {
+            if (!clientHandler.isAvailable()) {
+                new Thread(clientHandler).start();
+                controller.addClient(clientHandler);
                 clientHandler = new ClientHandlerRMI(connectionsIndex);
                 try {
                     registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
-                    new Thread(clientHandler).start();
-                    controller.addClient(clientHandler);
                     connectionsCount++;
                     connectionsIndex++;
                 } catch (RemoteException e) {
