@@ -22,7 +22,7 @@ import static server.controller.utilities.JsonTools.createJsonMatrix;
  * @author Niccolò Galante
  */
 public class Client {
-    private final String nickname;
+    private String nickname;
     private NetworkHandlerSocket nhs;
 
     /**
@@ -35,13 +35,15 @@ public class Client {
     }
 
     public void main(){
-        String hostIp = new String();
+        String hostIp;
         Scanner scn = new Scanner(System.in);
 
         System.out.println("Insert host's IP address:\n");
         hostIp = scn.nextLine();
-
         requestConnectionType(hostIp);
+
+        System.out.println("Insert nickname:\n");
+        nickname = scn.nextLine();
     }
 
     /**
@@ -62,7 +64,7 @@ public class Client {
      * Asks player to select connection type (either socket or RMI).
      * @author Niccolò Galante
      */
-    public void requestConnectionType(String host){
+    private void requestConnectionType(String host){
         Scanner scn = new Scanner(System.in);
         int selection;
 
@@ -86,15 +88,9 @@ public class Client {
      * @author Niccolò Galante
      */
     private void requestNickname(){
-        Scanner scn = new Scanner(System.in);
         JsonObject jsonObject = new JsonObject();
-        String input;
-
-        System.out.println("Insert nickname:\n");
-        String name = scn.nextLine();
-        jsonObject.addProperty("Nickname", name);
-        input = jsonObject.toString();
-        nhs.sendInput(input);
+        jsonObject.addProperty("Nickname", nickname);
+        nhs.sendInput(jsonObject.toString());
     }
 
     /**

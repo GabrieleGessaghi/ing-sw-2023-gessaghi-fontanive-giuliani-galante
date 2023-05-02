@@ -6,7 +6,7 @@ import server.view.ClientHandlerRMIInterface;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class NetworkHandlerRMI extends Thread implements NetworkHandlerRMIInterface {
+public class NetworkHandlerRMI implements NetworkHandlerRMIInterface, Runnable {
    private final Client client;
    ClientHandlerRMIInterface server;
    public  NetworkHandlerRMI(Client client){
