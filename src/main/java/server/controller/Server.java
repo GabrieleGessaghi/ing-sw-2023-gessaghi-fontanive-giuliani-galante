@@ -1,8 +1,8 @@
 package server.controller;
 
 import server.controller.utilities.ConfigLoader;
-import server.view.ClientHandlerRMI;
-import server.view.ClientHandlerSocket;
+import server.view.rmi.ClientHandlerRMI;
+import server.view.tcp.ClientHandlerTCP;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -41,7 +41,7 @@ public class Server {
                 socket = serverSocket.accept();
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                ClientHandlerSocket clientHandler = new ClientHandlerSocket(connectionsCount, socket, dataInputStream, dataOutputStream);
+                ClientHandlerTCP clientHandler = new ClientHandlerTCP(connectionsCount, socket, dataInputStream, dataOutputStream);
                 new Thread(clientHandler).start();
                 controller.addClient(clientHandler);
                 connectionsCount++;

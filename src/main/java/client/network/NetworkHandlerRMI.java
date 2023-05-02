@@ -1,14 +1,16 @@
-package client;
+package client.network;
 
+import client.Client;
+import server.view.rmi.ServerUsable;
 import server.controller.Prompt;
-import server.view.ClientHandlerRMIInterface;
+import server.view.rmi.ClientUsable;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class NetworkHandlerRMI implements NetworkHandlerRMIInterface, Runnable {
+public class NetworkHandlerRMI implements ServerUsable, Runnable {
    private final Client client;
-   ClientHandlerRMIInterface server;
+   ClientUsable server;
    public  NetworkHandlerRMI(Client client){
        this.server = null;
        this.client = client;
@@ -49,7 +51,7 @@ public class NetworkHandlerRMI implements NetworkHandlerRMIInterface, Runnable {
        try {
            Registry registry = LocateRegistry.getRegistry();
            do {
-               server = (ClientHandlerRMIInterface) registry.lookup("ServerRMI" + i);
+               server = (ClientUsable) registry.lookup("ServerRMI" + i);
                i++;
            } while(!server.isAvailable());
            registry.rebind("ClientRmi"+ (i - 1),this);

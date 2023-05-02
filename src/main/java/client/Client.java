@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
-import client.NetworkHandlerSocket;
+import client.network.NetworkHandlerTCP;
 import server.controller.utilities.JsonTools;
 import server.model.Token;
 
@@ -25,7 +25,7 @@ import static server.controller.utilities.JsonTools.createJsonMatrix;
  */
 public class Client {
     private String nickname;
-    private NetworkHandlerSocket nhs;
+    private NetworkHandlerTCP nhs;
 
     /**
      * Class constructor
@@ -79,7 +79,7 @@ public class Client {
         }
 
         if(selection == 0)
-            nhs = new NetworkHandlerSocket(this, host);
+            nhs = new NetworkHandlerTCP(this, host);
         else {}
             //nhs = new RMIHandlerSocket();
         new Thread(nhs).start();

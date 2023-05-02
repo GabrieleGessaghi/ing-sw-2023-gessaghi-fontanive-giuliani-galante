@@ -1,23 +1,19 @@
-package server.view;
+package server.view.rmi;
 
-import client.NetworkHandlerRMI;
+import client.network.NetworkHandlerRMI;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import server.controller.Prompt;
 import server.controller.observer.Event;
-import server.controller.observer.Observer;
+import server.view.ClientHandler;
 
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.ArrayList;
 
 /**
  * class for handle the RMI Clients
  * @author Niccolò Giuliani
  */
-public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMIInterface {
+public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
     private boolean available;
     NetworkHandlerRMI client;
     private String clientName;

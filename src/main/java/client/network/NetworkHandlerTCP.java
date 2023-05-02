@@ -1,13 +1,13 @@
-package client;
+package client.network;
 
+import client.Client;
 import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
-import server.controller.utilities.JsonTools;
 
 import java.io.*;
 import java.net.Socket;
 
-public class NetworkHandlerSocket implements Runnable{
+public class NetworkHandlerTCP implements Runnable{
     private Socket serverSocket;
     private String host;
     private Client client;
@@ -20,7 +20,7 @@ public class NetworkHandlerSocket implements Runnable{
      * @param client : calling client
      * @param host : server ip
      */
-    public NetworkHandlerSocket (Client client, String host){
+    public NetworkHandlerTCP(Client client, String host){
         this.client = client;
         this.host = host;
     }

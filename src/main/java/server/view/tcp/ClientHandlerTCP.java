@@ -1,28 +1,22 @@
-package server.view;
+package server.view.tcp;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import server.controller.observer.Event;
-import server.controller.observer.Observer;
-import server.controller.Prompt;
 import server.view.ClientHandler;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
 
 /**
  * socket class to handle the Client
  * @author Niccolò Giuliani
  */
-public class ClientHandlerSocket extends ClientHandler {
+public class ClientHandlerTCP extends ClientHandler {
     private final InputStream inputStream;
     private final OutputStream outputStream;
     private final Socket socket;
 
-    public ClientHandlerSocket(int index, Socket socket, InputStream inputStream, OutputStream outputStream){
+    public ClientHandlerTCP(int index, Socket socket, InputStream inputStream, OutputStream outputStream){
         super(index);
         this.socket = socket;
         this.inputStream = inputStream;
