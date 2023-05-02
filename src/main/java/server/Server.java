@@ -35,10 +35,15 @@ public class Server {
     }
 
     public static void acceptConnectionsTCP() {
+        ServerSocket serverSocket = null;
+        try {
+            serverSocket = new ServerSocket(SERVER_PORT);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         while (true) {
             Socket socket = null;
             try {
-                ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
                 socket = serverSocket.accept();
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());

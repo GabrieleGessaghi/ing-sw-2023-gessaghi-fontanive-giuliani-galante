@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Created TUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/configuration.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/TUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,10 +163,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="JUnit.ShelfTest" />
         <item itemvalue="JUnit.ThreeColumnsTest" />
         <item itemvalue="JUnit.TwoColumnsTest" />
-        <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="JUnit.TwoColumnsTest.isSatisfiedTestFalse" />
       </list>
     </recent_temporary>
@@ -541,15 +542,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -561,6 +553,15 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>

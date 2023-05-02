@@ -3,11 +3,13 @@ package client;
 import client.network.NetworkHandler;
 import client.network.NetworkHandlerRMI;
 import client.network.NetworkHandlerTCP;
+import server.controller.utilities.ConfigLoader;
 
 import java.util.Scanner;
 
 public class TUI {
     public static void main(String[] args) {
+        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         NetworkHandler networkHandler;
         String hostIp;
         String nickname;

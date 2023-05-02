@@ -19,7 +19,7 @@ public class CreationController implements Observer {
 
     public CreationController(){
         playersNicknames = new ArrayList<>();
-        playersNumber = 0;
+        playersNumber = -1;
     }
 
     @Override
