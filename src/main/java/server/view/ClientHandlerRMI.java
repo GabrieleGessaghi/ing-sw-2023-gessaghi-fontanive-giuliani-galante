@@ -17,79 +17,37 @@ import java.util.ArrayList;
  * class for handle the RMI Clients
  * @author Niccolò Giuliani
  */
-public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMIInterface{
-
+public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMIInterface {
     private boolean available;
-
-    private Prompt lastRequest;
-    private boolean isThereRequest;
-    private final ArrayList<Observer> observers;
     NetworkHandlerRMI client;
     private String clientName;
+
     public ClientHandlerRMI(int index){
-        this.isThereRequest = true;
-        this.index = index;
-        this.lastRequest = Prompt.NICKNAME;
+        super(index);
         this.available = true;
         this.client = null;
-        this.observers = new ArrayList<>();
     }
 
-    /**
-     * method to update the observers
-     * @author Niccolò Giuliani
-     * @param event The event to be sent to the observers.
-     */
     @Override
-    public void updateObservers(Event event) {
-        String jsonMessage = event.getJsonMessage();
-        JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
-        jsonObject.addProperty("clientIndex", index);
-        Event indexedEvent = new Event(jsonObject.toString());
-        for(Observer o : observers)
-            o.update(indexedEvent);
+    public void run() {
+        try {
+            Registry registry = LocateRegistry.getRegistry();
+            client = (NetworkHandlerRMI) registry.lookup(clientName);
+        } catch(Exception e) {
+            System.out.println("[System] Client failed: " + e);
+        }
+        while (true) {
+            if(isThereRequest) {
+                client.receiveInput(lastRequest);
+                isThereRequest = false;
+            }
+        }
     }
 
     @Override
     public void update(Event event) {
         client.showOutput(event.getJsonMessage());
     }
-
-    @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-
-    @Override
-    public void requestInput(Prompt prompt) {
-        this.lastRequest = prompt;
-        this.isThereRequest = true;
-    }
-
-    @Override
-    public void run() {
-
-        try {
-            Registry registry = LocateRegistry.getRegistry();
-            client = (NetworkHandlerRMI) registry.lookup(clientName);
-        }catch(Exception e){
-            System.out.println("[System] Client failed: " + e);
-        }
-        while(true){
-            if(isThereRequest) {
-                client.receiveInput(lastRequest);
-                isThereRequest = false;
-            }
-
-
-        }
-    }
-
-    public void showOutput(String jsonMessage) {
-        client.showOutput(jsonMessage);
-    }
-
 
     /**
      * method to know if the ClientHandler is available
@@ -113,12 +71,17 @@ public class ClientHandlerRMI extends ClientHandler implements ClientHandlerRMII
     }
 
     /**
-     * method to send the input to the class Server
+     * method to send the input to the controller
      * @author Niccolò Giuliani
      * @param input input of the Client
      */
+    @Override
     public void sendInput(String input){
         updateObservers(new Event(input));
     }
 
+    @Override
+    public void showOutput(String jsonMessage) {
+        client.showOutput(jsonMessage);
+    }
 }

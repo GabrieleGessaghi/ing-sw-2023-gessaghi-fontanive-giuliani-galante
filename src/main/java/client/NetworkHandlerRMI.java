@@ -48,14 +48,12 @@ public class NetworkHandlerRMI implements NetworkHandlerRMIInterface, Runnable {
     i = 0;
        try {
            Registry registry = LocateRegistry.getRegistry();
-
            do {
-                server = (ClientHandlerRMIInterface) registry.lookup("ServerRMI" + Integer.toString(i));
+               server = (ClientHandlerRMIInterface) registry.lookup("ServerRMI" + i);
                i++;
-           }while(!server.isAvailable());
-           registry.rebind("ClientRmi"+Integer.toString(i-1) ,this);
-           server.setAvailable("ClientRMI"+Integer.toString(i-1));
-
+           } while(!server.isAvailable());
+           registry.rebind("ClientRmi"+ (i - 1),this);
+           server.setAvailable("ClientRMI"+ (i - 1));
        }catch(Exception e){
            System.out.println("[System] Server failed: " + e);
        }

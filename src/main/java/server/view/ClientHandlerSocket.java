@@ -18,36 +18,15 @@ import java.util.ArrayList;
  * @author Niccolò Giuliani
  */
 public class ClientHandlerSocket extends ClientHandler {
-    private Prompt lastRequest;
-    private boolean isThereRequest;
     private final InputStream inputStream;
     private final OutputStream outputStream;
-    private final Socket s;
-    private final ArrayList<Observer> observers;
+    private final Socket socket;
 
-    public ClientHandlerSocket(int index, Socket s, InputStream inputStream, OutputStream outputStream){
-        this.index = index;
-        this.s = s;
+    public ClientHandlerSocket(int index, Socket socket, InputStream inputStream, OutputStream outputStream){
+        super(index);
+        this.socket = socket;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
-        this.lastRequest = Prompt.NICKNAME;
-        this.isThereRequest = true;
-        this.observers = new ArrayList<>();
-    }
-
-    /**
-     *
-     * @param event
-     * @author Giorgio Massimo Fontanive
-     */
-    @Override
-    public void updateObservers(Event event) {
-        String jsonMessage = event.getJsonMessage();
-        JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
-        jsonObject.addProperty("clientIndex", index);
-        Event indexedEvent = new Event(jsonObject.toString());
-        for(Observer o : observers)
-            o.update(indexedEvent);
     }
 
     @Override
@@ -60,18 +39,6 @@ public class ClientHandlerSocket extends ClientHandler {
         }
     }
 
-    @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void requestInput(Prompt prompt) {
-        this.lastRequest = prompt;
-        isThereRequest = true;
-    }
-
-    //TODO: Exit condition and closing the resources
     @Override
     public void run() {
         OutputStreamWriter out = new OutputStreamWriter(outputStream);
