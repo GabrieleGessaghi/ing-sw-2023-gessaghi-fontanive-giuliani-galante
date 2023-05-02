@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Created NetworkHandler abstract class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Finished implementing NetworkHandler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,13 +191,6 @@
       <workItem from="1682749112175" duration="7370000" />
       <workItem from="1682860377909" duration="959000" />
       <workItem from="1682920782466" duration="3425000" />
-    </task>
-    <task id="LOCAL-00088" summary="fixed small issues">
-      <created>1682517694975</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1682517694975</updated>
     </task>
     <task id="LOCAL-00089" summary="added TODO">
       <created>1682517993550</created>
@@ -535,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683016601610</updated>
     </task>
-    <option name="localTasksCounter" value="137" />
+    <task id="LOCAL-00137" summary="Finished implementing NetworkHandler">
+      <created>1683024544807</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1683024544808</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +569,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Documented JsonTools" />
     <MESSAGE value="Separated Client and Server packages" />
     <MESSAGE value="Implemented interfaces in Board" />
     <MESSAGE value="Fixed issues in Player" />
@@ -594,7 +593,8 @@
     <MESSAGE value="Client showOutput() method" />
     <MESSAGE value="Separated RMI and TCP connection acceptance" />
     <MESSAGE value="Completed showOutput method in client" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed showOutput method in client" />
+    <MESSAGE value="Finished implementing NetworkHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing NetworkHandler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

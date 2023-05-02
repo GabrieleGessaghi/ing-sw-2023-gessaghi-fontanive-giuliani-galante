@@ -11,8 +11,6 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
 public class NetworkHandlerTCP extends NetworkHandler {
     private Socket serverSocket;
-    private final String host;
-    private final Client client;
 
     /**
      * Class constructor.
@@ -21,8 +19,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
      * @param host : server ip
      */
     public NetworkHandlerTCP(Client client, String host){
-        this.client = client;
-        this.host = host;
+        super(client, host);
     }
 
     /**

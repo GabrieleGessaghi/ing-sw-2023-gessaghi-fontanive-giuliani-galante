@@ -11,11 +11,10 @@ import java.rmi.registry.Registry;
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
 public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
-   private final Client client;
    ClientUsable server;
-   public  NetworkHandlerRMI(Client client){
-       this.server = null;
-       this.client = client;
+
+   public  NetworkHandlerRMI(Client client, String host){
+       super(client, host);
    }
 
     /**
@@ -51,7 +50,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
     int i;
     i = 0;
        try {
-           Registry registry = LocateRegistry.getRegistry(SERVER_PORT);
+           Registry registry = LocateRegistry.getRegistry(host, SERVER_PORT);
            do {
                server = (ClientUsable) registry.lookup("ServerRMI" + i);
                i++;

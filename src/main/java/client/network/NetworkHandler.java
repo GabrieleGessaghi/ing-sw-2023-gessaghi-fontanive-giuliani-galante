@@ -1,6 +1,15 @@
 package client.network;
 
+import client.Client;
+
 public abstract class NetworkHandler implements Runnable {
+    protected Client client;
+    protected String host;
+
+    public NetworkHandler(Client client, String host) {
+        this.client = client;
+        this.host = host;
+    }
 
     @Override
     public abstract void run();

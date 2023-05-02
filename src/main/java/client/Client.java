@@ -1,5 +1,7 @@
 package client;
 
+import client.network.NetworkHandler;
+import client.network.NetworkHandlerRMI;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
@@ -25,16 +27,7 @@ import static server.controller.utilities.JsonTools.createJsonMatrix;
  */
 public class Client {
     private String nickname;
-    private NetworkHandlerTCP nhs;
-
-    /**
-     * Class constructor
-     * @author Niccolò Galante
-     */
-    public Client(String nick){
-        this.nickname = nick;
-        this.nhs = null;
-    }
+    private NetworkHandler networkHandler;
 
     public void main(){
         String hostIp;
@@ -42,6 +35,7 @@ public class Client {
 
         System.out.println("Insert host's IP address:\n");
         hostIp = scn.nextLine();
+
         requestConnectionType(hostIp);
 
         System.out.println("Insert nickname:\n");
@@ -79,10 +73,10 @@ public class Client {
         }
 
         if(selection == 0)
-            nhs = new NetworkHandlerTCP(this, host);
-        else {}
-            //nhs = new RMIHandlerSocket();
-        new Thread(nhs).start();
+            networkHandler = new NetworkHandlerTCP(this, host);
+        else
+            networkHandler = new NetworkHandlerRMI(this, host);
+        new Thread(networkHandler).start();
     }
 
     /**
@@ -92,7 +86,7 @@ public class Client {
     private void requestNickname(){
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("Nickname", nickname);
-        nhs.sendInput(jsonObject.toString());
+        networkHandler.sendInput(jsonObject.toString());
     }
 
     /**
@@ -116,7 +110,7 @@ public class Client {
 
         jsonObject.addProperty("numberOfPlayers", numberOfPlayers);
         input = jsonObject.toString();
-        nhs.sendInput(input);
+        networkHandler.sendInput(input);
     }
 
     /**
@@ -171,7 +165,7 @@ public class Client {
         }
         jMatrix = createJsonMatrix(selectedTokens);
         jMatrixToSend.add("selectedTokens", jMatrix);
-        nhs.sendInput(jMatrixToSend.toString());
+        networkHandler.sendInput(jMatrixToSend.toString());
     }
 
     /**
@@ -195,7 +189,7 @@ public class Client {
 
         jsonObject.addProperty("selectedColumn", selectedColumn);
         input = jsonObject.toString();
-        nhs.sendInput(input);
+        networkHandler.sendInput(input);
     }
 
     /**
@@ -206,28 +200,28 @@ public class Client {
     public void showOutput (String toShow){
         JsonReader jsonReader = new JsonReader(new StringReader(toShow));
         String field;
-        String toPrint = "";
+        StringBuilder toPrint = new StringBuilder();
         try {
             jsonReader.beginObject();
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "nickname" -> toPrint += "Player: " + jsonReader.nextString() + "\n";
-                    case "totalPoints" -> toPrint += "Points: " + jsonReader.nextInt() + "\n";
+                    case "nickname" -> toPrint.append("Player: ").append(jsonReader.nextString()).append("\n");
+                    case "totalPoints" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
                     case "isFirstPlayer" -> {
                         if (jsonReader.nextBoolean()) {
-                            toPrint += "First player\n";
+                            toPrint.append("First player\n");
                         }else {
-                            toPrint += "Not first player\n";
+                            toPrint.append("Not first player\n");
                         }
                     }
-                    case "playerIndex" -> toPrint += "Player index: " + jsonReader.nextInt() + "\n";
-                    case "currentPlayerNickname" -> toPrint += "Current player: " + jsonReader.nextString() + "\n";
-                    case "objectiveDescription" -> toPrint += "Common Objective description: " + jsonReader.nextString() + "\n";
-                    case "numberOfTokensLeft" -> toPrint += "Remaining tokens: " + jsonReader.nextInt() + "\n";
-                    case "nextPointsAvailable" -> toPrint += "Next common card points: " + jsonReader.nextInt() + "\n";
+                    case "playerIndex" -> toPrint.append("Player index: ").append(jsonReader.nextInt()).append("\n");
+                    case "currentPlayerNickname" -> toPrint.append("Current player: ").append(jsonReader.nextString()).append("\n");
+                    case "objectiveDescription" -> toPrint.append("Common Objective description: ").append(jsonReader.nextString()).append("\n");
+                    case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
+                    case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
                     case "board" -> {
-                        toPrint += "Board: \n";
+                        toPrint.append("Board: \n");
                         jsonReader.beginObject();
                         int[][] intMatrix = JsonTools.readMatrix(jsonReader);
                         char[][] charMatrix = new char[BOARD_SIZE][BOARD_SIZE];
@@ -243,20 +237,19 @@ public class Client {
                         jsonReader.endObject();
                     }
                     case "shelf" -> {
-                        toPrint += "Shelf: \n";
+                        toPrint.append("Shelf: \n");
                         jsonReader.beginObject();
-                        switch (jsonReader.nextName()){
-                            case "shelfTiles" -> {
-                                int [][] intMatrix = JsonTools.readMatrix(jsonReader);
-                                for (int i=0; i<ConfigLoader.SHELF_ROWS; i--){
-                                    for (int j = 0; j<ConfigLoader.SHELF_COLUMNS; j--) {
-                                        toPrint += "| " + Token.values()[intMatrix[i][j]] + " |";
-                                    }
-                                    toPrint += "\n";
+                        if (jsonReader.nextName().equals("shelfTiles")) {
+                            int[][] intMatrix = JsonTools.readMatrix(jsonReader);
+                            for (int i = 0; i < ConfigLoader.SHELF_ROWS; i++) {
+                                for (int j = 0; j < SHELF_COLUMNS; j++) {
+                                    toPrint.append("| ").append(Token.values()[intMatrix[i][j]]).append(" |");
                                 }
-                                toPrint += "\n";
+                                toPrint.append("\n");
                             }
-                            default -> jsonReader.skipValue();
+                            toPrint.append("\n");
+                        } else {
+                            jsonReader.skipValue();
                         }
                         jsonReader.endObject();
                     }
