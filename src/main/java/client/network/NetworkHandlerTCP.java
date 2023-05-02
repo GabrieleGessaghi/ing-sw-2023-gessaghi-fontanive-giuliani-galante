@@ -12,8 +12,6 @@ public class NetworkHandlerTCP implements Runnable{
     private String host;
     private Client client;
 
-    //NEL COSTRUTTORE PASSA SOLO CLIENT
-
     /**
      * Class constructor.
      * @author Gabriele Gessaghi
@@ -26,10 +24,8 @@ public class NetworkHandlerTCP implements Runnable{
     }
 
     /**
-     *
      * @author Gabriele Gessaghi
      */
-    //LASCIARE STARE PER ORA
     public boolean ping () {
         return true;
     }
@@ -40,15 +36,6 @@ public class NetworkHandlerTCP implements Runnable{
      */
     @Override
     public void run () {
-        //TRY
-            //CONNETTITI AL SERVER "LOCALHOST" CON PORTA 1234 CREANDO IL SOCKET
-            //CREA GLI OGGETTI DATAINPUTSTREAM E DATAOUTPUTSTREAM
-            //WHILE TRUE
-                //RICEVI IN INGRESSO UNA STRINGA DAL CLIENTHANDLER
-                //PARSARE IL JSON
-                //NEL CASO CI SIANO CAMPI DI RICHIESTA (VEDI MESSAGGIO WHATSAPP)
-                    //CHIAMARE IL METODO requestInput DI CLIENT CON IL GIUSTO PROMPT (Non ancora implementato)
-                //ALTRIMENTI MANDARE A showOutput DI CLIENT PASSANDO LA STRINGA
     try {
         serverSocket = new Socket(host,1234);
         InputStreamReader in = new InputStreamReader(serverSocket.getInputStream());
@@ -90,7 +77,6 @@ public class NetworkHandlerTCP implements Runnable{
      * @param input : String to write on the output buffer.
      */
     public void sendInput (String input) {
-        //MANDA LA STRINGA CON L'OGGETTO DATAOUTPUTSTREAM
         try {
             OutputStreamWriter out = new OutputStreamWriter(serverSocket.getOutputStream());
             out.write(input);
