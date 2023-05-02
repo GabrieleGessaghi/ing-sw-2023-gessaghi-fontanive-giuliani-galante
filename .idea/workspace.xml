@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Separated RMI and TCP connection acceptance">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/NetworkHandlerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/NetworkHandlerSocket.java" afterDir="false" />
-    </list>
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Completed showOutput method in client" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -189,13 +185,6 @@
       <workItem from="1682749112175" duration="7370000" />
       <workItem from="1682860377909" duration="959000" />
       <workItem from="1682920782466" duration="3425000" />
-    </task>
-    <task id="LOCAL-00087" summary="fixed small issues">
-      <created>1682512255531</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1682512255531</updated>
     </task>
     <task id="LOCAL-00088" summary="fixed small issues">
       <created>1682517694975</created>
@@ -533,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683011545054</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="Completed showOutput method in client">
+      <created>1683016601610</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1683016601610</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +563,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Documented interfaces" />
     <MESSAGE value="Documented JsonTools" />
     <MESSAGE value="Separated Client and Server packages" />
     <MESSAGE value="Implemented interfaces in Board" />
@@ -592,7 +587,8 @@
     <MESSAGE value="NetworkHandlerSocket class finished, TODO ping())" />
     <MESSAGE value="Client showOutput() method" />
     <MESSAGE value="Separated RMI and TCP connection acceptance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Separated RMI and TCP connection acceptance" />
+    <MESSAGE value="Completed showOutput method in client" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed showOutput method in client" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

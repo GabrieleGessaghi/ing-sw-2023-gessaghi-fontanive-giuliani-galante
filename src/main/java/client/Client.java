@@ -50,8 +50,8 @@ public class Client {
 
     /**
      * Receives input from network handler and requests input from client.
-     * @param prompt type of information requested.
      * @author Niccolò Galante
+     * @param prompt type of information requested.
      */
     public void requestInput(Prompt prompt){
         switch (prompt) {
@@ -198,6 +198,11 @@ public class Client {
         nhs.sendInput(input);
     }
 
+    /**
+     * Displays requested output to client.
+     * @author Gabriele Gessaghi
+     * @param toShow requested information.
+     */
     public void showOutput (String toShow){
         JsonReader jsonReader = new JsonReader(new StringReader(toShow));
         String field;
@@ -265,6 +270,12 @@ public class Client {
         }
     }
 
+    /**
+     * Converts integer value to the initial of each token.
+     * @author Niccolò Galante
+     * @param value integer value that is to be converted.
+     * @return converted integer value.
+     */
     private char intToTokenInitial(int value){
         char tokenInitial;
         tokenInitial = switch (value){
