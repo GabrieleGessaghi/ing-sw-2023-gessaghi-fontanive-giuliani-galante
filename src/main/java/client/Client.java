@@ -26,17 +26,18 @@ import static server.controller.utilities.JsonTools.createJsonMatrix;
  * @author Niccolò Galante
  */
 public class Client {
-    private String nickname;
-    private NetworkHandler networkHandler;
+    private static String nickname;
+    private static NetworkHandler networkHandler;
 
-    public void main(){
+    public static void main(String[] args) {
+        Client client = new Client();
         String hostIp;
         Scanner scn = new Scanner(System.in);
 
         System.out.println("Insert host's IP address:\n");
         hostIp = scn.nextLine();
 
-        requestConnectionType(hostIp);
+        client.requestConnectionType(hostIp);
 
         System.out.println("Insert nickname:\n");
         nickname = scn.nextLine();
@@ -47,7 +48,7 @@ public class Client {
      * @author Niccolò Galante
      * @param prompt type of information requested.
      */
-    public void requestInput(Prompt prompt){
+    public  void requestInput(Prompt prompt){
         switch (prompt) {
             case NICKNAME -> requestNickname();
             case PLAYERSNUMBER -> requestNumberOfPlayers();

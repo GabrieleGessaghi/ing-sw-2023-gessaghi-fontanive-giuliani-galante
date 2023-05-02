@@ -23,7 +23,7 @@ public class Server {
     private static Controller controller;
     private static int connectionsCount;
 
-    public static void main() throws IOException {
+    public static void main(String[] args) throws IOException {
         //TODO: Add javadoc
         //TODO: Show player initial state of the game
         connectionsCount = 0;
