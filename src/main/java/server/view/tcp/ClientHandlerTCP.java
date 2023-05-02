@@ -16,6 +16,14 @@ public class ClientHandlerTCP extends ClientHandler {
     private final OutputStream outputStream;
     private final Socket socket;
 
+    /**
+     * Class constructor. The server accepting new connections creates this object for every new connection.
+     * @author Niccolò Giuliani
+     * @param index The client's unique identifier.
+     * @param socket The socket bound to this object.
+     * @param inputStream Used to receive input from the client.
+     * @param outputStream Used to send input to the client.
+     */
     public ClientHandlerTCP(int index, Socket socket, InputStream inputStream, OutputStream outputStream){
         super(index);
         this.socket = socket;
@@ -72,6 +80,4 @@ public class ClientHandlerTCP extends ClientHandler {
             e.printStackTrace();
         }
     }
-
-
 }

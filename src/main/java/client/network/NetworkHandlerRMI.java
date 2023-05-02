@@ -23,7 +23,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
      * @param input input to Send to the client
      */
     @Override
-    public void receiveInput(Prompt input) {
+    public void requestInput(Prompt input) {
        client.requestInput(input);
     }
 

@@ -22,6 +22,10 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     protected Prompt lastRequest;
     protected boolean isThereRequest;
 
+    /**
+     * Class constructor. Immediately asks the client for its nickname.
+     * @param index This client's unique identifier.
+     */
     public ClientHandler(int index) {
         this.index = index;
         observers = new ArrayList<>();
@@ -29,11 +33,6 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         isThereRequest = true;
     }
 
-    /**
-     *
-     * @param event
-     * @author Giorgio Massimo Fontanive
-     */
     @Override
     public void updateObservers(Event event) {
         String jsonMessage = event.getJsonMessage();
@@ -69,8 +68,15 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
      */
     public abstract void showOutput(String jsonMessage);
 
+    /**
+     * Runs indefinitely, used to receive information from the client.
+     */
     public abstract void run();
 
+    /**
+     * The index represents a unique identifier to identify the client.
+     * @return This client's index.
+     */
     public int getIndex() {
         return index;
     }

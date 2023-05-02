@@ -34,7 +34,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
         }
         while (true) {
             if(isThereRequest) {
-                client.receiveInput(lastRequest);
+                client.requestInput(lastRequest);
                 isThereRequest = false;
             }
         }
