@@ -1,6 +1,7 @@
 package server.view.tcp;
 
 import com.google.gson.JsonObject;
+import server.controller.Prompt;
 import server.controller.observer.Event;
 import server.view.ClientHandler;
 
@@ -48,18 +49,7 @@ public class ClientHandlerTCP extends ClientHandler {
         BufferedReader buffer = new BufferedReader(in);
         while(true) {
             try{
-                if(isThereRequest) {
-                    JsonObject jsonObject = new JsonObject();
-                    switch (lastRequest) {
-                        case NICKNAME -> jsonObject.addProperty("requestNickname", true);
-                        case PLAYERSNUMBER -> jsonObject.addProperty("requestPlayerNumber", true);
-                        case TOKENS -> jsonObject.addProperty("requestTokens", true);
-                        case COLUMN -> jsonObject.addProperty("requestColumn", true);
-                    }
-                    System.out.println("Sending request");
-                    out.write(jsonObject.toString());
-                    isThereRequest = false;
-                }
+
                 String line = buffer.readLine();
                 System.out.println(line);
                 if(line != null) {
@@ -74,7 +64,20 @@ public class ClientHandlerTCP extends ClientHandler {
     }
 
     @Override
-    public void showOutput(String jsonMessage) {
+    public void requestInput(Prompt prompt) {
+        JsonObject jsonObject = new JsonObject();
+        switch (prompt) {
+            case NICKNAME -> jsonObject.addProperty("requestNickname", true);
+            case PLAYERSNUMBER -> jsonObject.addProperty("requestPlayerNumber", true);
+            case TOKENS -> jsonObject.addProperty("requestTokens", true);
+            case COLUMN -> jsonObject.addProperty("requestColumn", true);
+        }
+        System.out.println("Sending request");
+        sendOutput(jsonObject.toString());
+    }
+
+    @Override
+    public void sendOutput(String jsonMessage) {
         OutputStreamWriter out = new OutputStreamWriter(outputStream);
         try{
             out.write(jsonMessage);

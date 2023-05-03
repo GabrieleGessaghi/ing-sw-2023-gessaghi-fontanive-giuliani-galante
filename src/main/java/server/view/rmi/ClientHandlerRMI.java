@@ -2,6 +2,7 @@ package server.view.rmi;
 
 import client.network.NetworkHandlerRMI;
 
+import server.controller.Prompt;
 import server.controller.observer.Event;
 import server.view.ClientHandler;
 
@@ -40,12 +41,6 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
         } catch(Exception e) {
             System.out.println("[System] Client failed: " + e);
         }
-        while (true) {
-            if(isThereRequest) {
-                client.requestInput(lastRequest);
-                isThereRequest = false;
-            }
-        }
     }
 
     @Override
@@ -70,7 +65,12 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
     }
 
     @Override
-    public void showOutput(String jsonMessage) {
+    public void sendOutput(String jsonMessage) {
         client.showOutput(jsonMessage);
+    }
+
+    @Override
+    public void requestInput(Prompt prompt) {
+        client.requestInput(prompt);
     }
 }

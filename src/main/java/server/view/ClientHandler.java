@@ -7,8 +7,6 @@ import server.controller.observer.Observable;
 import server.controller.observer.Observer;
 import server.controller.observer.Event;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +17,6 @@ import java.util.List;
 public abstract class ClientHandler implements Observer, Observable, Runnable {
     protected int index;
     protected List<Observer> observers;
-    protected Prompt lastRequest;
-    protected boolean isThereRequest;
 
     /**
      * Class constructor. Immediately asks the client for its nickname.
@@ -29,8 +25,6 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public ClientHandler(int index) {
         this.index = index;
         observers = new ArrayList<>();
-        lastRequest = Prompt.NICKNAME;
-        isThereRequest = true;
     }
 
     @Override
@@ -56,17 +50,14 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
      * @author Niccolò Giuliani
      * @param prompt type of request
      */
-    public void requestInput(Prompt prompt) {
-        this.lastRequest = prompt;
-        this.isThereRequest = true;
-    }
+    public abstract void requestInput(Prompt prompt);
 
     /**
      * method to show the output
      * @author Niccolò Giuliani
      * @param jsonMessage String to show
      */
-    public abstract void showOutput(String jsonMessage);
+    public abstract void sendOutput(String jsonMessage);
 
     /**
      * Runs indefinitely, used to receive information from the client.

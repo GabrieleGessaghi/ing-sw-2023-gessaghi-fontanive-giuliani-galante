@@ -57,10 +57,11 @@ public class Controller implements Observer, Runnable {
             clientHandlers.add(clientHandler);
             clientHandler.registerObserver(this);
             clientHandler.registerObserver(creationController);
+            clientHandler.requestInput(Prompt.NICKNAME);
             if (clientHandlers.size() == 1)
                 clientHandler.requestInput(Prompt.PLAYERSNUMBER);
         } else
-            clientHandler.showOutput(JsonTools.createMessage("The game is full, please exit!"));
+            clientHandler.sendOutput(JsonTools.createMessage("The game is full, please exit!"));
     }
 
     /**

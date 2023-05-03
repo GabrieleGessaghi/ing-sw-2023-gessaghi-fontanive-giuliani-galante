@@ -56,9 +56,9 @@ public class NetworkHandlerTCP extends NetworkHandler {
             BufferedReader buffer = new BufferedReader(in);
             while (true){
                 String receivedString = buffer.readLine();
-                System.out.println(receivedString);
+                System.out.println(receivedString); //
                 if (receivedString != null) {
-                    System.out.println("Received output");
+                    System.out.println("Received output"); //
                     String field;
                     boolean exit = false;
                     JsonReader jsonReader = new JsonReader(new StringReader(receivedString));
@@ -78,12 +78,8 @@ public class NetworkHandlerTCP extends NetworkHandler {
                     if (exit) break;
                 }
             }
-            try {
-                in.close();
-                buffer.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            in.close();
+            buffer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

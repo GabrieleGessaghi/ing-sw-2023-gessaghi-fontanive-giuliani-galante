@@ -76,7 +76,7 @@ public class TurnController implements Observer {
         try {
             game.playerTurn(selectedTiles, selectedColumn);
         } catch (IllegalMoveException | IllegalColumnException e) {
-            currentClientHandler.showOutput(JsonTools.createMessage(e.getMessage()));
+            currentClientHandler.sendOutput(JsonTools.createMessage(e.getMessage()));
             newTurn();
         }
     }
