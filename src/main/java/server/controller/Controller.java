@@ -24,7 +24,7 @@ public class Controller implements Observer, Runnable {
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         isGameRunning = false;
         creationController = new CreationController();
         ListIterator<ClientHandler> listIterator = clientHandlers.listIterator();
@@ -33,7 +33,7 @@ public class Controller implements Observer, Runnable {
             //Waits for the game to be running
             while (!isGameRunning)
                 try {
-                    wait();
+                    this.wait();
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -60,11 +60,11 @@ public class Controller implements Observer, Runnable {
 
     @Override
     public void update(Event event) {
+        this.notifyAll();
         if (!isGameRunning)
             if (creationController.isGameReady()) {
                 game = creationController.createGame();
                 isGameRunning = true;
-                notifyAll();
                 for (ClientHandler clientHandler : clientHandlers)
                     game.registerObserver(clientHandler);
             }
@@ -80,8 +80,17 @@ public class Controller implements Observer, Runnable {
             clientHandler.registerObserver(this);
             clientHandler.registerObserver(creationController);
             clientHandler.requestInput(Prompt.NICKNAME);
-            if (clientHandlers.size() == 1)
-                clientHandler.requestInput(Prompt.PLAYERSNUMBER);
+            if (clientHandlers.size() == 1) {
+                synchronized (this) {
+                    while (clientHandlers.get(0).getNickname() == null)
+                        try {
+                            this.wait();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    clientHandler.requestInput(Prompt.PLAYERSNUMBER);
+                }
+            }
         } else
             clientHandler.sendOutput(JsonTools.createMessage("The game is full, please exit!"));
     }

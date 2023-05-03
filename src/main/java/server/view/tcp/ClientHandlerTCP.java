@@ -34,25 +34,18 @@ public class ClientHandlerTCP extends ClientHandler {
 
     @Override
     public void update(Event event) {
-        OutputStreamWriter out = new OutputStreamWriter(outputStream);
-        try{
-            out.write(event.getJsonMessage());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        sendOutput(event.getJsonMessage());
     }
 
     @Override
     public void run() {
-        OutputStreamWriter out = new OutputStreamWriter(outputStream);
         InputStreamReader in = new InputStreamReader(inputStream);
         BufferedReader buffer = new BufferedReader(in);
         while(true) {
-            try{
-
+            try {
                 String line = buffer.readLine();
                 System.out.println(line);
-                if(line != null) {
+                if (line != null) {
                     Event event = new Event(line);
                     updateObservers(event);
                     System.out.println("Received: " + event.getJsonMessage());
@@ -81,6 +74,8 @@ public class ClientHandlerTCP extends ClientHandler {
         OutputStreamWriter out = new OutputStreamWriter(outputStream);
         try{
             out.write(jsonMessage);
+            out.flush();
+            System.out.println("Outsput sent");
         } catch (IOException e) {
             e.printStackTrace();
         }

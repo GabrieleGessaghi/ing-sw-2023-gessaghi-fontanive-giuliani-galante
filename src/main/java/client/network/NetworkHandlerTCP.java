@@ -2,6 +2,7 @@ package client.network;
 
 import client.Client;
 import client.tui.ClientTUI;
+import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
 
@@ -26,7 +27,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
     /**
      * @author Gabriele Gessaghi
      */
-    public boolean ping () {
+    public boolean ping() {
         return true;
     }
 
@@ -35,11 +36,12 @@ public class NetworkHandlerTCP extends NetworkHandler {
      * @author Gabriele Gessaghi
      * @param input : String to write on the output buffer.
      */
-    public void sendInput (String input) {
+    public void sendInput(String input) {
         try {
             OutputStreamWriter out = new OutputStreamWriter(serverSocket.getOutputStream());
             out.write(input);
-            System.out.println("Sending input");
+            out.flush();
+            System.out.println("Output sent");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -50,16 +52,22 @@ public class NetworkHandlerTCP extends NetworkHandler {
      * @author Gabriele Gessaghi
      */
     @Override
-    public void run () {
+    public void run() {
         try {
             serverSocket = new Socket(host, SERVER_PORT);
             InputStreamReader in = new InputStreamReader(serverSocket.getInputStream());
             BufferedReader buffer = new BufferedReader(in);
             while (true){
+                System.out.println("Listening...");
+
+                //Sends a ping message
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("ping", true);
+                sendInput(jsonObject.toString());
+
                 String receivedString = buffer.readLine();
-                System.out.println(receivedString); //
                 if (receivedString != null) {
-                    System.out.println("Received output"); //
+                    System.out.println("Received input");
                     String field;
                     boolean exit = false;
                     JsonReader jsonReader = new JsonReader(new StringReader(receivedString));
@@ -78,6 +86,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
                     jsonReader.endObject();
                     if (exit) break;
                 }
+
             }
             in.close();
             buffer.close();

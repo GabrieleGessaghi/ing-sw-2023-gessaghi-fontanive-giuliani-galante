@@ -55,11 +55,11 @@ public class TurnController implements Observer {
         return selectedColumn >= 0 && selectedColumn <= ConfigLoader.SHELF_COLUMNS;
     }
 
-    private void newTurn() {
+    private synchronized void newTurn() {
         currentClientHandler.requestInput(Prompt.TOKENS);
         while (selectedTiles == null) {
             try {
-                wait();
+                this.wait();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -67,18 +67,18 @@ public class TurnController implements Observer {
         currentClientHandler.requestInput(Prompt.COLUMN);
         while (selectedColumn == -1) {
             try {
-                wait();
+                this.wait();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
     }
 
-    private void finalizeTurn() {
+    private synchronized void finalizeTurn() {
         try {
             game.playerTurn(selectedTiles, selectedColumn);
             isTurnOver = true;
-            notifyAll();
+            this.notifyAll();
         } catch (IllegalMoveException | IllegalColumnException e) {
             currentClientHandler.sendOutput(JsonTools.createMessage(e.getMessage()));
             newTurn();
@@ -112,7 +112,7 @@ public class TurnController implements Observer {
             if (correctClient) {
                 selectedTiles = tempSelectedTiles;
                 selectedColumn = tempSelectedColumn;
-                notifyAll();
+                this.notifyAll();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

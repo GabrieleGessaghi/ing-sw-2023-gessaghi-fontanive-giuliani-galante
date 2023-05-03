@@ -35,7 +35,7 @@ public class Server {
     }
 
     public static void acceptConnectionsTCP() {
-        ServerSocket serverSocket = null;
+        ServerSocket serverSocket;
         try {
             serverSocket = new ServerSocket(SERVER_PORT);
         } catch (IOException e) {

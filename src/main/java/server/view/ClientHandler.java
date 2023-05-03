@@ -15,6 +15,7 @@ import java.util.List;
  * @author Niccolò Giuliani
  */
 public abstract class ClientHandler implements Observer, Observable, Runnable {
+    protected String nickname;
     protected int index;
     protected List<Observer> observers;
 
@@ -23,6 +24,7 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
      * @param index This client's unique identifier.
      */
     public ClientHandler(int index) {
+        nickname = null;
         this.index = index;
         observers = new ArrayList<>();
     }
@@ -31,6 +33,18 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public void updateObservers(Event event) {
         String jsonMessage = event.getJsonMessage();
         JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
+
+        //Finds the client's nickname or ping message
+        if (jsonObject.has("nickname"))
+            nickname = jsonObject.get("nickname").getAsString();
+        if (jsonObject.has("ping")) {
+            JsonObject pong = new JsonObject();
+            pong.addProperty("pong", true);
+            sendOutput(jsonObject.toString());
+            System.out.println("Received a ping!");
+        }
+
+        //Adds client's index and sends the message to observers
         jsonObject.addProperty("clientIndex", index);
         Event indexedEvent = new Event(jsonObject.toString());
         for(Observer o : observers)
@@ -71,4 +85,6 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public int getIndex() {
         return index;
     }
+
+    public String getNickname() {return nickname;}
 }
