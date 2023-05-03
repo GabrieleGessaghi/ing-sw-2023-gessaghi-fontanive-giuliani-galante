@@ -29,15 +29,32 @@ public class Controller implements Observer, Runnable {
         creationController = new CreationController();
         ListIterator<ClientHandler> listIterator = clientHandlers.listIterator();
         while(true) {
-            if (isGameRunning) {
-                if (!listIterator.hasNext())
-                    listIterator = clientHandlers.listIterator();
-                ClientHandler currentClient = listIterator.next();
-                turnController = new TurnController(game, currentClient);
-                currentClient.registerObserver(turnController);
-                if (game.gameOver())
-                    reset();
-            }
+
+            //Waits for the game to be running
+            while (!isGameRunning)
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+            //Moves to the next player and begins a new turn
+            if (!listIterator.hasNext())
+                listIterator = clientHandlers.listIterator();
+            ClientHandler currentClient = listIterator.next();
+            turnController = new TurnController(game, currentClient);
+            currentClient.registerObserver(turnController);
+
+            //Waits for the turn to be finished
+            while (!turnController.getIsTurnOver())
+                try {
+                    turnController.wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+            if (game.gameOver())
+                reset();
         }
     }
 
@@ -47,11 +64,16 @@ public class Controller implements Observer, Runnable {
             if (creationController.isGameReady()) {
                 game = creationController.createGame();
                 isGameRunning = true;
+                notifyAll();
                 for (ClientHandler clientHandler : clientHandlers)
                     game.registerObserver(clientHandler);
             }
     }
 
+    /**
+     *
+     * @param clientHandler
+     */
     public void addClient(ClientHandler clientHandler) {
         if (!isGameRunning && creationController.isSpotAvailable()) {
             clientHandlers.add(clientHandler);

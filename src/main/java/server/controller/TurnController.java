@@ -22,11 +22,13 @@ public class TurnController implements Observer {
     private int selectedColumn;
     private final Game game;
     private final ClientHandler currentClientHandler;
+    private boolean isTurnOver;
 
     public TurnController(Game game, ClientHandler currentClient) {
         selectedTiles = null;
         selectedColumn = -1;
         currentClientHandler = currentClient;
+        isTurnOver = false;
         this.game = game;
         newTurn();
     }
@@ -75,6 +77,8 @@ public class TurnController implements Observer {
     private void finalizeTurn() {
         try {
             game.playerTurn(selectedTiles, selectedColumn);
+            isTurnOver = true;
+            notifyAll();
         } catch (IllegalMoveException | IllegalColumnException e) {
             currentClientHandler.sendOutput(JsonTools.createMessage(e.getMessage()));
             newTurn();
@@ -116,5 +120,9 @@ public class TurnController implements Observer {
 
         if (isMatrixLegal() && isColumnLegal())
             finalizeTurn();
+    }
+
+    public boolean getIsTurnOver() {
+        return isTurnOver;
     }
 }
