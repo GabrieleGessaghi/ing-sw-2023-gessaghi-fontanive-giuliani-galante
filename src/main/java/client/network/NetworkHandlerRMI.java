@@ -1,5 +1,6 @@
 package client.network;
 
+import client.Client;
 import client.tui.ClientTUI;
 import server.view.rmi.ServerUsable;
 import server.controller.Prompt;
@@ -13,7 +14,7 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
    ClientUsable server;
 
-   public  NetworkHandlerRMI(ClientTUI client, String host){
+   public  NetworkHandlerRMI(Client client, String host){
        super(client, host);
    }
 

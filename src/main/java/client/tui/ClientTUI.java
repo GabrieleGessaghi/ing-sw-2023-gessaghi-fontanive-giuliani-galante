@@ -1,5 +1,6 @@
 package client.tui;
 
+import client.Client;
 import client.network.NetworkHandler;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -22,16 +23,13 @@ import static server.controller.utilities.JsonTools.createJsonMatrix;
  * ClientTUI class.
  * @author Niccolò Galante
  */
-public class ClientTUI {
+public class ClientTUI extends Client {
     private final String nickname;
-    private NetworkHandler networkHandler;
+
+    //TODO: Save things like board and personal shelf to show once its the player's turn
 
     public ClientTUI(String nickname) {
         this.nickname = nickname;
-    }
-
-    public void setNetworkHandler(NetworkHandler networkHandler) {
-        this.networkHandler = networkHandler;
     }
 
     /**
@@ -86,6 +84,7 @@ public class ClientTUI {
      * Asks player to select tokens from board.
      * @author Niccolò Galante
      */
+    //TODO: Improve this
     private void requestTokenSelection(){
         Scanner scn = new Scanner(System.in);
         JsonArray jMatrix;
@@ -177,19 +176,13 @@ public class ClientTUI {
                 switch (field) {
                     case "nickname" -> toPrint.append("Player: ").append(jsonReader.nextString()).append("\n");
                     case "totalPoints" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
-                    case "isFirstPlayer" -> {
-                        if (jsonReader.nextBoolean()) {
-                            toPrint.append("First player\n");
-                        }else {
-                            toPrint.append("Not first player\n");
-                        }
-                    }
+                    case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player\n" : "Not first player\n");
                     case "playerIndex" -> toPrint.append("Player index: ").append(jsonReader.nextInt()).append("\n");
                     case "currentPlayerNickname" -> toPrint.append("Current player: ").append(jsonReader.nextString()).append("\n");
                     case "objectiveDescription" -> toPrint.append("Common Objective description: ").append(jsonReader.nextString()).append("\n");
                     case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
                     case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
-                    case "board" -> {
+                    case "board" -> { //TODO: Create separate function
                         toPrint.append("Board: \n");
                         jsonReader.beginObject();
                         int[][] intMatrix = JsonTools.readMatrix(jsonReader);
@@ -205,7 +198,7 @@ public class ClientTUI {
 
                         jsonReader.endObject();
                     }
-                    case "shelf" -> {
+                    case "shelf" -> { //TODO: Create separate function
                         toPrint.append("Shelf: \n");
                         jsonReader.beginObject();
                         if (jsonReader.nextName().equals("shelfTiles")) {
@@ -239,6 +232,7 @@ public class ClientTUI {
      * @return converted integer value.
      */
     private char intToTokenInitial(int value){
+        //TODO: Add colors here
         char tokenInitial;
         tokenInitial = switch (value){
             case 0 -> 'X'; // nothing

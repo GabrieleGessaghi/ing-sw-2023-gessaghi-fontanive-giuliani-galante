@@ -1,5 +1,6 @@
 package client.tui;
 
+import client.Client;
 import client.network.NetworkHandler;
 import client.network.NetworkHandlerRMI;
 import client.network.NetworkHandlerTCP;
@@ -16,6 +17,8 @@ public class TUI {
         int selection;
         Scanner scn = new Scanner(System.in);
 
+        //TODO: Add beginning screen
+
         System.out.print("Insert nickname: ");
         nickname = scn.nextLine();
 
@@ -30,7 +33,7 @@ public class TUI {
             selection = scn.nextInt();
         }
 
-        ClientTUI client = new ClientTUI(nickname);
+        Client client = new ClientTUI(nickname);
         if(selection == 0)
             networkHandler = new NetworkHandlerTCP(client, hostIp);
         else
