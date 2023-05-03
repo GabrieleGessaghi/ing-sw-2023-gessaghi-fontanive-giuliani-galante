@@ -59,7 +59,7 @@ public class Controller implements Observer, Runnable {
     }
 
     @Override
-    public void update(Event event) {
+    public synchronized void update(Event event) {
         this.notifyAll();
         if (!isGameRunning)
             if (creationController.isGameReady()) {
@@ -74,7 +74,7 @@ public class Controller implements Observer, Runnable {
      *
      * @param clientHandler
      */
-    public void addClient(ClientHandler clientHandler) {
+    public synchronized void addClient(ClientHandler clientHandler) {
         if (!isGameRunning && creationController.isSpotAvailable()) {
             clientHandlers.add(clientHandler);
             clientHandler.registerObserver(this);
@@ -99,7 +99,7 @@ public class Controller implements Observer, Runnable {
      * Resets the object to initial state.
      * @author Giorgio Massimo Fontanive
      */
-    private void reset() {
+    private synchronized void reset() {
         isGameRunning = false;
         turnController = null;
         creationController = new CreationController();

@@ -34,15 +34,9 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         String jsonMessage = event.getJsonMessage();
         JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
 
-        //Finds the client's nickname or ping message
+        //Finds the client's nickname
         if (jsonObject.has("nickname"))
             nickname = jsonObject.get("nickname").getAsString();
-        if (jsonObject.has("ping")) {
-            JsonObject pong = new JsonObject();
-            pong.addProperty("pong", true);
-            sendOutput(jsonObject.toString());
-            System.out.println("Received a ping!");
-        }
 
         //Adds client's index and sends the message to observers
         jsonObject.addProperty("clientIndex", index);

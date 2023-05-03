@@ -27,8 +27,10 @@ public class NetworkHandlerTCP extends NetworkHandler {
     /**
      * @author Gabriele Gessaghi
      */
-    public boolean ping() {
-        return true;
+    public void ping() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("ping", true);
+        sendInput(jsonObject.toString());
     }
 
     /**
@@ -39,7 +41,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
     public void sendInput(String input) {
         try {
             OutputStreamWriter out = new OutputStreamWriter(serverSocket.getOutputStream());
-            out.write(input);
+            out.write(input + "\n");
             out.flush();
             System.out.println("Output sent");
         } catch (IOException e) {
@@ -58,16 +60,8 @@ public class NetworkHandlerTCP extends NetworkHandler {
             InputStreamReader in = new InputStreamReader(serverSocket.getInputStream());
             BufferedReader buffer = new BufferedReader(in);
             while (true){
-                System.out.println("Listening...");
-
-                //Sends a ping message
-                JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("ping", true);
-                sendInput(jsonObject.toString());
-
                 String receivedString = buffer.readLine();
                 if (receivedString != null) {
-                    System.out.println("Received input");
                     String field;
                     boolean exit = false;
                     JsonReader jsonReader = new JsonReader(new StringReader(receivedString));
@@ -80,13 +74,16 @@ public class NetworkHandlerTCP extends NetworkHandler {
                             case "requestTileSelection" -> client.requestInput(Prompt.TOKENS);
                             case "requestColumn" -> client.requestInput(Prompt.COLUMN);
                             case "closeConnection" -> exit = true;
-                            default -> client.showOutput(receivedString);
+                            case "pong" -> jsonReader.skipValue();
+                            default -> {
+                                client.showOutput(receivedString);
+                                jsonReader.skipValue();
+                            }
                         }
                     }
                     jsonReader.endObject();
                     if (exit) break;
                 }
-
             }
             in.close();
             buffer.close();

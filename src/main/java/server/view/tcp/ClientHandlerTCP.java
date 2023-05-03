@@ -15,7 +15,7 @@ import java.net.Socket;
 public class ClientHandlerTCP extends ClientHandler {
     private final InputStream inputStream;
     private final OutputStream outputStream;
-    private final Socket socket;
+    //private final Socket socket;
 
     /**
      * Class constructor. The server accepting new connections creates this object for every new connection.
@@ -27,9 +27,9 @@ public class ClientHandlerTCP extends ClientHandler {
      */
     public ClientHandlerTCP(int index, Socket socket, InputStream inputStream, OutputStream outputStream){
         super(index);
-        this.socket = socket;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
+        //this.socket = socket;
     }
 
     @Override
@@ -48,7 +48,6 @@ public class ClientHandlerTCP extends ClientHandler {
                 if (line != null) {
                     Event event = new Event(line);
                     updateObservers(event);
-                    System.out.println("Received: " + event.getJsonMessage());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -65,7 +64,6 @@ public class ClientHandlerTCP extends ClientHandler {
             case TOKENS -> jsonObject.addProperty("requestTokens", true);
             case COLUMN -> jsonObject.addProperty("requestColumn", true);
         }
-        System.out.println("Sending request");
         sendOutput(jsonObject.toString());
     }
 
@@ -73,9 +71,8 @@ public class ClientHandlerTCP extends ClientHandler {
     public void sendOutput(String jsonMessage) {
         OutputStreamWriter out = new OutputStreamWriter(outputStream);
         try{
-            out.write(jsonMessage);
+            out.write(jsonMessage + "\n");
             out.flush();
-            System.out.println("Outsput sent");
         } catch (IOException e) {
             e.printStackTrace();
         }
