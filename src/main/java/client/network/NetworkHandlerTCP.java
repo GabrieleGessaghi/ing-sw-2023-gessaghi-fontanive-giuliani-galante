@@ -25,15 +25,6 @@ public class NetworkHandlerTCP extends NetworkHandler {
     }
 
     /**
-     * @author Gabriele Gessaghi
-     */
-    public void ping() {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("ping", true);
-        sendInput(jsonObject.toString());
-    }
-
-    /**
      * Send the string on the output buffer.
      * @author Gabriele Gessaghi
      * @param input : String to write on the output buffer.
@@ -43,7 +34,6 @@ public class NetworkHandlerTCP extends NetworkHandler {
             OutputStreamWriter out = new OutputStreamWriter(serverSocket.getOutputStream());
             out.write(input + "\n");
             out.flush();
-            System.out.println("Output sent");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -74,12 +64,10 @@ public class NetworkHandlerTCP extends NetworkHandler {
                             case "requestTileSelection" -> client.requestInput(Prompt.TOKENS);
                             case "requestColumn" -> client.requestInput(Prompt.COLUMN);
                             case "closeConnection" -> exit = true;
-                            case "pong" -> jsonReader.skipValue();
-                            default -> {
-                                client.showOutput(receivedString);
-                                jsonReader.skipValue();
-                            }
+                            case "ping" -> {}
+                            default -> client.showOutput(receivedString);
                         }
+                        jsonReader.skipValue();
                     }
                     jsonReader.endObject();
                     if (exit) break;

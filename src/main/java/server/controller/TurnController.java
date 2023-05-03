@@ -13,6 +13,8 @@ import server.view.ClientHandler;
 import java.io.IOException;
 import java.io.StringReader;
 
+import static server.controller.utilities.ConfigLoader.*;
+
 /**
  * Receives data for a new turn and acts once it's ready.
  * @author Giorgio Massimo Fontanive
@@ -39,9 +41,9 @@ public class TurnController implements Observer {
      */
     private boolean isMatrixLegal() {
         boolean matrixFlag = true;
-        for (int i = 0; i < ConfigLoader.SHELF_ROWS && matrixFlag; i++)
-            for (int j = 0; j < ConfigLoader.SHELF_COLUMNS && matrixFlag; j++)
-                if (selectedTiles[i][j] < -1 || selectedTiles[i][j] > ConfigLoader.MAX_TOKENS_PER_TURN - 1)
+        for (int i = 0; i < SHELF_ROWS && matrixFlag; i++)
+            for (int j = 0; j < SHELF_COLUMNS && matrixFlag; j++)
+                if (selectedTiles[i][j] < -1 || selectedTiles[i][j] > MAX_TOKENS_PER_TURN - 1)
                     matrixFlag = false;
         return matrixFlag;
     }
@@ -52,7 +54,7 @@ public class TurnController implements Observer {
      * @return True if the integer represents a column.
      */
     private boolean isColumnLegal() {
-        return selectedColumn >= 0 && selectedColumn <= ConfigLoader.SHELF_COLUMNS;
+        return selectedColumn >= 0 && selectedColumn <= SHELF_COLUMNS;
     }
 
     private synchronized void newTurn() {
@@ -106,6 +108,7 @@ public class TurnController implements Observer {
                     case "clientIndex" -> correctClient = jsonReader.nextInt() == currentClientHandler.getIndex();
                     case "selectedTiles" -> tempSelectedTiles = JsonTools.readMatrix(jsonReader);
                     case "selectedColumn" -> tempSelectedColumn = jsonReader.nextInt();
+                    default -> jsonReader.skipValue();
                 }
             }
             jsonReader.endObject();

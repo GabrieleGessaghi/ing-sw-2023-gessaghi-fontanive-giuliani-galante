@@ -73,6 +73,16 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public abstract void run();
 
     /**
+     *
+     * @author Giorgio massimo Fontanive
+     */
+    public void ping() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("ping", true);
+        sendOutput(jsonObject.toString());
+    }
+
+    /**
      * The index represents a unique identifier to identify the client.
      * @return This client's index.
      */

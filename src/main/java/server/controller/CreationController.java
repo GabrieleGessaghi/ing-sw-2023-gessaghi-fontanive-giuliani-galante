@@ -35,6 +35,7 @@ public class CreationController implements Observer {
                 switch (field) {
                     case "playersNumber" -> setPlayerNumber(jsonReader.nextInt());
                     case "playersNickname" -> addPlayer(jsonReader.nextString());
+                    default -> jsonReader.skipValue();
                 }
             }
             jsonReader.endObject();

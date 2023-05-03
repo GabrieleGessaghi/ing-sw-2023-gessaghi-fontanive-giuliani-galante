@@ -66,12 +66,11 @@ public class ClientTUI extends Client {
         String input;
         int numberOfPlayers;
 
-        System.out.println("Insert number of players:\n");
+        System.out.print("Insert number of players: ");
         numberOfPlayers = scn.nextInt();
-
         while(numberOfPlayers < 2 || numberOfPlayers > 4){
-            System.out.println("Number not valid!\n");
-            System.out.println("Insert number of players:\n");
+            System.out.print("Number not valid!\n");
+            System.out.print("Insert number of players: ");
             numberOfPlayers = scn.nextInt();
         }
 
@@ -97,38 +96,35 @@ public class ClientTUI extends Client {
             for(int j = 0; j < ConfigLoader.BOARD_SIZE; j++)
                 selectedTokens[i][j] = -1;
 
-        System.out.println("How many tokens would you like to select?\n");
+        System.out.print("How many tokens would you like to select?: ");
         numberOfTokens = scn.nextInt();
-
         while(numberOfTokens < 1 || numberOfTokens > 3){
-            System.out.println("Number not valid!\n");
-            System.out.println("How many tokens would you like to select?\n");
+            System.out.print("Number not valid!\n");
+            System.out.print("How many tokens would you like to select?: ");
             numberOfTokens = scn.nextInt();
         }
 
         for(int i = 0; i < numberOfTokens; i++){
             for(int j = 0; j < 2; j++) {
-                System.out.println("Insert x coordinate\n");
+                System.out.print("Insert x coordinate: ");
                 tokenCoordinates[0] = scn.next().charAt(0);
-
                 while(tokenCoordinates[0] < 'a' || tokenCoordinates[0] > 'i'){
-                    System.out.println("Invalid x coordinate!\n");
-                    System.out.println("Insert x coordinate\n");
+                    System.out.print("Invalid x coordinate!\n");
+                    System.out.print("Insert x coordinate\n");
                     tokenCoordinates[0] = scn.next().charAt(0);
                 }
 
-                System.out.println("Insert y coordinate\n");
+                System.out.print("Insert y coordinate: ");
                 tokenCoordinates[1] = scn.next().charAt(1);
                 while(tokenCoordinates[1] < '1' || tokenCoordinates[1] > '9'){
-                    System.out.println("Invalid y coordinate!\n");
-                    System.out.println("Insert y coordinate\n");
+                    System.out.print("Invalid y coordinate!\n");
+                    System.out.print("Insert y coordinate\n");
                     tokenCoordinates[1] = scn.next().charAt(0);
                 }
             }
 
             selectionInt[0] = tokenCoordinates[0] - 'a';
             selectionInt[1] = tokenCoordinates[1] - '1';
-
             selectedTokens[selectionInt[0]][selectionInt[1]] = i;
         }
         jMatrix = createJsonMatrix(selectedTokens);
@@ -146,12 +142,12 @@ public class ClientTUI extends Client {
         String input;
         int selectedColumn;
 
-        System.out.println("Insert column in which you want to insert the selected tokens:\n");
+        System.out.print("Insert column in which you want to insert the selected tokens: ");
         selectedColumn = scn.nextInt();
 
         while(selectedColumn < 0 || selectedColumn > SHELF_COLUMNS - 1){
-            System.out.println("Column not valid!\n");
-            System.out.println("Insert column in which you want to insert the selected tokens:\n");
+            System.out.print("Column not valid!\n");
+            System.out.print("Insert column in which you want to insert the selected tokens: ");
             selectedColumn = scn.nextInt();
         }
 
@@ -192,9 +188,9 @@ public class ClientTUI extends Client {
                             for(int j = 0; j < BOARD_SIZE; j++)
                                 charMatrix[i][j] = intToTokenInitial(intMatrix[i][j]);
 
-                        System.out.println("  A B C D E F G H I\n");
+                        System.out.print("  A B C D E F G H I\n");
                         for(int i = 0; i < BOARD_SIZE; i++)
-                            System.out.println(i + "" + Arrays.toString(charMatrix[i]) + "\n");
+                            System.out.print(i + "" + Arrays.toString(charMatrix[i]) + "\n");
 
                         jsonReader.endObject();
                     }
@@ -219,7 +215,7 @@ public class ClientTUI extends Client {
                 }
             }
             jsonReader.endObject();
-            System.out.println(toPrint);
+            System.out.print(toPrint);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
