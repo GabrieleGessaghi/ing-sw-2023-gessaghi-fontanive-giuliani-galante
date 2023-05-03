@@ -61,9 +61,10 @@ public class Game implements Savable, Observable {
 
         // using a set to ensures having 3 different numbers
         Set<Integer> randomNumbers = new HashSet<>();
-        while(randomNumbers.size()<3){
+        while(randomNumbers.size() < numberOfPlayers){
+
             // using System.currentTimeMillis() as Random seeds for consistency in random generation of the numbers
-            randomNumbers.add(new Random(System.currentTimeMillis()).nextInt(12));
+            randomNumbers.add(new Random(System.currentTimeMillis()).nextInt(12) + 1);
         }
 
         int[] personalCardsIndexes = randomNumbers.stream().mapToInt(Integer::intValue).toArray();

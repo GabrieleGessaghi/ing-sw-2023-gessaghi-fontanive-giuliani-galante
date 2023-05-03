@@ -61,7 +61,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
                         switch (field) {
                             case "requestNickname" -> client.requestInput(Prompt.NICKNAME);
                             case "requestPlayerNumber" -> client.requestInput(Prompt.PLAYERSNUMBER);
-                            case "requestTileSelection" -> client.requestInput(Prompt.TOKENS);
+                            case "requestTokens" -> client.requestInput(Prompt.TOKENS);
                             case "requestColumn" -> client.requestInput(Prompt.COLUMN);
                             case "closeConnection" -> exit = true;
                             case "ping" -> {}

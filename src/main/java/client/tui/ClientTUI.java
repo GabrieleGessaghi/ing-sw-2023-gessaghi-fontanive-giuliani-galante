@@ -74,7 +74,7 @@ public class ClientTUI extends Client {
             numberOfPlayers = scn.nextInt();
         }
 
-        jsonObject.addProperty("numberOfPlayers", numberOfPlayers);
+        jsonObject.addProperty("playersNumber", numberOfPlayers);
         input = jsonObject.toString();
         networkHandler.sendInput(input);
     }
@@ -110,15 +110,15 @@ public class ClientTUI extends Client {
                 tokenCoordinates[0] = scn.next().charAt(0);
                 while(tokenCoordinates[0] < 'a' || tokenCoordinates[0] > 'i'){
                     System.out.print("Invalid x coordinate!\n");
-                    System.out.print("Insert x coordinate\n");
+                    System.out.print("Insert x coordinate: ");
                     tokenCoordinates[0] = scn.next().charAt(0);
                 }
 
                 System.out.print("Insert y coordinate: ");
-                tokenCoordinates[1] = scn.next().charAt(1);
+                tokenCoordinates[1] = scn.next().charAt(0);
                 while(tokenCoordinates[1] < '1' || tokenCoordinates[1] > '9'){
                     System.out.print("Invalid y coordinate!\n");
-                    System.out.print("Insert y coordinate\n");
+                    System.out.print("Insert y coordinate: ");
                     tokenCoordinates[1] = scn.next().charAt(0);
                 }
             }
@@ -128,7 +128,7 @@ public class ClientTUI extends Client {
             selectedTokens[selectionInt[0]][selectionInt[1]] = i;
         }
         jMatrix = createJsonMatrix(selectedTokens);
-        jMatrixToSend.add("selectedTokens", jMatrix);
+        jMatrixToSend.add("selectedTiles", jMatrix);
         networkHandler.sendInput(jMatrixToSend.toString());
     }
 
@@ -178,6 +178,7 @@ public class ClientTUI extends Client {
                     case "objectiveDescription" -> toPrint.append("Common Objective description: ").append(jsonReader.nextString()).append("\n");
                     case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
                     case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
+                    case "message" -> toPrint.append(jsonReader.nextString()).append("\n");
                     case "board" -> { //TODO: Create separate function
                         toPrint.append("Board: \n");
                         jsonReader.beginObject();

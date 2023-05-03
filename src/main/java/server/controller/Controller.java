@@ -27,7 +27,7 @@ public class Controller implements Observer, Runnable {
     public synchronized void run() {
         isGameRunning = false;
         creationController = new CreationController();
-        ListIterator<ClientHandler> listIterator = clientHandlers.listIterator();
+        int i = 0;
         while(true) {
 
             //Waits for the game to be running
@@ -39,11 +39,12 @@ public class Controller implements Observer, Runnable {
                 }
 
             //Moves to the next player and begins a new turn
-            if (!listIterator.hasNext())
-                listIterator = clientHandlers.listIterator();
-            ClientHandler currentClient = listIterator.next();
+            if (i == clientHandlers.size())
+                i = 0;
+            ClientHandler currentClient = clientHandlers.get(i);
             turnController = new TurnController(game, currentClient);
             currentClient.registerObserver(turnController);
+            i++;
 
             //Waits for the turn to be finished
             while (!turnController.getIsTurnOver())
@@ -60,7 +61,6 @@ public class Controller implements Observer, Runnable {
 
     @Override
     public synchronized void update(Event event) {
-        this.notifyAll();
         if (!isGameRunning)
             if (creationController.isGameReady()) {
                 game = creationController.createGame();
@@ -68,6 +68,7 @@ public class Controller implements Observer, Runnable {
                 for (ClientHandler clientHandler : clientHandlers)
                     game.registerObserver(clientHandler);
             }
+        this.notifyAll();
     }
 
     /**
@@ -77,19 +78,17 @@ public class Controller implements Observer, Runnable {
     public synchronized void addClient(ClientHandler clientHandler) {
         if (!isGameRunning && creationController.isSpotAvailable()) {
             clientHandlers.add(clientHandler);
-            clientHandler.registerObserver(this);
             clientHandler.registerObserver(creationController);
+            clientHandler.registerObserver(this);
             clientHandler.requestInput(Prompt.NICKNAME);
             if (clientHandlers.size() == 1) {
-                synchronized (this) {
-                    while (clientHandlers.get(0).getNickname() == null)
-                        try {
-                            this.wait();
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                    clientHandler.requestInput(Prompt.PLAYERSNUMBER);
-                }
+                while (clientHandlers.get(0).getNickname() == null)
+                    try {
+                        this.wait();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                clientHandler.requestInput(Prompt.PLAYERSNUMBER);
             }
         } else
             clientHandler.sendOutput(JsonTools.createMessage("The game is full, please exit!"));

@@ -58,6 +58,7 @@ public class TurnController implements Observer {
     }
 
     private synchronized void newTurn() {
+        System.out.println(currentClientHandler.getNickname());
         currentClientHandler.requestInput(Prompt.TOKENS);
         while (selectedTiles == null) {
             try {
