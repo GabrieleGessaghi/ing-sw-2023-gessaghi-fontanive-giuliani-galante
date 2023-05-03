@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Handler of the Client
+ * Handler of the ClientTUI
  * @author Niccolò Giuliani
  */
 public abstract class ClientHandler implements Observer, Observable, Runnable {
@@ -46,7 +46,7 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public abstract void update(Event event);
 
     /**
-     * method to request an input to the Client
+     * method to request an input to the ClientTUI
      * @author Niccolò Giuliani
      * @param prompt type of request
      */

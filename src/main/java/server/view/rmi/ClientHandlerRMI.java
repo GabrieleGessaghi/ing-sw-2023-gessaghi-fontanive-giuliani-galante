@@ -39,7 +39,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             Registry registry = LocateRegistry.getRegistry();
             client = (NetworkHandlerRMI) registry.lookup(clientName);
         } catch(Exception e) {
-            System.out.println("[System] Client failed: " + e);
+            System.out.println("[System] ClientTUI failed: " + e);
         }
     }
 

@@ -1,6 +1,6 @@
 package client.network;
 
-import client.Client;
+import client.tui.ClientTUI;
 import server.view.rmi.ServerUsable;
 import server.controller.Prompt;
 import server.view.rmi.ClientUsable;
@@ -13,12 +13,12 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
    ClientUsable server;
 
-   public  NetworkHandlerRMI(Client client, String host){
+   public  NetworkHandlerRMI(ClientTUI client, String host){
        super(client, host);
    }
 
     /**
-     * method for receiving the input from the server and to send to Client
+     * method for receiving the input from the server and to send to ClientTUI
      * @author Niccolò Giuliani
      * @param input input to Send to the client
      */
@@ -37,7 +37,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
     }
 
     /**
-     * method to ask to Client to show the output
+     * method to ask to ClientTUI to show the output
      * author Niccolò Giuliani
      * @param output output to show
      */

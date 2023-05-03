@@ -1,6 +1,6 @@
 package client.network;
 
-import client.Client;
+import client.tui.ClientTUI;
 import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
 
@@ -18,7 +18,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
      * @param client : calling client
      * @param host : server ip
      */
-    public NetworkHandlerTCP(Client client, String host){
+    public NetworkHandlerTCP(ClientTUI client, String host){
         super(client, host);
     }
 

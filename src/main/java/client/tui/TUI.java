@@ -1,4 +1,4 @@
-package client;
+package client.tui;
 
 import client.network.NetworkHandler;
 import client.network.NetworkHandlerRMI;
@@ -30,7 +30,7 @@ public class TUI {
             selection = scn.nextInt();
         }
 
-        Client client = new Client(nickname);
+        ClientTUI client = new ClientTUI(nickname);
         if(selection == 0)
             networkHandler = new NetworkHandlerTCP(client, hostIp);
         else

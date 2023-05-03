@@ -1,12 +1,12 @@
 package client.network;
 
-import client.Client;
+import client.tui.ClientTUI;
 
 public abstract class NetworkHandler implements Runnable {
-    protected Client client;
+    protected ClientTUI client;
     protected String host;
 
-    public NetworkHandler(Client client, String host) {
+    public NetworkHandler(ClientTUI client, String host) {
         this.client = client;
         this.host = host;
     }

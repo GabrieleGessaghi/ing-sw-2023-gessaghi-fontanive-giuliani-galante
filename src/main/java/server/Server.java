@@ -31,7 +31,7 @@ public class Server {
         controller = new Controller();
         new Thread(controller).start();
         new Thread(Server::acceptConnectionsTCP).start();
-        new Thread(Server::acceptConnectionsRMI).start();
+        //new Thread(Server::acceptConnectionsRMI).start();
     }
 
     public static void acceptConnectionsTCP() {

@@ -3,7 +3,7 @@ package server.view.rmi;
 import java.rmi.Remote;
 
 /**
- * Provides the methods to be used by the Client in RMI.
+ * Provides the methods to be used by the ClientTUI in RMI.
  * @author Niccolò Giuliani
  */
 public interface ClientUsable extends Remote {

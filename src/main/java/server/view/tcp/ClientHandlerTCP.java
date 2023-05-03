@@ -9,7 +9,7 @@ import java.io.*;
 import java.net.Socket;
 
 /**
- * socket class to handle the Client
+ * socket class to handle the ClientTUI
  * @author Niccolò Giuliani
  */
 public class ClientHandlerTCP extends ClientHandler {
