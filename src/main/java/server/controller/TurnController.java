@@ -5,7 +5,7 @@ import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
-import server.controller.utilities.ConfigLoader;
+import server.model.View;
 import server.model.exceptions.IllegalColumnException;
 import server.model.exceptions.IllegalMoveException;
 import server.view.ClientHandler;
@@ -58,7 +58,8 @@ public class TurnController implements Observer {
     }
 
     private synchronized void newTurn() {
-        System.out.println(currentClientHandler.getNickname());
+        game.sendState(View.BOARD);
+        game.sendState(View.CURRENT_PLAYER);
         currentClientHandler.requestInput(Prompt.TOKENS);
         while (selectedTiles == null) {
             try {
@@ -75,6 +76,7 @@ public class TurnController implements Observer {
                 throw new RuntimeException(e);
             }
         }
+        game.sendState(View.PLAYERS_POINTS);
     }
 
     private synchronized void finalizeTurn() {
@@ -97,7 +99,7 @@ public class TurnController implements Observer {
         boolean correctClient = false;
         int[][] tempSelectedTiles = null;
         int tempSelectedColumn = -1;
-        String jsonMessage = event.getJsonMessage();
+        String jsonMessage = event.jsonMessage();
         String field;
         JsonReader jsonReader;
         try {

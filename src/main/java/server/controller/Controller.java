@@ -4,6 +4,7 @@ import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
+import server.model.View;
 import server.view.ClientHandler;
 
 import java.util.*;
@@ -65,8 +66,11 @@ public class Controller implements Observer, Runnable {
             if (creationController.isGameReady()) {
                 game = creationController.createGame();
                 isGameRunning = true;
-                for (ClientHandler clientHandler : clientHandlers)
+                for (ClientHandler clientHandler : clientHandlers) {
                     game.registerObserver(clientHandler);
+                    clientHandler.sendOutput(JsonTools.createMessage("The game is starting!"));
+                }
+                game.sendState(View.COMMON_CARDS);
             }
         this.notifyAll();
     }

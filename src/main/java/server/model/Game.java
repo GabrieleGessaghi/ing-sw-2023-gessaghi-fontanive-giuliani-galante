@@ -129,6 +129,11 @@ public class Game implements Savable, Observable {
     public void playerTurn (int [][] selectedTiles, int column) throws IllegalMoveException, IllegalColumnException{
         if (players[currentPlayerIndex].isConnected) {
 
+            //Creates the message sent at the beginning of the turn
+            JsonObject jsonMessage = new JsonObject();
+            jsonMessage.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
+            updateObservers(new Event(jsonMessage.toString()));
+
             //Gets the tiles from the board.
             Token[] selectedTokens;
             selectedTokens = board.selectTiles(selectedTiles);
@@ -158,9 +163,9 @@ public class Game implements Savable, Observable {
     }
 
     /**
-     * Returns the winner when the game is over.
-     * @author Gabriele Gessaghi
-     * @return The nickname of the winner.
+     * Checks whether the game is over, and sends a message containing the winner's nickname.
+     * @author Giorgio Massimo Fontanive
+     * @return True if the game is over.
      */
     public boolean gameOver() {
         if (isGameFinished) {
@@ -181,14 +186,39 @@ public class Game implements Savable, Observable {
         return false;
     }
 
+    /**
+     * Sends the requested thing to the observers as a JSON string.
+     * @author Giorgio Massimo Fontanive
+     * @param view The requested thing to be seen.
+     */
+    public void sendState(View view) {
+        switch (view) {
+            case BOARD -> updateObservers(new Event(board.getState().toString()));
+            case CURRENT_PLAYER -> updateObservers(new Event(players[currentPlayerIndex].getState().toString()));
+            case CHAT -> {}
+            case PLAYERS_POINTS -> {
+                JsonObject jsonObject = new JsonObject();
+                for (int i = 0; i < players.length; i++) {
+                    jsonObject.addProperty("player" + i, players[i].getNickname());
+                    jsonObject.addProperty("points" + i, players[i].getPoints());
+                }
+                updateObservers(new Event(jsonObject.getAsString()));
+            }
+            case COMMON_CARDS -> {
+                for (CommonCard card : commonCards)
+                    updateObservers(new Event(card.getState().toString()));
+            }
+        }
+    }
+
     @Override
     public void registerObserver(Observer observer) {
         observers.add(observer);
-        board.registerObserver(observer);
         for (Player player : players)
             player.registerObserver(observer);
         for (CommonCard commonCard : commonCards)
             commonCard.registerObserver(observer);
+        board.registerObserver(observer);
     }
 
     @Override
@@ -215,9 +245,9 @@ public class Game implements Savable, Observable {
     @Override
     public void loadState(JsonObject jsonObject) {
         Map<String, JsonElement> elements = jsonObject.asMap();
+        numberOfPlayers = elements.get("numberOfPlayers").getAsInt();
         board = new Board(numberOfPlayers);
         players = new Player[numberOfPlayers];
-        numberOfPlayers = elements.get("numberOfPlayers").getAsInt();
         currentPlayerIndex = elements.get("currentPlayerIndex").getAsInt();
         board.loadState(elements.get("board").getAsJsonObject());
         for (int i = 0; i < NUMBER_OF_COMMON_CARDS; i++)

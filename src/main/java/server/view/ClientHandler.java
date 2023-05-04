@@ -31,7 +31,7 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
 
     @Override
     public void updateObservers(Event event) {
-        String jsonMessage = event.getJsonMessage();
+        String jsonMessage = event.jsonMessage();
         JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
 
         //Finds the client's nickname

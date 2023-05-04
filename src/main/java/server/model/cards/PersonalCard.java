@@ -45,7 +45,7 @@ public class PersonalCard extends Card {
             case 7 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal7.json";
             case 8 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal8.json";
             case 9 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal9.json";
-            case 10 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoa10.json";
+            case 10 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal10.json";
             case 11 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal11.json";
             case 12 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal12.json";
         }

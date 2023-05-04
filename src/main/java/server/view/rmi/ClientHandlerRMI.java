@@ -45,7 +45,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     @Override
     public void update(Event event) {
-        client.showOutput(event.getJsonMessage());
+        client.showOutput(event.jsonMessage());
     }
 
     @Override

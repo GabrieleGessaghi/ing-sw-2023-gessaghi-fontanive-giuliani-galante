@@ -24,7 +24,7 @@ public class CreationController implements Observer {
 
     @Override
     public void update(Event event) {
-        String jsonMessage = event.getJsonMessage();
+        String jsonMessage = event.jsonMessage();
         String field;
         JsonReader jsonReader;
         try {

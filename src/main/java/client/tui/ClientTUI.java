@@ -179,7 +179,7 @@ public class ClientTUI extends Client {
                     case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
                     case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
                     case "message" -> toPrint.append(jsonReader.nextString()).append("\n");
-                    case "board" -> { //TODO: Create separate function
+                    case "boardTiles" -> { //TODO: Create separate function
                         toPrint.append("Board: \n");
                         jsonReader.beginObject();
                         int[][] intMatrix = JsonTools.readMatrix(jsonReader);

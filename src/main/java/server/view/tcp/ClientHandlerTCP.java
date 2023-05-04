@@ -34,7 +34,7 @@ public class ClientHandlerTCP extends ClientHandler {
 
     @Override
     public void update(Event event) {
-        sendOutput(event.getJsonMessage());
+        sendOutput(event.jsonMessage());
     }
 
     @Override
