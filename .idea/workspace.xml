@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="fixed small issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -206,13 +205,6 @@
       <workItem from="1682920782466" duration="3425000" />
       <workItem from="1683115486360" duration="10137000" />
       <workItem from="1683179934686" duration="2584000" />
-    </task>
-    <task id="LOCAL-00105" summary="Added createJsonArray and createJsonMatrix to jsonTools">
-      <created>1682663599701</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1682663599701</updated>
     </task>
     <task id="LOCAL-00106" summary="added Modelutil class">
       <created>1682685776285</created>
@@ -550,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683219701262</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="fixed small issues">
+      <created>1683222150438</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1683222150438</updated>
+    </task>
+    <option name="localTasksCounter" value="155" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
