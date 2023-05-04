@@ -105,7 +105,7 @@ public class ClientTUI extends Client {
         }
 
         for(int i = 0; i < numberOfTokens; i++){
-            for(int j = 0; j < 2; j++) {
+
                 System.out.print("Insert x coordinate: ");
                 tokenCoordinates[0] = scn.next().charAt(0);
                 while(tokenCoordinates[0] < 'a' || tokenCoordinates[0] > 'i'){
@@ -121,7 +121,7 @@ public class ClientTUI extends Client {
                     System.out.print("Insert y coordinate: ");
                     tokenCoordinates[1] = scn.next().charAt(0);
                 }
-            }
+
 
             selectionInt[0] = tokenCoordinates[0] - 'a';
             selectionInt[1] = tokenCoordinates[1] - '1';

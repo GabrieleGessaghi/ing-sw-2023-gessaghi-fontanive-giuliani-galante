@@ -68,6 +68,7 @@ public class TurnController implements Observer {
                 throw new RuntimeException(e);
             }
         }
+
         currentClientHandler.requestInput(Prompt.COLUMN);
         while (selectedColumn == -1) {
             try {
@@ -116,7 +117,7 @@ public class TurnController implements Observer {
             }
             jsonReader.endObject();
             if (correctClient) {
-                selectedTiles = tempSelectedTiles;
+                    selectedTiles = tempSelectedTiles;
                 selectedColumn = tempSelectedColumn;
                 this.notifyAll();
             }
@@ -126,6 +127,8 @@ public class TurnController implements Observer {
 
         if (isMatrixLegal() && isColumnLegal())
             finalizeTurn();
+
+
     }
 
     public boolean getIsTurnOver() {

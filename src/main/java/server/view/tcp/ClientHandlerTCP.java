@@ -44,6 +44,7 @@ public class ClientHandlerTCP extends ClientHandler {
         while(true) {
             try {
                 String line = buffer.readLine();
+                //System.out.println(line);
                 if (line != null) {
                     Event event = new Event(line);
                     updateObservers(event);

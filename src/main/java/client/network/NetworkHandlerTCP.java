@@ -56,6 +56,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
                     boolean exit = false;
                     JsonReader jsonReader = new JsonReader(new StringReader(receivedString));
                     jsonReader.beginObject();
+                    boolean flag = false;
                     while (jsonReader.hasNext()) {
                         field = jsonReader.nextName();
                         switch (field) {
@@ -65,7 +66,12 @@ public class NetworkHandlerTCP extends NetworkHandler {
                             case "requestColumn" -> client.requestInput(Prompt.COLUMN);
                             case "closeConnection" -> exit = true;
                             case "ping" -> {}
-                            default -> client.showOutput(receivedString);
+                            default -> {
+                                if (!flag) {
+                                    client.showOutput(receivedString);
+                                    flag = true;
+                                }
+                            }
                         }
                         jsonReader.skipValue();
                     }
