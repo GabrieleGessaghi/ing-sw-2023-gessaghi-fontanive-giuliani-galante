@@ -32,6 +32,7 @@ public class TurnController implements Observer {
         currentClientHandler = currentClient;
         isTurnOver = false;
         this.game = game;
+        currentClient.registerObserver(this);
         newTurn();
     }
 
@@ -60,6 +61,7 @@ public class TurnController implements Observer {
     private synchronized void newTurn() {
         game.sendState(View.BOARD);
         game.sendState(View.CURRENT_PLAYER);
+
         currentClientHandler.requestInput(Prompt.TOKENS);
         while (selectedTiles == null) {
             try {
@@ -77,13 +79,13 @@ public class TurnController implements Observer {
                 throw new RuntimeException(e);
             }
         }
-        game.sendState(View.PLAYERS_POINTS);
     }
 
     private synchronized void finalizeTurn() {
         try {
             game.playerTurn(selectedTiles, selectedColumn);
             isTurnOver = true;
+            game.sendState(View.PLAYERS_POINTS);
             this.notifyAll();
         } catch (IllegalMoveException | IllegalColumnException e) {
             currentClientHandler.sendOutput(JsonTools.createMessage(e.getMessage()));
@@ -97,38 +99,29 @@ public class TurnController implements Observer {
      * @param event The event received from the observable object to which this is subscribed.
      */
     public void update(Event event) {
-        boolean correctClient = false;
-        int[][] tempSelectedTiles = null;
-        int tempSelectedColumn = -1;
         String jsonMessage = event.jsonMessage();
         String field;
         JsonReader jsonReader;
+        System.out.println("Calling update");
         try {
             jsonReader = new JsonReader(new StringReader(jsonMessage));
             jsonReader.beginObject();
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "clientIndex" -> correctClient = jsonReader.nextInt() == currentClientHandler.getIndex();
-                    case "selectedTiles" -> tempSelectedTiles = JsonTools.readMatrix(jsonReader);
-                    case "selectedColumn" -> tempSelectedColumn = jsonReader.nextInt();
+                    case "selectedTiles" -> selectedTiles = JsonTools.readMatrix(jsonReader);
+                    case "selectedColumn" -> selectedColumn = jsonReader.nextInt();
                     default -> jsonReader.skipValue();
                 }
             }
             jsonReader.endObject();
-            if (correctClient) {
-                    selectedTiles = tempSelectedTiles;
-                selectedColumn = tempSelectedColumn;
-                this.notifyAll();
-            }
+            this.notifyAll();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         if (isMatrixLegal() && isColumnLegal())
             finalizeTurn();
-
-
     }
 
     public boolean getIsTurnOver() {

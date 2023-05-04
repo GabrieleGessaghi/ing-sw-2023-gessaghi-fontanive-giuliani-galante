@@ -175,26 +175,26 @@ public class ClientTUI extends Client {
                     case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player\n" : "Not first player\n");
                     case "playerIndex" -> toPrint.append("Player index: ").append(jsonReader.nextInt()).append("\n");
                     case "currentPlayerNickname" -> toPrint.append("Current player: ").append(jsonReader.nextString()).append("\n");
-                    case "objectiveDescription" -> toPrint.append("Common Objective description: ").append(jsonReader.nextString()).append("\n");
+                    case "objectiveDescription" -> toPrint.append("Common Objective description:\n").append(jsonReader.nextString()).append("\n");
                     case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
                     case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
                     case "message" -> toPrint.append(jsonReader.nextString()).append("\n");
-                    case "boardTiles" -> { //TODO: Create separate function
-                        toPrint.append("Board: \n");
-                        jsonReader.beginObject();
-                        int[][] intMatrix = JsonTools.readMatrix(jsonReader);
-                        char[][] charMatrix = new char[BOARD_SIZE][BOARD_SIZE];
-
-                        for(int i = 0; i < BOARD_SIZE; i++)
-                            for(int j = 0; j < BOARD_SIZE; j++)
-                                charMatrix[i][j] = intToTokenInitial(intMatrix[i][j]);
-
-                        System.out.print("  A B C D E F G H I\n");
-                        for(int i = 0; i < BOARD_SIZE; i++)
-                            System.out.print(i + "" + Arrays.toString(charMatrix[i]) + "\n");
-
-                        jsonReader.endObject();
-                    }
+//                    case "tiles" -> { //TODO: Create separate function (DA RIFARE, NON C'È BISOGNO DI BEGIN OBJECT)
+//                        toPrint.append("Board: \n");
+//                        jsonReader.beginObject();
+//                        int[][] intMatrix = JsonTools.readMatrix(jsonReader);
+//                        char[][] charMatrix = new char[BOARD_SIZE][BOARD_SIZE];
+//
+//                        for(int i = 0; i < BOARD_SIZE; i++)
+//                            for(int j = 0; j < BOARD_SIZE; j++)
+//                                charMatrix[i][j] = intToTokenInitial(intMatrix[i][j]);
+//
+//                        System.out.print("  A B C D E F G H I\n");
+//                        for(int i = 0; i < BOARD_SIZE; i++)
+//                            System.out.print(i + "" + Arrays.toString(charMatrix[i]) + "\n");
+//
+//                        jsonReader.endObject();
+//                    }
                     case "shelf" -> { //TODO: Create separate function
                         toPrint.append("Shelf: \n");
                         jsonReader.beginObject();

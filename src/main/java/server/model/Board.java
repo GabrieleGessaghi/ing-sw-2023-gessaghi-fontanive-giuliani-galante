@@ -252,8 +252,8 @@ public class Board implements Observable, Savable {
     public void loadState(JsonObject jsonObject) {
         Map<String, JsonElement> elements = jsonObject.asMap();
         try {
-            int[][] tilesInteger = JsonTools.readMatrix(elements.get("boardTiles").getAsJsonArray());
-            int[][] usableTilesInteger = JsonTools.readMatrix(elements.get("boardUsableTiles").getAsJsonArray());
+            int[][] tilesInteger = JsonTools.readMatrix(elements.get("tiles").getAsJsonArray());
+            int[][] usableTilesInteger = JsonTools.readMatrix(elements.get("usableTiles").getAsJsonArray());
             Token[] tokenValues = Token.values();
             for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
                 for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++) {

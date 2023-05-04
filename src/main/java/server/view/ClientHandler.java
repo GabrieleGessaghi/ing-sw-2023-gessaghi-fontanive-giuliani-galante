@@ -34,6 +34,9 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         String jsonMessage = event.jsonMessage();
         JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
 
+        if (jsonObject.has("selectedTiles"))
+            System.out.println("Received tiles");
+
         //Finds the client's nickname
         if (jsonObject.has("nickname"))
             nickname = jsonObject.get("nickname").getAsString();
