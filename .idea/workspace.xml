@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Finally fixed socket connection">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="fixed small issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/tcp/ClientHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/tcp/ClientHandlerTCP.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,13 +164,13 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Server" />
       <item itemvalue="Application.Text User Inteface" />
+      <item itemvalue="Application.Server" />
       <item itemvalue="JUnit.All in 6" />
       <item itemvalue="JUnit.PlayerTest" />
       <item itemvalue="JUnit.PlayerTest.insertTokensTestTwo" />
-      <item itemvalue="JUnit.server.model in 6" />
       <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
+      <item itemvalue="JUnit.server.model in 6" />
     </list>
     <recent_temporary>
       <list>
@@ -208,13 +204,6 @@
       <workItem from="1682920782466" duration="3425000" />
       <workItem from="1683115486360" duration="10137000" />
       <workItem from="1683179934686" duration="2584000" />
-    </task>
-    <task id="LOCAL-00103" summary="Created JsonTools">
-      <created>1682661764514</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1682661764514</updated>
     </task>
     <task id="LOCAL-00104" summary="Creates Saveable and implemented Observable in Board">
       <created>1682662472675</created>
@@ -552,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683125600026</updated>
     </task>
-    <option name="localTasksCounter" value="152" />
+    <task id="LOCAL-00152" summary="fixed small issues">
+      <created>1683214655768</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1683214655768</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +582,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed small issue" />
     <MESSAGE value="Partially implemented error management in controller" />
     <MESSAGE value="Updated controller" />
     <MESSAGE value="Finished controller" />
@@ -611,7 +606,8 @@
     <MESSAGE value="Hopefully fixed connection issue" />
     <MESSAGE value="Improved TUI" />
     <MESSAGE value="Finally fixed socket connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally fixed socket connection" />
+    <MESSAGE value="fixed small issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed small issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
