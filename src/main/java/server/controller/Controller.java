@@ -45,6 +45,7 @@ public class Controller implements Observer, Runnable {
             ClientHandler currentClient = clientHandlers.get(i);
             turnController = new TurnController(game, currentClient);
             currentClient.registerObserver(turnController);
+            turnController.newTurn();
             i++;
 
             //Waits for the turn to be finished

@@ -32,7 +32,7 @@ public class TurnController implements Observer {
         currentClientHandler = currentClient;
         isTurnOver = false;
         this.game = game;
-        newTurn();
+        //newTurn();
     }
 
     /**
@@ -57,7 +57,7 @@ public class TurnController implements Observer {
         return selectedColumn >= 0 && selectedColumn <= SHELF_COLUMNS;
     }
 
-    private synchronized void newTurn() {
+    public synchronized void newTurn() {
         game.sendState(View.BOARD);
         game.sendState(View.CURRENT_PLAYER);
         currentClientHandler.requestInput(Prompt.TOKENS);
