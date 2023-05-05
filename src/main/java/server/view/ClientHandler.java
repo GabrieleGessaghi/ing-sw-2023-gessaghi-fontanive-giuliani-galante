@@ -34,9 +34,6 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         String jsonMessage = event.jsonMessage();
         JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
 
-        if (jsonObject.has("selectedTiles"))
-            System.out.println("Received tiles");
-
         //Finds the client's nickname
         if (jsonObject.has("nickname"))
             nickname = jsonObject.get("nickname").getAsString();
@@ -44,8 +41,10 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         //Adds client's index and sends the message to observers
         jsonObject.addProperty("clientIndex", index);
         Event indexedEvent = new Event(jsonObject.toString());
-        for(Observer o : observers)
+        for(Observer o : observers) {
             o.update(indexedEvent);
+            System.out.println(o.toString());
+        }
     }
 
     @Override

@@ -60,6 +60,7 @@ public class TurnController implements Observer {
     public synchronized void newTurn() {
         game.sendState(View.BOARD);
         game.sendState(View.CURRENT_PLAYER);
+
         currentClientHandler.requestInput(Prompt.TOKENS);
         while (selectedTiles == null) {
             try {
@@ -77,6 +78,8 @@ public class TurnController implements Observer {
                 throw new RuntimeException(e);
             }
         }
+        if (isMatrixLegal() && isColumnLegal())
+            finalizeTurn();
         game.sendState(View.PLAYERS_POINTS);
     }
 
@@ -124,11 +127,6 @@ public class TurnController implements Observer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        if (isMatrixLegal() && isColumnLegal())
-            finalizeTurn();
-
-
     }
 
     public boolean getIsTurnOver() {

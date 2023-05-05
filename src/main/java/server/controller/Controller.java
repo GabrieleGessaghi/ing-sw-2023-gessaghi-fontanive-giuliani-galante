@@ -4,7 +4,6 @@ import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
-import server.model.View;
 import server.view.ClientHandler;
 
 import java.util.*;
@@ -48,13 +47,13 @@ public class Controller implements Observer, Runnable {
             turnController.newTurn();
             i++;
 
-            //Waits for the turn to be finished
-            while (!turnController.getIsTurnOver())
-                try {
-                    turnController.wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+//            //Waits for the turn to be finished (maybe not needed)
+//            while (!turnController.getIsTurnOver())
+//                try {
+//                    turnController.wait();
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
 
             if (game.gameOver())
                 reset();
@@ -62,7 +61,7 @@ public class Controller implements Observer, Runnable {
     }
 
     @Override
-    public synchronized void update(Event event) {
+    public void update(Event event) {
         if (!isGameRunning)
             if (creationController.isGameReady()) {
                 game = creationController.createGame();
@@ -71,7 +70,6 @@ public class Controller implements Observer, Runnable {
                     game.registerObserver(clientHandler);
                     clientHandler.sendOutput(JsonTools.createMessage("The game is starting!"));
                 }
-                game.sendState(View.COMMON_CARDS);
             }
         this.notifyAll();
     }
@@ -103,7 +101,7 @@ public class Controller implements Observer, Runnable {
      * Resets the object to initial state.
      * @author Giorgio Massimo Fontanive
      */
-    private synchronized void reset() {
+    private void reset() {
         isGameRunning = false;
         turnController = null;
         creationController = new CreationController();
