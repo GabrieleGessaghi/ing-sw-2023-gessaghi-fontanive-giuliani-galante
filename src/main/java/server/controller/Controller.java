@@ -44,6 +44,8 @@ public class Controller implements Observer, Runnable {
                 i = 0;
             ClientHandler currentClient = clientHandlers.get(i);
             turnController = new TurnController(game, currentClient);
+            currentClient.registerObserver(turnController);
+            turnController.newTurn();
             i++;
 
             //Waits for the turn to be finished
@@ -101,7 +103,7 @@ public class Controller implements Observer, Runnable {
      * Resets the object to initial state.
      * @author Giorgio Massimo Fontanive
      */
-    private void reset() {
+    private synchronized void reset() {
         isGameRunning = false;
         turnController = null;
         creationController = new CreationController();
