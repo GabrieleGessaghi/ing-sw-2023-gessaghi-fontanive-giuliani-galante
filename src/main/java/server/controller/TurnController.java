@@ -99,10 +99,7 @@ public class TurnController implements Observer {
      * @author Giorgio Massimo Fontanive
      * @param event The event received from the observable object to which this is subscribed.
      */
-    public void update(Event event) {
-        boolean correctClient = false;
-        int[][] tempSelectedTiles = null;
-        int tempSelectedColumn = -1;
+    public synchronized void update(Event event) {
         String jsonMessage = event.jsonMessage();
         String field;
         JsonReader jsonReader;
@@ -112,18 +109,13 @@ public class TurnController implements Observer {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "clientIndex" -> correctClient = jsonReader.nextInt() == currentClientHandler.getIndex();
-                    case "selectedTiles" -> tempSelectedTiles = JsonTools.readMatrix(jsonReader);
-                    case "selectedColumn" -> tempSelectedColumn = jsonReader.nextInt();
+                    case "selectedTiles" -> selectedTiles = JsonTools.readMatrix(jsonReader);
+                    case "selectedColumn" -> selectedColumn = jsonReader.nextInt();
                     default -> jsonReader.skipValue();
                 }
             }
             jsonReader.endObject();
-            if (correctClient) {
-                    selectedTiles = tempSelectedTiles;
-                selectedColumn = tempSelectedColumn;
-                this.notifyAll();
-            }
+            this.notifyAll();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

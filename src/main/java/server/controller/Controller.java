@@ -62,16 +62,19 @@ public class Controller implements Observer, Runnable {
 
     @Override
     public void update(Event event) {
-        if (!isGameRunning)
-            if (creationController.isGameReady()) {
-                game = creationController.createGame();
-                isGameRunning = true;
-                for (ClientHandler clientHandler : clientHandlers) {
-                    game.registerObserver(clientHandler);
-                    clientHandler.sendOutput(JsonTools.createMessage("The game is starting!"));
+        if (!isGameRunning) {
+            synchronized (this) {
+                if (creationController.isGameReady()) {
+                    game = creationController.createGame();
+                    isGameRunning = true;
+                    for (ClientHandler clientHandler : clientHandlers) {
+                        game.registerObserver(clientHandler);
+                        clientHandler.sendOutput(JsonTools.createMessage("The game is starting!"));
+                    }
                 }
+                this.notifyAll();
             }
-        this.notifyAll();
+        }
     }
 
     /**
