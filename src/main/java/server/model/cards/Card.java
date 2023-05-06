@@ -3,6 +3,7 @@ package server.model.cards;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
+import server.model.Savable;
 import server.model.Token;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
  * Each card calculates the number of points a given matrix of tokens will obtain.
  * @author Niccolò Giuliani
  */
-public abstract class Card implements Observable {
+public abstract class Card implements Observable, Savable {
     protected List<Observer> observers;
 
     public Card() {

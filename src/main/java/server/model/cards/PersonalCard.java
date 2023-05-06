@@ -102,4 +102,9 @@ public class PersonalCard extends Card {
         jsonObject.add("correctTiles", JsonTools.createJsonMatrix(correctTilesIndex));
         return jsonObject;
     }
+
+    @Override
+    public void loadState(JsonObject jsonObject) {
+        //Useless
+    }
 }

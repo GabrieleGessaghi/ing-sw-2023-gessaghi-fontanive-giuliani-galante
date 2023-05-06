@@ -88,7 +88,7 @@ public class ClientTUI extends Client {
         Scanner scn = new Scanner(System.in);
         JsonArray jMatrix;
         JsonObject jMatrixToSend = new JsonObject();
-        int numberOfTokens;
+        char numberOfTokens;
         char[] tokenCoordinates = new char[2];
         int[] selectionInt = new int[2];
         int[][] selectedTokens = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
@@ -97,18 +97,18 @@ public class ClientTUI extends Client {
                 selectedTokens[i][j] = -1;
 
         System.out.print("How many tokens would you like to select?: ");
-        numberOfTokens = scn.nextInt();
-        while(numberOfTokens < 1 || numberOfTokens > 3){
+        numberOfTokens = scn.next().charAt(0);
+        while(numberOfTokens < '1' || numberOfTokens > '3'){
             System.out.print("Number not valid!\n");
             System.out.print("How many tokens would you like to select?: ");
-            numberOfTokens = scn.nextInt();
+            numberOfTokens = scn.next().charAt(0);
         }
 
-        for(int i = 0; i < numberOfTokens; i++){
+        for(int i = 0; i < numberOfTokens - '0'; i++){
 
                 System.out.print("Insert x coordinate: ");
                 tokenCoordinates[0] = scn.next().charAt(0);
-                while(tokenCoordinates[0] < 'a' || tokenCoordinates[0] > 'i'){
+                while(tokenCoordinates[0] < 'a' || tokenCoordinates[0] > 'i') {
                     System.out.print("Invalid x coordinate!\n");
                     System.out.print("Insert x coordinate: ");
                     tokenCoordinates[0] = scn.next().charAt(0);
@@ -116,18 +116,17 @@ public class ClientTUI extends Client {
 
                 System.out.print("Insert y coordinate: ");
                 tokenCoordinates[1] = scn.next().charAt(0);
-                while(tokenCoordinates[1] < '1' || tokenCoordinates[1] > '9'){
+                while(tokenCoordinates[1] < '1' || tokenCoordinates[1] > '9') {
                     System.out.print("Invalid y coordinate!\n");
                     System.out.print("Insert y coordinate: ");
                     tokenCoordinates[1] = scn.next().charAt(0);
                 }
 
-
             selectionInt[0] = tokenCoordinates[0] - 'a';
-            selectionInt[1] = tokenCoordinates[1] - '1';
-            selectedTokens[selectionInt[0]][selectionInt[1]] = i;
+            selectionInt[1] = tokenCoordinates[1] - '0';
+            selectedTokens[selectionInt[1]][selectionInt[0]] = i;
         }
-        jMatrix = createJsonMatrix(selectedTokens);
+        jMatrix = JsonTools.createJsonMatrix(selectedTokens);
         jMatrixToSend.add("selectedTiles", jMatrix);
         networkHandler.sendInput(jMatrixToSend.toString());
     }
@@ -165,6 +164,7 @@ public class ClientTUI extends Client {
         JsonReader jsonReader = new JsonReader(new StringReader(toShow));
         String field;
         StringBuilder toPrint = new StringBuilder();
+        toPrint.append("\n");
         try {
             jsonReader.beginObject();
             while(jsonReader.hasNext()) {
@@ -179,34 +179,30 @@ public class ClientTUI extends Client {
                     case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
                     case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
                     case "message" -> toPrint.append(jsonReader.nextString()).append("\n");
-//                    case "tiles" -> { //TODO: Create separate function (DA RIFARE, NON C'È BISOGNO DI BEGIN OBJECT)
-//                        toPrint.append("Board: \n");
-//                        jsonReader.beginObject();
-//                        int[][] intMatrix = JsonTools.readMatrix(jsonReader);
-//                        char[][] charMatrix = new char[BOARD_SIZE][BOARD_SIZE];
-//
-//                        for(int i = 0; i < BOARD_SIZE; i++)
-//                            for(int j = 0; j < BOARD_SIZE; j++)
-//                                charMatrix[i][j] = intToTokenInitial(intMatrix[i][j]);
-//
-//                        System.out.print("  A B C D E F G H I\n");
-//                        for(int i = 0; i < BOARD_SIZE; i++)
-//                            System.out.print(i + "" + Arrays.toString(charMatrix[i]) + "\n");
-//
-//                        jsonReader.endObject();
-//                    }
+                    case "tiles" -> { //TODO: Create separate function
+                        toPrint.append("Board: \n");
+                        int[][] intMatrix = JsonTools.readMatrix(jsonReader);
+                        char[][] charMatrix = new char[BOARD_SIZE][BOARD_SIZE];
+
+                        for(int i = 0; i < BOARD_SIZE; i++)
+                            for(int j = 0; j < BOARD_SIZE; j++)
+                                charMatrix[i][j] = intToTokenInitial(intMatrix[i][j]);
+
+                        toPrint.append("  A  B  C  D  E  F  G  H  I\n");
+                        for(int i = 0; i < BOARD_SIZE; i++)
+                            toPrint.append(i).append(Arrays.toString(charMatrix[i])).append("\n");
+                    }
                     case "shelf" -> { //TODO: Create separate function
                         toPrint.append("Shelf: \n");
                         jsonReader.beginObject();
                         if (jsonReader.nextName().equals("shelfTiles")) {
                             int[][] intMatrix = JsonTools.readMatrix(jsonReader);
                             for (int i = 0; i < ConfigLoader.SHELF_ROWS; i++) {
-                                for (int j = 0; j < SHELF_COLUMNS; j++) {
-                                    toPrint.append("| ").append(Token.values()[intMatrix[i][j]]).append(" |");
+                                for (int j = 0; j < ConfigLoader.SHELF_COLUMNS; j++) {
+                                    toPrint.append("| ").append(intToTokenInitial(intMatrix[i][j])).append(" |");
                                 }
                                 toPrint.append("\n");
                             }
-                            toPrint.append("\n");
                         } else {
                             jsonReader.skipValue();
                         }

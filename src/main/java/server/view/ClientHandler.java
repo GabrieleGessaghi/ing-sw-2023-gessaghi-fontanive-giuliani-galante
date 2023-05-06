@@ -41,10 +41,8 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         //Adds client's index and sends the message to observers
         jsonObject.addProperty("clientIndex", index);
         Event indexedEvent = new Event(jsonObject.toString());
-        for(Observer o : observers) {
+        for(Observer o : observers)
             o.update(indexedEvent);
-            System.out.println(o.toString());
-        }
     }
 
     @Override
