@@ -29,12 +29,13 @@ public class Server {
         connectionsCount = 0;
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         controller = new Controller();
+        Server server = new Server();
         new Thread(controller).start();
-        new Thread(Server::acceptConnectionsTCP).start();
-        //new Thread(Server::acceptConnectionsRMI).start();
+        new Thread(server::acceptConnectionsTCP).start();
+        new Thread(server::acceptConnectionsRMI).start();
     }
 
-    public static void acceptConnectionsTCP() {
+    public void acceptConnectionsTCP() {
         ServerSocket serverSocket;
         try {
             serverSocket = new ServerSocket(SERVER_PORT);
@@ -47,7 +48,7 @@ public class Server {
                 socket = serverSocket.accept();
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                ClientHandlerTCP clientHandler = new ClientHandlerTCP(connectionsCount, socket, dataInputStream, dataOutputStream);
+                ClientHandlerTCP clientHandler = new ClientHandlerTCP(socket, dataInputStream, dataOutputStream);
                 new Thread(clientHandler).start();
                 controller.addClient(clientHandler);
                 connectionsCount++;
@@ -64,7 +65,7 @@ public class Server {
         }
     }
 
-    public static void acceptConnectionsRMI() {
+    public void acceptConnectionsRMI() {
         int connectionsIndex = 0;
         Registry registry;
         try {
@@ -72,20 +73,30 @@ public class Server {
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-        ClientHandlerRMI clientHandler = new ClientHandlerRMI(connectionsIndex);;
+        ClientHandlerRMI clientHandler = new ClientHandlerRMI();
         while (true) {
-            if (!clientHandler.isAvailable()) {
-                new Thread(clientHandler).start();
-                controller.addClient(clientHandler);
-                clientHandler = new ClientHandlerRMI(connectionsIndex);
+            try {
+                registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+
+            //Wait periodically for a client to connect
+            //Has to be done this way because you cant synchronize over two jvm
+            while (clientHandler.isAvailable()) { //FOR SOME REASON THIS NEVER UPDATES
                 try {
-                    registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
-                    connectionsCount++;
-                    connectionsIndex++;
-                } catch (RemoteException e) {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
+
+            System.out.println("Matched!");
+            new Thread(clientHandler).start();
+            controller.addClient(clientHandler);
+            clientHandler = new ClientHandlerRMI();
+            connectionsCount++;
+            connectionsIndex++;
         }
     }
 }

@@ -97,15 +97,6 @@ public class Player implements Savable, Observable {
     }
 
     /**
-     * Getter for boolean to indicate if player is first.
-     * @author Niccolò Galante
-     * @return True if player is first.
-     */
-    public boolean getIsFirstPlayer() {
-        return isFirstPlayer;
-    }
-
-    /**
      * Updates player's commonCardPoints.
      * @author Niccolò Galante.
      */
@@ -139,7 +130,6 @@ public class Player implements Savable, Observable {
                     throw new IllegalColumnException("The column is full!");
                 }
         updateCommonCardPoints();
-        updateObservers(new Event(getState().toString()));
     }
 
     /**
@@ -176,6 +166,7 @@ public class Player implements Savable, Observable {
         jsonObject.addProperty("isFirstPlayer", isFirstPlayer);
         jsonObject.addProperty("personalCardIndex", personalCard.getIndex());
         jsonObject.addProperty("commonCardPoints", commonCardPoints);
+        jsonObject.add("personalCard", personalCard.getState());
         int i = 0;
         for (Card card : commonCards.keySet()) {
             jsonObject.addProperty("commonCard" + i, commonCards.get(card));

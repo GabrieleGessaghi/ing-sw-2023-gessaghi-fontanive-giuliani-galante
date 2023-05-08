@@ -15,17 +15,15 @@ import java.util.List;
  * @author Niccolò Giuliani
  */
 public abstract class ClientHandler implements Observer, Observable, Runnable {
+
     protected String nickname;
-    protected int index;
     protected List<Observer> observers;
 
     /**
      * Class constructor. Immediately asks the client for its nickname.
-     * @param index This client's unique identifier.
      */
-    public ClientHandler(int index) {
+    public ClientHandler() {
         nickname = null;
-        this.index = index;
         observers = new ArrayList<>();
     }
 
@@ -38,13 +36,8 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         if (jsonObject.has("nickname"))
             nickname = jsonObject.get("nickname").getAsString();
 
-        //Adds client's index and sends the message to observers
-        jsonObject.addProperty("clientIndex", index);
-        Event indexedEvent = new Event(jsonObject.toString());
-        for(Observer o : observers) {
-            o.update(indexedEvent);
-            System.out.println(o.toString());
-        }
+        for(Observer o : observers)
+            o.update(event);
     }
 
     @Override
@@ -82,14 +75,6 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("ping", true);
         sendOutput(jsonObject.toString());
-    }
-
-    /**
-     * The index represents a unique identifier to identify the client.
-     * @return This client's index.
-     */
-    public int getIndex() {
-        return index;
     }
 
     public String getNickname() {return nickname;}

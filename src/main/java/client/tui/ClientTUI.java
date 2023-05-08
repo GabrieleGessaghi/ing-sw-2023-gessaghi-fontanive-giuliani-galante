@@ -1,29 +1,27 @@
 package client.tui;
 
 import client.Client;
-import client.network.NetworkHandler;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
-import server.model.Token;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static server.controller.utilities.ConfigLoader.BOARD_SIZE;
-import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
-import static server.controller.utilities.JsonTools.createJsonMatrix;
+import static client.tui.ColourConstants.*;
+import static server.controller.utilities.ConfigLoader.*;
 
 /**
  * ClientTUI class.
  * @author Niccolò Galante
  */
 public class ClientTUI extends Client {
+
     private final String nickname;
 
     //TODO: Save things like board and personal shelf to show once its the player's turn
@@ -88,7 +86,7 @@ public class ClientTUI extends Client {
         Scanner scn = new Scanner(System.in);
         JsonArray jMatrix;
         JsonObject jMatrixToSend = new JsonObject();
-        int numberOfTokens;
+        char numberOfTokens;
         char[] tokenCoordinates = new char[2];
         int[] selectionInt = new int[2];
         int[][] selectedTokens = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
@@ -97,18 +95,17 @@ public class ClientTUI extends Client {
                 selectedTokens[i][j] = -1;
 
         System.out.print("How many tokens would you like to select?: ");
-        numberOfTokens = scn.nextInt();
-        while(numberOfTokens < 1 || numberOfTokens > 3){
+        numberOfTokens = scn.next().charAt(0);
+        while(numberOfTokens < '1' || numberOfTokens > '3'){
             System.out.print("Number not valid!\n");
             System.out.print("How many tokens would you like to select?: ");
-            numberOfTokens = scn.nextInt();
+            numberOfTokens = scn.next().charAt(0);
         }
 
-        for(int i = 0; i < numberOfTokens; i++){
-
+        for(int i = 0; i < numberOfTokens - '0'; i++){
                 System.out.print("Insert x coordinate: ");
                 tokenCoordinates[0] = scn.next().charAt(0);
-                while(tokenCoordinates[0] < 'a' || tokenCoordinates[0] > 'i'){
+                while(tokenCoordinates[0] < 'a' || tokenCoordinates[0] > 'i') {
                     System.out.print("Invalid x coordinate!\n");
                     System.out.print("Insert x coordinate: ");
                     tokenCoordinates[0] = scn.next().charAt(0);
@@ -116,18 +113,17 @@ public class ClientTUI extends Client {
 
                 System.out.print("Insert y coordinate: ");
                 tokenCoordinates[1] = scn.next().charAt(0);
-                while(tokenCoordinates[1] < '1' || tokenCoordinates[1] > '9'){
+                while(tokenCoordinates[1] < '1' || tokenCoordinates[1] > '9') {
                     System.out.print("Invalid y coordinate!\n");
                     System.out.print("Insert y coordinate: ");
                     tokenCoordinates[1] = scn.next().charAt(0);
                 }
 
-
             selectionInt[0] = tokenCoordinates[0] - 'a';
-            selectionInt[1] = tokenCoordinates[1] - '1';
-            selectedTokens[selectionInt[0]][selectionInt[1]] = i;
+            selectionInt[1] = tokenCoordinates[1] - '0';
+            selectedTokens[selectionInt[1]][selectionInt[0]] = i;
         }
-        jMatrix = createJsonMatrix(selectedTokens);
+        jMatrix = JsonTools.createJsonMatrix(selectedTokens);
         jMatrixToSend.add("selectedTiles", jMatrix);
         networkHandler.sendInput(jMatrixToSend.toString());
     }
@@ -144,6 +140,7 @@ public class ClientTUI extends Client {
 
         System.out.print("Insert column in which you want to insert the selected tokens: ");
         selectedColumn = scn.nextInt();
+        selectedColumn -= 1;
 
         while(selectedColumn < 0 || selectedColumn > SHELF_COLUMNS - 1){
             System.out.print("Column not valid!\n");
@@ -165,6 +162,7 @@ public class ClientTUI extends Client {
         JsonReader jsonReader = new JsonReader(new StringReader(toShow));
         String field;
         StringBuilder toPrint = new StringBuilder();
+        toPrint.append("\n");
         try {
             jsonReader.beginObject();
             while(jsonReader.hasNext()) {
@@ -179,39 +177,10 @@ public class ClientTUI extends Client {
                     case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
                     case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
                     case "message" -> toPrint.append(jsonReader.nextString()).append("\n");
-//                    case "tiles" -> { //TODO: Create separate function (DA RIFARE, NON C'È BISOGNO DI BEGIN OBJECT)
-//                        toPrint.append("Board: \n");
-//                        jsonReader.beginObject();
-//                        int[][] intMatrix = JsonTools.readMatrix(jsonReader);
-//                        char[][] charMatrix = new char[BOARD_SIZE][BOARD_SIZE];
-//
-//                        for(int i = 0; i < BOARD_SIZE; i++)
-//                            for(int j = 0; j < BOARD_SIZE; j++)
-//                                charMatrix[i][j] = intToTokenInitial(intMatrix[i][j]);
-//
-//                        System.out.print("  A B C D E F G H I\n");
-//                        for(int i = 0; i < BOARD_SIZE; i++)
-//                            System.out.print(i + "" + Arrays.toString(charMatrix[i]) + "\n");
-//
-//                        jsonReader.endObject();
-//                    }
-                    case "shelf" -> { //TODO: Create separate function
-                        toPrint.append("Shelf: \n");
-                        jsonReader.beginObject();
-                        if (jsonReader.nextName().equals("shelfTiles")) {
-                            int[][] intMatrix = JsonTools.readMatrix(jsonReader);
-                            for (int i = 0; i < ConfigLoader.SHELF_ROWS; i++) {
-                                for (int j = 0; j < SHELF_COLUMNS; j++) {
-                                    toPrint.append("| ").append(Token.values()[intMatrix[i][j]]).append(" |");
-                                }
-                                toPrint.append("\n");
-                            }
-                            toPrint.append("\n");
-                        } else {
-                            jsonReader.skipValue();
-                        }
-                        jsonReader.endObject();
-                    }
+                    case "tiles" -> toPrint.append(printTiles(jsonReader));
+                    case "shelf" -> toPrint.append(printShelf(jsonReader));
+                    case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
+                    //TODO: print personal card (same as shelf)
                     default -> jsonReader.skipValue();
                 }
             }
@@ -228,20 +197,96 @@ public class ClientTUI extends Client {
      * @param value integer value that is to be converted.
      * @return converted integer value.
      */
-    private char intToTokenInitial(int value){
-        //TODO: Add colors here
-        char tokenInitial;
+    private String intToTokenInitial(int value){
+        String tokenInitial;
         tokenInitial = switch (value){
-            case 0 -> 'X'; // nothing
-            case 1 -> 'C'; // cat
-            case 2 -> 'B'; // book
-            case 3 -> 'Y'; // toy
-            case 4 -> 'T'; // trophy
-            case 5 -> 'F'; // frame
-            case 6 -> 'P'; // plant
+            case 0 -> BLACK_BACKGROUND + "   "; // nothing
+            case 1 -> GREEN_BACKGROUND + "   "; // cat
+            case 2 -> WHITE_BACKGROUND + "   "; // book
+            case 3 -> YELLOW_BACKGROUND + "   "; // game
+            case 4 -> CYAN_BACKGROUND + "   "; // trophy
+            case 5 -> BLUE_BACKGROUND + "   "; // frame
+            case 6 -> RED_BACKGROUND + "   "; // plant
             default -> throw new IllegalStateException("Unexpected value: " + value);
         };
+        tokenInitial += COLOUR_RESET;
         return tokenInitial;
     }
 
+    /**
+     * Prints tiles.
+     * @author Niccolò Galante
+     * @param jsonReader Reads json input.
+     * @return Tiles to be shown.
+     * @throws IOException when there's an issue.
+     */
+    private StringBuilder printTiles(JsonReader jsonReader) throws IOException {
+        StringBuilder toPrint = new StringBuilder();
+
+        toPrint.append("Board: \n");
+        int[][] intMatrix = JsonTools.readMatrix(jsonReader);
+
+        toPrint.append("   A  B  C  D  E  F  G  H  I\n");
+        for(int i = 0; i < BOARD_SIZE; i++) {
+            toPrint.append(i).append(" ");
+            for (int j = 0; j < BOARD_SIZE; j++)
+                toPrint.append(intToTokenInitial(intMatrix[i][j]));
+            toPrint.append("\n");
+        }
+        return toPrint;
+    }
+
+    /**
+     * Prints shelf.
+     * @author Niccolò Galante
+     * @param jsonReader Reads json input.
+     * @return Shelf to be shown.
+     * @throws IOException when there's an issue.
+     */
+    private StringBuilder printShelf(JsonReader jsonReader) throws IOException {
+        StringBuilder toPrint = new StringBuilder();
+        toPrint.append("Shelf: \n").append(" 1  2  3  4  5\n");
+        jsonReader.beginObject();
+        if (jsonReader.nextName().equals("shelfTiles")) {
+            int[][] intMatrix = JsonTools.readMatrix(jsonReader);
+            for (int i = 0; i < SHELF_ROWS; i++) {
+                for (int j = 0; j < SHELF_COLUMNS; j++) {
+                    toPrint.append(intToTokenInitial(intMatrix[i][j]));
+                }
+                toPrint.append("\n");
+            }
+        } else {
+            jsonReader.skipValue();
+        }
+        jsonReader.endObject();
+
+        return toPrint;
+    }
+
+    /**
+     * Prints personal card.
+     * @author Niccolò Galante
+     * @param jsonReader Reads json input.
+     * @return Personal card to be shown.
+     * @throws IOException when there's an issue.
+     */
+    private StringBuilder printPersonalCard(JsonReader jsonReader) throws IOException{
+        StringBuilder toPrint = new StringBuilder();
+        toPrint.append("Personal card: \n").append(" 1  2  3  4  5\n");
+        jsonReader.beginObject();
+        if (jsonReader.nextName().equals("correctTiles")) {
+            int[][] intMatrix = JsonTools.readMatrix(jsonReader);
+            for (int i = 0; i < SHELF_ROWS; i++) {
+                for (int j = 0; j < SHELF_COLUMNS; j++) {
+                    toPrint.append(intToTokenInitial(intMatrix[i][j]));
+                }
+                toPrint.append("\n");
+            }
+        } else {
+            jsonReader.skipValue();
+        }
+        jsonReader.endObject();
+
+        return toPrint;
+    }
 }

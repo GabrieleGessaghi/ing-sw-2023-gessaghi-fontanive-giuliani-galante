@@ -15,16 +15,6 @@ public class NetworkHandlerTCP extends NetworkHandler {
     private Socket serverSocket;
 
     /**
-     * Class constructor.
-     * @author Gabriele Gessaghi
-     * @param client : calling client
-     * @param host : server ip
-     */
-    public NetworkHandlerTCP(Client client, String host){
-        super(client, host);
-    }
-
-    /**
      * Send the string on the output buffer.
      * @author Gabriele Gessaghi
      * @param input : String to write on the output buffer.

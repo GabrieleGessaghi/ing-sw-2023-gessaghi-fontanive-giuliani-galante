@@ -4,12 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Found the deadlock">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_04_23,_20_41_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_04_23__20_41__Changes_.xml" beforeDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Getting closer to fix RMI">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_1_2023_10_04_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_1_2023_10_04_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_8_2023_10_39_AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/network/NetworkHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/client/network/NetworkHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/network/NetworkHandlerRMI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/client/network/NetworkHandlerRMI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/network/NetworkHandlerTCP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/client/network/NetworkHandlerTCP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/tui/TUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/client/tui/TUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/view/ClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientHandlerRMI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientHandlerRMI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientUsable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientUsable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/rmi/ServerUsable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/view/rmi/ServerUsable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/tcp/ClientHandlerTCP$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/view/tcp/ClientHandlerTCP$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/tcp/ClientHandlerTCP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/view/tcp/ClientHandlerTCP.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +42,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/controller/Controller.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -108,7 +124,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
@@ -117,7 +133,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="server.model" />
-      <option name="MAIN_CLASS_NAME" value="server.model.PlayerTest" />
+      <option name="MAIN_CLASS_NAME" value="server.model.BoardTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -170,19 +186,19 @@
     <list>
       <item itemvalue="Application.Text User Inteface" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="JUnit.BoardTest" />
       <item itemvalue="JUnit.All in 6" />
-      <item itemvalue="JUnit.PlayerTest" />
       <item itemvalue="JUnit.PlayerTest.insertTokensTestTwo" />
       <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
       <item itemvalue="JUnit.server.model in 6" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BoardTest" />
         <item itemvalue="JUnit.server.model in 6" />
         <item itemvalue="JUnit.All in 6" />
         <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
         <item itemvalue="JUnit.PlayerTest.insertTokensTestTwo" />
-        <item itemvalue="JUnit.PlayerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -208,34 +224,9 @@
       <workItem from="1682920782466" duration="3425000" />
       <workItem from="1683115486360" duration="10137000" />
       <workItem from="1683179934686" duration="2584000" />
-    </task>
-    <task id="LOCAL-00107" summary="Finished JsonTools">
-      <created>1682696446880</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1682696446880</updated>
-    </task>
-    <task id="LOCAL-00108" summary="Finished implementing interfaces into Board">
-      <created>1682698415964</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1682698415964</updated>
-    </task>
-    <task id="LOCAL-00109" summary="Documented interfaces">
-      <created>1682698722101</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1682698722101</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Documented JsonTools">
-      <created>1682699210182</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1682699210183</updated>
+      <workItem from="1683353546115" duration="5244000" />
+      <workItem from="1683531314397" duration="5823000" />
+      <workItem from="1683555034901" duration="3125000" />
     </task>
     <task id="LOCAL-00111" summary="Separated Client and Server packages">
       <created>1682699335161</created>
@@ -552,7 +543,35 @@
       <option name="project" value="LOCAL" />
       <updated>1683274395321</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="Fixed the deadlock">
+      <created>1683277830558</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1683277830558</updated>
+    </task>
+    <task id="LOCAL-00157" summary="TCP should be finally mostly hopefully working">
+      <created>1683358820277</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1683358820277</updated>
+    </task>
+    <task id="LOCAL-00158" summary="Optimized RMI connection">
+      <created>1683531978611</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1683531978612</updated>
+    </task>
+    <task id="LOCAL-00159" summary="Getting closer to fix RMI">
+      <created>1683542884986</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1683542884986</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,10 +605,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Updated controller" />
-    <MESSAGE value="Finished controller" />
-    <MESSAGE value="Implemented victory condition" />
-    <MESSAGE value="Added wait for user input in TurnController" />
     <MESSAGE value="Added constants to ConfigLoader" />
     <MESSAGE value="NetworkHandlerSocket class finished, TODO ping())" />
     <MESSAGE value="Client showOutput() method" />
@@ -611,7 +626,11 @@
     <MESSAGE value="Finally fixed socket connection" />
     <MESSAGE value="fixed small issues" />
     <MESSAGE value="Found the deadlock" />
-    <option name="LAST_COMMIT_MESSAGE" value="Found the deadlock" />
+    <MESSAGE value="Fixed the deadlock" />
+    <MESSAGE value="TCP should be finally mostly hopefully working" />
+    <MESSAGE value="Optimized RMI connection" />
+    <MESSAGE value="Getting closer to fix RMI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Getting closer to fix RMI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

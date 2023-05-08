@@ -6,7 +6,6 @@ import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
-import server.model.cards.Card;
 import server.model.cards.CommonCard;
 import server.model.cards.CommonType;
 import server.model.exceptions.IllegalColumnException;
@@ -118,7 +117,6 @@ public class Game implements Savable, Observable {
         }
     }
 
-
     /**
      * Collect the selected tiles from the game board and update the current player shelf.
      * @author Gabriele Gessaghi
@@ -132,7 +130,6 @@ public class Game implements Savable, Observable {
             //Creates the message sent at the beginning of the turn
             JsonObject jsonMessage = new JsonObject();
             jsonMessage.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
-            updateObservers(new Event(jsonMessage.toString()));
 
             //Gets the tiles from the board.
             Token[] selectedTokens;
@@ -194,7 +191,7 @@ public class Game implements Savable, Observable {
     public void sendState(View view) {
         switch (view) {
             case BOARD -> updateObservers(new Event(board.getState().toString()));
-            case CURRENT_PLAYER -> updateObservers(new Event(players[currentPlayerIndex].getState().toString()));
+            case CURRENT_PLAYER -> updateObservers(new Event(players[currentPlayerIndex].getState().toString())); //TODO: Show the personal card as well
             case CHAT -> {}
             case PLAYERS_POINTS -> {
                 JsonObject jsonObject = new JsonObject();
@@ -202,7 +199,7 @@ public class Game implements Savable, Observable {
                     jsonObject.addProperty("player" + i, players[i].getNickname());
                     jsonObject.addProperty("points" + i, players[i].getPoints());
                 }
-                updateObservers(new Event(jsonObject.getAsString()));
+                updateObservers(new Event(jsonObject.toString()));
             }
             case COMMON_CARDS -> {
                 for (CommonCard card : commonCards)

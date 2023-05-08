@@ -6,7 +6,10 @@ import client.network.NetworkHandlerRMI;
 import client.network.NetworkHandlerTCP;
 import server.controller.utilities.ConfigLoader;
 
+import java.util.Random;
 import java.util.Scanner;
+
+import static client.tui.ColourConstants.COLOUR_RESET;
 
 public class TUI {
     public static void main(String[] args) {
@@ -17,7 +20,7 @@ public class TUI {
         int selection;
         Scanner scn = new Scanner(System.in);
 
-        //TODO: Add beginning screen
+        printOpening();
 
         System.out.print("Insert nickname: ");
         nickname = scn.nextLine();
@@ -35,10 +38,38 @@ public class TUI {
 
         Client client = new ClientTUI(nickname);
         if(selection == 0)
-            networkHandler = new NetworkHandlerTCP(client, hostIp);
+            networkHandler = new NetworkHandlerTCP();
         else
-            networkHandler = new NetworkHandlerRMI(client, hostIp);
+            networkHandler = new NetworkHandlerRMI();
+        networkHandler.setClient(client);
+        networkHandler.setHost(hostIp);
         new Thread(networkHandler).start();
         client.setNetworkHandler(networkHandler);
+    }
+
+    /**
+     * Prints random opening screen.
+     * @author Niccolò Galante
+     */
+    private static void printOpening(){
+        System.out.print("\033[0;1m" + "\n" +
+                "                               ___             ___  .-.                \n" +
+                "                              (   )           (   )/    \\  .-.         \n" +
+                " ___ .-. .-.  ___  ___   .--.  | | .-.   .--.  | | | .`. ;( __) .--.   \n" +
+                "(   )   '   \\(   )(   )/  _  \\ | |/   \\ /    \\ | | | |(___|''\")/    \\  \n" +
+                " |  .-.  .-. ;| |  | |. .' `. ;|  .-. .|  .-. ;| | | |_    | ||  .-. ; \n" +
+                " | |  | |  | || |  | || '   | || |  | ||  | | || |(   __)  | ||  | | | \n" +
+                " | |  | |  | || '  | |_\\_`.(___) |  | ||  |/  || | | |     | ||  |/  | \n" +
+                " | |  | |  | |'  `-' (   ). '. | |  | ||  ' _.'| | | |     | ||  ' _.' \n" +
+                " | |  | |  | | `.__. || |  `\\ || |  | ||  .'.-.| | | |     | ||  .'.-. \n" +
+                " | |  | |  | | ___ | |; '._,' '| |  | |'  `-' /| | | |     | |'  `-' / \n" +
+                "(___)(___)(___|   )' | '.___.'(___)(___)`.__.'(___|___)   (___)`.__.'  \n" +
+                "               ; `-' '                                                 \n" +
+                "                .__.'                                                  \n" +
+                COLOUR_RESET
+        );
+        System.out.print("\n\n");
+        System.out.print("\033[0;1m" + "                              WELCOME!\n\n\n" + COLOUR_RESET);
+
     }
 }

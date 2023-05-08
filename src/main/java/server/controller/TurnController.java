@@ -24,13 +24,11 @@ public class TurnController implements Observer {
     private int selectedColumn;
     private final Game game;
     private final ClientHandler currentClientHandler;
-    private boolean isTurnOver;
 
     public TurnController(Game game, ClientHandler currentClient) {
         selectedTiles = null;
         selectedColumn = -1;
         currentClientHandler = currentClient;
-        isTurnOver = false;
         this.game = game;
         //newTurn();
     }
@@ -58,6 +56,7 @@ public class TurnController implements Observer {
     }
 
     public synchronized void newTurn() {
+        game.sendState(View.COMMON_CARDS);
         game.sendState(View.BOARD);
         game.sendState(View.CURRENT_PLAYER);
 
@@ -86,10 +85,10 @@ public class TurnController implements Observer {
     private synchronized void finalizeTurn() {
         try {
             game.playerTurn(selectedTiles, selectedColumn);
-            isTurnOver = true;
-            this.notifyAll();
         } catch (IllegalMoveException | IllegalColumnException e) {
             currentClientHandler.sendOutput(JsonTools.createMessage(e.getMessage()));
+            selectedTiles = null;
+            selectedColumn = -1;
             newTurn();
         }
     }
@@ -119,9 +118,5 @@ public class TurnController implements Observer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public boolean getIsTurnOver() {
-        return isTurnOver;
     }
 }

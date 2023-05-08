@@ -21,7 +21,7 @@ import static server.controller.utilities.ConfigLoader.PLAYERS_MIN;
  * Common objective card of the game.
  * @author Niccolò Giuliani
  */
-public class CommonCard extends Card implements Savable {
+public class CommonCard extends Card {
     private int numberOfTokensLeft;
     private final int numberOfPlayers;
     private CommonObjective objective;
@@ -59,7 +59,6 @@ public class CommonCard extends Card implements Savable {
         satisfied = objective.isSatisfied(shelf);
         if (satisfied) {
             points = COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
-            updateObservers(new Event(getState().toString()));
             numberOfTokensLeft--;
         }
         return points;
