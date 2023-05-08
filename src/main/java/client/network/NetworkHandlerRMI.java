@@ -14,7 +14,7 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
    ClientUsable server;
 
-   public  NetworkHandlerRMI(Client client, String host){
+   public NetworkHandlerRMI(Client client, String host){
        super(client, host);
    }
 
@@ -51,7 +51,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
     int i;
     i = 0;
        try {
-           Registry registry = LocateRegistry.getRegistry(host, SERVER_PORT);
+           Registry registry = LocateRegistry.getRegistry(host, SERVER_PORT + 1);
            do {
                server = (ClientUsable) registry.lookup("ServerRMI" + i);
                i++;
@@ -59,7 +59,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
            registry.rebind("ClientRmi"+ (i - 1),this);
            server.setAvailable("ClientRMI"+ (i - 1));
        }catch(Exception e){
-           System.out.println("[System] Server failed: " + e);
+           e.printStackTrace();
        }
     }
 }

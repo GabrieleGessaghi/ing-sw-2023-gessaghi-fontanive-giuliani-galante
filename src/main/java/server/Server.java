@@ -23,7 +23,6 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 public class Server {
     private static Controller controller;
     private static int connectionsCount;
-    private final Object lock;
 
     public static void main(String[] args) throws IOException {
         //TODO: Show player initial state of the game
@@ -34,10 +33,6 @@ public class Server {
         new Thread(controller).start();
         new Thread(server::acceptConnectionsTCP).start();
         new Thread(server::acceptConnectionsRMI).start();
-    }
-
-    public Server() {
-        lock = new Object();
     }
 
     public void acceptConnectionsTCP() {
@@ -53,7 +48,7 @@ public class Server {
                 socket = serverSocket.accept();
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                ClientHandlerTCP clientHandler = new ClientHandlerTCP(connectionsCount, socket, dataInputStream, dataOutputStream);
+                ClientHandlerTCP clientHandler = new ClientHandlerTCP(socket, dataInputStream, dataOutputStream);
                 new Thread(clientHandler).start();
                 controller.addClient(clientHandler);
                 connectionsCount++;
@@ -70,7 +65,7 @@ public class Server {
         }
     }
 
-    public synchronized void acceptConnectionsRMI() {
+    public void acceptConnectionsRMI() {
         int connectionsIndex = 0;
         Registry registry;
         try {
@@ -78,25 +73,27 @@ public class Server {
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-        ClientHandlerRMI clientHandler = new ClientHandlerRMI(connectionsIndex);
+        ClientHandlerRMI clientHandler = new ClientHandlerRMI();
         while (true) {
-            while (clientHandler.isAvailable()) {
-                try {
-                    clientHandler.wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+            try {
+                registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+            synchronized (clientHandler) {
+                while (clientHandler.isAvailable()) {
+                    try {
+                        clientHandler.wait();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
             new Thread(clientHandler).start();
             controller.addClient(clientHandler);
-            clientHandler = new ClientHandlerRMI(connectionsIndex);
-            try {
-                registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
-                connectionsCount++;
-                connectionsIndex++;
-            } catch (RemoteException e) {
-                throw new RuntimeException(e);
-            }
+            clientHandler = new ClientHandlerRMI();
+            connectionsCount++;
+            connectionsIndex++;
         }
     }
 }

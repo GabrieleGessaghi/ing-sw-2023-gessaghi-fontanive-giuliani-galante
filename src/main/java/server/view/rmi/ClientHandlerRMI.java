@@ -21,10 +21,8 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     /**
      * Class constructor.
-     * @param index This client's unique identifier.
      */
-    public ClientHandlerRMI(int index){
-        super(index);
+    public ClientHandlerRMI(){
         this.available = true;
         this.client = null;
     }
@@ -39,7 +37,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             Registry registry = LocateRegistry.getRegistry();
             client = (NetworkHandlerRMI) registry.lookup(clientName);
         } catch(Exception e) {
-            System.out.println("[System] ClientTUI failed: " + e);
+            e.printStackTrace();
         }
     }
 
