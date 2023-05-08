@@ -80,15 +80,18 @@ public class Server {
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }
-            synchronized (clientHandler) {
-                while (clientHandler.isAvailable()) {
-                    try {
-                        clientHandler.wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+
+            //Wait periodically for a client to connect
+            //Has to be done this way because you cant synchronize over two jvm
+            while (clientHandler.isAvailable()) { //FOR SOME REASON THIS NEVER UPDATES
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
+
+            System.out.println("Matched!");
             new Thread(clientHandler).start();
             controller.addClient(clientHandler);
             clientHandler = new ClientHandlerRMI();
