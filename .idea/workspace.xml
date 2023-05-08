@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Getting closer to fix RMI">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="fixed small issues">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_1_2023_4_34_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_1_2023_4_34_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientUsable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientUsable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ServerUsable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ServerUsable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/client/network/NetworkHandlerRMI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/client/network/NetworkHandlerRMI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/model/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/model/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientHandlerRMI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientHandlerRMI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientUsable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientUsable.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,13 +221,6 @@
       <workItem from="1683353546115" duration="5244000" />
       <workItem from="1683531314397" duration="5823000" />
       <workItem from="1683555034901" duration="3125000" />
-    </task>
-    <task id="LOCAL-00111" summary="Separated Client and Server packages">
-      <created>1682699335161</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1682699335161</updated>
     </task>
     <task id="LOCAL-00112" summary="Fixed small issue">
       <created>1682699542705</created>
@@ -561,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683542884986</updated>
     </task>
-    <option name="localTasksCounter" value="160" />
+    <task id="LOCAL-00160" summary="fixed small issues">
+      <created>1683571492144</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1683571492144</updated>
+    </task>
+    <option name="localTasksCounter" value="161" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,13 +618,13 @@
     <MESSAGE value="Hopefully fixed connection issue" />
     <MESSAGE value="Improved TUI" />
     <MESSAGE value="Finally fixed socket connection" />
-    <MESSAGE value="fixed small issues" />
     <MESSAGE value="Found the deadlock" />
     <MESSAGE value="Fixed the deadlock" />
     <MESSAGE value="TCP should be finally mostly hopefully working" />
     <MESSAGE value="Optimized RMI connection" />
     <MESSAGE value="Getting closer to fix RMI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Getting closer to fix RMI" />
+    <MESSAGE value="fixed small issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed small issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

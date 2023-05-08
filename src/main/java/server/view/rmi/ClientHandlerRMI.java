@@ -7,6 +7,7 @@ import server.controller.observer.Event;
 import server.view.ClientHandler;
 
 
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -18,7 +19,7 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
  */
 public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
     private boolean available;
-    NetworkHandlerRMI client;
+    ServerUsable client;
     private String clientName;
 
     /**
@@ -37,7 +38,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
     public void run() {
         try {
             Registry registry = LocateRegistry.getRegistry(SERVER_PORT + 1);
-            client = (NetworkHandlerRMI) registry.lookup(clientName);
+            client = (ServerUsable) registry.lookup(clientName);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -45,7 +46,11 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     @Override
     public void update(Event event) {
-        client.showOutput(event.jsonMessage());
+        try {
+            client.showOutput(event.jsonMessage());
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -66,11 +71,19 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     @Override
     public void sendOutput(String jsonMessage) {
-        client.showOutput(jsonMessage);
+        try {
+            client.showOutput(jsonMessage);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void requestInput(Prompt prompt) {
-        client.requestInput(prompt);
+        try {
+            client.requestInput(prompt);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

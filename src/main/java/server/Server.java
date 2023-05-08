@@ -2,7 +2,9 @@ package server;
 
 import server.controller.Controller;
 import server.controller.utilities.ConfigLoader;
+import server.view.ClientHandler;
 import server.view.rmi.ClientHandlerRMI;
+import server.view.rmi.ClientUsable;
 import server.view.tcp.ClientHandlerTCP;
 
 import java.io.DataInputStream;
@@ -13,6 +15,7 @@ import java.net.Socket;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
@@ -76,8 +79,8 @@ public class Server {
         ClientHandlerRMI clientHandler = new ClientHandlerRMI();
         while (true) {
             try {
-
-                registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
+                ClientUsable stub = (ClientUsable) UnicastRemoteObject.exportObject(clientHandler,0);
+                registry.rebind("ServerRMI" + connectionsIndex, stub);
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }

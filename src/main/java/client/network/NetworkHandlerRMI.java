@@ -6,8 +6,10 @@ import server.view.rmi.ServerUsable;
 import server.controller.Prompt;
 import server.view.rmi.ClientUsable;
 
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
@@ -33,7 +35,12 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
      * @param input input to send to the server
      */
     public void sendInput(String input) {
-        server.sendInput(input);
+
+        try {
+            server.sendInput(input);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -58,7 +65,8 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
                server = (ClientUsable) registry.lookup("ServerRMI" + i);
                i++;
            } while(!server.isAvailable());
-           registry.rebind("ClientRMI"+ (i - 1),this);
+           ServerUsable stub = (ServerUsable) UnicastRemoteObject.exportObject(this,0);
+           registry.rebind("ClientRMI"+ (i - 1),stub);
            server.setAvailable("ClientRMI"+ (i - 1));
 
            while (true) {
