@@ -23,18 +23,24 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 public class Server {
     private static Controller controller;
     private static int connectionsCount;
+    private final Object lock;
 
     public static void main(String[] args) throws IOException {
         //TODO: Show player initial state of the game
         connectionsCount = 0;
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         controller = new Controller();
+        Server server = new Server();
         new Thread(controller).start();
-        new Thread(Server::acceptConnectionsTCP).start();
-        //new Thread(Server::acceptConnectionsRMI).start();
+        new Thread(server::acceptConnectionsTCP).start();
+        new Thread(server::acceptConnectionsRMI).start();
     }
 
-    public static void acceptConnectionsTCP() {
+    public Server() {
+        lock = new Object();
+    }
+
+    public void acceptConnectionsTCP() {
         ServerSocket serverSocket;
         try {
             serverSocket = new ServerSocket(SERVER_PORT);
@@ -64,7 +70,7 @@ public class Server {
         }
     }
 
-    public static void acceptConnectionsRMI() {
+    public synchronized void acceptConnectionsRMI() {
         int connectionsIndex = 0;
         Registry registry;
         try {
@@ -72,19 +78,24 @@ public class Server {
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-        ClientHandlerRMI clientHandler = new ClientHandlerRMI(connectionsIndex);;
+        ClientHandlerRMI clientHandler = new ClientHandlerRMI(connectionsIndex);
         while (true) {
-            if (!clientHandler.isAvailable()) {
-                new Thread(clientHandler).start();
-                controller.addClient(clientHandler);
-                clientHandler = new ClientHandlerRMI(connectionsIndex);
+            while (clientHandler.isAvailable()) {
                 try {
-                    registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
-                    connectionsCount++;
-                    connectionsIndex++;
-                } catch (RemoteException e) {
+                    clientHandler.wait();
+                } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+            }
+            new Thread(clientHandler).start();
+            controller.addClient(clientHandler);
+            clientHandler = new ClientHandlerRMI(connectionsIndex);
+            try {
+                registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
+                connectionsCount++;
+                connectionsIndex++;
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
             }
         }
     }
