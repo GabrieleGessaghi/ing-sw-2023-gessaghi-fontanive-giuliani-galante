@@ -2,13 +2,14 @@ package server.view.rmi;
 
 import server.controller.Prompt;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 
 /**
  * Provides the methods to be used by the server in RMI.
  * @author Niccolò Giuliani
  */
-public interface ServerUsable extends Remote {
+public interface ServerUsable extends Remote, Serializable {
 
      /**
       * Requests a specific input from the player.
