@@ -77,13 +77,5 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         sendOutput(jsonObject.toString());
     }
 
-    /**
-     * The index represents a unique identifier to identify the client.
-     * @return This client's index.
-     */
-    public int getIndex() {
-        return index;
-    }
-
     public String getNickname() {return nickname;}
 }
