@@ -14,8 +14,7 @@ import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
-import static server.controller.utilities.ConfigLoader.SHELF_ROWS;
+import static server.controller.utilities.ConfigLoader.*;
 
 /**
  * Personal objective cards.
@@ -77,7 +76,7 @@ public class PersonalCard extends Card {
             for(int j = 0; j < SHELF_COLUMNS; j++)
                 if(shelf[i][j] != Token.NOTHING && shelf[i][j] == correctTiles[i][j])
                     countCorrect++;
-        return (countCorrect == 0 ? 0 : ConfigLoader.PERSONALCARD_POINTS[countCorrect - 1]);
+        return (countCorrect == 0 ? 0 : PERSONALCARD_POINTS[countCorrect - 1]);
     }
 
     /**

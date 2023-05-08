@@ -93,7 +93,7 @@ public class Board implements Observable, Savable {
 
     /**
      * Checks whether the tile can be selected by the player.
-     * @author Giorgio Massimo Fontainve
+     * @author Giorgio Massimo Fontanive
      * @param row The tile's row in the board.
      * @param column The tile's column in the board.
      * @return True if the tile has a free side and is not empty.
