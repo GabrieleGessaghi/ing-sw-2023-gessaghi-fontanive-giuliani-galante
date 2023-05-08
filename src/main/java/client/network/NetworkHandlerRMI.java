@@ -58,7 +58,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
                server = (ClientUsable) registry.lookup("ServerRMI" + i);
                i++;
            } while(!server.isAvailable());
-           registry.rebind("ClientRmi"+ (i - 1),this);
+           registry.rebind("ClientRMI"+ (i - 1),this);
            server.setAvailable("ClientRMI"+ (i - 1));
 
            while (true) {

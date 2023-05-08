@@ -10,6 +10,8 @@ import server.view.ClientHandler;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import static server.controller.utilities.ConfigLoader.SERVER_PORT;
+
 /**
  * Class for handling the RMI clients.
  * @author Niccolò Giuliani
@@ -34,7 +36,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
     @Override
     public void run() {
         try {
-            Registry registry = LocateRegistry.getRegistry();
+            Registry registry = LocateRegistry.getRegistry(SERVER_PORT + 1);
             client = (NetworkHandlerRMI) registry.lookup(clientName);
         } catch(Exception e) {
             e.printStackTrace();

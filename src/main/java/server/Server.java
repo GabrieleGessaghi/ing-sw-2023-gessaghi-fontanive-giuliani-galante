@@ -76,6 +76,7 @@ public class Server {
         ClientHandlerRMI clientHandler = new ClientHandlerRMI();
         while (true) {
             try {
+
                 registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
