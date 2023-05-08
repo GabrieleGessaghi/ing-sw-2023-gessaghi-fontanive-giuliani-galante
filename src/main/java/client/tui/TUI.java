@@ -35,9 +35,11 @@ public class TUI {
 
         Client client = new ClientTUI(nickname);
         if(selection == 0)
-            networkHandler = new NetworkHandlerTCP(client, hostIp);
+            networkHandler = new NetworkHandlerTCP();
         else
-            networkHandler = new NetworkHandlerRMI(client, hostIp);
+            networkHandler = new NetworkHandlerRMI();
+        networkHandler.setClient(client);
+        networkHandler.setHost(hostIp);
         new Thread(networkHandler).start();
         client.setNetworkHandler(networkHandler);
     }

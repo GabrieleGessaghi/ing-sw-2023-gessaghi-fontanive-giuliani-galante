@@ -87,6 +87,7 @@ public class Controller implements Observer, Runnable {
             clientHandler.registerObserver(creationController);
             clientHandler.registerObserver(this);
             clientHandler.requestInput(Prompt.NICKNAME);
+            System.out.println("Added client"); //
             if (clientHandlers.size() == 1) {
                 while (clientHandlers.get(0).getNickname() == null)
                     try {
@@ -94,6 +95,7 @@ public class Controller implements Observer, Runnable {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
+                System.out.println("Received nickname"); //
                 clientHandler.requestInput(Prompt.PLAYERSNUMBER);
             }
         } else

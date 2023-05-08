@@ -4,13 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Optimized RMI connection">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientUsable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientUsable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ServerUsable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ServerUsable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Boards/fourPlayersBoard.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Boards/threePlayersBoard.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Boards/twoPlayersBoard.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal11.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal12.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PersonalCards/PersonalGoal9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/configuration.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +106,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Text User Inteface">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="server.Server" />
       <module name="6" />

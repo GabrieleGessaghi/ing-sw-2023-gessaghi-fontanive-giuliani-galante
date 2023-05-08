@@ -53,6 +53,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     @Override
     public synchronized void setAvailable(String clientName) {
+        System.out.println("Connected to client"); //
         this.clientName = clientName;
         available = false;
         this.notifyAll();

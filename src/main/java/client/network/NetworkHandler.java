@@ -7,8 +7,11 @@ public abstract class NetworkHandler implements Runnable {
     protected Client client;
     protected String host;
 
-    public NetworkHandler(Client client, String host) {
+    public void setClient(Client client) {
         this.client = client;
+    }
+
+    public void setHost(String host) {
         this.host = host;
     }
 
