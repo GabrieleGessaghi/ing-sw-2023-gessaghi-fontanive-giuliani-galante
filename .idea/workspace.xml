@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed two-way RMI connection">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/client/Client.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/client/network/NetworkHandler.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/client/network/NetworkHandlerRMI.class" beforeDir="false" />
@@ -707,8 +706,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>model.cards.concreteobjectives.*</FILTER>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1683181066105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$ConfigurationsTest.ic" NAME="ConfigurationsTest Coverage Results" MODIFIED="1683044723710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
@@ -717,13 +716,13 @@
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_cards_concreteobjectives_in_6.ic" NAME="server.model.cards.concreteobjectives in 6 Coverage Results" MODIFIED="1683049588320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.cards.concreteobjectives.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1683046859177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>server.model.*</FILTER>
+    <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>model.cards.concreteobjectives.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
