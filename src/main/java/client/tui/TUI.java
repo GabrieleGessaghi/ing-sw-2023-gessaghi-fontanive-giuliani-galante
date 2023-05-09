@@ -6,12 +6,12 @@ import client.network.NetworkHandlerRMI;
 import client.network.NetworkHandlerTCP;
 import server.controller.utilities.ConfigLoader;
 
-import java.util.Random;
 import java.util.Scanner;
 
 import static client.tui.ColourConstants.COLOUR_RESET;
 
 public class TUI {
+
     public static void main(String[] args) {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         NetworkHandler networkHandler;
@@ -48,7 +48,7 @@ public class TUI {
     }
 
     /**
-     * Prints random opening screen.
+     * Prints opening screen.
      * @author Niccolò Galante
      */
     private static void printOpening(){

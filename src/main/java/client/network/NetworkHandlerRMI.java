@@ -23,10 +23,10 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
      * @param input input to Send to the client
      */
     @Override
-    public synchronized void requestInput(Prompt input) {
-       client.requestInput(input);
-       isMessageAvailable = true;
-       this.notifyAll();
+    public synchronized void requestInput(Prompt input) { //DEADLOCK
+        client.requestInput(input);
+        isMessageAvailable = true;
+        this.notifyAll();
     }
 
     /**

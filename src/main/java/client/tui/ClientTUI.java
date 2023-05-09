@@ -272,7 +272,7 @@ public class ClientTUI extends Client {
      */
     private StringBuilder printPersonalCard(JsonReader jsonReader) throws IOException{
         StringBuilder toPrint = new StringBuilder();
-        toPrint.append("Personal card: \n").append(" 1  2  3  4  5\n");
+        toPrint.append("\n").append("Personal card: \n").append(" 1  2  3  4  5\n");
         jsonReader.beginObject();
         if (jsonReader.nextName().equals("correctTiles")) {
             int[][] intMatrix = JsonTools.readMatrix(jsonReader);
