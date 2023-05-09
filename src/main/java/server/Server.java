@@ -81,26 +81,20 @@ public class Server {
             try {
                 ClientUsable stub = (ClientUsable) UnicastRemoteObject.exportObject(clientHandler,0);
                 registry.rebind("ServerRMI" + connectionsIndex, stub);
-            } catch (RemoteException e) {
+
+                clientHandler.waitForConnection();
+                new Thread(clientHandler).start();
+
+                clientHandler.waitForConnection();
+                System.out.println("Two way connection completed!");
+                controller.addClient(clientHandler);
+
+                clientHandler = new ClientHandlerRMI();
+                connectionsCount++;
+                connectionsIndex++;
+            } catch (RemoteException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
-            //Wait periodically for a client to connect
-            //Has to be done this way because you cant synchronize over two jvm
-            while (clientHandler.isAvailable()) { //FOR SOME REASON THIS NEVER UPDATES
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            System.out.println("Matched!");
-            new Thread(clientHandler).start();
-            controller.addClient(clientHandler);
-            clientHandler = new ClientHandlerRMI();
-            connectionsCount++;
-            connectionsIndex++;
         }
     }
 }

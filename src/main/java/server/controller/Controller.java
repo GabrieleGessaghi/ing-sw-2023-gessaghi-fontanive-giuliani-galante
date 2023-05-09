@@ -86,7 +86,7 @@ public class Controller implements Observer, Runnable {
             clientHandlers.add(clientHandler);
             clientHandler.registerObserver(creationController);
             clientHandler.registerObserver(this);
-            clientHandler.requestInput(Prompt.NICKNAME);
+            clientHandler.requestInput(Prompt.NICKNAME); //FOUND THE DEADLOCK
             System.out.println("Added client"); //
             if (clientHandlers.size() == 1) {
                 while (clientHandlers.get(0).getNickname() == null)
