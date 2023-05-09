@@ -22,8 +22,9 @@ public class ClientGUI extends Application {
         //Parent root = FXMLLoader.load(getClass().getResource("src/main/resources/ClientGUI.fxml"));
         Parent root = FXMLLoader.load(fxmlURL);
         Scene base = new Scene(root);
-        //base.getStylesheets().add(getClass().getResource("src/main/resources/Apllicaion.css").toExternalForm());
+        base.getStylesheets().add(getClass().getResource("src/main/resources/Application.css").toExternalForm());
         primaryStage.setScene(base);
+        primaryStage.setTitle("MyShelfie");
         primaryStage.show();
     }
 }
