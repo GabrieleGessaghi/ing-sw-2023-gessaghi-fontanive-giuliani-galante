@@ -24,8 +24,6 @@ public class ClientTUI extends Client {
 
     private final String nickname;
 
-    //TODO: Save things like board and personal shelf to show once its the player's turn
-
     public ClientTUI(String nickname) {
         this.nickname = nickname;
     }
@@ -87,41 +85,55 @@ public class ClientTUI extends Client {
         JsonArray jMatrix;
         JsonObject jMatrixToSend = new JsonObject();
         char numberOfTokens;
-        char[] tokenCoordinates = new char[2];
-        int[] selectionInt = new int[2];
-        int[][] selectedTokens = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
-        for(int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
-            for(int j = 0; j < ConfigLoader.BOARD_SIZE; j++)
-                selectedTokens[i][j] = -1;
+        String[] tokenCoordinates = new String[3];
+        int[][] selectedTokens = new int[BOARD_SIZE][BOARD_SIZE];
+        String orderSelection;
 
+        Arrays.fill(tokenCoordinates, "");
+
+        for(int i = 0; i < BOARD_SIZE; i++)
+            Arrays.fill(selectedTokens[i], -1);
+
+        //NUMBER OF TOKENS
         System.out.print("How many tokens would you like to select?: ");
-        numberOfTokens = scn.next().charAt(0);
+        numberOfTokens = scn.nextLine().charAt(0);
         while(numberOfTokens < '1' || numberOfTokens > '3'){
             System.out.print("Number not valid!\n");
             System.out.print("How many tokens would you like to select?: ");
-            numberOfTokens = scn.next().charAt(0);
+            numberOfTokens = scn.nextLine().charAt(0);
         }
 
-        for(int i = 0; i < numberOfTokens - '0'; i++){
-                System.out.print("Insert x coordinate: ");
-                tokenCoordinates[0] = scn.next().charAt(0);
-                while(tokenCoordinates[0] < 'a' || tokenCoordinates[0] > 'i') {
-                    System.out.print("Invalid x coordinate!\n");
-                    System.out.print("Insert x coordinate: ");
-                    tokenCoordinates[0] = scn.next().charAt(0);
-                }
+        //TOKEN SELECTION WITH COORDINATES
+        for(int i = 0; i < numberOfTokens - '0'; i++) {
+            System.out.print("Insert coordinates for token " + (i+1) + ": ");
+            tokenCoordinates[i] = scn.nextLine();
+            while (tokenCoordinates[i] != null && (tokenCoordinates[i].charAt(0) < 'a' || tokenCoordinates[i].charAt(0) > 'i' || tokenCoordinates[i].charAt(1) < '1' || tokenCoordinates[i].charAt(1) > '9')) {
+                System.out.print("\nCoordinates not valid!\n");
+                System.out.print("Insert coordinates for token " + i);
+                tokenCoordinates[i] = scn.nextLine();
+            }
+        }
 
-                System.out.print("Insert y coordinate: ");
-                tokenCoordinates[1] = scn.next().charAt(0);
-                while(tokenCoordinates[1] < '1' || tokenCoordinates[1] > '9') {
-                    System.out.print("Invalid y coordinate!\n");
-                    System.out.print("Insert y coordinate: ");
-                    tokenCoordinates[1] = scn.next().charAt(0);
-                }
+        //ORDER SELECTION
+        if(numberOfTokens > '1') {
+            System.out.print("\nIn what order would you like to insert the selected tokens?\n");
+            for (int i = 0; i < numberOfTokens - '0'; i++)
+                System.out.print((i + 1) +  ": " + tokenCoordinates[i] + "\n");
+            orderSelection = scn.nextLine();
+            while(orderSelection.length() != numberOfTokens - '0'){
+                System.out.print("\nIn what order would you like to insert the selected tokens?");
+                for (int i = 0; i < numberOfTokens - '0'; i++)
+                    System.out.print((i + 1) +  ": " + tokenCoordinates[i] + "\n");
+                orderSelection = scn.nextLine();
+            }
 
-            selectionInt[0] = tokenCoordinates[0] - 'a';
-            selectionInt[1] = tokenCoordinates[1] - '0';
-            selectedTokens[selectionInt[1]][selectionInt[0]] = i;
+            for(int i = 0; i < numberOfTokens - '0'; i++){
+                String tokenCoordinate = tokenCoordinates[orderSelection.charAt(i) - '1'];
+                selectedTokens[tokenCoordinate.charAt(1) - '0'][tokenCoordinate.charAt(0) - 'a'] = i;
+                //[letter][number]
+            }
+
+
         }
         jMatrix = JsonTools.createJsonMatrix(selectedTokens);
         jMatrixToSend.add("selectedTiles", jMatrix);
@@ -180,7 +192,6 @@ public class ClientTUI extends Client {
                     case "tiles" -> toPrint.append(printTiles(jsonReader));
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
-                    //TODO: print personal card (same as shelf)
                     default -> jsonReader.skipValue();
                 }
             }
@@ -272,7 +283,7 @@ public class ClientTUI extends Client {
      */
     private StringBuilder printPersonalCard(JsonReader jsonReader) throws IOException{
         StringBuilder toPrint = new StringBuilder();
-        toPrint.append("Personal card: \n").append(" 1  2  3  4  5\n");
+        toPrint.append("\n").append("Personal card: \n").append(" 1  2  3  4  5\n");
         jsonReader.beginObject();
         if (jsonReader.nextName().equals("correctTiles")) {
             int[][] intMatrix = JsonTools.readMatrix(jsonReader);
@@ -286,7 +297,7 @@ public class ClientTUI extends Client {
             jsonReader.skipValue();
         }
         jsonReader.endObject();
-
+        toPrint.append("\n");
         return toPrint;
     }
 }
