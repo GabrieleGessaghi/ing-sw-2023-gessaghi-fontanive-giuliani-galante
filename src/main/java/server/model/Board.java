@@ -106,6 +106,7 @@ public class Board implements Observable, Savable {
                         tiles[row][column + 1] == Token.NOTHING);
     }
 
+
     /**
      * Checks whether the chosen tiles can be selected within the rules of the game.
      * @author Giorgio Massimo Fontanive

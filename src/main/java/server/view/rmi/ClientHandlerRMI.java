@@ -7,8 +7,11 @@ import server.controller.observer.Event;
 import server.view.ClientHandler;
 
 
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+
+import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
 /**
  * Class for handling the RMI clients.
@@ -16,7 +19,7 @@ import java.rmi.registry.Registry;
  */
 public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
     private boolean available;
-    NetworkHandlerRMI client;
+    ServerUsable client;
     private String clientName;
 
     /**
@@ -34,8 +37,8 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
     @Override
     public void run() {
         try {
-            Registry registry = LocateRegistry.getRegistry();
-            client = (NetworkHandlerRMI) registry.lookup(clientName);
+            Registry registry = LocateRegistry.getRegistry(SERVER_PORT + 1);
+            client = (ServerUsable) registry.lookup(clientName);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -43,20 +46,22 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     @Override
     public void update(Event event) {
-        client.showOutput(event.jsonMessage());
+        try {
+            client.showOutput(event.jsonMessage());
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public boolean isAvailable(){
-        return this.available;
+        return available;
     }
 
     @Override
-    public synchronized void setAvailable(String clientName) {
-        System.out.println("Connected to client"); //
+    public void setAvailable(String clientName) {
         this.clientName = clientName;
         available = false;
-        this.notifyAll();
     }
 
     @Override
@@ -66,11 +71,19 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     @Override
     public void sendOutput(String jsonMessage) {
-        client.showOutput(jsonMessage);
+        try {
+            client.showOutput(jsonMessage);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void requestInput(Prompt prompt) {
-        client.requestInput(prompt);
+        try {
+            client.requestInput(prompt);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

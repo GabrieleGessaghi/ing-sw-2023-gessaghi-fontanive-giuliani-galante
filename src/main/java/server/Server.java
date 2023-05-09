@@ -2,7 +2,9 @@ package server;
 
 import server.controller.Controller;
 import server.controller.utilities.ConfigLoader;
+import server.view.ClientHandler;
 import server.view.rmi.ClientHandlerRMI;
+import server.view.rmi.ClientUsable;
 import server.view.tcp.ClientHandlerTCP;
 
 import java.io.DataInputStream;
@@ -13,6 +15,7 @@ import java.net.Socket;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
@@ -76,19 +79,23 @@ public class Server {
         ClientHandlerRMI clientHandler = new ClientHandlerRMI();
         while (true) {
             try {
-                registry.rebind("ServerRMI" + connectionsIndex, clientHandler);
+                ClientUsable stub = (ClientUsable) UnicastRemoteObject.exportObject(clientHandler,0);
+                registry.rebind("ServerRMI" + connectionsIndex, stub);
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }
-            synchronized (clientHandler) {
-                while (clientHandler.isAvailable()) {
-                    try {
-                        clientHandler.wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+
+            //Wait periodically for a client to connect
+            //Has to be done this way because you cant synchronize over two jvm
+            while (clientHandler.isAvailable()) { //FOR SOME REASON THIS NEVER UPDATES
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
+
+            System.out.println("Matched!");
             new Thread(clientHandler).start();
             controller.addClient(clientHandler);
             clientHandler = new ClientHandlerRMI();
