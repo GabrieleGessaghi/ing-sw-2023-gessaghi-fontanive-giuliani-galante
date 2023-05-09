@@ -4,10 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed two-way RMI connection">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="javaFX gui (style not loading)">
+      <change afterPath="$PROJECT_DIR$/lib/javafx/javafx-swt.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/javafx.base.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/javafx.controls.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/javafx.fxml.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/javafx.graphics.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/javafx.media.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/javafx.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/javafx.swing.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/javafx.web.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libdecora_sse.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libfxplugins.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libglass.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libglib-lite.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libgstreamer-lite.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libjavafx_font.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libjavafx_iio.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libjfxmedia.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libjfxmedia_avf.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libjfxwebkit.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libprism_common.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libprism_es2.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx/libprism_sw.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Apllication.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Application.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,25 +75,34 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/gabriele/Documents/PoliMI/Ingegneria del Software/ing-sw-2023-gessaghi-fontanive-giuliani-galante/lib",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.42643678",
+    "project.structure.side.proportion": "0.17699116",
     "settings.editor.selected.configurable": "inlay.hints",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -213,13 +244,8 @@
       <workItem from="1683353546115" duration="5244000" />
       <workItem from="1683531314397" duration="5823000" />
       <workItem from="1683555034901" duration="3125000" />
-    </task>
-    <task id="LOCAL-00113" summary="Implemented interfaces in Board">
-      <created>1682701648698</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1682701648698</updated>
+      <workItem from="1683636652978" duration="82000" />
+      <workItem from="1683640491804" duration="1658000" />
     </task>
     <task id="LOCAL-00114" summary="Fixed issues in Player">
       <created>1682702975809</created>
@@ -557,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683627779909</updated>
     </task>
-    <option name="localTasksCounter" value="162" />
+    <task id="LOCAL-00162" summary="javaFX gui (style not loading)">
+      <created>1683636349152</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1683636349152</updated>
+    </task>
+    <option name="localTasksCounter" value="163" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,7 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="NetworkHandlerSocket class finished, TODO ping())" />
     <MESSAGE value="Client showOutput() method" />
     <MESSAGE value="Separated RMI and TCP connection acceptance" />
     <MESSAGE value="Completed showOutput method in client" />
@@ -628,7 +660,8 @@
     <MESSAGE value="Getting closer to fix RMI" />
     <MESSAGE value="fixed small issues" />
     <MESSAGE value="Fixed two-way RMI connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed two-way RMI connection" />
+    <MESSAGE value="javaFX gui (style not loading)" />
+    <option name="LAST_COMMIT_MESSAGE" value="javaFX gui (style not loading)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
