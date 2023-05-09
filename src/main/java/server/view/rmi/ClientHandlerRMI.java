@@ -1,7 +1,5 @@
 package server.view.rmi;
 
-import client.network.NetworkHandlerRMI;
-
 import server.controller.Prompt;
 import server.controller.observer.Event;
 import server.view.ClientHandler;

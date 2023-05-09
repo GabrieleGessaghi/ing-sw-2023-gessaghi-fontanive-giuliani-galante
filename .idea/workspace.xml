@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="fixed small issues">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_1_2023_4_34_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_1_2023_4_34_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed two-way RMI connection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientHandlerRMI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientHandlerRMI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +87,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Text User Inteface">
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="server.Server" />
       <module name="6" />
@@ -216,13 +213,6 @@
       <workItem from="1683353546115" duration="5244000" />
       <workItem from="1683531314397" duration="5823000" />
       <workItem from="1683555034901" duration="3125000" />
-    </task>
-    <task id="LOCAL-00112" summary="Fixed small issue">
-      <created>1682699542705</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1682699542705</updated>
     </task>
     <task id="LOCAL-00113" summary="Implemented interfaces in Board">
       <created>1682701648698</created>
@@ -560,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683571492144</updated>
     </task>
-    <option name="localTasksCounter" value="161" />
+    <task id="LOCAL-00161" summary="Fixed two-way RMI connection">
+      <created>1683627779908</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1683627779909</updated>
+    </task>
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +568,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="text">
+                    <value>
+                      <list>
+                        <option value="fixed small issues" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -594,7 +603,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added constants to ConfigLoader" />
     <MESSAGE value="NetworkHandlerSocket class finished, TODO ping())" />
     <MESSAGE value="Client showOutput() method" />
     <MESSAGE value="Separated RMI and TCP connection acceptance" />
@@ -619,7 +627,8 @@
     <MESSAGE value="Optimized RMI connection" />
     <MESSAGE value="Getting closer to fix RMI" />
     <MESSAGE value="fixed small issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed small issues" />
+    <MESSAGE value="Fixed two-way RMI connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed two-way RMI connection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -86,6 +86,7 @@ public class Server {
                 new Thread(clientHandler).start();
 
                 clientHandler.waitForConnection();
+                System.out.println("Two way connection completed!");
                 controller.addClient(clientHandler);
 
                 clientHandler = new ClientHandlerRMI();
