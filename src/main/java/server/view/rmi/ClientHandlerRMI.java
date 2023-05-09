@@ -35,13 +35,26 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
      * @author Niccolò Giuliani
      */
     @Override
-    public void run() {
+    public synchronized void run() {
         try {
             Registry registry = LocateRegistry.getRegistry(SERVER_PORT + 1);
             client = (ServerUsable) registry.lookup(clientName);
+            available = false;
+            this.notifyAll();
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     *
+     * @author Giorgio Massimo Fontanive
+     */
+    public synchronized void waitForConnection() throws InterruptedException {
+        while (available) {
+            this.wait();
+        }
+        available = true;
     }
 
     @Override
@@ -59,9 +72,10 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
     }
 
     @Override
-    public void setAvailable(String clientName) {
+    public synchronized void setAvailable(String clientName) {
         this.clientName = clientName;
         available = false;
+        this.notifyAll();
     }
 
     @Override
