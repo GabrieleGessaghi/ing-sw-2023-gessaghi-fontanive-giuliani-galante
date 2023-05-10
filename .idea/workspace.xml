@@ -4,20 +4,69 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Uncommented GUI">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_maven_plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed two-way RMI connection">
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/network/NetworkHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/network/NetworkHandlerRMI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/network/NetworkHandlerTCP.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/tui/ClientTUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/tui/ClientTUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/tui/TUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/ChatController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/CreationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/Prompt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/TurnController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/exceptions/JsonCreationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/observer/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/observer/Observable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/observer/Observer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/utilities/ConfigLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/utilities/JsonTools$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/controller/utilities/JsonTools.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/Bag.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/Board.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/Game$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/Savable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/Shelf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/Token.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/Card.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/CommonCard$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/CommonCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/CommonObjective.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/CommonType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/PersonalCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/TokenTools$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/TokenTools.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/Corners.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/Diagonal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/Eightany$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/Eightany.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/FourGroups.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/FourRows.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/SixGroups.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/Stairs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/ThreeColumns.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/TwoColumns.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/TwoRows.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/TwoSquares.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/cards/concreteobjectives/XShape.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/chat/Chat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/chat/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/exceptions/FailedLoadingException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/exceptions/IllegalColumnException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/model/exceptions/IllegalMoveException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/ClientHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientHandlerRMI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/rmi/ClientUsable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/rmi/ServerUsable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/tcp/ClientHandlerTCP$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/server/view/tcp/ClientHandlerTCP.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +86,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/server/controller/Controller.java" root0="FORCE_HIGHLIGHTING" />
@@ -64,13 +112,8 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
@@ -83,7 +126,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.4608295&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -105,8 +148,8 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in 6">
-    <configuration name="ClientGUI" type="Application" factoryName="Application" temporary="true">
+  <component name="RunManager" selected="Application.Server">
+    <configuration name="ClientGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.gui.ClientGUI" />
       <module name="6" />
       <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Library/Java/JavaVirtualMachines/javafx-sdk-20.0.1/lib --add-modules=javafx.base,javafx.controls,javafx.graphics,javafx.media,javafx.fxml" />
@@ -122,14 +165,14 @@
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="server.Server" />
-      <module name="6" />
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Text User Interface" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.tui.TUI" />
-      <module name="6" />
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -196,10 +239,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in 6" />
         <item itemvalue="Application.ClientGUI" />
         <item itemvalue="JUnit.BoardTest" />
         <item itemvalue="JUnit.server.model in 6" />
+        <item itemvalue="JUnit.All in 6" />
         <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
       </list>
     </recent_temporary>
@@ -229,10 +272,13 @@
       <workItem from="1683353546115" duration="5244000" />
       <workItem from="1683531314397" duration="5823000" />
       <workItem from="1683555034901" duration="3125000" />
-      <workItem from="1683642858403" duration="358000" />
-      <workItem from="1683700774552" duration="190000" />
-      <workItem from="1683700969857" duration="2217000" />
-      <workItem from="1683703333979" duration="385000" />
+    </task>
+    <task id="LOCAL-00113" summary="Implemented interfaces in Board">
+      <created>1682701648698</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1682701648698</updated>
     </task>
     <task id="LOCAL-00114" summary="Fixed issues in Player">
       <created>1682702975809</created>
@@ -570,14 +616,7 @@
       <option name="project" value="LOCAL" />
       <updated>1683627779909</updated>
     </task>
-    <task id="LOCAL-00162" summary="Uncommented GUI">
-      <created>1683642602868</created>
-      <option name="number" value="00162" />
-      <option name="presentableId" value="LOCAL-00162" />
-      <option name="project" value="LOCAL" />
-      <updated>1683642602868</updated>
-    </task>
-    <option name="localTasksCounter" value="163" />
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +627,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="text">
+                    <value>
+                      <list>
+                        <option value="fixed small issues" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -611,6 +662,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="NetworkHandlerSocket class finished, TODO ping())" />
     <MESSAGE value="Client showOutput() method" />
     <MESSAGE value="Separated RMI and TCP connection acceptance" />
     <MESSAGE value="Completed showOutput method in client" />
@@ -635,8 +687,7 @@
     <MESSAGE value="Getting closer to fix RMI" />
     <MESSAGE value="fixed small issues" />
     <MESSAGE value="Fixed two-way RMI connection" />
-    <MESSAGE value="Uncommented GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Uncommented GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed two-way RMI connection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -654,17 +705,7 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>model.cards.concreteobjectives.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>server.model.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1683181066105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
@@ -672,10 +713,16 @@
       <FILTER>server.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$model_in_6.ic" NAME="model in 6 Coverage Results" MODIFIED="1683035690174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_cards_concreteobjectives_in_6.ic" NAME="server.model.cards.concreteobjectives in 6 Coverage Results" MODIFIED="1683049588320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.cards.concreteobjectives.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>model.cards.concreteobjectives.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
