@@ -130,7 +130,6 @@ public class ClientTUI extends Client {
             for(int i = 0; i < numberOfTokens - '0'; i++){
                 String tokenCoordinate = tokenCoordinates[orderSelection.charAt(i) - '1'];
                 selectedTokens[tokenCoordinate.charAt(1) - '0'][tokenCoordinate.charAt(0) - 'a'] = i;
-                //[letter][number]
             }
 
 

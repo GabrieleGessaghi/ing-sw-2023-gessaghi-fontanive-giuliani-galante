@@ -33,8 +33,6 @@ public class PlayerTest {
             testFill[i] = Token.CAT;
 
         testPlayer.insertTokens(testFill, 0);
-        System.out.println("Player points:" + testPlayer.getPoints());
-
         assertEquals(testPlayer.getPoints(), 8);
     }
 
@@ -60,7 +58,6 @@ public class PlayerTest {
 
         testPlayer.insertTokens(testFill, 0);
         testPlayer.insertTokens(testFill, 4);
-        System.out.println("Player points:" + testPlayer.getPoints());
 
         assertEquals(testPlayer.getPoints(), 25);
     }

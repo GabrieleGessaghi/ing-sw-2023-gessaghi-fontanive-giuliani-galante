@@ -1,7 +1,5 @@
 package client.network;
 
-import client.Client;
-import client.tui.ClientTUI;
 import server.view.rmi.ServerUsable;
 import server.controller.Prompt;
 import server.view.rmi.ClientUsable;
@@ -23,7 +21,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
      * @param input input to Send to the client
      */
     @Override
-    public synchronized void requestInput(Prompt input) { //DEADLOCK
+    public synchronized void requestInput(Prompt input) {
         client.requestInput(input);
         isMessageAvailable = true;
         this.notifyAll();
@@ -35,7 +33,6 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
      * @param input input to send to the server
      */
     public void sendInput(String input) {
-
         try {
             server.sendInput(input);
         } catch (RemoteException e) {
@@ -70,10 +67,10 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
            server.setAvailable("ClientRMI"+ (i - 1));
 
            while (true) {
-               synchronized (this) {
                    while (!isMessageAvailable)
-                       this.wait();
-               }
+                       synchronized (this) {
+                           this.wait();
+                       }
            }
         } catch(Exception e) {
            e.printStackTrace();
