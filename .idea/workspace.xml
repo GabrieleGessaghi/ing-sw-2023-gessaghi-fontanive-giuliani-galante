@@ -4,33 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added JavaFX">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javafx.xml" beforeDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed Graphics User Interface configuration parameters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/javafx-swt.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/javafx.base.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/javafx.controls.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/javafx.fxml.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/javafx.graphics.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/javafx.media.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/javafx.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/javafx.swing.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/javafx.web.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libdecora_sse.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libfxplugins.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libglass.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libglib-lite.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libgstreamer-lite.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libjavafx_font.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libjavafx_iio.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libjfxmedia.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libjfxmedia_avf.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libjfxwebkit.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libprism_common.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libprism_es2.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx/libprism_sw.dylib" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +63,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.4608295",
     "settings.editor.selected.configurable": "preferences.pathVariables",
@@ -112,7 +88,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Graphics User Interface">
+  <component name="RunManager" selected="Maven.6 [compiler:compile]">
     <configuration name="Graphics User Interface" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="client.gui.ClientGUI" />
       <module name="6" />
@@ -137,29 +113,6 @@
     <configuration name="Text User Interface" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.tui.TUI" />
       <module name="6" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in 6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="server.model" />
-      <option name="MAIN_CLASS_NAME" value="server.model.BoardTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -192,22 +145,72 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="6 [compiler:compile]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="compiler:compile" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="6 [install:help]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install:help" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Text User Interface" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Graphics User Interface" />
-      <item itemvalue="JUnit.BoardTest" />
-      <item itemvalue="JUnit.All in 6" />
       <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
       <item itemvalue="JUnit.server.model in 6" />
+      <item itemvalue="Maven.6 [compiler:compile]" />
+      <item itemvalue="Maven.6 [install:help]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Maven.6 [compiler:compile]" />
+        <item itemvalue="Maven.6 [install:help]" />
         <item itemvalue="Application.Graphics User Interface" />
         <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
         <item itemvalue="JUnit.server.model in 6" />
-        <item itemvalue="JUnit.BoardTest" />
-        <item itemvalue="JUnit.All in 6" />
       </list>
     </recent_temporary>
   </component>
@@ -237,14 +240,8 @@
       <workItem from="1683531314397" duration="5823000" />
       <workItem from="1683555034901" duration="3125000" />
       <workItem from="1683704064001" duration="1877000" />
-      <workItem from="1683705949160" duration="1586000" />
-    </task>
-    <task id="LOCAL-00113" summary="Implemented interfaces in Board">
-      <created>1682701648698</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1682701648698</updated>
+      <workItem from="1683705949160" duration="1719000" />
+      <workItem from="1683707733475" duration="2766000" />
     </task>
     <task id="LOCAL-00114" summary="Fixed issues in Player">
       <created>1682702975809</created>
@@ -582,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683627779909</updated>
     </task>
-    <option name="localTasksCounter" value="162" />
+    <task id="LOCAL-00162" summary="Fixed Graphics User Interface configuration parameters">
+      <created>1683707653534</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1683707653534</updated>
+    </task>
+    <option name="localTasksCounter" value="163" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +620,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="NetworkHandlerSocket class finished, TODO ping())" />
     <MESSAGE value="Client showOutput() method" />
     <MESSAGE value="Separated RMI and TCP connection acceptance" />
     <MESSAGE value="Completed showOutput method in client" />
@@ -641,7 +644,8 @@
     <MESSAGE value="Getting closer to fix RMI" />
     <MESSAGE value="fixed small issues" />
     <MESSAGE value="Fixed two-way RMI connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed two-way RMI connection" />
+    <MESSAGE value="Fixed Graphics User Interface configuration parameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Graphics User Interface configuration parameters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -658,6 +662,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
