@@ -6,8 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.net.URL;
 
 public class ClientGUI extends Application {
 
@@ -17,11 +15,9 @@ public class ClientGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL fxmlURL = new File("src/main/resources/ClientGUI.fxml").toURI().toURL();
-        //Parent root = FXMLLoader.load(getClass().getResource("src/main/resources/ClientGUI.fxml"));
-        Parent root = FXMLLoader.load(fxmlURL);
+        Parent root = FXMLLoader.load(getClass().getResource("/ClientGUI.fxml"));
         Scene base = new Scene(root);
-        //base.getStylesheets().add(getClass().getResource("src/main/resources/Application.css").toExternalForm());
+        base.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
         primaryStage.setScene(base);
         primaryStage.setTitle("MyShelfie");
         primaryStage.show();
