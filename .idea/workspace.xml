@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed Maven dependencies">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_3_2023_2_41_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_3_2023_2_41_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="fixed resources load problem for gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/ClientGUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ClientGUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ClientGUI.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +22,8 @@
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -55,27 +52,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4608295",
-    "settings.editor.selected.configurable": "project.propCompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4608295&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -237,14 +234,9 @@
       <workItem from="1683705949160" duration="1719000" />
       <workItem from="1683707733475" duration="2791000" />
       <workItem from="1683890389027" duration="2658000" />
-      <workItem from="1683900176801" duration="557000" />
-    </task>
-    <task id="LOCAL-00115" summary="Modified Player to better save its state">
-      <created>1682704755274</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1682704755274</updated>
+      <workItem from="1683900176801" duration="589000" />
+      <workItem from="1683901227042" duration="231000" />
+      <workItem from="1683991335910" duration="1026000" />
     </task>
     <task id="LOCAL-00116" summary="Tested few classes again">
       <created>1682704823429</created>
@@ -582,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683710517922</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="fixed resources load problem for gui">
+      <created>1683900761215</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1683900761215</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +615,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Separated RMI and TCP connection acceptance" />
     <MESSAGE value="Completed showOutput method in client" />
     <MESSAGE value="Finished implementing NetworkHandler" />
     <MESSAGE value="Added NetworkHandler implementation to Client" />
@@ -641,7 +639,8 @@
     <MESSAGE value="Fixed two-way RMI connection" />
     <MESSAGE value="Fixed Graphics User Interface configuration parameters" />
     <MESSAGE value="Fixed Maven dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Maven dependencies" />
+    <MESSAGE value="fixed resources load problem for gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed resources load problem for gui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
