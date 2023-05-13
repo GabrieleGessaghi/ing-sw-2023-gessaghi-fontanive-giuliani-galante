@@ -10,13 +10,13 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.MainSceneController">
    <children>
-      <SplitPane dividerPositions="0.29797979797979796" layoutX="-6.0" layoutY="-3.0" prefHeight="406.0" prefWidth="619.0">
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="406.0" prefWidth="613.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="210.0">
                <children>
                   <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="406.0" prefWidth="181.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="143.0" prefWidth="179.0">
                            <styleClass>
                               <String fx:value="bg" />
                               <String fx:value="personalShelf" />
@@ -41,19 +41,22 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="bg">
                            <children>
                               <Button id="Chat" layoutX="16.0" layoutY="140.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" text="Chat" />
-                              <Button layoutX="27.0" layoutY="14.0" mnemonicParsing="false" text="NicknamePlayer1" />
-                              <Button layoutX="27.0" layoutY="44.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="125.0" text="NicknamePlayer2" />
-                              <Button layoutX="28.0" layoutY="74.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="125.0" text="NicknamePlayer3" />
+                              <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Nick1" />
+                              <Button layoutX="14.0" layoutY="40.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Nick2" />
+                              <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Nick3" />
+                              <Button layoutX="90.0" layoutY="14.0" mnemonicParsing="false" text="CmCard1" />
+                              <Button layoutX="90.0" layoutY="40.0" mnemonicParsing="false" text="CmCard2" />
+                              <Button layoutX="90.0" layoutY="66.0" mnemonicParsing="false" text="PersCard" />
                            </children>
                         </AnchorPane>
                     </items>
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="359.0" styleClass="livingroom">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="423.0" prefWidth="449.0" styleClass="livingroom">
                <children>
                   <GridPane layoutX="14.0" layoutY="25.0" prefHeight="361.0" prefWidth="397.0">
                     <columnConstraints>
@@ -89,7 +92,7 @@
                         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="48.0" text="E2" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                         <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="42.0" text="F2" GridPane.columnIndex="5" GridPane.rowIndex="2" />
                         <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="44.0" text="G2" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="43.0" text="B3" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="84.0" text="B3" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="44.0" text="C3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="41.0" text="D3" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="48.0" text="E3" GridPane.columnIndex="4" GridPane.rowIndex="3" />
@@ -123,7 +126,7 @@
                         <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="79.0" text="E7" GridPane.columnIndex="4" GridPane.rowIndex="7" />
                         <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="68.0" text="F7" GridPane.columnIndex="5" GridPane.rowIndex="7" />
                         <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="60.0" text="E8" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="64.0" text="F9" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="64.0" text="F8" GridPane.columnIndex="5" GridPane.rowIndex="8" />
                      </children>
                   </GridPane>
                </children>
