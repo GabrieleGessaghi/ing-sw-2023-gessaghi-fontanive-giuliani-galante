@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="created MainScene javafx">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="added buttons on MainScene.fxml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Application.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,20 +232,6 @@
       <workItem from="1683707733475" duration="2791000" />
       <workItem from="1683890389027" duration="2658000" />
       <workItem from="1683900176801" duration="557000" />
-    </task>
-    <task id="LOCAL-00116" summary="Tested few classes again">
-      <created>1682704823429</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1682704823429</updated>
-    </task>
-    <task id="LOCAL-00117" summary="Fixed small issues in folder structure">
-      <created>1682704876399</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1682704876399</updated>
     </task>
     <task id="LOCAL-00118" summary="Implemented interfaces in Player and created method getIndex in Card">
       <created>1682751341968</created>
@@ -582,7 +562,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683969826614</updated>
     </task>
-    <option name="localTasksCounter" value="165" />
+    <task id="LOCAL-00165" summary="added buttons on MainScene.fxml">
+      <created>1683991656103</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1683991656103</updated>
+    </task>
+    <task id="LOCAL-00166" summary="added buttons on MainScene.fxml">
+      <created>1683992087460</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1683992087460</updated>
+    </task>
+    <option name="localTasksCounter" value="167" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +610,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Completed showOutput method in client" />
     <MESSAGE value="Finished implementing NetworkHandler" />
     <MESSAGE value="Added NetworkHandler implementation to Client" />
     <MESSAGE value="Added getState to PersonalCard" />
@@ -641,7 +634,8 @@
     <MESSAGE value="Fixed Graphics User Interface configuration parameters" />
     <MESSAGE value="Fixed Maven dependencies" />
     <MESSAGE value="created MainScene javafx" />
-    <option name="LAST_COMMIT_MESSAGE" value="created MainScene javafx" />
+    <MESSAGE value="added buttons on MainScene.fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="added buttons on MainScene.fxml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
