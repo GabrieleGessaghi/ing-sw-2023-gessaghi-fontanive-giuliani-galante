@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed single RMI client connection issue">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed all RMI connection issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +91,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Text User Interface">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="client.gui.ClientGUI" />
       <module name="6" />
@@ -235,14 +235,7 @@
       <workItem from="1683707733475" duration="2791000" />
       <workItem from="1683890389027" duration="2658000" />
       <workItem from="1683900176801" duration="557000" />
-      <workItem from="1684148260160" duration="8624000" />
-    </task>
-    <task id="LOCAL-00120" summary="Implemented interfaces in CommonCard">
-      <created>1682753560586</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1682753560586</updated>
+      <workItem from="1684148260160" duration="9497000" />
     </task>
     <task id="LOCAL-00121" summary="Added interfaces to Game">
       <created>1682754410883</created>
@@ -580,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684155172093</updated>
     </task>
-    <option name="localTasksCounter" value="169" />
+    <task id="LOCAL-00169" summary="Fixed all RMI connection issues">
+      <created>1684157818655</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1684157818655</updated>
+    </task>
+    <option name="localTasksCounter" value="170" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,7 +614,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added getState to PersonalCard" />
     <MESSAGE value="Added javadoc" />
     <MESSAGE value="Fixed small issues" />
     <MESSAGE value="Created TUI" />
@@ -639,7 +638,8 @@
     <MESSAGE value="added buttons on MainScene.fxml" />
     <MESSAGE value="Made progress on fixing RMI connection issues" />
     <MESSAGE value="Fixed single RMI client connection issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed single RMI client connection issue" />
+    <MESSAGE value="Fixed all RMI connection issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed all RMI connection issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -653,16 +653,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/FourGroupsTest.java</url>
           <line>11</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/server/Server.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/server/Server.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

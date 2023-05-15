@@ -141,6 +141,7 @@ public class Game implements Savable, Observable {
             //Removes tiles from the board.
             boolean[][] isSelected = Board.convertIntegerMatrix(selectedTiles, -1);
             board.removeTiles(isSelected);
+            sendState(View.CURRENT_PLAYER);
 
             if (players[currentPlayerIndex].isShelfFull()) {
                 isLastRound = true;
@@ -156,7 +157,7 @@ public class Game implements Savable, Observable {
                 currentPlayerIndex = 0;
             else
                 isGameFinished = true;
-        //Save Game
+        //TODO: Save game
     }
 
     /**

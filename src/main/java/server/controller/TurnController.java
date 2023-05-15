@@ -79,7 +79,6 @@ public class TurnController implements Observer {
         }
         if (isMatrixLegal() && isColumnLegal())
             finalizeTurn();
-        game.sendState(View.PLAYERS_POINTS);
     }
 
     private synchronized void finalizeTurn() {
