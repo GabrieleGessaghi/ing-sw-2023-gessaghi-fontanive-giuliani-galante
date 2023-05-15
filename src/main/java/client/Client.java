@@ -3,6 +3,8 @@ package client;
 import client.network.NetworkHandler;
 import server.controller.Prompt;
 
+//TODO: Document this class
+
 public abstract class Client {
     protected NetworkHandler networkHandler;
 

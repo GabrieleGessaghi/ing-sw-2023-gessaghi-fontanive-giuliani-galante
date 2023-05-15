@@ -42,9 +42,9 @@ public class Board implements Observable, Savable {
         String jsonFilePath = "";
         JsonReader jsonReader;
         switch (numberOfPlayers) {
-            case 2 -> jsonFilePath = "src/main/resources/Boards/twoPlayersBoard.json";
-            case 3 -> jsonFilePath = "src/main/resources/Boards/threePlayersBoard.json";
-            case 4 -> jsonFilePath = "src/main/resources/Boards/fourPlayersBoard.json";
+            case 2 -> jsonFilePath = "src/main/resources/boards/twoPlayersBoard.json";
+            case 3 -> jsonFilePath = "src/main/resources/boards/threePlayersBoard.json";
+            case 4 -> jsonFilePath = "src/main/resources/boards/fourPlayersBoard.json";
         }
         try {
             jsonFile = Files.readString(Paths.get(jsonFilePath));

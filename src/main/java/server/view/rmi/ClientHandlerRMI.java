@@ -83,19 +83,23 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     @Override
     public void sendOutput(String jsonMessage) {
-        try {
-            client.showOutput(jsonMessage);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        }
+        new Thread(() -> {
+            try {
+                client.showOutput(jsonMessage);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 
     @Override
     public void requestInput(Prompt prompt) {
-        try {
-            client.requestInput(prompt);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        }
+        new Thread(() -> {
+            try {
+                client.requestInput(prompt);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 }

@@ -47,14 +47,6 @@ public class Controller implements Observer, Runnable {
             turnController.newTurn();
             i++;
 
-//            //Waits for the turn to be finished (maybe not needed)
-//            while (!turnController.getIsTurnOver())
-//                try {
-//                    turnController.wait();
-//                } catch (InterruptedException e) {
-//                    throw new RuntimeException(e);
-//                }
-
             if (game.gameOver())
                 reset();
         }

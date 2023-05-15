@@ -148,7 +148,7 @@ public class ClientTUI extends Client {
         String input;
         int selectedColumn;
 
-        System.out.print("Insert column in which you want to insert the selected tokens: ");
+        System.out.print("\nInsert column in which you want to insert the selected tokens: ");
         selectedColumn = scn.nextInt();
         selectedColumn -= 1;
 

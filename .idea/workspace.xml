@@ -4,12 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="added buttons on MainScene.fxml">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Made progress on fixing RMI connection issues">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_8_2023_9_17_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_8_2023_9_17_AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/ClientTUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/ColourConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/Colors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/PersonalCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/PersonalCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Boards/fourPlayersBoard.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/boards/fourPlayersBoard.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Boards/threePlayersBoard.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/boards/threePlayersBoard.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Boards/twoPlayersBoard.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/boards/twoPlayersBoard.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal10.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal10.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal11.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal11.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal12.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal12.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal4.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal6.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal7.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal8.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonalCards/PersonalGoal9.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal9.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +111,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Text User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="client.gui.ClientGUI" />
       <module name="6" />
@@ -236,13 +255,7 @@
       <workItem from="1683707733475" duration="2791000" />
       <workItem from="1683890389027" duration="2658000" />
       <workItem from="1683900176801" duration="557000" />
-    </task>
-    <task id="LOCAL-00118" summary="Implemented interfaces in Player and created method getIndex in Card">
-      <created>1682751341968</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1682751341969</updated>
+      <workItem from="1684148260160" duration="5962000" />
     </task>
     <task id="LOCAL-00119" summary="Added interfaces to CommonCard">
       <created>1682751679620</created>
@@ -580,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683992087460</updated>
     </task>
-    <option name="localTasksCounter" value="167" />
+    <task id="LOCAL-00167" summary="Made progress on fixing RMI connection issues">
+      <created>1684132890697</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1684132890698</updated>
+    </task>
+    <option name="localTasksCounter" value="168" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,7 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Finished implementing NetworkHandler" />
     <MESSAGE value="Added NetworkHandler implementation to Client" />
     <MESSAGE value="Added getState to PersonalCard" />
     <MESSAGE value="Added javadoc" />
@@ -639,7 +658,8 @@
     <MESSAGE value="Fixed Maven dependencies" />
     <MESSAGE value="created MainScene javafx" />
     <MESSAGE value="added buttons on MainScene.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="added buttons on MainScene.fxml" />
+    <MESSAGE value="Made progress on fixing RMI connection issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made progress on fixing RMI connection issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -655,49 +675,19 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/server/Server.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/server/Server.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java</url>
           <line>24</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/server/controller/Controller.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/server/controller/Controller.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/server/controller/Controller.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="19" />
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

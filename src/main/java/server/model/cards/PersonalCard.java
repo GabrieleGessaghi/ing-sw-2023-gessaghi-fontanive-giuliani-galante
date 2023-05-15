@@ -35,18 +35,18 @@ public class PersonalCard extends Card {
         String jsonFilePath = "";
         JsonReader jsonReader;
         switch (index) {
-            case 1 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal1.json";
-            case 2 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal2.json";
-            case 3 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal3.json";
-            case 4 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal4.json";
-            case 5 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal5.json";
-            case 6 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal6.json";
-            case 7 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal7.json";
-            case 8 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal8.json";
-            case 9 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal9.json";
-            case 10 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal10.json";
-            case 11 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal11.json";
-            case 12 -> jsonFilePath = "src/main/resources/PersonalCards/PersonalGoal12.json";
+            case 1 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal1.json";
+            case 2 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal2.json";
+            case 3 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal3.json";
+            case 4 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal4.json";
+            case 5 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal5.json";
+            case 6 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal6.json";
+            case 7 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal7.json";
+            case 8 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal8.json";
+            case 9 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal9.json";
+            case 10 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal10.json";
+            case 11 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal11.json";
+            case 12 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal12.json";
         }
         try {
             jsonFile = Files.readString(Paths.get(jsonFilePath));
