@@ -1,6 +1,6 @@
 package client.tui;
 
-public class ColourConstants {
+public class Colors {
     public static final String COLOUR_RESET = "\u001B[0m";
     public static final String BLACK_BACKGROUND = "\u001B[40m";
     public static final String RED_BACKGROUND = "\u001B[41m";

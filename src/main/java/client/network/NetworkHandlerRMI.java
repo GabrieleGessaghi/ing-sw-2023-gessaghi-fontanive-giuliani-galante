@@ -67,10 +67,11 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
            server.setAvailable("ClientRMI"+ (i - 1));
 
            while (true) {
-                   while (!isMessageAvailable)
-                       synchronized (this) {
-                           this.wait();
-                       }
+               while (!isMessageAvailable)
+                   synchronized (this) {
+                       this.wait();
+                   }
+               isMessageAvailable = false;
            }
         } catch(Exception e) {
            e.printStackTrace();

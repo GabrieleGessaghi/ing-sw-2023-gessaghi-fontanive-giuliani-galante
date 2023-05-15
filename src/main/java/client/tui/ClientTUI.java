@@ -5,7 +5,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
-import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
 
 import java.io.IOException;
@@ -13,7 +12,7 @@ import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static client.tui.ColourConstants.*;
+import static client.tui.Colors.*;
 import static server.controller.utilities.ConfigLoader.*;
 
 /**

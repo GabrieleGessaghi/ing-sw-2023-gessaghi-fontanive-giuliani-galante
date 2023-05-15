@@ -8,7 +8,7 @@ import server.controller.utilities.ConfigLoader;
 
 import java.util.Scanner;
 
-import static client.tui.ColourConstants.COLOUR_RESET;
+import static client.tui.Colors.COLOUR_RESET;
 
 public class TUI {
 
