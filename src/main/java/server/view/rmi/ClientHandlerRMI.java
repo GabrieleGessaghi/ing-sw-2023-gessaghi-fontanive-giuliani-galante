@@ -8,6 +8,7 @@ import server.view.ClientHandler;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Objects;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
@@ -24,8 +25,9 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
      * Class constructor.
      */
     public ClientHandlerRMI(){
-        this.available = true;
-        this.client = null;
+        available = true;
+        client = null;
+        clientName = "";
     }
 
     /**
@@ -52,7 +54,8 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
         while (available) {
             this.wait();
         }
-        available = true;
+        if (client == null)
+            available = true;
     }
 
     @Override

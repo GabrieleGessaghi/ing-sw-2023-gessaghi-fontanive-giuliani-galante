@@ -16,6 +16,8 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.List;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
@@ -25,11 +27,8 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
  */
 public class Server {
     private static Controller controller;
-    private static int connectionsCount;
 
     public static void main(String[] args) throws IOException {
-        //TODO: Show player initial state of the game
-        connectionsCount = 0;
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         controller = new Controller();
         Server server = new Server();
@@ -54,7 +53,6 @@ public class Server {
                 ClientHandlerTCP clientHandler = new ClientHandlerTCP(socket, dataInputStream, dataOutputStream);
                 new Thread(clientHandler).start();
                 controller.addClient(clientHandler);
-                connectionsCount++;
             } catch (IOException e) {
                 if (socket != null) {
                     try {
@@ -76,20 +74,19 @@ public class Server {
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-        ClientHandlerRMI clientHandler = new ClientHandlerRMI();
+        List<ClientHandlerRMI> clientHandlersRMI = new ArrayList<>();
+        clientHandlersRMI.add(new ClientHandlerRMI());
         while (true) {
             try {
-                ClientUsable stub = (ClientUsable) UnicastRemoteObject.exportObject(clientHandler,0);
+                ClientUsable stub = (ClientUsable) UnicastRemoteObject.exportObject(clientHandlersRMI.get(connectionsIndex),0);
                 registry.rebind("ServerRMI" + connectionsIndex, stub);
+                clientHandlersRMI.get(connectionsIndex).waitForConnection();
 
-                clientHandler.waitForConnection();
-                new Thread(clientHandler).start();
+                new Thread(clientHandlersRMI.get(connectionsIndex)).start();
+                clientHandlersRMI.get(connectionsIndex).waitForConnection();
 
-                clientHandler.waitForConnection();
-                controller.addClient(clientHandler);
-
-                clientHandler = new ClientHandlerRMI();
-                connectionsCount++;
+                controller.addClient(clientHandlersRMI.get(connectionsIndex));
+                clientHandlersRMI.add(new ClientHandlerRMI());
                 connectionsIndex++;
             } catch (RemoteException | InterruptedException e) {
                 throw new RuntimeException(e);
