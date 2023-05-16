@@ -15,7 +15,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class GUIController {
+public class StartingSceneController {
 
     @FXML
     private Button connectBtn;
@@ -35,23 +35,14 @@ public class GUIController {
     @FXML
     private Label title;
 
-
     @FXML
     void connectBtnClicked(ActionEvent event) throws Exception{
-        String playerNickname = nicknameTextField.getText();
-        NetworkHandler networkHandler ;
-        String connectionType;
-        if (rmiSelection.isSelected()){
-            networkHandler = new NetworkHandlerRMI();
-            connectionType = "RMI";
-        }else {
-            networkHandler = new NetworkHandlerTCP();
-            connectionType = "SOCKET";
-        }
-        String host = hostTextField.getText();
-        //Client client = new ;
-        networkHandler.setHost(host);
-        //networkHandler.setClient(client);
+        GUI.playerNickname = nicknameTextField.getText();
+        if (socketSelection.isSelected())
+            GUI.connectionType = 0;
+        if (rmiSelection.isSelected())
+            GUI.connectionType = 1;
+        GUI.host = hostTextField.getText();
 
         Parent root = FXMLLoader.load(getClass().getResource("/MainScene.fxml"));
         Scene mainScene = new Scene(root);
@@ -59,13 +50,5 @@ public class GUIController {
         Stage currentWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentWindow.setScene(mainScene);
         currentWindow.show();
-        try {
-            new Thread(networkHandler).start();
-            System.out.println(playerNickname+" is connected to the server using "+connectionType+" at: "+host);
-            //client.setNetworkHandler(networkHandler);
-        }catch (RuntimeException e){
-
-        }
     }
-
 }

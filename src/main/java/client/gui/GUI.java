@@ -10,7 +10,13 @@ import server.controller.utilities.ConfigLoader;
 
 public class GUI extends Application {
 
+    //Starting constants
+    public static String playerNickname;
+    public static int connectionType;
+    public static String host;
+
     private Stage stage;
+
     public static void main(String[] args) {
         launch(args);
     }
