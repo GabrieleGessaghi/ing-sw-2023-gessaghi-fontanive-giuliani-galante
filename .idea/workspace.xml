@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Changed client to an interface and merged TUI and ClientTUI">
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented Client in MainSceneController and updated static variables for initial screen">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GUI.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +89,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Text User Interface">
+  <component name="RunManager" selected="Application.Graphics User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -123,19 +121,6 @@
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="server.Server" />
       <module name="6" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.tui.TUI" />
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="client.tui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -204,7 +189,6 @@
       <item itemvalue="Application.Text User Interface" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Graphics User Interface WINDOWS" />
-      <item itemvalue="Application.ClientTUI" />
       <item itemvalue="Application.Graphics User Interface" />
       <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
       <item itemvalue="JUnit.server.model in 6" />
@@ -212,7 +196,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientTUI" />
         <item itemvalue="Application.Graphics User Interface" />
         <item itemvalue="Maven.6 [compiler:compile]" />
         <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
@@ -251,14 +234,7 @@
       <workItem from="1683890389027" duration="2658000" />
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
-      <workItem from="1684247623859" duration="988000" />
-    </task>
-    <task id="LOCAL-00123" summary="Updated interfaces in Model">
-      <created>1682923466840</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1682923466840</updated>
+      <workItem from="1684247623859" duration="2041000" />
     </task>
     <task id="LOCAL-00124" summary="Fixed small issue">
       <created>1682928416134</created>
@@ -596,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684248182151</updated>
     </task>
-    <option name="localTasksCounter" value="172" />
+    <task id="LOCAL-00172" summary="Implemented Client in MainSceneController and updated static variables for initial screen">
+      <created>1684248741301</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1684248741301</updated>
+    </task>
+    <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -630,7 +613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Created TUI" />
     <MESSAGE value="Update TCP to not deadlock" />
     <MESSAGE value="Modified folder structure" />
     <MESSAGE value="Created Client abstract class" />
@@ -655,7 +637,8 @@
     <MESSAGE value="Fixed all RMI connection issues" />
     <MESSAGE value="Added configuration loading for GUI" />
     <MESSAGE value="Changed client to an interface and merged TUI and ClientTUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed client to an interface and merged TUI and ClientTUI" />
+    <MESSAGE value="Implemented Client in MainSceneController and updated static variables for initial screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Client in MainSceneController and updated static variables for initial screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
