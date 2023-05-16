@@ -5,14 +5,11 @@ import server.controller.Prompt;
 
 //TODO: Document this class
 
-public abstract class Client {
-    protected NetworkHandler networkHandler;
+public interface Client {
 
-    public abstract void requestInput(Prompt prompt);
+    void requestInput(Prompt prompt);
 
-    public abstract void showOutput(String jsonMessage);
+    void showOutput(String jsonMessage);
 
-    public void setNetworkHandler(NetworkHandler networkHandler) {
-        this.networkHandler = networkHandler;
-    }
+    void setNetworkHandler(NetworkHandler networkHandler);
 }

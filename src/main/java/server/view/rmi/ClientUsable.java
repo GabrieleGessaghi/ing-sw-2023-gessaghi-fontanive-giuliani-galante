@@ -5,7 +5,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
- * Provides the methods to be used by the ClientTUI in RMI.
+ * Provides the methods to be used by the TUI in RMI.
  * @author Niccolò Giuliani
  */
 public interface ClientUsable extends Remote{

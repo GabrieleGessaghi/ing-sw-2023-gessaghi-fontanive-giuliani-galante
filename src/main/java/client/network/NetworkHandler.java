@@ -1,7 +1,6 @@
 package client.network;
 
 import client.Client;
-import client.tui.ClientTUI;
 
 public abstract class NetworkHandler implements Runnable {
     protected Client client;

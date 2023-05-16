@@ -1,10 +1,8 @@
 package client.gui;
 
-import client.Client;
 import client.network.NetworkHandler;
 import client.network.NetworkHandlerRMI;
 import client.network.NetworkHandlerTCP;
-import client.tui.ClientTUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import server.controller.Prompt;
 
 public class GUIController {
 

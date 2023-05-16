@@ -16,7 +16,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
     private boolean isMessageAvailable;
 
     /**
-     * method for receiving the input from the server and to send to ClientTUI
+     * method for receiving the input from the server and to send to TUI
      * @author Niccolò Giuliani
      * @param input input to Send to the client
      */
@@ -41,7 +41,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
     }
 
     /**
-     * method to ask to ClientTUI to show the output
+     * method to ask to TUI to show the output
      * author Niccolò Giuliani
      * @param output output to show
      */

@@ -101,6 +101,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             try {
                 client.requestInput(prompt);
             } catch (RemoteException e) {
+                //TODO: Consider player disconnected RMI
                 throw new RuntimeException(e);
             }
         }).start();
