@@ -67,7 +67,7 @@ public class GUIController {
             System.out.println(playerNickname+" is connected to the server using "+connectionType+" at: "+host);
             //client.setNetworkHandler(networkHandler);
         }catch (RuntimeException e){
-            // TODO unable to connect
+
         }
     }
 
