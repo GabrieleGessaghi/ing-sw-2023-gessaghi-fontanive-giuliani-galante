@@ -5,7 +5,9 @@ import client.network.NetworkHandler;
 import client.network.NetworkHandlerRMI;
 import client.network.NetworkHandlerTCP;
 import com.google.gson.JsonObject;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.GridPane;
 import server.controller.Prompt;
 
 import java.net.URL;
@@ -13,6 +15,8 @@ import java.util.ResourceBundle;
 
 public class MainSceneController implements Client, Initializable {
     NetworkHandler networkHandler;
+    @FXML
+    private GridPane board;
 
     @Override
     public void requestInput(Prompt prompt) {
@@ -36,6 +40,7 @@ public class MainSceneController implements Client, Initializable {
 
     @Override
     public void showOutput(String jsonMessage) {
+
         //TODO: Parse JSON and update each section of the screen
     }
 
