@@ -91,7 +91,7 @@ public class MainSceneController implements Client, Initializable {
         networkHandler.setClient(this);
         intBoard = new int [BOARD_SIZE][BOARD_SIZE];
         new Thread(networkHandler).start();
-        GridPane
+        //GridPane
     }
 
 }
