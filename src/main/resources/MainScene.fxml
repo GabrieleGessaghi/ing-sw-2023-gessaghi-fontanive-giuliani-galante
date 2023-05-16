@@ -1,137 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.MainSceneController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.MainSceneController">
    <children>
-      <SplitPane dividerPositions="0.29797979797979796" prefHeight="406.0" prefWidth="613.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="210.0">
-               <children>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="406.0" prefWidth="181.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="143.0" prefWidth="179.0">
-                           <styleClass>
-                              <String fx:value="bg" />
-                              <String fx:value="personalShelf" />
-                           </styleClass>
-                           <children>
-                              <GridPane layoutX="15.0" layoutY="13.0" prefHeight="160.0" prefWidth="148.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="37.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="9.0" prefWidth="28.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="0.0" prefWidth="28.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="7.0" prefWidth="30.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0" minWidth="10.0" prefWidth="31.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                              </GridPane>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="205.0" prefWidth="179.0" styleClass="bg">
-                           <children>
-                              <Button id="Chat" layoutX="16.0" layoutY="140.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" text="Chat" />
-                              <Button layoutX="49.0" layoutY="24.0" mnemonicParsing="false" text="CmCard1" />
-                              <Button layoutX="51.0" layoutY="59.0" mnemonicParsing="false" text="CmCard2" />
-                              <Button layoutX="51.0" layoutY="96.0" mnemonicParsing="false" text="PersCard" />
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="423.0" prefWidth="449.0" styleClass="livingroom">
-               <children>
-                  <GridPane layoutX="12.0" layoutY="25.0" prefHeight="361.0" prefWidth="399.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="5.0" prefWidth="41.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="181.0" minWidth="10.0" prefWidth="44.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="44.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.0" minWidth="10.0" prefWidth="41.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="48.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="358.0" minWidth="9.0" prefWidth="42.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="358.0" minWidth="0.0" prefWidth="44.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="358.0" minWidth="0.0" prefWidth="43.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="358.0" minWidth="10.0" prefWidth="45.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="66.0" minHeight="5.0" prefHeight="37.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="55.0" minHeight="3.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="41.0" minHeight="3.0" prefHeight="41.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="72.0" text="D0" GridPane.columnIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="107.0" prefWidth="48.0" text="E0" GridPane.columnIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0" text="D1" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="48.0" text="E1" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="42.0" text="F1" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="44.0" text="C2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="41.0" text="D2" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="48.0" text="E2" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="42.0" text="F2" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="44.0" text="G2" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="84.0" text="B3" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="44.0" text="C3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="41.0" text="D3" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="48.0" text="E3" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="42.0" text="F3" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="44.0" text="G3" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="59.0" prefWidth="43.0" text="H3" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="45.0" text="I3" GridPane.columnIndex="8" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="53.0" text="A4" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="112.0" text="B4" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="44.0" text="C4" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="64.0" text="D4" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="72.0" prefWidth="72.0" text="E4" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="59.0" text="F4" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="72.0" text="G4" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="70.0" text="H4" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="54.0" text="I4" GridPane.columnIndex="8" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="68.0" text="A5" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="63.0" text="B5" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="81.0" text="C5" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="71.0" text="D5" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="81.0" text="E5" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="71.0" text="F5" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0" text="G5" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="70.0" text="H5" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="71.0" text="C6" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="66.0" text="D6" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="66.0" text="E6" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="52.0" text="F6" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                        <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="74.0" text="G6" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-                        <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="62.0" text="D7" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                        <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="79.0" text="E7" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-                        <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="68.0" text="F7" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="60.0" text="E8" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="64.0" text="F8" GridPane.columnIndex="5" GridPane.rowIndex="8" />
-                     </children>
-                  </GridPane>
-                  <Button layoutX="15.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Nick2" />
-                  <Button layoutX="337.0" layoutY="8.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Nick3" />
-                  <Button layoutX="8.0" layoutY="365.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Nick1" />
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+    <AnchorPane layoutX="600.0" layoutY="47.0" minHeight="0.0" minWidth="0.0" prefHeight="537.0" prefWidth="550.0" styleClass="livingroom">
+         <children>
+            <Button layoutX="21.0" layoutY="25.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="122.0" text="Nickname2" />
+            <Button layoutX="399.0" layoutY="31.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="122.0" text="Nickname3" />
+            <Button layoutX="48.0" layoutY="419.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="122.0" text="Nickname1" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="332.0" fitWidth="331.0" layoutX="39.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/boards/bookshelf_orth.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="663.0" layoutY="646.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="425.0" text="Chat" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="61.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/common%20goal%20cards/1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="348.0" layoutY="580.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/common%20goal%20cards/2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="252.0" fitWidth="394.0" layoutX="405.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/personal%20goal%20cards/Personal_Goals.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="61.0" layoutY="503.0" prefHeight="36.0" prefWidth="242.0" text="Common Goals" textFill="#cf8c23">
+         <font>
+            <Font name="Droid Serif" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="405.0" layoutY="61.0" prefHeight="36.0" prefWidth="175.0" text="Personal Goal" textFill="#cf8c23">
+         <font>
+            <Font name="Droid Serif" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
