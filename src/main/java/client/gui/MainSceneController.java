@@ -106,12 +106,14 @@ public class MainSceneController implements Client, Initializable {
                 node = getNodeByRowColumnIndex(row,col);
                 if(node!=null){
                     switch(tiles[row][col]) {
+                        case 0 -> node.setVisible(false);
                         case 1 -> node.getStyleClass().add("cat1");
                         case 2 -> node.getStyleClass().add("book1");
                         case 3 -> node.getStyleClass().add("toy1");
                         case 4 -> node.getStyleClass().add("trophy1");
                         case 5 -> node.getStyleClass().add("frame1");
                         case 6 -> node.getStyleClass().add("plant1");
+
                     }
                 }
             }
@@ -132,7 +134,7 @@ public class MainSceneController implements Client, Initializable {
 
             }
         }
-        if(result != null)
+
         return result;
     }
 }
