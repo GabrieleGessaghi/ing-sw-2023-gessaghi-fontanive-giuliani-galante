@@ -66,30 +66,8 @@ public class TUI implements Client {
         client.setNetworkHandler(networkHandler);
     }
 
-    /**
-     * Prints opening screen.
-     * @author Niccolò Galante
-     */
-    private static void printOpening(){
-        System.out.print("\033[0;1m" + "\n" +
-                "                               ___             ___  .-.                \n" +
-                "                              (   )           (   )/    \\  .-.         \n" +
-                " ___ .-. .-.  ___  ___   .--.  | | .-.   .--.  | | | .`. ;( __) .--.   \n" +
-                "(   )   '   \\(   )(   )/  _  \\ | |/   \\ /    \\ | | | |(___|''\")/    \\  \n" +
-                " |  .-.  .-. ;| |  | |. .' `. ;|  .-. .|  .-. ;| | | |_    | ||  .-. ; \n" +
-                " | |  | |  | || |  | || '   | || |  | ||  | | || |(   __)  | ||  | | | \n" +
-                " | |  | |  | || '  | |_\\_`.(___) |  | ||  |/  || | | |     | ||  |/  | \n" +
-                " | |  | |  | |'  `-' (   ). '. | |  | ||  ' _.'| | | |     | ||  ' _.' \n" +
-                " | |  | |  | | `.__. || |  `\\ || |  | ||  .'.-.| | | |     | ||  .'.-. \n" +
-                " | |  | |  | | ___ | |; '._,' '| |  | |'  `-' /| | | |     | |'  `-' / \n" +
-                "(___)(___)(___|   )' | '.___.'(___)(___)`.__.'(___|___)   (___)`.__.'  \n" +
-                "               ; `-' '                                                 \n" +
-                "                .__.'                                                  \n" +
-                COLOUR_RESET
-        );
-        System.out.print("\n\n");
-        System.out.print("\033[0;1m" + "                              WELCOME!\n\n\n" + COLOUR_RESET);
-
+    public void setNetworkHandler(NetworkHandler networkHandler) {
+        this.networkHandler = networkHandler;
     }
 
     /**
@@ -103,6 +81,43 @@ public class TUI implements Client {
             case PLAYERSNUMBER -> requestNumberOfPlayers();
             case TOKENS -> requestTokenSelection();
             case COLUMN -> requestColumnSelection();
+        }
+    }
+
+    /**
+     * Displays requested output to client.
+     * @author Gabriele Gessaghi
+     * @param toShow requested information.
+     */
+    public void showOutput (String toShow){
+        JsonReader jsonReader = new JsonReader(new StringReader(toShow));
+        String field;
+        StringBuilder toPrint = new StringBuilder();
+        toPrint.append("\n");
+        try {
+            jsonReader.beginObject();
+            while(jsonReader.hasNext()) {
+                field = jsonReader.nextName();
+                switch (field) {
+                    case "nickname" -> toPrint.append("Player: ").append(jsonReader.nextString()).append("\n");
+                    case "totalPoints" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
+                    case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player\n" : "Not first player\n");
+                    case "playerIndex" -> toPrint.append("Player index: ").append(jsonReader.nextInt()).append("\n");
+                    case "currentPlayerNickname" -> toPrint.append("Current player: ").append(jsonReader.nextString()).append("\n");
+                    case "objectiveDescription" -> toPrint.append("Common Objective description:\n").append(jsonReader.nextString()).append("\n");
+                    case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
+                    case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
+                    case "message" -> toPrint.append(jsonReader.nextString()).append("\n");
+                    case "tiles" -> toPrint.append(printTiles(jsonReader));
+                    case "shelf" -> toPrint.append(printShelf(jsonReader));
+                    case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
+                    default -> jsonReader.skipValue();
+                }
+            }
+            jsonReader.endObject();
+            System.out.print(toPrint);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -143,7 +158,6 @@ public class TUI implements Client {
      * Asks player to select tokens from board.
      * @author Niccolò Galante
      */
-    //TODO: Improve this
     private void requestTokenSelection(){
         Scanner scn = new Scanner(System.in);
         JsonArray jMatrix;
@@ -196,7 +210,6 @@ public class TUI implements Client {
                 selectedTokens[tokenCoordinate.charAt(1) - '0'][tokenCoordinate.charAt(0) - 'a'] = i;
             }
 
-
         }
         jMatrix = JsonTools.createJsonMatrix(selectedTokens);
         jMatrixToSend.add("selectedTiles", jMatrix);
@@ -226,65 +239,6 @@ public class TUI implements Client {
         jsonObject.addProperty("selectedColumn", selectedColumn);
         input = jsonObject.toString();
         networkHandler.sendInput(input);
-    }
-
-    /**
-     * Displays requested output to client.
-     * @author Gabriele Gessaghi
-     * @param toShow requested information.
-     */
-    public void showOutput (String toShow){
-        JsonReader jsonReader = new JsonReader(new StringReader(toShow));
-        String field;
-        StringBuilder toPrint = new StringBuilder();
-        toPrint.append("\n");
-        try {
-            jsonReader.beginObject();
-            while(jsonReader.hasNext()) {
-                field = jsonReader.nextName();
-                switch (field) {
-                    case "nickname" -> toPrint.append("Player: ").append(jsonReader.nextString()).append("\n");
-                    case "totalPoints" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
-                    case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player\n" : "Not first player\n");
-                    case "playerIndex" -> toPrint.append("Player index: ").append(jsonReader.nextInt()).append("\n");
-                    case "currentPlayerNickname" -> toPrint.append("Current player: ").append(jsonReader.nextString()).append("\n");
-                    case "objectiveDescription" -> toPrint.append("Common Objective description:\n").append(jsonReader.nextString()).append("\n");
-                    case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
-                    case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
-                    case "message" -> toPrint.append(jsonReader.nextString()).append("\n");
-                    case "tiles" -> toPrint.append(printTiles(jsonReader));
-                    case "shelf" -> toPrint.append(printShelf(jsonReader));
-                    case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
-                    default -> jsonReader.skipValue();
-                }
-            }
-            jsonReader.endObject();
-            System.out.print(toPrint);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**
-     * Converts integer value to the initial of each token.
-     * @author Niccolò Galante
-     * @param value integer value that is to be converted.
-     * @return converted integer value.
-     */
-    private String intToTokenInitial(int value){
-        String tokenInitial;
-        tokenInitial = switch (value){
-            case 0 -> BLACK_BACKGROUND + "   "; // nothing
-            case 1 -> GREEN_BACKGROUND + "   "; // cat
-            case 2 -> WHITE_BACKGROUND + "   "; // book
-            case 3 -> YELLOW_BACKGROUND + "   "; // game
-            case 4 -> CYAN_BACKGROUND + "   "; // trophy
-            case 5 -> BLUE_BACKGROUND + "   "; // frame
-            case 6 -> RED_BACKGROUND + "   "; // plant
-            default -> throw new IllegalStateException("Unexpected value: " + value);
-        };
-        tokenInitial += COLOUR_RESET;
-        return tokenInitial;
     }
 
     /**
@@ -364,7 +318,51 @@ public class TUI implements Client {
         return toPrint;
     }
 
-    public void setNetworkHandler(NetworkHandler networkHandler) {
-        this.networkHandler = networkHandler;
+    /**
+     * Prints opening screen.
+     * @author Niccolò Galante
+     */
+    private static void printOpening(){
+        System.out.print("\033[0;1m" + "\n" +
+                "                               ___             ___  .-.                \n" +
+                "                              (   )           (   )/    \\  .-.         \n" +
+                " ___ .-. .-.  ___  ___   .--.  | | .-.   .--.  | | | .`. ;( __) .--.   \n" +
+                "(   )   '   \\(   )(   )/  _  \\ | |/   \\ /    \\ | | | |(___|''\")/    \\  \n" +
+                " |  .-.  .-. ;| |  | |. .' `. ;|  .-. .|  .-. ;| | | |_    | ||  .-. ; \n" +
+                " | |  | |  | || |  | || '   | || |  | ||  | | || |(   __)  | ||  | | | \n" +
+                " | |  | |  | || '  | |_\\_`.(___) |  | ||  |/  || | | |     | ||  |/  | \n" +
+                " | |  | |  | |'  `-' (   ). '. | |  | ||  ' _.'| | | |     | ||  ' _.' \n" +
+                " | |  | |  | | `.__. || |  `\\ || |  | ||  .'.-.| | | |     | ||  .'.-. \n" +
+                " | |  | |  | | ___ | |; '._,' '| |  | |'  `-' /| | | |     | |'  `-' / \n" +
+                "(___)(___)(___|   )' | '.___.'(___)(___)`.__.'(___|___)   (___)`.__.'  \n" +
+                "               ; `-' '                                                 \n" +
+                "                .__.'                                                  \n" +
+                COLOUR_RESET
+        );
+        System.out.print("\n\n");
+        System.out.print("\033[0;1m" + "                              WELCOME!\n\n\n" + COLOUR_RESET);
+
+    }
+
+    /**
+     * Converts integer value to the initial of each token.
+     * @author Niccolò Galante
+     * @param value integer value that is to be converted.
+     * @return converted integer value.
+     */
+    private String intToTokenInitial(int value){
+        String tokenInitial;
+        tokenInitial = switch (value){
+            case 0 -> BLACK_BACKGROUND + "   "; // nothing
+            case 1 -> GREEN_BACKGROUND + "   "; // cat
+            case 2 -> WHITE_BACKGROUND + "   "; // book
+            case 3 -> YELLOW_BACKGROUND + "   "; // game
+            case 4 -> CYAN_BACKGROUND + "   "; // trophy
+            case 5 -> BLUE_BACKGROUND + "   "; // frame
+            case 6 -> RED_BACKGROUND + "   "; // plant
+            default -> throw new IllegalStateException("Unexpected value: " + value);
+        };
+        tokenInitial += COLOUR_RESET;
+        return tokenInitial;
     }
 }

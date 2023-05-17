@@ -17,6 +17,7 @@ import java.io.StringReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 import static server.controller.utilities.ConfigLoader.*;
+
 public class MainSceneController implements Client, Initializable {
     NetworkHandler networkHandler;
     @FXML

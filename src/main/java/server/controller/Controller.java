@@ -16,6 +16,7 @@ public class Controller implements Observer, Runnable {
     private boolean isGameRunning;
     private CreationController creationController;
     private TurnController turnController;
+    private ChatController chatController;
     private List<ClientHandler> clientHandlers;
     private Game game;
 
@@ -25,8 +26,6 @@ public class Controller implements Observer, Runnable {
 
     @Override
     public synchronized void run() {
-        isGameRunning = false;
-        creationController = new CreationController();
         int i = 0;
         while(true) {
 
@@ -35,7 +34,7 @@ public class Controller implements Observer, Runnable {
                 try {
                     this.wait();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("Error while waiting for the game to start.");
                 }
 
             //Moves to the next player and begins a new turn
@@ -84,7 +83,7 @@ public class Controller implements Observer, Runnable {
                     try {
                         this.wait();
                     } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                        System.out.println("Error when waiting for player's number.");
                     }
                 clientHandler.requestInput(Prompt.PLAYERSNUMBER);
             }
@@ -100,6 +99,7 @@ public class Controller implements Observer, Runnable {
         isGameRunning = false;
         turnController = null;
         creationController = new CreationController();
+        chatController = new ChatController();
         clientHandlers = new ArrayList<>();
     }
 }
