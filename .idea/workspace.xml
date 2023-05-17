@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="added gridPane to GUI">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="added comment">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/gui/NumberOfPlayersAlert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/NumberOfPlayers.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Application.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +24,8 @@
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -90,7 +93,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Text User Interface">
+  <component name="RunManager" selected="Application.Graphics User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -236,20 +239,6 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-    </task>
-    <task id="LOCAL-00125" summary="Partially implemented error management in controller">
-      <created>1682934558432</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1682934558432</updated>
-    </task>
-    <task id="LOCAL-00126" summary="Updated controller">
-      <created>1682935249233</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1682935249233</updated>
     </task>
     <task id="LOCAL-00127" summary="Updated controller">
       <created>1682939742819</created>
@@ -580,7 +569,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684260163448</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="added button in board">
+      <created>1684263260064</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1684263260064</updated>
+    </task>
+    <task id="LOCAL-00175" summary="added comment">
+      <created>1684263286141</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1684263286141</updated>
+    </task>
+    <option name="localTasksCounter" value="176" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,8 +617,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modified folder structure" />
-    <MESSAGE value="Created Client abstract class" />
     <MESSAGE value="Fixed Controller resources utilization" />
     <MESSAGE value="Tried to fix connection issues" />
     <MESSAGE value="Hopefully fixed connection issue" />
@@ -639,7 +640,9 @@
     <MESSAGE value="Changed client to an interface and merged TUI and ClientTUI" />
     <MESSAGE value="Implemented Client in MainSceneController and updated static variables for initial screen" />
     <MESSAGE value="added gridPane to GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="added gridPane to GUI" />
+    <MESSAGE value="added button in board" />
+    <MESSAGE value="added comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="added comment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
