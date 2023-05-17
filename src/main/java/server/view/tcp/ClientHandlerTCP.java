@@ -1,6 +1,7 @@
 package server.view.tcp;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import server.controller.Prompt;
 import server.controller.observer.Event;
 import server.view.ClientHandler;
@@ -28,16 +29,27 @@ public class ClientHandlerTCP extends ClientHandler {
     public ClientHandlerTCP(Socket socket, InputStream inputStream, OutputStream outputStream){
         this.inputStream = inputStream;
         this.outputStream = outputStream;
+        isConnected = false;
         //this.socket = socket;
     }
 
     @Override
     public void update(Event event) {
+
+        //Skips this event if it does not involve the client
+        JsonObject jsonObject = JsonParser.parseString(event.jsonMessage()).getAsJsonObject();
+
+        if (jsonObject.has("privateMessageSender") || jsonObject.has("privateMessageReceiver"))
+            if (!jsonObject.get("privateMessageSender").getAsString().equals(nickname) &&
+                    !jsonObject.get("privateMessageReceiver").getAsString().equals(nickname))
+                return;
+
         sendOutput(event.jsonMessage());
     }
 
     @Override
     public void run() {
+        isConnected = true;
         InputStreamReader in = new InputStreamReader(inputStream);
         BufferedReader buffer = new BufferedReader(in);
         while(true) {
@@ -48,7 +60,8 @@ public class ClientHandlerTCP extends ClientHandler {
                     updateObservers(event);
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Error reading TCP message!");
+                isConnected = false;
             }
         }
     }
@@ -72,7 +85,8 @@ public class ClientHandlerTCP extends ClientHandler {
             out.write(jsonMessage + "\n");
             out.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error while sending TCP message.");
+            isConnected = false;
         }
     }
 }

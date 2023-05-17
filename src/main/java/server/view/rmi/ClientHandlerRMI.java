@@ -1,5 +1,7 @@
 package server.view.rmi;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import server.controller.Prompt;
 import server.controller.observer.Event;
 import server.view.ClientHandler;
@@ -40,6 +42,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             Registry registry = LocateRegistry.getRegistry(SERVER_PORT + 1);
             client = (ServerUsable) registry.lookup(clientName);
             available = false;
+            isConnected = true;
             this.notifyAll();
         } catch(Exception e) {
             e.printStackTrace();
@@ -60,11 +63,15 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     @Override
     public void update(Event event) {
-        try {
-            client.showOutput(event.jsonMessage());
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        }
+
+        //Skips this event if it does not involve the client
+        JsonObject jsonObject = JsonParser.parseString(event.jsonMessage()).getAsJsonObject();
+        if (jsonObject.has("privateMessageSender") || jsonObject.has("privateMessageReceiver"))
+            if (!jsonObject.get("privateMessageSender").getAsString().equals(nickname) &&
+                    !jsonObject.get("privateMessageReceiver").getAsString().equals(nickname))
+                return;
+
+        sendOutput(event.jsonMessage());
     }
 
     @Override
@@ -90,7 +97,8 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             try {
                 client.showOutput(jsonMessage);
             } catch (RemoteException e) {
-                throw new RuntimeException(e);
+                System.out.println("Error while sending RMI message.");
+                isConnected = false;
             }
         }).start();
     }
@@ -101,8 +109,8 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             try {
                 client.requestInput(prompt);
             } catch (RemoteException e) {
-                //TODO: Consider player disconnected RMI
-                throw new RuntimeException(e);
+                System.out.println("Error while sending RMI message.");
+                isConnected = false;
             }
         }).start();
     }

@@ -192,8 +192,7 @@ public class Game implements Savable, Observable {
     public void sendState(View view) {
         switch (view) {
             case BOARD -> updateObservers(new Event(board.getState().toString()));
-            case CURRENT_PLAYER -> updateObservers(new Event(players[currentPlayerIndex].getState().toString())); //TODO: Show the personal card as well
-            case CHAT -> {}
+            case CURRENT_PLAYER -> updateObservers(new Event(players[currentPlayerIndex].getState().toString()));
             case PLAYERS_POINTS -> {
                 JsonObject jsonObject = new JsonObject();
                 for (int i = 0; i < players.length; i++) {

@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Handler of the TUI
+ * Handles communication with clients.
  * @author Niccolò Giuliani
  */
 public abstract class ClientHandler implements Observer, Observable, Runnable {
-
     protected String nickname;
     protected List<Observer> observers;
+    protected boolean isConnected;
 
     /**
      * Class constructor. Immediately asks the client for its nickname.
@@ -25,6 +25,42 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public ClientHandler() {
         nickname = null;
         observers = new ArrayList<>();
+        isConnected = false;
+    }
+
+    /**
+     * Runs indefinitely, used to receive information from the client.
+     */
+    public abstract void run();
+
+    /**
+     * method to request an input to the TUI
+     * @author Niccolò Giuliani
+     * @param prompt type of request
+     */
+    public abstract void requestInput(Prompt prompt);
+
+    /**
+     * method to show the output
+     * @author Niccolò Giuliani
+     * @param jsonMessage String to show
+     */
+    public abstract void sendOutput(String jsonMessage);
+
+    /**
+     *
+     * @author Giorgio massimo Fontanive
+     */
+    public void ping() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("ping", true);
+        sendOutput(jsonObject.toString());
+    }
+
+    public String getNickname() {return nickname;}
+
+    public boolean isConnected() {
+        return isConnected;
     }
 
     @Override
@@ -47,35 +83,4 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
 
     @Override
     public abstract void update(Event event);
-
-    /**
-     * method to request an input to the TUI
-     * @author Niccolò Giuliani
-     * @param prompt type of request
-     */
-    public abstract void requestInput(Prompt prompt);
-
-    /**
-     * method to show the output
-     * @author Niccolò Giuliani
-     * @param jsonMessage String to show
-     */
-    public abstract void sendOutput(String jsonMessage);
-
-    /**
-     * Runs indefinitely, used to receive information from the client.
-     */
-    public abstract void run();
-
-    /**
-     *
-     * @author Giorgio massimo Fontanive
-     */
-    public void ping() {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("ping", true);
-        sendOutput(jsonObject.toString());
-    }
-
-    public String getNickname() {return nickname;}
 }

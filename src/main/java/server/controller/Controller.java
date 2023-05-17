@@ -16,7 +16,6 @@ public class Controller implements Observer, Runnable {
     private boolean isGameRunning;
     private CreationController creationController;
     private TurnController turnController;
-    private ChatController chatController;
     private List<ClientHandler> clientHandlers;
     private Game game;
 
@@ -37,17 +36,23 @@ public class Controller implements Observer, Runnable {
                     System.out.println("Error while waiting for the game to start.");
                 }
 
-            //Moves to the next player and begins a new turn
-            if (i == clientHandlers.size())
-                i = 0;
-            ClientHandler currentClient = clientHandlers.get(i);
-            turnController = new TurnController(game, currentClient);
-            currentClient.registerObserver(turnController);
-            turnController.newTurn();
-            i++;
+            //Instantiates the chat
+            ChatController chatController = new ChatController(clientHandlers);
+            for (ClientHandler c : clientHandlers)
+                c.registerObserver(chatController);
 
-            if (game.gameOver())
-                reset();
+            //Manages turns
+            while (!game.gameOver()) {
+                if (i == clientHandlers.size())
+                    i = 0;
+                ClientHandler currentClient = clientHandlers.get(i);
+                turnController = new TurnController(game, currentClient);
+                currentClient.registerObserver(turnController);
+                turnController.newTurn();
+                i++;
+            }
+
+            reset();
         }
     }
 
@@ -78,6 +83,8 @@ public class Controller implements Observer, Runnable {
             clientHandler.registerObserver(creationController);
             clientHandler.registerObserver(this);
             clientHandler.requestInput(Prompt.NICKNAME);
+
+            //Requests the players number if it's the first player added
             if (clientHandlers.size() == 1) {
                 while (clientHandlers.get(0).getNickname() == null)
                     try {
@@ -99,7 +106,6 @@ public class Controller implements Observer, Runnable {
         isGameRunning = false;
         turnController = null;
         creationController = new CreationController();
-        chatController = new ChatController();
         clientHandlers = new ArrayList<>();
     }
 }

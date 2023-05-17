@@ -4,9 +4,11 @@ import com.google.gson.stream.JsonReader;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.model.chat.Chat;
+import server.view.ClientHandler;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.List;
 
 /**
  *
@@ -14,9 +16,11 @@ import java.io.StringReader;
  */
 public class ChatController implements Observer {
     Chat chat;
+    List<ClientHandler> clientHandlers;
 
-    public ChatController() {
+    public ChatController(List<ClientHandler> clientHandlers) {
         chat = new Chat();
+        this.clientHandlers = clientHandlers;
     }
 
     @Override
