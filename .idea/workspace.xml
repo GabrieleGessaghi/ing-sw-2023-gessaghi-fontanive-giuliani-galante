@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="make board upgrade">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="nothing buttons made invisible">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
     </list>
@@ -235,13 +235,6 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-    </task>
-    <task id="LOCAL-00133" summary="NetworkHandlerSocket class finished, TODO ping())">
-      <created>1682950433196</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1682950433197</updated>
     </task>
     <task id="LOCAL-00134" summary="Client showOutput() method">
       <created>1682970600681</created>
@@ -579,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684348260239</updated>
     </task>
-    <option name="localTasksCounter" value="182" />
+    <task id="LOCAL-00182" summary="nothing buttons made invisible">
+      <created>1684350078260</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1684350078260</updated>
+    </task>
+    <option name="localTasksCounter" value="183" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Hopefully fixed connection issue" />
     <MESSAGE value="Improved TUI" />
     <MESSAGE value="Finally fixed socket connection" />
     <MESSAGE value="Found the deadlock" />
@@ -638,7 +637,8 @@
     <MESSAGE value="Implemented Chat server side" />
     <MESSAGE value="fixed small issues" />
     <MESSAGE value="make board upgrade" />
-    <option name="LAST_COMMIT_MESSAGE" value="make board upgrade" />
+    <MESSAGE value="nothing buttons made invisible" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothing buttons made invisible" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -113,7 +113,6 @@ public class MainSceneController implements Client, Initializable {
                         case 4 -> node.getStyleClass().add("trophy1");
                         case 5 -> node.getStyleClass().add("frame1");
                         case 6 -> node.getStyleClass().add("plant1");
-
                     }
                 }
             }
@@ -122,11 +121,22 @@ public class MainSceneController implements Client, Initializable {
 
     private Node getNodeByRowColumnIndex (int row,int column) {
         Node result = null;
+        int gridRow;
+        int gridColumn;
         ObservableList<Node> childrens = board.getChildren();
-        System.out.println(childrens.size());
         for (Node node : childrens) {
             try {
-                if (board.getRowIndex(node) == row && board.getColumnIndex(node) == column) {
+                if(board.getRowIndex(node)  == null)
+                    gridRow = 0;
+                else
+                    gridRow = board.getRowIndex(node);
+
+                if(board.getColumnIndex(node)  == null)
+                    gridColumn = 0;
+                else
+                    gridColumn = board.getColumnIndex(node);
+
+                if (gridRow == row && gridColumn == column) {
                     result = node;
                     break;
                 }
