@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import server.controller.Prompt;
+import server.model.Board;
 import server.model.Token;
 
 import java.io.IOException;
@@ -99,29 +100,30 @@ public class MainSceneController implements Client, Initializable {
     }
 
     private void updateBoard(int [][]tiles){
-        for(int row = 0; row < board.getHeight(); row++) {
-            for(int col = 0; row < board.getMaxWidth(); col++) {
-                Node node;
-                node = getNodeByRowColumnIndex(row,col,board);
-                switch(tiles[row][col]){
+        Node node;
+        for(int row = 0; row < BOARD_SIZE; row++) {
+            for(int col = 0; row < BOARD_SIZE; col++) {
+                node = getNodeByRowColumnIndex(row,col);
+                if(node!=null){
+                switch(tiles[row][col]) {
                     case 1 -> node.getStyleClass().add("cat1");
                     case 2 -> node.getStyleClass().add("book1");
                     case 3 -> node.getStyleClass().add("toy1");
                     case 4 -> node.getStyleClass().add("trophy1");
                     case 5 -> node.getStyleClass().add("frame1");
                     case 6 -> node.getStyleClass().add("plant1");
-
+                }
                 }
             }
         }
     }
 
-    private Node getNodeByRowColumnIndex (int row,int column, GridPane grid) {
+    private Node getNodeByRowColumnIndex (int row,int column) {
         Node result = null;
-        ObservableList<Node> childrens = grid.getChildren();
+        ObservableList<Node> childrens = board.getChildren();
 
         for (Node node : childrens) {
-            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) == column) {
+            if(board.getRowIndex(node) == row && board.getColumnIndex(node) == column) {
                 result = node;
                 break;
             }
