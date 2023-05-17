@@ -104,24 +104,24 @@ public class MainSceneController implements Client, Initializable {
                 Node node;
                 node = getNodeByRowColumnIndex(row,col,board);
                 switch(tiles[row][col]){
-                    case 1 -> node.setStyle("cat1");
-                    case 2 -> node.setStyle("book1");
-                    case 3 -> node.setStyle("toy1");
-                    case 4 -> node.setStyle("trophy1");
-                    case 5 -> node.setStyle("frame1");
-                    case 6 -> node.setStyle("plant1");
+                    case 1 -> node.getStyleClass().add("cat1");
+                    case 2 -> node.getStyleClass().add("book1");
+                    case 3 -> node.getStyleClass().add("toy1");
+                    case 4 -> node.getStyleClass().add("trophy1");
+                    case 5 -> node.getStyleClass().add("frame1");
+                    case 6 -> node.getStyleClass().add("plant1");
 
                 }
             }
         }
     }
 
-    private Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
+    private Node getNodeByRowColumnIndex (int row,int column, GridPane grid) {
         Node result = null;
-        ObservableList<Node> childrens = gridPane.getChildren();
+        ObservableList<Node> childrens = grid.getChildren();
 
         for (Node node : childrens) {
-            if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+            if(grid.getRowIndex(node) == row && grid.getColumnIndex(node) == column) {
                 result = node;
                 break;
             }
