@@ -46,10 +46,15 @@ public class Controller implements Observer, Runnable {
                 if (i == clientHandlers.size())
                     i = 0;
                 ClientHandler currentClient = clientHandlers.get(i);
-                turnController = new TurnController(game, currentClient);
-                currentClient.registerObserver(turnController);
-                turnController.newTurn();
-                i++;
+
+                if (currentClient.isConnected()) {
+                    turnController = new TurnController(game, currentClient);
+                    currentClient.registerObserver(turnController);
+                    turnController.newTurn();
+                    i++;
+                } else {
+
+                }
             }
 
             reset();

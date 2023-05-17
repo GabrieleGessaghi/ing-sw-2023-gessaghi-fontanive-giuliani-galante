@@ -61,7 +61,7 @@ public class Server {
                         throw new RuntimeException(ex);
                     }
                 }
-                e.printStackTrace();
+                System.out.println("One TCP connection lost.");
             }
         }
     }
@@ -88,9 +88,11 @@ public class Server {
                 controller.addClient(clientHandlersRMI.get(connectionsIndex));
                 clientHandlersRMI.add(new ClientHandlerRMI());
                 connectionsIndex++;
-            } catch (RemoteException | InterruptedException e) {
-                throw new RuntimeException(e);
+            } catch (RemoteException | InterruptedException ex) {
+                throw new RuntimeException(ex);
             }
+
+            //TODO: Check if any of the RMI connections are closed and unbind them
         }
     }
 }

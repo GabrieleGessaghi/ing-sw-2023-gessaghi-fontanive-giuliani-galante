@@ -7,9 +7,11 @@ import server.controller.observer.Event;
 import server.view.ClientHandler;
 
 
+import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Objects;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
@@ -45,7 +47,13 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             isConnected = true;
             this.notifyAll();
         } catch(Exception e) {
-            e.printStackTrace();
+            System.out.println("Error while connecting with RMI.");
+            isConnected = false;
+            try {
+                UnicastRemoteObject.unexportObject(this, true);
+            } catch (NoSuchObjectException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 
@@ -99,6 +107,11 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             } catch (RemoteException e) {
                 System.out.println("Error while sending RMI message.");
                 isConnected = false;
+                try {
+                    UnicastRemoteObject.unexportObject(this, true);
+                } catch (NoSuchObjectException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         }).start();
     }
@@ -111,6 +124,11 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             } catch (RemoteException e) {
                 System.out.println("Error while sending RMI message.");
                 isConnected = false;
+                try {
+                    UnicastRemoteObject.unexportObject(this, true);
+                } catch (NoSuchObjectException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         }).start();
     }

@@ -118,6 +118,19 @@ public class Game implements Savable, Observable {
     }
 
     /**
+     * Cycles the player index and checks whether the game is over.
+     * @author Giorgio Massimo Fontainve
+     */
+    private void nextPlayerIndex() {
+        currentPlayerIndex++;
+        if (currentPlayerIndex == players.length)
+            if (!isLastRound)
+                currentPlayerIndex = 0;
+            else
+                isGameFinished = true;
+    }
+
+    /**
      * Collect the selected tiles from the game board and update the current player shelf.
      * @author Gabriele Gessaghi
      * @param selectedTiles A matrix with -1 for the tiles not chosen and
@@ -125,38 +138,33 @@ public class Game implements Savable, Observable {
      * @param column The column on which the player wants to put the new tiles.
      */
     public void playerTurn (int [][] selectedTiles, int column) throws IllegalMoveException, IllegalColumnException{
-        if (players[currentPlayerIndex].isConnected) {
+        while (!players[currentPlayerIndex].isConnected)
+            nextPlayerIndex();
 
-            //Creates the message sent at the beginning of the turn
-            JsonObject jsonMessage = new JsonObject();
-            jsonMessage.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
+        //Creates the message sent at the beginning of the turn
+        JsonObject jsonMessage = new JsonObject();
+        jsonMessage.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
 
-            //Gets the tiles from the board.
-            Token[] selectedTokens;
-            selectedTokens = board.selectTiles(selectedTiles);
+        //Gets the tiles from the board.
+        Token[] selectedTokens;
+        selectedTokens = board.selectTiles(selectedTiles);
 
-            //Inserts the tokens in the shelf.
-            players[currentPlayerIndex].insertTokens(selectedTokens, column);
+        //Inserts the tokens in the shelf.
+        players[currentPlayerIndex].insertTokens(selectedTokens, column);
 
-            //Removes tiles from the board.
-            boolean[][] isSelected = Board.convertIntegerMatrix(selectedTiles, -1);
-            board.removeTiles(isSelected);
-            sendState(View.CURRENT_PLAYER);
+        //Removes tiles from the board.
+        boolean[][] isSelected = Board.convertIntegerMatrix(selectedTiles, -1);
+        board.removeTiles(isSelected);
+        sendState(View.CURRENT_PLAYER);
 
-            if (players[currentPlayerIndex].isShelfFull()) {
-                isLastRound = true;
-                JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("message", "This is the last round.\n" +
-                        players[currentPlayerIndex].getNickname() + " has filled their shelf!");
-            }
+        if (players[currentPlayerIndex].isShelfFull()) {
+            isLastRound = true;
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("message", "This is the last round.\n" +
+                    players[currentPlayerIndex].getNickname() + " has filled their shelf!");
         }
 
-        currentPlayerIndex++;
-        if (currentPlayerIndex == players.length)
-            if (!isLastRound)
-                currentPlayerIndex = 0;
-            else
-                isGameFinished = true;
+        nextPlayerIndex();
         //TODO: Save game
     }
 
@@ -206,6 +214,18 @@ public class Game implements Savable, Observable {
                     updateObservers(new Event(card.getState().toString()));
             }
         }
+    }
+
+    /**
+     * Changes the player's connection status.
+     * @param playerNickname The player's nickname.
+     * @param isConnected True if the player is connected, false otherwise.
+     * @author Giorgio Massimo Fontainve
+     */
+    public void setPlayerConnection(String playerNickname, boolean isConnected) {
+        for (Player player: players)
+            if (player.getNickname().equals(playerNickname))
+                player.isConnected = isConnected;
     }
 
     @Override

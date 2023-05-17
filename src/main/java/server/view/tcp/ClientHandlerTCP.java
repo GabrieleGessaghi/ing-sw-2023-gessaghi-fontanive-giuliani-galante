@@ -63,6 +63,9 @@ public class ClientHandlerTCP extends ClientHandler {
                 System.out.println("Error reading TCP message!");
                 isConnected = false;
             }
+
+            if (!isConnected)
+                break;
         }
     }
 
