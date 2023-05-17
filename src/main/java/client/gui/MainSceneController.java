@@ -102,17 +102,17 @@ public class MainSceneController implements Client, Initializable {
     private void updateBoard(int [][]tiles){
         Node node;
         for(int row = 0; row < BOARD_SIZE; row++) {
-            for(int col = 0; row < BOARD_SIZE; col++) {
+            for(int col = 0; col < BOARD_SIZE; col++) {
                 node = getNodeByRowColumnIndex(row,col);
                 if(node!=null){
-                switch(tiles[row][col]) {
-                    case 1 -> node.getStyleClass().add("cat1");
-                    case 2 -> node.getStyleClass().add("book1");
-                    case 3 -> node.getStyleClass().add("toy1");
-                    case 4 -> node.getStyleClass().add("trophy1");
-                    case 5 -> node.getStyleClass().add("frame1");
-                    case 6 -> node.getStyleClass().add("plant1");
-                }
+                    switch(tiles[row][col]) {
+                        case 1 -> node.getStyleClass().add("cat1");
+                        case 2 -> node.getStyleClass().add("book1");
+                        case 3 -> node.getStyleClass().add("toy1");
+                        case 4 -> node.getStyleClass().add("trophy1");
+                        case 5 -> node.getStyleClass().add("frame1");
+                        case 6 -> node.getStyleClass().add("plant1");
+                    }
                 }
             }
         }
@@ -121,13 +121,18 @@ public class MainSceneController implements Client, Initializable {
     private Node getNodeByRowColumnIndex (int row,int column) {
         Node result = null;
         ObservableList<Node> childrens = board.getChildren();
-
+        System.out.println(childrens.size());
         for (Node node : childrens) {
-            if(board.getRowIndex(node) == row && board.getColumnIndex(node) == column) {
-                result = node;
-                break;
+            try {
+                if (board.getRowIndex(node) == row && board.getColumnIndex(node) == column) {
+                    result = node;
+                    break;
+                }
+            }catch(NullPointerException e){
+
             }
         }
+        if(result != null)
         return result;
     }
 }
