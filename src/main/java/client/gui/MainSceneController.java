@@ -20,6 +20,7 @@ import server.model.Token;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import static server.controller.utilities.ConfigLoader.*;
 import static server.controller.utilities.JsonTools.readMatrix;
@@ -104,31 +105,33 @@ public class MainSceneController implements Client, Initializable {
         for(int row = 0; row < BOARD_SIZE; row++) {
             for(int col = 0; col < BOARD_SIZE; col++) {
                 node = getNodeByRowColumnIndex(row,col);
+                Random rng = new Random();
+                int pictureNumber = rng.nextInt(3) + 1;
                 if(node!=null){
                     switch(tiles[row][col]) {
                         case 0 -> node.setVisible(false);
                         case 1 -> {
-                            node.getStyleClass().add("cat1");
+                            node.getStyleClass().add("cat" + pictureNumber);
                             node.setVisible(true);
                         }
                         case 2 -> {
-                            node.getStyleClass().add("book1");
+                            node.getStyleClass().add("book" + pictureNumber);
                             node.setVisible(true);
                         }
                         case 3 -> {
-                            node.getStyleClass().add("toy1");
+                            node.getStyleClass().add("toy" + pictureNumber);
                             node.setVisible(true);
                         }
                         case 4 -> {
-                            node.getStyleClass().add("trophy1");
+                            node.getStyleClass().add("trophy" + pictureNumber);
                             node.setVisible(true);
                         }
                         case 5 -> {
-                            node.getStyleClass().add("frame1");
+                            node.getStyleClass().add("frame" + pictureNumber);
                             node.setVisible(true);
                         }
                         case 6 -> {
-                            node.getStyleClass().add("plant1");
+                            node.getStyleClass().add("plant" + pictureNumber);
                             node.setVisible(true);
                         }
                     }
@@ -141,25 +144,25 @@ public class MainSceneController implements Client, Initializable {
         Node result = null;
         int gridRow;
         int gridColumn;
-        ObservableList<Node> childrens = board.getChildren();
-        for (Node node : childrens) {
+        ObservableList<Node> children = board.getChildren();
+        for (Node node : children) {
             try {
-                if(board.getRowIndex(node)  == null)
+                if(GridPane.getRowIndex(node)  == null)
                     gridRow = 0;
                 else
-                    gridRow = board.getRowIndex(node);
+                    gridRow = GridPane.getRowIndex(node);
 
-                if(board.getColumnIndex(node)  == null)
+                if(GridPane.getColumnIndex(node)  == null)
                     gridColumn = 0;
                 else
-                    gridColumn = board.getColumnIndex(node);
+                    gridColumn = GridPane.getColumnIndex(node);
 
                 if (gridRow == row && gridColumn == column) {
                     result = node;
                     break;
                 }
-            }catch(NullPointerException e){
-
+            } catch(NullPointerException ex){
+                throw new RuntimeException(ex);
             }
         }
 

@@ -27,10 +27,34 @@
      -fx-background-position: center center;
 }
 
+.frame2{
+    -fx-background-image: url("assets/item_tiles/Cornici1.2.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
+
+.frame3{
+    -fx-background-image: url("assets/item_tiles/Cornici1.3.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
+
 .cat1{
     -fx-background-image: url("assets/item_tiles/Gatti1.1.png");
      -fx-background-size: 100% 100%;
      -fx-background-position: center center;
+}
+
+.cat2{
+    -fx-background-image: url("assets/item_tiles/Gatti1.2.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
+
+.cat3{
+    -fx-background-image: url("assets/item_tiles/Gatti1.3.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
 }
 
 .toy1{
@@ -39,10 +63,34 @@
      -fx-background-position: center center;
 }
 
+.toy2{
+    -fx-background-image: url("assets/item_tiles/Giochi1.2.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
+
+.toy3{
+    -fx-background-image: url("assets/item_tiles/Giochi1.3.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
+
 .book1{
     -fx-background-image: url("assets/item_tiles/Libri1.1.png");
      -fx-background-size: 100% 100%;
      -fx-background-position: center center;
+}
+
+.book2{
+    -fx-background-image: url("assets/item_tiles/Libri1.2.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
+
+.book3{
+    -fx-background-image: url("assets/item_tiles/Libri1.3.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
 }
 
 .plant1{
@@ -51,8 +99,32 @@
      -fx-background-position: center center;
 }
 
+.plant2{
+    -fx-background-image: url("assets/item_tiles/Piante1.2.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
+
+.plant3{
+    -fx-background-image: url("assets/item_tiles/Piante1.3.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
+
 .trophy1{
       -fx-background-image: url("assets/item_tiles/Trofei1.1.png");
          -fx-background-size: 100% 100%;
          -fx-background-position: center center;
+}
+
+.trophy2{
+    -fx-background-image: url("assets/item_tiles/Trofei1.2.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
+
+.trophy3{
+    -fx-background-image: url("assets/item_tiles/Trofei1.3.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
 }
