@@ -34,7 +34,6 @@ public class TUI implements Client {
 
     /**
      * Asks user for initial information then runs a loop scanning for user input.
-     * @param args
      * @author Giorgio Massimo Fontanive
      */
     public static void main(String[] args) {
@@ -66,7 +65,7 @@ public class TUI implements Client {
         while (!userInput.equals("exit")) {
             userInput = scn.nextLine();
             switch (userInput) {
-                case "chat" -> {}
+                case "chat" -> client.sendNewMessage();
                 default -> client.handleInput(userInput);
             }
         }
@@ -79,7 +78,7 @@ public class TUI implements Client {
     /**
      * Receives input from network handler and requests input from client.
      * @author Niccolò Galante
-     * @param prompt type of information requested.
+     * @param prompt Type of information requested.
      */
     public void requestInput(Prompt prompt){
         switch (prompt) {
@@ -90,6 +89,11 @@ public class TUI implements Client {
         }
     }
 
+    /**
+     * Updates the method waiting for the user's input.
+     * @param userInput A string typed by the user.
+     * @author Giorgio Massimo Fontanive
+     */
     public void handleInput(String userInput) {
         synchronized (this) {
             lastInput = userInput;
@@ -98,9 +102,31 @@ public class TUI implements Client {
     }
 
     /**
+     * Lets the user send messages to the chat
+     * @author Giorgio Massimo Fontanive
+     */
+    //TODO: Improve this
+    public void sendNewMessage() {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Type \"public\" or the receiver's nickname: ");
+        String receiver = scn.nextLine();
+        System.out.println("Type the message: ");
+        String message = scn.nextLine();
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("nickname", nickname);
+        jsonObject.addProperty("message", message);
+        if (!receiver.equals("public")) {
+            jsonObject.addProperty("receiverNickname", receiver);
+        }
+
+        networkHandler.sendInput(jsonObject.toString());
+    }
+
+    /**
      * Displays requested output to client.
      * @author Gabriele Gessaghi
-     * @param toShow requested information.
+     * @param toShow Requested information.
      */
     public void showOutput (String toShow){
         JsonReader jsonReader = new JsonReader(new StringReader(toShow));
@@ -130,7 +156,7 @@ public class TUI implements Client {
             jsonReader.endObject();
             System.out.print(toPrint);
         } catch (IOException e) {
-            System.out.println("Error parsing received JSON string.");
+            System.out.println("Error while parsing received JSON string.");
         }
     }
 
@@ -180,59 +206,53 @@ public class TUI implements Client {
      * Asks player to select tokens from board.
      * @author Niccolò Galante
      */
-    private void requestTokenSelection(){
-        Scanner scn = new Scanner(System.in);
-        JsonArray jMatrix;
-        JsonObject jMatrixToSend = new JsonObject();
-        char numberOfTokens;
-        String[] tokenCoordinates = new String[3];
+    private void requestTokenSelection() {
         int[][] selectedTokens = new int[BOARD_SIZE][BOARD_SIZE];
-        String orderSelection;
-
-        Arrays.fill(tokenCoordinates, "");
-
-        for(int i = 0; i < BOARD_SIZE; i++)
+        for (int i = 0; i < BOARD_SIZE; i++)
             Arrays.fill(selectedTokens[i], -1);
 
-        //NUMBER OF TOKENS
-        System.out.print("How many tokens would you like to select?: ");
-        numberOfTokens = scn.nextLine().charAt(0);
-        while(numberOfTokens < '1' || numberOfTokens > '3'){
-            System.out.print("Number not valid!\n");
-            System.out.print("How many tokens would you like to select?: ");
-            numberOfTokens = scn.nextLine().charAt(0);
-        }
+        //Number of tokens
+        char numberOfTokens;
+        do {
+            System.out.print("How many tokens would you like to select? (1-3): ");
+            waitForInput();
+            numberOfTokens = lastInput.charAt(0);
+        } while(numberOfTokens < '1' || numberOfTokens > '3');
 
-        //TOKEN SELECTION WITH COORDINATES
-        for(int i = 0; i < numberOfTokens - '0'; i++) {
-            System.out.print("Insert coordinates for token " + (i+1) + ": ");
-            tokenCoordinates[i] = scn.nextLine();
-            while (tokenCoordinates[i] != null && (tokenCoordinates[i].charAt(0) < 'a' || tokenCoordinates[i].charAt(0) > 'i' || tokenCoordinates[i].charAt(1) < '1' || tokenCoordinates[i].charAt(1) > '9')) {
-                System.out.print("\nCoordinates not valid!\n");
-                System.out.print("Insert coordinates for token " + i);
-                tokenCoordinates[i] = scn.nextLine();
-            }
-        }
+        //Token selection with coordinates
+        String[] tokenCoordinates = new String[3];
+        Arrays.fill(tokenCoordinates, "");
+        for(int i = 0; i < numberOfTokens - '0'; i++)
+            do {
+                System.out.print("Insert coordinates for token " + (i+1) + ": ");
+                waitForInput();
+                tokenCoordinates[i] = lastInput;
+            } while (tokenCoordinates[i] != null && tokenCoordinates[i].length() != 2 &&
+                    (tokenCoordinates[i].charAt(0) < 'a' || tokenCoordinates[i].charAt(0) > 'i' ||
+                            tokenCoordinates[i].charAt(1) < '1' || tokenCoordinates[i].charAt(1) > '9'));
 
-        //ORDER SELECTION
-        if(numberOfTokens > '1') {
-            System.out.print("\nIn what order would you like to insert the selected tokens?\n");
+        //Order selection
+        if (numberOfTokens > '1') {
+            String orderSelection;
             for (int i = 0; i < numberOfTokens - '0'; i++)
-                System.out.print((i + 1) +  ": " + tokenCoordinates[i] + "\n");
-            orderSelection = scn.nextLine();
-            while(orderSelection.length() != numberOfTokens - '0'){
-                System.out.print("\nIn what order would you like to insert the selected tokens?");
-                for (int i = 0; i < numberOfTokens - '0'; i++)
-                    System.out.print((i + 1) +  ": " + tokenCoordinates[i] + "\n");
-                orderSelection = scn.nextLine();
-            }
+                System.out.print("\n" + (i + 1) +  ": " + tokenCoordinates[i]);
 
+            do {
+                System.out.print("\nIn what order would you like to insert the selected tokens? ");
+                waitForInput();
+                orderSelection = lastInput;
+            } while(orderSelection.length() != numberOfTokens - '0');
+
+            //Place in int matrix
             for(int i = 0; i < numberOfTokens - '0'; i++){
                 String tokenCoordinate = tokenCoordinates[orderSelection.charAt(i) - '1'];
                 selectedTokens[tokenCoordinate.charAt(1) - '0'][tokenCoordinate.charAt(0) - 'a'] = i;
             }
+        } else
+            selectedTokens[tokenCoordinates[0].charAt(1) - '0'][tokenCoordinates[0].charAt(0) - 'a'] = 0;
 
-        }
+        JsonArray jMatrix;
+        JsonObject jMatrixToSend = new JsonObject();
         jMatrix = JsonTools.createJsonMatrix(selectedTokens);
         jMatrixToSend.add("selectedTiles", jMatrix);
         networkHandler.sendInput(jMatrixToSend.toString());
@@ -243,36 +263,27 @@ public class TUI implements Client {
      * @author Niccolò Galante
      */
     private void requestColumnSelection(){
-        Scanner scn = new Scanner(System.in);
-        JsonObject jsonObject = new JsonObject();
-        String input;
         int selectedColumn;
-
-        System.out.print("\nInsert column in which you want to insert the selected tokens: ");
-        selectedColumn = scn.nextInt();
-        selectedColumn -= 1;
-
-        while(selectedColumn < 0 || selectedColumn > SHELF_COLUMNS - 1){
-            System.out.print("Column not valid!\n");
+        do {
             System.out.print("Insert column in which you want to insert the selected tokens: ");
-            selectedColumn = scn.nextInt();
-        }
+            waitForInput();
+            selectedColumn = lastInput.charAt(0) - '0';
+        } while (selectedColumn < 0 || selectedColumn > SHELF_COLUMNS - 1);
 
+        JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("selectedColumn", selectedColumn);
-        input = jsonObject.toString();
-        networkHandler.sendInput(input);
+        networkHandler.sendInput(jsonObject.toString());
     }
 
     /**
-     * Prints tiles.
+     * Prints the board's tiles.
      * @author Niccolò Galante
      * @param jsonReader Reads json input.
-     * @return Tiles to be shown.
-     * @throws IOException when there's an issue.
+     * @return Tiles to be shown in a string format.
+     * @throws IOException When there's an issue reading the json matrix.
      */
     private StringBuilder printTiles(JsonReader jsonReader) throws IOException {
         StringBuilder toPrint = new StringBuilder();
-
         toPrint.append("Board: \n");
         int[][] intMatrix = JsonTools.readMatrix(jsonReader);
 
@@ -290,8 +301,8 @@ public class TUI implements Client {
      * Prints shelf.
      * @author Niccolò Galante
      * @param jsonReader Reads json input.
-     * @return Shelf to be shown.
-     * @throws IOException when there's an issue.
+     * @return Shelf to be shown in a string format.
+     * @throws IOException When there's an issue reading the json matrix.
      */
     private StringBuilder printShelf(JsonReader jsonReader) throws IOException {
         StringBuilder toPrint = new StringBuilder();
@@ -318,7 +329,7 @@ public class TUI implements Client {
      * @author Niccolò Galante
      * @param jsonReader Reads json input.
      * @return Personal card to be shown.
-     * @throws IOException when there's an issue.
+     * @throws IOException When there's an issue reading the json matrix.
      */
     private StringBuilder printPersonalCard(JsonReader jsonReader) throws IOException{
         StringBuilder toPrint = new StringBuilder();
@@ -367,10 +378,10 @@ public class TUI implements Client {
     }
 
     /**
-     * Converts integer value to the initial of each token.
+     * Converts integer value to the color of each token.
      * @author Niccolò Galante
-     * @param value integer value that is to be converted.
-     * @return converted integer value.
+     * @param value Integer value that is to be converted.
+     * @return Color value followed by three spaces and a color rest.
      */
     private String intToTokenInitial(int value){
         String tokenInitial;

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added random picture for each tile">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Changed the way TUI gets user input in order to implement the chat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
     </list>
@@ -235,13 +235,6 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-    </task>
-    <task id="LOCAL-00135" summary="Separated RMI and TCP connection acceptance">
-      <created>1683011545054</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1683011545054</updated>
     </task>
     <task id="LOCAL-00136" summary="Completed showOutput method in client">
       <created>1683016601610</created>
@@ -579,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684417158370</updated>
     </task>
-    <option name="localTasksCounter" value="184" />
+    <task id="LOCAL-00184" summary="Changed the way TUI gets user input in order to implement the chat">
+      <created>1684419459076</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1684419459076</updated>
+    </task>
+    <option name="localTasksCounter" value="185" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Finally fixed socket connection" />
     <MESSAGE value="Found the deadlock" />
     <MESSAGE value="Fixed the deadlock" />
     <MESSAGE value="TCP should be finally mostly hopefully working" />
@@ -638,7 +637,8 @@
     <MESSAGE value="make board upgrade" />
     <MESSAGE value="nothing buttons made invisible" />
     <MESSAGE value="Added random picture for each tile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added random picture for each tile" />
+    <MESSAGE value="Changed the way TUI gets user input in order to implement the chat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the way TUI gets user input in order to implement the chat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
