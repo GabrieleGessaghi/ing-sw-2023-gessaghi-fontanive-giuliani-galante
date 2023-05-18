@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="nothing buttons made invisible">
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Application.css" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added random picture for each tile">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +89,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Graphics User Interface">
+  <component name="RunManager" selected="Application.Text User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -235,13 +235,6 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-    </task>
-    <task id="LOCAL-00134" summary="Client showOutput() method">
-      <created>1682970600681</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1682970600681</updated>
     </task>
     <task id="LOCAL-00135" summary="Separated RMI and TCP connection acceptance">
       <created>1683011545054</created>
@@ -579,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684350078260</updated>
     </task>
-    <option name="localTasksCounter" value="183" />
+    <task id="LOCAL-00183" summary="Added random picture for each tile">
+      <created>1684417158370</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1684417158370</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Improved TUI" />
     <MESSAGE value="Finally fixed socket connection" />
     <MESSAGE value="Found the deadlock" />
     <MESSAGE value="Fixed the deadlock" />
@@ -638,7 +637,8 @@
     <MESSAGE value="fixed small issues" />
     <MESSAGE value="make board upgrade" />
     <MESSAGE value="nothing buttons made invisible" />
-    <option name="LAST_COMMIT_MESSAGE" value="nothing buttons made invisible" />
+    <MESSAGE value="Added random picture for each tile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added random picture for each tile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

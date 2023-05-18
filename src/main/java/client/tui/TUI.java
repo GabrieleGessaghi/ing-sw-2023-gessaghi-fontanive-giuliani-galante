@@ -24,46 +24,52 @@ import static server.controller.utilities.ConfigLoader.*;
  * @author Niccolò Galante
  */
 public class TUI implements Client {
-    NetworkHandler networkHandler;
+    private NetworkHandler networkHandler;
     private final String nickname;
+    private String lastInput;
 
     public TUI(String nickname) {
         this.nickname = nickname;
     }
 
+    /**
+     * Asks user for initial information then runs a loop scanning for user input.
+     * @param args
+     * @author Giorgio Massimo Fontanive
+     */
     public static void main(String[] args) {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        NetworkHandler networkHandler;
-        String hostIp;
-        String nickname;
-        int selection;
-        Scanner scn = new Scanner(System.in);
 
         printOpening();
+        Scanner scn = new Scanner(System.in);
 
         System.out.print("Insert nickname: ");
-        nickname = scn.nextLine();
+        String nickname = scn.nextLine();
 
         System.out.print("Insert host's IP address: ");
-        hostIp = scn.nextLine();
+        String hostIp = scn.nextLine();
 
-        System.out.print("Select connection type (0 TCP/1 RMI): ");
-        selection = scn.nextInt();
-        while(selection !=0 && selection != 1) {
-            System.out.print("Connection type not valid!\n");
+        int selection;
+        do {
             System.out.print("Select connection type (0 TCP/1 RMI): ");
             selection = scn.nextInt();
-        }
+        } while (selection !=0 && selection != 1);
 
-        Client client = new TUI(nickname);
-        if(selection == 0)
-            networkHandler = new NetworkHandlerTCP();
-        else
-            networkHandler = new NetworkHandlerRMI();
+        TUI client = new TUI(nickname);
+        NetworkHandler networkHandler = selection == 0 ? new NetworkHandlerTCP() : new NetworkHandlerRMI();
         networkHandler.setClient(client);
         networkHandler.setHost(hostIp);
         new Thread(networkHandler).start();
         client.setNetworkHandler(networkHandler);
+
+        String userInput = "";
+        while (!userInput.equals("exit")) {
+            userInput = scn.nextLine();
+            switch (userInput) {
+                case "chat" -> {}
+                default -> client.handleInput(userInput);
+            }
+        }
     }
 
     public void setNetworkHandler(NetworkHandler networkHandler) {
@@ -81,6 +87,13 @@ public class TUI implements Client {
             case PLAYERSNUMBER -> requestNumberOfPlayers();
             case TOKENS -> requestTokenSelection();
             case COLUMN -> requestColumnSelection();
+        }
+    }
+
+    public void handleInput(String userInput) {
+        synchronized (this) {
+            lastInput = userInput;
+            this.notifyAll();
         }
     }
 
@@ -117,12 +130,29 @@ public class TUI implements Client {
             jsonReader.endObject();
             System.out.print(toPrint);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error parsing received JSON string.");
         }
     }
 
     /**
-     * Asks player to insert nickname.
+     * Stops the thread's execution until a new user input is received.
+     * @author Giorgio Massimo Fontanive
+     */
+    private void waitForInput() {
+        lastInput = null;
+        synchronized (this) {
+            while (lastInput == null) {
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+
+    /**
+     * Sends the player's nickname.
      * @author Niccolò Galante
      */
     private void requestNickname(){
@@ -136,22 +166,14 @@ public class TUI implements Client {
      * @author Niccolò Galante
      */
     private void requestNumberOfPlayers(){
-        Scanner scn = new Scanner(System.in);
-        JsonObject jsonObject = new JsonObject();
-        String input;
-        int numberOfPlayers;
-
-        System.out.print("Insert number of players: ");
-        numberOfPlayers = scn.nextInt();
-        while(numberOfPlayers < 2 || numberOfPlayers > 4){
-            System.out.print("Number not valid!\n");
+        do {
             System.out.print("Insert number of players: ");
-            numberOfPlayers = scn.nextInt();
-        }
+            waitForInput();
+        } while (lastInput.charAt(0) < '2' || lastInput.charAt(0) > '4');
 
-        jsonObject.addProperty("playersNumber", numberOfPlayers);
-        input = jsonObject.toString();
-        networkHandler.sendInput(input);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("playersNumber", lastInput.charAt(0) - '0');
+        networkHandler.sendInput(jsonObject.toString());
     }
 
     /**
