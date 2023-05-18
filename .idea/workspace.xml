@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Changed the way TUI gets user input in order to implement the chat">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented Chat in TUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,13 +236,6 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-    </task>
-    <task id="LOCAL-00136" summary="Completed showOutput method in client">
-      <created>1683016601610</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1683016601610</updated>
     </task>
     <task id="LOCAL-00137" summary="Finished implementing NetworkHandler">
       <created>1683024544807</created>
@@ -579,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684419459076</updated>
     </task>
-    <option name="localTasksCounter" value="185" />
+    <task id="LOCAL-00185" summary="Implemented Chat in TUI">
+      <created>1684421426494</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1684421426494</updated>
+    </task>
+    <option name="localTasksCounter" value="186" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +614,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Found the deadlock" />
     <MESSAGE value="Fixed the deadlock" />
     <MESSAGE value="TCP should be finally mostly hopefully working" />
     <MESSAGE value="Optimized RMI connection" />
@@ -638,7 +638,8 @@
     <MESSAGE value="nothing buttons made invisible" />
     <MESSAGE value="Added random picture for each tile" />
     <MESSAGE value="Changed the way TUI gets user input in order to implement the chat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the way TUI gets user input in order to implement the chat" />
+    <MESSAGE value="Implemented Chat in TUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Chat in TUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

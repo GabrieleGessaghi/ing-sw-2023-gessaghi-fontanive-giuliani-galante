@@ -3,12 +3,15 @@ package server.controller;
 import com.google.gson.stream.JsonReader;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
+import server.controller.utilities.JsonTools;
 import server.model.chat.Chat;
 import server.view.ClientHandler;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
+
+//TODO: Document this
 
 /**
  *
@@ -21,6 +24,13 @@ public class ChatController implements Observer {
     public ChatController(List<ClientHandler> clientHandlers) {
         chat = new Chat();
         this.clientHandlers = clientHandlers;
+    }
+
+    private ClientHandler findClientHandler(String nickname) {
+        for (ClientHandler c : clientHandlers)
+            if (c.getNickname().equals(nickname))
+                return c;
+        return null;
     }
 
     @Override
@@ -48,7 +58,10 @@ public class ChatController implements Observer {
 
             if (message != null && currentMessageSender != null)
                 if (currentMessageReceiver != null)
-                    chat.addPrivateMessage(currentMessageSender, currentMessageReceiver, message);
+                    if (findClientHandler(currentMessageReceiver) != null)
+                        chat.addPrivateMessage(currentMessageSender, currentMessageReceiver, message);
+                    else
+                        findClientHandler(currentMessageSender).sendOutput(JsonTools.createMessage("No player with this nickname found!"));
                 else
                     chat.addPublicMessage(currentMessageSender, message);
 

@@ -101,11 +101,11 @@ public class TUI implements Client {
         }
     }
 
+    //TODO: Improve this method
     /**
      * Lets the user send messages to the chat
      * @author Giorgio Massimo Fontanive
      */
-    //TODO: Improve this
     public void sendNewMessage() {
         Scanner scn = new Scanner(System.in);
         System.out.println("Type \"public\" or the receiver's nickname: ");

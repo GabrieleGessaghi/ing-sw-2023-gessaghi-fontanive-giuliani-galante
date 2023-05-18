@@ -2,7 +2,6 @@ package server;
 
 import server.controller.Controller;
 import server.controller.utilities.ConfigLoader;
-import server.view.ClientHandler;
 import server.view.rmi.ClientHandlerRMI;
 import server.view.rmi.ClientUsable;
 import server.view.tcp.ClientHandlerTCP;
@@ -20,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
+
+//TODO: Show player nicknames at start
 
 /**
  * Accepts new connections and starts the game controller.
