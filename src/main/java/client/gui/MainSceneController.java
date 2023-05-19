@@ -32,6 +32,7 @@ import static server.controller.utilities.ConfigLoader.*;
 import static server.controller.utilities.JsonTools.readMatrix;
 
 public class MainSceneController implements Client, Initializable {
+    public GridPane shelf;
     NetworkHandler networkHandler;
     @FXML
     private GridPane board;
@@ -77,6 +78,7 @@ public class MainSceneController implements Client, Initializable {
 
     @Override
     public void showOutput(String jsonMessage) {
+        String tempNickname = new String();
         JsonReader jsonReader = new JsonReader(new StringReader(jsonMessage));
         String field;
         StringBuilder toPrint = new StringBuilder();
@@ -86,7 +88,7 @@ public class MainSceneController implements Client, Initializable {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    //case "nickname" ->
+                    case "nickname" -> tempNickname = jsonReader.nextString();
                     //case "totalPoints" ->
                     //case "isFirstPlayer" ->
                     //case "playerIndex" ->
@@ -96,7 +98,10 @@ public class MainSceneController implements Client, Initializable {
                     //case "nextPointsAvailable" ->
                     //case "message" ->
                     case "tiles" -> updateBoard(readMatrix(jsonReader));
-                    //case "shelf" ->
+                    case "shelf" -> {
+                        if(tempNickname.equals(GUI.playerNickname))
+                            updateShelf(readMatrix(jsonReader));
+                    }
                     //case "personalCard" ->
                     default -> jsonReader.skipValue();
                 }
@@ -108,6 +113,47 @@ public class MainSceneController implements Client, Initializable {
         }
         //TODO: Parse JSON and update each section of the screen
     }
+
+    private void updateShelf(int[][] tokens) {
+        Node node;
+        for(int i = 0; i < SHELF_ROWS; i++){
+            for(int j = 0; j < SHELF_COLUMNS; j++) {
+                node = getNodeByRowColumnIndex(i, j, true);
+                Random rng = new Random();
+                int pictureNumber = rng.nextInt(3) + 1;
+                if(node!=null) {
+                    switch (tokens[i][j]) {
+                        case 0 -> node.setVisible(false);
+                        case 1 -> {
+                            node.getStyleClass().add("cat" + pictureNumber);
+                            node.setVisible(true);
+                        }
+                        case 2 -> {
+                            node.getStyleClass().add("book" + pictureNumber);
+                            node.setVisible(true);
+                        }
+                        case 3 -> {
+                            node.getStyleClass().add("toy" + pictureNumber);
+                            node.setVisible(true);
+                        }
+                        case 4 -> {
+                            node.getStyleClass().add("trophy" + pictureNumber);
+                            node.setVisible(true);
+                        }
+                        case 5 -> {
+                            node.getStyleClass().add("frame" + pictureNumber);
+                            node.setVisible(true);
+                        }
+                        case 6 -> {
+                            node.getStyleClass().add("plant" + pictureNumber);
+                            node.setVisible(true);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
     @Override
     public void setNetworkHandler(NetworkHandler networkHandler) {
@@ -129,7 +175,7 @@ public class MainSceneController implements Client, Initializable {
         Node node;
         for(int row = 0; row < BOARD_SIZE; row++) {
             for(int col = 0; col < BOARD_SIZE; col++) {
-                node = getNodeByRowColumnIndex(row,col);
+                node = getNodeByRowColumnIndex(row,col,false);
                 Random rng = new Random();
                 int pictureNumber = rng.nextInt(3) + 1;
                 if(node!=null){
@@ -165,11 +211,15 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
-    private Node getNodeByRowColumnIndex (int row,int column) {
+    private Node getNodeByRowColumnIndex (int row,int column, boolean choice) {
         Node result = null;
         int gridRow;
         int gridColumn;
-        ObservableList<Node> children = board.getChildren();
+        ObservableList<Node> children;
+        if(choice)
+            children = shelf.getChildren();
+        else
+            children = board.getChildren();
         for (Node node : children) {
             try {
                 if(GridPane.getRowIndex(node)  == null)
