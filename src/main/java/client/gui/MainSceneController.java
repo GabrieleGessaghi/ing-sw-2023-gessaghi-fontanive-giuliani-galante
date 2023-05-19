@@ -12,13 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
+import javafx.stage.StageStyle;
 import server.controller.Prompt;
 import server.model.Board;
 import server.model.Token;
@@ -48,8 +46,9 @@ public class MainSceneController implements Client, Initializable {
                     String [] arrayData = {"Two (2)", "Three (3)", "Four (4)"};
                     List<String> dialogData = Arrays.asList(arrayData);
                     ChoiceDialog dialog = new ChoiceDialog(dialogData.get(0),dialogData);
+                    dialog.initStyle(StageStyle.UNDECORATED);
+                    dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setDisable(true);
                     dialog.setTitle("Game settings");
-                    //dialog.setGraphic(new ImageView(this.getClass().getResource("/assets/Publisher_material/Icon50x50px.png").toString()));
                     dialog.setGraphic(null);
                     dialog.setHeaderText("Select the number of players: ");
                     DialogPane dialogPane = dialog.getDialogPane();
@@ -64,6 +63,9 @@ public class MainSceneController implements Client, Initializable {
                             case "Four (4)" -> numberOfPlayers = 4;
                         }
                     }
+                    JsonObject jsonObject = new JsonObject();
+                    jsonObject.addProperty("playersNumber", numberOfPlayers);
+                    networkHandler.sendInput(jsonObject.toString());
                 });
             }
             case TOKENS -> {
