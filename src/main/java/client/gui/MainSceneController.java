@@ -6,13 +6,17 @@ import client.network.NetworkHandlerRMI;
 import client.network.NetworkHandlerTCP;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.TilePane;
 import server.controller.Prompt;
 import server.model.Board;
 import server.model.Token;
@@ -20,8 +24,8 @@ import server.model.Token;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import static server.controller.utilities.ConfigLoader.*;
 import static server.controller.utilities.JsonTools.readMatrix;
 
@@ -38,8 +42,23 @@ public class MainSceneController implements Client, Initializable {
                 networkHandler.sendInput(jsonObject.toString());
             }
             case PLAYERSNUMBER -> {
+                Platform.runLater(()->{
+                    String [] arrayData = {"Two (2)", "Three (3)", "Four (4)"};
+                    List<String> dialogData = Arrays.asList(arrayData);
+                    ChoiceDialog dialog = new ChoiceDialog(dialogData.get(0),dialogData);
+                    dialog.setTitle("Game player settings");
+                    dialog.setHeaderText("Select the number of players: ");
 
-                //TODO: Show alert asking player for number
+                    Optional<String> result = dialog.showAndWait();
+                    int numberOfPlayers = 0;
+                    if (result.isPresent()) {
+                        switch (result.get()){
+                            case "Two (2)" -> numberOfPlayers = 2;
+                            case "Three (3)" -> numberOfPlayers = 3;
+                            case "Four (4)" -> numberOfPlayers = 4;
+                        }
+                    }
+                });
             }
             case TOKENS -> {
             }
