@@ -17,20 +17,17 @@ public class ClientHandlerTCP extends ClientHandler {
     private final InputStream inputStream;
     private final OutputStream outputStream;
 
-    //private final Socket socket;
 
     /**
      * Class constructor. The server accepting new connections creates this object for every new connection.
      * @author Niccolò Giuliani
-     * @param socket The socket bound to this object.
      * @param inputStream Used to receive input from the client.
      * @param outputStream Used to send input to the client.
      */
-    public ClientHandlerTCP(Socket socket, InputStream inputStream, OutputStream outputStream){
+    public ClientHandlerTCP(InputStream inputStream, OutputStream outputStream){
         this.inputStream = inputStream;
         this.outputStream = outputStream;
         isConnected = false;
-        //this.socket = socket;
     }
 
     @Override
@@ -38,7 +35,6 @@ public class ClientHandlerTCP extends ClientHandler {
 
         //Skips this event if it does not involve the client
         JsonObject jsonObject = JsonParser.parseString(event.jsonMessage()).getAsJsonObject();
-
         if (jsonObject.has("privateMessageSender") || jsonObject.has("privateMessageReceiver"))
             if (!jsonObject.get("privateMessageSender").getAsString().equals(nickname) &&
                     !jsonObject.get("privateMessageReceiver").getAsString().equals(nickname))

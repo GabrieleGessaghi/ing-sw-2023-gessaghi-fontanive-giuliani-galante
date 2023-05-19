@@ -139,8 +139,6 @@ public class Game implements Savable, Observable {
      * @param column The column on which the player wants to put the new tiles.
      */
     public void playerTurn (int [][] selectedTiles, int column) throws IllegalMoveException, IllegalColumnException{
-        while (!players[currentPlayerIndex].isConnected)
-            nextPlayerIndex();
 
         //Creates the message sent at the beginning of the turn
         JsonObject jsonMessage = new JsonObject();

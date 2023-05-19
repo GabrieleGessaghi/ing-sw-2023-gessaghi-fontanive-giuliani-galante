@@ -11,15 +11,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.TilePane;
 import javafx.stage.StageStyle;
 import server.controller.Prompt;
-import server.model.Board;
-import server.model.Token;
+import server.controller.utilities.JsonTools;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -31,10 +27,12 @@ import static server.controller.utilities.JsonTools.readMatrix;
 
 
 public class MainSceneController implements Client, Initializable {
+
     public GridPane shelf;
     NetworkHandler networkHandler;
     @FXML
     private GridPane board;
+
     @Override
     public void requestInput(Prompt prompt) {
         switch (prompt) {
@@ -43,46 +41,18 @@ public class MainSceneController implements Client, Initializable {
                 jsonObject.addProperty("nickname", GUI.playerNickname);
                 networkHandler.sendInput(jsonObject.toString());
             }
-            case PLAYERSNUMBER -> {
-                Platform.runLater(()->{
-                    String [] arrayData = {"Two (2)", "Three (3)", "Four (4)"};
-                    List<String> dialogData = Arrays.asList(arrayData);
-                    ChoiceDialog dialog = new ChoiceDialog(dialogData.get(0),dialogData);
-                    dialog.initStyle(StageStyle.UNDECORATED);
-                    dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setDisable(true);
-                    dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
-                    dialog.setTitle("Game settings");
-                    dialog.setGraphic(null);
-                    dialog.setHeaderText("Select the number of players: ");
-                    DialogPane dialogPane = dialog.getDialogPane();
-                    dialogPane.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
-                    dialogPane.getStyleClass().add("playerDialog");
-                    Optional<String> result = dialog.showAndWait();
-                    int numberOfPlayers = 0;
-                    if (result.isPresent()) {
-                        switch (result.get()){
-                            case "Two (2)" -> numberOfPlayers = 2;
-                            case "Three (3)" -> numberOfPlayers = 3;
-                            case "Four (4)" -> numberOfPlayers = 4;
-                        }
-                    }
-                    JsonObject jsonObject = new JsonObject();
-                    jsonObject.addProperty("playersNumber", numberOfPlayers);
-                    networkHandler.sendInput(jsonObject.toString());
-                });
-            }
+            case PLAYERSNUMBER -> requestPlayersNumber();
             case TOKENS -> {
             }
             case COLUMN -> {
-            }
-            case CONNECTIONTYPE -> {
             }
         }
     }
 
     @Override
     public void showOutput(String jsonMessage) {
-        String tempNickname = new String();
+        String tempNickname = "";
+        int[][] tempTiles = null;
         JsonReader jsonReader = new JsonReader(new StringReader(jsonMessage));
         String field;
         StringBuilder toPrint = new StringBuilder();
@@ -101,31 +71,78 @@ public class MainSceneController implements Client, Initializable {
                     //case "numberOfTokensLeft" ->
                     //case "nextPointsAvailable" ->
                     //case "message" ->
-                    case "tiles" -> updateBoard(readMatrix(jsonReader));
-                    case "shelf" -> {
-                        if(tempNickname.equals(GUI.playerNickname))
-                            updateShelf(readMatrix(jsonReader));
-                    }
+                    case "tiles" -> updateTokens(readMatrix(jsonReader), false);
+                    case "shelf" -> tempTiles = JsonTools.readMatrix(jsonReader);
                     //case "personalCard" ->
                     default -> jsonReader.skipValue();
                 }
             }
             jsonReader.endObject();
+            if(tempNickname.equals(GUI.playerNickname))
+                updateTokens(tempTiles, true);
             System.out.print(toPrint);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //TODO: Parse JSON and update each section of the screen
     }
 
-    private void updateShelf(int[][] tokens) {
+    @Override
+    public void setNetworkHandler(NetworkHandler networkHandler) {
+        this.networkHandler = networkHandler;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (GUI.connectionType == 0)
+            setNetworkHandler(new NetworkHandlerTCP());
+        if (GUI.connectionType == 1)
+            setNetworkHandler(new NetworkHandlerRMI());
+        networkHandler.setHost(GUI.host);
+        networkHandler.setClient(this);
+        new Thread(networkHandler).start();
+    }
+
+    /**
+     * Shows a popup screen asking user for player's number.
+     * @author Gabriele Gessaghi
+     */
+    private void requestPlayersNumber() {
+        Platform.runLater(()->{
+            String [] arrayData = {"Two (2)", "Three (3)", "Four (4)"};
+            List<String> dialogData = Arrays.asList(arrayData);
+            ChoiceDialog dialog = new ChoiceDialog(dialogData.get(0),dialogData);
+            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setDisable(true);
+            dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
+            dialog.setTitle("Game settings");
+            dialog.setGraphic(null);
+            dialog.setHeaderText("Select the number of players: ");
+            DialogPane dialogPane = dialog.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
+            dialogPane.getStyleClass().add("playerDialog");
+            Optional<String> result = dialog.showAndWait();
+            int numberOfPlayers = 0;
+            if (result.isPresent()) {
+                switch (result.get()){
+                    case "Two (2)" -> numberOfPlayers = 2;
+                    case "Three (3)" -> numberOfPlayers = 3;
+                    case "Four (4)" -> numberOfPlayers = 4;
+                }
+            }
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("playersNumber", numberOfPlayers);
+            networkHandler.sendInput(jsonObject.toString());
+        });
+    }
+
+    private void updateTokens(int[][] tokens, boolean choice) {
         Node node;
-        for(int i = 0; i < SHELF_ROWS; i++){
-            for(int j = 0; j < SHELF_COLUMNS; j++) {
-                node = getNodeByRowColumnIndex(i, j, true);
+        for(int i = 0; i < tokens.length; i++){
+            for(int j = 0; j < tokens[i].length; j++) {
+                node = getNodeByRowColumnIndex(i, j, choice);
                 Random rng = new Random();
                 int pictureNumber = rng.nextInt(3) + 1;
-                if(node!=null) {
+                if(node != null) {
                     switch (tokens[i][j]) {
                         case 0 -> node.setVisible(false);
                         case 1 -> {
@@ -158,63 +175,15 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
-
-    @Override
-    public void setNetworkHandler(NetworkHandler networkHandler) {
-        this.networkHandler = networkHandler;
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (GUI.connectionType == 0)
-            setNetworkHandler(new NetworkHandlerTCP());
-        if (GUI.connectionType == 1)
-            setNetworkHandler(new NetworkHandlerRMI());
-        networkHandler.setHost(GUI.host);
-        networkHandler.setClient(this);
-        new Thread(networkHandler).start();
-    }
-
-    private void updateBoard(int [][]tiles){
-        Node node;
-        for(int row = 0; row < BOARD_SIZE; row++) {
-            for(int col = 0; col < BOARD_SIZE; col++) {
-                node = getNodeByRowColumnIndex(row,col,false);
-                Random rng = new Random();
-                int pictureNumber = rng.nextInt(3) + 1;
-                if(node!=null){
-                    switch(tiles[row][col]) {
-                        case 0 -> node.setVisible(false);
-                        case 1 -> {
-                            node.getStyleClass().add("cat" + pictureNumber);
-                            node.setVisible(true);
-                        }
-                        case 2 -> {
-                            node.getStyleClass().add("book" + pictureNumber);
-                            node.setVisible(true);
-                        }
-                        case 3 -> {
-                            node.getStyleClass().add("toy" + pictureNumber);
-                            node.setVisible(true);
-                        }
-                        case 4 -> {
-                            node.getStyleClass().add("trophy" + pictureNumber);
-                            node.setVisible(true);
-                        }
-                        case 5 -> {
-                            node.getStyleClass().add("frame" + pictureNumber);
-                            node.setVisible(true);
-                        }
-                        case 6 -> {
-                            node.getStyleClass().add("plant" + pictureNumber);
-                            node.setVisible(true);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
+    //TODO: Document this
+    /**
+     *
+     * @param row
+     * @param column
+     * @param choice
+     * @return
+     * @author Niccolò Giuliani
+     */
     private Node getNodeByRowColumnIndex (int row,int column, boolean choice) {
         Node result = null;
         int gridRow;
