@@ -29,6 +29,7 @@ import java.util.*;
 import static server.controller.utilities.ConfigLoader.*;
 import static server.controller.utilities.JsonTools.readMatrix;
 
+
 public class MainSceneController implements Client, Initializable {
     public GridPane shelf;
     NetworkHandler networkHandler;
