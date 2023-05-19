@@ -21,6 +21,7 @@ import java.util.List;
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
 //TODO: Show player nicknames at start
+//TODO: Ensure there are no duplicated nicknames
 
 /**
  * Accepts new connections and starts the game controller.

@@ -94,7 +94,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Graphics User Interface">
-    <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application">
+    <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
       <option name="VM_PARAMETERS" value="--module-path $MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19.0.2.1/;$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19.0.2.1/;$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19.0.2.1/;$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19.0.2.1/ --add-modules javafx.fxml,javafx.controls,javafx.graphics,javafx.base" />
@@ -108,7 +108,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Graphics User Interface" type="Application" factoryName="Application" temporary="true">
+    <configuration name="Graphics User Interface" type="Application" factoryName="Application" singleton="false" temporary="true">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
       <option name="VM_PARAMETERS" value="--module-path $MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19.0.2.1/:$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19.0.2.1/:$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19.0.2.1/:$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19.0.2.1/ --add-modules javafx.fxml,javafx.controls,javafx.graphics,javafx.base" />
