@@ -48,6 +48,7 @@ public class MainSceneController implements Client, Initializable {
                     ChoiceDialog dialog = new ChoiceDialog(dialogData.get(0),dialogData);
                     dialog.initStyle(StageStyle.UNDECORATED);
                     dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setDisable(true);
+                    dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
                     dialog.setTitle("Game settings");
                     dialog.setGraphic(null);
                     dialog.setHeaderText("Select the number of players: ");

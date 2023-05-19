@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="number of players dialog custom style">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="finished player dialog and server side update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
     </list>
@@ -238,13 +235,6 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-    </task>
-    <task id="LOCAL-00139" summary="Added getState to PersonalCard">
-      <created>1683027285304</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1683027285304</updated>
     </task>
     <task id="LOCAL-00140" summary="Added javadoc">
       <created>1683030749833</created>
@@ -582,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684497051035</updated>
     </task>
-    <option name="localTasksCounter" value="188" />
+    <task id="LOCAL-00188" summary="finished player dialog and server side update">
+      <created>1684497668362</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1684497668362</updated>
+    </task>
+    <option name="localTasksCounter" value="189" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Optimized RMI connection" />
     <MESSAGE value="Getting closer to fix RMI" />
     <MESSAGE value="Fixed two-way RMI connection" />
     <MESSAGE value="Fixed Graphics User Interface configuration parameters" />
@@ -641,7 +637,8 @@
     <MESSAGE value="Implemented Chat in TUI" />
     <MESSAGE value="gui first player connceted dialog for server players number request" />
     <MESSAGE value="number of players dialog custom style" />
-    <option name="LAST_COMMIT_MESSAGE" value="number of players dialog custom style" />
+    <MESSAGE value="finished player dialog and server side update" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished player dialog and server side update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
