@@ -268,7 +268,7 @@ public class TUI implements Client {
         do {
             System.out.print("Insert column in which you want to insert the selected tokens: ");
             waitForInput();
-            selectedColumn = lastInput.charAt(0) - '0';
+            selectedColumn = lastInput.charAt(0) - '1';
         } while (selectedColumn < 0 || selectedColumn > SHELF_COLUMNS - 1);
 
         JsonObject jsonObject = new JsonObject();
@@ -336,17 +336,17 @@ public class TUI implements Client {
         StringBuilder toPrint = new StringBuilder();
         toPrint.append("\n").append("Personal card: \n").append(" 1  2  3  4  5\n");
         jsonReader.beginObject();
-        if (jsonReader.nextName().equals("correctTiles")) {
-            int[][] intMatrix = JsonTools.readMatrix(jsonReader);
-            for (int i = 0; i < SHELF_ROWS; i++) {
-                for (int j = 0; j < SHELF_COLUMNS; j++) {
-                    toPrint.append(intToTokenInitial(intMatrix[i][j]));
+        while (jsonReader.hasNext())
+            if (jsonReader.nextName().equals("correctTiles")) {
+                int[][] intMatrix = JsonTools.readMatrix(jsonReader);
+                for (int i = 0; i < SHELF_ROWS; i++) {
+                    for (int j = 0; j < SHELF_COLUMNS; j++) {
+                        toPrint.append(intToTokenInitial(intMatrix[i][j]));
+                    }
+                    toPrint.append("\n");
                 }
-                toPrint.append("\n");
-            }
-        } else {
-            jsonReader.skipValue();
-        }
+            } else
+                jsonReader.skipValue();
         jsonReader.endObject();
         toPrint.append("\n");
         return toPrint;

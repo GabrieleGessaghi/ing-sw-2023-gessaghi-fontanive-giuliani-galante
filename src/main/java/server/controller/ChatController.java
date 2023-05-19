@@ -28,7 +28,7 @@ public class ChatController implements Observer {
 
     private ClientHandler findClientHandler(String nickname) {
         for (ClientHandler c : clientHandlers)
-            if (c.getNickname().equals(nickname))
+            if (c.nickname.equals(nickname))
                 return c;
         return null;
     }

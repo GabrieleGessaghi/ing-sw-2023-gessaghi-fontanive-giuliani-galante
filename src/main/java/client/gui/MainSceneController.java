@@ -71,9 +71,15 @@ public class MainSceneController implements Client, Initializable {
                     //case "numberOfTokensLeft" ->
                     //case "nextPointsAvailable" ->
                     //case "message" ->
-                    case "tiles" -> updateTokens(readMatrix(jsonReader), false);
-                    case "shelf" -> tempTiles = JsonTools.readMatrix(jsonReader);
                     //case "personalCard" ->
+                    case "tiles" -> updateTokens(readMatrix(jsonReader), false);
+                    case "shelf" -> {
+                        jsonReader.beginObject();
+                        while (jsonReader.hasNext())
+                            if (jsonReader.nextName().equals("shelfTiles"))
+                                tempTiles = JsonTools.readMatrix(jsonReader);
+                        jsonReader.endObject();
+                    }
                     default -> jsonReader.skipValue();
                 }
             }
