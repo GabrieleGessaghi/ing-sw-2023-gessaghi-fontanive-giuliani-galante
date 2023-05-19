@@ -1,5 +1,6 @@
 package server.model;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import server.controller.observer.Event;
@@ -165,6 +166,9 @@ public class Game implements Savable, Observable {
         }
 
         nextPlayerIndex();
+        sendState(View.COMMON_CARDS);
+        sendState(View.BOARD);
+        sendState(View.CURRENT_PLAYER);
         //TODO: Save game
     }
 
@@ -207,6 +211,14 @@ public class Game implements Savable, Observable {
                     jsonObject.addProperty("player" + i, players[i].getNickname());
                     jsonObject.addProperty("points" + i, players[i].getPoints());
                 }
+                updateObservers(new Event(jsonObject.toString()));
+            }
+            case PLAYER_NICKNAMES -> {
+                JsonObject jsonObject = new JsonObject();
+                JsonArray jsonArray = new JsonArray();
+                for (Player player : players)
+                    jsonArray.add(player.getNickname());
+                jsonObject.add("nicknames", jsonArray);
                 updateObservers(new Event(jsonObject.toString()));
             }
             case COMMON_CARDS -> {

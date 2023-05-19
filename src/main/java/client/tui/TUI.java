@@ -150,6 +150,7 @@ public class TUI implements Client {
                     case "tiles" -> toPrint.append(printTiles(jsonReader));
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
+                    case "nicknames" -> toPrint.append(printNicknames(jsonReader));
                     default -> jsonReader.skipValue();
                 }
             }
@@ -331,7 +332,7 @@ public class TUI implements Client {
      * @return Personal card to be shown.
      * @throws IOException When there's an issue reading the json matrix.
      */
-    private StringBuilder printPersonalCard(JsonReader jsonReader) throws IOException{
+    private StringBuilder printPersonalCard(JsonReader jsonReader) throws IOException {
         StringBuilder toPrint = new StringBuilder();
         toPrint.append("\n").append("Personal card: \n").append(" 1  2  3  4  5\n");
         jsonReader.beginObject();
@@ -348,6 +349,23 @@ public class TUI implements Client {
         }
         jsonReader.endObject();
         toPrint.append("\n");
+        return toPrint;
+    }
+
+    /**
+     * Prints every player's nickname in the order they connected to the server, which is the order they will play in.
+     * @param jsonReader Reads json input.
+     * @return The list of names to be shown.
+     * @author Giorgio Massimo Fontanive
+     */
+    private StringBuilder printNicknames(JsonReader jsonReader) throws IOException {
+        StringBuilder toPrint = new StringBuilder();
+        toPrint.append("The players, in order, are: \n");
+        jsonReader.beginArray();
+        while (jsonReader.hasNext()) {
+            toPrint.append(jsonReader.nextString()).append("\n");
+        }
+        jsonReader.endArray();
         return toPrint;
     }
 

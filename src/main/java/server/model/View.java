@@ -9,5 +9,6 @@ public enum View {
     CURRENT_PLAYER,
     COMMON_CARDS,
     PLAYERS_POINTS,
-    CHAT
+    CHAT,
+    PLAYER_NICKNAMES
 }

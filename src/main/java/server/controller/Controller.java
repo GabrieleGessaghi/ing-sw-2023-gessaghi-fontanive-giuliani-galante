@@ -4,6 +4,7 @@ import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
+import server.model.View;
 import server.view.ClientHandler;
 
 import java.util.*;
@@ -40,6 +41,12 @@ public class Controller implements Observer, Runnable {
             ChatController chatController = new ChatController(clientHandlers);
             for (ClientHandler c : clientHandlers)
                 c.registerObserver(chatController);
+
+            //Show initial information
+            game.sendState(View.PLAYER_NICKNAMES);
+            game.sendState(View.COMMON_CARDS);
+            game.sendState(View.BOARD);
+            game.sendState(View.CURRENT_PLAYER);
 
             //Manages turns
             while (!game.gameOver()) {
@@ -79,8 +86,9 @@ public class Controller implements Observer, Runnable {
     }
 
     /**
-     *
-     * @param clientHandler
+     * Adds a new client and starts their own ClientHandler thread
+     * @param clientHandler The client handler that just connected to the server.
+     * @authro Giorgio Massimo Fontanive
      */
     public synchronized void addClient(ClientHandler clientHandler) {
         if (!isGameRunning && creationController.isSpotAvailable()) {
