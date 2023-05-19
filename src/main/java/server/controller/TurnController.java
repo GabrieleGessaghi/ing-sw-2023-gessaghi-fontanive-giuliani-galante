@@ -30,7 +30,6 @@ public class TurnController implements Observer {
         selectedColumn = -1;
         currentClientHandler = currentClient;
         this.game = game;
-        //newTurn();
     }
 
     /**
@@ -56,10 +55,6 @@ public class TurnController implements Observer {
     }
 
     public synchronized void newTurn() {
-        game.sendState(View.COMMON_CARDS);
-        game.sendState(View.BOARD);
-        game.sendState(View.CURRENT_PLAYER);
-
         currentClientHandler.requestInput(Prompt.TOKENS);
         while (selectedTiles == null) {
             try {
