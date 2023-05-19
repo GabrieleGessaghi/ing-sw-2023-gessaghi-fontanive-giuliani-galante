@@ -17,6 +17,10 @@ public class CreationController implements Observer {
     private int playersNumber;
     private final ArrayList<String> playersNicknames;
 
+    /**
+     * Class constructor
+     * @author Niccolò Giuliani
+     */
     public CreationController(){
         playersNicknames = new ArrayList<>();
         playersNumber = -1;
@@ -24,6 +28,8 @@ public class CreationController implements Observer {
 
     @Override
     public void update(Event event) {
+        int lastClientIndex = -1;
+        String lastClientNickname = null;
         String jsonMessage = event.jsonMessage();
         String field;
         JsonReader jsonReader;
@@ -34,19 +40,25 @@ public class CreationController implements Observer {
                 field = jsonReader.nextName();
                 switch (field) {
                     case "playersNumber" -> setPlayerNumber(jsonReader.nextInt());
-                    case "nickname" -> addPlayer(jsonReader.nextString());
+                    case "nickname" -> lastClientNickname = addPlayer(jsonReader.nextString());
+                    case "index" -> lastClientIndex = jsonReader.nextInt();
                     default -> jsonReader.skipValue();
                 }
             }
             jsonReader.endObject();
+
+            //Updates the client handler's nickname
+            if (lastClientNickname != null && Controller.findClientHandler(lastClientIndex) != null)
+                Controller.findClientHandler(lastClientIndex).nickname = lastClientNickname;
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     /**
-     * Getter of the state of the game (ready or not ready)
-     * @return true if game is ready
+     * Getter of the state of the game (ready or not ready).
+     * @return True if game is ready.
      * @author Niccolò Giuliani
      */
     public boolean isGameReady(){
@@ -63,8 +75,8 @@ public class CreationController implements Observer {
     }
 
     /**
-     * method to create the Game
-     * @return the Game created
+     * Method to create the Game.
+     * @return The Game created.
      * @author Niccolò Giuliani
      */
     public Game createGame(){
@@ -72,8 +84,8 @@ public class CreationController implements Observer {
     }
 
     /**
-     * set the number of the players
-     * @param playersNumber number of players
+     * Set the number of the players.
+     * @param playersNumber Number of players.
      * @author Niccolò Giuliani
      */
     private void setPlayerNumber(int playersNumber){
@@ -81,11 +93,22 @@ public class CreationController implements Observer {
     }
 
     /**
-     * method to add a player
-     * @param nickname nickname of the player to add
-     * @author Niccolò Giuliani
+     * Method to add a player and avoid name duplicates.
+     * @param nickname Nickname of the player to add.
+     * @author Giorgio Massimo Fontanive
      */
-    private void addPlayer(String nickname) {
-        playersNicknames.add(nickname);
+    private String addPlayer(String nickname) {
+        String newNickname;
+        if (!playersNicknames.contains(nickname))
+            newNickname = nickname;
+        else {
+            int i = 0;
+            for (String s : playersNicknames)
+                if (s.equals(nickname))
+                    i++;
+            newNickname = nickname + i;
+        }
+        playersNicknames.add(newNickname);
+        return newNickname;
     }
 }

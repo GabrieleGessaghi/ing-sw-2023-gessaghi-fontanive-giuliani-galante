@@ -15,7 +15,9 @@ import java.util.List;
  * @author Niccolò Giuliani
  */
 public abstract class ClientHandler implements Observer, Observable, Runnable {
-    protected String nickname;
+
+    public String nickname;
+    public int index;
     protected List<Observer> observers;
     protected boolean isConnected;
 
@@ -57,23 +59,25 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         sendOutput(jsonObject.toString());
     }
 
-    public String getNickname() {return nickname;}
-
     public boolean isConnected() {
         return isConnected;
     }
 
     @Override
     public void updateObservers(Event event) {
+        //Finds the client's nickname
+//        String jsonMessage = event.jsonMessage();
+//        JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
+//        if (jsonObject.has("nickname"))
+//            nickname = jsonObject.get("nickname").getAsString();
+
+        //Adds this clientHandler's index to the message
         String jsonMessage = event.jsonMessage();
         JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
-
-        //Finds the client's nickname
-        if (jsonObject.has("nickname"))
-            nickname = jsonObject.get("nickname").getAsString();
+        jsonObject.addProperty("index", index);
 
         for(Observer o : observers)
-            o.update(event);
+            o.update(new Event(jsonMessage));
     }
 
     @Override

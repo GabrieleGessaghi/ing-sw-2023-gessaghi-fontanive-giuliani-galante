@@ -5,7 +5,6 @@ import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
-import server.model.View;
 import server.model.exceptions.IllegalColumnException;
 import server.model.exceptions.IllegalMoveException;
 import server.view.ClientHandler;

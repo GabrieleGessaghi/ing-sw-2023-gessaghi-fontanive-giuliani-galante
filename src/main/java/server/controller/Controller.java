@@ -14,16 +14,19 @@ import java.util.*;
  * @author Giorgio Massimo Fontanive
  */
 public class Controller implements Observer, Runnable {
+    public static List<ClientHandler> clientHandlers;
     private boolean isGameRunning;
     private CreationController creationController;
     private TurnController turnController;
-    private List<ClientHandler> clientHandlers;
     private Game game;
 
     public Controller() {
         reset();
     }
 
+    /**
+     * Manages turns by sending requests and updates to client handlers.
+     */
     @Override
     public synchronized void run() {
         int i = 0;
@@ -59,11 +62,8 @@ public class Controller implements Observer, Runnable {
                     currentClient.registerObserver(turnController);
                     turnController.newTurn();
                     i++;
-                } else {
-
                 }
             }
-
             reset();
         }
     }
@@ -99,7 +99,7 @@ public class Controller implements Observer, Runnable {
 
             //Requests the players number if it's the first player added
             if (clientHandlers.size() == 1) {
-                while (clientHandlers.get(0).getNickname() == null)
+                while (clientHandlers.get(0).nickname == null)
                     try {
                         this.wait();
                     } catch (InterruptedException e) {
@@ -120,5 +120,18 @@ public class Controller implements Observer, Runnable {
         turnController = null;
         creationController = new CreationController();
         clientHandlers = new ArrayList<>();
+    }
+
+    /**
+     * Finds a client handler by its index
+     * @param index The wanted client handler's index.
+     * @return A reference to the requested client handler or null.
+     * @author Giorgio Massimo Fontanive
+     */
+    public static ClientHandler findClientHandler(int index) {
+        for (ClientHandler clientHandler : clientHandlers)
+            if (clientHandler.index == index)
+                return clientHandler;
+        return null;
     }
 }

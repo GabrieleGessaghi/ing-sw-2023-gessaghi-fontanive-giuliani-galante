@@ -17,19 +17,28 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
-//TODO: Show player nicknames at start
-//TODO: Ensure there are no duplicated nicknames
-//TODO: SEND NAME OF CARDS TO GUI
 /**
  * Accepts new connections and starts the game controller.
  * @author Giorgio Massimo Fontanive
  */
 public class Server {
     private static Controller controller;
+    private final AtomicInteger connectionsCounter;
 
+    /**
+     * Class constructor.
+     */
+    public Server() {
+        connectionsCounter = new AtomicInteger(0);
+    }
+
+    /**
+     * Loads the configuration file, starts the controller and the connection acceptance methods.
+     */
     public static void main(String[] args) throws IOException {
         ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         controller = new Controller();
@@ -39,6 +48,10 @@ public class Server {
         new Thread(server::acceptConnectionsRMI).start();
     }
 
+    /**
+     * Keeps accepting new TCP connections and creates a new client handler for each.
+     * @author Giorgio Massimo Fontanive
+     */
     public void acceptConnectionsTCP() {
         ServerSocket serverSocket;
         try {
@@ -52,7 +65,8 @@ public class Server {
                 socket = serverSocket.accept();
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                ClientHandlerTCP clientHandler = new ClientHandlerTCP(socket, dataInputStream, dataOutputStream);
+                ClientHandlerTCP clientHandler = new ClientHandlerTCP(dataInputStream, dataOutputStream);
+                clientHandler.index = connectionsCounter.get();
                 new Thread(clientHandler).start();
                 controller.addClient(clientHandler);
             } catch (IOException e) {
@@ -63,11 +77,16 @@ public class Server {
                         throw new RuntimeException(ex);
                     }
                 }
-                System.out.println("One TCP connection lost.");
+                System.out.println("TCP connection issue.");
             }
+            connectionsCounter.incrementAndGet();
         }
     }
 
+    /**
+     * Keeps accepting new RMI connections by binding a new remote clientHandler every time a new connection is established.
+     * @author Giorgio Massimo Fontanive
+     */
     public void acceptConnectionsRMI() {
         int connectionsIndex = 0;
         Registry registry;
@@ -78,6 +97,7 @@ public class Server {
         }
         List<ClientHandlerRMI> clientHandlersRMI = new ArrayList<>();
         clientHandlersRMI.add(new ClientHandlerRMI());
+        clientHandlersRMI.get(0).index = connectionsCounter.get();
         while (true) {
             try {
                 ClientUsable stub = (ClientUsable) UnicastRemoteObject.exportObject(clientHandlersRMI.get(connectionsIndex),0);
@@ -89,12 +109,15 @@ public class Server {
 
                 controller.addClient(clientHandlersRMI.get(connectionsIndex));
                 clientHandlersRMI.add(new ClientHandlerRMI());
+                clientHandlersRMI.get(connectionsIndex).index = connectionsCounter.get();
                 connectionsIndex++;
             } catch (RemoteException | InterruptedException ex) {
                 throw new RuntimeException(ex);
             }
 
             //TODO: Check if any of the RMI connections are closed and unbind them
+
+            connectionsCounter.incrementAndGet();
         }
     }
 }

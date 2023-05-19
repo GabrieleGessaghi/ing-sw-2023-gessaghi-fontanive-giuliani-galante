@@ -94,7 +94,7 @@ public class CommonCard extends Card {
     @Override
     public JsonObject getState() {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("objectiveType", name.ordinal());
+        jsonObject.addProperty("cardIndex", name.ordinal());
         jsonObject.addProperty("objectiveDescription", objective.getDescription());
         jsonObject.addProperty("numberOfTokensLeft", numberOfTokensLeft);
         jsonObject.addProperty("nextPointsAvailable", COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft]);

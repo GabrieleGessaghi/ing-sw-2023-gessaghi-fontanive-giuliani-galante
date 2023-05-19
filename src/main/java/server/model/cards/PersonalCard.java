@@ -99,6 +99,7 @@ public class PersonalCard extends Card {
             for (int j = 0; j < SHELF_COLUMNS; j++)
                 correctTilesIndex[i][j] = correctTiles[i][j].ordinal();
         jsonObject.add("correctTiles", JsonTools.createJsonMatrix(correctTilesIndex));
+        jsonObject.addProperty("cardIndex", index);
         return jsonObject;
     }
 
