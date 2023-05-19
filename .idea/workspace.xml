@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented Chat in TUI">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="gui first player connceted dialog for server players number request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/Publisher_material/Icon 50x50px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/Publisher_material/Icon50x50px.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,13 +237,6 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-    </task>
-    <task id="LOCAL-00137" summary="Finished implementing NetworkHandler">
-      <created>1683024544807</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1683024544808</updated>
     </task>
     <task id="LOCAL-00138" summary="Added NetworkHandler implementation to Client">
       <created>1683025109318</created>
@@ -583,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684421426494</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <task id="LOCAL-00186" summary="gui first player connceted dialog for server players number request">
+      <created>1684494584728</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1684494584728</updated>
+    </task>
+    <option name="localTasksCounter" value="187" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +615,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed the deadlock" />
     <MESSAGE value="TCP should be finally mostly hopefully working" />
     <MESSAGE value="Optimized RMI connection" />
     <MESSAGE value="Getting closer to fix RMI" />
@@ -642,7 +639,8 @@
     <MESSAGE value="Added random picture for each tile" />
     <MESSAGE value="Changed the way TUI gets user input in order to implement the chat" />
     <MESSAGE value="Implemented Chat in TUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Chat in TUI" />
+    <MESSAGE value="gui first player connceted dialog for server players number request" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui first player connceted dialog for server players number request" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

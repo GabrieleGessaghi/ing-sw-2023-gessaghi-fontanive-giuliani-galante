@@ -128,3 +128,9 @@
     -fx-background-size: 100% 100%;
     -fx-background-position: center center;
 }
+
+.playerDialog {
+    -fx-background-image: url("assets/misc/base_pagina2.jpg");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}

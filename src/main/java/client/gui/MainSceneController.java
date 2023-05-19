@@ -14,7 +14,9 @@ import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import server.controller.Prompt;
@@ -46,9 +48,13 @@ public class MainSceneController implements Client, Initializable {
                     String [] arrayData = {"Two (2)", "Three (3)", "Four (4)"};
                     List<String> dialogData = Arrays.asList(arrayData);
                     ChoiceDialog dialog = new ChoiceDialog(dialogData.get(0),dialogData);
-                    dialog.setTitle("Game player settings");
+                    dialog.setTitle("Game settings");
+                    //dialog.setGraphic(new ImageView(this.getClass().getResource("/assets/Publisher_material/Icon50x50px.png").toString()));
+                    dialog.setGraphic(null);
                     dialog.setHeaderText("Select the number of players: ");
-
+                    DialogPane dialogPane = dialog.getDialogPane();
+                    dialogPane.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
+                    dialogPane.getStyleClass().add("playerDialog");
                     Optional<String> result = dialog.showAndWait();
                     int numberOfPlayers = 0;
                     if (result.isPresent()) {
