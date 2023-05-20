@@ -62,6 +62,8 @@ public class MainSceneController implements Client, Initializable {
         //TODO: Go back if there's an error
 
         tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+        for (int[] i : tokenSelection)
+            Arrays.fill(i, -1);
         tokensSelected = 0;
         columnSelection = -1;
 
@@ -75,15 +77,16 @@ public class MainSceneController implements Client, Initializable {
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.add("selectedTiles", JsonTools.createJsonMatrix(tokenSelection));
                 networkHandler.sendInput(jsonObject.toString());
-                tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+                for (int[] i : tokenSelection)
+                    Arrays.fill(i, -1);
                 tokensSelected = 0;
                 selectingTokens = false;
+                System.out.println(jsonObject);
             }
             if (selectingColumn) {
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("selectedColumn", columnSelection);
                 networkHandler.sendInput(jsonObject.toString());
-                System.out.println(jsonObject);
                 columnSelection = -1;
                 selectingColumn = false;
             }
@@ -96,7 +99,7 @@ public class MainSceneController implements Client, Initializable {
             node.setOnMouseClicked(e -> {
                 int row = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
                 int column = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
-                tokenSelection[column][row] = tokensSelected;
+                tokenSelection[row][column] = tokensSelected;
                 tokensSelected++;
             });
         for (Node node : shelf.getChildren())
@@ -228,7 +231,8 @@ public class MainSceneController implements Client, Initializable {
      */
     private void requestTiles() {
         Platform.runLater(() -> {
-            tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+            for (int[] i : tokenSelection)
+                Arrays.fill(i, -1);
             tokensSelected = 0;
             selectingTokens = true;
             messages.setText("It's your turn!");

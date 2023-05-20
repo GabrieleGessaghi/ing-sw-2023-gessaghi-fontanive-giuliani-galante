@@ -21,7 +21,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
-//TODO: Write json network protocol documentation
 //TODO: Handle wrong ips client side
 //TODO: Separate token and column selection
 //TODO: Allow player to see specific things
