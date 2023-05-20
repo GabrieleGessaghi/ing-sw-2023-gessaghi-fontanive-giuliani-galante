@@ -97,16 +97,8 @@
          </image>
       </ImageView>
       <Button layoutX="664.0" layoutY="702.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="425.0" text="Chat" />
-      <ImageView fx:id="common_goal1" fitHeight="150.0" fitWidth="200.0" layoutX="63.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/common goal cards/1.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="common_goal2" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/common goal cards/2.jpg" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="common_goal1" fitHeight="150.0" fitWidth="200.0" layoutX="63.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="common_goal2" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Personal_goal" fitHeight="252.0" fitWidth="394.0" layoutX="377.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="61.0" layoutY="579.0" prefHeight="36.0" prefWidth="242.0" text="Common Goals" textFill="#cf8c23">
          <font>

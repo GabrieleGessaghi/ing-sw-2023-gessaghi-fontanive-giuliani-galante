@@ -26,6 +26,8 @@ import java.net.URL;
 import java.util.*;
 
 public class MainSceneController implements Client, Initializable {
+    public ImageView common_goal1;
+    public ImageView common_goal2;
     @FXML
     private GridPane board;
     @FXML
@@ -142,7 +144,28 @@ public class MainSceneController implements Client, Initializable {
                     //case "isFirstPlayer" ->
                     //case "playerIndex" ->
                     //case "currentPlayerNickname" ->
-                    //case "objectiveDescription" ->
+                    //case "commonCard1" ->{
+                     /*   jsonReader.beginObject();
+                        while(jsonReader.hasNext()){
+                            field = jsonReader.nextName();
+                            if(field.equals("cardIndex"))
+                                setCommonCard(jsonReader.nextInt(),false);
+                            else
+                                jsonReader.skipValue();
+                        }
+                        jsonReader.endObject();
+                    }*/
+                    //case "commonCard2" ->{
+                        /*jsonReader.beginObject();
+                        while(jsonReader.hasNext()){
+                            field = jsonReader.nextName();
+                            if(field.equals("cardIndex"))
+                                setCommonCard(jsonReader.nextInt(),true);
+                            else
+                                jsonReader.skipValue();
+                        }
+                       jsonReader.endObject();
+                    }*/
                     //case "numberOfTokensLeft" ->
                     //case "nextPointsAvailable" ->
                     case "message" -> {
@@ -186,6 +209,15 @@ public class MainSceneController implements Client, Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void setCommonCard(int i, boolean b) {
+        ImageView comm;
+        if(b)
+            comm = common_goal2;
+        else
+            comm =  common_goal1;
+        comm.setImage((new Image("assets/common_goal_cards/"+i+".jpg")));
     }
 
     @Override
