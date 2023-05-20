@@ -91,7 +91,7 @@
             <Button layoutX="21.0" layoutY="442.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="122.0" text="Nickname1" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="332.0" fitWidth="331.0" layoutX="40.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="332.0" fitWidth="331.0" layoutX="40.0" layoutY="110.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/boards/bookshelf_orth.png" />
          </image>

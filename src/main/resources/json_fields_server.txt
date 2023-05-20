@@ -1,0 +1,37 @@
+message
+requestNickname
+requestPlayerNumber
+requestTokens
+requestColumn
+game:
+    numberOfPlayers
+    currentPlayerIndex
+    currentPlayerNickname
+    isLastRound
+    winnerNickname
+    winnerPoints
+    nicknames (array)
+    board:
+        tiles (matrice)
+        usableTiles (matrice)
+    commonCard + i:
+        cardIndex
+        objectiveDescription
+        numberOfTokensLeft
+        nextPointsAvailable
+    player + i:
+        nickname
+        totalPoints
+        commonCardPoints
+        isFirstPlayer
+        commonCard + i: (come sopra)
+        personalCard:
+            cardIndex
+            correctTiles (matrice)
+        shelf:
+            shelfTiles (matrice)
+(chat)
+publicMessage
+privateMessageSender
+privateMessageReceiver
+privateMessage

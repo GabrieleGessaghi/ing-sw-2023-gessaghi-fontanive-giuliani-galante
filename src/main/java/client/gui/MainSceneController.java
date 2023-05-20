@@ -83,6 +83,7 @@ public class MainSceneController implements Client, Initializable {
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("selectedColumn", columnSelection);
                 networkHandler.sendInput(jsonObject.toString());
+                System.out.println(jsonObject);
                 columnSelection = -1;
                 selectingColumn = false;
             }
@@ -99,7 +100,9 @@ public class MainSceneController implements Client, Initializable {
                 tokensSelected++;
             });
         for (Node node : shelf.getChildren())
-            node.setOnMouseClicked(e -> columnSelection = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node));
+            node.setOnMouseClicked(e -> {
+                columnSelection = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
+            });
     }
 
     @Override

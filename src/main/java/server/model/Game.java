@@ -119,6 +119,16 @@ public class Game implements Savable, Observable {
     }
 
     /**
+     * Checks whether there already was a save game, meaning the server crashed in the meantime
+     * @author Gabriele Gessaghi
+     * @return True if the file containing the game state is found
+     */
+    public boolean isThereGameSaved() {
+
+        return false;
+    }
+
+    /**
      * Cycles the player index and checks whether the game is over.
      * @author Giorgio Massimo Fontainve
      */
@@ -162,6 +172,7 @@ public class Game implements Savable, Observable {
             jsonObject.addProperty("message", "This is the last round.\n" +
                     players[currentPlayerIndex].getNickname() + " has filled their shelf!");
         }
+        //TODO: Check these json messages
 
         nextPlayerIndex();
         sendState(View.COMMON_CARDS);
@@ -203,14 +214,6 @@ public class Game implements Savable, Observable {
         switch (view) {
             case BOARD -> updateObservers(new Event(board.getState().toString()));
             case CURRENT_PLAYER -> updateObservers(new Event(players[currentPlayerIndex].getState().toString()));
-            case PLAYERS_POINTS -> {
-                JsonObject jsonObject = new JsonObject();
-                for (int i = 0; i < players.length; i++) {
-                    jsonObject.addProperty("player" + i, players[i].getNickname());
-                    jsonObject.addProperty("points" + i, players[i].getPoints());
-                }
-                updateObservers(new Event(jsonObject.toString()));
-            }
             case PLAYER_NICKNAMES -> {
                 JsonObject jsonObject = new JsonObject();
                 JsonArray jsonArray = new JsonArray();
@@ -259,6 +262,7 @@ public class Game implements Savable, Observable {
     public JsonObject getState() {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("numberOfPlayers", numberOfPlayers);
+        jsonObject.addProperty("isLastRound", isLastRound);
         jsonObject.addProperty("currentPlayerIndex", currentPlayerIndex);
         jsonObject.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
         jsonObject.add("board", board.getState());
@@ -273,6 +277,7 @@ public class Game implements Savable, Observable {
     public void loadState(JsonObject jsonObject) {
         Map<String, JsonElement> elements = jsonObject.asMap();
         numberOfPlayers = elements.get("numberOfPlayers").getAsInt();
+        isLastRound = elements.get("isLastRound").getAsBoolean();
         board = new Board(numberOfPlayers);
         players = new Player[numberOfPlayers];
         currentPlayerIndex = elements.get("currentPlayerIndex").getAsInt();

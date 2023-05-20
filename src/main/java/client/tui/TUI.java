@@ -114,7 +114,7 @@ public class TUI implements Client {
         String message = scn.nextLine();
 
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("nickname", nickname);
+        jsonObject.addProperty("senderNickname", nickname);
         jsonObject.addProperty("message", message);
         if (!receiver.equals("public")) {
             jsonObject.addProperty("receiverNickname", receiver);

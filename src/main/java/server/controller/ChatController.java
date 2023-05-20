@@ -48,7 +48,8 @@ public class ChatController implements Observer {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "nickname" -> currentMessageSender = jsonReader.nextString();
+                    //TODO: Change this in client
+                    case "senderNickname" -> currentMessageSender = jsonReader.nextString();
                     case "message" -> message = jsonReader.nextString();
                     case "receiverNickname" -> currentMessageReceiver = jsonReader.nextString();
                     default -> jsonReader.skipValue();
