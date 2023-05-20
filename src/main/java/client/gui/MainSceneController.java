@@ -289,30 +289,30 @@ public class MainSceneController implements Client, Initializable {
                 int pictureNumber = rng.nextInt(3) + 1;
                 if(node != null) {
                     switch (tokens[i][j]) {
-                        case 0 -> node.setVisible(false);
+                        case 0 -> node.setOpacity(0);
                         case 1 -> {
                             node.getStyleClass().add("cat" + pictureNumber);
-                            node.setVisible(true);
+                            node.setOpacity(1);
                         }
                         case 2 -> {
                             node.getStyleClass().add("book" + pictureNumber);
-                            node.setVisible(true);
+                            node.setOpacity(1);
                         }
                         case 3 -> {
                             node.getStyleClass().add("toy" + pictureNumber);
-                            node.setVisible(true);
+                            node.setOpacity(1);
                         }
                         case 4 -> {
                             node.getStyleClass().add("trophy" + pictureNumber);
-                            node.setVisible(true);
+                            node.setOpacity(1);
                         }
                         case 5 -> {
                             node.getStyleClass().add("frame" + pictureNumber);
-                            node.setVisible(true);
+                            node.setOpacity(1);
                         }
                         case 6 -> {
                             node.getStyleClass().add("plant" + pictureNumber);
-                            node.setVisible(true);
+                            node.setOpacity(1);
                         }
                     }
                 }
