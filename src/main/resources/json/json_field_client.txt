@@ -1,0 +1,15 @@
+nickname
+playersNumber
+selectedTiles
+selectedColumn
+requestBoard
+requestShelf
+requestPersonalCard
+requestLeaderboard
+requestCommonCards
+requestPlayer
+requestedPlayerNickname
+(chat)
+senderNickname
+message
+receiverNickname

@@ -229,6 +229,15 @@ public class Game implements Savable, Observable {
         }
     }
 
+    //TODO: Implement and document these 2
+    public JsonObject getView(View view) {
+        return null;
+    }
+
+    public JsonObject getView(String playerNickname) {
+        return null;
+    }
+
     /**
      * Changes the player's connection status.
      * @param playerNickname The player's nickname.

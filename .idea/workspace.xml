@@ -4,23 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added list of client-side and server-side possible json fields">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed issue with tile selection json message">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/ViewRequestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/11.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/8.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/common goal cards/back.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/common_goal_cards/back.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/configuration.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json_field_client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/json_field_client.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json_fields_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/json_fields_server.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +27,8 @@
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -92,6 +85,9 @@
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="controller.utilities.JsonTools" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/json" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="server" />
       <recent name="controller.observer" />
@@ -103,7 +99,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Graphics User Interface">
+  <component name="RunManager" selected="Application.Text User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -249,13 +245,6 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-    </task>
-    <task id="LOCAL-00144" summary="Update TCP to not deadlock">
-      <created>1683094178438</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1683094178438</updated>
     </task>
     <task id="LOCAL-00145" summary="Modified folder structure">
       <created>1683094354063</created>
@@ -593,13 +582,29 @@
       <option name="project" value="LOCAL" />
       <updated>1684583795834</updated>
     </task>
-    <option name="localTasksCounter" value="193" />
+    <task id="LOCAL-00193" summary="Fixed issue with tile selection json message">
+      <created>1684593529676</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1684593529676</updated>
+    </task>
+    <option name="localTasksCounter" value="194" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -615,19 +620,9 @@
         </entry>
       </map>
     </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="created MainScene javafx" />
     <MESSAGE value="added buttons on MainScene.fxml" />
     <MESSAGE value="Made progress on fixing RMI connection issues" />
     <MESSAGE value="Fixed single RMI client connection issue" />
@@ -652,7 +647,8 @@
     <MESSAGE value="Handles duplicated nicknames and sends cards indexes to clients at the start of the game" />
     <MESSAGE value="Fixed duplicated code and JSON parsing error in MainSceneController" />
     <MESSAGE value="Added messages label on top of main scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added messages label on top of main scene" />
+    <MESSAGE value="Fixed issue with tile selection json message" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue with tile selection json message" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -678,20 +674,20 @@
     <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>model.cards.concreteobjectives.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$ConfigurationsTest.ic" NAME="ConfigurationsTest Coverage Results" MODIFIED="1683044723710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>server.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$model_in_6.ic" NAME="model in 6 Coverage Results" MODIFIED="1683035690174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1683049684596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1683181066105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$ConfigurationsTest.ic" NAME="ConfigurationsTest Coverage Results" MODIFIED="1683044723710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$model_in_6.ic" NAME="model in 6 Coverage Results" MODIFIED="1683035690174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_cards_concreteobjectives_in_6.ic" NAME="server.model.cards.concreteobjectives in 6 Coverage Results" MODIFIED="1683049588320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.cards.concreteobjectives.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
