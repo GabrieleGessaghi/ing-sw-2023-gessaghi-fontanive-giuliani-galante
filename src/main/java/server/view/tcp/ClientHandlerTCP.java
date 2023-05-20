@@ -17,7 +17,6 @@ public class ClientHandlerTCP extends ClientHandler {
     private final InputStream inputStream;
     private final OutputStream outputStream;
 
-
     /**
      * Class constructor. The server accepting new connections creates this object for every new connection.
      * @author Niccolò Giuliani

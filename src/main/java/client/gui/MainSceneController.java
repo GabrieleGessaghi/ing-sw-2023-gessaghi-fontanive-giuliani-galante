@@ -26,15 +26,18 @@ import java.util.*;
 
 import static server.controller.utilities.JsonTools.readMatrix;
 
-
 public class MainSceneController implements Client, Initializable {
-
-    public GridPane shelf;
-    public Label points;
-    public ImageView Personal_goal;
-    NetworkHandler networkHandler;
     @FXML
     private GridPane board;
+    @FXML
+    public GridPane shelf;
+    public Label points;
+    @FXML
+    public Label messages;
+    public ImageView Personal_goal;
+    NetworkHandler networkHandler;
+    int[][] tileSelection;
+    int columnSelection;
 
     @Override
     public void requestInput(Prompt prompt) {
@@ -45,10 +48,8 @@ public class MainSceneController implements Client, Initializable {
                 networkHandler.sendInput(jsonObject.toString());
             }
             case PLAYERSNUMBER -> requestPlayersNumber();
-            case TOKENS -> {
-            }
-            case COLUMN -> {
-            }
+            case TOKENS -> requestTiles();
+            case COLUMN -> requestColumn();
         }
     }
 
@@ -56,7 +57,7 @@ public class MainSceneController implements Client, Initializable {
     public void showOutput(String jsonMessage) {
         String tempNickname = "";
         int[][] tempTiles = null;
-        int[][] tempPCard = null;
+        int tempPersonalCard = -1;
         JsonReader jsonReader = new JsonReader(new StringReader(jsonMessage));
         String field;
         StringBuilder toPrint = new StringBuilder();
@@ -74,19 +75,17 @@ public class MainSceneController implements Client, Initializable {
                     //case "objectiveDescription" ->
                     //case "numberOfTokensLeft" ->
                     //case "nextPointsAvailable" ->
-                    //case "message" ->
+                    case "message" -> messages.setText(jsonReader.nextString());
                     case "personalCard" -> {
                         jsonReader.beginObject();
                         while(jsonReader.hasNext()) {
                             field = jsonReader.nextName();
-                            switch(field) {
-                                case "cardIndex" -> setPersonalCard(jsonReader.nextInt());
-                                default -> jsonReader.skipValue();
-                            }
-
+                            if (field.equals("cardIndex"))
+                                tempPersonalCard = jsonReader.nextInt();
+                            else
+                                jsonReader.skipValue();
                         }
                         jsonReader.endObject();
-
                     }
                     case "tiles" -> updateTokens(readMatrix(jsonReader), false);
                     case "shelf" -> {
@@ -100,8 +99,12 @@ public class MainSceneController implements Client, Initializable {
                 }
             }
             jsonReader.endObject();
-            if(tempNickname.equals(GUI.playerNickname))
-                updateTokens(tempTiles, true);
+            if(tempNickname.equals(GUI.playerNickname)) {
+                if (tempTiles != null)
+                    updateTokens(tempTiles, true);
+                if (tempPersonalCard != -1)
+                    setPersonalCard(tempPersonalCard);
+            }
             System.out.print(toPrint);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -125,7 +128,6 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
-
     @Override
     public void setNetworkHandler(NetworkHandler networkHandler) {
         this.networkHandler = networkHandler;
@@ -140,6 +142,9 @@ public class MainSceneController implements Client, Initializable {
         networkHandler.setHost(GUI.host);
         networkHandler.setClient(this);
         new Thread(networkHandler).start();
+        //TODO: Go back if there's an error
+        tileSelection = null;
+        columnSelection = -1;
     }
 
     /**
@@ -175,6 +180,26 @@ public class MainSceneController implements Client, Initializable {
         });
     }
 
+    /**
+     *
+     */
+    private void requestTiles() {
+
+    }
+
+    /**
+     *
+     */
+    private void requestColumn() {
+
+    }
+
+    /**
+     *
+     * @param tokens
+     * @param choice
+     * @author Niccolò Giuliani
+     */
     private void updateTokens(int[][] tokens, boolean choice) {
         Node node;
         for(int i = 0; i < tokens.length; i++){
@@ -253,7 +278,6 @@ public class MainSceneController implements Client, Initializable {
                 throw new RuntimeException(ex);
             }
         }
-
         return result;
     }
 }
