@@ -7,9 +7,33 @@
     <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed duplicated code and JSON parsing error in MainSceneController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals10.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals11.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals12.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals7.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals8.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/Personal_Goals9.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/Personal_Goals9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/back.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/back.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/front_EMPTY.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/front_EMPTY.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/personal goal cards/old/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/personal_goal_cards/old/9.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +116,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Text User Interface">
+  <component name="RunManager" selected="Application.Graphics User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -589,15 +613,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="User">
@@ -609,6 +624,15 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>
@@ -667,20 +691,20 @@
     <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>model.cards.concreteobjectives.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>server.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1683181066105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>server.model.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$ConfigurationsTest.ic" NAME="ConfigurationsTest Coverage Results" MODIFIED="1683044723710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$model_in_6.ic" NAME="model in 6 Coverage Results" MODIFIED="1683035690174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$model_in_6.ic" NAME="model in 6 Coverage Results" MODIFIED="1683035690174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1683049684596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_cards_concreteobjectives_in_6.ic" NAME="server.model.cards.concreteobjectives in 6 Coverage Results" MODIFIED="1683049588320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.cards.concreteobjectives.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

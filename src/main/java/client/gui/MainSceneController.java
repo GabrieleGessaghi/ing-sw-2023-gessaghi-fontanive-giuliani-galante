@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.StageStyle;
 import server.controller.Prompt;
@@ -22,13 +24,14 @@ import java.io.StringReader;
 import java.net.URL;
 import java.util.*;
 
-import static server.controller.utilities.ConfigLoader.*;
 import static server.controller.utilities.JsonTools.readMatrix;
 
 
 public class MainSceneController implements Client, Initializable {
 
     public GridPane shelf;
+    public Label points;
+    public ImageView Personal_goal;
     NetworkHandler networkHandler;
     @FXML
     private GridPane board;
@@ -53,6 +56,7 @@ public class MainSceneController implements Client, Initializable {
     public void showOutput(String jsonMessage) {
         String tempNickname = "";
         int[][] tempTiles = null;
+        int[][] tempPCard = null;
         JsonReader jsonReader = new JsonReader(new StringReader(jsonMessage));
         String field;
         StringBuilder toPrint = new StringBuilder();
@@ -63,7 +67,7 @@ public class MainSceneController implements Client, Initializable {
                 field = jsonReader.nextName();
                 switch (field) {
                     case "nickname" -> tempNickname = jsonReader.nextString();
-                    //case "totalPoints" ->
+                    case "totalPoints" -> points.setText(String.valueOf(jsonReader.nextInt()));
                     //case "isFirstPlayer" ->
                     //case "playerIndex" ->
                     //case "currentPlayerNickname" ->
@@ -71,7 +75,19 @@ public class MainSceneController implements Client, Initializable {
                     //case "numberOfTokensLeft" ->
                     //case "nextPointsAvailable" ->
                     //case "message" ->
-                    //case "personalCard" ->
+                    case "personalCard" -> {
+                        jsonReader.beginObject();
+                        while(jsonReader.hasNext()) {
+                            field = jsonReader.nextName();
+                            switch(field) {
+                                case "cardIndex" -> setPersonalCard(jsonReader.nextInt());
+                                default -> jsonReader.skipValue();
+                            }
+
+                        }
+                        jsonReader.endObject();
+
+                    }
                     case "tiles" -> updateTokens(readMatrix(jsonReader), false);
                     case "shelf" -> {
                         jsonReader.beginObject();
@@ -91,6 +107,24 @@ public class MainSceneController implements Client, Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    private void setPersonalCard(int i) {
+        switch(i){
+            case 1 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals.png"));
+            case 2 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals2.png"));
+            case 3 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals3.png"));
+            case 4 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals4.png"));
+            case 5 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals5.png"));
+            case 6 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals6.png"));
+            case 7 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals7.png"));
+            case 8 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals8.png"));
+            case 9 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals9.png"));
+            case 10 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals10.png"));
+            case 11 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals11.png"));
+            case 12 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals12.png"));
+        }
+    }
+
 
     @Override
     public void setNetworkHandler(NetworkHandler networkHandler) {
