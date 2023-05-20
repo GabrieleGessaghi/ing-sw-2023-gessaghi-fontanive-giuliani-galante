@@ -21,8 +21,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
-//TODO: Send all information at the beginning of new game
 //TODO: Write json network protocol documentation
+//TODO: Handle wrong ips client side
+//TODO: Separate token and column selection
+
+//TODO: Send all information at the beginning of new game
 
 /**
  * Accepts new connections and starts the game controller.

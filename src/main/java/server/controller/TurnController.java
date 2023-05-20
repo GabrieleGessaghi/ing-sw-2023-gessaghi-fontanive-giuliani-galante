@@ -62,6 +62,7 @@ public class TurnController implements Observer {
                 throw new RuntimeException(e);
             }
         }
+        System.out.println("Received tokens"); //
 
         currentClientHandler.requestInput(Prompt.COLUMN);
         while (selectedColumn == -1) {
@@ -71,6 +72,8 @@ public class TurnController implements Observer {
                 throw new RuntimeException(e);
             }
         }
+        System.out.println("Received column"); //
+
         if (isMatrixLegal() && isColumnLegal())
             finalizeTurn();
     }

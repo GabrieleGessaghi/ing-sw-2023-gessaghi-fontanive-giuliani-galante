@@ -15,7 +15,7 @@
    <children>
     <AnchorPane layoutX="601.0" layoutY="99.0" minHeight="0.0" minWidth="0.0" prefHeight="537.0" prefWidth="550.0" styleClass="livingroom">
          <children>
-            <GridPane id="board" fx:id="board" layoutX="25.0" layoutY="31.0" prefHeight="492.0" prefWidth="501.0">
+            <GridPane id="board" fx:id="board" layoutX="25.0" layoutY="23.0" prefHeight="492.0" prefWidth="501.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -302,5 +302,7 @@
             <Font name="Droid Serif" size="25.0" />
          </font>
       </Label>
+      <Button fx:id="cancel" layoutX="682.0" layoutY="668.0" mnemonicParsing="false" text="Cancel" visible="false" />
+      <Button fx:id="confirm" disable="true" layoutX="751.0" layoutY="668.0" mnemonicParsing="false" text="Confirm" visible="false" />
    </children>
 </AnchorPane>

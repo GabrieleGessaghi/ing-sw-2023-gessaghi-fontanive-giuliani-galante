@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.StageStyle;
 import server.controller.Prompt;
+import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
 
 import java.io.IOException;
@@ -24,20 +25,82 @@ import java.io.StringReader;
 import java.net.URL;
 import java.util.*;
 
-import static server.controller.utilities.JsonTools.readMatrix;
-
 public class MainSceneController implements Client, Initializable {
     @FXML
     private GridPane board;
     @FXML
-    public GridPane shelf;
-    public Label points;
+    private GridPane shelf;
     @FXML
-    public Label messages;
-    public ImageView Personal_goal;
+    private Label points;
+    @FXML
+    private Label messages;
+    @FXML
+    private Button cancel;
+    @FXML
+    private Button confirm;
+    @FXML
+    private ImageView Personal_goal;
     NetworkHandler networkHandler;
-    int[][] tileSelection;
+    int[][] tokenSelection;
+    int tokensSelected;
     int columnSelection;
+    boolean selectingTokens;
+    boolean selectingColumn;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        //Connects to the server
+        if (GUI.connectionType == 0)
+            setNetworkHandler(new NetworkHandlerTCP());
+        if (GUI.connectionType == 1)
+            setNetworkHandler(new NetworkHandlerRMI());
+        networkHandler.setHost(GUI.host);
+        networkHandler.setClient(this);
+        new Thread(networkHandler).start();
+
+        //TODO: Go back if there's an error
+
+        tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+        tokensSelected = 0;
+        columnSelection = -1;
+
+        //Add buttons functionalities
+        cancel.setOnMouseClicked(e -> {
+            tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+            tokensSelected = 0;
+        });
+        confirm.setOnMouseClicked(e -> {
+            if (selectingTokens) {
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.add("selectedTiles", JsonTools.createJsonMatrix(tokenSelection));
+                networkHandler.sendInput(jsonObject.toString());
+                tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+                tokensSelected = 0;
+                selectingTokens = false;
+            }
+            if (selectingColumn) {
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("selectedColumn", columnSelection);
+                networkHandler.sendInput(jsonObject.toString());
+                columnSelection = -1;
+                selectingColumn = false;
+            }
+            confirm.setDisable(true);
+            confirm.setVisible(false);
+            cancel.setVisible(false);
+            messages.setText("");
+        });
+        for (Node node : board.getChildren())
+            node.setOnMouseClicked(e -> {
+                int row = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
+                int column = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
+                tokenSelection[column][row] = tokensSelected;
+                tokensSelected++;
+            });
+        for (Node node : shelf.getChildren())
+            node.setOnMouseClicked(e -> columnSelection = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node));
+    }
 
     @Override
     public void requestInput(Prompt prompt) {
@@ -58,6 +121,7 @@ public class MainSceneController implements Client, Initializable {
         String tempNickname = "";
         int[][] tempTiles = null;
         int tempPersonalCard = -1;
+        int tempTotalPoints = -1;
         JsonReader jsonReader = new JsonReader(new StringReader(jsonMessage));
         String field;
         StringBuilder toPrint = new StringBuilder();
@@ -68,14 +132,17 @@ public class MainSceneController implements Client, Initializable {
                 field = jsonReader.nextName();
                 switch (field) {
                     case "nickname" -> tempNickname = jsonReader.nextString();
-                    case "totalPoints" -> points.setText(String.valueOf(jsonReader.nextInt()));
+                    case "totalPoints" -> tempTotalPoints = jsonReader.nextInt();
                     //case "isFirstPlayer" ->
                     //case "playerIndex" ->
                     //case "currentPlayerNickname" ->
                     //case "objectiveDescription" ->
                     //case "numberOfTokensLeft" ->
                     //case "nextPointsAvailable" ->
-                    case "message" -> messages.setText(jsonReader.nextString());
+                    case "message" -> {
+                        String nextString = jsonReader.nextString();
+                        Platform.runLater(() -> messages.setText(nextString));
+                    }
                     case "personalCard" -> {
                         jsonReader.beginObject();
                         while(jsonReader.hasNext()) {
@@ -87,7 +154,7 @@ public class MainSceneController implements Client, Initializable {
                         }
                         jsonReader.endObject();
                     }
-                    case "tiles" -> updateTokens(readMatrix(jsonReader), false);
+                    case "tiles" -> updateTokens(JsonTools.readMatrix(jsonReader), false);
                     case "shelf" -> {
                         jsonReader.beginObject();
                         while (jsonReader.hasNext())
@@ -99,11 +166,15 @@ public class MainSceneController implements Client, Initializable {
                 }
             }
             jsonReader.endObject();
+
+            //Updates some information only if it regards this player
             if(tempNickname.equals(GUI.playerNickname)) {
                 if (tempTiles != null)
                     updateTokens(tempTiles, true);
                 if (tempPersonalCard != -1)
                     setPersonalCard(tempPersonalCard);
+                if (tempTotalPoints != -1)
+                    points.setText(String.valueOf(tempTotalPoints));
             }
             System.out.print(toPrint);
         } catch (IOException e) {
@@ -111,40 +182,9 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
-    private void setPersonalCard(int i) {
-        switch(i){
-            case 1 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals.png"));
-            case 2 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals2.png"));
-            case 3 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals3.png"));
-            case 4 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals4.png"));
-            case 5 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals5.png"));
-            case 6 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals6.png"));
-            case 7 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals7.png"));
-            case 8 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals8.png"));
-            case 9 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals9.png"));
-            case 10 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals10.png"));
-            case 11 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals11.png"));
-            case 12 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals12.png"));
-        }
-    }
-
     @Override
     public void setNetworkHandler(NetworkHandler networkHandler) {
         this.networkHandler = networkHandler;
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (GUI.connectionType == 0)
-            setNetworkHandler(new NetworkHandlerTCP());
-        if (GUI.connectionType == 1)
-            setNetworkHandler(new NetworkHandlerRMI());
-        networkHandler.setHost(GUI.host);
-        networkHandler.setClient(this);
-        new Thread(networkHandler).start();
-        //TODO: Go back if there's an error
-        tileSelection = null;
-        columnSelection = -1;
     }
 
     /**
@@ -184,14 +224,51 @@ public class MainSceneController implements Client, Initializable {
      *
      */
     private void requestTiles() {
-
+        Platform.runLater(() -> {
+            tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+            tokensSelected = 0;
+            selectingTokens = true;
+            messages.setText("It's your turn!");
+            cancel.setVisible(true);
+            confirm.setVisible(true);
+            confirm.setDisable(false);
+        });
     }
 
     /**
      *
      */
     private void requestColumn() {
+        Platform.runLater(() -> {
+            columnSelection = -1;
+            selectingColumn = true;
+            messages.setText("Pick a column!");
+            cancel.setVisible(true);
+            confirm.setVisible(true);
+            confirm.setDisable(false);
+        });
+    }
 
+    /**
+     *
+     * @param i
+     * @author Niccolò Giuliani
+     */
+    private void setPersonalCard(int i) {
+        switch(i){
+            case 1 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals.png"));
+            case 2 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals2.png"));
+            case 3 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals3.png"));
+            case 4 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals4.png"));
+            case 5 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals5.png"));
+            case 6 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals6.png"));
+            case 7 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals7.png"));
+            case 8 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals8.png"));
+            case 9 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals9.png"));
+            case 10 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals10.png"));
+            case 11 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals11.png"));
+            case 12 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals12.png"));
+        }
     }
 
     /**
