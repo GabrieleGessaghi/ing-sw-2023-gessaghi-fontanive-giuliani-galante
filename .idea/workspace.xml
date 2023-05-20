@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added list of client-side and server-side possible json fields">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed issue with tile selection json message">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/ViewRequestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/configuration.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json_field_client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/json_field_client.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json_fields_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/json_fields_server.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +27,8 @@
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -78,6 +84,9 @@
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="controller.utilities.JsonTools" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/json" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="server" />
@@ -236,13 +245,6 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-    </task>
-    <task id="LOCAL-00144" summary="Update TCP to not deadlock">
-      <created>1683094178438</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1683094178438</updated>
     </task>
     <task id="LOCAL-00145" summary="Modified folder structure">
       <created>1683094354063</created>
@@ -580,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684583795834</updated>
     </task>
-    <option name="localTasksCounter" value="193" />
+    <task id="LOCAL-00193" summary="Fixed issue with tile selection json message">
+      <created>1684593529676</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1684593529676</updated>
+    </task>
+    <option name="localTasksCounter" value="194" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,7 +623,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="created MainScene javafx" />
     <MESSAGE value="added buttons on MainScene.fxml" />
     <MESSAGE value="Made progress on fixing RMI connection issues" />
     <MESSAGE value="Fixed single RMI client connection issue" />
@@ -639,7 +647,8 @@
     <MESSAGE value="Handles duplicated nicknames and sends cards indexes to clients at the start of the game" />
     <MESSAGE value="Fixed duplicated code and JSON parsing error in MainSceneController" />
     <MESSAGE value="Added messages label on top of main scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added messages label on top of main scene" />
+    <MESSAGE value="Fixed issue with tile selection json message" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue with tile selection json message" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

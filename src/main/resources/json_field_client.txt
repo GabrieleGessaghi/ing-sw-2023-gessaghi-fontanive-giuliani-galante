@@ -1,8 +1,0 @@
-nickname
-playersNumber
-selectedTiles
-selectedColumn
-(chat)
-senderNickname
-message
-receiverNickname

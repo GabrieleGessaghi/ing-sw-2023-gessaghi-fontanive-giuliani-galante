@@ -7,8 +7,11 @@ package server.model;
 public enum View {
     BOARD,
     CURRENT_PLAYER,
+    SPECIFIC_PLAYER,
     COMMON_CARDS,
-    PLAYERS_POINTS,
+    PERSONAL_CARD,
+    LEADERBOARD,
     CHAT,
-    PLAYER_NICKNAMES
+    PLAYER_NICKNAMES,
+    SHELF,
 }
