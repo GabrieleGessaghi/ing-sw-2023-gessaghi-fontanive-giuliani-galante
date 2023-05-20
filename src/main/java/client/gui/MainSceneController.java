@@ -165,6 +165,7 @@ public class MainSceneController implements Client, Initializable {
                                 jsonReader.skipValue();
                         }
                        jsonReader.endObject();
+
                     }*/
                     //case "numberOfTokensLeft" ->
                     //case "nextPointsAvailable" ->

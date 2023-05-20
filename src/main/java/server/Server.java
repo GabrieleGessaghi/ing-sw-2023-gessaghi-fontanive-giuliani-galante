@@ -23,7 +23,7 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
 //TODO: Handle wrong ips client side
 //TODO: Separate token and column selection
-
+//TODO: change sendstate() commoncard
 //TODO: Allow player to see specific things
 //TODO: Send all information at the beginning of new game
 
