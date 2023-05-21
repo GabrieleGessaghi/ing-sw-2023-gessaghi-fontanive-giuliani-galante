@@ -250,7 +250,6 @@ public class MainSceneController implements Client, Initializable {
             }
         }
         else if(!b) {
-
             twoComm2.setVisible(false);
             fourComm2.setVisible(false);
             sixComm2.setVisible(false);
