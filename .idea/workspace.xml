@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added possibility to reconnect for TUI clients">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added waring for duplicate nickname">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/tcp/ClientHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/tcp/ClientHandlerTCP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,21 +243,7 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-      <workItem from="1684663004952" duration="14417000" />
-    </task>
-    <task id="LOCAL-00150" summary="Improved TUI">
-      <created>1683121425629</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1683121425629</updated>
-    </task>
-    <task id="LOCAL-00151" summary="Finally fixed socket connection">
-      <created>1683125600025</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1683125600026</updated>
+      <workItem from="1684663004952" duration="15571000" />
     </task>
     <task id="LOCAL-00152" summary="fixed small issues">
       <created>1683214655768</created>
@@ -593,7 +574,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684674950331</updated>
     </task>
-    <option name="localTasksCounter" value="199" />
+    <task id="LOCAL-00199" summary="Implemented but not tested reconnection with same username for clients">
+      <created>1684680145830</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1684680145830</updated>
+    </task>
+    <task id="LOCAL-00200" summary="Added waring for duplicate nickname">
+      <created>1684680359982</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1684680359982</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,8 +622,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented Client in MainSceneController and updated static variables for initial screen" />
-    <MESSAGE value="added gridPane to GUI" />
     <MESSAGE value="added button in board" />
     <MESSAGE value="added comment" />
     <MESSAGE value="Implemented Chat server side" />
@@ -652,7 +645,9 @@
     <MESSAGE value="Fixed an issue where common card information was not being sent" />
     <MESSAGE value="Split tokens and column selection to improve player experience" />
     <MESSAGE value="Added possibility to reconnect for TUI clients" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added possibility to reconnect for TUI clients" />
+    <MESSAGE value="Implemented but not tested reconnection with same username for clients" />
+    <MESSAGE value="Added waring for duplicate nickname" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added waring for duplicate nickname" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -669,7 +664,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java</url>
-          <line>252</line>
+          <line>299</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

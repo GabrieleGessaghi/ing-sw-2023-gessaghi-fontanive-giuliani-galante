@@ -99,7 +99,7 @@ public class Controller implements Observer, Runnable {
      * @authro Giorgio Massimo Fontanive
      */
     public synchronized void addClient(ClientHandler clientHandler) {
-        if (creationController.isSpotAvailable()) {
+        if (creationController.isSpotAvailable() || !Server.disconnectedClients.isEmpty()) {
             clientHandlers.add(clientHandler);
             clientHandler.registerObserver(creationController);
             clientHandler.registerObserver(this);

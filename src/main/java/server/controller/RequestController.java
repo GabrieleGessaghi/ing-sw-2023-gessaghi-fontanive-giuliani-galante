@@ -44,6 +44,10 @@ public class RequestController implements Observer {
                         request = View.BOARD;
                         jsonReader.skipValue();
                     }
+                    case "self" -> {
+                        request = View.SELF;
+                        jsonReader.skipValue();
+                    }
                     case "requestShelf" -> {
                         request = View.SHELF;
                         jsonReader.skipValue();
@@ -68,8 +72,13 @@ public class RequestController implements Observer {
             jsonReader.endObject();
             if (tempIndex != -1) {
                 currentClientHandler = Controller.findClientHandler(tempIndex);
-                if (currentClientHandler != null)
+                if (currentClientHandler != null) {
+                    if (request == View.SELF) {
+                        requestedPlayerNickname = currentClientHandler.nickname;
+                        request = View.SPECIFIC_PLAYER;
+                    }
                     currentClientHandler.update(new Event(game.getView(request, requestedPlayerNickname).toString()));
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

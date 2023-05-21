@@ -33,7 +33,6 @@ public class CreationController implements Observer {
     public void update(Event event) {
         int lastClientIndex = -1;
         String lastClientNickname = null;
-        String newLastClientNickname = null;
         String jsonMessage = event.jsonMessage();
         String field;
         JsonReader jsonReader;
@@ -61,12 +60,13 @@ public class CreationController implements Observer {
             }
 
             //Checks if the client was previously disconnected, otherwise deletes it
-            if (Server.disconnectedClients.containsKey(lastClientNickname) && clientHandler != null) {
-                clientHandler.index = Server.disconnectedClients.get(lastClientNickname);
-                Server.disconnectedClients.remove(lastClientNickname);
-            } else {
-                Controller.clientHandlers.remove(clientHandler);
-            }
+            if (!isSpotAvailable() && !Server.disconnectedClients.isEmpty())
+                if (Server.disconnectedClients.containsKey(lastClientNickname) && clientHandler != null) {
+                    clientHandler.index = Server.disconnectedClients.get(lastClientNickname);
+                    Server.disconnectedClients.remove(lastClientNickname);
+                } else {
+                    Controller.clientHandlers.remove(clientHandler);
+                }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -88,8 +88,7 @@ public class CreationController implements Observer {
      * @author Giorgio Massimo Fontanive
      */
     public boolean isSpotAvailable() {
-        return playersNumber == -1 || playersNicknames.size() < playersNumber
-                || !Server.disconnectedClients.isEmpty();
+        return playersNumber == -1 || playersNicknames.size() < playersNumber;
     }
 
     /**
