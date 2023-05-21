@@ -123,6 +123,9 @@ public class TUI implements Client {
         networkHandler.sendInput(jsonObject.toString());
     }
 
+    /**
+     *
+     */
     public void requestNewView() {
         Scanner scn = new Scanner(System.in);
     }
@@ -153,7 +156,8 @@ public class TUI implements Client {
                             switch (jsonReader.nextName()) {
                                 case "objectiveDescription" -> toPrint.append("Common Objective description:\n").append(jsonReader.nextString()).append("\n");
                                 case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
-                                case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
+                                case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n\n");
+                                default -> jsonReader.skipValue();
                             }
                         jsonReader.endObject();
                     }
@@ -247,10 +251,10 @@ public class TUI implements Client {
         if (numberOfTokens > '1') {
             String orderSelection;
             for (int i = 0; i < numberOfTokens - '0'; i++)
-                System.out.print("\n" + (i + 1) +  ": " + tokenCoordinates[i]);
+                System.out.print((i + 1) +  ": " + tokenCoordinates[i] + "\n");
 
             do {
-                System.out.print("\nIn what order would you like to insert the selected tokens? ");
+                System.out.print("In what order would you like to insert the selected tokens? ");
                 waitForInput();
                 orderSelection = lastInput;
             } while(orderSelection.length() != numberOfTokens - '0');
@@ -306,6 +310,7 @@ public class TUI implements Client {
                 toPrint.append(intToTokenInitial(intMatrix[i][j]));
             toPrint.append("\n");
         }
+        toPrint.append("\n");
         return toPrint;
     }
 
@@ -359,7 +364,6 @@ public class TUI implements Client {
             } else
                 jsonReader.skipValue();
         jsonReader.endObject();
-        toPrint.append("\n");
         return toPrint;
     }
 

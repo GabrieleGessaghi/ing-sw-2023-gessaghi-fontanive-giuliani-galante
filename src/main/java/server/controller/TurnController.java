@@ -4,6 +4,7 @@ import com.google.gson.stream.JsonReader;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
+import server.model.Board;
 import server.model.Game;
 import server.model.exceptions.IllegalColumnException;
 import server.model.exceptions.IllegalMoveException;
@@ -108,6 +109,11 @@ public class TurnController implements Observer {
                 }
             }
             jsonReader.endObject();
+            if (!game.getBoard().isMoveLegal(Board.convertIntegerMatrix(selectedTiles, -1))) {
+                selectedTiles = null;
+                currentClientHandler.sendOutput(JsonTools.createMessage("This combination of tiles is illegal!"));
+                currentClientHandler.requestInput(Prompt.TOKENS);
+            }
             this.notifyAll();
         } catch (IOException e) {
             throw new RuntimeException(e);

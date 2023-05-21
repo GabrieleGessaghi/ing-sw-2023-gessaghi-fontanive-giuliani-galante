@@ -277,6 +277,14 @@ public class Game implements Savable, Observable {
             requestedPlayer.isConnected = isConnected;
     }
 
+    /**
+     * Getter for the board user by the controller to check whether to make players repeat their selections.
+     * @return The board for this game.
+     */
+    public Board getBoard() {
+        return board;
+    }
+
     @Override
     public void registerObserver(Observer observer) {
         observers.add(observer);
