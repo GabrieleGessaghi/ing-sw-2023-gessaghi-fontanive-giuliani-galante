@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Split tokens and column selection to improve player experience">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Added possibility to reconnect for TUI clients">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/tcp/ClientHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/tcp/ClientHandlerTCP.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,14 +248,7 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-      <workItem from="1684663004952" duration="9222000" />
-    </task>
-    <task id="LOCAL-00149" summary="Hopefully fixed connection issue">
-      <created>1683120408524</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1683120408525</updated>
+      <workItem from="1684663004952" duration="14417000" />
     </task>
     <task id="LOCAL-00150" summary="Improved TUI">
       <created>1683121425629</created>
@@ -585,7 +586,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684674406593</updated>
     </task>
-    <option name="localTasksCounter" value="198" />
+    <task id="LOCAL-00198" summary="Added possibility to reconnect for TUI clients">
+      <created>1684674950331</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1684674950331</updated>
+    </task>
+    <option name="localTasksCounter" value="199" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +627,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Changed client to an interface and merged TUI and ClientTUI" />
     <MESSAGE value="Implemented Client in MainSceneController and updated static variables for initial screen" />
     <MESSAGE value="added gridPane to GUI" />
     <MESSAGE value="added button in board" />
@@ -644,7 +651,8 @@
     <MESSAGE value="Implemented RequestController server-side" />
     <MESSAGE value="Fixed an issue where common card information was not being sent" />
     <MESSAGE value="Split tokens and column selection to improve player experience" />
-    <option name="LAST_COMMIT_MESSAGE" value="Split tokens and column selection to improve player experience" />
+    <MESSAGE value="Added possibility to reconnect for TUI clients" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added possibility to reconnect for TUI clients" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

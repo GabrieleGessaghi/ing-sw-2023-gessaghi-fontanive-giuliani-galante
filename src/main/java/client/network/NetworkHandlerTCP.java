@@ -1,5 +1,6 @@
 package client.network;
 
+import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
 
@@ -69,7 +70,9 @@ public class NetworkHandlerTCP extends NetworkHandler {
             in.close();
             buffer.close();
         } catch (IOException e) {
-            System.out.println("Could not reach server!\nType \"connect\" to attempt a reconnection.");
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("connectionError", true);
+            client.showOutput(jsonObject.toString());
         }
     }
 }

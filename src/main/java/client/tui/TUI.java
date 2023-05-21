@@ -167,6 +167,7 @@ public class TUI implements Client {
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
                     case "nicknames" -> toPrint.append(printNicknames(jsonReader));
+                    case "connectionError" -> toPrint.append("Connection error! Please type \"connect\" to reconnect.\n");
                     default -> jsonReader.skipValue();
                 }
             }

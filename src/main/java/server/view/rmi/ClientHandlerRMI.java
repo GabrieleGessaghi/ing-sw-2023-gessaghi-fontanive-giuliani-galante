@@ -44,16 +44,10 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             Registry registry = LocateRegistry.getRegistry(SERVER_PORT + 1);
             client = (ServerUsable) registry.lookup(clientName);
             available = false;
-            isConnected = true;
             this.notifyAll();
         } catch(Exception e) {
             System.out.println("Error while connecting with RMI.");
-            isConnected = false;
-            try {
-                UnicastRemoteObject.unexportObject(this, true);
-            } catch (NoSuchObjectException ex) {
-                throw new RuntimeException(ex);
-            }
+            disconnect();
         }
     }
 
@@ -67,19 +61,6 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
         }
         if (client == null)
             available = true;
-    }
-
-    @Override
-    public void update(Event event) {
-
-        //Skips this event if it does not involve the client
-        JsonObject jsonObject = JsonParser.parseString(event.jsonMessage()).getAsJsonObject();
-        if (jsonObject.has("privateMessageSender") || jsonObject.has("privateMessageReceiver"))
-            if (!jsonObject.get("privateMessageSender").getAsString().equals(nickname) &&
-                    !jsonObject.get("privateMessageReceiver").getAsString().equals(nickname))
-                return;
-
-        sendOutput(event.jsonMessage());
     }
 
     @Override
@@ -106,12 +87,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
                 client.showOutput(jsonMessage);
             } catch (RemoteException e) {
                 System.out.println("Error while sending RMI message.");
-                isConnected = false;
-                try {
-                    UnicastRemoteObject.unexportObject(this, true);
-                } catch (NoSuchObjectException ex) {
-                    throw new RuntimeException(ex);
-                }
+                disconnect();
             }
         }).start();
     }
@@ -123,13 +99,17 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
                 client.requestInput(prompt);
             } catch (RemoteException e) {
                 System.out.println("Error while sending RMI message.");
-                isConnected = false;
-                try {
-                    UnicastRemoteObject.unexportObject(this, true);
-                } catch (NoSuchObjectException ex) {
-                    throw new RuntimeException(ex);
-                }
+                disconnect();
             }
         }).start();
+    }
+
+    protected void disconnect() {
+        super.disconnect();
+        try {
+            UnicastRemoteObject.unexportObject(this, true);
+        } catch (NoSuchObjectException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

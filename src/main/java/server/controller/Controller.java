@@ -1,5 +1,6 @@
 package server.controller;
 
+import server.Server;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
@@ -60,12 +61,16 @@ public class Controller implements Observer, Runnable {
                     i = 0;
                 ClientHandler currentClient = clientHandlers.get(i);
 
-                if (currentClient.isConnected()) {
+                //Checks if the current client has disconnected
+                if (Server.disconnectedClients.containsKey(currentClient.nickname)) {
+                    clientHandlers.remove(currentClient);
+                    game.setPlayerConnection(currentClient.nickname, false);
+                } else {
                     turnController = new TurnController(game, currentClient);
                     currentClient.registerObserver(turnController);
                     turnController.newTurn();
-                    i++;
                 }
+                i++;
             }
             reset();
         }
@@ -94,7 +99,7 @@ public class Controller implements Observer, Runnable {
      * @authro Giorgio Massimo Fontanive
      */
     public synchronized void addClient(ClientHandler clientHandler) {
-        if (!isGameRunning && creationController.isSpotAvailable()) {
+        if (creationController.isSpotAvailable()) {
             clientHandlers.add(clientHandler);
             clientHandler.registerObserver(creationController);
             clientHandler.registerObserver(this);

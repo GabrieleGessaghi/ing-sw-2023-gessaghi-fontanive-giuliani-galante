@@ -1,9 +1,11 @@
 package server.controller;
 
 import com.google.gson.stream.JsonReader;
+import server.Server;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.model.Game;
+import server.view.ClientHandler;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -48,8 +50,17 @@ public class CreationController implements Observer {
             jsonReader.endObject();
 
             //Updates the client handler's nickname
-            if (lastClientNickname != null && Controller.findClientHandler(lastClientIndex) != null)
-                Controller.findClientHandler(lastClientIndex).nickname = lastClientNickname;
+            ClientHandler clientHandler = Controller.findClientHandler(lastClientIndex);
+            if (lastClientNickname != null && clientHandler != null)
+                clientHandler.nickname = lastClientNickname;
+
+            //Checks if the client was previously disconnected, otherwise deletes it
+            if (Server.disconnectedClients.containsKey(lastClientNickname) && clientHandler != null) {
+                clientHandler.index = Server.disconnectedClients.get(lastClientNickname);
+                Server.disconnectedClients.remove(lastClientNickname);
+            } else {
+                Controller.clientHandlers.remove(clientHandler);
+            }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -71,7 +82,8 @@ public class CreationController implements Observer {
      * @author Giorgio Massimo Fontanive
      */
     public boolean isSpotAvailable() {
-        return playersNumber == -1 || playersNicknames.size() < playersNumber;
+        return playersNumber == -1 || playersNicknames.size() < playersNumber
+                || !Server.disconnectedClients.isEmpty();
     }
 
     /**
@@ -99,7 +111,7 @@ public class CreationController implements Observer {
      */
     private String addPlayer(String nickname) {
         String newNickname;
-        if (!playersNicknames.contains(nickname))
+        if (!playersNicknames.contains(nickname) || Server.disconnectedClients.containsKey(nickname))
             newNickname = nickname;
         else {
             int i = 0;
