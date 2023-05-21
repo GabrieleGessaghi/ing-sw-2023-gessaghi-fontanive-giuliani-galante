@@ -28,6 +28,14 @@ import java.util.*;
 public class MainSceneController implements Client, Initializable {
     public ImageView common_goal1;
     public ImageView common_goal2;
+    public ImageView twoComm1;
+    public ImageView fourComm1;
+    public ImageView sixComm1;
+    public ImageView eightComm1;
+    public ImageView twoComm2;
+    public ImageView fourComm2;
+    public ImageView sixComm2;
+    public ImageView eightComm2;
     @FXML
     private GridPane board;
     @FXML
@@ -51,7 +59,7 @@ public class MainSceneController implements Client, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        List <Node> selectedNodes = new ArrayList<Node>();
         //Connects to the server
         if (GUI.connectionType == 0)
             setNetworkHandler(new NetworkHandlerTCP());
@@ -73,6 +81,8 @@ public class MainSceneController implements Client, Initializable {
         cancel.setOnMouseClicked(e -> {
             tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
             tokensSelected = 0;
+            for(Node i : selectedNodes)
+                i.setOpacity(1);
         });
         confirm.setOnMouseClicked(e -> {
             if (selectingTokens) {
@@ -83,6 +93,8 @@ public class MainSceneController implements Client, Initializable {
                     Arrays.fill(i, -1);
                 tokensSelected = 0;
                 selectingTokens = false;
+                for(Node i : selectedNodes)
+                    i.setOpacity(1);
                 System.out.println(jsonObject);
             }
             if (selectingColumn) {
@@ -101,6 +113,8 @@ public class MainSceneController implements Client, Initializable {
             node.setOnMouseClicked(e -> {
                 int row = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
                 int column = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
+                node.setOpacity(0.5);
+                selectedNodes.add(node);
                 tokenSelection[row][column] = tokensSelected;
                 tokensSelected++;
             });
@@ -157,6 +171,8 @@ public class MainSceneController implements Client, Initializable {
                             field = jsonReader.nextName();
                             if(field.equals("cardIndex"))
                                 setCommonCard(jsonReader.nextInt(),false);
+                            else if(field.equals("nextPointsAvailable"))
+                                updatePointsCommonCards(true,jsonReader.nextInt());
                             else
                                 jsonReader.skipValue();
                         }
@@ -168,6 +184,8 @@ public class MainSceneController implements Client, Initializable {
                             field = jsonReader.nextName();
                             if(field.equals("cardIndex"))
                                 setCommonCard(jsonReader.nextInt(),true);
+                            else if(field.equals("nextPointsAvailable"))
+                                updatePointsCommonCards(true,jsonReader.nextInt());
                             else
                                 jsonReader.skipValue();
                         }
@@ -217,6 +235,35 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
+    private void updatePointsCommonCards(boolean b, int i) {
+
+        if(b) {
+            twoComm1.setVisible(false);
+            fourComm1.setVisible(false);
+            sixComm1.setVisible(false);
+            eightComm1.setVisible(false);
+            switch (i) {
+                case 2 -> twoComm1.setVisible(true);
+                case 4 -> fourComm1.setVisible(true);
+                case 6 -> sixComm1.setVisible(true);
+                case 8 -> eightComm1.setVisible(true);
+            }
+        }
+        else if(!b) {
+
+            twoComm2.setVisible(false);
+            fourComm2.setVisible(false);
+            sixComm2.setVisible(false);
+            eightComm2.setVisible(false);
+            switch (i) {
+                case 2 -> twoComm2.setVisible(true);
+                case 4 -> fourComm2.setVisible(true);
+                case 6 -> sixComm2.setVisible(true);
+                case 8 -> eightComm2.setVisible(true);
+            }
+        }
+    }
+
     @Override
     public void setNetworkHandler(NetworkHandler networkHandler) {
         this.networkHandler = networkHandler;
@@ -234,6 +281,7 @@ public class MainSceneController implements Client, Initializable {
             comm = common_goal2;
         else
             comm = common_goal1;
+        i = i + 1;
         comm.setImage((new Image("assets/common_goal_cards/"+i+".jpg")));
     }
 
@@ -275,8 +323,11 @@ public class MainSceneController implements Client, Initializable {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("playersNumber", numberOfPlayers);
             networkHandler.sendInput(jsonObject.toString());
+
         });
     }
+
+
 
     /**
      *
