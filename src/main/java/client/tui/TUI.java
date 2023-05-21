@@ -38,28 +38,12 @@ public class TUI implements Client {
      */
     public static void main(String[] args) {
         ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
-
         printOpening();
         Scanner scn = new Scanner(System.in);
-
         System.out.print("Insert nickname: ");
         String nickname = scn.nextLine();
-
-        System.out.print("Insert host's IP address: ");
-        String hostIp = scn.nextLine();
-
-        int selection;
-        do {
-            System.out.print("Select connection type (0 TCP/1 RMI): ");
-            selection = scn.nextInt();
-        } while (selection !=0 && selection != 1);
-
         TUI client = new TUI(nickname);
-        NetworkHandler networkHandler = selection == 0 ? new NetworkHandlerTCP() : new NetworkHandlerRMI();
-        networkHandler.setClient(client);
-        networkHandler.setHost(hostIp);
-        new Thread(networkHandler).start();
-        client.setNetworkHandler(networkHandler);
+        client.connect();
 
         String userInput = "";
         while (!userInput.equals("exit")) {
@@ -67,6 +51,7 @@ public class TUI implements Client {
             switch (userInput) {
                 case "chat" -> client.sendNewMessage();
                 case "view" -> client.requestNewView();
+                case "connect" -> client.connect();
                 default -> client.handleInput(userInput);
             }
         }
@@ -74,6 +59,22 @@ public class TUI implements Client {
 
     public void setNetworkHandler(NetworkHandler networkHandler) {
         this.networkHandler = networkHandler;
+    }
+
+    public void connect() {
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Insert host's IP address: ");
+        String hostIp = scn.nextLine();
+        int selection;
+        do {
+            System.out.print("Select connection type (0 TCP/1 RMI): ");
+            selection = scn.nextInt();
+        } while (selection !=0 && selection != 1);
+        NetworkHandler networkHandler = selection == 0 ? new NetworkHandlerTCP() : new NetworkHandlerRMI();
+        networkHandler.setClient(this);
+        networkHandler.setHost(hostIp);
+        new Thread(networkHandler).start();
+        setNetworkHandler(networkHandler);
     }
 
     /**
@@ -123,6 +124,9 @@ public class TUI implements Client {
         networkHandler.sendInput(jsonObject.toString());
     }
 
+    /**
+     *
+     */
     public void requestNewView() {
         Scanner scn = new Scanner(System.in);
     }
@@ -153,7 +157,8 @@ public class TUI implements Client {
                             switch (jsonReader.nextName()) {
                                 case "objectiveDescription" -> toPrint.append("Common Objective description:\n").append(jsonReader.nextString()).append("\n");
                                 case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
-                                case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
+                                case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n\n");
+                                default -> jsonReader.skipValue();
                             }
                         jsonReader.endObject();
                     }
@@ -247,10 +252,10 @@ public class TUI implements Client {
         if (numberOfTokens > '1') {
             String orderSelection;
             for (int i = 0; i < numberOfTokens - '0'; i++)
-                System.out.print("\n" + (i + 1) +  ": " + tokenCoordinates[i]);
+                System.out.print((i + 1) +  ": " + tokenCoordinates[i] + "\n");
 
             do {
-                System.out.print("\nIn what order would you like to insert the selected tokens? ");
+                System.out.print("In what order would you like to insert the selected tokens? ");
                 waitForInput();
                 orderSelection = lastInput;
             } while(orderSelection.length() != numberOfTokens - '0');
@@ -306,6 +311,7 @@ public class TUI implements Client {
                 toPrint.append(intToTokenInitial(intMatrix[i][j]));
             toPrint.append("\n");
         }
+        toPrint.append("\n");
         return toPrint;
     }
 
@@ -359,7 +365,6 @@ public class TUI implements Client {
             } else
                 jsonReader.skipValue();
         jsonReader.endObject();
-        toPrint.append("\n");
         return toPrint;
     }
 

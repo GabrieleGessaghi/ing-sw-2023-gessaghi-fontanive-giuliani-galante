@@ -113,13 +113,15 @@ public class Board implements Observable, Savable {
      * @param selectedTiles A boolean matrix with true in the positions of the chosen tiles.
      * @return True if the tiles are in an available position and if they are in a line.
      */
-    private boolean isMoveLegal(boolean[][] selectedTiles) {
+    public boolean isMoveLegal(boolean[][] selectedTiles) {
+        if (selectedTiles == null)
+            return false;
 
         //Checks whether each tile is selectable by itself.
         boolean legal = true;
         int selectedAmount = 0;
-        for (int i = 0; i < tiles.length && legal; i++)
-            for (int j = 0; j < tiles.length && legal; j++)
+        for (int i = 0; i < ConfigLoader.BOARD_SIZE && legal; i++)
+            for (int j = 0; j < ConfigLoader.BOARD_SIZE && legal; j++)
                 if (selectedTiles[i][j])
                     if (isTokenSelectable(i, j))
                         selectedAmount++;
@@ -132,8 +134,8 @@ public class Board implements Observable, Savable {
         int firstTileRow = -1;
         int firstTileColumn = -1;
         boolean isFirstFound = false;
-        for (int i = 0; i < tiles.length && !isFirstFound; i++)
-            for (int j = 0; j < tiles.length && !isFirstFound; j++) {
+        for (int i = 0; i < ConfigLoader.BOARD_SIZE && !isFirstFound; i++)
+            for (int j = 0; j < ConfigLoader.BOARD_SIZE && !isFirstFound; j++) {
                 if (selectedTiles[i][j]) {
                     firstTileRow = i;
                     firstTileColumn = j;
