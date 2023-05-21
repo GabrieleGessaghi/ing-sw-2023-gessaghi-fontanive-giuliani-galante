@@ -22,7 +22,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
 //TODO: Handle wrong ips client side
-//TODO: Separate token and column selection
 
 /**
  * Accepts new connections and starts the game controller.

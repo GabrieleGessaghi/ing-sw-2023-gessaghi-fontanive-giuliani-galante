@@ -38,28 +38,12 @@ public class TUI implements Client {
      */
     public static void main(String[] args) {
         ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
-
         printOpening();
         Scanner scn = new Scanner(System.in);
-
         System.out.print("Insert nickname: ");
         String nickname = scn.nextLine();
-
-        System.out.print("Insert host's IP address: ");
-        String hostIp = scn.nextLine();
-
-        int selection;
-        do {
-            System.out.print("Select connection type (0 TCP/1 RMI): ");
-            selection = scn.nextInt();
-        } while (selection !=0 && selection != 1);
-
         TUI client = new TUI(nickname);
-        NetworkHandler networkHandler = selection == 0 ? new NetworkHandlerTCP() : new NetworkHandlerRMI();
-        networkHandler.setClient(client);
-        networkHandler.setHost(hostIp);
-        new Thread(networkHandler).start();
-        client.setNetworkHandler(networkHandler);
+        client.connect();
 
         String userInput = "";
         while (!userInput.equals("exit")) {
@@ -67,6 +51,7 @@ public class TUI implements Client {
             switch (userInput) {
                 case "chat" -> client.sendNewMessage();
                 case "view" -> client.requestNewView();
+                case "connect" -> client.connect();
                 default -> client.handleInput(userInput);
             }
         }
@@ -74,6 +59,22 @@ public class TUI implements Client {
 
     public void setNetworkHandler(NetworkHandler networkHandler) {
         this.networkHandler = networkHandler;
+    }
+
+    public void connect() {
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Insert host's IP address: ");
+        String hostIp = scn.nextLine();
+        int selection;
+        do {
+            System.out.print("Select connection type (0 TCP/1 RMI): ");
+            selection = scn.nextInt();
+        } while (selection !=0 && selection != 1);
+        NetworkHandler networkHandler = selection == 0 ? new NetworkHandlerTCP() : new NetworkHandlerRMI();
+        networkHandler.setClient(this);
+        networkHandler.setHost(hostIp);
+        new Thread(networkHandler).start();
+        setNetworkHandler(networkHandler);
     }
 
     /**

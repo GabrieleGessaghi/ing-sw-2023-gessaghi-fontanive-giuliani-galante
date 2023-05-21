@@ -69,7 +69,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
             in.close();
             buffer.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Could not reach server!\nType \"connect\" to attempt a reconnection.");
         }
     }
 }

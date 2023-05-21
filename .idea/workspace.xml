@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed an issue where common card information was not being sent">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Split tokens and column selection to improve player experience">
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,14 +240,7 @@
       <workItem from="1683900176801" duration="557000" />
       <workItem from="1684148260160" duration="9497000" />
       <workItem from="1684247623859" duration="2041000" />
-      <workItem from="1684663004952" duration="8922000" />
-    </task>
-    <task id="LOCAL-00148" summary="Tried to fix connection issues">
-      <created>1683119009285</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1683119009285</updated>
+      <workItem from="1684663004952" duration="9222000" />
     </task>
     <task id="LOCAL-00149" summary="Hopefully fixed connection issue">
       <created>1683120408524</created>
@@ -587,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684670497108</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="Split tokens and column selection to improve player experience">
+      <created>1684674406593</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1684674406593</updated>
+    </task>
+    <option name="localTasksCounter" value="198" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,7 +619,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added configuration loading for GUI" />
     <MESSAGE value="Changed client to an interface and merged TUI and ClientTUI" />
     <MESSAGE value="Implemented Client in MainSceneController and updated static variables for initial screen" />
     <MESSAGE value="added gridPane to GUI" />
@@ -646,7 +643,8 @@
     <MESSAGE value="Implemented ReqeustController server-side" />
     <MESSAGE value="Implemented RequestController server-side" />
     <MESSAGE value="Fixed an issue where common card information was not being sent" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed an issue where common card information was not being sent" />
+    <MESSAGE value="Split tokens and column selection to improve player experience" />
+    <option name="LAST_COMMIT_MESSAGE" value="Split tokens and column selection to improve player experience" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

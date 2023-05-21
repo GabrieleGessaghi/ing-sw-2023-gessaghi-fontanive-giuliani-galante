@@ -74,7 +74,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
                isMessageAvailable = false;
            }
         } catch(Exception e) {
-           e.printStackTrace();
+            System.out.println("Could not reach server!\nType \"connect\" to attempt a reconnection.");
         }
     }
 }
