@@ -1,5 +1,6 @@
 package client.network;
 
+import com.google.gson.JsonObject;
 import server.view.rmi.ServerUsable;
 import server.controller.Prompt;
 import server.view.rmi.ClientUsable;
@@ -74,7 +75,9 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
                isMessageAvailable = false;
            }
         } catch(Exception e) {
-            System.out.println("Could not reach server!\nType \"connect\" to attempt a reconnection.");
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("connectionError", true);
+            client.showOutput(jsonObject.toString());
         }
     }
 }

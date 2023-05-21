@@ -2,6 +2,8 @@ package server.view;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import server.Server;
+import server.controller.Controller;
 import server.controller.Prompt;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
@@ -19,7 +21,6 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public String nickname;
     public int index;
     protected List<Observer> observers;
-    protected boolean isConnected;
 
     /**
      * Class constructor. Immediately asks the client for its nickname.
@@ -27,7 +28,6 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public ClientHandler() {
         nickname = null;
         observers = new ArrayList<>();
-        isConnected = false;
     }
 
     /**
@@ -59,10 +59,6 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         sendOutput(jsonObject.toString());
     }
 
-    public boolean isConnected() {
-        return isConnected;
-    }
-
     @Override
     public void updateObservers(Event event) {
         //Finds the client's nickname
@@ -86,5 +82,23 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     }
 
     @Override
-    public abstract void update(Event event);
+    public void update(Event event) {
+
+        //Skips this event if it does not involve the client
+        JsonObject jsonObject = JsonParser.parseString(event.jsonMessage()).getAsJsonObject();
+        if (jsonObject.has("privateMessageSender") || jsonObject.has("privateMessageReceiver"))
+            if (!jsonObject.get("privateMessageSender").getAsString().equals(nickname) &&
+                    !jsonObject.get("privateMessageReceiver").getAsString().equals(nickname))
+                return;
+
+        sendOutput(event.jsonMessage());
+    }
+
+    /**
+     * Adds itself to the list of disconnected clients.
+     */
+    protected void disconnect() {
+        Server.disconnectedClients.put(nickname, index);
+        Controller.clientHandlers.remove(this);
+    }
 }

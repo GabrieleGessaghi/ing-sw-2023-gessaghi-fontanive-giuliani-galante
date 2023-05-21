@@ -16,6 +16,7 @@ import java.net.Socket;
 public class ClientHandlerTCP extends ClientHandler {
     private final InputStream inputStream;
     private final OutputStream outputStream;
+    private boolean isConnected;
 
     /**
      * Class constructor. The server accepting new connections creates this object for every new connection.
@@ -26,20 +27,7 @@ public class ClientHandlerTCP extends ClientHandler {
     public ClientHandlerTCP(InputStream inputStream, OutputStream outputStream){
         this.inputStream = inputStream;
         this.outputStream = outputStream;
-        isConnected = false;
-    }
-
-    @Override
-    public void update(Event event) {
-
-        //Skips this event if it does not involve the client
-        JsonObject jsonObject = JsonParser.parseString(event.jsonMessage()).getAsJsonObject();
-        if (jsonObject.has("privateMessageSender") || jsonObject.has("privateMessageReceiver"))
-            if (!jsonObject.get("privateMessageSender").getAsString().equals(nickname) &&
-                    !jsonObject.get("privateMessageReceiver").getAsString().equals(nickname))
-                return;
-
-        sendOutput(event.jsonMessage());
+        isConnected = true;
     }
 
     @Override
@@ -57,6 +45,7 @@ public class ClientHandlerTCP extends ClientHandler {
             } catch (IOException e) {
                 System.out.println("Error reading TCP message!");
                 isConnected = false;
+                disconnect();
             }
 
             if (!isConnected)
@@ -85,6 +74,7 @@ public class ClientHandlerTCP extends ClientHandler {
         } catch (IOException e) {
             System.out.println("Error while sending TCP message.");
             isConnected = false;
+            disconnect();
         }
     }
 }

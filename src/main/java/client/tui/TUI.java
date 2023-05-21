@@ -167,6 +167,7 @@ public class TUI implements Client {
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
                     case "nicknames" -> toPrint.append(printNicknames(jsonReader));
+                    case "connectionError" -> toPrint.append("Connection error! Please type \"connect\" to reconnect.\n");
                     default -> jsonReader.skipValue();
                 }
             }
@@ -244,6 +245,7 @@ public class TUI implements Client {
                 System.out.print("Insert coordinates for token " + (i+1) + ": ");
                 waitForInput();
                 tokenCoordinates[i] = lastInput;
+                //TODO: Fix this while loop
             } while (tokenCoordinates[i] != null && tokenCoordinates[i].length() != 2 &&
                     (tokenCoordinates[i].charAt(0) < 'a' || tokenCoordinates[i].charAt(0) > 'i' ||
                             tokenCoordinates[i].charAt(1) < '1' || tokenCoordinates[i].charAt(1) > '9'));
