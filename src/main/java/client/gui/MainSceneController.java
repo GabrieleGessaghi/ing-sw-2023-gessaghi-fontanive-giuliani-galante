@@ -237,7 +237,7 @@ public class MainSceneController implements Client, Initializable {
 
     private void updatePointsCommonCards(boolean b, int i) {
 
-        if(b) {
+        if(!b) {
             twoComm1.setVisible(false);
             fourComm1.setVisible(false);
             sixComm1.setVisible(false);
@@ -249,7 +249,7 @@ public class MainSceneController implements Client, Initializable {
                 case 8 -> eightComm1.setVisible(true);
             }
         }
-        else if(!b) {
+        else if(b) {
             twoComm2.setVisible(false);
             fourComm2.setVisible(false);
             sixComm2.setVisible(false);
