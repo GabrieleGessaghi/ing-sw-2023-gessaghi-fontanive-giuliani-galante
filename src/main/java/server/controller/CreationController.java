@@ -4,6 +4,7 @@ import com.google.gson.stream.JsonReader;
 import server.Server;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
+import server.controller.utilities.JsonTools;
 import server.model.Game;
 import server.view.ClientHandler;
 
@@ -32,6 +33,7 @@ public class CreationController implements Observer {
     public void update(Event event) {
         int lastClientIndex = -1;
         String lastClientNickname = null;
+        String newLastClientNickname = null;
         String jsonMessage = event.jsonMessage();
         String field;
         JsonReader jsonReader;
@@ -42,7 +44,7 @@ public class CreationController implements Observer {
                 field = jsonReader.nextName();
                 switch (field) {
                     case "playersNumber" -> setPlayerNumber(jsonReader.nextInt());
-                    case "nickname" -> lastClientNickname = addPlayer(jsonReader.nextString());
+                    case "nickname" -> lastClientNickname = jsonReader.nextString();
                     case "index" -> lastClientIndex = jsonReader.nextInt();
                     default -> jsonReader.skipValue();
                 }
@@ -50,9 +52,13 @@ public class CreationController implements Observer {
             jsonReader.endObject();
 
             //Updates the client handler's nickname
+
             ClientHandler clientHandler = Controller.findClientHandler(lastClientIndex);
-            if (lastClientNickname != null && clientHandler != null)
-                clientHandler.nickname = lastClientNickname;
+            if (lastClientNickname != null && clientHandler != null) {
+                clientHandler.nickname = addPlayer(lastClientNickname);
+                if (!lastClientNickname.equals(clientHandler.nickname))
+                    clientHandler.sendOutput(JsonTools.createMessage("Duplicate name, yours is now " + clientHandler.nickname));
+            }
 
             //Checks if the client was previously disconnected, otherwise deletes it
             if (Server.disconnectedClients.containsKey(lastClientNickname) && clientHandler != null) {

@@ -24,12 +24,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
-//TODO: Warn player of nickname change
-
-//When a new client is being added to controller
-//  check if nickname was disconnected, set its connection status and id
-
-
 /**
  * Accepts new connections and starts the game controller.
  * @author Giorgio Massimo Fontanive
