@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 
-//TODO: Document this
-
 /**
  *
  * @author Giorgio Massimo Fontanive
@@ -48,7 +46,6 @@ public class ChatController implements Observer {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    //TODO: Change this in client
                     case "senderNickname" -> currentMessageSender = jsonReader.nextString();
                     case "message" -> message = jsonReader.nextString();
                     case "receiverNickname" -> currentMessageReceiver = jsonReader.nextString();

@@ -40,16 +40,19 @@ public class Controller implements Observer, Runnable {
                     System.out.println("Error while waiting for the game to start.");
                 }
 
-            //Instantiates the chat
+            //Instantiates the chat and the request controller
             ChatController chatController = new ChatController(clientHandlers);
-            for (ClientHandler c : clientHandlers)
+            RequestController requestController = new RequestController(game);
+            for (ClientHandler c : clientHandlers) {
                 c.registerObserver(chatController);
+                c.registerObserver(requestController);
+            }
 
             //Show initial information
             game.sendState(View.PLAYER_NICKNAMES);
             game.sendState(View.COMMON_CARDS);
-            game.sendState(View.BOARD);
             game.sendState(View.CURRENT_PLAYER);
+            game.sendState(View.BOARD);
 
             //Manages turns
             while (!game.gameOver()) {

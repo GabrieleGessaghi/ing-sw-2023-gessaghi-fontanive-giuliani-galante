@@ -24,6 +24,7 @@ game:
         totalPoints
         commonCardPoints
         isFirstPlayer
+        personalCardIndex
         commonCard + i: (come sopra)
         personalCard:
             cardIndex

@@ -57,7 +57,7 @@ public class Game implements Savable, Observable {
             throw new RuntimeException(e);
         }
 
-        commonCards = genCommonCard(numberOfPlayers);
+        commonCards = generateCommonCards(numberOfPlayers);
 
         // using a set to ensures having 3 different numbers
         Set<Integer> randomNumbers = new HashSet<>();
@@ -82,7 +82,7 @@ public class Game implements Savable, Observable {
      * @author Gabriele Gessaghi
      * @param numberOfPlayers The number of player for the current game.
      */
-    private CommonCard[] genCommonCard (int numberOfPlayers){
+    private CommonCard[] generateCommonCards(int numberOfPlayers){
         ArrayList<CommonType> types = new ArrayList<CommonType>(Arrays.asList(CommonType.values()));
         Collections.shuffle(types);
         commonCards = new CommonCard[NUMBER_OF_COMMON_CARDS];
@@ -142,6 +142,19 @@ public class Game implements Savable, Observable {
     }
 
     /**
+     * Finds the reference to the player with the given nickname.
+     * @param nickname The requested player's nickname.
+     * @return A reference to the requested player.
+     * @author Giorgio Massimo Fontainve
+     */
+    private Player findPlayer(String nickname) {
+        for (Player player : players)
+            if (player.getNickname().equals(nickname))
+                return player;
+        return null;
+    }
+
+    /**
      * Collect the selected tiles from the game board and update the current player shelf.
      * @author Gabriele Gessaghi
      * @param selectedTiles A matrix with -1 for the tiles not chosen and
@@ -149,10 +162,8 @@ public class Game implements Savable, Observable {
      * @param column The column on which the player wants to put the new tiles.
      */
     public void playerTurn (int [][] selectedTiles, int column) throws IllegalMoveException, IllegalColumnException{
-
-        //Creates the message sent at the beginning of the turn
-        JsonObject jsonMessage = new JsonObject();
-        jsonMessage.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
+        while (!players[currentPlayerIndex].isConnected)
+            nextPlayerIndex();
 
         //Gets the tiles from the board.
         Token[] selectedTokens;
@@ -164,20 +175,19 @@ public class Game implements Savable, Observable {
         //Removes tiles from the board.
         boolean[][] isSelected = Board.convertIntegerMatrix(selectedTiles, -1);
         board.removeTiles(isSelected);
-        sendState(View.CURRENT_PLAYER);
 
-        if (players[currentPlayerIndex].isShelfFull()) {
+        //Checks if the player has filled their shelf
+        if (!isLastRound && players[currentPlayerIndex].isShelfFull()) {
             isLastRound = true;
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("message", "This is the last round.\n" +
-                    players[currentPlayerIndex].getNickname() + " has filled their shelf!");
+            String message = JsonTools.createMessage("This is the last round!");
+            updateObservers(new Event(message));
         }
-        //TODO: Check these json messages
 
-        nextPlayerIndex();
-        sendState(View.COMMON_CARDS);
-        sendState(View.BOARD);
         sendState(View.CURRENT_PLAYER);
+        nextPlayerIndex();
+        sendState(View.CURRENT_PLAYER);
+        sendState(View.BOARD);
+
         //TODO: Save game
     }
 
@@ -195,7 +205,6 @@ public class Game implements Savable, Observable {
                     maxPoints = player.getPoints();
                     winner = player;
                 }
-
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("winnerNickname", winner.getNickname());
             jsonObject.addProperty("winnerPoints", winner.getPoints());
@@ -211,31 +220,49 @@ public class Game implements Savable, Observable {
      * @param view The requested thing to be seen.
      */
     public void sendState(View view) {
+        updateObservers(new Event(getView(view, null).toString()));
+    }
+
+    /**
+     * Creates a json object describing a particular topic of the game.
+     * @param view The topic requested.
+     * @param playerNickname The nickname of the specific player the topic is about, otherwise null.
+     * @return A json object containing the requested information.
+     */
+    public JsonObject getView(View view, String playerNickname) {
+        JsonObject jsonObject = new JsonObject();
+        Player requestedPlayer = playerNickname == null ? null : findPlayer(playerNickname);
         switch (view) {
-            case BOARD -> updateObservers(new Event(board.getState().toString()));
-            case CURRENT_PLAYER -> updateObservers(new Event(players[currentPlayerIndex].getState().toString()));
+            case BOARD -> jsonObject = board.getState();
+            case CURRENT_PLAYER ->  jsonObject = players[currentPlayerIndex].getState();
             case PLAYER_NICKNAMES -> {
-                JsonObject jsonObject = new JsonObject();
                 JsonArray jsonArray = new JsonArray();
                 for (Player player : players)
                     jsonArray.add(player.getNickname());
                 jsonObject.add("nicknames", jsonArray);
-                updateObservers(new Event(jsonObject.toString()));
             }
             case COMMON_CARDS -> {
-                for (CommonCard card : commonCards)
-                    updateObservers(new Event(card.getState().toString()));
+                for (int i = 0; i < commonCards.length; i++)
+                    jsonObject.add("commoncard" + i, commonCards[i].getState());
+            }
+            case SPECIFIC_PLAYER -> {
+                if (requestedPlayer != null)
+                    jsonObject = requestedPlayer.getState();
+            }
+            case PERSONAL_CARD -> {
+                if (requestedPlayer != null) {
+                    JsonObject playerState = requestedPlayer.getState();
+                    jsonObject = playerState.get("personalcard").getAsJsonObject();
+                }
+            }
+            case SHELF -> {
+                if (requestedPlayer != null) {
+                    JsonObject playerState = requestedPlayer.getState();
+                    jsonObject = playerState.get("shelf").getAsJsonObject();
+                }
             }
         }
-    }
-
-    //TODO: Implement and document these 2
-    public JsonObject getView(View view) {
-        return null;
-    }
-
-    public JsonObject getView(String playerNickname) {
-        return null;
+        return jsonObject;
     }
 
     /**
@@ -245,9 +272,9 @@ public class Game implements Savable, Observable {
      * @author Giorgio Massimo Fontainve
      */
     public void setPlayerConnection(String playerNickname, boolean isConnected) {
-        for (Player player: players)
-            if (player.getNickname().equals(playerNickname))
-                player.isConnected = isConnected;
+        Player requestedPlayer = findPlayer(playerNickname);
+        if (requestedPlayer != null)
+            requestedPlayer.isConnected = isConnected;
     }
 
     @Override
