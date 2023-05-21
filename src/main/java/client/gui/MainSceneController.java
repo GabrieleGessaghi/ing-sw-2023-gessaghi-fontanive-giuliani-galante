@@ -163,7 +163,6 @@ public class MainSceneController implements Client, Initializable {
         int[][] tempTiles = null;
         int tempPersonalCard = -1;
         int tempTotalPoints = -1;
-
         JsonReader jsonReader = new JsonReader(new StringReader(jsonMessage));
         String field;
         try {
@@ -178,7 +177,10 @@ public class MainSceneController implements Client, Initializable {
                         while (jsonReader.hasNext())
                             nicknames.add(jsonReader.nextString());
                         jsonReader.endArray();
-                        updateOpponents(nicknames);
+                        if(nicknames.size() > 1) {
+                            Platform.runLater(()->{
+                            updateOpponents(nicknames);});
+                        }
                     }
                     case "totalPoints" -> tempTotalPoints = jsonReader.nextInt();
                     case "commonCard0" ->{
@@ -306,7 +308,48 @@ public class MainSceneController implements Client, Initializable {
      * @param nicknames
      */
     private void updateOpponents(List<String> nicknames) {
+        switch(nicknames.size()){
+            case 2 -> {
+                for(String nick : nicknames)
+                    if (!nick.equals(GUI.playerNickname)) {
+                        player1Btn.setText(nick);
+                        player1Btn.setVisible(true);
+                    }
 
+            }
+            case 3 -> {
+                int i = 0;
+                for(String nick : nicknames)
+                    if(!nick.equals(GUI.playerNickname)){
+                        if(i == 0) {
+                            player1Btn.setText(nick);
+                            player1Btn.setVisible(true);
+                            i++;
+                        }else if (i == 1){
+                            player2Btn.setText(nick);
+                            player2Btn.setVisible(true);
+                        }
+                    }
+            }
+            case 4 -> {
+                int i = 0;
+                for(String nick : nicknames)
+                    if(!nick.equals(GUI.playerNickname)){
+                        if(i == 0) {
+                            player1Btn.setText(nick);
+                            player1Btn.setVisible(true);
+                            i++;
+                        }else if (i == 1){
+                            player2Btn.setText(nick);
+                            player2Btn.setVisible(true);
+                            i++;
+                        }else if (i == 2){
+                            player2Btn.setText(nick);
+                            player2Btn.setVisible(true);
+                        }
+                    }
+            }
+        }
     }
 
     /**
@@ -494,7 +537,7 @@ public class MainSceneController implements Client, Initializable {
         dialogPane.setContent(anchorPane);
         dialog.setDialogPane(dialogPane);
         dialog.setTitle(nickname+" shelf:");
-        dialog.showAndWait();
+        dialog.show();
         dialog.setOnHidden(closeEvent -> {dialog.close();});
     }
 }

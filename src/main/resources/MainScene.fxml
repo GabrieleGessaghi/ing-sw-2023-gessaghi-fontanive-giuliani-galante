@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.MainSceneController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg" xmlns="http://javafx.com/javafx/19.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.MainSceneController">
    <children>
     <AnchorPane layoutX="601.0" layoutY="99.0" minHeight="0.0" minWidth="0.0" prefHeight="537.0" prefWidth="550.0" styleClass="livingroom">
          <children>
@@ -86,9 +86,9 @@
                   <Button mnemonicParsing="false" opacity="0.0" prefHeight="55.0" prefWidth="55.0" GridPane.columnIndex="5" GridPane.rowIndex="8" />
                </children>
             </GridPane>
-            <Button fx:id="player2Btn" layoutX="21.0" layoutY="25.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname2" />
-            <Button fx:id="player3btn" layoutX="414.0" layoutY="25.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname3" />
-            <Button fx:id="player1Btn" layoutX="21.0" layoutY="442.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname1" />
+            <Button fx:id="player2Btn" layoutX="21.0" layoutY="25.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname2" visible="false" />
+            <Button fx:id="player3btn" layoutX="414.0" layoutY="25.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname3" visible="false" />
+            <Button fx:id="player1Btn" layoutX="21.0" layoutY="442.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname1" visible="false" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="332.0" fitWidth="331.0" layoutX="40.0" layoutY="110.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">

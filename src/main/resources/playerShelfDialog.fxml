@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="437.0" prefWidth="333.0" styleClass="bg" stylesheets="@Application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.playerShelfDialogController">
+<AnchorPane prefHeight="437.0" prefWidth="333.0" styleClass="bg" stylesheets="@Application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.playerShelfDialogController">
    <children>
       <GridPane gridLinesVisible="true" layoutX="38.0" layoutY="25.0" prefHeight="297.0" prefWidth="260.0" AnchorPane.bottomAnchor="115.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="25.0">
         <columnConstraints>
@@ -58,5 +60,15 @@
          </children>
       </GridPane>
       <Pane prefHeight="373.0" prefWidth="333.0" styleClass="playerShelfDialog" stylesheets="@Application.css" />
+      <Label layoutX="25.0" layoutY="383.0" text="Points:" textFill="#cf8c23">
+         <font>
+            <Font name="Droid Serif" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="383.0" text="0" textFill="#cf8c23">
+         <font>
+            <Font name="Droid Serif" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
