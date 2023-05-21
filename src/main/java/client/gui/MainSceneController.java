@@ -126,26 +126,33 @@ public class MainSceneController implements Client, Initializable {
 
     @Override
     public void showOutput(String jsonMessage) {
+
+        //Temporary variables
         String tempNickname = "";
         int[][] tempTiles = null;
         int tempPersonalCard = -1;
         int tempTotalPoints = -1;
+
         JsonReader jsonReader = new JsonReader(new StringReader(jsonMessage));
         String field;
-        StringBuilder toPrint = new StringBuilder();
-        toPrint.append("\n");
         try {
             jsonReader.beginObject();
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
                     case "nickname" -> tempNickname = jsonReader.nextString();
+                    case "nicknames" -> {
+                        List<String> nicknames = new ArrayList<>();
+                        jsonReader.beginArray();
+                        while (jsonReader.hasNext())
+                            nicknames.add(jsonReader.nextString());
+                        jsonReader.endArray();
+                        updateOpponents(nicknames);
+                    }
                     case "totalPoints" -> tempTotalPoints = jsonReader.nextInt();
-                    //case "isFirstPlayer" ->
-                    //case "playerIndex" ->
-                    //case "currentPlayerNickname" ->
-                    //case "commonCard1" ->{
-                     /*   jsonReader.beginObject();
+                    case "commonCard0" ->{
+                        System.out.println(jsonMessage);
+                        jsonReader.beginObject();
                         while(jsonReader.hasNext()){
                             field = jsonReader.nextName();
                             if(field.equals("cardIndex"))
@@ -154,9 +161,9 @@ public class MainSceneController implements Client, Initializable {
                                 jsonReader.skipValue();
                         }
                         jsonReader.endObject();
-                    }*/
-                    //case "commonCard2" ->{
-                        /*jsonReader.beginObject();
+                    }
+                    case "commonCard1" ->{
+                        jsonReader.beginObject();
                         while(jsonReader.hasNext()){
                             field = jsonReader.nextName();
                             if(field.equals("cardIndex"))
@@ -165,10 +172,7 @@ public class MainSceneController implements Client, Initializable {
                                 jsonReader.skipValue();
                         }
                        jsonReader.endObject();
-
-                    }*/
-                    //case "numberOfTokensLeft" ->
-                    //case "nextPointsAvailable" ->
+                    }
                     case "message" -> {
                         String nextString = jsonReader.nextString();
                         Platform.runLater(() -> messages.setText(nextString));
@@ -197,6 +201,7 @@ public class MainSceneController implements Client, Initializable {
             }
             jsonReader.endObject();
 
+            //TEMPORARY
             //Updates some information only if it regards this player
             if(tempNickname.equals(GUI.playerNickname)) {
                 if (tempTiles != null)
@@ -206,24 +211,38 @@ public class MainSceneController implements Client, Initializable {
                 if (tempTotalPoints != -1)
                     points.setText(String.valueOf(tempTotalPoints));
             }
-            System.out.print(toPrint);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
+    @Override
+    public void setNetworkHandler(NetworkHandler networkHandler) {
+        this.networkHandler = networkHandler;
+    }
+
+    /**
+     *
+     * @param i
+     * @param b
+     * @author Niccolò Giuliani
+     */
     private void setCommonCard(int i, boolean b) {
         ImageView comm;
         if(b)
             comm = common_goal2;
         else
-            comm =  common_goal1;
+            comm = common_goal1;
         comm.setImage((new Image("assets/common_goal_cards/"+i+".jpg")));
     }
 
-    @Override
-    public void setNetworkHandler(NetworkHandler networkHandler) {
-        this.networkHandler = networkHandler;
+    /**
+     *
+     * @param nicknames
+     */
+    private void updateOpponents(List<String> nicknames) {
+
     }
 
     /**
@@ -357,7 +376,6 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
-    //TODO: Document this
     /**
      *
      * @param row

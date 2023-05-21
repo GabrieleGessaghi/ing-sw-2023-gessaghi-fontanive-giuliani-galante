@@ -12,22 +12,31 @@ import java.io.StringReader;
 import java.util.List;
 
 /**
- *
+ * Handles messaging in the game
  * @author Giorgio Massimo Fontanive
  */
 public class ChatController implements Observer {
     Chat chat;
     List<ClientHandler> clientHandlers;
 
+    /**
+     * Class constructor.
+     * @param clientHandlers A list of the clientHandlers participating in this game.
+     */
     public ChatController(List<ClientHandler> clientHandlers) {
         chat = new Chat();
         this.clientHandlers = clientHandlers;
     }
 
-    private ClientHandler findClientHandler(String nickname) {
-        for (ClientHandler c : clientHandlers)
-            if (c.nickname.equals(nickname))
-                return c;
+    /**
+     * Finds the client handler with this nickname.
+     * @param nickname The nickname of the wanted client handler.
+     * @return The client handler with the given nickname.
+     */
+    private ClientHandler findClientHandlerByName(String nickname) {
+        for (ClientHandler clientHandler : clientHandlers)
+            if (clientHandler.nickname.equals(nickname))
+                return clientHandler;
         return null;
     }
 
@@ -56,10 +65,10 @@ public class ChatController implements Observer {
 
             if (message != null && currentMessageSender != null)
                 if (currentMessageReceiver != null)
-                    if (findClientHandler(currentMessageReceiver) != null)
+                    if (findClientHandlerByName(currentMessageReceiver) != null)
                         chat.addPrivateMessage(currentMessageSender, currentMessageReceiver, message);
                     else
-                        findClientHandler(currentMessageSender).sendOutput(JsonTools.createMessage("No player with this nickname found!"));
+                        findClientHandlerByName(currentMessageSender).sendOutput(JsonTools.createMessage("No player with this nickname found!"));
                 else
                     chat.addPublicMessage(currentMessageSender, message);
 

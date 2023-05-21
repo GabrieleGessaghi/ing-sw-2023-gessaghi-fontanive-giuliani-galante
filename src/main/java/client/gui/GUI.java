@@ -9,13 +9,12 @@ import server.controller.utilities.ConfigLoader;
 
 
 public class GUI extends Application {
+    private Stage stage;
 
     //Starting constants
     public static String playerNickname;
     public static int connectionType;
     public static String host;
-
-    private Stage stage;
 
     public static void main(String[] args) {
         launch(args);
@@ -23,7 +22,7 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         Parent root = FXMLLoader.load(getClass().getResource("/GUI.fxml"));
         Scene base = new Scene(root);
         base.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());

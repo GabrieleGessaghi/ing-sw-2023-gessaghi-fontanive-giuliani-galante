@@ -37,7 +37,7 @@ public class TUI implements Client {
      * @author Giorgio Massimo Fontanive
      */
     public static void main(String[] args) {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
 
         printOpening();
         Scanner scn = new Scanner(System.in);
@@ -66,6 +66,7 @@ public class TUI implements Client {
             userInput = scn.nextLine();
             switch (userInput) {
                 case "chat" -> client.sendNewMessage();
+                case "view" -> client.requestNewView();
                 default -> client.handleInput(userInput);
             }
         }
@@ -101,7 +102,6 @@ public class TUI implements Client {
         }
     }
 
-    //TODO: Improve this method
     /**
      * Lets the user send messages to the chat
      * @author Giorgio Massimo Fontanive
@@ -121,6 +121,10 @@ public class TUI implements Client {
         }
 
         networkHandler.sendInput(jsonObject.toString());
+    }
+
+    public void requestNewView() {
+        Scanner scn = new Scanner(System.in);
     }
 
     /**
@@ -143,9 +147,16 @@ public class TUI implements Client {
                     case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player\n" : "Not first player\n");
                     case "playerIndex" -> toPrint.append("Player index: ").append(jsonReader.nextInt()).append("\n");
                     case "currentPlayerNickname" -> toPrint.append("Current player: ").append(jsonReader.nextString()).append("\n");
-                    case "objectiveDescription" -> toPrint.append("Common Objective description:\n").append(jsonReader.nextString()).append("\n");
-                    case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
-                    case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
+                    case "commonCard0", "commonCard1" -> {
+                        jsonReader.beginObject();
+                        while (jsonReader.hasNext())
+                            switch (jsonReader.nextName()) {
+                                case "objectiveDescription" -> toPrint.append("Common Objective description:\n").append(jsonReader.nextString()).append("\n");
+                                case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
+                                case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
+                            }
+                        jsonReader.endObject();
+                    }
                     case "message" -> toPrint.append(jsonReader.nextString()).append("\n");
                     case "tiles" -> toPrint.append(printTiles(jsonReader));
                     case "shelf" -> toPrint.append(printShelf(jsonReader));

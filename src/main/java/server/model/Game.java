@@ -243,7 +243,7 @@ public class Game implements Savable, Observable {
             }
             case COMMON_CARDS -> {
                 for (int i = 0; i < commonCards.length; i++)
-                    jsonObject.add("commoncard" + i, commonCards[i].getState());
+                    jsonObject.add("commonCard" + i, commonCards[i].getState());
             }
             case SPECIFIC_PLAYER -> {
                 if (requestedPlayer != null)

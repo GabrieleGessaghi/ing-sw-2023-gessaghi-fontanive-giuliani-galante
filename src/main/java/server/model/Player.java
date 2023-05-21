@@ -169,7 +169,7 @@ public class Player implements Savable, Observable {
         jsonObject.add("personalCard", personalCard.getState());
         int i = 0;
         for (Card card : commonCards.keySet()) {
-            jsonObject.addProperty("commonCard" + i, commonCards.get(card));
+            jsonObject.addProperty("completedCommonCard" + i, commonCards.get(card));
             i++;
         }
         return jsonObject;

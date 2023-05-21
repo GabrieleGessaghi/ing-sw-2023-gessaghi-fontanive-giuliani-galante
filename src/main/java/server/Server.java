@@ -23,9 +23,6 @@ import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
 //TODO: Handle wrong ips client side
 //TODO: Separate token and column selection
-//TODO: change sendstate() commoncard
-//TODO: Allow player to see specific things
-//TODO: Send all information at the beginning of new game
 
 /**
  * Accepts new connections and starts the game controller.
@@ -46,7 +43,7 @@ public class Server {
      * Loads the configuration file, starts the controller and the connection acceptance methods.
      */
     public static void main(String[] args) throws IOException {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         controller = new Controller();
         Server server = new Server();
         new Thread(controller).start();
