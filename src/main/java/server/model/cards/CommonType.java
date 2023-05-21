@@ -5,16 +5,16 @@ package server.model.cards;
  * @author Niccolò Giuliani
  */
 public enum CommonType {
-    SIXGROUPS,
-    DIAGONAL,
-    CORNERS,
-    FOURROWS,
-    FOURGROUPS,
-    TWOCOLUMNS,
     TWOSQUARES,
-    TWOROWS,
+    TWOCOLUMNS,
+    FOURGROUPS,
+    SIXGROUPS,
     THREECOLUMNS,
-    XSHAPE,
+    TWOROWS,
+    FOURROWS,
+    CORNERS,
     EIGHTANY,
+    XSHAPE,
+    DIAGONAL,
     STAIRS;
 }

@@ -97,8 +97,14 @@
          </image>
       </ImageView>
       <Button layoutX="664.0" layoutY="702.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="425.0" text="Chat" />
-      <ImageView fx:id="common_goal1" fitHeight="150.0" fitWidth="200.0" layoutX="63.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="common_goal2" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="common_goal1" fitHeight="150.0" fitWidth="200.0" layoutX="63.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/common_goal_cards/9.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="common_goal2" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/common_goal_cards/2.jpg" />
+         </image></ImageView>
       <ImageView fx:id="Personal_goal" fitHeight="252.0" fitWidth="394.0" layoutX="377.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="61.0" layoutY="579.0" prefHeight="36.0" prefWidth="242.0" text="Common Goals" textFill="#cf8c23">
          <font>
@@ -296,5 +302,45 @@
       </Label>
       <Button fx:id="cancel" layoutX="682.0" layoutY="668.0" mnemonicParsing="false" text="Cancel" visible="false" />
       <Button fx:id="confirm" disable="true" layoutX="751.0" layoutY="668.0" mnemonicParsing="false" text="Confirm" visible="false" />
+      <ImageView fx:id="twoComm1" fitHeight="45.0" fitWidth="48.0" layoutX="184.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+         <image>
+            <Image url="@assets/scoring_tokens/scoring_2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fourComm1" fitHeight="45.0" fitWidth="48.0" layoutX="183.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+         <image>
+            <Image url="@assets/scoring_tokens/scoring_4.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sixComm1" fitHeight="45.0" fitWidth="48.0" layoutX="184.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+         <image>
+            <Image url="@assets/scoring_tokens/scoring_6.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="eightComm1" fitHeight="45.0" fitWidth="48.0" layoutX="184.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+         <image>
+            <Image url="@assets/scoring_tokens/scoring_8.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="twoComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+         <image>
+            <Image url="@assets/scoring_tokens/scoring_2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fourComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="672.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+         <image>
+            <Image url="@assets/scoring_tokens/scoring_4.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sixComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+         <image>
+            <Image url="@assets/scoring_tokens/scoring_6.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="eightComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+         <image>
+            <Image url="@assets/scoring_tokens/scoring_8.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
