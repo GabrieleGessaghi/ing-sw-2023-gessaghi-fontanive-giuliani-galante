@@ -8,14 +8,22 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
@@ -50,6 +58,15 @@ public class MainSceneController implements Client, Initializable {
     private Button confirm;
     @FXML
     private ImageView Personal_goal;
+
+    @FXML
+    private Button player1Btn;
+
+    @FXML
+    private Button player2Btn;
+
+    @FXML
+    private Button player3btn;
     NetworkHandler networkHandler;
     int[][] tokenSelection;
     int tokensSelected;
@@ -464,6 +481,21 @@ public class MainSceneController implements Client, Initializable {
             }
         }
         return result;
+    }
+
+    @FXML
+    void playerBtnClicked(ActionEvent event) throws IOException {
+        Button playerBtn = (Button) event.getSource();
+        String nickname = playerBtn.getText();
+        Dialog<ButtonType> dialog = new Dialog<>();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/playerShelfDialog.fxml"));
+        AnchorPane anchorPane = fxmlLoader.load();
+        DialogPane dialogPane = new DialogPane();
+        dialogPane.setContent(anchorPane);
+        dialog.setDialogPane(dialogPane);
+        dialog.setTitle(nickname+" shelf:");
+        dialog.showAndWait();
+        dialog.setOnHidden(closeEvent -> {dialog.close();});
     }
 }
 

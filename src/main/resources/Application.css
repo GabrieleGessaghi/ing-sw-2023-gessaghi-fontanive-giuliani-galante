@@ -134,3 +134,8 @@
     -fx-background-size: 100% 100%;
     -fx-background-position: center center;
 }
+.playerShelfDialog {
+    -fx-background-image: url("assets/boards/bookshelf.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+}
