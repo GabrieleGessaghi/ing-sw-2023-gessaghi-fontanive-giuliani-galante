@@ -27,10 +27,18 @@
      -fx-background-position: center center;
 }
 
+.frame_image1{
+    -fx-image: url("assets/item_tiles/Cornici1.1.png");
+}
+
 .frame2{
     -fx-background-image: url("assets/item_tiles/Cornici1.2.png");
     -fx-background-size: 100% 100%;
     -fx-background-position: center center;
+}
+
+.frame_image2{
+    -fx-image: url("assets/item_tiles/Cornici1.2.png");
 }
 
 .frame3{
@@ -39,10 +47,18 @@
     -fx-background-position: center center;
 }
 
+.frame_image3{
+    -fx-image: url("assets/item_tiles/Cornici1.3.png");
+}
+
 .cat1{
     -fx-background-image: url("assets/item_tiles/Gatti1.1.png");
      -fx-background-size: 100% 100%;
      -fx-background-position: center center;
+}
+
+.cat_image1{
+    -fx-image: url("assets/item_tiles/Gatti1.1.png");
 }
 
 .cat2{
@@ -51,10 +67,18 @@
     -fx-background-position: center center;
 }
 
+.cat_image2{
+    -fx-image: url("assets/item_tiles/Gatti1.2.png");
+}
+
 .cat3{
     -fx-background-image: url("assets/item_tiles/Gatti1.3.png");
     -fx-background-size: 100% 100%;
     -fx-background-position: center center;
+}
+
+.cat_image3{
+    -fx-image: url("assets/item_tiles/Gatti1.3.png");
 }
 
 .toy1{
@@ -63,10 +87,18 @@
      -fx-background-position: center center;
 }
 
+.toy_image1{
+    -fx-image: url("assets/item_tiles/Giochi1.1.png");
+}
+
 .toy2{
     -fx-background-image: url("assets/item_tiles/Giochi1.2.png");
     -fx-background-size: 100% 100%;
     -fx-background-position: center center;
+}
+
+.toy_image2{
+    -fx-image: url("assets/item_tiles/Giochi1.2.png");
 }
 
 .toy3{
@@ -75,10 +107,18 @@
     -fx-background-position: center center;
 }
 
+.toy_image3{
+    -fx-image: url("assets/item_tiles/Giochi1.3.png");
+}
+
 .book1{
     -fx-background-image: url("assets/item_tiles/Libri1.1.png");
      -fx-background-size: 100% 100%;
      -fx-background-position: center center;
+}
+
+.book_image1{
+    -fx-image: url("assets/item_tiles/Libri1.1.png");
 }
 
 .book2{
@@ -87,10 +127,18 @@
     -fx-background-position: center center;
 }
 
+.book_image2{
+    -fx-image: url("assets/item_tiles/Libri1.2.png");
+}
+
 .book3{
     -fx-background-image: url("assets/item_tiles/Libri1.3.png");
     -fx-background-size: 100% 100%;
     -fx-background-position: center center;
+}
+
+.book_image3{
+    -fx-image: url("assets/item_tiles/Libri1.3.png");
 }
 
 .plant1{
@@ -99,10 +147,18 @@
      -fx-background-position: center center;
 }
 
+.plant_image1{
+    -fx-image: url("assets/item_tiles/Piante1.1.png");
+}
+
 .plant2{
     -fx-background-image: url("assets/item_tiles/Piante1.2.png");
     -fx-background-size: 100% 100%;
     -fx-background-position: center center;
+}
+
+.plant_image2{
+    -fx-image: url("assets/item_tiles/Piante1.2.png");
 }
 
 .plant3{
@@ -111,10 +167,18 @@
     -fx-background-position: center center;
 }
 
+.plant_image3{
+    -fx-image: url("assets/item_tiles/Piante1.3.png");
+}
+
 .trophy1{
       -fx-background-image: url("assets/item_tiles/Trofei1.1.png");
          -fx-background-size: 100% 100%;
          -fx-background-position: center center;
+}
+
+.trophy_image1{
+    -fx-image: url("assets/item_tiles/Trofei1.1.png");
 }
 
 .trophy2{
@@ -123,10 +187,18 @@
     -fx-background-position: center center;
 }
 
+.trophy_image2{
+    -fx-image: url("assets/item_tiles/Trofei1.2.png");
+}
+
 .trophy3{
     -fx-background-image: url("assets/item_tiles/Trofei1.3.png");
     -fx-background-size: 100% 100%;
     -fx-background-position: center center;
+}
+
+.trophy_image3{
+    -fx-image: url("assets/item_tiles/Trofei1.3.png");
 }
 
 .playerDialog {

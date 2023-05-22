@@ -9,28 +9,21 @@ import com.google.gson.stream.JsonReader;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
-import javafx.stage.WindowEvent;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
-import server.model.Player;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -77,6 +70,8 @@ public class MainSceneController implements Client, Initializable {
     int columnSelection;
     boolean selectingTokens;
     boolean selectingColumn;
+    boolean isPlayerWindowOpen;
+    int [][] tempPlayerShelf;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -97,6 +92,7 @@ public class MainSceneController implements Client, Initializable {
             Arrays.fill(i, -1);
         tokensSelected = 0;
         columnSelection = -1;
+        isPlayerWindowOpen = false;
 
         //Add buttons functionalities
         cancel.setOnMouseClicked(e -> {
@@ -234,6 +230,9 @@ public class MainSceneController implements Client, Initializable {
                             if (jsonReader.nextName().equals("shelfTiles"))
                                 tempTiles = JsonTools.readMatrix(jsonReader);
                         jsonReader.endObject();
+                    }
+                    case "shelfTiles" -> {
+                        tempPlayerShelf = JsonTools.readMatrix(jsonReader);
                     }
                     default -> jsonReader.skipValue();
                 }
@@ -536,13 +535,30 @@ public class MainSceneController implements Client, Initializable {
     void playerBtnClicked(ActionEvent event) throws IOException {
         Button playerBtn = (Button) event.getSource();
         String nickname = playerBtn.getText();
-        Parent root = FXMLLoader.load(getClass().getResource("/playerShelfDialog.fxml"));
-        Stage playerShelf = new Stage();
-        Scene base = new Scene(root);
-        playerShelf.setScene(base);
-        playerShelf.setTitle(nickname+" shelf:");
-        playerShelf.setResizable(false);
-        playerShelf.show();
+        Platform.runLater(() -> {
+            isPlayerWindowOpen = true;
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("requestShelf", true);
+            jsonObject.addProperty("requestedPlayerNickname", nickname);
+            networkHandler.sendInput(jsonObject.toString());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/playerShelfDialog.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            PlayerShelfDialogController controller = loader.getController();
+            controller.initShelf(tempPlayerShelf);
+            Stage playerShelf = new Stage();
+            Scene base = new Scene(root);
+            base.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
+            playerShelf.setScene(base);
+            playerShelf.setTitle(nickname+" shelf:");
+            playerShelf.setResizable(false);
+            playerShelf.show();
+        });
+        isPlayerWindowOpen = false;
     }
 }
 
