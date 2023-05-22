@@ -2,7 +2,6 @@ package server;
 
 import server.controller.Controller;
 import server.controller.utilities.ConfigLoader;
-import server.view.ClientHandler;
 import server.view.rmi.ClientHandlerRMI;
 import server.view.rmi.ClientUsable;
 import server.view.tcp.ClientHandlerTCP;
@@ -17,19 +16,18 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
+
+//TODO: Disconnect clients after game is over
 
 /**
  * Accepts new connections and starts the game controller.
  * @author Giorgio Massimo Fontanive
  */
 public class Server {
-    public static Map<String, Integer> disconnectedClients;
     private static Controller controller;
     private final AtomicInteger connectionsCounter;
 
@@ -45,7 +43,6 @@ public class Server {
      */
     public static void main(String[] args) throws IOException {
         ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
-        disconnectedClients = new HashMap<>();
         controller = new Controller();
         Server server = new Server();
         new Thread(controller).start();

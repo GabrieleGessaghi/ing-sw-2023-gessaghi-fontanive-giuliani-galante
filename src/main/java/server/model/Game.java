@@ -20,7 +20,6 @@ import java.util.*;
 import static server.controller.utilities.ConfigLoader.NUMBER_OF_COMMON_CARDS;
 
 public class Game implements Savable, Observable {
-    private final String gameID;
     private int currentPlayerIndex;
     private int numberOfPlayers;
     private Board board;
@@ -52,7 +51,7 @@ public class Game implements Savable, Observable {
             String input = now.toString();
             byte[] hash = md.digest(input.getBytes());
             int code = Math.abs(Arrays.hashCode(hash)) % 10000;
-            gameID = String.format("%04d", code);
+            String gameID = String.format("%04d", code);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
@@ -97,25 +96,24 @@ public class Game implements Savable, Observable {
      * @throws IOException When there's an error in the file creation.
      */
     private void saveGame() throws IOException {
-        String fileName = String.format("/src/data/game-%s.txt",gameID);
-        FileOutputStream fOut = new FileOutputStream(new File(fileName));
-
-        fOut.close();
+//        String fileName = String.format("/src/data/game-%s.txt",gameID);
+//        FileOutputStream fOut = new FileOutputStream(new File(fileName));
+//
+//        fOut.close();
     }
 
     /**
      * Reload a saved state of a previous game.
      * @author Gabriele Gessaghi
      */
-    public void loadGame(String fileName) throws FileNotFoundException {
-        try {
-            FileInputStream fIn = new FileInputStream(fileName);
-
-        } catch (FileNotFoundException e){
-            String errorMessage = "Game files not found!";
-            System.out.println(errorMessage);
-            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
-        }
+    public void loadGame() throws FileNotFoundException {
+//        try {
+//            FileInputStream fIn = new FileInputStream();
+//        } catch (FileNotFoundException e){
+//            String errorMessage = "Game files not found!";
+//            System.out.println(errorMessage);
+//            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
+//        }
     }
 
     /**
@@ -123,7 +121,7 @@ public class Game implements Savable, Observable {
      * @author Gabriele Gessaghi
      * @return True if the file containing the game state is found
      */
-    public boolean isThereGameSaved() {
+    public static boolean isThereGameSaved() {
 
         return false;
     }
@@ -184,7 +182,11 @@ public class Game implements Savable, Observable {
         }
 
         sendState(View.CURRENT_PLAYER);
+
         nextPlayerIndex();
+        while (!players[currentPlayerIndex].isConnected)
+            nextPlayerIndex();
+
         sendState(View.CURRENT_PLAYER);
         sendState(View.BOARD);
 
@@ -271,10 +273,30 @@ public class Game implements Savable, Observable {
      * @param isConnected True if the player is connected, false otherwise.
      * @author Giorgio Massimo Fontainve
      */
-    public void setPlayerConnection(String playerNickname, boolean isConnected) {
+    public synchronized void setPlayerConnection(String playerNickname, boolean isConnected) {
         Player requestedPlayer = findPlayer(playerNickname);
         if (requestedPlayer != null)
             requestedPlayer.isConnected = isConnected;
+    }
+
+    /**
+     * Gets whether the given player is still connected
+     * @param playerNickname The player's nickname.
+     * @return True if the player is still connected.
+     */
+    public synchronized boolean getPlayerConnection(String playerNickname) {
+        Player requestedPlayer = findPlayer(playerNickname);
+        if (requestedPlayer != null)
+            return requestedPlayer.isConnected;
+        return false;
+    }
+
+    /**
+     * Gets the nickname of whose turn it is.
+     * @return The nickname of the current Player.
+     */
+    public String getCurrentPlayer() {
+        return players[currentPlayerIndex].getNickname();
     }
 
     /**

@@ -1,5 +1,6 @@
 package server.controller;
 
+import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.Server;
 import server.controller.observer.Event;
@@ -50,27 +51,44 @@ public class CreationController implements Observer {
             }
             jsonReader.endObject();
 
-            //Updates the client handler's nickname
-
-            ClientHandler clientHandler = Controller.findClientHandler(lastClientIndex);
-            if (lastClientNickname != null && clientHandler != null) {
-                clientHandler.nickname = addPlayer(lastClientNickname);
-                if (!lastClientNickname.equals(clientHandler.nickname))
-                    clientHandler.sendOutput(JsonTools.createMessage("Duplicate name, yours is now " + clientHandler.nickname));
-            }
-
-            //Checks if the client was previously disconnected, otherwise deletes it
-            if (!isSpotAvailable() && !Server.disconnectedClients.isEmpty())
-                if (Server.disconnectedClients.containsKey(lastClientNickname) && clientHandler != null) {
-                    clientHandler.index = Server.disconnectedClients.get(lastClientNickname);
-                    Server.disconnectedClients.remove(lastClientNickname);
-                } else {
-                    Controller.clientHandlers.remove(clientHandler);
-                }
-
+            updateNickname(lastClientNickname, lastClientIndex);
+            checkDisconnection(lastClientNickname);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     *
+     * @param nickname
+     * @param index
+     */
+    private void updateNickname(String nickname, int index) {
+        ClientHandler clientHandler = Controller.findClientHandler(index);
+        if (nickname != null && clientHandler != null) {
+            clientHandler.nickname = addPlayer(nickname);
+            if (!nickname.equals(clientHandler.nickname)) {
+                clientHandler.sendOutput(JsonTools.createMessage("Duplicate name, yours is now " + clientHandler.nickname));
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("newNickname", clientHandler.nickname);
+                clientHandler.sendOutput(jsonObject.toString());
+            }
+        }
+    }
+
+    /**
+     *
+     * @param nickname
+     */
+    private void checkDisconnection(String nickname) {
+        ClientHandler clientHandler = Controller.findClientHandlerByName(nickname);
+        if (!isSpotAvailable() && !Controller.disconnectedClients.isEmpty())
+            if (Controller.disconnectedClients.containsKey(nickname) && clientHandler != null) {
+                clientHandler.index = Controller.disconnectedClients.get(nickname);
+                Controller.disconnectedClients.remove(nickname);
+            } else {
+                Controller.clientHandlers.remove(clientHandler);
+            }
     }
 
     /**
@@ -116,7 +134,7 @@ public class CreationController implements Observer {
      */
     private String addPlayer(String nickname) {
         String newNickname;
-        if (!playersNicknames.contains(nickname) || Server.disconnectedClients.containsKey(nickname))
+        if (!playersNicknames.contains(nickname) || Controller.disconnectedClients.containsKey(nickname))
             newNickname = nickname;
         else {
             int i = 0;

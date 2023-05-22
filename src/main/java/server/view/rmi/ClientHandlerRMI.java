@@ -104,7 +104,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
         }).start();
     }
 
-    protected void disconnect() {
+    public void disconnect() {
         super.disconnect();
         try {
             UnicastRemoteObject.unexportObject(this, true);

@@ -25,7 +25,7 @@ import static server.controller.utilities.ConfigLoader.*;
  */
 public class TUI implements Client {
     private NetworkHandler networkHandler;
-    private final String nickname;
+    private String nickname;
     private String lastInput;
 
     public TUI(String nickname) {
@@ -168,6 +168,7 @@ public class TUI implements Client {
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
                     case "nicknames" -> toPrint.append(printNicknames(jsonReader));
                     case "connectionError" -> toPrint.append("Connection error! Please type \"connect\" to reconnect.\n");
+                    case "newNickname" -> nickname = jsonReader.nextString();
                     default -> jsonReader.skipValue();
                 }
             }
@@ -245,6 +246,7 @@ public class TUI implements Client {
                 System.out.print("Insert coordinates for token " + (i+1) + ": ");
                 waitForInput();
                 tokenCoordinates[i] = lastInput;
+
                 //TODO: Fix this while loop
             } while (tokenCoordinates[i] != null && tokenCoordinates[i].length() != 2 &&
                     (tokenCoordinates[i].charAt(0) < 'a' || tokenCoordinates[i].charAt(0) > 'i' ||

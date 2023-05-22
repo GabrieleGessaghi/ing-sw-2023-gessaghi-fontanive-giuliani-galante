@@ -17,27 +17,12 @@ import java.util.List;
  */
 public class ChatController implements Observer {
     Chat chat;
-    List<ClientHandler> clientHandlers;
 
     /**
      * Class constructor.
-     * @param clientHandlers A list of the clientHandlers participating in this game.
      */
-    public ChatController(List<ClientHandler> clientHandlers) {
+    public ChatController() {
         chat = new Chat();
-        this.clientHandlers = clientHandlers;
-    }
-
-    /**
-     * Finds the client handler with this nickname.
-     * @param nickname The nickname of the wanted client handler.
-     * @return The client handler with the given nickname.
-     */
-    private ClientHandler findClientHandlerByName(String nickname) {
-        for (ClientHandler clientHandler : clientHandlers)
-            if (clientHandler.nickname.equals(nickname))
-                return clientHandler;
-        return null;
     }
 
     @Override
@@ -64,11 +49,14 @@ public class ChatController implements Observer {
             jsonReader.endObject();
 
             if (message != null && currentMessageSender != null)
-                if (currentMessageReceiver != null)
-                    if (findClientHandlerByName(currentMessageReceiver) != null)
+                if (currentMessageReceiver != null) //Checks whether the message is public
+                    if (Controller.findClientHandlerByName(currentMessageReceiver) != null) //Checks whether the receiver exists
                         chat.addPrivateMessage(currentMessageSender, currentMessageReceiver, message);
-                    else
-                        findClientHandlerByName(currentMessageSender).sendOutput(JsonTools.createMessage("No player with this nickname found!"));
+                    else {
+                        ClientHandler sender = Controller.findClientHandlerByName(currentMessageSender);
+                        if (sender != null)
+                            sender.sendOutput(JsonTools.createMessage("No player with this nickname found!"));
+                    }
                 else
                     chat.addPublicMessage(currentMessageSender, message);
 
