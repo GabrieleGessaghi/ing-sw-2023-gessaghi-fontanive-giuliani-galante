@@ -30,6 +30,7 @@ import javafx.stage.WindowEvent;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
+import server.model.Player;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -115,7 +116,6 @@ public class MainSceneController implements Client, Initializable {
                 selectingTokens = false;
                 for(Node i : selectedNodes)
                     i.setOpacity(1);
-                System.out.println(jsonObject);
             }
             if (selectingColumn) {
                 JsonObject jsonObject = new JsonObject();
@@ -187,7 +187,6 @@ public class MainSceneController implements Client, Initializable {
                     }
                     case "totalPoints" -> tempTotalPoints = jsonReader.nextInt();
                     case "commonCard0" ->{
-                        System.out.println(jsonMessage);
                         jsonReader.beginObject();
                         while(jsonReader.hasNext()){
                             field = jsonReader.nextName();
@@ -248,8 +247,10 @@ public class MainSceneController implements Client, Initializable {
                     updateTokens(tempTiles, true);
                 if (tempPersonalCard != -1)
                     setPersonalCard(tempPersonalCard);
-                if (tempTotalPoints != -1)
-                    points.setText(String.valueOf(tempTotalPoints));
+                if (tempTotalPoints != -1) {
+                    int finalTempTotalPoints = tempTotalPoints;
+                    Platform.runLater(() -> points.setText(String.valueOf(finalTempTotalPoints)));
+                }
             }
 
         } catch (IOException e) {
@@ -257,8 +258,12 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
+    /**
+     *
+     * @param b
+     * @param i
+     */
     private void updatePointsCommonCards(boolean b, int i) {
-
         if(!b) {
             twoComm1.setVisible(false);
             fourComm1.setVisible(false);
@@ -388,8 +393,6 @@ public class MainSceneController implements Client, Initializable {
 
         });
     }
-
-
 
     /**
      *
