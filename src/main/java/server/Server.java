@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
-//TODO: Disconnect clients after game is over
+//TODO: Ping clients to detect disconnections
 
 /**
  * Accepts new connections and starts the game controller.

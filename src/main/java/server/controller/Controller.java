@@ -38,7 +38,7 @@ public class Controller implements Observer, Runnable {
      */
     @Override
     public void run() {
-        int i = 0;
+        disconnectedClients = new HashMap<>();
 
         while(true) {
             synchronized (this) {
@@ -95,6 +95,7 @@ public class Controller implements Observer, Runnable {
             index = jsonObject.get("clientDisconnected").getAsInt();
             ClientHandler clientHandler = findClientHandler(index);
             if (clientHandler != null) {
+                System.out.println("Detected player disconnection!");
                 disconnectedClients.put(clientHandler.nickname, index);
                 game.setPlayerConnection(clientHandler.nickname, false);
                 clientHandlers.remove(clientHandler);
