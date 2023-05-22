@@ -117,10 +117,14 @@ public class MainSceneController implements Client, Initializable {
             node.setOnMouseClicked(e -> {
                 int row = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
                 int column = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
-                node.setOpacity(0.5);
-                selectedNodes.add(node);
-                tokenSelection[row][column] = tokensSelected;
-                tokensSelected++;
+                if(node.getOpacity() == 1) {
+                    node.setOpacity(0.5);
+                    selectedNodes.add(node);
+                    selectedNodes.add(node);
+                    tokenSelection[row][column] = tokensSelected;
+                    tokensSelected++;
+                }
+
             });
         for (Node node : shelf.getChildren())
             node.setOnMouseClicked(e -> {
