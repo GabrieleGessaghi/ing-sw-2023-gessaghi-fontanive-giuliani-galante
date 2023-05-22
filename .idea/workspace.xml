@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed a bug in the turn controller">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented server side crash detection and updated client reconnection">
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,13 +240,6 @@
       <workItem from="1684247623859" duration="2041000" />
       <workItem from="1684663004952" duration="15571000" />
       <workItem from="1684749312367" duration="3085000" />
-    </task>
-    <task id="LOCAL-00153" summary="fixed small issues">
-      <created>1683219701262</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
-      <option name="project" value="LOCAL" />
-      <updated>1683219701262</updated>
     </task>
     <task id="LOCAL-00154" summary="fixed small issues">
       <created>1683222150438</created>
@@ -593,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684762198107</updated>
     </task>
-    <option name="localTasksCounter" value="202" />
+    <task id="LOCAL-00202" summary="Implemented server side crash detection and updated client reconnection">
+      <created>1684767948076</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1684767948076</updated>
+    </task>
+    <option name="localTasksCounter" value="203" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,7 +618,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added comment" />
     <MESSAGE value="Implemented Chat server side" />
     <MESSAGE value="fixed small issues" />
     <MESSAGE value="make board upgrade" />
@@ -652,7 +642,8 @@
     <MESSAGE value="Implemented but not tested reconnection with same username for clients" />
     <MESSAGE value="Added waring for duplicate nickname" />
     <MESSAGE value="Fixed a bug in the turn controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug in the turn controller" />
+    <MESSAGE value="Implemented server side crash detection and updated client reconnection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented server side crash detection and updated client reconnection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

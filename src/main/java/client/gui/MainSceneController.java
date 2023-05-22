@@ -9,28 +9,21 @@ import com.google.gson.stream.JsonReader;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
-import javafx.stage.WindowEvent;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
-import server.model.Player;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -89,8 +82,6 @@ public class MainSceneController implements Client, Initializable {
         networkHandler.setHost(GUI.host);
         networkHandler.setClient(this);
         new Thread(networkHandler).start();
-
-        //TODO: Go back if there's an error
 
         tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
         for (int[] i : tokenSelection)
@@ -236,6 +227,7 @@ public class MainSceneController implements Client, Initializable {
                                 tempTiles = JsonTools.readMatrix(jsonReader);
                         jsonReader.endObject();
                     }
+                    case "connectionError" -> {} //TODO: Go back to beginning screen
                     default -> jsonReader.skipValue();
                 }
             }

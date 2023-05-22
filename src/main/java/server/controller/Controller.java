@@ -76,6 +76,10 @@ public class Controller implements Observer, Runnable {
                 }
             }
 
+            for (ClientHandler ch : clientHandlers) {
+                ch.sendOutput(JsonTools.createMessage("Closing the game!"));
+                ch.disconnect();
+            }
             reset();
         }
     }
