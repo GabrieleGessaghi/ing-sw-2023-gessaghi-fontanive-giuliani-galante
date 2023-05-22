@@ -72,7 +72,7 @@ public class MainSceneController implements Client, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List <Node> selectedNodes = new ArrayList<Node>();
+        List <Node> selectedNodes = new ArrayList<>();
         //Connects to the server
         if (GUI.connectionType == 0)
             setNetworkHandler(new NetworkHandlerTCP());
@@ -91,10 +91,12 @@ public class MainSceneController implements Client, Initializable {
 
         //Add buttons functionalities
         cancel.setOnMouseClicked(e -> {
-            tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
+            for (int[] row : tokenSelection)
+                Arrays.fill(row, -1);
             tokensSelected = 0;
             for(Node i : selectedNodes)
                 i.setOpacity(1);
+            selectedNodes.clear();
         });
         confirm.setOnMouseClicked(e -> {
             if (selectingTokens) {
@@ -107,6 +109,7 @@ public class MainSceneController implements Client, Initializable {
                 selectingTokens = false;
                 for(Node i : selectedNodes)
                     i.setOpacity(1);
+                selectedNodes.clear();
             }
             confirm.setDisable(true);
             confirm.setVisible(false);
@@ -419,9 +422,6 @@ public class MainSceneController implements Client, Initializable {
             columnSelection = -1;
             selectingColumn = true;
             messages.setText("Pick a column!");
-//            cancel.setVisible(true);
-//            confirm.setVisible(true);
-//            confirm.setDisable(false);
         });
     }
 
