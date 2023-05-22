@@ -1,6 +1,7 @@
 package server.controller;
 
-import server.Server;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
@@ -8,7 +9,11 @@ import server.model.Game;
 import server.model.View;
 import server.view.ClientHandler;
 
+import java.io.FileNotFoundException;
 import java.util.*;
+
+//TODO: Handle only one client remaining
+//TODO: Reset after game is over
 
 /**
  * Handles the game flow on a different thread.
@@ -16,10 +21,13 @@ import java.util.*;
  */
 public class Controller implements Observer, Runnable {
     public static List<ClientHandler> clientHandlers;
+    public static Map<String, Integer> disconnectedClients;
     private boolean isGameRunning;
     private CreationController creationController;
     private TurnController turnController;
     private Game game;
+
+    //TODO: Make initial information be requested
 
     public Controller() {
         reset();
@@ -29,24 +37,27 @@ public class Controller implements Observer, Runnable {
      * Manages turns by sending requests and updates to client handlers.
      */
     @Override
-    public synchronized void run() {
+    public void run() {
         int i = 0;
+
         while(true) {
+            synchronized (this) {
 
-            //Waits for the game to be running
-            while (!isGameRunning)
-                try {
-                    this.wait();
-                } catch (InterruptedException e) {
-                    System.out.println("Error while waiting for the game to start.");
+                //Waits for the game to be running
+                while (!isGameRunning)
+                    try {
+                        this.wait();
+                    } catch (InterruptedException e) {
+                        System.out.println("Error while waiting for the game to start.");
+                    }
+
+                //Instantiates the chat and the request controller
+                ChatController chatController = new ChatController();
+                RequestController requestController = new RequestController(game);
+                for (ClientHandler c : clientHandlers) {
+                    c.registerObserver(chatController);
+                    c.registerObserver(requestController);
                 }
-
-            //Instantiates the chat and the request controller
-            ChatController chatController = new ChatController(clientHandlers);
-            RequestController requestController = new RequestController(game);
-            for (ClientHandler c : clientHandlers) {
-                c.registerObserver(chatController);
-                c.registerObserver(requestController);
             }
 
             //Show initial information
@@ -57,20 +68,17 @@ public class Controller implements Observer, Runnable {
 
             //Manages turns
             while (!game.gameOver()) {
-                if (i == clientHandlers.size())
-                    i = 0;
-                ClientHandler currentClient = clientHandlers.get(i);
-
-                //Checks if the current client has disconnected
-                if (Server.disconnectedClients.containsKey(currentClient.nickname)) {
-                    clientHandlers.remove(currentClient);
-                    game.setPlayerConnection(currentClient.nickname, false);
-                } else {
+                ClientHandler currentClient = findClientHandlerByName(game.getCurrentPlayer());
+                if (currentClient != null) {
                     turnController = new TurnController(game, currentClient);
                     currentClient.registerObserver(turnController);
                     turnController.newTurn();
                 }
-                i++;
+            }
+
+            for (ClientHandler ch : clientHandlers) {
+                ch.sendOutput(JsonTools.createMessage("Closing the game!"));
+                ch.disconnect();
             }
             reset();
         }
@@ -78,10 +86,45 @@ public class Controller implements Observer, Runnable {
 
     @Override
     public void update(Event event) {
+
+        //Finds if a client has disconnected
+        int index;
+        String jsonMessage = event.jsonMessage();
+        JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
+        if (jsonObject.has("clientDisconnected")) {
+            index = jsonObject.get("clientDisconnected").getAsInt();
+            ClientHandler clientHandler = findClientHandler(index);
+            if (clientHandler != null) {
+                disconnectedClients.put(clientHandler.nickname, index);
+                game.setPlayerConnection(clientHandler.nickname, false);
+                clientHandlers.remove(clientHandler);
+            }
+
+            //Reset the game if someone disconnects during game creation
+            if (!isGameRunning) {
+                for (ClientHandler ch : clientHandlers) {
+                    ch.sendOutput(JsonTools.createMessage("One player disconnected, closing game."));
+                    ch.disconnect();
+                }
+                reset();
+            }
+        }
+
         if (!isGameRunning) {
             synchronized (this) {
+
+                //Checks whether it can start a new game
                 if (creationController.isGameReady()) {
                     game = creationController.createGame();
+
+                    //Checks whether there was a previously saved game
+                    if (Game.isThereGameSaved()) {
+                        try {
+                            game.loadGame();
+                        } catch (FileNotFoundException e) {
+                            System.out.println("Error while loading game!");
+                        }
+                    }
                     isGameRunning = true;
                     for (ClientHandler clientHandler : clientHandlers) {
                         game.registerObserver(clientHandler);
@@ -96,10 +139,10 @@ public class Controller implements Observer, Runnable {
     /**
      * Adds a new client and starts their own ClientHandler thread
      * @param clientHandler The client handler that just connected to the server.
-     * @authro Giorgio Massimo Fontanive
+     * @author Giorgio Massimo Fontanive
      */
     public synchronized void addClient(ClientHandler clientHandler) {
-        if (creationController.isSpotAvailable() || !Server.disconnectedClients.isEmpty()) {
+        if (creationController.isSpotAvailable() || !disconnectedClients.isEmpty()) {
             clientHandlers.add(clientHandler);
             clientHandler.registerObserver(creationController);
             clientHandler.registerObserver(this);
@@ -139,6 +182,18 @@ public class Controller implements Observer, Runnable {
     public static ClientHandler findClientHandler(int index) {
         for (ClientHandler clientHandler : clientHandlers)
             if (clientHandler.index == index)
+                return clientHandler;
+        return null;
+    }
+
+    /**
+     * Finds the client handler with this nickname.
+     * @param nickname The nickname of the wanted client handler.
+     * @return The client handler with the given nickname.
+     */
+    public static ClientHandler findClientHandlerByName(String nickname) {
+        for (ClientHandler clientHandler : clientHandlers)
+            if (clientHandler.nickname.equals(nickname))
                 return clientHandler;
         return null;
     }

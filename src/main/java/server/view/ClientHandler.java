@@ -97,8 +97,9 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     /**
      * Adds itself to the list of disconnected clients.
      */
-    protected void disconnect() {
-        Server.disconnectedClients.put(nickname, index);
-        Controller.clientHandlers.remove(this);
+    public void disconnect() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("clientDisconnected", index);
+        updateObservers(new Event(jsonObject.toString()));
     }
 }

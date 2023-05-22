@@ -44,7 +44,6 @@ public class ClientHandlerTCP extends ClientHandler {
                 }
             } catch (IOException e) {
                 System.out.println("Error reading TCP message!");
-                isConnected = false;
                 disconnect();
             }
 
@@ -73,8 +72,13 @@ public class ClientHandlerTCP extends ClientHandler {
             out.flush();
         } catch (IOException e) {
             System.out.println("Error while sending TCP message.");
-            isConnected = false;
             disconnect();
         }
+    }
+
+    @Override
+    public void disconnect() {
+        isConnected = false;
+        super.disconnect();
     }
 }
