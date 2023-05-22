@@ -55,13 +55,10 @@ public class MainSceneController implements Client, Initializable {
     private Button confirm;
     @FXML
     private ImageView Personal_goal;
-
     @FXML
     private Button player1Btn;
-
     @FXML
     private Button player2Btn;
-
     @FXML
     private Button player3btn;
     NetworkHandler networkHandler;
@@ -111,13 +108,6 @@ public class MainSceneController implements Client, Initializable {
                 for(Node i : selectedNodes)
                     i.setOpacity(1);
             }
-            if (selectingColumn) {
-                JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("selectedColumn", columnSelection);
-                networkHandler.sendInput(jsonObject.toString());
-                columnSelection = -1;
-                selectingColumn = false;
-            }
             confirm.setDisable(true);
             confirm.setVisible(false);
             cancel.setVisible(false);
@@ -135,6 +125,14 @@ public class MainSceneController implements Client, Initializable {
         for (Node node : shelf.getChildren())
             node.setOnMouseClicked(e -> {
                 columnSelection = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
+                if (selectingColumn) {
+                    JsonObject jsonObject = new JsonObject();
+                    jsonObject.addProperty("selectedColumn", columnSelection);
+                    networkHandler.sendInput(jsonObject.toString());
+                    columnSelection = -1;
+                    selectingColumn = false;
+                    messages.setText("");
+                }
             });
     }
 
@@ -417,9 +415,9 @@ public class MainSceneController implements Client, Initializable {
             columnSelection = -1;
             selectingColumn = true;
             messages.setText("Pick a column!");
-            cancel.setVisible(true);
-            confirm.setVisible(true);
-            confirm.setDisable(false);
+//            cancel.setVisible(true);
+//            confirm.setVisible(true);
+//            confirm.setDisable(false);
         });
     }
 
