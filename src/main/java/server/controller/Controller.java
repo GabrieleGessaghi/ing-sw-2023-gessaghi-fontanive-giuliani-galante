@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 //TODO: Handle only one client remaining
+//TODO: Reset after game is over
 
 /**
  * Handles the game flow on a different thread.
@@ -93,6 +94,15 @@ public class Controller implements Observer, Runnable {
                 disconnectedClients.put(clientHandler.nickname, index);
                 game.setPlayerConnection(clientHandler.nickname, false);
                 clientHandlers.remove(clientHandler);
+            }
+
+            //Reset the game if someone disconnects during game creation
+            if (!isGameRunning) {
+                for (ClientHandler ch : clientHandlers) {
+                    ch.sendOutput(JsonTools.createMessage("One player disconnected, closing game."));
+                    ch.disconnect();
+                }
+                reset();
             }
         }
 
