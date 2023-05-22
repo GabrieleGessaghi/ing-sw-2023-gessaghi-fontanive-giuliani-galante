@@ -85,8 +85,6 @@ public class MainSceneController implements Client, Initializable {
         networkHandler.setClient(this);
         new Thread(networkHandler).start();
 
-        //TODO: Go back if there's an error
-
         tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
         for (int[] i : tokenSelection)
             Arrays.fill(i, -1);
@@ -170,6 +168,7 @@ public class MainSceneController implements Client, Initializable {
                 field = jsonReader.nextName();
                 switch (field) {
                     case "nickname" -> tempNickname = jsonReader.nextString();
+                    case "newNickname" -> GUI.playerNickname = jsonReader.nextString();
                     case "nicknames" -> {
                         List<String> nicknames = new ArrayList<>();
                         jsonReader.beginArray();
@@ -234,6 +233,7 @@ public class MainSceneController implements Client, Initializable {
                     case "shelfTiles" -> {
                         tempPlayerShelf = JsonTools.readMatrix(jsonReader);
                     }
+                    case "connectionError" -> {} //TODO: Go back to beginning screen
                     default -> jsonReader.skipValue();
                 }
             }
