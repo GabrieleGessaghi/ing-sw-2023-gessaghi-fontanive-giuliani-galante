@@ -15,12 +15,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
@@ -530,15 +533,13 @@ public class MainSceneController implements Client, Initializable {
     void playerBtnClicked(ActionEvent event) throws IOException {
         Button playerBtn = (Button) event.getSource();
         String nickname = playerBtn.getText();
-        Dialog<ButtonType> dialog = new Dialog<>();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/playerShelfDialog.fxml"));
-        AnchorPane anchorPane = fxmlLoader.load();
-        DialogPane dialogPane = new DialogPane();
-        dialogPane.setContent(anchorPane);
-        dialog.setDialogPane(dialogPane);
-        dialog.setTitle(nickname+" shelf:");
-        dialog.show();
-        dialog.setOnHidden(closeEvent -> {dialog.close();});
+        Parent root = FXMLLoader.load(getClass().getResource("/playerShelfDialog.fxml"));
+        Stage playerShelf = new Stage();
+        Scene base = new Scene(root);
+        playerShelf.setScene(base);
+        playerShelf.setTitle(nickname+" shelf:");
+        playerShelf.setResizable(false);
+        playerShelf.show();
     }
 }
 
