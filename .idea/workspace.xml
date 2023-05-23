@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="fixed shelf button">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="added chair for the first player">
       <change beforePath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -242,13 +240,6 @@
       <workItem from="1684247623859" duration="2041000" />
       <workItem from="1684663004952" duration="15571000" />
       <workItem from="1684749312367" duration="3085000" />
-    </task>
-    <task id="LOCAL-00154" summary="fixed small issues">
-      <created>1683222150438</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
-      <option name="project" value="LOCAL" />
-      <updated>1683222150438</updated>
     </task>
     <task id="LOCAL-00155" summary="Found the deadlock">
       <created>1683274395321</created>
@@ -586,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684781941305</updated>
     </task>
-    <option name="localTasksCounter" value="203" />
+    <task id="LOCAL-00203" summary="added chair for the first player">
+      <created>1684824523170</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1684824523170</updated>
+    </task>
+    <option name="localTasksCounter" value="204" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +618,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented Chat server side" />
     <MESSAGE value="fixed small issues" />
     <MESSAGE value="make board upgrade" />
     <MESSAGE value="nothing buttons made invisible" />
@@ -645,7 +642,8 @@
     <MESSAGE value="Added waring for duplicate nickname" />
     <MESSAGE value="fixed board buttons" />
     <MESSAGE value="fixed shelf button" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed shelf button" />
+    <MESSAGE value="added chair for the first player" />
+    <option name="LAST_COMMIT_MESSAGE" value="added chair for the first player" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
