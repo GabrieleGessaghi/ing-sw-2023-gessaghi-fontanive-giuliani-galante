@@ -3,6 +3,7 @@ package server.model;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
@@ -13,6 +14,9 @@ import server.model.exceptions.IllegalColumnException;
 import server.model.exceptions.IllegalMoveException;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
@@ -96,10 +100,10 @@ public class Game implements Savable, Observable {
      * @throws IOException When there's an error in the file creation.
      */
     private void saveGame() throws IOException {
-//        String fileName = String.format("/src/data/game-%s.txt",gameID);
-//        FileOutputStream fOut = new FileOutputStream(new File(fileName));
-//
-//        fOut.close();
+        String gameState = getState().toString();
+        try (PrintWriter out = new PrintWriter("src/main/resources/saved_game.txt")) {
+            out.println(gameState);
+        }
     }
 
     /**
@@ -107,13 +111,14 @@ public class Game implements Savable, Observable {
      * @author Gabriele Gessaghi
      */
     public void loadGame() throws FileNotFoundException {
-//        try {
-//            FileInputStream fIn = new FileInputStream();
-//        } catch (FileNotFoundException e){
-//            String errorMessage = "Game files not found!";
-//            System.out.println(errorMessage);
-//            updateObservers(new Event(JsonTools.createMessage(errorMessage)));
-//        }
+        Path filePath = Path.of("src/main/resources/saved_game.txt");
+        String gameState;
+        try {
+            gameState = Files.readString(filePath);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        loadState(JsonParser.parseString(gameState).getAsJsonObject());
     }
 
     /**
@@ -122,8 +127,13 @@ public class Game implements Savable, Observable {
      * @return True if the file containing the game state is found
      */
     public static boolean isThereGameSaved() {
-
-        return false;
+        Path filePath = Path.of("src/main/resources/saved_game.txt");
+        try {
+            String gameState = Files.readString(filePath);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     /**
@@ -190,7 +200,11 @@ public class Game implements Savable, Observable {
         sendState(View.CURRENT_PLAYER);
         sendState(View.BOARD);
 
-        //TODO: Save game
+        try {
+            saveGame();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -211,6 +225,14 @@ public class Game implements Savable, Observable {
             jsonObject.addProperty("winnerNickname", winner.getNickname());
             jsonObject.addProperty("winnerPoints", winner.getPoints());
             updateObservers(new Event(jsonObject.toString()));
+            Path filePath = Path.of("src/main/resources/saved_game.txt");
+            try {
+                Files.delete(filePath);
+            } catch (NoSuchFileException x) {
+                System.err.format("%s: no such" + " file or directory%n", filePath);
+            } catch (IOException x) {
+                System.err.println(x);
+            }
             return true;
         }
         return false;
