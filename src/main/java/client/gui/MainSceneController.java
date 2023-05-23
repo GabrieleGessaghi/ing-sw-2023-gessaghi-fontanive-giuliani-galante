@@ -41,6 +41,8 @@ public class MainSceneController implements Client, Initializable {
     public ImageView fourComm2;
     public ImageView sixComm2;
     public ImageView eightComm2;
+    public ImageView chair;
+    public ImageView chair2;
     @FXML
     private GridPane board;
     @FXML
@@ -151,7 +153,11 @@ public class MainSceneController implements Client, Initializable {
                 jsonObject.addProperty("nickname", GUI.playerNickname);
                 networkHandler.sendInput(jsonObject.toString());
             }
-            case PLAYERSNUMBER -> requestPlayersNumber();
+            case PLAYERSNUMBER ->{
+                requestPlayersNumber();
+                chair.setVisible(false);
+                chair2.setVisible(true);
+            }
             case TOKENS -> requestTiles();
             case COLUMN -> requestColumn();
         }
