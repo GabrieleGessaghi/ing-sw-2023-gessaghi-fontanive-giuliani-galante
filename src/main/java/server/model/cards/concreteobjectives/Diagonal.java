@@ -28,6 +28,7 @@ public class Diagonal implements CommonObjective {
         if (!flag) {
             for (int k = 0; k < 2 && !flag; k++) {
                 i = k;
+
                 if (shelf[k][4] != Token.NOTHING) {
                     for (int j = COLUMNS - 1; j >= 0 && !flag; j--,i++) {
                         if (shelf[k][4] == shelf[i][j])
