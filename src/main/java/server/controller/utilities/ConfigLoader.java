@@ -24,6 +24,7 @@ public class ConfigLoader {
     public static int[] PERSONALCARD_POINTS;
     public static int[][] COMMONCARD_POINTS;
     public static int PING_PERIOD = 100; //TODO: Put in configuration file
+    public static int LONE_PLAYER_WAIT = 10000;
 
     /**
      * Initializes all constants.

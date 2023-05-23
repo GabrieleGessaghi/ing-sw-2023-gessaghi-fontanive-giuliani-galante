@@ -85,6 +85,7 @@ public class CreationController implements Observer {
         if (!isSpotAvailable() && !Controller.disconnectedClients.isEmpty())
             if (Controller.disconnectedClients.containsKey(nickname) && clientHandler != null) {
                 clientHandler.index = Controller.disconnectedClients.get(nickname);
+                clientHandler.sendOutput(JsonTools.createMessage("Welcome back!"));
                 Controller.disconnectedClients.remove(nickname);
             } else {
                 Controller.clientHandlers.remove(clientHandler);

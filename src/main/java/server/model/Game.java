@@ -194,8 +194,6 @@ public class Game implements Savable, Observable {
         sendState(View.CURRENT_PLAYER);
 
         nextPlayerIndex();
-        while (!players[currentPlayerIndex].isConnected)
-            nextPlayerIndex();
 
         sendState(View.CURRENT_PLAYER);
         sendState(View.BOARD);
@@ -318,6 +316,8 @@ public class Game implements Savable, Observable {
      * @return The nickname of the current Player.
      */
     public String getCurrentPlayer() {
+        while (!players[currentPlayerIndex].isConnected)
+            nextPlayerIndex();
         return players[currentPlayerIndex].getNickname();
     }
 
