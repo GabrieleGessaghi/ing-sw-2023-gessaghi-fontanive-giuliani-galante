@@ -31,17 +31,29 @@ import java.net.URL;
 import java.util.*;
 
 public class MainSceneController implements Client, Initializable {
+    @FXML
     public ImageView common_goal1;
+    @FXML
     public ImageView common_goal2;
+    @FXML
     public ImageView twoComm1;
+    @FXML
     public ImageView fourComm1;
+    @FXML
     public ImageView sixComm1;
+    @FXML
     public ImageView eightComm1;
+    @FXML
     public ImageView twoComm2;
+    @FXML
     public ImageView fourComm2;
+    @FXML
     public ImageView sixComm2;
+    @FXML
     public ImageView eightComm2;
+    @FXML
     public ImageView chair;
+    @FXML
     public ImageView chair2;
     @FXML
     private GridPane board;
@@ -52,17 +64,22 @@ public class MainSceneController implements Client, Initializable {
     @FXML
     private Label messages;
     @FXML
+    private Label personalGoalLabel;
+    @FXML
+    private Label commonGoalLabel;
+    @FXML
     private Button cancel;
     @FXML
     private Button confirm;
     @FXML
-    private ImageView Personal_goal;
+    private ImageView personalGoal;
     @FXML
     private Button player1Btn;
     @FXML
     private Button player2Btn;
     @FXML
-    private Button player3btn;
+    private Button player3Btn;
+
     NetworkHandler networkHandler;
     int[][] tokenSelection;
     int tokensSelected;
@@ -187,9 +204,9 @@ public class MainSceneController implements Client, Initializable {
                             nicknames.add(jsonReader.nextString());
                         jsonReader.endArray();
                         if(nicknames.size() > 1) {
-                            Platform.runLater(()->{
-                            updateOpponents(nicknames);});
+                            Platform.runLater(()-> updateOpponents(nicknames));
                         }
+                        startGame();
                     }
                     case "totalPoints" -> tempTotalPoints = jsonReader.nextInt();
                     case "commonCard0" ->{
@@ -199,7 +216,7 @@ public class MainSceneController implements Client, Initializable {
                             if(field.equals("cardIndex"))
                                 setCommonCard(jsonReader.nextInt(),false);
                             else if(field.equals("nextPointsAvailable"))
-                                updatePointsCommonCards(true,jsonReader.nextInt());
+                                updatePointsCommonCards(true, jsonReader.nextInt());
                             else
                                 jsonReader.skipValue();
                         }
@@ -212,7 +229,7 @@ public class MainSceneController implements Client, Initializable {
                             if(field.equals("cardIndex"))
                                 setCommonCard(jsonReader.nextInt(),true);
                             else if(field.equals("nextPointsAvailable"))
-                                updatePointsCommonCards(true,jsonReader.nextInt());
+                                updatePointsCommonCards(false, jsonReader.nextInt());
                             else
                                 jsonReader.skipValue();
                         }
@@ -250,7 +267,6 @@ public class MainSceneController implements Client, Initializable {
             }
             jsonReader.endObject();
 
-            //TEMPORARY
             //Updates some information only if it regards this player
             if(tempNickname.equals(GUI.playerNickname)) {
                 if (tempTiles != null)
@@ -268,30 +284,52 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
+    private void startGame() {
+        Platform.runLater(() -> {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("requestPlayer", true);
+            networkHandler.sendInput(jsonObject.toString());
+
+            //Sets UI elements to visible
+            personalGoalLabel.setVisible(true);
+            commonGoalLabel.setVisible(true);
+            common_goal1.setVisible(true);
+            common_goal2.setVisible(true);
+            eightComm1.setVisible(true);
+            eightComm2.setVisible(true);
+            sixComm1.setVisible(true);
+            sixComm2.setVisible(true);
+            fourComm1.setVisible(true);
+            fourComm2.setVisible(true);
+            twoComm1.setVisible(true);
+            twoComm2.setVisible(true);
+        });
+    }
+
     /**
      *
-     * @param b
-     * @param i
+     * @param commonCardSwitch
+     * @param nextPointsAvailable
      */
-    private void updatePointsCommonCards(boolean b, int i) {
-        if(!b) {
+    private void updatePointsCommonCards(boolean commonCardSwitch, int nextPointsAvailable) {
+        if (!commonCardSwitch) {
             twoComm1.setVisible(false);
             fourComm1.setVisible(false);
             sixComm1.setVisible(false);
             eightComm1.setVisible(false);
-            switch (i) {
+            switch (nextPointsAvailable) {
                 case 2 -> twoComm1.setVisible(true);
                 case 4 -> fourComm1.setVisible(true);
                 case 6 -> sixComm1.setVisible(true);
                 case 8 -> eightComm1.setVisible(true);
             }
         }
-        else if(b) {
+        else {
             twoComm2.setVisible(false);
             fourComm2.setVisible(false);
             sixComm2.setVisible(false);
             eightComm2.setVisible(false);
-            switch (i) {
+            switch (nextPointsAvailable) {
                 case 2 -> twoComm2.setVisible(true);
                 case 4 -> fourComm2.setVisible(true);
                 case 6 -> sixComm2.setVisible(true);
@@ -307,18 +345,18 @@ public class MainSceneController implements Client, Initializable {
 
     /**
      *
-     * @param i
-     * @param b
+     * @param commonCardIndex
+     * @param commonCardSwitch
      * @author Niccolò Giuliani
      */
-    private void setCommonCard(int i, boolean b) {
+    private void setCommonCard(int commonCardIndex, boolean commonCardSwitch) {
         ImageView comm;
-        if(b)
+        if(commonCardSwitch)
             comm = common_goal2;
         else
             comm = common_goal1;
-        i = i + 1;
-        comm.setImage((new Image("assets/common_goal_cards/"+i+".jpg")));
+        commonCardIndex = commonCardIndex + 1;
+        comm.setImage((new Image("assets/common_goal_cards/"+commonCardIndex+".jpg")));
     }
 
     /**
@@ -333,7 +371,6 @@ public class MainSceneController implements Client, Initializable {
                         player1Btn.setText(nick);
                         player1Btn.setVisible(true);
                     }
-
             }
             case 3 -> {
                 int i = 0;
@@ -362,8 +399,8 @@ public class MainSceneController implements Client, Initializable {
                             player2Btn.setVisible(true);
                             i++;
                         }else if (i == 2){
-                            player2Btn.setText(nick);
-                            player2Btn.setVisible(true);
+                            player3Btn.setText(nick);
+                            player3Btn.setVisible(true);
                         }
                     }
             }
@@ -413,10 +450,10 @@ public class MainSceneController implements Client, Initializable {
                 Arrays.fill(i, -1);
             tokensSelected = 0;
             selectingTokens = true;
-            messages.setText("It's your turn!");
             cancel.setVisible(true);
             confirm.setVisible(true);
             confirm.setDisable(false);
+            messages.setText("It's your turn!");
         });
     }
 
@@ -438,18 +475,18 @@ public class MainSceneController implements Client, Initializable {
      */
     private void setPersonalCard(int i) {
         switch(i){
-            case 1 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals.png"));
-            case 2 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals2.png"));
-            case 3 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals3.png"));
-            case 4 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals4.png"));
-            case 5 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals5.png"));
-            case 6 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals6.png"));
-            case 7 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals7.png"));
-            case 8 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals8.png"));
-            case 9 -> Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals9.png"));
-            case 10 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals10.png"));
-            case 11 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals11.png"));
-            case 12 ->  Personal_goal.setImage(new Image("assets/personal_goal_cards/Personal_Goals12.png"));
+            case 1 -> personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals.png"));
+            case 2 -> personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals2.png"));
+            case 3 -> personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals3.png"));
+            case 4 -> personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals4.png"));
+            case 5 -> personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals5.png"));
+            case 6 -> personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals6.png"));
+            case 7 -> personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals7.png"));
+            case 8 -> personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals8.png"));
+            case 9 -> personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals9.png"));
+            case 10 ->  personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals10.png"));
+            case 11 ->  personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals11.png"));
+            case 12 ->  personalGoal.setImage(new Image("assets/personal_goal_cards/Personal_Goals12.png"));
         }
     }
 
@@ -540,7 +577,7 @@ public class MainSceneController implements Client, Initializable {
     }
 
     @FXML
-    void playerBtnClicked(ActionEvent event) throws IOException {
+    void playerBtnClicked(ActionEvent event) {
         Button playerBtn = (Button) event.getSource();
         String nickname = playerBtn.getText();
         Platform.runLater(() -> {

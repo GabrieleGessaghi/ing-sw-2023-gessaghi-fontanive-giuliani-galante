@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.MainSceneController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.MainSceneController">
     <children>
         <AnchorPane layoutX="601.0" layoutY="99.0" minHeight="0.0" minWidth="0.0" prefHeight="537.0" prefWidth="550.0" styleClass="livingroom">
             <children>
@@ -87,9 +87,9 @@
                     </children>
                 </GridPane>
                 <Button fx:id="player2Btn" layoutX="21.0" layoutY="25.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname2" visible="false" />
-                <Button fx:id="player3btn" layoutX="414.0" layoutY="25.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname3" visible="false" />
-                <Button fx:id="player1Btn" layoutX="21.0" layoutY="442.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname1" />
-            <ImageView fx:id="chair" fitHeight="45.0" fitWidth="51.0" layoutX="109.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
+                <Button fx:id="player3Btn" layoutX="414.0" layoutY="25.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname3" visible="false" />
+                <Button fx:id="player1Btn" layoutX="21.0" layoutY="442.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" visible="false" />
+            <ImageView fx:id="chair" fitHeight="45.0" fitWidth="51.0" layoutX="109.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@assets/misc/firstplayertoken.png" />
                </image>
@@ -102,21 +102,21 @@
             </image>
         </ImageView>
         <Button layoutX="664.0" layoutY="702.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="425.0" text="Chat" />
-        <ImageView fx:id="common_goal1" fitHeight="150.0" fitWidth="200.0" layoutX="63.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="common_goal1" fitHeight="150.0" fitWidth="200.0" layoutX="63.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
                 <Image url="@assets/common_goal_cards/9.jpg" />
             </image></ImageView>
-        <ImageView fx:id="common_goal2" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="common_goal2" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
                 <Image url="@assets/common_goal_cards/2.jpg" />
             </image></ImageView>
-        <ImageView fx:id="Personal_goal" fitHeight="252.0" fitWidth="394.0" layoutX="377.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" />
-        <Label layoutX="61.0" layoutY="579.0" prefHeight="36.0" prefWidth="242.0" text="Common Goals" textFill="#cf8c23">
+        <ImageView fx:id="personalGoal" fitHeight="252.0" fitWidth="394.0" layoutX="377.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="commonGoalLabel" layoutX="61.0" layoutY="579.0" prefHeight="36.0" prefWidth="242.0" text="Common Goals" textFill="#cf8c23" visible="false">
             <font>
                 <Font name="Droid Serif" size="25.0" />
             </font>
         </Label>
-        <Label layoutX="377.0" layoutY="127.0" prefHeight="36.0" prefWidth="175.0" text="Personal Goal" textFill="#cf8c23">
+        <Label fx:id="personalGoalLabel" layoutX="377.0" layoutY="127.0" prefHeight="36.0" prefWidth="175.0" text="Personal Goal" textFill="#cf8c23" visible="false">
             <font>
                 <Font name="Droid Serif" size="25.0" />
             </font>
@@ -307,42 +307,42 @@
         </Label>
         <Button fx:id="cancel" layoutX="682.0" layoutY="668.0" mnemonicParsing="false" text="Cancel" visible="false" />
         <Button fx:id="confirm" disable="true" layoutX="751.0" layoutY="668.0" mnemonicParsing="false" text="Confirm" visible="false" />
-        <ImageView fx:id="twoComm1" fitHeight="45.0" fitWidth="48.0" layoutX="184.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+        <ImageView fx:id="twoComm1" fitHeight="45.0" fitWidth="48.0" layoutX="184.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0" visible="false">
             <image>
                 <Image url="@assets/scoring_tokens/scoring_2.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="fourComm1" fitHeight="45.0" fitWidth="48.0" layoutX="183.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+        <ImageView fx:id="fourComm1" fitHeight="45.0" fitWidth="48.0" layoutX="183.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0" visible="false">
             <image>
                 <Image url="@assets/scoring_tokens/scoring_4.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="sixComm1" fitHeight="45.0" fitWidth="48.0" layoutX="184.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+        <ImageView fx:id="sixComm1" fitHeight="45.0" fitWidth="48.0" layoutX="184.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0" visible="false">
             <image>
                 <Image url="@assets/scoring_tokens/scoring_6.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="eightComm1" fitHeight="45.0" fitWidth="48.0" layoutX="184.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+        <ImageView fx:id="eightComm1" fitHeight="45.0" fitWidth="48.0" layoutX="184.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0" visible="false">
             <image>
                 <Image url="@assets/scoring_tokens/scoring_8.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="twoComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+        <ImageView fx:id="twoComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0" visible="false">
             <image>
                 <Image url="@assets/scoring_tokens/scoring_2.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="fourComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="672.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+        <ImageView fx:id="fourComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="672.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0" visible="false">
             <image>
                 <Image url="@assets/scoring_tokens/scoring_4.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="sixComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+        <ImageView fx:id="sixComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0" visible="false">
             <image>
                 <Image url="@assets/scoring_tokens/scoring_6.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="eightComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0">
+        <ImageView fx:id="eightComm2" fitHeight="45.0" fitWidth="48.0" layoutX="476.0" layoutY="671.0" pickOnBounds="true" preserveRatio="true" rotate="-8.0" visible="false">
             <image>
                 <Image url="@assets/scoring_tokens/scoring_8.jpg" />
             </image>

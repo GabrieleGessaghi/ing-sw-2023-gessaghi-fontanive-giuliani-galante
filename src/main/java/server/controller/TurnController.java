@@ -113,8 +113,8 @@ public class TurnController implements Observer {
             jsonReader.endObject();
             if (selectedTiles != null && !game.getBoard().isMoveLegal(Board.convertIntegerMatrix(selectedTiles, -1))) {
                 selectedTiles = null;
-                currentClientHandler.sendOutput(JsonTools.createMessage("This combination of tiles is illegal!"));
                 currentClientHandler.requestInput(Prompt.TOKENS);
+                currentClientHandler.sendOutput(JsonTools.createMessage("This combination of tiles is illegal!"));
             }
             this.notifyAll();
         } catch (IOException e) {
