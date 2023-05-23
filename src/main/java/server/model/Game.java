@@ -200,11 +200,11 @@ public class Game implements Savable, Observable {
         sendState(View.CURRENT_PLAYER);
         sendState(View.BOARD);
 
-        try {
-            saveGame();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            saveGame();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     /**

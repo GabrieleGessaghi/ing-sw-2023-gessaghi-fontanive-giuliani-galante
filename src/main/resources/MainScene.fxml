@@ -89,7 +89,7 @@
                 <Button fx:id="player2Btn" layoutX="21.0" layoutY="25.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname2" visible="false" />
                 <Button fx:id="player3Btn" layoutX="414.0" layoutY="25.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" text="Nickname3" visible="false" />
                 <Button fx:id="player1Btn" layoutX="21.0" layoutY="442.0" mnemonicParsing="false" onAction="#playerBtnClicked" prefHeight="64.0" prefWidth="122.0" visible="false" />
-            <ImageView fx:id="chair" fitHeight="45.0" fitWidth="51.0" layoutX="109.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="chair" fitHeight="45.0" fitWidth="51.0" layoutX="109.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@assets/misc/firstplayertoken.png" />
                </image>

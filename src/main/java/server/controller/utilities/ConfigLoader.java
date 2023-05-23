@@ -23,6 +23,7 @@ public class ConfigLoader {
     public static int NUMBER_OF_COMMON_CARDS;
     public static int[] PERSONALCARD_POINTS;
     public static int[][] COMMONCARD_POINTS;
+    public static int PING_PERIOD = 100; //TODO: Put in configuration file
 
     /**
      * Initializes all constants.

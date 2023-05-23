@@ -40,6 +40,7 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
      */
     @Override
     public synchronized void run() {
+        super.run();
         try {
             Registry registry = LocateRegistry.getRegistry(SERVER_PORT + 1);
             client = (ServerUsable) registry.lookup(clientName);
