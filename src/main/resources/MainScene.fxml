@@ -347,7 +347,7 @@
                 <Image url="@assets/scoring_tokens/scoring_8.jpg" />
             </image>
         </ImageView>
-      <ImageView fx:id="chair2" fitHeight="71.0" fitWidth="75.0" layoutX="1095.0" layoutY="685.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="chair2" fitHeight="71.0" fitWidth="75.0" layoutX="1095.0" layoutY="685.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@assets/misc/firstplayertoken.png" />
          </image>
