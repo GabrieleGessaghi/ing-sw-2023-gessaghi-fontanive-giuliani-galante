@@ -15,7 +15,7 @@ class DiagonalTest {
 
     @Test
     void leftDiagonalOne(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         var leftDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -29,7 +29,7 @@ class DiagonalTest {
 
     @Test
     void leftDiagonalTwo(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         var leftDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -43,7 +43,7 @@ class DiagonalTest {
 
     @Test
     void rightDiagonalOne(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         var rightDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -56,7 +56,7 @@ class DiagonalTest {
     }
     @Test
     void rightDiagonalTwo(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         var rightDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -70,24 +70,12 @@ class DiagonalTest {
 
     @Test
     void wrongScenario(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         var wrong = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
-        for(int i = 0; i < SHELF_ROWS; i++){
-            for(int j = 0; j < SHELF_COLUMNS; j++) {
-                Random random = new Random();
-                shelf[i][j]=Token.values()[random.nextInt(Token.values().length)];
-            }
-        }
-        shelf[0][0] = Token.CAT;
-        shelf[4][4] = Token.BOOK;
-        shelf[1][4] = Token.CAT;
-        shelf[4][4] = Token.BOOK;
-        shelf[0][4] = Token.CAT;
-        shelf[1][3] = Token.BOOK;
-        shelf[1][0] = Token.CAT;
-        shelf[2][1] = Token.BOOK;
+        shelf[4][2]=Token.PLANT;
+        shelf[5][2]=Token.BOOK;
         assertFalse(wrong.isSatisfied(shelf));
     }
 }
