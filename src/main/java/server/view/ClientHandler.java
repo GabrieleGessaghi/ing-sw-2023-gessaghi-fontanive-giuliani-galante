@@ -8,9 +8,12 @@ import server.controller.Prompt;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
 import server.controller.observer.Event;
+import server.controller.utilities.ConfigLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Handles communication with clients.
@@ -21,6 +24,7 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public String nickname;
     public int index;
     protected List<Observer> observers;
+    private Timer timer;
 
     /**
      * Class constructor. Immediately asks the client for its nickname.
@@ -33,7 +37,18 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     /**
      * Runs indefinitely, used to receive information from the client.
      */
-    public abstract void run();
+    @Override
+    public void run() {
+
+        //Continuously pings the client
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                ping();
+            }
+        }, ConfigLoader.PING_PERIOD * 100L, ConfigLoader.PING_PERIOD);
+    }
 
     /**
      * method to request an input to the TUI
@@ -101,5 +116,7 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("clientDisconnected", index);
         updateObservers(new Event(jsonObject.toString()));
+        timer.cancel();
+        timer.purge();
     }
 }

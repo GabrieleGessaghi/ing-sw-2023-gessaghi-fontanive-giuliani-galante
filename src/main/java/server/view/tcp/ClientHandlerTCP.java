@@ -32,6 +32,7 @@ public class ClientHandlerTCP extends ClientHandler {
 
     @Override
     public void run() {
+        super.run();
         isConnected = true;
         InputStreamReader in = new InputStreamReader(inputStream);
         BufferedReader buffer = new BufferedReader(in);

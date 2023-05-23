@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
+import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
 import server.model.View;
@@ -13,7 +14,6 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 //TODO: Handle only one client remaining
-//TODO: Reset after game is over
 
 /**
  * Handles the game flow on a different thread.
@@ -39,7 +39,6 @@ public class Controller implements Observer, Runnable {
     @Override
     public void run() {
         disconnectedClients = new HashMap<>();
-
         while(true) {
             synchronized (this) {
 
@@ -50,14 +49,14 @@ public class Controller implements Observer, Runnable {
                     } catch (InterruptedException e) {
                         System.out.println("Error while waiting for the game to start.");
                     }
+            }
 
-                //Instantiates the chat and the request controller
-                ChatController chatController = new ChatController();
-                RequestController requestController = new RequestController(game);
-                for (ClientHandler c : clientHandlers) {
-                    c.registerObserver(chatController);
-                    c.registerObserver(requestController);
-                }
+            //Instantiates the chat and the request controller
+            ChatController chatController = new ChatController();
+            RequestController requestController = new RequestController(game);
+            for (ClientHandler c : clientHandlers) {
+                c.registerObserver(chatController);
+                c.registerObserver(requestController);
             }
 
             //Show initial information
@@ -68,6 +67,17 @@ public class Controller implements Observer, Runnable {
 
             //Manages turns
             while (!game.gameOver()) {
+
+                //Checks if a client has reconnected
+                for (ClientHandler clientHandler : clientHandlers)
+                    if (!game.getPlayerConnection(clientHandler.nickname)) {
+                        game.setPlayerConnection(clientHandler.nickname, true);
+                        clientHandler.registerObserver(chatController);
+                        clientHandler.registerObserver(requestController);
+                    }
+
+                //TODO: If there's only one client left
+
                 ClientHandler currentClient = findClientHandlerByName(game.getCurrentPlayer());
                 if (currentClient != null) {
                     turnController = new TurnController(game, currentClient);
@@ -76,6 +86,7 @@ public class Controller implements Observer, Runnable {
                 }
             }
 
+            //Makes everyone disconnect after the game
             for (ClientHandler ch : clientHandlers) {
                 ch.sendOutput(JsonTools.createMessage("Closing the game!"));
                 ch.disconnect();
