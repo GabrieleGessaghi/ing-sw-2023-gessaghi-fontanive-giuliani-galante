@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,7 +16,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="nicknameTextField" layoutX="184.0" layoutY="124.0" promptText="insert nickname here..." />
+      <TextField fx:id="nicknameTextField" layoutX="184.0" layoutY="124.0" promptText="Insert Nickname" />
       <Label layoutX="61.0" layoutY="182.0" text="CONNECTION TYPE" textFill="WHITE">
          <font>
             <Font size="20.0" />
@@ -25,8 +26,11 @@
          <font>
             <Font size="18.0" />
          </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="connection" />
+         </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="socketSelection" layoutX="359.0" layoutY="182.0" mnemonicParsing="false" text="SOCKET" textFill="WHITE">
+      <RadioButton fx:id="socketSelection" layoutX="359.0" layoutY="182.0" mnemonicParsing="false" selected="true" text="SOCKET" textFill="WHITE" toggleGroup="$connection">
          <font>
             <Font size="18.0" />
          </font>
@@ -36,7 +40,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="hostTextField" layoutX="184.0" layoutY="236.0" prefHeight="26.0" prefWidth="177.0" promptText="ex: localhost or 192.168.1.1" />
-      <Button fx:id="connectBtn" layoutX="438.0" layoutY="262.0" mnemonicParsing="false" onAction="#connectBtnClicked" prefHeight="50.0" prefWidth="144.0" text="CONNECT" />
+      <TextField fx:id="hostTextField" layoutX="184.0" layoutY="236.0" prefHeight="26.0" prefWidth="177.0" text="localhost" />
+      <Button fx:id="connectBtn" layoutX="438.0" layoutY="262.0" mnemonicParsing="false" onAction="#connectBtnClicked" prefHeight="50.0" prefWidth="144.0" text="Connect" />
    </children>
 </AnchorPane>

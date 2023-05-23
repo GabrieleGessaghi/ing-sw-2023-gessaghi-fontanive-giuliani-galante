@@ -60,6 +60,6 @@
          </children>
       </GridPane>
       <Pane disable="true" prefHeight="349.0" prefWidth="333.0" styleClass="playerShelfDialog" stylesheets="@Application.css" />
-      <Button fx:id="shelfReloadBtn" layoutX="108.0" layoutY="364.0" mnemonicParsing="false" onAction="#reloadShelf" prefHeight="26.0" prefWidth="107.0" stylesheets="@Application.css" text="RELOAD" />
+      <Button fx:id="shelfReloadBtn" layoutX="108.0" layoutY="364.0" mnemonicParsing="false" onAction="#reloadShelf" prefHeight="26.0" prefWidth="107.0" stylesheets="@Application.css" text="Reload" />
    </children>
 </AnchorPane>
