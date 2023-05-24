@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
-import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
 import server.model.View;
@@ -71,6 +70,7 @@ public class Controller implements Observer, Runnable {
                 //Checks if a client has reconnected
                 for (ClientHandler clientHandler : clientHandlers)
                     if (!game.getPlayerConnection(clientHandler.nickname)) {
+                        game.registerObserver(clientHandler);
                         game.setPlayerConnection(clientHandler.nickname, true);
                         clientHandler.registerObserver(chatController);
                         clientHandler.registerObserver(requestController);

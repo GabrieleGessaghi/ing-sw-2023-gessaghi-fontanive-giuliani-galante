@@ -20,7 +20,7 @@ import java.util.TimerTask;
  * @author Niccolò Giuliani
  */
 public abstract class ClientHandler implements Observer, Observable, Runnable {
-
+    protected boolean isConnected;
     public String nickname;
     public int index;
     protected List<Observer> observers;
@@ -32,6 +32,7 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public ClientHandler() {
         nickname = null;
         observers = new ArrayList<>();
+        isConnected = true;
     }
 
     /**
@@ -47,7 +48,7 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
             public void run() {
                 ping();
             }
-        }, ConfigLoader.PING_PERIOD * 100L, ConfigLoader.PING_PERIOD);
+        }, ConfigLoader.PING_PERIOD * 10L, ConfigLoader.PING_PERIOD);
     }
 
     /**
@@ -76,11 +77,6 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
 
     @Override
     public void updateObservers(Event event) {
-        //Finds the client's nickname
-//        String jsonMessage = event.jsonMessage();
-//        JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
-//        if (jsonObject.has("nickname"))
-//            nickname = jsonObject.get("nickname").getAsString();
 
         //Adds this clientHandler's index to the message
         String jsonMessage = event.jsonMessage();
@@ -113,6 +109,7 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
      * Adds itself to the list of disconnected clients.
      */
     public void disconnect() {
+        isConnected = false;
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("clientDisconnected", index);
         updateObservers(new Event(jsonObject.toString()));

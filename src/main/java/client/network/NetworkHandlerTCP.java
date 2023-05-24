@@ -23,7 +23,9 @@ public class NetworkHandlerTCP extends NetworkHandler {
             out.write(input + "\n");
             out.flush();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("connectionError", true);
+            client.showOutput(jsonObject.toString());
         }
     }
 
@@ -37,14 +39,14 @@ public class NetworkHandlerTCP extends NetworkHandler {
             serverSocket = new Socket(host, SERVER_PORT);
             InputStreamReader in = new InputStreamReader(serverSocket.getInputStream());
             BufferedReader buffer = new BufferedReader(in);
-            while (true){
+            boolean exit = false;
+            while (!exit){
                 String receivedString = buffer.readLine();
                 if (receivedString != null) {
                     String field;
-                    boolean exit = false;
                     JsonReader jsonReader = new JsonReader(new StringReader(receivedString));
                     jsonReader.beginObject();
-                    boolean flag = false;
+                    boolean alreadyPrinted = false;
                     while (jsonReader.hasNext()) {
                         field = jsonReader.nextName();
                         switch (field) {
@@ -55,16 +57,15 @@ public class NetworkHandlerTCP extends NetworkHandler {
                             case "closeConnection" -> exit = true;
                             case "ping" -> {}
                             default -> {
-                                if (!flag) {
+                                if (!alreadyPrinted) {
                                     client.showOutput(receivedString);
-                                    flag = true;
+                                    alreadyPrinted = true;
                                 }
                             }
                         }
                         jsonReader.skipValue();
                     }
                     jsonReader.endObject();
-                    if (exit) break;
                 }
             }
             in.close();

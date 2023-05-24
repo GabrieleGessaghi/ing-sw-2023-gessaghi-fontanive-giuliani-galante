@@ -586,7 +586,7 @@ public class MainSceneController implements Client, Initializable {
             jsonObject.addProperty("requestShelf", true);
             jsonObject.addProperty("requestedPlayerNickname", nickname);
             networkHandler.sendInput(jsonObject.toString());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/playerShelfDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/PlayerShelfDialog.fxml"));
             Parent root = null;
             try {
                 root = loader.load();

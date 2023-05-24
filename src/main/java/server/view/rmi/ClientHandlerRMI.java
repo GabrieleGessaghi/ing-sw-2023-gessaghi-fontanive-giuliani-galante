@@ -83,26 +83,28 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
 
     @Override
     public void sendOutput(String jsonMessage) {
-        new Thread(() -> {
-            try {
-                client.showOutput(jsonMessage);
-            } catch (RemoteException e) {
-                System.out.println("Error while sending RMI message.");
-                disconnect();
-            }
-        }).start();
+        if (isConnected)
+            new Thread(() -> {
+                try {
+                    client.showOutput(jsonMessage);
+                } catch (RemoteException e) {
+                    System.out.println("Error while sending RMI message.");
+                    disconnect();
+                }
+            }).start();
     }
 
     @Override
     public void requestInput(Prompt prompt) {
-        new Thread(() -> {
-            try {
-                client.requestInput(prompt);
-            } catch (RemoteException e) {
-                System.out.println("Error while sending RMI message.");
-                disconnect();
-            }
-        }).start();
+        if (isConnected)
+            new Thread(() -> {
+                try {
+                    client.requestInput(prompt);
+                } catch (RemoteException e) {
+                    System.out.println("Error while sending RMI message.");
+                    disconnect();
+                }
+            }).start();
     }
 
     public void disconnect() {

@@ -16,7 +16,6 @@ import java.net.Socket;
 public class ClientHandlerTCP extends ClientHandler {
     private final InputStream inputStream;
     private final OutputStream outputStream;
-    private boolean isConnected;
 
     /**
      * Class constructor. The server accepting new connections creates this object for every new connection.
@@ -27,16 +26,14 @@ public class ClientHandlerTCP extends ClientHandler {
     public ClientHandlerTCP(InputStream inputStream, OutputStream outputStream){
         this.inputStream = inputStream;
         this.outputStream = outputStream;
-        isConnected = true;
     }
 
     @Override
     public void run() {
         super.run();
-        isConnected = true;
         InputStreamReader in = new InputStreamReader(inputStream);
         BufferedReader buffer = new BufferedReader(in);
-        while(true) {
+        while(isConnected) {
             try {
                 String line = buffer.readLine();
                 if (line != null) {
@@ -45,11 +42,9 @@ public class ClientHandlerTCP extends ClientHandler {
                 }
             } catch (IOException e) {
                 System.out.println("Error reading TCP message!");
+                e.printStackTrace();
                 disconnect();
             }
-
-            if (!isConnected)
-                break;
         }
     }
 
@@ -67,19 +62,15 @@ public class ClientHandlerTCP extends ClientHandler {
 
     @Override
     public void sendOutput(String jsonMessage) {
-        OutputStreamWriter out = new OutputStreamWriter(outputStream);
-        try{
-            out.write(jsonMessage + "\n");
-            out.flush();
-        } catch (IOException e) {
-            System.out.println("Error while sending TCP message.");
-            disconnect();
+        if (isConnected) {
+            OutputStreamWriter out = new OutputStreamWriter(outputStream);
+            try {
+                out.write(jsonMessage + "\n");
+                out.flush();
+            } catch (IOException e) {
+                System.out.println("Error while sending TCP message.");
+                disconnect();
+            }
         }
-    }
-
-    @Override
-    public void disconnect() {
-        isConnected = false;
-        super.disconnect();
     }
 }

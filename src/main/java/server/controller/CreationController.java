@@ -2,7 +2,6 @@ package server.controller;
 
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
-import server.Server;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
