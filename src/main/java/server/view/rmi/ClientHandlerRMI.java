@@ -106,13 +106,4 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
                 }
             }).start();
     }
-
-    public void disconnect() {
-        super.disconnect();
-        try {
-            UnicastRemoteObject.unexportObject(this, true);
-        } catch (NoSuchObjectException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
 }

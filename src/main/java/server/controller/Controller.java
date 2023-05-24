@@ -183,6 +183,7 @@ public class Controller implements Observer, Runnable {
         turnController = null;
         creationController = new CreationController();
         clientHandlers = new ArrayList<>();
+        disconnectedClients = new HashMap<>();
     }
 
     /**

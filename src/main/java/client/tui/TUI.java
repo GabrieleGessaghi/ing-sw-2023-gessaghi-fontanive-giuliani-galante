@@ -172,6 +172,9 @@ public class TUI implements Client {
                         jsonReader.skipValue();
                     }
                     case "newNickname" -> nickname = jsonReader.nextString();
+                    case "ping" -> {
+                        return;
+                    }
                     default -> jsonReader.skipValue();
                 }
             }
