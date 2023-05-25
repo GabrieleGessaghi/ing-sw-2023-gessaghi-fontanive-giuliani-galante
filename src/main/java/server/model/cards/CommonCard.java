@@ -105,7 +105,7 @@ public class CommonCard extends Card {
     public void loadState(JsonObject jsonObject) {
         Map<String, JsonElement> elements = jsonObject.asMap();
         numberOfTokensLeft = elements.get("numberOfTokensLeft").getAsInt();
-        name = CommonType.values()[(elements.get("objectiveType").getAsInt())]; //ERROR HERE
+        name = CommonType.values()[(elements.get("cardIndex").getAsInt())];
         objective = createCommonObjective(name);
     }
 }

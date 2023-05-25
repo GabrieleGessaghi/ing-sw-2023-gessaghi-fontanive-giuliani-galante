@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed players reconnecting with tcp when it is not their turn">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed players reconnecting with rmi when it is not their turn">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,13 +269,7 @@
       <workItem from="1684663004952" duration="15571000" />
       <workItem from="1684749312367" duration="3085000" />
       <workItem from="1684849035583" duration="4133000" />
-    </task>
-    <task id="LOCAL-00159" summary="Getting closer to fix RMI">
-      <created>1683542884986</created>
-      <option name="number" value="00159" />
-      <option name="presentableId" value="LOCAL-00159" />
-      <option name="project" value="LOCAL" />
-      <updated>1683542884986</updated>
+      <workItem from="1684998314896" duration="3039000" />
     </task>
     <task id="LOCAL-00160" summary="fixed small issues">
       <created>1683571492144</created>
@@ -610,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684934378548</updated>
     </task>
-    <option name="localTasksCounter" value="208" />
+    <task id="LOCAL-00208" summary="Fixed players reconnecting with rmi when it is not their turn">
+      <created>1684936190973</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
+      <option name="project" value="LOCAL" />
+      <updated>1684936190973</updated>
+    </task>
+    <option name="localTasksCounter" value="209" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Changed the way TUI gets user input in order to implement the chat" />
     <MESSAGE value="Implemented Chat in TUI" />
     <MESSAGE value="gui first player connceted dialog for server players number request" />
     <MESSAGE value="number of players dialog custom style" />
@@ -669,7 +672,8 @@
     <MESSAGE value="Implemented continuously pinging client in ClientHandler" />
     <MESSAGE value="fixed diagonal class" />
     <MESSAGE value="Fixed players reconnecting with tcp when it is not their turn" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed players reconnecting with tcp when it is not their turn" />
+    <MESSAGE value="Fixed players reconnecting with rmi when it is not their turn" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed players reconnecting with rmi when it is not their turn" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

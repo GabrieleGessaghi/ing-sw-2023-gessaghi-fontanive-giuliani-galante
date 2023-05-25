@@ -10,6 +10,7 @@ import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
+import server.model.View;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -147,10 +148,16 @@ public class TUI implements Client {
                 field = jsonReader.nextName();
                 switch (field) {
                     case "nickname" -> toPrint.append("Player: ").append(jsonReader.nextString()).append("\n");
+                    case "currentPlayerNickname" -> {
+                        String currentPlayer = jsonReader.nextString();
+                        if (currentPlayer.equals(nickname))
+                            toPrint.append("It's your turn!\n");
+                        else
+                            toPrint.append("It's ").append(currentPlayer).append("'s turn!");
+                    }
                     case "totalPoints" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
                     case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player\n" : "Not first player\n");
                     case "playerIndex" -> toPrint.append("Player index: ").append(jsonReader.nextInt()).append("\n");
-                    case "currentPlayerNickname" -> toPrint.append("Current player: ").append(jsonReader.nextString()).append("\n");
                     case "commonCard0", "commonCard1" -> {
                         jsonReader.beginObject();
                         while (jsonReader.hasNext())

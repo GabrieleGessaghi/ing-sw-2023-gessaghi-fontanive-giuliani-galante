@@ -61,8 +61,6 @@ public class Controller implements Observer, Runnable {
             //Show initial information
             game.sendState(View.PLAYER_NICKNAMES);
             game.sendState(View.COMMON_CARDS);
-            game.sendState(View.CURRENT_PLAYER);
-            game.sendState(View.BOARD);
 
             //Manages turns
             while (!game.gameOver()) {
@@ -78,8 +76,13 @@ public class Controller implements Observer, Runnable {
 
                 //TODO: If there's only one client left
 
+                //Next player turn
+                game.sendState(View.BOARD);
+                game.sendState(View.CURRENT_PLAYER);
                 ClientHandler currentClient = findClientHandlerByName(game.getCurrentPlayer());
                 if (currentClient != null) {
+                    currentClient.sendOutput(game.getView(View.PERSONAL_CARD, currentClient.nickname).toString());
+                    currentClient.sendOutput(game.getView(View.SHELF, currentClient.nickname).toString());
                     turnController = new TurnController(game, currentClient);
                     currentClient.registerObserver(turnController);
                     turnController.newTurn();

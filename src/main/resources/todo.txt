@@ -1,0 +1,14 @@
+To implement:
+1. Single player victory timer (GIO)
+2. Handle disconnection during own turn (GIO)
+3. Handle game loading (GIO)
+4. Go back to connection screen when a connection error is detected (NICO)
+5. IMPORTANT, have clients request views and only be notified of new turns (GIO)
+6. Chat in GUI (GALAGA)
+7. Divide errors and messages (GIO)
+
+Bugs to fix:
+1. Server not resetting correctly when needed
+2. Errors and messages overlap each other, especially in GUI
+3. Reloading opened shelf
+4. Error messages get overlapped with normal request

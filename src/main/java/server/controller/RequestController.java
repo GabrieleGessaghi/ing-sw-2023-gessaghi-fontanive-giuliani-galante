@@ -10,6 +10,8 @@ import server.view.ClientHandler;
 import java.io.IOException;
 import java.io.StringReader;
 
+//TODO: Handle chat requests
+
 /**
  * Handles specific requests from clients.
  * @author Giorgio Massimo Fontanive
@@ -29,7 +31,7 @@ public class RequestController implements Observer {
     public void update(Event event) {
         ClientHandler currentClientHandler;
         int tempIndex = -1;
-        View request = View.CHAT;
+        View request = null;
         String requestedPlayerNickname = null;
         String jsonMessage = event.jsonMessage();
         String field;
@@ -44,10 +46,6 @@ public class RequestController implements Observer {
                         request = View.BOARD;
                         jsonReader.skipValue();
                     }
-//                    case "self" -> {
-//                        request = View.SELF;
-//                        jsonReader.skipValue();
-//                    }
                     case "requestShelf" -> {
                         request = View.SHELF;
                         jsonReader.skipValue();
@@ -72,7 +70,7 @@ public class RequestController implements Observer {
             jsonReader.endObject();
 
             //Sends the requested information
-            if (tempIndex != -1) {
+            if (tempIndex != -1 && request != null) {
                 currentClientHandler = Controller.findClientHandler(tempIndex);
                 if (currentClientHandler != null) {
                     if (requestedPlayerNickname == null)

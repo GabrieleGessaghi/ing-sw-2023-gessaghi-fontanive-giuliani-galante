@@ -190,13 +190,7 @@ public class Game implements Savable, Observable {
             String message = JsonTools.createMessage("This is the last round!");
             updateObservers(new Event(message));
         }
-
-        sendState(View.CURRENT_PLAYER);
-
         nextPlayerIndex();
-
-        sendState(View.CURRENT_PLAYER);
-        sendState(View.BOARD);
 
 //        try {
 //            saveGame();
@@ -223,7 +217,7 @@ public class Game implements Savable, Observable {
             jsonObject.addProperty("winnerNickname", winner.getNickname());
             jsonObject.addProperty("winnerPoints", winner.getPoints());
             updateObservers(new Event(jsonObject.toString()));
-            Path filePath = Path.of("src/main/resources/saved_game.txt");
+            Path filePath = Path.of("src/main/resources/saved_game.txt"); //TODO: Put this in config file
             try {
                 Files.delete(filePath);
             } catch (NoSuchFileException x) {
@@ -256,7 +250,7 @@ public class Game implements Savable, Observable {
         Player requestedPlayer = playerNickname == null ? null : findPlayer(playerNickname);
         switch (view) {
             case BOARD -> jsonObject = board.getState();
-            case CURRENT_PLAYER ->  jsonObject = players[currentPlayerIndex].getState();
+            case CURRENT_PLAYER -> jsonObject.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
             case PLAYER_NICKNAMES -> {
                 JsonArray jsonArray = new JsonArray();
                 for (Player player : players)
@@ -274,13 +268,13 @@ public class Game implements Savable, Observable {
             case PERSONAL_CARD -> {
                 if (requestedPlayer != null) {
                     JsonObject playerState = requestedPlayer.getState();
-                    jsonObject = playerState.get("personalcard").getAsJsonObject();
+                    jsonObject.add("personalCard", playerState.get("personalCard").getAsJsonObject());
                 }
             }
             case SHELF -> {
                 if (requestedPlayer != null) {
                     JsonObject playerState = requestedPlayer.getState();
-                    jsonObject = playerState.get("shelf").getAsJsonObject();
+                    jsonObject.add("shelf", playerState.get("shelf").getAsJsonObject());
                 }
             }
         }
