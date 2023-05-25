@@ -41,8 +41,6 @@ public class ClientHandlerTCP extends ClientHandler {
                     updateObservers(event);
                 }
             } catch (IOException e) {
-                System.out.println("Error reading TCP message!");
-                e.printStackTrace();
                 disconnect();
             }
         }
@@ -68,7 +66,6 @@ public class ClientHandlerTCP extends ClientHandler {
                 out.write(jsonMessage + "\n");
                 out.flush();
             } catch (IOException e) {
-                System.out.println("Error while sending TCP message.");
                 disconnect();
             }
         }

@@ -10,19 +10,17 @@ import server.controller.observer.Observer;
 import server.controller.observer.Event;
 import server.controller.utilities.ConfigLoader;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * Handles communication with clients.
  * @author Niccolò Giuliani
  */
 public abstract class ClientHandler implements Observer, Observable, Runnable {
-    protected boolean isConnected;
+
     public String nickname;
     public int index;
+    protected boolean isConnected;
     protected List<Observer> observers;
     private Timer timer;
 
@@ -31,24 +29,23 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
      */
     public ClientHandler() {
         nickname = null;
-        observers = new ArrayList<>();
         isConnected = true;
+        observers = new ArrayList<>();
     }
 
     /**
      * Runs indefinitely, used to receive information from the client.
+     * Also pings the client to detect disconnections
      */
     @Override
     public void run() {
-
-        //Continuously pings the client
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 ping();
             }
-        }, ConfigLoader.PING_PERIOD * 10L, ConfigLoader.PING_PERIOD);
+        }, 0, ConfigLoader.PING_PERIOD);
     }
 
     /**
@@ -83,8 +80,10 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
         jsonObject.addProperty("index", index);
 
-        for(Observer o : observers)
-            o.update(new Event(jsonObject.toString()));
+        try {
+            for (Observer observer : observers)
+                observer.update(new Event(jsonObject.toString()));
+        } catch (ConcurrentModificationException ignored) {}
     }
 
     @Override
@@ -96,11 +95,11 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public void update(Event event) {
 
         //Skips this event if it does not involve the client
-        JsonObject jsonObject = JsonParser.parseString(event.jsonMessage()).getAsJsonObject();
-        if (jsonObject.has("privateMessageSender") || jsonObject.has("privateMessageReceiver"))
-            if (!jsonObject.get("privateMessageSender").getAsString().equals(nickname) &&
-                    !jsonObject.get("privateMessageReceiver").getAsString().equals(nickname))
-                return;
+//        JsonObject jsonObject = JsonParser.parseString(event.jsonMessage()).getAsJsonObject();
+//        if (jsonObject.has("privateMessageSender") || jsonObject.has("privateMessageReceiver"))
+//            if (!jsonObject.get("privateMessageSender").getAsString().equals(nickname) &&
+//                    !jsonObject.get("privateMessageReceiver").getAsString().equals(nickname))
+//                return;
 
         sendOutput(event.jsonMessage());
     }
@@ -109,11 +108,17 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
      * Adds itself to the list of disconnected clients.
      */
     public void disconnect() {
-        isConnected = false;
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("clientDisconnected", index);
         updateObservers(new Event(jsonObject.toString()));
+        isConnected = false;
         timer.cancel();
         timer.purge();
+    }
+
+    public void reconnect() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("clientReconnected", index);
+        updateObservers(new Event(jsonObject.toString()));
     }
 }

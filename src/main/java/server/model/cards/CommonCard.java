@@ -17,6 +17,8 @@ import java.util.Map;
 import static server.controller.utilities.ConfigLoader.COMMONCARD_POINTS;
 import static server.controller.utilities.ConfigLoader.PLAYERS_MIN;
 
+//TODO: Warn observers of change
+
 /**
  * Common objective card of the game.
  * @author Niccolò Giuliani

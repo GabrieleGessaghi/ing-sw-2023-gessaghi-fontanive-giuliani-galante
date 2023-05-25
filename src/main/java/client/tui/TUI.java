@@ -155,7 +155,7 @@ public class TUI implements Client {
                         else
                             toPrint.append("It's ").append(currentPlayer).append("'s turn!");
                     }
-                    case "totalPoints" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
+                    case "points" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
                     case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player\n" : "Not first player\n");
                     case "playerIndex" -> toPrint.append("Player index: ").append(jsonReader.nextInt()).append("\n");
                     case "commonCard0", "commonCard1" -> {
@@ -169,7 +169,7 @@ public class TUI implements Client {
                             }
                         jsonReader.endObject();
                     }
-                    case "message" -> toPrint.append(jsonReader.nextString()).append("\n");
+                    case "message", "error" -> toPrint.append(jsonReader.nextString()).append("\n");
                     case "tiles" -> toPrint.append(printTiles(jsonReader));
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));

@@ -47,7 +47,6 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
             available = false;
             this.notifyAll();
         } catch(Exception e) {
-            System.out.println("Error while connecting with RMI.");
             disconnect();
         }
     }
@@ -86,9 +85,9 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
         if (isConnected)
             new Thread(() -> {
                 try {
-                    client.showOutput(jsonMessage);
+                    if (client != null)
+                        client.showOutput(jsonMessage);
                 } catch (RemoteException e) {
-                    System.out.println("Error while sending RMI message.");
                     disconnect();
                 }
             }).start();
@@ -99,9 +98,9 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
         if (isConnected)
             new Thread(() -> {
                 try {
-                    client.requestInput(prompt);
+                    if (client != null)
+                        client.requestInput(prompt);
                 } catch (RemoteException e) {
-                    System.out.println("Error while sending RMI message.");
                     disconnect();
                 }
             }).start();

@@ -1,15 +1,13 @@
 package server.controller;
 
 import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonReader;
+import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
 import server.view.ClientHandler;
 
-import java.io.IOException;
-import java.io.StringReader;
 import java.util.ArrayList;
 
 /**
@@ -31,40 +29,28 @@ public class CreationController implements Observer {
 
     @Override
     public void update(Event event) {
-        int lastClientIndex = -1;
-        String lastClientNickname = null;
+        int index;
+        String nickname = null;
         String jsonMessage = event.jsonMessage();
-        String field;
-        JsonReader jsonReader;
-        try {
-            jsonReader = new JsonReader(new StringReader(jsonMessage));
-            jsonReader.beginObject();
-            while(jsonReader.hasNext()) {
-                field = jsonReader.nextName();
-                switch (field) {
-                    case "playersNumber" -> setPlayerNumber(jsonReader.nextInt());
-                    case "nickname" -> lastClientNickname = jsonReader.nextString();
-                    case "index" -> lastClientIndex = jsonReader.nextInt();
-                    default -> jsonReader.skipValue();
-                }
-            }
-            jsonReader.endObject();
-
-            updateNickname(lastClientNickname, lastClientIndex);
-            checkDisconnection(lastClientNickname);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
+        index = jsonObject.get("index").getAsInt();
+        if (jsonObject.has("nickname"))
+            nickname = jsonObject.get("nickname").getAsString();
+        if (jsonObject.has("playersNumber"))
+            setPlayerNumber(jsonObject.get("playersNumber").getAsInt());
+        if (nickname != null) {
+            updateNickname(nickname, index);
+            checkDisconnection(nickname);
         }
     }
 
     /**
      *
      * @param nickname
-     * @param index
      */
     private void updateNickname(String nickname, int index) {
         ClientHandler clientHandler = Controller.findClientHandler(index);
-        if (nickname != null && clientHandler != null) {
+        if (clientHandler != null) {
             clientHandler.nickname = addPlayer(nickname);
             if (!nickname.equals(clientHandler.nickname)) {
                 clientHandler.sendOutput(JsonTools.createMessage("Duplicate name, yours is now " + clientHandler.nickname, true));
@@ -81,14 +67,13 @@ public class CreationController implements Observer {
      */
     private void checkDisconnection(String nickname) {
         ClientHandler clientHandler = Controller.findClientHandlerByName(nickname);
-        if (!isSpotAvailable() && !Controller.disconnectedClients.isEmpty())
-            if (Controller.disconnectedClients.containsKey(nickname) && clientHandler != null) {
+        if (clientHandler != null && !isSpotAvailable() && !Controller.disconnectedClients.isEmpty())
+            if (Controller.disconnectedClients.containsKey(nickname)) {
                 clientHandler.index = Controller.disconnectedClients.get(nickname);
                 clientHandler.sendOutput(JsonTools.createMessage("Welcome back!", false));
-                Controller.disconnectedClients.remove(nickname);
-            } else {
+                clientHandler.reconnect();
+            } else
                 Controller.clientHandlers.remove(clientHandler);
-            }
     }
 
     /**

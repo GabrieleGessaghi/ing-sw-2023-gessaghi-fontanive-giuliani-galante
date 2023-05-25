@@ -8,11 +8,10 @@ public enum View {
     BOARD,
     CURRENT_PLAYER,
     SPECIFIC_PLAYER,
-    SELF,
     COMMON_CARDS,
     PERSONAL_CARD,
-    LEADERBOARD,
     CHAT,
     PLAYER_NICKNAMES,
     SHELF,
+    POINTS,
 }

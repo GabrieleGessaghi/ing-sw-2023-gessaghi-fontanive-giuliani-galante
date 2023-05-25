@@ -277,6 +277,12 @@ public class Game implements Savable, Observable {
                     jsonObject.add("shelf", playerState.get("shelf").getAsJsonObject());
                 }
             }
+            case POINTS -> {
+                if (requestedPlayer != null) {
+                    JsonObject playerState = requestedPlayer.getState();
+                    jsonObject.addProperty("points", playerState.get("totalPoints").getAsInt());
+                }
+            }
         }
         return jsonObject;
     }

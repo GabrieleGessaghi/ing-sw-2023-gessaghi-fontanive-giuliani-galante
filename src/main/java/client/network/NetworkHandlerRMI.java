@@ -65,8 +65,6 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
                i++;
            } while(!server.isAvailable());
 
-           System.out.println("Found server");
-
            ServerUsable stub = (ServerUsable) UnicastRemoteObject.exportObject(this,0);
            registry.rebind("ClientRMI"+ (i - 1),stub);
            server.setAvailable("ClientRMI"+ (i - 1));

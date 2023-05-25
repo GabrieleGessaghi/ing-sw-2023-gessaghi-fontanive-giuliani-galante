@@ -9,10 +9,7 @@ import server.model.Game;
 import server.model.View;
 import server.view.ClientHandler;
 
-import java.io.FileNotFoundException;
 import java.util.*;
-
-//TODO: Handle only one client remaining
 
 /**
  * Handles the game flow on a different thread.
@@ -24,9 +21,14 @@ public class Controller implements Observer, Runnable {
     private boolean isGameRunning;
     private CreationController creationController;
     private TurnController turnController;
+    private ChatController chatController;
+    private RequestController requestController;
     private Game game;
 
-    //TODO: Make initial information be requested
+    //TODO: Handle game loading if save found
+    //TODO: Lonely player timer
+    //TODO: Check if client disconnected during own turn
+    //TODO: Handle all clients disconnecting
 
     public Controller() {
         reset();
@@ -37,11 +39,10 @@ public class Controller implements Observer, Runnable {
      */
     @Override
     public void run() {
-        disconnectedClients = new HashMap<>();
         while(true) {
-            synchronized (this) {
 
-                //Waits for the game to be running
+            //Waits for the game to be running
+            synchronized (this) {
                 while (!isGameRunning)
                     try {
                         this.wait();
@@ -49,34 +50,12 @@ public class Controller implements Observer, Runnable {
                         System.out.println("Error while waiting for the game to start.");
                     }
             }
+            startGame();
 
-            //Instantiates the chat and the request controller
-            ChatController chatController = new ChatController();
-            RequestController requestController = new RequestController(game);
-            for (ClientHandler c : clientHandlers) {
-                c.registerObserver(chatController);
-                c.registerObserver(requestController);
-            }
-
-            //Show initial information
+            //Start managing turns
             game.sendState(View.PLAYER_NICKNAMES);
             game.sendState(View.COMMON_CARDS);
-
-            //Manages turns
             while (!game.gameOver()) {
-
-                //Checks if a client has reconnected
-                for (ClientHandler clientHandler : clientHandlers)
-                    if (!game.getPlayerConnection(clientHandler.nickname)) {
-                        game.registerObserver(clientHandler);
-                        game.setPlayerConnection(clientHandler.nickname, true);
-                        clientHandler.registerObserver(chatController);
-                        clientHandler.registerObserver(requestController);
-                    }
-
-                //TODO: If there's only one client left
-
-                //Next player turn
                 game.sendState(View.BOARD);
                 game.sendState(View.CURRENT_PLAYER);
                 ClientHandler currentClient = findClientHandlerByName(game.getCurrentPlayer());
@@ -86,12 +65,14 @@ public class Controller implements Observer, Runnable {
                     turnController = new TurnController(game, currentClient);
                     currentClient.registerObserver(turnController);
                     turnController.newTurn();
+                    currentClient.sendOutput(game.getView(View.SHELF, currentClient.nickname).toString());
+                    currentClient.sendOutput(game.getView(View.POINTS, currentClient.nickname).toString());
                 }
             }
 
             //Makes everyone disconnect after the game
             for (ClientHandler ch : clientHandlers) {
-                ch.sendOutput(JsonTools.createMessage("Closing the game!", false));
+                ch.sendOutput(JsonTools.createMessage("Log back in if you want to play again.", false));
                 ch.disconnect();
             }
             reset();
@@ -105,50 +86,27 @@ public class Controller implements Observer, Runnable {
         int index;
         String jsonMessage = event.jsonMessage();
         JsonObject jsonObject = JsonParser.parseString(jsonMessage).getAsJsonObject();
-        if (jsonObject.has("clientDisconnected")) {
-            index = jsonObject.get("clientDisconnected").getAsInt();
-            ClientHandler clientHandler = findClientHandler(index);
-            if (clientHandler != null) {
-                System.out.println("Detected player disconnection!");
-                disconnectedClients.put(clientHandler.nickname, index);
-                game.setPlayerConnection(clientHandler.nickname, false);
-                clientHandlers.remove(clientHandler);
+        index = jsonObject.get("index").getAsInt();
+        ClientHandler clientHandler = findClientHandler(index);
+        if (clientHandler != null)
+            if (jsonObject.has("clientDisconnected")) {
+                new Thread(() -> handleDisconnection(clientHandler)).start();
+            } else if (jsonObject.has("clientReconnected")) {
+                disconnectedClients.remove(clientHandler.nickname);
+                game.registerObserver(clientHandler);
+                game.setPlayerConnection(clientHandler.nickname, true);
+                clientHandler.registerObserver(chatController);
+                clientHandler.registerObserver(requestController);
             }
 
-            //Reset the game if someone disconnects during game creation
-            if (!isGameRunning) {
-                for (ClientHandler ch : clientHandlers) {
-                    ch.sendOutput(JsonTools.createMessage("One player disconnected, closing game.", true));
-                    ch.disconnect();
-                }
-                reset();
-            }
-        }
-
-        if (!isGameRunning) {
+        //Checks whether it can start a new game
+        if (!isGameRunning)
             synchronized (this) {
-
-                //Checks whether it can start a new game
                 if (creationController.isGameReady()) {
-                    game = creationController.createGame();
-
-                    //Checks whether there was a previously saved game
-                    if (Game.isThereGameSaved()) {
-                        try {
-                            game.loadGame();
-                        } catch (FileNotFoundException e) {
-                            System.out.println("Error while loading game!");
-                        }
-                    }
                     isGameRunning = true;
-                    for (ClientHandler clientHandler : clientHandlers) {
-                        game.registerObserver(clientHandler);
-                        clientHandler.sendOutput(JsonTools.createMessage("The game is starting!", false));
-                    }
+                    this.notifyAll();
                 }
-                this.notifyAll();
             }
-        }
     }
 
     /**
@@ -164,17 +122,58 @@ public class Controller implements Observer, Runnable {
             clientHandler.requestInput(Prompt.NICKNAME);
 
             //Requests the players number if it's the first player added
-            if (clientHandlers.size() == 1) {
-                while (clientHandlers.get(0).nickname == null)
-                    try {
-                        this.wait();
-                    } catch (InterruptedException e) {
-                        System.out.println("Error when waiting for player's number.");
-                    }
+            if (clientHandlers.size() == 1)
                 clientHandler.requestInput(Prompt.PLAYERSNUMBER);
-            }
-        } else
+        } else {
             clientHandler.sendOutput(JsonTools.createMessage("The game is full, please exit!", true));
+            clientHandler.disconnect();
+        }
+    }
+
+    /**
+     *
+     */
+    private void startGame() {
+        game = creationController.createGame();
+        chatController = new ChatController();
+        requestController = new RequestController(game);
+        for (ClientHandler clientHandler : clientHandlers) {
+            game.registerObserver(clientHandler);
+            clientHandler.sendOutput(JsonTools.createMessage("The game is starting!", false));
+            clientHandler.registerObserver(chatController);
+            clientHandler.registerObserver(requestController);
+        }
+    }
+
+    /**
+     *
+     */
+    private void handleDisconnection(ClientHandler clientHandler) {
+        disconnectedClients.put(clientHandler.nickname, clientHandler.index);
+        clientHandlers.remove(clientHandler);
+
+        //Resets the game if someone disconnects during game creation
+        if (!isGameRunning) {
+            for (ClientHandler clientHandler1 : clientHandlers) {
+                clientHandler1.sendOutput(JsonTools.createMessage("One player disconnected, restarting the login process.", true));
+                clientHandler1.disconnect();
+            }
+            reset();
+        }
+
+        //Checks if there's no client left
+        else if (clientHandlers.size() == 0)
+            reset();
+
+            //Checks if there's only one client left
+        else if (clientHandlers.size() == 1)
+        {}
+
+        //Checks if it was their turn
+        else if (game.getCurrentPlayer().equals(clientHandler.nickname))
+        {}
+
+        game.setPlayerConnection(clientHandler.nickname, false);
     }
 
     /**

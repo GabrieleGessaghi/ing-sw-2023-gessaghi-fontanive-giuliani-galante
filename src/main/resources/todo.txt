@@ -5,10 +5,10 @@ To implement:
 4. Go back to connection screen when a connection error is detected (NICO)
 5. IMPORTANT, improve server-client messages (GIO) DONE
 6. Chat in GUI (GALAGA)
-7. Divide errors and messages (GIO)
+7. Divide errors and messages (GIO) DONE
 
 Bugs to fix:
 1. Server not resetting correctly when needed
 2. Errors and messages overlap each other, especially in GUI
 3. Reloading opened shelf
-4. Error messages get overlapped with normal request
+4. Check personal card jsons
