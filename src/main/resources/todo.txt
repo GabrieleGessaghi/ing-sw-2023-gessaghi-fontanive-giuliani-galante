@@ -3,7 +3,7 @@ To implement:
 2. Handle disconnection during own turn (GIO)
 3. Handle game loading (GIO)
 4. Go back to connection screen when a connection error is detected (NICO)
-5. IMPORTANT, have clients request views and only be notified of new turns (GIO)
+5. IMPORTANT, improve server-client messages (GIO) DONE
 6. Chat in GUI (GALAGA)
 7. Divide errors and messages (GIO)
 

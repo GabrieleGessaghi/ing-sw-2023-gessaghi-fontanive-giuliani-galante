@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed players reconnecting with rmi when it is not their turn">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Modified the way client and server exchange messages to adhere to game rules">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/utilities/JsonTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/utilities/JsonTools.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,14 +269,7 @@
       <workItem from="1684663004952" duration="15571000" />
       <workItem from="1684749312367" duration="3085000" />
       <workItem from="1684849035583" duration="4133000" />
-      <workItem from="1684998314896" duration="3039000" />
-    </task>
-    <task id="LOCAL-00160" summary="fixed small issues">
-      <created>1683571492144</created>
-      <option name="number" value="00160" />
-      <option name="presentableId" value="LOCAL-00160" />
-      <option name="project" value="LOCAL" />
-      <updated>1683571492144</updated>
+      <workItem from="1684998314896" duration="3610000" />
     </task>
     <task id="LOCAL-00161" summary="Fixed two-way RMI connection">
       <created>1683627779908</created>
@@ -614,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684936190973</updated>
     </task>
-    <option name="localTasksCounter" value="209" />
+    <task id="LOCAL-00209" summary="Modified the way client and server exchange messages to adhere to game rules">
+      <created>1685007361609</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
+      <option name="project" value="LOCAL" />
+      <updated>1685007361610</updated>
+    </task>
+    <option name="localTasksCounter" value="210" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented Chat in TUI" />
     <MESSAGE value="gui first player connceted dialog for server players number request" />
     <MESSAGE value="number of players dialog custom style" />
     <MESSAGE value="finished player dialog and server side update" />
@@ -673,7 +672,8 @@
     <MESSAGE value="fixed diagonal class" />
     <MESSAGE value="Fixed players reconnecting with tcp when it is not their turn" />
     <MESSAGE value="Fixed players reconnecting with rmi when it is not their turn" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed players reconnecting with rmi when it is not their turn" />
+    <MESSAGE value="Modified the way client and server exchange messages to adhere to game rules" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified the way client and server exchange messages to adhere to game rules" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -91,7 +91,7 @@ public class Controller implements Observer, Runnable {
 
             //Makes everyone disconnect after the game
             for (ClientHandler ch : clientHandlers) {
-                ch.sendOutput(JsonTools.createMessage("Closing the game!"));
+                ch.sendOutput(JsonTools.createMessage("Closing the game!", false));
                 ch.disconnect();
             }
             reset();
@@ -118,7 +118,7 @@ public class Controller implements Observer, Runnable {
             //Reset the game if someone disconnects during game creation
             if (!isGameRunning) {
                 for (ClientHandler ch : clientHandlers) {
-                    ch.sendOutput(JsonTools.createMessage("One player disconnected, closing game."));
+                    ch.sendOutput(JsonTools.createMessage("One player disconnected, closing game.", true));
                     ch.disconnect();
                 }
                 reset();
@@ -143,7 +143,7 @@ public class Controller implements Observer, Runnable {
                     isGameRunning = true;
                     for (ClientHandler clientHandler : clientHandlers) {
                         game.registerObserver(clientHandler);
-                        clientHandler.sendOutput(JsonTools.createMessage("The game is starting!"));
+                        clientHandler.sendOutput(JsonTools.createMessage("The game is starting!", false));
                     }
                 }
                 this.notifyAll();
@@ -174,7 +174,7 @@ public class Controller implements Observer, Runnable {
                 clientHandler.requestInput(Prompt.PLAYERSNUMBER);
             }
         } else
-            clientHandler.sendOutput(JsonTools.createMessage("The game is full, please exit!"));
+            clientHandler.sendOutput(JsonTools.createMessage("The game is full, please exit!", true));
     }
 
     /**

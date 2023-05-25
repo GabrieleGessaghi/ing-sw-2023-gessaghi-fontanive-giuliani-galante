@@ -41,21 +41,21 @@ public class ChatController implements Observer {
                 field = jsonReader.nextName();
                 switch (field) {
                     case "senderNickname" -> currentMessageSender = jsonReader.nextString();
-                    case "message" -> message = jsonReader.nextString();
                     case "receiverNickname" -> currentMessageReceiver = jsonReader.nextString();
+                    case "message" -> message = jsonReader.nextString();
                     default -> jsonReader.skipValue();
                 }
             }
             jsonReader.endObject();
 
             if (message != null && currentMessageSender != null)
-                if (currentMessageReceiver != null) //Checks whether the message is public
-                    if (Controller.findClientHandlerByName(currentMessageReceiver) != null) //Checks whether the receiver exists
+                if (currentMessageReceiver != null)
+                    if (Controller.findClientHandlerByName(currentMessageReceiver) != null)
                         chat.addPrivateMessage(currentMessageSender, currentMessageReceiver, message);
                     else {
                         ClientHandler sender = Controller.findClientHandlerByName(currentMessageSender);
                         if (sender != null)
-                            sender.sendOutput(JsonTools.createMessage("No player with this nickname found!"));
+                            sender.sendOutput(JsonTools.createMessage("No player with this nickname found!", true));
                     }
                 else
                     chat.addPublicMessage(currentMessageSender, message);

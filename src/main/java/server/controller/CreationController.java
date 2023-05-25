@@ -67,7 +67,7 @@ public class CreationController implements Observer {
         if (nickname != null && clientHandler != null) {
             clientHandler.nickname = addPlayer(nickname);
             if (!nickname.equals(clientHandler.nickname)) {
-                clientHandler.sendOutput(JsonTools.createMessage("Duplicate name, yours is now " + clientHandler.nickname));
+                clientHandler.sendOutput(JsonTools.createMessage("Duplicate name, yours is now " + clientHandler.nickname, true));
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("newNickname", clientHandler.nickname);
                 clientHandler.sendOutput(jsonObject.toString());
@@ -84,7 +84,7 @@ public class CreationController implements Observer {
         if (!isSpotAvailable() && !Controller.disconnectedClients.isEmpty())
             if (Controller.disconnectedClients.containsKey(nickname) && clientHandler != null) {
                 clientHandler.index = Controller.disconnectedClients.get(nickname);
-                clientHandler.sendOutput(JsonTools.createMessage("Welcome back!"));
+                clientHandler.sendOutput(JsonTools.createMessage("Welcome back!", false));
                 Controller.disconnectedClients.remove(nickname);
             } else {
                 Controller.clientHandlers.remove(clientHandler);

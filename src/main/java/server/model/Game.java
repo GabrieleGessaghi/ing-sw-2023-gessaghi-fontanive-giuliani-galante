@@ -187,7 +187,7 @@ public class Game implements Savable, Observable {
         //Checks if the player has filled their shelf
         if (!isLastRound && players[currentPlayerIndex].isShelfFull()) {
             isLastRound = true;
-            String message = JsonTools.createMessage("This is the last round!");
+            String message = JsonTools.createMessage("This is the last round!", false);
             updateObservers(new Event(message));
         }
         nextPlayerIndex();

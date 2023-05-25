@@ -109,10 +109,10 @@ public class JsonTools {
      * @param message The message to be put into the JSON string.
      * @return The final JSON string containing only the field "message".
      */
-    public static String createMessage(String message) {
-        Map<String, Object> element = new HashMap<>();
-        element.put("message", message);
-        return createJson(element).toString();
+    public static String createMessage(String message, boolean isError) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty(isError ? "error" : "message", message);
+        return jsonObject.toString();
     }
 
     /**
