@@ -42,7 +42,6 @@ public abstract class Card implements Observable, Savable {
     @Override
     public void updateObservers(Event event) {
         for (Observer observer : observers)
-            if (observer != null)
-                observer.update(event);
+            observer.update(event);
     }
 }

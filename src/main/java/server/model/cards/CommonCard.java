@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
+import server.controller.utilities.JsonTools;
 import server.model.Savable;
 import server.model.Token;
 import server.model.cards.concreteobjectives.*;
@@ -25,6 +26,7 @@ import static server.controller.utilities.ConfigLoader.PLAYERS_MIN;
  */
 public class CommonCard extends Card {
     private int numberOfTokensLeft;
+    private int currentIndex;
     private final int numberOfPlayers;
     private CommonObjective objective;
     private CommonType name;
@@ -35,12 +37,13 @@ public class CommonCard extends Card {
      * @param type The algorithm for this card.
      * @param numberOfPlayers The number of players playing this game.
      */
-    public CommonCard(CommonType type, int numberOfPlayers) {
+    public CommonCard(CommonType type, int numberOfPlayers, int index) {
         this.objective = createCommonObjective(type);
         this.numberOfPlayers = numberOfPlayers;
         this.numberOfTokensLeft = numberOfPlayers;
         this.name = objective.getName();
         observers = new ArrayList<>();
+        currentIndex = index;
     }
 
     public CommonCard(String jsonState, int numberOfPlayers) {
@@ -62,6 +65,12 @@ public class CommonCard extends Card {
         if (satisfied) {
             points = COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft];
             numberOfTokensLeft--;
+
+            //Updates observers
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("message", "A common objective was completed!");
+            jsonObject.add("commonCard" + currentIndex, getState());
+            updateObservers(new Event(jsonObject.toString()));
         }
         return points;
     }
@@ -97,6 +106,7 @@ public class CommonCard extends Card {
     public JsonObject getState() {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("cardIndex", name.ordinal());
+        jsonObject.addProperty("currentIndex", currentIndex);
         jsonObject.addProperty("objectiveDescription", objective.getDescription());
         jsonObject.addProperty("numberOfTokensLeft", numberOfTokensLeft);
         jsonObject.addProperty("nextPointsAvailable", COMMONCARD_POINTS[numberOfPlayers - PLAYERS_MIN][numberOfPlayers - numberOfTokensLeft]);
@@ -107,6 +117,7 @@ public class CommonCard extends Card {
     public void loadState(JsonObject jsonObject) {
         Map<String, JsonElement> elements = jsonObject.asMap();
         numberOfTokensLeft = elements.get("numberOfTokensLeft").getAsInt();
+        currentIndex = elements.get("currentIndex").getAsInt();
         name = CommonType.values()[(elements.get("cardIndex").getAsInt())];
         objective = createCommonObjective(name);
     }

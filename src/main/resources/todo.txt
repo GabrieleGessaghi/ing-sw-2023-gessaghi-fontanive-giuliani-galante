@@ -6,9 +6,13 @@ To implement:
 5. IMPORTANT, improve server-client messages (GIO) DONE
 6. Chat in GUI (GALAGA)
 7. Divide errors and messages (GIO) DONE
+8. Improve TUI and GUI showOutput methods (GIO)
 
 Bugs to fix:
 1. Server not resetting correctly when needed
 2. Errors and messages overlap each other, especially in GUI
 3. Reloading opened shelf
 4. Check personal card jsons
+5. Fix "new line" characters being all over the place (DONE)
+6. Change json configuration path in junit tests
+7. Closing window keeps GUI running

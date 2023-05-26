@@ -90,7 +90,7 @@ public class Game implements Savable, Observable {
         Collections.shuffle(types);
         commonCards = new CommonCard[NUMBER_OF_COMMON_CARDS];
         for (int i = 0; i < NUMBER_OF_COMMON_CARDS; i++)
-            commonCards[i] = new CommonCard(types.get(i), numberOfPlayers);
+            commonCards[i] = new CommonCard(types.get(i), numberOfPlayers, i);
         return commonCards;
     }
 

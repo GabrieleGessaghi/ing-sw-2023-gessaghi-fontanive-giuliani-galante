@@ -28,7 +28,6 @@ public class Controller implements Observer, Runnable {
     //TODO: Handle game loading if save found
     //TODO: Lonely player timer
     //TODO: Check if client disconnected during own turn
-    //TODO: Handle all clients disconnecting
 
     public Controller() {
         reset();
@@ -165,7 +164,7 @@ public class Controller implements Observer, Runnable {
         else if (clientHandlers.size() == 0)
             reset();
 
-            //Checks if there's only one client left
+        //Checks if there's only one client left
         else if (clientHandlers.size() == 1)
         {}
 

@@ -15,12 +15,12 @@ import java.util.List;
 public class PlayerTest {
     @Test
     public void insertTokensTestOne() throws IllegalColumnException {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
 
         List<CommonCard> commonCards = new ArrayList<>(2);
 
-        CommonCard common1 = new CommonCard(CommonType.CORNERS, 2);
-        CommonCard common2 = new CommonCard(CommonType.CORNERS, 2);
+        CommonCard common1 = new CommonCard(CommonType.CORNERS, 2, 0);
+        CommonCard common2 = new CommonCard(CommonType.CORNERS, 2, 1);
 
         commonCards.add(0, common1);
         commonCards.add(1, common2);
@@ -43,8 +43,8 @@ public class PlayerTest {
 
         List<CommonCard> commonCards = new ArrayList<>(2);
 
-        CommonCard common1 = new CommonCard(CommonType.CORNERS, 2);
-        CommonCard common2 = new CommonCard(CommonType.DIAGONAL, 2);
+        CommonCard common1 = new CommonCard(CommonType.CORNERS, 2, 0);
+        CommonCard common2 = new CommonCard(CommonType.DIAGONAL, 2, 1);
 
         commonCards.add(0, common1);
         commonCards.add(1, common2);

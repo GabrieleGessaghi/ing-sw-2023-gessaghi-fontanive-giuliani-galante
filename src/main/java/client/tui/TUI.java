@@ -147,38 +147,23 @@ public class TUI implements Client {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "nickname" -> toPrint.append("Player: ").append(jsonReader.nextString()).append("\n");
-                    case "currentPlayerNickname" -> {
-                        String currentPlayer = jsonReader.nextString();
-                        if (currentPlayer.equals(nickname))
-                            toPrint.append("It's your turn!\n");
-                        else
-                            toPrint.append("It's ").append(currentPlayer).append("'s turn!");
-                    }
+                    case "newNickname" -> nickname = jsonReader.nextString();
+                    case "nicknames" -> toPrint.append(printNicknames(jsonReader));
                     case "points" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
-                    case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player\n" : "Not first player\n");
-                    case "playerIndex" -> toPrint.append("Player index: ").append(jsonReader.nextInt()).append("\n");
-                    case "commonCard0", "commonCard1" -> {
-                        jsonReader.beginObject();
-                        while (jsonReader.hasNext())
-                            switch (jsonReader.nextName()) {
-                                case "objectiveDescription" -> toPrint.append("Common Objective description:\n").append(jsonReader.nextString()).append("\n");
-                                case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
-                                case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n\n");
-                                default -> jsonReader.skipValue();
-                            }
-                        jsonReader.endObject();
-                    }
+                    case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player" : "Not first player").append("\n");
+                    case "commonCard0", "commonCard1" -> toPrint.append(printCommonCard(jsonReader)).append("\n");
                     case "message", "error" -> toPrint.append(jsonReader.nextString()).append("\n");
                     case "tiles" -> toPrint.append(printTiles(jsonReader));
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
-                    case "nicknames" -> toPrint.append(printNicknames(jsonReader));
+                    case "currentPlayerNickname" -> {
+                        String currentPlayer = jsonReader.nextString();
+                        toPrint.append(currentPlayer.equals(nickname) ? "It's your turn!" : "It's " + currentPlayer + "'s turn!").append("\n");
+                    }
                     case "connectionError" -> {
                         toPrint.append("You were disconnected. Please type \"connect\" to reconnect.\n");
                         jsonReader.skipValue();
                     }
-                    case "newNickname" -> nickname = jsonReader.nextString();
                     case "ping" -> {
                         return;
                     }
@@ -246,7 +231,7 @@ public class TUI implements Client {
         //Number of tokens
         char numberOfTokens;
         do {
-            System.out.print("How many tokens would you like to select? (1-3): ");
+            System.out.print("\nHow many tokens would you like to select? (1-3): ");
             waitForInput();
             numberOfTokens = lastInput.charAt(0);
         } while(numberOfTokens < '1' || numberOfTokens > '3');
@@ -328,7 +313,6 @@ public class TUI implements Client {
                 toPrint.append(intToTokenInitial(intMatrix[i][j]));
             toPrint.append("\n");
         }
-        toPrint.append("\n");
         return toPrint;
     }
 
@@ -368,7 +352,7 @@ public class TUI implements Client {
      */
     private StringBuilder printPersonalCard(JsonReader jsonReader) throws IOException {
         StringBuilder toPrint = new StringBuilder();
-        toPrint.append("\n").append("Personal card: \n").append(" 1  2  3  4  5\n");
+        toPrint.append("Personal card: \n").append(" 1  2  3  4  5\n");
         jsonReader.beginObject();
         while (jsonReader.hasNext())
             if (jsonReader.nextName().equals("correctTiles")) {
@@ -381,6 +365,20 @@ public class TUI implements Client {
                 }
             } else
                 jsonReader.skipValue();
+        jsonReader.endObject();
+        return toPrint;
+    }
+
+    private StringBuilder printCommonCard(JsonReader jsonReader) throws IOException {
+        StringBuilder toPrint = new StringBuilder();
+        jsonReader.beginObject();
+        while (jsonReader.hasNext())
+            switch (jsonReader.nextName()) {
+                case "objectiveDescription" -> toPrint.append("Common Objective description:\n").append(jsonReader.nextString()).append("\n");
+                case "numberOfTokensLeft" -> toPrint.append("Remaining tokens: ").append(jsonReader.nextInt()).append("\n");
+                case "nextPointsAvailable" -> toPrint.append("Next common card points: ").append(jsonReader.nextInt()).append("\n");
+                default -> jsonReader.skipValue();
+            }
         jsonReader.endObject();
         return toPrint;
     }

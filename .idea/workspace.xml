@@ -4,19 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Separated normal and error messages">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Further improved player reconnection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/rmi/ClientHandlerRMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/tcp/ClientHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/tcp/ClientHandlerTCP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal10.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal10.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/CommonCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/CommonCardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +104,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Text User Interface">
+  <component name="RunManager" selected="Application.Graphics User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -165,7 +162,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="server.model in 6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlayerTest.insertTokensTestOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
@@ -174,7 +171,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="server.model" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="server.model.PlayerTest" />
+      <option name="METHOD_NAME" value="insertTokensTestOne" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -223,18 +222,18 @@
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Graphics User Interface WINDOWS" />
       <item itemvalue="Application.Graphics User Interface" />
+      <item itemvalue="JUnit.PlayerTest.insertTokensTestOne" />
       <item itemvalue="JUnit.DiagonalTest" />
       <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
-      <item itemvalue="JUnit.server.model in 6" />
       <item itemvalue="Maven.6 [compiler:compile]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DiagonalTest" />
         <item itemvalue="Application.Graphics User Interface" />
+        <item itemvalue="JUnit.PlayerTest.insertTokensTestOne" />
+        <item itemvalue="JUnit.DiagonalTest" />
         <item itemvalue="Maven.6 [compiler:compile]" />
         <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
-        <item itemvalue="JUnit.server.model in 6" />
       </list>
     </recent_temporary>
   </component>
@@ -274,14 +273,8 @@
       <workItem from="1684749312367" duration="3085000" />
       <workItem from="1684849035583" duration="4133000" />
       <workItem from="1684998314896" duration="6843000" />
-      <workItem from="1685024080235" duration="2391000" />
-    </task>
-    <task id="LOCAL-00162" summary="Fixed Graphics User Interface configuration parameters">
-      <created>1683707653534</created>
-      <option name="number" value="00162" />
-      <option name="presentableId" value="LOCAL-00162" />
-      <option name="project" value="LOCAL" />
-      <updated>1683707653534</updated>
+      <workItem from="1685024080235" duration="2827000" />
+      <workItem from="1685086770682" duration="2218000" />
     </task>
     <task id="LOCAL-00163" summary="Fixed Maven dependencies">
       <created>1683710517921</created>
@@ -619,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685008475976</updated>
     </task>
-    <option name="localTasksCounter" value="211" />
+    <task id="LOCAL-00211" summary="Further improved player reconnection">
+      <created>1685026740795</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
+      <option name="project" value="LOCAL" />
+      <updated>1685026740796</updated>
+    </task>
+    <option name="localTasksCounter" value="212" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +653,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="number of players dialog custom style" />
     <MESSAGE value="finished player dialog and server side update" />
     <MESSAGE value="added shelf update" />
     <MESSAGE value="Handles duplicated nicknames and sends cards indexes to clients at the start of the game" />
@@ -678,7 +677,8 @@
     <MESSAGE value="Fixed players reconnecting with rmi when it is not their turn" />
     <MESSAGE value="Modified the way client and server exchange messages to adhere to game rules" />
     <MESSAGE value="Separated normal and error messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Separated normal and error messages" />
+    <MESSAGE value="Further improved player reconnection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Further improved player reconnection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
