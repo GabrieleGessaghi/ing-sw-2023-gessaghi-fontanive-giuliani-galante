@@ -274,6 +274,7 @@ public class Game implements Savable, Observable {
             case SHELF -> {
                 if (requestedPlayer != null) {
                     JsonObject playerState = requestedPlayer.getState();
+                    jsonObject.addProperty("nickname", playerNickname);
                     jsonObject.add("shelf", playerState.get("shelf").getAsJsonObject());
                 }
             }

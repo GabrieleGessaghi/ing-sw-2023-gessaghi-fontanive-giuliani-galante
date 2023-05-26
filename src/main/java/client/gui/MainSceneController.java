@@ -183,6 +183,7 @@ public class MainSceneController implements Client, Initializable {
     @Override
     public void showOutput(String jsonMessage) {
 
+        //TODO: IMPROVE TO ADAPT TO NEW MESSAGING METHOD
         //Temporary variables
         String tempNickname = "";
         int[][] tempTiles = null;
@@ -256,10 +257,8 @@ public class MainSceneController implements Client, Initializable {
                         while (jsonReader.hasNext())
                             if (jsonReader.nextName().equals("shelfTiles"))
                                 tempTiles = JsonTools.readMatrix(jsonReader);
+                        tempPlayerShelf = tempTiles;
                         jsonReader.endObject();
-                    }
-                    case "shelfTiles" -> {
-                        tempPlayerShelf = JsonTools.readMatrix(jsonReader);
                     }
                     case "connectionError" -> {} //TODO: Go back to beginning screen
                     default -> jsonReader.skipValue();
