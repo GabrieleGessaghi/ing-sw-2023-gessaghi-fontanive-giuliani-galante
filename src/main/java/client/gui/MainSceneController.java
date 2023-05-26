@@ -209,7 +209,11 @@ public class MainSceneController implements Client, Initializable {
                         }
                         startGame();
                     }
-                    case "totalPoints" -> tempTotalPoints = jsonReader.nextInt();
+                    case "points" -> {
+                        tempTotalPoints = jsonReader.nextInt();
+                        int finalTempTotalPoints = tempTotalPoints;
+                        Platform.runLater(() -> points.setText(String.valueOf(finalTempTotalPoints)));
+                    }
                     case "commonCard0" ->{
                         jsonReader.beginObject();
                         while(jsonReader.hasNext()){
@@ -272,10 +276,6 @@ public class MainSceneController implements Client, Initializable {
                     updateTokens(tempTiles, true);
                 if (tempPersonalCard != -1)
                     setPersonalCard(tempPersonalCard);
-                if (tempTotalPoints != -1) {
-                    int finalTempTotalPoints = tempTotalPoints;
-                    Platform.runLater(() -> points.setText(String.valueOf(finalTempTotalPoints)));
-                }
             }
 
         } catch (IOException e) {
