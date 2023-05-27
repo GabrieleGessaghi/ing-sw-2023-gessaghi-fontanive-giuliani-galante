@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Shelf now updates">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed small mistake">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,10 +97,10 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Text User Interface">
+  <component name="RunManager" selected="Application.Graphics User Interface WINDOWS">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
-      <module name="6" />
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <option name="VM_PARAMETERS" value="--module-path $MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19.0.2.1/;$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19.0.2.1/;$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19.0.2.1/;$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19.0.2.1/ --add-modules javafx.fxml,javafx.controls,javafx.graphics,javafx.base" />
       <extension name="coverage">
         <pattern>
@@ -132,7 +128,7 @@
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="server.Server" />
-      <module name="6" />
+      <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -272,16 +268,7 @@
       <workItem from="1684998314896" duration="6843000" />
       <workItem from="1685024080235" duration="2827000" />
       <workItem from="1685086770682" duration="3129000" />
-      <workItem from="1685096839798" duration="83000" />
-      <workItem from="1685097684730" duration="634000" />
-      <workItem from="1685198549620" duration="4671000" />
-    </task>
-    <task id="LOCAL-00165" summary="added buttons on MainScene.fxml">
-      <created>1683991656103</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1683991656103</updated>
+      <workItem from="1685196532542" duration="5399000" />
     </task>
     <task id="LOCAL-00166" summary="added buttons on MainScene.fxml">
       <created>1683992087460</created>
@@ -612,14 +599,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685089280403</updated>
     </task>
-    <task id="LOCAL-00213" summary="Shelf now updates">
-      <created>1685096913486</created>
+    <task id="LOCAL-00213" summary="Began implementing chat GUI">
+      <created>1685201228089</created>
       <option name="number" value="00213" />
       <option name="presentableId" value="LOCAL-00213" />
       <option name="project" value="LOCAL" />
-      <updated>1685096913486</updated>
+      <updated>1685201228089</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="Fixed small mistake">
+      <created>1685201516854</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1685201516854</updated>
+    </task>
+    <option name="localTasksCounter" value="215" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Handles duplicated nicknames and sends cards indexes to clients at the start of the game" />
     <MESSAGE value="Fixed duplicated code and JSON parsing error in MainSceneController" />
     <MESSAGE value="Added messages label on top of main scene" />
     <MESSAGE value="Fixed issue with tile selection json message" />
@@ -677,8 +670,9 @@
     <MESSAGE value="Separated normal and error messages" />
     <MESSAGE value="Further improved player reconnection" />
     <MESSAGE value="Common cards now update the clients upon an objective completion" />
-    <MESSAGE value="Shelf now updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Shelf now updates" />
+    <MESSAGE value="Began implementing chat GUI" />
+    <MESSAGE value="Fixed small mistake" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small mistake" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -704,22 +698,22 @@
     <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>model.cards.concreteobjectives.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>server.model.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1684840996158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>server.model.*</FILTER>
-    </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$All_in_6.ic" NAME="All in 6 Coverage Results" MODIFIED="1684841049657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$ConfigurationsTest.ic" NAME="ConfigurationsTest Coverage Results" MODIFIED="1683044723710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$model_in_6.ic" NAME="model in 6 Coverage Results" MODIFIED="1683035690174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$All_in_6.ic" NAME="All in 6 Coverage Results" MODIFIED="1684841049657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_cards_concreteobjectives_in_6.ic" NAME="server.model.cards.concreteobjectives in 6 Coverage Results" MODIFIED="1683049588320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.cards.concreteobjectives.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Interface.ic" NAME="Text User Interface Coverage Results" MODIFIED="1684852929129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1683046859177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.model.*</FILTER>
+    </SUITE>
   </component>
 </project>
