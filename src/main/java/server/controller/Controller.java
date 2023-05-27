@@ -56,9 +56,9 @@ public class Controller implements Observer, Runnable {
             game.sendState(View.PLAYER_NICKNAMES);
             game.sendState(View.COMMON_CARDS);
             while (!game.gameOver()) {
+                ClientHandler currentClient = findClientHandlerByName(game.getCurrentPlayer());
                 game.sendState(View.BOARD);
                 game.sendState(View.CURRENT_PLAYER);
-                ClientHandler currentClient = findClientHandlerByName(game.getCurrentPlayer());
                 if (currentClient != null) {
                     currentClient.sendOutput(game.getView(View.PERSONAL_CARD, currentClient.nickname).toString());
                     currentClient.sendOutput(game.getView(View.SHELF, currentClient.nickname).toString());

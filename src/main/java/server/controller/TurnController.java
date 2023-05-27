@@ -80,7 +80,7 @@ public class TurnController implements Observer {
             }
         }
 
-        if (isMatrixLegal() && isColumnLegal() && !isTurnCancelled)
+        if (!isTurnCancelled && isMatrixLegal() && isColumnLegal())
             finalizeTurn();
     }
 

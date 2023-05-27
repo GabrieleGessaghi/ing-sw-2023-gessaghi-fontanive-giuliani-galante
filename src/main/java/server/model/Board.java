@@ -117,6 +117,8 @@ public class Board implements Observable, Savable {
      * @return True if the tile has a free side and is not empty.
      */
     private boolean isTokenSelectable(int row, int column) {
+        if (row == 0 || row == tiles.length - 1 || column == 0 || column == tiles.length - 1)
+            return true;
         return usableTiles[row][column] && tiles[row][column] != Token.NOTHING && (
                 tiles[row - 1][column] == Token.NOTHING ||
                         tiles[row + 1][column] == Token.NOTHING ||
