@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Began implementing chat GUI">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed small mistake">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -267,14 +268,7 @@
       <workItem from="1684998314896" duration="6843000" />
       <workItem from="1685024080235" duration="2827000" />
       <workItem from="1685086770682" duration="3129000" />
-      <workItem from="1685196532542" duration="4687000" />
-    </task>
-    <task id="LOCAL-00165" summary="added buttons on MainScene.fxml">
-      <created>1683991656103</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1683991656103</updated>
+      <workItem from="1685196532542" duration="5399000" />
     </task>
     <task id="LOCAL-00166" summary="added buttons on MainScene.fxml">
       <created>1683992087460</created>
@@ -612,7 +606,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685201228089</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="Fixed small mistake">
+      <created>1685201516854</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1685201516854</updated>
+    </task>
+    <option name="localTasksCounter" value="215" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Handles duplicated nicknames and sends cards indexes to clients at the start of the game" />
     <MESSAGE value="Fixed duplicated code and JSON parsing error in MainSceneController" />
     <MESSAGE value="Added messages label on top of main scene" />
     <MESSAGE value="Fixed issue with tile selection json message" />
@@ -671,7 +671,8 @@
     <MESSAGE value="Further improved player reconnection" />
     <MESSAGE value="Common cards now update the clients upon an objective completion" />
     <MESSAGE value="Began implementing chat GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Began implementing chat GUI" />
+    <MESSAGE value="Fixed small mistake" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small mistake" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

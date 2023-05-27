@@ -608,7 +608,6 @@ public class MainSceneController implements Client, Initializable {
     @FXML
     void chatButtonClicked() {
         Platform.runLater(() -> {
-            ChatController chatController = new ChatController();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Chat.fxml"));
             Parent root = null;
             try {
@@ -616,6 +615,7 @@ public class MainSceneController implements Client, Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            ChatController chatController = loader.getController();
             Stage chatStage = new Stage();
             Scene chatScene = new Scene(root);
             chatScene.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
