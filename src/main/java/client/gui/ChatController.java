@@ -30,13 +30,13 @@ public class ChatController {
     private TextField MessageField;
 
     @FXML
-    public RadioButton Player1Button = new RadioButton();
+    public RadioButton Player1Button;
 
     @FXML
-    private RadioButton Player2Button = new RadioButton();
+    private RadioButton Player2Button;
 
     @FXML
-    private RadioButton Player3Button = new RadioButton();
+    private RadioButton Player3Button;
 
     @FXML
     private RadioButton PublicButton;
