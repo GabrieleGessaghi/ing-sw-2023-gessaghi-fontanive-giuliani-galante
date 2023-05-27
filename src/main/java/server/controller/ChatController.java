@@ -1,5 +1,6 @@
 package server.controller;
 
+import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
@@ -9,7 +10,6 @@ import server.view.ClientHandler;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.List;
 
 /**
  * Handles messaging in the game
@@ -21,8 +21,8 @@ public class ChatController implements Observer {
     /**
      * Class constructor.
      */
-    public ChatController() {
-        chat = new Chat();
+    public ChatController(Chat chat) {
+        this.chat = chat;
     }
 
     @Override
@@ -49,14 +49,17 @@ public class ChatController implements Observer {
             jsonReader.endObject();
 
             if (message != null && currentMessageSender != null)
-                if (currentMessageReceiver != null)
-                    if (Controller.findClientHandlerByName(currentMessageReceiver) != null)
-                        chat.addPrivateMessage(currentMessageSender, currentMessageReceiver, message);
-                    else {
+                if (currentMessageReceiver != null) {
+                    ClientHandler currentMessageReceiverHandler = Controller.findClientHandlerByName(currentMessageReceiver);
+                    if (currentMessageReceiverHandler != null) {
+                        JsonObject privateMessage = chat.addPrivateMessage(currentMessageSender, currentMessageReceiver, message);
+                        currentMessageReceiverHandler.sendOutput(privateMessage.toString());
+                    } else {
                         ClientHandler sender = Controller.findClientHandlerByName(currentMessageSender);
                         if (sender != null)
                             sender.sendOutput(JsonTools.createMessage("No player with this nickname found!", true));
                     }
+                }
                 else
                     chat.addPublicMessage(currentMessageSender, message);
 

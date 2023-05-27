@@ -8,6 +8,7 @@ import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
 import server.model.View;
+import server.model.chat.Chat;
 import server.view.ClientHandler;
 
 import java.util.*;
@@ -25,10 +26,7 @@ public class Controller implements Observer, Runnable {
     private ChatController chatController;
     private RequestController requestController;
     private Game game;
-
-    //TODO: Handle game loading if save found
-    //TODO: Lonely player timer
-    //TODO: Check if client disconnected during own turn
+    private Chat chat;
 
     public Controller() {
         reset();
@@ -94,6 +92,7 @@ public class Controller implements Observer, Runnable {
             } else if (jsonObject.has("clientReconnected")) {
                 disconnectedClients.remove(clientHandler.nickname);
                 game.registerObserver(clientHandler);
+                chat.registerObserver(clientHandler);
                 game.setPlayerConnection(clientHandler.nickname, true);
                 clientHandler.registerObserver(chatController);
                 clientHandler.registerObserver(requestController);
@@ -135,10 +134,12 @@ public class Controller implements Observer, Runnable {
      */
     private void startGame() {
         game = creationController.createGame();
-        chatController = new ChatController();
+        chat = new Chat();
+        chatController = new ChatController(chat);
         requestController = new RequestController(game);
         for (ClientHandler clientHandler : clientHandlers) {
             game.registerObserver(clientHandler);
+            chat.registerObserver(clientHandler);
             clientHandler.sendOutput(JsonTools.createMessage("The game is starting!", false));
             clientHandler.registerObserver(chatController);
             clientHandler.registerObserver(requestController);
@@ -204,6 +205,8 @@ public class Controller implements Observer, Runnable {
         creationController = new CreationController();
         clientHandlers = new ArrayList<>();
         disconnectedClients = new HashMap<>();
+        game = null;
+        chat = null;
     }
 
     /**

@@ -110,10 +110,11 @@ public class TUI implements Client {
      */
     public void sendNewMessage() {
         Scanner scn = new Scanner(System.in);
-        System.out.println("Type \"public\" or the receiver's nickname: ");
+        System.out.print("Type \"public\" or the receiver's nickname: ");
         String receiver = scn.nextLine();
-        System.out.println("Type the message: ");
+        System.out.print("Type the message: ");
         String message = scn.nextLine();
+        System.out.println();
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("senderNickname", nickname);
@@ -152,7 +153,7 @@ public class TUI implements Client {
                     case "points" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
                     case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player" : "Not first player").append("\n");
                     case "commonCard0", "commonCard1" -> toPrint.append(printCommonCard(jsonReader)).append("\n");
-                    case "message", "error" -> toPrint.append(jsonReader.nextString()).append("\n");
+                    case "message", "error", "privateMessage", "publicMessage" -> toPrint.append(jsonReader.nextString()).append("\n");
                     case "tiles" -> toPrint.append(printTiles(jsonReader));
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));

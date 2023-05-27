@@ -21,8 +21,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static server.controller.utilities.ConfigLoader.SERVER_PORT;
 
-//TODO: Ping clients to detect disconnections
-
 /**
  * Accepts new connections and starts the game controller.
  * @author Giorgio Massimo Fontanive

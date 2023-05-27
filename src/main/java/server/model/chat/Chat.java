@@ -74,15 +74,16 @@ public class Chat implements Observable {
      * @param senderNickname the nickname of the player sending the message.
      * @param receiverNickname the nickname of the player receiving the message.
      * @param message the content of the message.
+     * @return A json object containing the necessary fields to display the message.
      */
-    public void addPrivateMessage(String senderNickname, String receiverNickname, String message) {
+    public JsonObject addPrivateMessage(String senderNickname, String receiverNickname, String message) {
         privateMessages.add(new Message(senderNickname, receiverNickname, message));
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("privateMessageSender", senderNickname);
         jsonObject.addProperty("privateMessageReceiver", receiverNickname);
         jsonObject.addProperty("privateMessage", senderNickname + ": " + message);
-        updateObservers(new Event(jsonObject.toString()));
+        return jsonObject;
     }
 
     @Override

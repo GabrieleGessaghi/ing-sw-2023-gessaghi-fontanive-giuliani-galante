@@ -112,8 +112,10 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         jsonObject.addProperty("clientDisconnected", index);
         updateObservers(new Event(jsonObject.toString()));
         isConnected = false;
-        timer.cancel();
-        timer.purge();
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+        }
     }
 
     public void reconnect() {
