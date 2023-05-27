@@ -230,11 +230,7 @@ public class Game implements Savable, Observable {
         Path filePath = Path.of("src/main/resources/saved_game.txt"); //TODO: Put this in config file
         try {
             Files.delete(filePath);
-        } catch (NoSuchFileException x) {
-            System.err.format("%s: no such" + " file or directory%n", filePath);
-        } catch (IOException x) {
-            System.err.println(x);
-        }
+        } catch (IOException ignored) {}
     }
 
     /**
