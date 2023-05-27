@@ -26,11 +26,13 @@ public class TurnController implements Observer {
     private int selectedColumn;
     private final Game game;
     private final ClientHandler currentClientHandler;
+    private boolean isTurnCancelled;
 
     public TurnController(Game game, ClientHandler currentClient) {
         selectedTiles = null;
         selectedColumn = -1;
         currentClientHandler = currentClient;
+        isTurnCancelled = false;
         this.game = game;
     }
 
@@ -56,9 +58,12 @@ public class TurnController implements Observer {
         return selectedColumn >= 0 && selectedColumn <= SHELF_COLUMNS;
     }
 
+    /**
+     *
+     */
     public synchronized void newTurn() {
         currentClientHandler.requestInput(Prompt.TOKENS);
-        while (selectedTiles == null) {
+        while (selectedTiles == null && !isTurnCancelled) {
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -67,7 +72,7 @@ public class TurnController implements Observer {
         }
 
         currentClientHandler.requestInput(Prompt.COLUMN);
-        while (selectedColumn == -1) {
+        while (selectedColumn == -1 && !isTurnCancelled) {
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -75,10 +80,13 @@ public class TurnController implements Observer {
             }
         }
 
-        if (isMatrixLegal() && isColumnLegal())
+        if (isMatrixLegal() && isColumnLegal() && !isTurnCancelled)
             finalizeTurn();
     }
 
+    /**
+     *
+     */
     private synchronized void finalizeTurn() {
         try {
             game.playerTurn(selectedTiles, selectedColumn);
@@ -88,6 +96,14 @@ public class TurnController implements Observer {
             selectedColumn = -1;
             newTurn();
         }
+    }
+
+    /**
+     *
+     */
+    public synchronized void skipTurn() {
+        isTurnCancelled = true;
+        this.notifyAll();
     }
 
     /**

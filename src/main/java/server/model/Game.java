@@ -217,17 +217,24 @@ public class Game implements Savable, Observable {
             jsonObject.addProperty("winnerNickname", winner.getNickname());
             jsonObject.addProperty("winnerPoints", winner.getPoints());
             updateObservers(new Event(jsonObject.toString()));
-            Path filePath = Path.of("src/main/resources/saved_game.txt"); //TODO: Put this in config file
-            try {
-                Files.delete(filePath);
-            } catch (NoSuchFileException x) {
-                System.err.format("%s: no such" + " file or directory%n", filePath);
-            } catch (IOException x) {
-                System.err.println(x);
-            }
+            deleteSave();
             return true;
         }
         return false;
+    }
+
+    /**
+     * Deletes the save file if it finds one.
+     */
+    public void deleteSave() {
+        Path filePath = Path.of("src/main/resources/saved_game.txt"); //TODO: Put this in config file
+        try {
+            Files.delete(filePath);
+        } catch (NoSuchFileException x) {
+            System.err.format("%s: no such" + " file or directory%n", filePath);
+        } catch (IOException x) {
+            System.err.println(x);
+        }
     }
 
     /**
@@ -298,18 +305,6 @@ public class Game implements Savable, Observable {
         Player requestedPlayer = findPlayer(playerNickname);
         if (requestedPlayer != null)
             requestedPlayer.isConnected = isConnected;
-    }
-
-    /**
-     * Gets whether the given player is still connected
-     * @param playerNickname The player's nickname.
-     * @return True if the player is still connected.
-     */
-    public synchronized boolean getPlayerConnection(String playerNickname) {
-        Player requestedPlayer = findPlayer(playerNickname);
-        if (requestedPlayer != null)
-            return requestedPlayer.isConnected;
-        return false;
     }
 
     /**

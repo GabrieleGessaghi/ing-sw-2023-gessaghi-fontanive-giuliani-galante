@@ -68,13 +68,31 @@ public class Board implements Observable, Savable {
         boolean resetNeeded = true;
         for (int i = 0; i < tiles.length && resetNeeded; i++)
             for (int j = 0; j < tiles.length && resetNeeded; j++)
-                if (usableTiles[i][j] && (
-                        tiles[i - 1][j] != Token.NOTHING ||
-                                tiles[i + 1][j] != Token.NOTHING ||
-                                tiles[i][j - 1] != Token.NOTHING ||
-                                tiles[i][j + 1] != Token.NOTHING))
+                if (usableTiles[i][j] && !hasAllNothingAround(i, j))
                     resetNeeded = false;
         return  resetNeeded;
+    }
+
+    /**
+     * Checks whether the tile in the given position has all "nothing" surrounding it.
+     * @return True if the tile in the given position has all "nothing" around.
+     */
+    private boolean hasAllNothingAround(int i, int j) {
+        boolean allNothingAround;
+        int iBorder = 0;
+        int jBorder = 0;
+
+        //Finds in which directions it cannot check for "nothing"
+        if (i == 0) iBorder = 1;
+        else if (i == tiles.length - 1) iBorder = -1;
+        if (j == 0) jBorder = 1;
+        else if (j == tiles.length - 1) jBorder = -1;
+
+        allNothingAround = (jBorder == 1 || tiles[i][j - 1] == Token.NOTHING) &&
+                (jBorder == -1 || tiles[i][j + 1] == Token.NOTHING) &&
+                (iBorder == -1 || tiles[i + 1][j] == Token.NOTHING) &&
+                (iBorder == 1 || tiles[i - 1][j] == Token.NOTHING);
+        return allNothingAround;
     }
 
     /**

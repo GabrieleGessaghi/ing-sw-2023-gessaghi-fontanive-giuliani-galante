@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Common cards now update the clients upon an objective completion">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Shelf now updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +101,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Graphics User Interface">
+  <component name="RunManager" selected="Application.Text User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -269,13 +272,9 @@
       <workItem from="1684998314896" duration="6843000" />
       <workItem from="1685024080235" duration="2827000" />
       <workItem from="1685086770682" duration="3129000" />
-    </task>
-    <task id="LOCAL-00164" summary="created MainScene javafx">
-      <created>1683969826613</created>
-      <option name="number" value="00164" />
-      <option name="presentableId" value="LOCAL-00164" />
-      <option name="project" value="LOCAL" />
-      <updated>1683969826614</updated>
+      <workItem from="1685096839798" duration="83000" />
+      <workItem from="1685097684730" duration="634000" />
+      <workItem from="1685198549620" duration="4671000" />
     </task>
     <task id="LOCAL-00165" summary="added buttons on MainScene.fxml">
       <created>1683991656103</created>
@@ -613,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685089280403</updated>
     </task>
-    <option name="localTasksCounter" value="213" />
+    <task id="LOCAL-00213" summary="Shelf now updates">
+      <created>1685096913486</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
+      <option name="project" value="LOCAL" />
+      <updated>1685096913486</updated>
+    </task>
+    <option name="localTasksCounter" value="214" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +653,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added shelf update" />
     <MESSAGE value="Handles duplicated nicknames and sends cards indexes to clients at the start of the game" />
     <MESSAGE value="Fixed duplicated code and JSON parsing error in MainSceneController" />
     <MESSAGE value="Added messages label on top of main scene" />
@@ -672,7 +677,8 @@
     <MESSAGE value="Separated normal and error messages" />
     <MESSAGE value="Further improved player reconnection" />
     <MESSAGE value="Common cards now update the clients upon an objective completion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Common cards now update the clients upon an objective completion" />
+    <MESSAGE value="Shelf now updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shelf now updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

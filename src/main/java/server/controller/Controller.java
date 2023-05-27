@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
+import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
 import server.model.Game;
 import server.model.View;
@@ -69,7 +70,7 @@ public class Controller implements Observer, Runnable {
                 }
             }
 
-            //Makes everyone disconnect after the game
+            //Makes everyone disconnect after the game finishes
             for (ClientHandler ch : clientHandlers) {
                 ch.sendOutput(JsonTools.createMessage("Log back in if you want to play again.", false));
                 ch.disconnect();
@@ -166,13 +167,31 @@ public class Controller implements Observer, Runnable {
 
         //Checks if there's only one client left
         else if (clientHandlers.size() == 1)
-        {}
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            if (clientHandlers.size() == 1) {
+                                clientHandlers.get(0).sendOutput(JsonTools.createMessage("You are the only player left. You win!", false));
+                                clientHandlers.get(0).sendOutput(JsonTools.createMessage("Log back in if you want to play again.", false));
+                                clientHandler.disconnect();
+                                game.deleteSave();
+                                reset();
+                            }
+                        }
+                    },
+                    ConfigLoader.LONE_PLAYER_WAIT
+            );
+
 
         //Checks if it was their turn
-        else if (game.getCurrentPlayer().equals(clientHandler.nickname))
-        {}
+        else if (game.getCurrentPlayer().equals(clientHandler.nickname)) {
+            turnController.skipTurn();
+            System.out.println("Skipping turn"); //
+        }
 
-        game.setPlayerConnection(clientHandler.nickname, false);
+        if (game != null)
+            game.setPlayerConnection(clientHandler.nickname, false);
     }
 
     /**
