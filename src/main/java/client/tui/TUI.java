@@ -63,19 +63,21 @@ public class TUI implements Client {
     }
 
     public void connect() {
-        Scanner scn = new Scanner(System.in);
-        System.out.print("Insert host's IP address: ");
-        String hostIp = scn.nextLine();
-        int selection;
-        do {
-            System.out.print("Select connection type (0 TCP/1 RMI): ");
-            selection = scn.nextInt();
-        } while (selection !=0 && selection != 1);
-        NetworkHandler networkHandler = selection == 0 ? new NetworkHandlerTCP() : new NetworkHandlerRMI();
-        networkHandler.setClient(this);
-        networkHandler.setHost(hostIp);
-        new Thread(networkHandler).start();
-        setNetworkHandler(networkHandler);
+        if (networkHandler == null || !networkHandler.isConnected()) {
+            Scanner scn = new Scanner(System.in);
+            System.out.print("Insert host's IP address: ");
+            String hostIp = scn.nextLine();
+            int selection;
+            do {
+                System.out.print("Select connection type (0 TCP/1 RMI): ");
+                selection = scn.nextInt();
+            } while (selection != 0 && selection != 1);
+            NetworkHandler networkHandler = selection == 0 ? new NetworkHandlerTCP() : new NetworkHandlerRMI();
+            networkHandler.setClient(this);
+            networkHandler.setHost(hostIp);
+            new Thread(networkHandler).start();
+            setNetworkHandler(networkHandler);
+        }
     }
 
     /**

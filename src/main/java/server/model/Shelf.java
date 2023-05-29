@@ -98,8 +98,8 @@ public class Shelf implements Savable {
         try {
             int[][] tilesInteger = JsonTools.readMatrix(elements.get("shelfTiles").getAsJsonArray());
             Token[] tokenValues = Token.values();
-            for (int i = 0; i < ConfigLoader.BOARD_SIZE; i++)
-                for (int j = 0; j < ConfigLoader.BOARD_SIZE; j++)
+            for (int i = 0; i < ConfigLoader.SHELF_ROWS; i++)
+                for (int j = 0; j < ConfigLoader.SHELF_COLUMNS; j++)
                     tiles[i][j] = tokenValues[tilesInteger[i][j]];
 
         } catch (IOException e) {

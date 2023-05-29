@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed chat messages not showing in GUI">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/login/LoadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/login/LoginController.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Separated LoadController and CreationController for game loading or creation">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/saved_game.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/login/CreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/login/LoadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/login/LoadController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -274,14 +279,7 @@
       <workItem from="1685024080235" duration="2827000" />
       <workItem from="1685086770682" duration="3129000" />
       <workItem from="1685196532542" duration="5399000" />
-      <workItem from="1685362509446" duration="4089000" />
-    </task>
-    <task id="LOCAL-00170" summary="Added configuration loading for GUI">
-      <created>1684236387546</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1684236387547</updated>
+      <workItem from="1685362509446" duration="9844000" />
     </task>
     <task id="LOCAL-00171" summary="Changed client to an interface and merged TUI and ClientTUI">
       <created>1684248182151</created>
@@ -619,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685206237409</updated>
     </task>
-    <option name="localTasksCounter" value="219" />
+    <task id="LOCAL-00219" summary="Separated LoadController and CreationController for game loading or creation">
+      <created>1685366959098</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1685366959099</updated>
+    </task>
+    <option name="localTasksCounter" value="220" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +658,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented ReqeustController server-side" />
     <MESSAGE value="Implemented RequestController server-side" />
     <MESSAGE value="Fixed an issue where common card information was not being sent" />
     <MESSAGE value="Split tokens and column selection to improve player experience" />
@@ -678,7 +682,8 @@
     <MESSAGE value="Now players can now disconnect without it stopping the game" />
     <MESSAGE value="Fixed all personal goal jsons" />
     <MESSAGE value="Fixed chat messages not showing in GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed chat messages not showing in GUI" />
+    <MESSAGE value="Separated LoadController and CreationController for game loading or creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separated LoadController and CreationController for game loading or creation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

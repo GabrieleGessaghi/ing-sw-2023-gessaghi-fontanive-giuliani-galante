@@ -23,9 +23,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
             out.write(input + "\n");
             out.flush();
         } catch (IOException e) {
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("connectionError", true);
-            client.showOutput(jsonObject.toString());
+            disconnect();
         }
     }
 
@@ -35,12 +33,12 @@ public class NetworkHandlerTCP extends NetworkHandler {
      */
     @Override
     public void run() {
+        super.run();
         try {
             serverSocket = new Socket(host, SERVER_PORT);
             InputStreamReader in = new InputStreamReader(serverSocket.getInputStream());
             BufferedReader buffer = new BufferedReader(in);
-            boolean exit = false;
-            while (!exit){
+            while (isConnected){
                 String receivedString = buffer.readLine();
                 if (receivedString != null) {
                     String field;
@@ -54,7 +52,6 @@ public class NetworkHandlerTCP extends NetworkHandler {
                             case "requestPlayerNumber" -> client.requestInput(Prompt.PLAYERSNUMBER);
                             case "requestTokens" -> client.requestInput(Prompt.TOKENS);
                             case "requestColumn" -> client.requestInput(Prompt.COLUMN);
-                            case "closeConnection" -> exit = true;
                             case "ping" -> {}
                             default -> {
                                 if (!alreadyPrinted) {
@@ -71,9 +68,7 @@ public class NetworkHandlerTCP extends NetworkHandler {
             in.close();
             buffer.close();
         } catch (IOException e) {
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("connectionError", true);
-            client.showOutput(jsonObject.toString());
+            disconnect();
         }
     }
 }

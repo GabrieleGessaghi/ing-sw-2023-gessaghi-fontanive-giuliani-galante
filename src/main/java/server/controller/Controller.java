@@ -41,11 +41,6 @@ public class Controller implements Observer, Runnable {
      */
     @Override
     public void run() {
-        isPreviousGameSaved = Game.isThereGameSaved();
-        if (isPreviousGameSaved)
-            loginController = new LoadController(Game.loadNicknames());
-        else
-            loginController = new CreationController();
         while(true) {
 
             //Waits for the game to be running
@@ -100,11 +95,13 @@ public class Controller implements Observer, Runnable {
                 new Thread(() -> handleDisconnection(clientHandler)).start();
             } else if (jsonObject.has("clientReconnected")) {
                 disconnectedClients.remove(clientHandler.nickname);
-                game.registerObserver(clientHandler);
-                chat.registerObserver(clientHandler);
-                game.setPlayerConnection(clientHandler.nickname, true);
-                clientHandler.registerObserver(chatController);
-                clientHandler.registerObserver(requestController);
+                if (isGameRunning) { //COULD CAUSE ISSUES TO LAST PLAYER RECONNECTING AFTER SERVER CRASH? LIKE DOUBLE MESSAGES?
+                    game.registerObserver(clientHandler);
+                    game.setPlayerConnection(clientHandler.nickname, true);
+                    chat.registerObserver(clientHandler);
+                    clientHandler.registerObserver(chatController);
+                    clientHandler.registerObserver(requestController);
+                }
             }
 
         //Checks whether it can start a new game
@@ -130,7 +127,7 @@ public class Controller implements Observer, Runnable {
             clientHandler.requestInput(Prompt.NICKNAME);
 
             //Requests the players number if it's the first player added
-            if (clientHandlers.size() == 1)
+            if (clientHandlers.size() == 1 && !isPreviousGameSaved)
                 clientHandler.requestInput(Prompt.PLAYERSNUMBER);
         } else {
             clientHandler.sendOutput(JsonTools.createMessage("The game is full, please exit!", true));
@@ -208,13 +205,16 @@ public class Controller implements Observer, Runnable {
      */
     private void reset() {
         isGameRunning = false;
-        isPreviousGameSaved = false;
+        isPreviousGameSaved = Game.isThereGameSaved();
         turnController = null;
-        loginController = new CreationController();
         clientHandlers = new ArrayList<>();
         disconnectedClients = new HashMap<>();
         game = null;
         chat = null;
+        if (isPreviousGameSaved)
+            loginController = new LoadController(Game.loadNicknames());
+        else
+            loginController = new CreationController();
     }
 
     /**

@@ -188,7 +188,7 @@ public class Player implements Savable, Observable {
         //Loads which cards have already been completed
         int i = 0;
         for (Card card : commonCards.keySet()) {
-            boolean completed = elements.get("commonCard" + i).getAsBoolean();
+            boolean completed = elements.get("completedCommonCard" + i).getAsBoolean();
             commonCards.replace(card, completed);
             i++;
         }

@@ -1,11 +1,9 @@
 package client.network;
 
-import com.google.gson.JsonObject;
 import server.view.rmi.ServerUsable;
 import server.controller.Prompt;
 import server.view.rmi.ClientUsable;
 
-import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -38,12 +36,12 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
         try {
             server.sendInput(input);
         } catch (RemoteException e) {
-            throw new RuntimeException(e);
+            disconnect();
         }
     }
 
     /**
-     * method to ask to TUI to show the output
+     * method to ask TUI to show the output
      * author Niccolò Giuliani
      * @param output output to show
      */
@@ -55,6 +53,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
     }
 
     public void run() {
+        super.run();
         int i;
         i = 0;
         isMessageAvailable = false;
@@ -69,7 +68,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
            registry.rebind("ClientRMI"+ (i - 1),stub);
            server.setAvailable("ClientRMI"+ (i - 1));
 
-           while (true) {
+           while (isConnected) {
                while (!isMessageAvailable)
                    synchronized (this) {
                        this.wait();
@@ -77,10 +76,7 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
                isMessageAvailable = false;
            }
         } catch(Exception e) {
-            e.printStackTrace();
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("connectionError", true);
-            client.showOutput(jsonObject.toString());
+            disconnect();
         }
     }
 }

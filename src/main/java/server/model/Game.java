@@ -132,8 +132,10 @@ public class Game implements Savable, Observable {
             JsonObject jsonObject = JsonParser.parseString(gameState).getAsJsonObject();
             ArrayList<String> nicknames = new ArrayList<>();
             int i = 0;
-            while (jsonObject.has("player" + i))
+            while (jsonObject.has("player" + i)) {
                 nicknames.add(jsonObject.get("player" + i).getAsJsonObject().get("nickname").getAsString());
+                i++;
+            }
             return nicknames;
         } catch (IOException e) {
             System.out.println("Save not found");
@@ -222,11 +224,11 @@ public class Game implements Savable, Observable {
         }
         nextPlayerIndex();
 
-//        try {
-//            saveGame();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            saveGame();
+        } catch (IOException e) {
+            System.out.println("Unable to save game");
+        }
     }
 
     /**

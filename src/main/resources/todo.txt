@@ -13,8 +13,8 @@ DONE 7. Divide errors and messages (GIO)
 10. IMPORTANT, Handle victories in TUI and GUI
 11. EXTREMELY IMPORTANT, Let the player choose tiles order in GUI
 DONE 12. IMPORTANT, Chat doesn't work (GIO)
-12. Remove useless Observer/Observable in Model (GIO)
 13. Handle chat requests in request controller (GIO)
+14. Test model serialization (saveState and loadState)
 
 Bugs to fix:
 FIXED 1. Server not resetting correctly when players disconnect
@@ -28,6 +28,7 @@ FIXED 5. Fix "new line" characters being all over the place
 FIXED 9. Board not resetting
 10. Avoid using static variables in GUI
 11. Server does not reset correctly after game finishes
+12. Remove useless Observer/Observable in Model (GIO)
 
 At the end check for unused imports
 REMEMBER TO DOCUMENT CLASSES
