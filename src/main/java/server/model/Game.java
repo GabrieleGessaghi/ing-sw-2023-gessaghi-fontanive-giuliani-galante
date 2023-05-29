@@ -15,7 +15,6 @@ import server.model.exceptions.IllegalMoveException;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -110,15 +109,36 @@ public class Game implements Savable, Observable {
      * Reload a saved state of a previous game.
      * @author Gabriele Gessaghi
      */
-    public void loadGame() throws FileNotFoundException {
+    public void loadGame() {
         Path filePath = Path.of("src/main/resources/saved_game.txt");
         String gameState;
         try {
             gameState = Files.readString(filePath);
+            loadState(JsonParser.parseString(gameState).getAsJsonObject());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Save not found");
         }
-        loadState(JsonParser.parseString(gameState).getAsJsonObject());
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static ArrayList<String> loadNicknames() {
+        Path filePath = Path.of("src/main/resources/saved_game.txt");
+        String gameState;
+        try {
+            gameState = Files.readString(filePath);
+            JsonObject jsonObject = JsonParser.parseString(gameState).getAsJsonObject();
+            ArrayList<String> nicknames = new ArrayList<>();
+            int i = 0;
+            while (jsonObject.has("player" + i))
+                nicknames.add(jsonObject.get("player" + i).getAsJsonObject().get("nickname").getAsString());
+            return nicknames;
+        } catch (IOException e) {
+            System.out.println("Save not found");
+        }
+        return null;
     }
 
     /**
@@ -134,6 +154,16 @@ public class Game implements Savable, Observable {
         } catch (IOException e) {
             return false;
         }
+    }
+
+    /**
+     * Deletes the save file if it finds one.
+     */
+    public static void deleteSave() {
+        Path filePath = Path.of("src/main/resources/saved_game.txt"); //TODO: Put this in config file
+        try {
+            Files.delete(filePath);
+        } catch (IOException ignored) {}
     }
 
     /**
@@ -221,16 +251,6 @@ public class Game implements Savable, Observable {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Deletes the save file if it finds one.
-     */
-    public void deleteSave() {
-        Path filePath = Path.of("src/main/resources/saved_game.txt"); //TODO: Put this in config file
-        try {
-            Files.delete(filePath);
-        } catch (IOException ignored) {}
     }
 
     /**
@@ -356,9 +376,9 @@ public class Game implements Savable, Observable {
     public void loadState(JsonObject jsonObject) {
         Map<String, JsonElement> elements = jsonObject.asMap();
         numberOfPlayers = elements.get("numberOfPlayers").getAsInt();
-        isLastRound = elements.get("isLastRound").getAsBoolean();
         board = new Board(numberOfPlayers);
         players = new Player[numberOfPlayers];
+        isLastRound = elements.get("isLastRound").getAsBoolean();
         currentPlayerIndex = elements.get("currentPlayerIndex").getAsInt();
         board.loadState(elements.get("board").getAsJsonObject());
         for (int i = 0; i < NUMBER_OF_COMMON_CARDS; i++)

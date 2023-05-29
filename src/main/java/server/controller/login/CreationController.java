@@ -1,11 +1,10 @@
-package server.controller;
+package server.controller.login;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import server.controller.Controller;
 import server.controller.observer.Event;
-import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
-import server.model.Game;
 import server.view.ClientHandler;
 
 import java.util.ArrayList;
@@ -14,9 +13,7 @@ import java.util.ArrayList;
  * Controller of the creation of the game.
  * @author Niccolò Giuliani
  */
-public class CreationController implements Observer {
-    private int playersNumber;
-    private final ArrayList<String> playersNicknames;
+public class CreationController extends LoginController {
 
     /**
      * Class constructor
@@ -37,7 +34,7 @@ public class CreationController implements Observer {
         if (jsonObject.has("nickname"))
             nickname = jsonObject.get("nickname").getAsString();
         if (jsonObject.has("playersNumber"))
-            setPlayerNumber(jsonObject.get("playersNumber").getAsInt());
+            playersNumber = jsonObject.get("playersNumber").getAsInt();
         if (nickname != null) {
             updateNickname(nickname, index);
             checkDisconnection(nickname);
@@ -62,54 +59,12 @@ public class CreationController implements Observer {
     }
 
     /**
-     *
-     * @param nickname
-     */
-    private void checkDisconnection(String nickname) {
-        ClientHandler clientHandler = Controller.findClientHandlerByName(nickname);
-        if (clientHandler != null && !isSpotAvailable() && !Controller.disconnectedClients.isEmpty())
-            if (Controller.disconnectedClients.containsKey(nickname)) {
-                clientHandler.index = Controller.disconnectedClients.get(nickname);
-                clientHandler.sendOutput(JsonTools.createMessage("Welcome back!", false));
-                clientHandler.reconnect();
-            } else
-                Controller.clientHandlers.remove(clientHandler);
-    }
-
-    /**
      * Getter of the state of the game (ready or not ready).
      * @return True if game is ready.
      * @author Niccolò Giuliani
      */
     public boolean isGameReady(){
          return playersNicknames.size() == playersNumber;
-    }
-
-    /**
-     * Checks whether there's a spot available.
-     * @return True if there's space for more players.
-     * @author Giorgio Massimo Fontanive
-     */
-    public boolean isSpotAvailable() {
-        return playersNumber == -1 || playersNicknames.size() < playersNumber;
-    }
-
-    /**
-     * Method to create the Game.
-     * @return The Game created.
-     * @author Niccolò Giuliani
-     */
-    public Game createGame(){
-        return new Game(playersNumber, playersNicknames);
-    }
-
-    /**
-     * Set the number of the players.
-     * @param playersNumber Number of players.
-     * @author Niccolò Giuliani
-     */
-    private void setPlayerNumber(int playersNumber){
-        this.playersNumber = playersNumber;
     }
 
     /**

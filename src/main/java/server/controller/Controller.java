@@ -2,6 +2,9 @@ package server.controller;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import server.controller.login.CreationController;
+import server.controller.login.LoadController;
+import server.controller.login.LoginController;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.ConfigLoader;
@@ -21,7 +24,8 @@ public class Controller implements Observer, Runnable {
     public static List<ClientHandler> clientHandlers;
     public static Map<String, Integer> disconnectedClients;
     private boolean isGameRunning;
-    private CreationController creationController;
+    private boolean isPreviousGameSaved;
+    private LoginController loginController;
     private TurnController turnController;
     private ChatController chatController;
     private RequestController requestController;
@@ -37,6 +41,11 @@ public class Controller implements Observer, Runnable {
      */
     @Override
     public void run() {
+        isPreviousGameSaved = Game.isThereGameSaved();
+        if (isPreviousGameSaved)
+            loginController = new LoadController(Game.loadNicknames());
+        else
+            loginController = new CreationController();
         while(true) {
 
             //Waits for the game to be running
@@ -101,7 +110,7 @@ public class Controller implements Observer, Runnable {
         //Checks whether it can start a new game
         if (!isGameRunning)
             synchronized (this) {
-                if (creationController.isGameReady()) {
+                if (loginController.isGameReady()) {
                     isGameRunning = true;
                     this.notifyAll();
                 }
@@ -114,9 +123,9 @@ public class Controller implements Observer, Runnable {
      * @author Giorgio Massimo Fontanive
      */
     public synchronized void addClient(ClientHandler clientHandler) {
-        if (creationController.isSpotAvailable() || !disconnectedClients.isEmpty()) {
+        if (loginController.isSpotAvailable() || !disconnectedClients.isEmpty()) {
             clientHandlers.add(clientHandler);
-            clientHandler.registerObserver(creationController);
+            clientHandler.registerObserver(loginController);
             clientHandler.registerObserver(this);
             clientHandler.requestInput(Prompt.NICKNAME);
 
@@ -133,7 +142,7 @@ public class Controller implements Observer, Runnable {
      *
      */
     private void startGame() {
-        game = creationController.createGame();
+        game = loginController.createGame();
         chat = new Chat();
         chatController = new ChatController(chat);
         requestController = new RequestController(game);
@@ -176,7 +185,7 @@ public class Controller implements Observer, Runnable {
                                 clientHandlers.get(0).sendOutput(JsonTools.createMessage("You are the only player left. You win!", false));
                                 clientHandlers.get(0).sendOutput(JsonTools.createMessage("Log back in if you want to play again.", false));
                                 clientHandler.disconnect();
-                                game.deleteSave();
+                                Game.deleteSave();
                                 reset();
                             }
                         }
@@ -186,10 +195,8 @@ public class Controller implements Observer, Runnable {
 
 
         //Checks if it was their turn
-        else if (game.getCurrentPlayer().equals(clientHandler.nickname)) {
+        else if (game.getCurrentPlayer().equals(clientHandler.nickname))
             turnController.skipTurn();
-            System.out.println("Skipping turn"); //
-        }
 
         if (game != null)
             game.setPlayerConnection(clientHandler.nickname, false);
@@ -201,8 +208,9 @@ public class Controller implements Observer, Runnable {
      */
     private void reset() {
         isGameRunning = false;
+        isPreviousGameSaved = false;
         turnController = null;
-        creationController = new CreationController();
+        loginController = new CreationController();
         clientHandlers = new ArrayList<>();
         disconnectedClients = new HashMap<>();
         game = null;

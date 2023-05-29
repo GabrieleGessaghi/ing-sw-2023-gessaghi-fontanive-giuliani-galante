@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed all personal goal jsons">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed chat messages not showing in GUI">
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/login/LoadController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controller/login/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/ChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/chat/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/view/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/CreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/login/CreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -275,13 +274,7 @@
       <workItem from="1685024080235" duration="2827000" />
       <workItem from="1685086770682" duration="3129000" />
       <workItem from="1685196532542" duration="5399000" />
-    </task>
-    <task id="LOCAL-00169" summary="Fixed all RMI connection issues">
-      <created>1684157818655</created>
-      <option name="number" value="00169" />
-      <option name="presentableId" value="LOCAL-00169" />
-      <option name="project" value="LOCAL" />
-      <updated>1684157818655</updated>
+      <workItem from="1685362509446" duration="4089000" />
     </task>
     <task id="LOCAL-00170" summary="Added configuration loading for GUI">
       <created>1684236387546</created>
@@ -619,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685205094423</updated>
     </task>
-    <option name="localTasksCounter" value="218" />
+    <task id="LOCAL-00218" summary="Fixed chat messages not showing in GUI">
+      <created>1685206237409</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1685206237409</updated>
+    </task>
+    <option name="localTasksCounter" value="219" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +653,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Created ViewRequestController and started implementing update method" />
     <MESSAGE value="Implemented ReqeustController server-side" />
     <MESSAGE value="Implemented RequestController server-side" />
     <MESSAGE value="Fixed an issue where common card information was not being sent" />
@@ -678,7 +677,8 @@
     <MESSAGE value="Board should now reset at the correct time" />
     <MESSAGE value="Now players can now disconnect without it stopping the game" />
     <MESSAGE value="Fixed all personal goal jsons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed all personal goal jsons" />
+    <MESSAGE value="Fixed chat messages not showing in GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed chat messages not showing in GUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
