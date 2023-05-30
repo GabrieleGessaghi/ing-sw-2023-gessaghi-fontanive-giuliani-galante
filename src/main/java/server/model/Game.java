@@ -162,7 +162,7 @@ public class Game implements Savable, Observable {
      * Deletes the save file if it finds one.
      */
     public static void deleteSave() {
-        Path filePath = Path.of("src/main/resources/saved_game.txt"); //TODO: Put this in config file
+        Path filePath = Path.of("src/main/resources/saved_game.txt");
         try {
             Files.delete(filePath);
         } catch (IOException ignored) {}
@@ -346,11 +346,8 @@ public class Game implements Savable, Observable {
     @Override
     public void registerObserver(Observer observer) {
         observers.add(observer);
-        for (Player player : players)
-            player.registerObserver(observer);
         for (CommonCard commonCard : commonCards)
             commonCard.registerObserver(observer);
-        board.registerObserver(observer);
     }
 
     @Override

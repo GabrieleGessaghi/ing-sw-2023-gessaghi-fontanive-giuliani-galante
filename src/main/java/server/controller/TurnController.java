@@ -15,8 +15,6 @@ import java.io.StringReader;
 
 import static server.controller.utilities.ConfigLoader.*;
 
-//TODO: Handle player disconnection in the middle of a turn
-
 /**
  * Receives data for a new turn and acts once it's ready.
  * @author Giorgio Massimo Fontanive

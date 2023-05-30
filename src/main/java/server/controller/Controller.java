@@ -144,7 +144,7 @@ public class Controller implements Observer, Runnable {
         game = loginController.createGame();
         chat = new Chat();
         chatController = new ChatController(chat);
-        requestController = new RequestController(game);
+        requestController = new RequestController(game, chat);
         for (ClientHandler clientHandler : clientHandlers) {
             game.registerObserver(clientHandler);
             chat.registerObserver(clientHandler);

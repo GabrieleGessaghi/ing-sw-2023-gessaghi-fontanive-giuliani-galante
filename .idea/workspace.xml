@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed tests not running because of wrong config path">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Closing GUI window now closes the process">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/utilities/ConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/utilities/ConfigLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/json/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/configuration.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/CommonCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +107,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Graphics User Interface">
+  <component name="RunManager" selected="Application.Text User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -285,14 +286,7 @@
       <workItem from="1685086770682" duration="3129000" />
       <workItem from="1685196532542" duration="5399000" />
       <workItem from="1685362509446" duration="9973000" />
-      <workItem from="1685446375167" duration="9276000" />
-    </task>
-    <task id="LOCAL-00175" summary="added comment">
-      <created>1684263286141</created>
-      <option name="number" value="00175" />
-      <option name="presentableId" value="LOCAL-00175" />
-      <option name="project" value="LOCAL" />
-      <updated>1684263286141</updated>
+      <workItem from="1685446375167" duration="11105000" />
     </task>
     <task id="LOCAL-00176" summary="Implemented Chat server side">
       <created>1684330530708</created>
@@ -630,7 +624,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685453590034</updated>
     </task>
-    <option name="localTasksCounter" value="224" />
+    <task id="LOCAL-00224" summary="Closing GUI window now closes the process">
+      <created>1685456330273</created>
+      <option name="number" value="00224" />
+      <option name="presentableId" value="LOCAL-00224" />
+      <option name="project" value="LOCAL" />
+      <updated>1685456330273</updated>
+    </task>
+    <option name="localTasksCounter" value="225" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +665,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented but not tested reconnection with same username for clients" />
     <MESSAGE value="Added waring for duplicate nickname" />
     <MESSAGE value="fixed board buttons" />
     <MESSAGE value="fixed shelf button" />
@@ -689,7 +689,8 @@
     <MESSAGE value="Fixed game reloading bug, now games get correctly loaded after a server crash" />
     <MESSAGE value="Finally fixed board not resetting at the right time" />
     <MESSAGE value="Fixed tests not running because of wrong config path" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed tests not running because of wrong config path" />
+    <MESSAGE value="Closing GUI window now closes the process" />
+    <option name="LAST_COMMIT_MESSAGE" value="Closing GUI window now closes the process" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

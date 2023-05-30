@@ -15,21 +15,25 @@ DONE 7. Divide errors and messages (GIO)
 DONE 12. IMPORTANT, Chat doesn't work (GIO)
 13. Handle chat requests in request controller (GIO)
 15. IMPORTANT, messages overlap with requests (Gio)
+16. Instead of cancel, allow player to deselect tiles by clicking on them. Or don't allow tiles to be highlighted when they are not requested! (NICO)
+17. Maybe remove all public/static public variables
 
 Bugs to fix:
 FIXED 1. Server not resetting correctly when players disconnect
-2. Errors and messages overlap each other, especially in GUI
+2. Errors and messages overlap each other, especially in GUI (GIO)
 3. Reloading opened shelf
 FIXED 4. Check personal card jsons
 FIXED 5. Fix "new line" characters being all over the place
 FIXED 6. Change json configuration path in junit tests
-7. Closing window keeps GUI running
+FIXED 7. Closing window keeps GUI running
 8. Tiles randomly change at each update
 FIXED 9. Board not resetting
 10. Avoid using static variables in GUI
 11. Server does not reset correctly after game finishes (GIO)
-12. Remove useless Observer/Observable in Model (GIO)
-13. Not all tiles are visible once put in shelf in GUI
+FIXED 12. Remove useless Observer/Observable in Model (GIO)
+13. Double messages for last person reconnecting after crash (GIO)
+14. Not all tiles are visible once put in shelf in GUI
+15. Bugged while loop in TUI (GALAGA)
 
 At the end check for unused imports
 REMEMBER TO DOCUMENT CLASSES

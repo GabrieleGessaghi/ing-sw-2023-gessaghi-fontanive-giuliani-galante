@@ -1,14 +1,18 @@
 package server.controller;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.model.Game;
 import server.model.View;
+import server.model.chat.Chat;
 import server.view.ClientHandler;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.List;
 
 //TODO: Handle chat requests
 
@@ -18,13 +22,15 @@ import java.io.StringReader;
  */
 public class RequestController implements Observer {
     Game game;
+    Chat chat;
 
     /**
      * Class constructor.
      * @param game The game to which this object asks for the information requested.
      */
-    public RequestController(Game game) {
+    public RequestController(Game game, Chat chat) {
         this.game = game;
+        this.chat = chat;
     }
 
     @Override
@@ -62,6 +68,10 @@ public class RequestController implements Observer {
                         request = View.SPECIFIC_PLAYER;
                         jsonReader.skipValue();
                     }
+                    case "requestChat" -> {
+                        request = View.CHAT;
+                        jsonReader.skipValue();
+                    }
                     case "requestedPlayerNickname" -> requestedPlayerNickname = jsonReader.nextString();
                     case "index" -> tempIndex = jsonReader.nextInt();
                     default -> jsonReader.skipValue();
@@ -73,9 +83,28 @@ public class RequestController implements Observer {
             if (tempIndex != -1 && request != null) {
                 currentClientHandler = Controller.findClientHandler(tempIndex);
                 if (currentClientHandler != null) {
-                    if (requestedPlayerNickname == null)
-                        requestedPlayerNickname = currentClientHandler.nickname;
-                    currentClientHandler.update(new Event(game.getView(request, requestedPlayerNickname).toString()));
+
+                    //Handles chat requests
+                    if (request == View.CHAT) {
+                        JsonObject jsonObject = new JsonObject();
+                        JsonArray messages = new JsonArray();
+                        List<String> chatMessages;
+                        if (requestedPlayerNickname == null)
+                            chatMessages = chat.getPublicMessages();
+                        else
+                            chatMessages = chat.getPrivateConversation(currentClientHandler.nickname, requestedPlayerNickname);
+                        for (String message : chatMessages)
+                            messages.add(message);
+                        jsonObject.add("messages", messages);
+                        currentClientHandler.update(new Event(jsonObject.toString()));
+                    }
+
+                    //Handles every other request type
+                    else {
+                        if (requestedPlayerNickname == null)
+                            requestedPlayerNickname = currentClientHandler.nickname;
+                        currentClientHandler.update(new Event(game.getView(request, requestedPlayerNickname).toString()));
+                    }
                 }
             }
         } catch (IOException e) {

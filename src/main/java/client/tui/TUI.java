@@ -116,7 +116,6 @@ public class TUI implements Client {
         String receiver = scn.nextLine();
         System.out.print("Type the message: ");
         String message = scn.nextLine();
-        System.out.println();
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("senderNickname", nickname);

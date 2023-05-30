@@ -3,10 +3,8 @@ package server.model;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
-import server.controller.observer.Event;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
-import server.controller.observer.Observable;
 import server.model.exceptions.IllegalMoveException;
 import server.controller.utilities.ConfigLoader;
 
@@ -20,7 +18,7 @@ import java.util.*;
  * The board on which the game is played.
  * @author Giorgio Massimo Fontanive
  */
-public class Board implements Observable, Savable {
+public class Board implements Savable {
     private boolean[][] usableTiles;
     private final Token[][] tiles;
     private final Bag bag;
@@ -238,18 +236,6 @@ public class Board implements Observable, Savable {
                 if (selectedTiles[i][j] != exclusionNumber)
                     convertedSelection[i][j] = true;
         return convertedSelection;
-    }
-
-    @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void updateObservers(Event event) {
-        for (Observer observer : observers)
-            if (observer != null)
-                observer.update(event);
     }
 
     @Override

@@ -21,7 +21,7 @@ import java.util.Map;
  * Handles players' shelves and cards.
  * @author Niccolò Galante
  */
-public class Player implements Savable, Observable {
+public class Player implements Savable {
     private String nickname;
     private Shelf shelf;
     private Card personalCard;
@@ -143,18 +143,6 @@ public class Player implements Savable, Observable {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void updateObservers(Event event) {
-        for (Observer observer : observers)
-            if (observer != null)
-                observer.update(event);
     }
 
     @Override
