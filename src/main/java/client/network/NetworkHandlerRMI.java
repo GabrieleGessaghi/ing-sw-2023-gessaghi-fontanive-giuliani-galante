@@ -34,7 +34,8 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
      */
     public void sendInput(String input) {
         try {
-            server.sendInput(input);
+            if (server != null)
+                server.sendInput(input);
         } catch (RemoteException e) {
             disconnect();
         }

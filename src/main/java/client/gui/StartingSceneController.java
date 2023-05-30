@@ -1,8 +1,5 @@
 package client.gui;
 
-import client.network.NetworkHandler;
-import client.network.NetworkHandlerRMI;
-import client.network.NetworkHandlerTCP;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,9 +41,9 @@ public class StartingSceneController {
             GUI.connectionType = 1;
         GUI.host = hostTextField.getText();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/MainScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/javafx/MainScene.fxml"));
         Scene mainScene = new Scene(root);
-        mainScene.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
+        mainScene.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
         Stage currentWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentWindow.setScene(mainScene);
         currentWindow.show();

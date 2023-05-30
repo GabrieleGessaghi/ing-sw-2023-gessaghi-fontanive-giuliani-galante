@@ -25,7 +25,6 @@ import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
@@ -425,7 +424,7 @@ public class MainSceneController implements Client, Initializable {
             dialog.setGraphic(null);
             dialog.setHeaderText("Select the number of players: ");
             DialogPane dialogPane = dialog.getDialogPane();
-            dialogPane.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
+            dialogPane.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
             dialogPane.getStyleClass().add("playerDialog");
             Optional<String> result = dialog.showAndWait();
             int numberOfPlayers = 0;
@@ -585,7 +584,7 @@ public class MainSceneController implements Client, Initializable {
             jsonObject.addProperty("requestShelf", true);
             jsonObject.addProperty("requestedPlayerNickname", nickname);
             networkHandler.sendInput(jsonObject.toString());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/PlayerShelfDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafx/PlayerShelfDialog.fxml"));
             Parent root = null;
             try {
                 root = loader.load();
@@ -596,7 +595,7 @@ public class MainSceneController implements Client, Initializable {
             controller.initShelf(tempPlayerShelf);
             Stage playerShelf = new Stage();
             Scene base = new Scene(root);
-            base.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
+            base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
             playerShelf.setScene(base);
             playerShelf.setTitle(nickname + " shelf:");
             playerShelf.setResizable(false);
@@ -608,7 +607,7 @@ public class MainSceneController implements Client, Initializable {
     @FXML
     void chatButtonClicked() {
         Platform.runLater(() -> {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Chat.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafx/Chat.fxml"));
             Parent root = null;
             try {
                 root = loader.load();
@@ -618,7 +617,7 @@ public class MainSceneController implements Client, Initializable {
             ChatController chatController = loader.getController();
             Stage chatStage = new Stage();
             Scene chatScene = new Scene(root);
-            chatScene.getStylesheets().add(getClass().getResource("/Application.css").toExternalForm());
+            chatScene.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
             chatStage.setScene(chatScene);
             chatStage.setTitle("Chat");
             chatStage.setResizable(false);

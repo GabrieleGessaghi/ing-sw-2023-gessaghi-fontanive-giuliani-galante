@@ -19,9 +19,11 @@ public class NetworkHandlerTCP extends NetworkHandler {
      */
     public void sendInput(String input) {
         try {
-            OutputStreamWriter out = new OutputStreamWriter(serverSocket.getOutputStream());
-            out.write(input + "\n");
-            out.flush();
+            if (serverSocket != null) {
+                OutputStreamWriter out = new OutputStreamWriter(serverSocket.getOutputStream());
+                out.write(input + "\n");
+                out.flush();
+            }
         } catch (IOException e) {
             disconnect();
         }

@@ -1,19 +1,29 @@
 package server.model;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
-import server.model.Board;
-import server.model.Token;
 import server.model.exceptions.IllegalMoveException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
 
+    Board board;
+
+    @BeforeEach
+    public void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+        board = new Board(2);
+    }
+
+    @AfterEach
+    public void teardown() {
+        board = null;
+    }
+
     @Test
     public void constructorTest() {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        Board board = new Board(2);
-
         Token[][] testTokens;
         testTokens = board.getTiles();
         assertEquals(Token.NOTHING, testTokens[0][0]);
@@ -22,9 +32,6 @@ class BoardTest {
 
     @Test
     public void selectTilesTest() {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        Board board = new Board(2);
-
         Token[] selectedTokens;
         int[][] selectedTiles = new int[][] {
             {-1, -1, -1, -1, -1, -1, -1, -1, -1},
@@ -49,9 +56,6 @@ class BoardTest {
 
     @Test
     public void removeTilesTest() {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        Board board = new Board(2);
-
         Token[][] testTokens;
         testTokens = board.getTiles();
         assertNotEquals(Token.NOTHING, testTokens[3][3]);
@@ -72,17 +76,14 @@ class BoardTest {
 
     @Test
     public void automaticResetTest() {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        Board board = new Board(2);
-
-        Token[][] testTiles = board.getTiles();
+        Token[][] testTiles;
         boolean[][] selectedTiles = new boolean[][] {
                 {true, true, true, true, true, true, true, true, true},
                 {true, true, true, true, true, true, true, true, true},
                 {true, true, true, true, true, true, true, true, true},
                 {true, true, true, true, true, true, true, true, true},
                 {true, true, true, true, true, true, true, true, true},
-                {true, true, true, true, true, true, true, true, true},
+                {true, true, true, true, true, false, true, true, true},
                 {true, true, true, true, true, true, true, true, true},
                 {true, true, true, true, true, true, true, true, true},
                 {true, true, true, true, true, true, true, true, true}

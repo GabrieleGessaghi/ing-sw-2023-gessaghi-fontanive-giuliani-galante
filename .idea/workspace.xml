@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented resilience to server crashes">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/saved_game.txt" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed game reloading bug, now games get correctly loaded after a server crash">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/Application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/Chat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/GUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/MainScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PlayerShelfDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/PlayerShelfDialog.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/BoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +96,7 @@
       <recent name="controller.utilities.JsonTools" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/javafx" />
       <recent name="$PROJECT_DIR$/src/main/resources/personalcards" />
       <recent name="$PROJECT_DIR$/src/main/resources/json" />
     </key>
@@ -101,7 +111,7 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Text User Interface">
+  <component name="RunManager" selected="JUnit.BoardTest">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
@@ -144,6 +154,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server.model" />
+      <option name="MAIN_CLASS_NAME" value="server.model.BoardTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server.model" />
+      <option name="MAIN_CLASS_NAME" value="server.model.BoardTest" />
+      <option name="METHOD_NAME" value="constructorTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DiagonalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -175,62 +216,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="server.model.cards.concreteobjectives in 6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.model.cards.concreteobjectives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="server.model.cards.concreteobjectives" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="6 [compiler:compile]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="compiler:compile" />
-              </list>
-            </option>
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Application.Text User Interface" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Graphics User Interface WINDOWS" />
       <item itemvalue="Application.Graphics User Interface" />
+      <item itemvalue="JUnit.BoardTest" />
+      <item itemvalue="JUnit.BoardTest.constructorTest" />
       <item itemvalue="JUnit.PlayerTest.insertTokensTestOne" />
       <item itemvalue="JUnit.DiagonalTest" />
-      <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
-      <item itemvalue="Maven.6 [compiler:compile]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BoardTest" />
+        <item itemvalue="JUnit.BoardTest.constructorTest" />
         <item itemvalue="Application.Graphics User Interface" />
         <item itemvalue="JUnit.PlayerTest.insertTokensTestOne" />
         <item itemvalue="JUnit.DiagonalTest" />
-        <item itemvalue="Maven.6 [compiler:compile]" />
-        <item itemvalue="JUnit.server.model.cards.concreteobjectives in 6" />
       </list>
     </recent_temporary>
   </component>
@@ -274,14 +276,7 @@
       <workItem from="1685086770682" duration="3129000" />
       <workItem from="1685196532542" duration="5399000" />
       <workItem from="1685362509446" duration="9973000" />
-      <workItem from="1685446375167" duration="3086000" />
-    </task>
-    <task id="LOCAL-00172" summary="Implemented Client in MainSceneController and updated static variables for initial screen">
-      <created>1684248741301</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1684248741301</updated>
+      <workItem from="1685446375167" duration="5331000" />
     </task>
     <task id="LOCAL-00173" summary="added gridPane to GUI">
       <created>1684260163448</created>
@@ -619,7 +614,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685372629078</updated>
     </task>
-    <option name="localTasksCounter" value="221" />
+    <task id="LOCAL-00221" summary="Fixed game reloading bug, now games get correctly loaded after a server crash">
+      <created>1685450044567</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1685450044567</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +655,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed an issue where common card information was not being sent" />
     <MESSAGE value="Split tokens and column selection to improve player experience" />
     <MESSAGE value="Added possibility to reconnect for TUI clients" />
     <MESSAGE value="Implemented but not tested reconnection with same username for clients" />
@@ -678,7 +679,8 @@
     <MESSAGE value="Fixed chat messages not showing in GUI" />
     <MESSAGE value="Separated LoadController and CreationController for game loading or creation" />
     <MESSAGE value="Implemented resilience to server crashes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented resilience to server crashes" />
+    <MESSAGE value="Fixed game reloading bug, now games get correctly loaded after a server crash" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed game reloading bug, now games get correctly loaded after a server crash" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

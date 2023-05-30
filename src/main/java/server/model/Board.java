@@ -68,7 +68,7 @@ public class Board implements Observable, Savable {
         boolean resetNeeded = true;
         for (int i = 0; i < tiles.length && resetNeeded; i++)
             for (int j = 0; j < tiles.length && resetNeeded; j++)
-                if (usableTiles[i][j] && !hasAllNothingAround(i, j))
+                if (usableTiles[i][j] && tiles[i][j] != Token.NOTHING && !hasAllNothingAround(i, j))
                     resetNeeded = false;
         return  resetNeeded;
     }
