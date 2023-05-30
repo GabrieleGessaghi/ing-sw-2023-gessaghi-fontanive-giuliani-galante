@@ -1,5 +1,6 @@
 package server.model.cards.concreteobjectives;
 
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
 import server.model.Token;
 import org.junit.jupiter.api.Test;
@@ -10,9 +11,14 @@ import static server.controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FourGroupsTest {
+
+    @BeforeEach
+    void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+    }
+
     @Test
     void FourIslands(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var fourGroups = new FourGroups();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
@@ -55,7 +61,6 @@ class FourGroupsTest {
     }
     @Test
     void ThreeIslands(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var fourGroups = new FourGroups();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 

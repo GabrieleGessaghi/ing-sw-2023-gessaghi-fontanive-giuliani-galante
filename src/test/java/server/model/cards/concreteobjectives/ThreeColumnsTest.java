@@ -1,5 +1,6 @@
 package server.model.cards.concreteobjectives;
 
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
 import server.model.Token;
 import org.junit.jupiter.api.Test;
@@ -11,9 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ThreeColumnsTest {
 
+    @BeforeEach
+    void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+    }
+
     @Test
     public void isSatisfiedTestTrue(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         ThreeColumns threeC = new ThreeColumns();
 
         Token[][] testShelfTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -34,7 +39,6 @@ public class ThreeColumnsTest {
 
     @Test
     public void isSatisfiedTestFalse(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         ThreeColumns threeC = new ThreeColumns();
 
         Token[][] testShelfTiles = new Token[SHELF_ROWS][SHELF_COLUMNS];

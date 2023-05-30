@@ -1,6 +1,9 @@
 package server.model.cards;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
+import server.model.Player;
 import server.model.Token;
 import server.model.cards.Card;
 import server.model.cards.CommonCard;
@@ -8,11 +11,27 @@ import server.model.cards.CommonObjective;
 import server.model.cards.concreteobjectives.Corners;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static server.controller.utilities.ConfigLoader.SHELF_ROWS;
 import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommonCardTest {
+
+    Card card;
+
+    @BeforeEach
+    public void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+    }
+
+    @AfterEach
+    public void teardown() {
+        card = null;
+    }
+
     @Test
     public void twoPlayers(){
         int numberOfPlayers = 2;
@@ -40,7 +59,6 @@ class CommonCardTest {
         thirdShelf[0][4] = Token.CAT;
         thirdShelf[5][4] = Token.CAT;
 
-        ConfigLoader conf= new ConfigLoader();
         one = card.getPoints(firstShelf);
         two = card.getPoints(secondShelf);
         three = card.getPoints(thirdShelf);
@@ -76,7 +94,6 @@ class CommonCardTest {
         thirdShelf[0][4] = Token.CAT;
         thirdShelf[5][4] = Token.CAT;
 
-        ConfigLoader conf= new ConfigLoader();
         one = card.getPoints(firstShelf);
         two = card.getPoints(secondShelf);
         three = card.getPoints(thirdShelf);
@@ -90,8 +107,6 @@ class CommonCardTest {
 
     @Test
     public void fourPlayers(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-
         int numberOfPlayers = 4;
         int one,two,three,four;
         Card card = new CommonCard(CommonType.CORNERS,numberOfPlayers, 0);
@@ -122,7 +137,6 @@ class CommonCardTest {
         fourthShelf[0][4] = Token.CAT;
         fourthShelf[5][4] = Token.CAT;
 
-
         one = card.getPoints(firstShelf);
         two = card.getPoints(secondShelf);
         three = card.getPoints(thirdShelf);
@@ -131,9 +145,5 @@ class CommonCardTest {
         assertEquals(6,two);
         assertEquals(4,three);
         assertEquals(2,four);
-
-
-
     }
-
 }

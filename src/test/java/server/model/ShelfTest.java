@@ -1,16 +1,35 @@
 package server.model;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
+import server.model.cards.CommonCard;
+import server.model.cards.CommonType;
 import server.model.exceptions.IllegalColumnException;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShelfTest {
 
+    Shelf testShelf;
+
+    @BeforeEach
+    public void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+        testShelf = new Shelf();
+    }
+
+    @AfterEach
+    public void teardown() {
+        testShelf = null;
+    }
+
     @Test
     public void constructorTest (){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        Shelf testShelf = new Shelf();
         Token[][] generatedTiles = testShelf.getTiles();
         for (Token[] generatedTile : generatedTiles) {
             for (Token token : generatedTile) {
@@ -22,8 +41,6 @@ public class ShelfTest {
 
     @Test
     public void insertionTest () {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        Shelf testShelf = new Shelf();
         assertEquals(Token.NOTHING, testShelf.getTiles()[5][0]);
         try {
             testShelf.insertToken(Token.TOY, 0);
@@ -35,8 +52,6 @@ public class ShelfTest {
 
     @Test
     public void removeTest (){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        Shelf testShelf = new Shelf();
         try {
             testShelf.insertToken(Token.TOY, 0);
         }catch (IllegalColumnException e){
@@ -48,9 +63,6 @@ public class ShelfTest {
 
     @Test
     public void isFullTest () throws IllegalColumnException {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        Shelf testShelf = new Shelf();
-
         testShelf.insertToken(Token.TOY,0);
         testShelf.insertToken(Token.TOY,0);
         testShelf.insertToken(Token.TOY,0);

@@ -1,5 +1,6 @@
 package server.model.cards.concreteobjectives;
 
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
 import server.model.Token;
 import org.junit.jupiter.api.Test;
@@ -10,9 +11,14 @@ import static server.controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SixGroupsTest {
+
+    @BeforeEach
+    void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+    }
+
     @Test
     public void sixCase(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         SixGroups sixgroups = new SixGroups();
         Token[][] shelf= new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[0][0] = Token.TROPHY;
@@ -49,7 +55,6 @@ class SixGroupsTest {
     }
     @Test
     public void fiveCase(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         SixGroups sixgroups = new SixGroups();
         Token[][] shelf= new Token[SHELF_ROWS][SHELF_COLUMNS];
         shelf[0][0] = Token.TROPHY;

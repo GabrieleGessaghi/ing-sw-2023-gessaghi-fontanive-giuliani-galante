@@ -8,7 +8,7 @@ class ConfigurationsTest {
 
     @Test
     public void loadConfigurationTest0() {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         assertEquals(ConfigLoader.BOARD_SIZE, 9);
     }
 

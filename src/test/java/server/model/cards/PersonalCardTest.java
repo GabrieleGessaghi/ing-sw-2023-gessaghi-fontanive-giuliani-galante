@@ -1,9 +1,15 @@
 package server.model.cards;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
+import server.model.Player;
 import server.model.Token;
 import org.junit.jupiter.api.Test;
 import server.model.cards.PersonalCard;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static server.controller.utilities.ConfigLoader.SHELF_COLUMNS;
 import static server.controller.utilities.ConfigLoader.SHELF_ROWS;
@@ -11,11 +17,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PersonalCardTest {
 
+    PersonalCard pc;
+
+    @BeforeEach
+    public void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+        pc = new PersonalCard(6);
+    }
+
+    @AfterEach
+    public void teardown() {
+        pc = null;
+    }
+
     @Test
     public void constructorTest(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        PersonalCard pc = new PersonalCard(6);
-
         Token[][] testTokens = pc.getCorrectTiles();
         assertEquals(Token.NOTHING, testTokens[0][0]);
         assertNotEquals(Token.NOTHING, testTokens[0][2]);
@@ -23,9 +39,6 @@ class PersonalCardTest {
 
     @Test
     public void getPointsTestOne(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        PersonalCard pc = new PersonalCard(6);
-
         Token[][] testTokens = new Token[SHELF_ROWS][SHELF_COLUMNS];
         int[][] testTokensInt = new int[][] {
                 {0, 0, 0, 0, 0},
@@ -44,9 +57,6 @@ class PersonalCardTest {
 
     @Test
     public void getPointsTestTwo(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-        PersonalCard pc = new PersonalCard(6);
-
         Token[][] testTokens = new Token[SHELF_ROWS][SHELF_COLUMNS];
         int[][] testTokensInt = new int[][] {
                 {0, 0, 4, 0, 1},

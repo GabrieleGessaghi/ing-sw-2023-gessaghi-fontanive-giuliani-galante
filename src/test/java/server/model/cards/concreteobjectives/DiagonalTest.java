@@ -1,5 +1,6 @@
 package server.model.cards.concreteobjectives;
 
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
 import server.model.Token;
 import org.junit.jupiter.api.Test;
@@ -13,9 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DiagonalTest {
 
+    @BeforeEach
+    void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+    }
+
     @Test
     void leftDiagonalOne(){
-        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         var leftDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
@@ -29,7 +34,6 @@ class DiagonalTest {
 
     @Test
     void leftDiagonalTwo(){
-        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         var leftDiagonal = new Diagonal();
         Token[][] shelf;
         shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];

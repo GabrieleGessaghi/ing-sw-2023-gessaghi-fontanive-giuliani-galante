@@ -1,5 +1,6 @@
 package server.model.cards.concreteobjectives;
 
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
 import server.model.Token;
 import org.junit.jupiter.api.Test;
@@ -13,9 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CornersTest {
 
+    @BeforeEach
+    void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+    }
+
     @Test
     void trueScenario(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var firstCorner = new Corners();
         Token[][] shelf;
         Token type;
@@ -41,7 +46,6 @@ class CornersTest {
     }
     @Test
     void WrongScenario(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var firstCorner = new Corners();
         Token[][] shelf;
 

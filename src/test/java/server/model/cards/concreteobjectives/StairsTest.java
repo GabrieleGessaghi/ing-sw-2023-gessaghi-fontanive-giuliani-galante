@@ -1,5 +1,6 @@
 package server.model.cards.concreteobjectives;
 
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
 import server.model.Token;
 import org.junit.jupiter.api.Test;
@@ -10,9 +11,14 @@ import static server.controller.utilities.ConfigLoader.SHELF_ROWS;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StairsTest {
+
+    @BeforeEach
+    void init() {
+        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+    }
+
     @Test
     void stairLeft(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair = new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
 
@@ -34,7 +40,6 @@ class StairsTest {
     }
     @Test
     void stairRight(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair= new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         for(int i = 0; i < SHELF_ROWS; i++)
@@ -54,7 +59,6 @@ class StairsTest {
     }
     @Test
     void stairLeftUp(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair= new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         for(int i = 0; i < SHELF_ROWS; i++)
@@ -74,7 +78,6 @@ class StairsTest {
     }
     @Test
     void stairRightUp(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair= new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         for(int i = 0; i < SHELF_ROWS; i++)
@@ -94,7 +97,6 @@ class StairsTest {
     }
     @Test
     void wrongScenario(){
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
         var stair= new Stairs();
         Token[][] shelf = new Token[SHELF_ROWS][SHELF_COLUMNS];
         for (int i = 0; i < SHELF_ROWS; i++)

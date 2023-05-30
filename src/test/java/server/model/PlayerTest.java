@@ -1,5 +1,7 @@
 package server.model;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import server.controller.utilities.ConfigLoader;
 import server.model.cards.CommonCard;
 import server.model.cards.CommonType;
@@ -13,20 +15,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerTest {
-    @Test
-    public void insertTokensTestOne() throws IllegalColumnException {
+
+    Player testPlayer;
+
+    @BeforeEach
+    public void init() {
         ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
 
         List<CommonCard> commonCards = new ArrayList<>(2);
 
         CommonCard common1 = new CommonCard(CommonType.CORNERS, 2, 0);
-        CommonCard common2 = new CommonCard(CommonType.CORNERS, 2, 1);
+        CommonCard common2 = new CommonCard(CommonType.DIAGONAL, 2, 1);
 
         commonCards.add(0, common1);
         commonCards.add(1, common2);
 
-        Player testPlayer = new Player("nick", false, 1, commonCards);
+        testPlayer = new Player("nick", false, 1, commonCards);
+    }
 
+    @AfterEach
+    public void teardown() {
+        testPlayer = null;
+    }
+
+    @Test
+    public void insertTokensTestOne() throws IllegalColumnException {
         Token[] testFill = new Token[6];
 
         for(int i=0; i<6; i++)
@@ -39,18 +52,6 @@ public class PlayerTest {
 
     @Test
     public void insertTokensTestTwo() throws IllegalColumnException {
-        ConfigLoader.loadConfiguration("src/main/resources/configuration.json");
-
-        List<CommonCard> commonCards = new ArrayList<>(2);
-
-        CommonCard common1 = new CommonCard(CommonType.CORNERS, 2, 0);
-        CommonCard common2 = new CommonCard(CommonType.DIAGONAL, 2, 1);
-
-        commonCards.add(0, common1);
-        commonCards.add(1, common2);
-
-        Player testPlayer = new Player("nick", false, 1, commonCards);
-
         Token[] testFill = new Token[6];
 
         for(int i=0; i<6; i++)

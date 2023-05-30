@@ -4,21 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed game reloading bug, now games get correctly loaded after a server crash">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Finally fixed board not resetting at the right time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Application.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/Application.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/Chat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/GUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/MainScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/PlayerShelfDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/PlayerShelfDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/BoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/json/configuration.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/ConfigurationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/ConfigurationsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/ShelfTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/ShelfTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/CommonCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/CommonCardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/PersonalCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/PersonalCardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/CornersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/CornersTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/DiagonalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/DiagonalTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/EightanyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/EightanyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/FourGroupsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/FourGroupsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/FourRowsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/FourRowsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/SixGroupsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/SixGroupsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/StairsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/StairsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/ThreeColumnsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/ThreeColumnsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/TwoColumnsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/TwoColumnsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/TwoRowsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/TwoRowsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/TwoSquaresTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/TwoSquaresTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/XShapeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/XShapeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,25 +116,11 @@
       <recent name="model.cards.concreteobjectives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTest">
+  <component name="RunManager" selected="JUnit.server.model in 6">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="ing-sw-23-gessaghi-fontanive-giuliani-galante" />
       <option name="VM_PARAMETERS" value="--module-path $MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19.0.2.1/;$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19.0.2.1/;$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19.0.2.1/;$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19.0.2.1/ --add-modules javafx.fxml,javafx.controls,javafx.graphics,javafx.base" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="client.gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Graphics User Interface" type="Application" factoryName="Application" singleton="false" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
-      <module name="6" />
-      <option name="VM_PARAMETERS" value="--module-path $MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19.0.2.1/:$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19.0.2.1/:$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19.0.2.1/:$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19.0.2.1/ --add-modules javafx.fxml,javafx.controls,javafx.graphics,javafx.base" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="client.gui.*" />
@@ -154,53 +145,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommonCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.model.*" />
+          <option name="PATTERN" value="server.model.cards.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="server.model" />
-      <option name="MAIN_CLASS_NAME" value="server.model.BoardTest" />
+      <option name="PACKAGE_NAME" value="server.model.cards" />
+      <option name="MAIN_CLASS_NAME" value="server.model.cards.CommonCardTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BoardTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommonCardTest.twoPlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.model.*" />
+          <option name="PATTERN" value="server.model.cards.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="server.model" />
-      <option name="MAIN_CLASS_NAME" value="server.model.BoardTest" />
-      <option name="METHOD_NAME" value="constructorTest" />
+      <option name="PACKAGE_NAME" value="server.model.cards" />
+      <option name="MAIN_CLASS_NAME" value="server.model.cards.CommonCardTest" />
+      <option name="METHOD_NAME" value="twoPlayers" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DiagonalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PersonalCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.model.cards.concreteobjectives.*" />
+          <option name="PATTERN" value="server.model.cards.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="server.model.cards.concreteobjectives" />
-      <option name="MAIN_CLASS_NAME" value="server.model.cards.concreteobjectives.DiagonalTest" />
+      <option name="PACKAGE_NAME" value="server.model.cards" />
+      <option name="MAIN_CLASS_NAME" value="server.model.cards.PersonalCardTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest.insertTokensTestOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ShelfTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
@@ -209,9 +200,22 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="server.model" />
-      <option name="MAIN_CLASS_NAME" value="server.model.PlayerTest" />
-      <option name="METHOD_NAME" value="insertTokensTestOne" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="server.model.ShelfTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="server.model in 6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server.model" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -220,19 +224,19 @@
       <item itemvalue="Application.Text User Interface" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Graphics User Interface WINDOWS" />
-      <item itemvalue="Application.Graphics User Interface" />
-      <item itemvalue="JUnit.BoardTest" />
-      <item itemvalue="JUnit.BoardTest.constructorTest" />
-      <item itemvalue="JUnit.PlayerTest.insertTokensTestOne" />
-      <item itemvalue="JUnit.DiagonalTest" />
+      <item itemvalue="JUnit.CommonCardTest" />
+      <item itemvalue="JUnit.CommonCardTest.twoPlayers" />
+      <item itemvalue="JUnit.PersonalCardTest" />
+      <item itemvalue="JUnit.ShelfTest" />
+      <item itemvalue="JUnit.server.model in 6" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BoardTest" />
-        <item itemvalue="JUnit.BoardTest.constructorTest" />
-        <item itemvalue="Application.Graphics User Interface" />
-        <item itemvalue="JUnit.PlayerTest.insertTokensTestOne" />
-        <item itemvalue="JUnit.DiagonalTest" />
+        <item itemvalue="JUnit.server.model in 6" />
+        <item itemvalue="JUnit.CommonCardTest" />
+        <item itemvalue="JUnit.CommonCardTest.twoPlayers" />
+        <item itemvalue="JUnit.PersonalCardTest" />
+        <item itemvalue="JUnit.ShelfTest" />
       </list>
     </recent_temporary>
   </component>
@@ -276,14 +280,7 @@
       <workItem from="1685086770682" duration="3129000" />
       <workItem from="1685196532542" duration="5399000" />
       <workItem from="1685362509446" duration="9973000" />
-      <workItem from="1685446375167" duration="5331000" />
-    </task>
-    <task id="LOCAL-00173" summary="added gridPane to GUI">
-      <created>1684260163448</created>
-      <option name="number" value="00173" />
-      <option name="presentableId" value="LOCAL-00173" />
-      <option name="project" value="LOCAL" />
-      <updated>1684260163448</updated>
+      <workItem from="1685446375167" duration="6674000" />
     </task>
     <task id="LOCAL-00174" summary="added button in board">
       <created>1684263260064</created>
@@ -621,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685450044567</updated>
     </task>
-    <option name="localTasksCounter" value="222" />
+    <task id="LOCAL-00222" summary="Finally fixed board not resetting at the right time">
+      <created>1685452111832</created>
+      <option name="number" value="00222" />
+      <option name="presentableId" value="LOCAL-00222" />
+      <option name="project" value="LOCAL" />
+      <updated>1685452111832</updated>
+    </task>
+    <option name="localTasksCounter" value="223" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,7 +659,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Split tokens and column selection to improve player experience" />
     <MESSAGE value="Added possibility to reconnect for TUI clients" />
     <MESSAGE value="Implemented but not tested reconnection with same username for clients" />
     <MESSAGE value="Added waring for duplicate nickname" />
@@ -680,23 +683,8 @@
     <MESSAGE value="Separated LoadController and CreationController for game loading or creation" />
     <MESSAGE value="Implemented resilience to server crashes" />
     <MESSAGE value="Fixed game reloading bug, now games get correctly loaded after a server crash" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed game reloading bug, now games get correctly loaded after a server crash" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/FourGroupsTest.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/server/model/cards/concreteobjectives/FourGroupsTest.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Finally fixed board not resetting at the right time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally fixed board not resetting at the right time" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
