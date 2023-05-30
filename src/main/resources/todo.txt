@@ -27,7 +27,7 @@ FIXED 5. Fix "new line" characters being all over the place
 8. Tiles randomly change at each update
 FIXED 9. Board not resetting
 10. Avoid using static variables in GUI
-11. Server does not reset correctly after game finishes
+11. Server does not reset correctly after game finishes (GIO)
 12. Remove useless Observer/Observable in Model (GIO)
 
 At the end check for unused imports

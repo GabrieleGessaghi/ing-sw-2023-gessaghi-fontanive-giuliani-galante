@@ -178,7 +178,7 @@ public class Player implements Savable, Observable {
     @Override
     public void loadState(JsonObject jsonObject) {
         Map<String, JsonElement> elements = jsonObject.asMap();
-        nickname = elements.get("nickname").toString();
+        nickname = elements.get("nickname").getAsString();
         personalCard = new PersonalCard(elements.get("personalCardIndex").getAsInt());
         commonCardPoints = elements.get("commonCardPoints").getAsInt();
         isFirstPlayer = elements.get("isFirstPlayer").getAsBoolean();

@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Separated LoadController and CreationController for game loading or creation">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented resilience to server crashes">
       <change afterPath="$PROJECT_DIR$/src/main/resources/saved_game.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerRMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/network/NetworkHandlerTCP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/login/LoadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/login/LoadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/TurnController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Shelf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,6 +87,7 @@
       <recent name="controller.utilities.JsonTools" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/personalcards" />
       <recent name="$PROJECT_DIR$/src/main/resources/json" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -279,14 +273,8 @@
       <workItem from="1685024080235" duration="2827000" />
       <workItem from="1685086770682" duration="3129000" />
       <workItem from="1685196532542" duration="5399000" />
-      <workItem from="1685362509446" duration="9844000" />
-    </task>
-    <task id="LOCAL-00171" summary="Changed client to an interface and merged TUI and ClientTUI">
-      <created>1684248182151</created>
-      <option name="number" value="00171" />
-      <option name="presentableId" value="LOCAL-00171" />
-      <option name="project" value="LOCAL" />
-      <updated>1684248182151</updated>
+      <workItem from="1685362509446" duration="9973000" />
+      <workItem from="1685446375167" duration="3086000" />
     </task>
     <task id="LOCAL-00172" summary="Implemented Client in MainSceneController and updated static variables for initial screen">
       <created>1684248741301</created>
@@ -624,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685366959099</updated>
     </task>
-    <option name="localTasksCounter" value="220" />
+    <task id="LOCAL-00220" summary="Implemented resilience to server crashes">
+      <created>1685372629078</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
+      <option name="project" value="LOCAL" />
+      <updated>1685372629078</updated>
+    </task>
+    <option name="localTasksCounter" value="221" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,7 +653,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented RequestController server-side" />
     <MESSAGE value="Fixed an issue where common card information was not being sent" />
     <MESSAGE value="Split tokens and column selection to improve player experience" />
     <MESSAGE value="Added possibility to reconnect for TUI clients" />
@@ -683,7 +677,8 @@
     <MESSAGE value="Fixed all personal goal jsons" />
     <MESSAGE value="Fixed chat messages not showing in GUI" />
     <MESSAGE value="Separated LoadController and CreationController for game loading or creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Separated LoadController and CreationController for game loading or creation" />
+    <MESSAGE value="Implemented resilience to server crashes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented resilience to server crashes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

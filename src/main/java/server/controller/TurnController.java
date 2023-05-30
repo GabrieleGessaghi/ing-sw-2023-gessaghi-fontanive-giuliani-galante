@@ -91,7 +91,7 @@ public class TurnController implements Observer {
         try {
             game.playerTurn(selectedTiles, selectedColumn);
         } catch (IllegalMoveException | IllegalColumnException e) {
-            currentClientHandler.sendOutput(JsonTools.createMessage(e.getMessage(), true));
+            //currentClientHandler.sendOutput(JsonTools.createMessage(e.getMessage(), true));
             selectedTiles = null;
             selectedColumn = -1;
             newTurn();
@@ -114,6 +114,7 @@ public class TurnController implements Observer {
     public synchronized void update(Event event) {
         String jsonMessage = event.jsonMessage();
         String field;
+        int[][] tempSelectedTiles = null;
         JsonReader jsonReader;
         try {
             jsonReader = new JsonReader(new StringReader(jsonMessage));
@@ -121,16 +122,19 @@ public class TurnController implements Observer {
             while(jsonReader.hasNext()) {
                 field = jsonReader.nextName();
                 switch (field) {
-                    case "selectedTiles" -> selectedTiles = JsonTools.readMatrix(jsonReader);
+                    case "selectedTiles" -> tempSelectedTiles = JsonTools.readMatrix(jsonReader);
                     case "selectedColumn" -> selectedColumn = jsonReader.nextInt();
                     default -> jsonReader.skipValue();
                 }
             }
             jsonReader.endObject();
-            if (selectedTiles != null && !game.getBoard().isMoveLegal(Board.convertIntegerMatrix(selectedTiles, -1))) {
-                selectedTiles = null;
-                currentClientHandler.sendOutput(JsonTools.createMessage("This combination of tiles is illegal!", true));
-                currentClientHandler.requestInput(Prompt.TOKENS);
+            if (tempSelectedTiles != null ) {
+                selectedTiles = tempSelectedTiles;
+                if (!game.getBoard().isMoveLegal(Board.convertIntegerMatrix(selectedTiles, -1))) {
+                    selectedTiles = null;
+                    currentClientHandler.sendOutput(JsonTools.createMessage("This combination of tiles is illegal!", true));
+                    currentClientHandler.requestInput(Prompt.TOKENS);
+                }
             }
             this.notifyAll();
         } catch (IOException e) {
