@@ -22,10 +22,10 @@ FIXED 1. Server not resetting correctly when players disconnect
 3. Reloading opened shelf
 FIXED 4. Check personal card jsons
 FIXED 5. Fix "new line" characters being all over the place
-6. Change json configuration path in junit tests
+FIXED 6. Change json configuration path in junit tests
 7. Closing window keeps GUI running
 8. Tiles randomly change at each update
-9. Board not resetting
+FIXED 9. Board not resetting
 10. Avoid using static variables in GUI
 11. Server does not reset correctly after game finishes (GIO)
 12. Remove useless Observer/Observable in Model (GIO)

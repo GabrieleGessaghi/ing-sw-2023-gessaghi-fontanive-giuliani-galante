@@ -78,7 +78,7 @@ public abstract class NetworkHandler implements Runnable {
     /**
      *
      */
-    protected void disconnect() {
+    public void disconnect() {
         isConnected = false;
         timer.cancel();
         timer.purge();

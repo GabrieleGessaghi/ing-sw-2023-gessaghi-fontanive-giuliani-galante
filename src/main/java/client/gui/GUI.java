@@ -1,15 +1,16 @@
 package client.gui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import server.controller.utilities.ConfigLoader;
 
 
 public class GUI extends Application {
-    private Stage stage;
 
     //Starting constants
     public static String playerNickname;
@@ -30,5 +31,8 @@ public class GUI extends Application {
         primaryStage.setTitle("MyShelfie");
         primaryStage.setResizable(false);
         primaryStage.show();
+        primaryStage.setOnCloseRequest(e -> {
+
+        });
     }
 }

@@ -23,8 +23,8 @@ public class ConfigLoader {
     public static int NUMBER_OF_COMMON_CARDS;
     public static int[] PERSONALCARD_POINTS;
     public static int[][] COMMONCARD_POINTS;
-    public static int PING_PERIOD = 100; //TODO: Put in configuration file
-    public static int LONE_PLAYER_WAIT = 10000;
+    public static int PING_PERIOD;
+    public static int LONE_PLAYER_WAIT;
 
     /**
      * Initializes all constants.
@@ -53,6 +53,8 @@ public class ConfigLoader {
                     case "PERSONALCARD_POINTS" -> PERSONALCARD_POINTS = JsonTools.readArray(jsonReader);
                     case "NUMBER_OF_COMMON_CARDS" -> NUMBER_OF_COMMON_CARDS = jsonReader.nextInt();
                     case "SERVER_PORT" -> SERVER_PORT = jsonReader.nextInt();
+                    case "PING_PERIOD" -> PING_PERIOD = jsonReader.nextInt();
+                    case "LONE_PLAYER_WAIT" -> LONE_PLAYER_WAIT = jsonReader.nextInt();
                     default -> jsonReader.skipValue();
                 }
             }

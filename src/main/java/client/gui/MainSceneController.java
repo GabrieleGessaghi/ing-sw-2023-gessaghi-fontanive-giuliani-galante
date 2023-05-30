@@ -96,15 +96,6 @@ public class MainSceneController implements Client, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Node> selectedNodes = new ArrayList<>();
-        //Connects to the server
-        if (GUI.connectionType == 0)
-            setNetworkHandler(new NetworkHandlerTCP());
-        if (GUI.connectionType == 1)
-            setNetworkHandler(new NetworkHandlerRMI());
-        networkHandler.setHost(GUI.host);
-        networkHandler.setClient(this);
-        new Thread(networkHandler).start();
-
         tokenSelection = new int[ConfigLoader.BOARD_SIZE][ConfigLoader.BOARD_SIZE];
         for (int[] i : tokenSelection)
             Arrays.fill(i, -1);
@@ -164,6 +155,15 @@ public class MainSceneController implements Client, Initializable {
                     messages.setText("");
                 }
             });
+
+        //Connects to the server
+        if (GUI.connectionType == 0)
+            setNetworkHandler(new NetworkHandlerTCP());
+        if (GUI.connectionType == 1)
+            setNetworkHandler(new NetworkHandlerRMI());
+        networkHandler.setHost(GUI.host);
+        networkHandler.setClient(this);
+        new Thread(networkHandler).start();
     }
 
     @Override
@@ -173,6 +173,11 @@ public class MainSceneController implements Client, Initializable {
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("nickname", GUI.playerNickname);
                 networkHandler.sendInput(jsonObject.toString());
+                Stage currentWindow = (Stage) messages.getScene().getWindow();
+                currentWindow.setOnCloseRequest(e -> {
+                    Platform.exit();
+                    System.exit(0);
+                });
             }
             case PLAYERSNUMBER -> {
                 requestPlayersNumber();
