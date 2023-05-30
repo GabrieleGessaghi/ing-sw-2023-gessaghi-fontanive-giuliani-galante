@@ -13,7 +13,7 @@ DONE 7. Divide errors and messages (GIO)
 10. IMPORTANT, Handle victories in TUI and GUI
 11. EXTREMELY IMPORTANT, Let the player choose tiles order in GUI
 DONE 12. IMPORTANT, Chat doesn't work (GIO)
-13. Handle chat requests in request controller (GIO)
+DONE 13. Handle chat requests in request controller (GIO)
 15. IMPORTANT, messages overlap with requests (Gio)
 16. Instead of cancel, allow player to deselect tiles by clicking on them. Or don't allow tiles to be highlighted when they are not requested! (NICO)
 17. Maybe remove all public/static public variables
@@ -29,9 +29,9 @@ FIXED 7. Closing window keeps GUI running
 8. Tiles randomly change at each update
 FIXED 9. Board not resetting
 10. Avoid using static variables in GUI
-11. Server does not reset correctly after game finishes (GIO)
+FIXED 11. Server does not reset correctly after game finishes (GIO)
 FIXED 12. Remove useless Observer/Observable in Model (GIO)
-13. Double messages for last person reconnecting after crash (GIO)
+13. IMPORTANT, Double messages for last person reconnecting after crash (GIO)
 14. Not all tiles are visible once put in shelf in GUI
 15. Bugged while loop in TUI (GALAGA)
 

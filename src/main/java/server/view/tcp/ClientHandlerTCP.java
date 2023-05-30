@@ -70,4 +70,13 @@ public class ClientHandlerTCP extends ClientHandler {
             }
         }
     }
+
+    @Override
+    public void disconnect() {
+        super.disconnect();
+        try {
+            inputStream.close();
+            outputStream.close();
+        } catch (IOException ignored) {}
+    }
 }

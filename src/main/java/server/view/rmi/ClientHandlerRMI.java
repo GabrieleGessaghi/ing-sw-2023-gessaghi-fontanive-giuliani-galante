@@ -105,4 +105,12 @@ public class ClientHandlerRMI extends ClientHandler implements ClientUsable {
                 }
             }).start();
     }
+
+    @Override
+    public void disconnect() {
+        super.disconnect();
+        try {
+            UnicastRemoteObject.unexportObject(this, true);
+        } catch (RemoteException ignored) {}
+    }
 }

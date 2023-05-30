@@ -43,6 +43,8 @@ public class Controller implements Observer, Runnable {
     public void run() {
         while(true) {
 
+            System.out.println("New game!");
+
             //Waits for the game to be running
             synchronized (this) {
                 while (!isGameRunning)
@@ -57,7 +59,7 @@ public class Controller implements Observer, Runnable {
             //Start managing turns
             game.sendState(View.PLAYER_NICKNAMES);
             game.sendState(View.COMMON_CARDS);
-            while (!game.gameOver() && isGameRunning) {
+            while (!game.gameOver()) {
                 ClientHandler currentClient = findClientHandlerByName(game.getCurrentPlayer());
                 game.sendState(View.BOARD);
                 game.sendState(View.CURRENT_PLAYER);
@@ -67,6 +69,8 @@ public class Controller implements Observer, Runnable {
                     turnController = new TurnController(game, currentClient);
                     currentClient.registerObserver(turnController);
                     turnController.newTurn();
+                    if (!isGameRunning)
+                        break;
                     currentClient.sendOutput(game.getView(View.SHELF, currentClient.nickname).toString());
                     currentClient.sendOutput(game.getView(View.POINTS, currentClient.nickname).toString());
                 }
@@ -97,7 +101,7 @@ public class Controller implements Observer, Runnable {
                 new Thread(() -> handleDisconnection(clientHandler)).start();
             } else if (jsonObject.has("clientReconnected")) {
                 disconnectedClients.remove(clientHandler.nickname);
-                if (isGameRunning) { //COULD CAUSE ISSUES TO LAST PLAYER RECONNECTING AFTER SERVER CRASH? LIKE DOUBLE MESSAGES? YES!
+                if (isGameRunning) { //TODO: HUGE PRIORITY: FIX THIS
                     game.registerObserver(clientHandler);
                     game.setPlayerConnection(clientHandler.nickname, true);
                     chat.registerObserver(clientHandler);
@@ -184,6 +188,7 @@ public class Controller implements Observer, Runnable {
                                 clientHandlers.get(0).sendOutput(JsonTools.createMessage("You are the only player left. You win!", false));
                                 clientHandlers.get(0).sendOutput(JsonTools.createMessage("Log back in if you want to play again.", false));
                                 clientHandlers.get(0).disconnect();
+                                turnController.skipTurn();
                                 Game.deleteSave();
                                 reset();
                             }
