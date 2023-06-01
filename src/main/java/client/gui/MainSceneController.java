@@ -12,13 +12,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import server.controller.Prompt;
@@ -275,6 +280,9 @@ public class MainSceneController implements Client, Initializable {
                     }
                     case "connectionError" -> {
                     } //TODO: Go back to beginning screen
+                    case "winnerNickname" -> {
+                        //showWinner(jsonReader.nextName());
+                    }
                     default -> jsonReader.skipValue();
                 }
             }
@@ -583,6 +591,7 @@ public class MainSceneController implements Client, Initializable {
     void playerBtnClicked(ActionEvent event) {
         Button playerBtn = (Button) event.getSource();
         String nickname = playerBtn.getText();
+        //showWinner("Lello");
         Platform.runLater(() -> {
             isPlayerWindowOpen = true;
             JsonObject jsonObject = new JsonObject();
@@ -629,6 +638,37 @@ public class MainSceneController implements Client, Initializable {
             chatController.setRadioButtons(nicknames);
             chatStage.show();
         });
+    }
+
+    void showWinner(String winnerNickname){
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+        String videoPath = getClass().getResource("/assets/Award.mp4").toExternalForm();
+//        Media media = new Media();
+//        MediaPlayer mediaPlayer = new MediaPlayer(media);
+//        MediaView mediaView = new MediaView(mediaPlayer);
+//        mediaView.setFitWidth(400);
+//        mediaView.setFitHeight(300);
+//        mediaPlayer.setAutoPlay(true);
+
+        Text text = new Text("Congratulazioni, hai vinto il gioco!");
+        text.setFont(Font.font(18));
+
+        Button backButton = new Button("Torna alla home");
+        backButton.setOnAction(event -> {
+            // Codice per tornare alla home (lo implementa nico per il conncetion error e poi lo copio qui)
+            //mediaPlayer.stop();
+            alert.close();
+        });
+
+        VBox vbox = new VBox(10);
+        //vbox.getChildren().addAll(mediaView, text, backButton);
+        vbox.setAlignment(Pos.CENTER);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setCenter(vbox);
+        alert.getDialogPane().setContent(borderPane);
+        alert.showAndWait();
     }
 }
 
