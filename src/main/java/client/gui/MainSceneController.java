@@ -279,8 +279,10 @@ public class MainSceneController implements Client, Initializable {
                         jsonReader.endObject();
                     }
                     case "connectionError" -> {
+                        jsonReader.skipValue();
                     } //TODO: Go back to beginning screen
                     case "winnerNickname" -> {
+                        jsonReader.skipValue();
                         //showWinner(jsonReader.nextName());
                     }
                     default -> jsonReader.skipValue();

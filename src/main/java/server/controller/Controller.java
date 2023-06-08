@@ -25,6 +25,7 @@ public class Controller implements Observer, Runnable {
     public static Map<String, Integer> disconnectedClients;
     private boolean isGameRunning;
     private boolean isPreviousGameSaved;
+
     private LoginController loginController;
     private TurnController turnController;
     private ChatController chatController;
@@ -42,8 +43,6 @@ public class Controller implements Observer, Runnable {
     @Override
     public void run() {
         while(true) {
-
-            System.out.println("New game!");
 
             //Waits for the game to be running
             synchronized (this) {
@@ -101,7 +100,7 @@ public class Controller implements Observer, Runnable {
                 new Thread(() -> handleDisconnection(clientHandler)).start();
             } else if (jsonObject.has("clientReconnected")) {
                 disconnectedClients.remove(clientHandler.nickname);
-                if (isGameRunning) { //TODO: HUGE PRIORITY: FIX THIS
+                if (isGameRunning && !isPreviousGameSaved) {
                     game.registerObserver(clientHandler);
                     game.setPlayerConnection(clientHandler.nickname, true);
                     chat.registerObserver(clientHandler);

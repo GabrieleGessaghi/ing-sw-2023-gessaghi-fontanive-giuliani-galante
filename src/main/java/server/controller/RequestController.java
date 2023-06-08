@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 
-//TODO: Handle chat requests
-
 /**
  * Handles specific requests from clients.
  * @author Giorgio Massimo Fontanive
