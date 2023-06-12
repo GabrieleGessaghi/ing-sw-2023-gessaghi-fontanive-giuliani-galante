@@ -11,7 +11,7 @@ DONE 7. Divide errors and messages (GIO)
 8. Controller tests for 20% coverage
 9. Request command in TUI (GALAGA)
 DONE (GUI)10. IMPORTANT, Handle victories in TUI and GUI
-11. EXTREMELY IMPORTANT, Let the player choose tiles order in GUI
+DONE 11. EXTREMELY IMPORTANT, Let the player choose tiles order in GUI
 DONE 12. IMPORTANT, Chat doesn't work (GIO)
 DONE 13. Handle chat requests in request controller (GIO)
 15. IMPORTANT, messages overlap with requests (Gio)

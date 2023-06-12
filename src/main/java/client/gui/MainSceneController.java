@@ -23,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -123,7 +124,7 @@ public class MainSceneController implements Client, Initializable {
         confirm.setOnMouseClicked(e -> {
             if (selectingTokens) {
                 // handle token order here
-                manageTilesOrder(tokenSelection);
+                manageTilesOrder();
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.add("selectedTiles", JsonTools.createJsonMatrix(tokenSelection));
                 networkHandler.sendInput(jsonObject.toString());
@@ -681,49 +682,87 @@ public class MainSceneController implements Client, Initializable {
         alert.showAndWait();
     }
 
-    void manageTilesOrder(int [][] selectedTiles){
+    void manageTilesOrder(){
         // fill arraylist with token images
-        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList("Elemento 1", "Elemento 2", "Elemento 3", "Elemento 4", "Elemento 5"));
-        ListView<String> listView = new ListView<>(FXCollections.observableArrayList(arrayList));
+        ArrayList<ImageView> tokens = new ArrayList<>();
+        Map<Integer, ImageView> tokenIndexMap = new HashMap<>();
+        for (int i=0; i<tokenSelection.length; i++){
+            for (int j=0; j<tokenSelection[0].length; j++){
+                if (tokenSelection[i][j]!=-1){
+                    ImageView token = new ImageView();
+                    token.setFitWidth(50);
+                    token.setFitHeight(50);
+                    ObservableList<String> cssClasses = getNodeByRowColumnIndex(i, j, false).getStyleClass();
+                    String className = cssClasses.get(1);
+                    String number = className.substring(className.length() - 1);
+                    String imageClassName = className.substring(0, className.length() - 1) + "_image" + number;
+                    token.getStyleClass().addAll(imageClassName);
+                    tokens.add(token);
+                    tokenIndexMap.put(tokenSelection[i][j],token);
+                }
+            }
+        }
+        int rowHeight = 50;
+        int visibleRows = 4;
+        double preferredHeight = visibleRows * rowHeight;
+        ListView<ImageView> listView = new ListView<>();
+        ObservableList<ImageView> observableTokens = FXCollections.observableArrayList(tokens);
+        listView.setItems(observableTokens);
+        listView.setPrefHeight(preferredHeight);
         Button moveUpButton = new Button("UP");
         Button moveDownButton = new Button("DOWN");
         moveUpButton.setOnAction(event -> {
             int selectedIndex = listView.getSelectionModel().getSelectedIndex();
             if (selectedIndex > 0) {
-                Collections.swap(arrayList, selectedIndex, selectedIndex - 1);
-                listView.setItems(FXCollections.observableArrayList(arrayList));
+                Collections.swap(observableTokens, selectedIndex, selectedIndex - 1);
                 listView.getSelectionModel().select(selectedIndex - 1);
             }
         });
 
         moveDownButton.setOnAction(event -> {
             int selectedIndex = listView.getSelectionModel().getSelectedIndex();
-            if (selectedIndex < arrayList.size() - 1) {
-                Collections.swap(arrayList, selectedIndex, selectedIndex + 1);
-                listView.setItems(FXCollections.observableArrayList(arrayList));
+            if (selectedIndex < tokens.size() - 1) {
+                Collections.swap(observableTokens, selectedIndex, selectedIndex + 1);
                 listView.getSelectionModel().select(selectedIndex + 1);
             }
         });
 
-        VBox vbox = new VBox(listView, moveUpButton, moveDownButton);
+        VBox vbox = new VBox();
         vbox.setSpacing(10);
         vbox.setPadding(new Insets(10));
+        vbox.getChildren().add(listView);
+
+        HBox hbox = new HBox();
+        hbox.setAlignment(Pos.CENTER);
+        hbox.setSpacing(10);
+        hbox.getChildren().addAll(moveUpButton, moveDownButton);
+
+        vbox.getChildren().add(hbox);
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Set tiles order");
         dialog.getDialogPane().setContent(vbox);
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.APPLY);
+        //dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        dialog.getDialogPane().getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
+        dialog.getDialogPane().setStyle("-fx-background-image: url('/assets/misc/base_pagina2.jpg'); -fx-background-size: cover; -fx-padding: 0;");
         dialog.setResultConverter(buttonType -> {
-            if (buttonType == ButtonType.OK) {
+            if (buttonType == ButtonType.APPLY) {
                 return buttonType;
             }
             return null;
         });
+
         Optional<ButtonType> result = dialog.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            List<String> sortedArray = listView.getItems();
+        if (result.isPresent() && result.get() == ButtonType.APPLY) {
+            for (int i=0; i<tokenSelection.length; i++){
+                for (int j=0; j<tokenSelection[0].length; j++){
+                    if (tokenSelection[i][j]!=-1){
+                        int newIndex = observableTokens.indexOf(tokenIndexMap.get(tokenSelection[i][j]));
+                        tokenSelection[i][j] = newIndex;
+                    }
+                }
+            }
         }
-        // update this.tokenSelection based on sortedArray
     }
 }
 
