@@ -7,11 +7,13 @@ import client.network.NetworkHandlerTCP;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -120,6 +122,8 @@ public class MainSceneController implements Client, Initializable {
         });
         confirm.setOnMouseClicked(e -> {
             if (selectingTokens) {
+                // handle token order here
+                manageTilesOrder(tokenSelection);
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.add("selectedTiles", JsonTools.createJsonMatrix(tokenSelection));
                 networkHandler.sendInput(jsonObject.toString());
@@ -675,6 +679,51 @@ public class MainSceneController implements Client, Initializable {
         alert.getDialogPane().setContent(borderPane);
         alert.getDialogPane().setStyle("-fx-background-image: url('/assets/misc/base_pagina2.jpg'); -fx-background-size: cover; -fx-padding: 0;");
         alert.showAndWait();
+    }
+
+    void manageTilesOrder(int [][] selectedTiles){
+        // fill arraylist with token images
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList("Elemento 1", "Elemento 2", "Elemento 3", "Elemento 4", "Elemento 5"));
+        ListView<String> listView = new ListView<>(FXCollections.observableArrayList(arrayList));
+        Button moveUpButton = new Button("UP");
+        Button moveDownButton = new Button("DOWN");
+        moveUpButton.setOnAction(event -> {
+            int selectedIndex = listView.getSelectionModel().getSelectedIndex();
+            if (selectedIndex > 0) {
+                Collections.swap(arrayList, selectedIndex, selectedIndex - 1);
+                listView.setItems(FXCollections.observableArrayList(arrayList));
+                listView.getSelectionModel().select(selectedIndex - 1);
+            }
+        });
+
+        moveDownButton.setOnAction(event -> {
+            int selectedIndex = listView.getSelectionModel().getSelectedIndex();
+            if (selectedIndex < arrayList.size() - 1) {
+                Collections.swap(arrayList, selectedIndex, selectedIndex + 1);
+                listView.setItems(FXCollections.observableArrayList(arrayList));
+                listView.getSelectionModel().select(selectedIndex + 1);
+            }
+        });
+
+        VBox vbox = new VBox(listView, moveUpButton, moveDownButton);
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(10));
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Set tiles order");
+        dialog.getDialogPane().setContent(vbox);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        dialog.setResultConverter(buttonType -> {
+            if (buttonType == ButtonType.OK) {
+                return buttonType;
+            }
+            return null;
+        });
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            List<String> sortedArray = listView.getItems();
+        }
+        // update this.tokenSelection based on sortedArray
     }
 }
 
