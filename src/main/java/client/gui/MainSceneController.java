@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -282,8 +283,7 @@ public class MainSceneController implements Client, Initializable {
                         jsonReader.skipValue();
                     } //TODO: Go back to beginning screen
                     case "winnerNickname" -> {
-                        jsonReader.skipValue();
-                        //showWinner(jsonReader.nextName());
+                        showWinner(jsonReader.nextName());
                     }
                     default -> jsonReader.skipValue();
                 }
@@ -593,7 +593,6 @@ public class MainSceneController implements Client, Initializable {
     void playerBtnClicked(ActionEvent event) {
         Button playerBtn = (Button) event.getSource();
         String nickname = playerBtn.getText();
-        //showWinner("Lello");
         Platform.runLater(() -> {
             isPlayerWindowOpen = true;
             JsonObject jsonObject = new JsonObject();
@@ -646,30 +645,35 @@ public class MainSceneController implements Client, Initializable {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setHeaderText(null);
         alert.setGraphic(null);
-        String videoPath = getClass().getResource("/assets/Award.mp4").toExternalForm();
-//        Media media = new Media();
-//        MediaPlayer mediaPlayer = new MediaPlayer(media);
-//        MediaView mediaView = new MediaView(mediaPlayer);
-//        mediaView.setFitWidth(400);
-//        mediaView.setFitHeight(300);
-//        mediaPlayer.setAutoPlay(true);
+        String imagePath = getClass().getResource("/assets/award.png").toExternalForm();
+        Image image = new Image(imagePath);
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(400);
+        imageView.setFitHeight(300);
+        Text text;
+        if (GUI.playerNickname.equals(winnerNickname)){
+            text = new Text("Congratulazioni "+winnerNickname+", hai vinto !");
+        }else {
+            text = new Text("Hai perso, il vincitore è "+winnerNickname+" !");
+        }
 
-        Text text = new Text("Congratulazioni, hai vinto il gioco!");
         text.setFont(Font.font(18));
+        text.setFill(Color.WHITE);
 
         Button backButton = new Button("Torna alla home");
         backButton.setOnAction(event -> {
             // Codice per tornare alla home (lo implementa nico per il conncetion error e poi lo copio qui)
-            //mediaPlayer.stop();
+            alert.setResult(ButtonType.CLOSE);
             alert.close();
         });
-
         VBox vbox = new VBox(10);
-        //vbox.getChildren().addAll(mediaView, text, backButton);
+        vbox.getChildren().addAll(imageView, text, backButton);
         vbox.setAlignment(Pos.CENTER);
         BorderPane borderPane = new BorderPane();
+        borderPane.setStyle("-fx-background-image: url('/assets/misc/base_pagina2.jpg'); -fx-background-size: cover; -fx-padding: 0;");
         borderPane.setCenter(vbox);
         alert.getDialogPane().setContent(borderPane);
+        alert.getDialogPane().setStyle("-fx-background-image: url('/assets/misc/base_pagina2.jpg'); -fx-background-size: cover; -fx-padding: 0;");
         alert.showAndWait();
     }
 }
