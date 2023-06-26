@@ -30,6 +30,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
@@ -285,6 +286,19 @@ public class MainSceneController implements Client, Initializable {
                         jsonReader.endObject();
                     }
                     case "connectionError" -> {
+                        Platform.runLater(() -> {
+                            Parent root = null;
+                            try {
+                                root = FXMLLoader.load(getClass().getResource("/javafx/GUI.fxml"));
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            Scene base = new Scene(root);
+                                    base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
+                                    Stage currentWindow = (Stage) ChatButton.getScene().getWindow();
+                                    currentWindow.setScene(base);
+                                    currentWindow.show();
+                                });
                         jsonReader.skipValue();
                     } //TODO: Go back to beginning screen
                     case "winnerNickname" -> {
