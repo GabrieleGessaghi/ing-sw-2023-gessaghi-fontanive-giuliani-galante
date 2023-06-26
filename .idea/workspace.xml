@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="added dialog for token order, needs real tokens and update global var">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/saved_game.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="go back to connection screen when connection error is detected">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,13 +282,6 @@
       <workItem from="1685362509446" duration="9973000" />
       <workItem from="1685446375167" duration="12020000" />
       <workItem from="1686203953011" duration="775000" />
-    </task>
-    <task id="LOCAL-00179" summary="fixed small issues">
-      <created>1684335746743</created>
-      <option name="number" value="00179" />
-      <option name="presentableId" value="LOCAL-00179" />
-      <option name="project" value="LOCAL" />
-      <updated>1684335746743</updated>
     </task>
     <task id="LOCAL-00180" summary="fixed small issues">
       <created>1684337419027</created>
@@ -629,7 +619,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686603777455</updated>
     </task>
-    <option name="localTasksCounter" value="228" />
+    <task id="LOCAL-00228" summary="go back to connection screen when connection error is detected">
+      <created>1687793705059</created>
+      <option name="number" value="00228" />
+      <option name="presentableId" value="LOCAL-00228" />
+      <option name="project" value="LOCAL" />
+      <updated>1687793705060</updated>
+    </task>
+    <option name="localTasksCounter" value="229" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +660,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Improved GUI while waiting for the game to start" />
     <MESSAGE value="Implemented continuously pinging client in ClientHandler" />
     <MESSAGE value="fixed diagonal class" />
     <MESSAGE value="Fixed players reconnecting with tcp when it is not their turn" />
@@ -688,7 +684,8 @@
     <MESSAGE value="Request Controller now can handle chat requests" />
     <MESSAGE value="award screen finished(win/lost text)" />
     <MESSAGE value="added dialog for token order, needs real tokens and update global var" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dialog for token order, needs real tokens and update global var" />
+    <MESSAGE value="go back to connection screen when connection error is detected" />
+    <option name="LAST_COMMIT_MESSAGE" value="go back to connection screen when connection error is detected" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

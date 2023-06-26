@@ -294,10 +294,11 @@ public class MainSceneController implements Client, Initializable {
                                 throw new RuntimeException(e);
                             }
                             Scene base = new Scene(root);
-                                    base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
-                                    Stage currentWindow = (Stage) ChatButton.getScene().getWindow();
-                                    currentWindow.setScene(base);
-                                    currentWindow.show();
+                            base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
+                            Stage currentWindow = (Stage) ChatButton.getScene().getWindow();
+                            currentWindow.setScene(base);
+                            currentWindow.setResizable(true);
+                            currentWindow.show();
                                 });
                         jsonReader.skipValue();
                     } //TODO: Go back to beginning screen

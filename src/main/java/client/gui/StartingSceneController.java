@@ -47,7 +47,9 @@ public class StartingSceneController {
         mainScene.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
         Stage currentWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentWindow.setScene(mainScene);
+
         currentWindow.show();
+
         currentWindow.setOnCloseRequest(e -> {
             Platform.exit();
             System.exit(0);
