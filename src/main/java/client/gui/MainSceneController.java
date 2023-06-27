@@ -101,6 +101,7 @@ public class MainSceneController implements Client, Initializable {
     boolean selectingColumn;
     boolean isPlayerWindowOpen;
     int[][] tempPlayerShelf;
+    PlayerShelfDialogController playerShelfController;
     List<String> nicknames = new ArrayList<>();
 
     @Override
@@ -284,6 +285,14 @@ public class MainSceneController implements Client, Initializable {
                             if (jsonReader.nextName().equals("shelfTiles"))
                                 tempTiles = JsonTools.readMatrix(jsonReader);
                         tempPlayerShelf = tempTiles;
+                        if (playerShelfController != null) {
+                            if (tempNickname != GUI.playerNickname){
+                                if (playerShelfController.requestedReload){
+                                    playerShelfController.updateShelf(tempTiles);
+                                    playerShelfController.requestedReload = false;
+                                }
+                            }
+                        }
                         jsonReader.endObject();
                     }
                     case "connectionError" -> {
@@ -300,7 +309,7 @@ public class MainSceneController implements Client, Initializable {
                             currentWindow.setScene(base);
                             currentWindow.setResizable(true);
                             currentWindow.show();
-                                });
+                        });
                         jsonReader.skipValue();
                     } //TODO: Go back to beginning screen
                     case "winnerNickname" -> {
@@ -546,29 +555,48 @@ public class MainSceneController implements Client, Initializable {
                 Random rng = new Random();
                 int pictureNumber = rng.nextInt(3) + 1;
                 if (node != null) {
+
                     switch (tokens[i][j]) {
                         case 0 -> node.setOpacity(0);
                         case 1 -> {
+                            if (node.getOpacity() != 0){
+                                continue;
+                            }
                             node.getStyleClass().add("cat" + pictureNumber);
                             node.setOpacity(1);
                         }
                         case 2 -> {
+                            if (node.getOpacity() != 0){
+                                continue;
+                            }
                             node.getStyleClass().add("book" + pictureNumber);
                             node.setOpacity(1);
                         }
                         case 3 -> {
+                            if (node.getOpacity() != 0){
+                                continue;
+                            }
                             node.getStyleClass().add("toy" + pictureNumber);
                             node.setOpacity(1);
                         }
                         case 4 -> {
+                            if (node.getOpacity() != 0){
+                                continue;
+                            }
                             node.getStyleClass().add("trophy" + pictureNumber);
                             node.setOpacity(1);
                         }
                         case 5 -> {
+                            if (node.getOpacity() != 0){
+                                continue;
+                            }
                             node.getStyleClass().add("frame" + pictureNumber);
                             node.setOpacity(1);
                         }
                         case 6 -> {
+                            if (node.getOpacity() != 0){
+                                continue;
+                            }
                             node.getStyleClass().add("plant" + pictureNumber);
                             node.setOpacity(1);
                         }
@@ -635,8 +663,8 @@ public class MainSceneController implements Client, Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            PlayerShelfDialogController controller = loader.getController();
-            controller.initShelf(tempPlayerShelf);
+            playerShelfController = loader.getController();
+            playerShelfController.initShelf(tempPlayerShelf, networkHandler, nickname);
             Stage playerShelf = new Stage();
             Scene base = new Scene(root);
             base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
@@ -691,9 +719,22 @@ public class MainSceneController implements Client, Initializable {
 
         Button backButton = new Button("Torna alla home");
         backButton.setOnAction(event -> {
-            // Codice per tornare alla home (lo implementa nico per il conncetion error e poi lo copio qui)
             alert.setResult(ButtonType.CLOSE);
             alert.close();
+            Platform.runLater(() -> {
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("/javafx/GUI.fxml"));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Scene base = new Scene(root);
+                base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
+                Stage currentWindow = (Stage) ChatButton.getScene().getWindow();
+                currentWindow.setScene(base);
+                currentWindow.setResizable(true);
+                currentWindow.show();
+            });
         });
         VBox vbox = new VBox(10);
         vbox.getChildren().addAll(imageView, text, backButton);
@@ -775,7 +816,6 @@ public class MainSceneController implements Client, Initializable {
             }
             return null;
         });
-
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.APPLY) {
             for (int i=0; i<tokenSelection.length; i++){

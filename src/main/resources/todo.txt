@@ -21,12 +21,12 @@ DONE 16. Instead of cancel, allow player to deselect tiles by clicking on them. 
 Bugs to fix:
 FIXED 1. Server not resetting correctly when players disconnect
 2. Errors and messages overlap each other, especially in GUI (GIO)
-3. Reloading opened shelf
+FIXED 3. Reloading opened shelf
 FIXED 4. Check personal card jsons
 FIXED 5. Fix "new line" characters being all over the place
 FIXED 6. Change json configuration path in junit tests
 FIXED 7. Closing window keeps GUI running
-8. IMPORTANT, Tiles randomly change at each update
+FIXED 8. IMPORTANT, Tiles randomly change at each update
 FIXED 9. Board not resetting
 10. Avoid using static variables in GUI
 FIXED 11. Server does not reset correctly after game finishes (GIO)

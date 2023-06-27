@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="333.0" styleClass="bg" stylesheets="@Application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.PlayerShelfDialogController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="333.0" styleClass="bg" stylesheets="@Application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.PlayerShelfDialogController">
    <children>
       <GridPane fx:id="shelfGrid" gridLinesVisible="true" layoutX="38.0" layoutY="25.0" prefHeight="297.0" prefWidth="260.0" AnchorPane.bottomAnchor="115.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="25.0">
         <columnConstraints>
