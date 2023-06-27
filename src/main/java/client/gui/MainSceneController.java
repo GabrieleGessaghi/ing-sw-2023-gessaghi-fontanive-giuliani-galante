@@ -147,7 +147,8 @@ public class MainSceneController implements Client, Initializable {
                 int row = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
                 int column = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
                 if (node.getOpacity() == 1) {
-                    node.setOpacity(0.5);
+                    if(confirm.isVisible())
+                        node.setOpacity(0.5);
                     selectedNodes.add(node);
                     selectedNodes.add(node);
                     tokenSelection[row][column] = tokensSelected;

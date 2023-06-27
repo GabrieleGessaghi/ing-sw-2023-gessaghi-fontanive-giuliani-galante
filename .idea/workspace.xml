@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="go back to connection screen when connection error is detected">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="fixed resizable stage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/StartingSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/saved_game.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/saved_game.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,13 +282,6 @@
       <workItem from="1685362509446" duration="9973000" />
       <workItem from="1685446375167" duration="12020000" />
       <workItem from="1686203953011" duration="775000" />
-    </task>
-    <task id="LOCAL-00180" summary="fixed small issues">
-      <created>1684337419027</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1684337419027</updated>
     </task>
     <task id="LOCAL-00181" summary="make board upgrade">
       <created>1684348260239</created>
@@ -626,7 +619,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687793705060</updated>
     </task>
-    <option name="localTasksCounter" value="229" />
+    <task id="LOCAL-00229" summary="fixed resizable stage">
+      <created>1687795938812</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1687795938812</updated>
+    </task>
+    <option name="localTasksCounter" value="230" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +660,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented continuously pinging client in ClientHandler" />
     <MESSAGE value="fixed diagonal class" />
     <MESSAGE value="Fixed players reconnecting with tcp when it is not their turn" />
     <MESSAGE value="Fixed players reconnecting with rmi when it is not their turn" />
@@ -685,7 +684,8 @@
     <MESSAGE value="award screen finished(win/lost text)" />
     <MESSAGE value="added dialog for token order, needs real tokens and update global var" />
     <MESSAGE value="go back to connection screen when connection error is detected" />
-    <option name="LAST_COMMIT_MESSAGE" value="go back to connection screen when connection error is detected" />
+    <MESSAGE value="fixed resizable stage" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed resizable stage" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
