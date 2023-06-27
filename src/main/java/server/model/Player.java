@@ -26,7 +26,6 @@ public class Player implements Savable {
     private Shelf shelf;
     private Card personalCard;
     private final Map<Card, Boolean> commonCards;
-    private final List<Observer> observers;
     private int commonCardPoints;
     private boolean isFirstPlayer;
     public boolean isConnected;
@@ -46,7 +45,6 @@ public class Player implements Savable {
         commonCardPoints = 0;
         isFirstPlayer = firstPlayer;
         isConnected = true;
-        observers = new ArrayList<>();
         commonCards = new HashMap<>();
         for (CommonCard commonCard : commonCardsList)
             commonCards.put(commonCard, true);
@@ -64,7 +62,6 @@ public class Player implements Savable {
         personalCard = null;
         isFirstPlayer = false;
         isConnected = true;
-        observers = new ArrayList<>();
         commonCards = new HashMap<>();
         for (CommonCard commonCard : commonCardsList)
             commonCards.put(commonCard, true);
@@ -105,7 +102,8 @@ public class Player implements Savable {
         for (Card card : commonCards.keySet()) {
             if (commonCards.get(card)){
                 cardPoints = card.getPoints(shelf.getTiles());
-                commonCards.replace(card, false);
+                if (cardPoints != 0)
+                    commonCards.replace(card, false);
             }
             commonCardPoints += cardPoints;
         }

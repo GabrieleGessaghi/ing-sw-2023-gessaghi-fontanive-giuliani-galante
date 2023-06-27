@@ -7,8 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import server.model.Game;
-import server.model.chat.Chat;
 
 import java.awt.*;
 import java.util.List;
@@ -19,33 +17,22 @@ import static client.gui.GUI.playerNickname;
 public class ChatController {
     @FXML
     private ImageView ChatBackground;
-
     @FXML
     private ToggleGroup ChatButtons;
-
     @FXML
     private VBox ChatField;
-
     @FXML
     private TextField MessageField;
-
     @FXML
     public RadioButton Player1Button;
-
     @FXML
     private RadioButton Player2Button;
-
     @FXML
     private RadioButton Player3Button;
-
     @FXML
     private RadioButton PublicButton;
-
     @FXML
     private Button SendButton;
-
-    Chat chat = new Chat();
-
 
     @FXML
     void sendButtonClicked(){
@@ -54,9 +41,9 @@ public class ChatController {
             sendMessage(radioButtonSelected(), message);
     }
 
+    @FXML
     String radioButtonSelected(){
         String selectedPlayerNickname = "";
-
         if(Player1Button.isSelected())
             selectedPlayerNickname = Player1Button.getText();
         else if(Player2Button.isSelected())
@@ -65,16 +52,12 @@ public class ChatController {
             selectedPlayerNickname = Player3Button.getText();
         else if(PublicButton.isSelected())
             selectedPlayerNickname = "public";
-
         return selectedPlayerNickname;
     }
 
     @FXML
     void sendMessage(String chatSelection, String message){
-        if(chatSelection.equals("public"))
-            chat.addPublicMessage(playerNickname, message);
-        else
-            chat.addPrivateMessage(playerNickname, chatSelection, message);
+
     }
 
     @FXML

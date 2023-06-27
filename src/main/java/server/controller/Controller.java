@@ -25,7 +25,6 @@ public class Controller implements Observer, Runnable {
     public static Map<String, Integer> disconnectedClients;
     private boolean isGameRunning;
     private boolean isPreviousGameSaved;
-
     private LoginController loginController;
     private TurnController turnController;
     private ChatController chatController;
