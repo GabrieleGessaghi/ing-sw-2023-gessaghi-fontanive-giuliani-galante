@@ -63,21 +63,19 @@ public class TUI implements Client {
     }
 
     public void connect() {
-        if (networkHandler == null || !networkHandler.isConnected()) {
-            Scanner scn = new Scanner(System.in);
-            System.out.print("Insert host's IP address: ");
-            String hostIp = scn.nextLine();
-            int selection;
-            do {
-                System.out.print("Select connection type (0 TCP/1 RMI): ");
-                selection = scn.nextInt();
-            } while (selection != 0 && selection != 1);
-            NetworkHandler networkHandler = selection == 0 ? new NetworkHandlerTCP() : new NetworkHandlerRMI();
-            networkHandler.setClient(this);
-            networkHandler.setHost(hostIp);
-            new Thread(networkHandler).start();
-            setNetworkHandler(networkHandler);
-        }
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Insert host's IP address: ");
+        String hostIp = scn.nextLine();
+        int selection;
+        do {
+            System.out.print("Select connection type (0 TCP/1 RMI): ");
+            selection = scn.nextInt();
+        } while (selection !=0 && selection != 1);
+        NetworkHandler networkHandler = selection == 0 ? new NetworkHandlerTCP() : new NetworkHandlerRMI();
+        networkHandler.setClient(this);
+        networkHandler.setHost(hostIp);
+        new Thread(networkHandler).start();
+        setNetworkHandler(networkHandler);
     }
 
     /**
@@ -112,9 +110,9 @@ public class TUI implements Client {
      */
     public void sendNewMessage() {
         Scanner scn = new Scanner(System.in);
-        System.out.print("Type \"public\" or the receiver's nickname: ");
+        System.out.println("Type \"public\" or the receiver's nickname: ");
         String receiver = scn.nextLine();
-        System.out.print("Type the message: ");
+        System.out.println("Type the message: ");
         String message = scn.nextLine();
 
         JsonObject jsonObject = new JsonObject();
@@ -154,7 +152,7 @@ public class TUI implements Client {
                     case "points" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
                     case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player" : "Not first player").append("\n");
                     case "commonCard0", "commonCard1" -> toPrint.append(printCommonCard(jsonReader)).append("\n");
-                    case "message", "error", "privateMessage", "publicMessage" -> toPrint.append(jsonReader.nextString()).append("\n");
+                    case "message", "error" -> toPrint.append(jsonReader.nextString()).append("\n");
                     case "tiles" -> toPrint.append(printTiles(jsonReader));
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
@@ -247,8 +245,7 @@ public class TUI implements Client {
                 waitForInput();
                 tokenCoordinates[i] = lastInput;
 
-                //TODO: Fix this while loop
-            } while (tokenCoordinates[i] != null && tokenCoordinates[i].length() != 2 &&
+            } while (tokenCoordinates[i].length() != 2 ||
                     (tokenCoordinates[i].charAt(0) < 'a' || tokenCoordinates[i].charAt(0) > 'i' ||
                             tokenCoordinates[i].charAt(1) < '1' || tokenCoordinates[i].charAt(1) > '9'));
 
