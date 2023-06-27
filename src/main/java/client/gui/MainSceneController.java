@@ -347,8 +347,10 @@ public class MainSceneController implements Client, Initializable {
     }
 
     /**
-     * @param commonCardSwitch
-     * @param nextPointsAvailable
+     * change graphic number of points available of the common cards
+     * @param commonCardSwitch indicate the common card (0 = common_goal2, 1 = commonGoal1)
+     * @param nextPointsAvailable next points available for the card
+     * @author Niccolò Giuliani
      */
     private void updatePointsCommonCards(boolean commonCardSwitch, int nextPointsAvailable) {
         if (!commonCardSwitch) {
@@ -382,8 +384,9 @@ public class MainSceneController implements Client, Initializable {
     }
 
     /**
-     * @param commonCardIndex
-     * @param commonCardSwitch
+     * set the right image of the common cards
+     * @param commonCardIndex index fot the name of the image
+     * @param commonCardSwitch indicate the common card (0 = common_goal2, 1 = commonGoal1)
      * @author Niccolò Giuliani
      */
     private void setCommonCard(int commonCardIndex, boolean commonCardSwitch) {
@@ -397,7 +400,9 @@ public class MainSceneController implements Client, Initializable {
     }
 
     /**
-     * @param nicknames
+     * set the buttons of the nicknames with the right Nickname
+     * @param nicknames List of nicknames
+     * @author Niccolò Giuliani
      */
     private void updateOpponents(List<String> nicknames) {
         switch (nicknames.size()) {
@@ -506,7 +511,8 @@ public class MainSceneController implements Client, Initializable {
     }
 
     /**
-     * @param i
+     * set the right image for the personal goal card
+     * @param i index of the name of the image of the personal card
      * @author Niccolò Giuliani
      */
     private void setPersonalCard(int i) {
@@ -527,8 +533,9 @@ public class MainSceneController implements Client, Initializable {
     }
 
     /**
-     * @param tokens
-     * @param choice
+     * set images of the tokens of the board and of the personal shelf
+     * @param tokens tokens of the grid pane
+     * @param choice choice of what to modify (0 board, 1 shelf)
      * @author Niccolò Giuliani
      */
     private void updateTokens(int[][] tokens, boolean choice) {
@@ -572,10 +579,11 @@ public class MainSceneController implements Client, Initializable {
     }
 
     /**
-     * @param row
-     * @param column
-     * @param choice
-     * @return
+     * return a node of a gridpane by row and column
+     * @param row row of the node
+     * @param column column of the node
+     * @param choice choice of what to modify (0 board, 1 shelf)
+     * @return Node by the row and the column
      * @author Niccolò Giuliani
      */
     private Node getNodeByRowColumnIndex(int row, int column, boolean choice) {
