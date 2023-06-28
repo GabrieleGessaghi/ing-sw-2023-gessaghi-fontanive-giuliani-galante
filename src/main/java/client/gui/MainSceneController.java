@@ -311,7 +311,7 @@ public class MainSceneController implements Client, Initializable {
                             currentWindow.show();
                         });
                         jsonReader.skipValue();
-                    } //TODO: Go back to beginning screen
+                    }
                     case "winnerNickname" -> {
                         showWinner(jsonReader.nextName());
                     }

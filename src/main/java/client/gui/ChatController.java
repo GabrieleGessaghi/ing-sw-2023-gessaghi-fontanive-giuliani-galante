@@ -43,6 +43,7 @@ public class ChatController {
 
     @FXML
     String radioButtonSelected(){
+        //REQUEST MESSAGES TO BE DISPLAYED
         String selectedPlayerNickname = "";
         if(Player1Button.isSelected())
             selectedPlayerNickname = Player1Button.getText();
@@ -55,9 +56,12 @@ public class ChatController {
         return selectedPlayerNickname;
     }
 
-    @FXML
     void sendMessage(String chatSelection, String message){
+        //SEND MESSAGE THROUGH NETWORK HANDLER
+    }
 
+    void setMessages(List<String> messages) {
+        //DISPLAY MESSAGES
     }
 
     @FXML
@@ -86,17 +90,17 @@ public class ChatController {
             }
             case 4 -> {
                 int i = 0;
-                for(String nick : nicknames)
-                    if(!nick.equals(GUI.playerNickname)){
-                        if(i == 0) {
+                for (String nick : nicknames)
+                    if (!nick.equals(GUI.playerNickname)){
+                        if (i == 0) {
                             Player1Button.setText(nick);
                             Player1Button.setVisible(true);
                             i++;
-                        }else if (i == 1){
+                        } else if (i == 1){
                             Player2Button.setText(nick);
                             Player2Button.setVisible(true);
                             i++;
-                        }else if (i == 2){
+                        } else if (i == 2){
                             Player3Button.setText(nick);
                             Player3Button.setVisible(true);
                         }
