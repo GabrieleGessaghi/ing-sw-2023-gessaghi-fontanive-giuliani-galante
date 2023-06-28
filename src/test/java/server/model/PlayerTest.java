@@ -57,8 +57,15 @@ public class PlayerTest {
         for(int i=0; i<6; i++)
             testFill[i] = Token.CAT;
 
-        testPlayer.insertTokens(testFill, 0);
         testPlayer.insertTokens(testFill, 4);
+        testPlayer.insertTokens(testFill, 0);
+
+        /*
+        for(int i=0; i<6; i++)
+            testFill[i] = Token.PLANT;
+        */
+        //POINT TALLY: common card (eightany): 8 points + adjacent (first column): 8 points + adjacent (last column): 8 points +
+        // + personal card (1 cat in last column): 1 point => total = 25
 
         assertEquals(testPlayer.getPoints(), 25);
     }

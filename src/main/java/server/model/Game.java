@@ -385,4 +385,9 @@ public class Game implements Savable, Observable {
         for (int i = 0; i < numberOfPlayers; i++)
             players[i] = new Player(elements.get("player" + i).toString(), List.of(commonCards));
     }
+
+
+    public CommonCard[] getCommonCards(){
+        return commonCards;
+    }
 }
