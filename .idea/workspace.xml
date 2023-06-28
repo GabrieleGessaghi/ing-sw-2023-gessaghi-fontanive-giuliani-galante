@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Probably fixed issue with jdk">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented Chat in GUI">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/saved_game.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/javafx/Chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/Chat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +106,7 @@
       <recent name="model.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Graphics User Interface">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -291,14 +289,8 @@
       <workItem from="1685446375167" duration="12020000" />
       <workItem from="1686203953011" duration="775000" />
       <workItem from="1687930338944" duration="1005000" />
-      <workItem from="1687957780869" duration="5154000" />
-    </task>
-    <task id="LOCAL-00184" summary="Changed the way TUI gets user input in order to implement the chat">
-      <created>1684419459076</created>
-      <option name="number" value="00184" />
-      <option name="presentableId" value="LOCAL-00184" />
-      <option name="project" value="LOCAL" />
-      <updated>1684419459076</updated>
+      <workItem from="1687957780869" duration="6713000" />
+      <workItem from="1687980262914" duration="890000" />
     </task>
     <task id="LOCAL-00185" summary="Implemented Chat in TUI">
       <created>1684421426494</created>
@@ -636,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687941251263</updated>
     </task>
-    <option name="localTasksCounter" value="233" />
+    <task id="LOCAL-00233" summary="Implemented Chat in GUI">
+      <created>1687971703978</created>
+      <option name="number" value="00233" />
+      <option name="presentableId" value="LOCAL-00233" />
+      <option name="project" value="LOCAL" />
+      <updated>1687971703979</updated>
+    </task>
+    <option name="localTasksCounter" value="234" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,7 +674,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modified the way client and server exchange messages to adhere to game rules" />
     <MESSAGE value="Separated normal and error messages" />
     <MESSAGE value="Further improved player reconnection" />
     <MESSAGE value="Common cards now update the clients upon an objective completion" />
@@ -700,7 +698,8 @@
     <MESSAGE value="don't allow tiles to be highlighted when they are not requested!" />
     <MESSAGE value="Started testing Game" />
     <MESSAGE value="Finished testing model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished testing model" />
+    <MESSAGE value="Implemented Chat in GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Chat in GUI" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

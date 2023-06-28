@@ -152,7 +152,8 @@ public class TUI implements Client {
                     case "points" -> toPrint.append("Points: ").append(jsonReader.nextInt()).append("\n");
                     case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player" : "Not first player").append("\n");
                     case "commonCard0", "commonCard1" -> toPrint.append(printCommonCard(jsonReader)).append("\n");
-                    case "message", "error" -> toPrint.append(jsonReader.nextString()).append("\n");
+                    case "message", "privateMessage", "publicMessage", "error" -> toPrint.append(jsonReader.nextString()).append("\n");
+                    case "messages" -> jsonReader.skipValue();
                     case "tiles" -> toPrint.append(printTiles(jsonReader));
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
@@ -283,7 +284,7 @@ public class TUI implements Client {
     private void requestColumnSelection(){
         int selectedColumn;
         do {
-            System.out.print("Insert column in which you want to insert the selected tokens: ");
+            System.out.print("\nInsert column in which you want to insert the selected tokens: ");
             waitForInput();
             selectedColumn = lastInput.charAt(0) - '1';
         } while (selectedColumn < 0 || selectedColumn > SHELF_COLUMNS - 1);
