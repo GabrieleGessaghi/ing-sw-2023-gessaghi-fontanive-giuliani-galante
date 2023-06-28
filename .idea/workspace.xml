@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="don't allow tiles to be highlighted when they are not requested!">
-      <change afterPath="$PROJECT_DIR$/src/test/java/server/model/GameTest.java" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Started testing Game">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/saved_game.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_23__19_02__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_23__19_02__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_23__19_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_23__19_05__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalcards/PersonalGoal3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/server/model/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/GameTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/server/model/PlayerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,15 +150,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in 6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameTest.isThereGameSavedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
@@ -169,28 +160,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="server.model" />
       <option name="MAIN_CLASS_NAME" value="server.model.GameTest" />
-      <option name="METHOD_NAME" value="isThereGameSavedTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="server.model" />
-      <option name="MAIN_CLASS_NAME" value="server.model.PlayerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest.insertTokensTestTwo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameTest.getViewTest4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
         <pattern>
@@ -199,8 +174,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="server.model" />
-      <option name="MAIN_CLASS_NAME" value="server.model.PlayerTest" />
-      <option name="METHOD_NAME" value="insertTokensTestTwo" />
+      <option name="MAIN_CLASS_NAME" value="server.model.GameTest" />
+      <option name="METHOD_NAME" value="getViewTest4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTest.getViewTest5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server.model" />
+      <option name="MAIN_CLASS_NAME" value="server.model.GameTest" />
+      <option name="METHOD_NAME" value="getViewTest5" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTest.getViewTest6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server.model" />
+      <option name="MAIN_CLASS_NAME" value="server.model.GameTest" />
+      <option name="METHOD_NAME" value="getViewTest6" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -225,19 +232,19 @@
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Graphics User Interface WINDOWS" />
       <item itemvalue="Application.Graphics User Interface" />
-      <item itemvalue="JUnit.GameTest.isThereGameSavedTest" />
-      <item itemvalue="JUnit.All in 6" />
-      <item itemvalue="JUnit.PlayerTest" />
-      <item itemvalue="JUnit.PlayerTest.insertTokensTestTwo" />
+      <item itemvalue="JUnit.GameTest" />
+      <item itemvalue="JUnit.GameTest.getViewTest4" />
+      <item itemvalue="JUnit.GameTest.getViewTest5" />
+      <item itemvalue="JUnit.GameTest.getViewTest6" />
       <item itemvalue="JUnit.server.model in 6" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.server.model in 6" />
-        <item itemvalue="JUnit.GameTest.isThereGameSavedTest" />
-        <item itemvalue="JUnit.PlayerTest.insertTokensTestTwo" />
-        <item itemvalue="JUnit.PlayerTest" />
-        <item itemvalue="JUnit.All in 6" />
+        <item itemvalue="JUnit.GameTest" />
+        <item itemvalue="JUnit.GameTest.getViewTest6" />
+        <item itemvalue="JUnit.GameTest.getViewTest5" />
+        <item itemvalue="JUnit.GameTest.getViewTest4" />
       </list>
     </recent_temporary>
   </component>
@@ -284,13 +291,6 @@
       <workItem from="1685446375167" duration="12020000" />
       <workItem from="1686203953011" duration="775000" />
       <workItem from="1687930338944" duration="1005000" />
-    </task>
-    <task id="LOCAL-00182" summary="nothing buttons made invisible">
-      <created>1684350078260</created>
-      <option name="number" value="00182" />
-      <option name="presentableId" value="LOCAL-00182" />
-      <option name="project" value="LOCAL" />
-      <updated>1684350078260</updated>
     </task>
     <task id="LOCAL-00183" summary="Added random picture for each tile">
       <created>1684417158370</created>
@@ -628,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687855303307</updated>
     </task>
-    <option name="localTasksCounter" value="231" />
+    <task id="LOCAL-00231" summary="Started testing Game">
+      <created>1687938862074</created>
+      <option name="number" value="00231" />
+      <option name="presentableId" value="LOCAL-00231" />
+      <option name="project" value="LOCAL" />
+      <updated>1687938862074</updated>
+    </task>
+    <option name="localTasksCounter" value="232" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,7 +669,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed players reconnecting with tcp when it is not their turn" />
     <MESSAGE value="Fixed players reconnecting with rmi when it is not their turn" />
     <MESSAGE value="Modified the way client and server exchange messages to adhere to game rules" />
     <MESSAGE value="Separated normal and error messages" />
@@ -687,7 +693,8 @@
     <MESSAGE value="go back to connection screen when connection error is detected" />
     <MESSAGE value="fixed resizable stage" />
     <MESSAGE value="don't allow tiles to be highlighted when they are not requested!" />
-    <option name="LAST_COMMIT_MESSAGE" value="don't allow tiles to be highlighted when they are not requested!" />
+    <MESSAGE value="Started testing Game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started testing Game" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
@@ -714,7 +721,7 @@
       <FILTER>server.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1687878303043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1687940881311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
