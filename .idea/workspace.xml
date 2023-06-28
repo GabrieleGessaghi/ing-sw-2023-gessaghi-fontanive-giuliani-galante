@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented Chat in GUI">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/saved_game.txt" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed bug with chat messages not appearing in TUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +105,7 @@
       <recent name="model.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Text User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -290,14 +289,7 @@
       <workItem from="1686203953011" duration="775000" />
       <workItem from="1687930338944" duration="1005000" />
       <workItem from="1687957780869" duration="6713000" />
-      <workItem from="1687980262914" duration="890000" />
-    </task>
-    <task id="LOCAL-00185" summary="Implemented Chat in TUI">
-      <created>1684421426494</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1684421426494</updated>
+      <workItem from="1687980262914" duration="1412000" />
     </task>
     <task id="LOCAL-00186" summary="gui first player connceted dialog for server players number request">
       <created>1684494584728</created>
@@ -635,7 +627,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687971703979</updated>
     </task>
-    <option name="localTasksCounter" value="234" />
+    <task id="LOCAL-00234" summary="Fixed bug with chat messages not appearing in TUI">
+      <created>1687982487767</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1687982487768</updated>
+    </task>
+    <option name="localTasksCounter" value="235" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,7 +673,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Separated normal and error messages" />
     <MESSAGE value="Further improved player reconnection" />
     <MESSAGE value="Common cards now update the clients upon an objective completion" />
     <MESSAGE value="Began implementing chat GUI" />
@@ -699,7 +697,8 @@
     <MESSAGE value="Started testing Game" />
     <MESSAGE value="Finished testing model" />
     <MESSAGE value="Implemented Chat in GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Chat in GUI" />
+    <MESSAGE value="Fixed bug with chat messages not appearing in TUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with chat messages not appearing in TUI" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
