@@ -1,8 +1,11 @@
 package client.gui;
 
+import client.network.NetworkHandler;
+import com.google.gson.JsonObject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
@@ -20,7 +23,7 @@ public class ChatController {
     @FXML
     private ToggleGroup ChatButtons;
     @FXML
-    private VBox ChatField;
+    private TextArea ChatField;
     @FXML
     private TextField MessageField;
     @FXML
@@ -33,39 +36,57 @@ public class ChatController {
     private RadioButton PublicButton;
     @FXML
     private Button SendButton;
+    private NetworkHandler networkHandler;
+    private String receiverNickname;
 
     @FXML
-    void sendButtonClicked(){
+    public void sendButtonClicked(){
         String message = MessageField.getText();
-        if(!message.isEmpty())
-            sendMessage(radioButtonSelected(), message);
+        if(!message.isEmpty()) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("message", message);
+            jsonObject.addProperty("senderNickname", playerNickname);
+            if (receiverNickname != null)
+                jsonObject.addProperty("receiverNickname", receiverNickname);
+            networkHandler.sendInput(jsonObject.toString());
+        }
+        MessageField.setText("");
     }
 
     @FXML
-    String radioButtonSelected(){
-        //REQUEST MESSAGES TO BE DISPLAYED
-        String selectedPlayerNickname = "";
+    public void radioButtonSelected(){
         if(Player1Button.isSelected())
-            selectedPlayerNickname = Player1Button.getText();
+            receiverNickname = Player1Button.getText();
         else if(Player2Button.isSelected())
-            selectedPlayerNickname = Player2Button.getText();
+            receiverNickname = Player2Button.getText();
         else if(Player3Button.isSelected())
-            selectedPlayerNickname = Player3Button.getText();
+            receiverNickname = Player3Button.getText();
         else if(PublicButton.isSelected())
-            selectedPlayerNickname = "public";
-        return selectedPlayerNickname;
+            receiverNickname = null;
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("requestChat", true);
+        if (receiverNickname != null)
+            jsonObject.addProperty("requestedPlayerNickname", receiverNickname);
+        networkHandler.sendInput(jsonObject.toString());
     }
 
-    void sendMessage(String chatSelection, String message){
-        //SEND MESSAGE THROUGH NETWORK HANDLER
+    public void setMessages(List<String> messages) {
+        StringBuilder chat = new StringBuilder();
+        for (String message : messages)
+            chat.append(message).append("\n");
+        ChatField.setText(chat.toString());
     }
 
-    void setMessages(List<String> messages) {
-        //DISPLAY MESSAGES
+    public void setNetworkHandler(NetworkHandler networkHandler) {
+        this.networkHandler = networkHandler;
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("requestChat", true);
+        networkHandler.sendInput(jsonObject.toString());
     }
 
-    @FXML
-    void setRadioButtons(List<String> nicknames){
+    public void setRadioButtons(List<String> nicknames){
+        receiverNickname = null;
         switch (nicknames.size()){
             case 2 -> {
                 for(String nick : nicknames)

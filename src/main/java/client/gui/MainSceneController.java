@@ -31,6 +31,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
+import server.controller.ChatController;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
@@ -100,6 +101,7 @@ public class MainSceneController implements Client, Initializable {
     boolean selectingTokens;
     boolean selectingColumn;
     boolean isPlayerWindowOpen;
+    client.gui.ChatController chatController;
     int[][] tempPlayerShelf;
     PlayerShelfDialogController playerShelfController;
     List<String> nicknames = new ArrayList<>();
@@ -113,6 +115,7 @@ public class MainSceneController implements Client, Initializable {
         tokensSelected = 0;
         columnSelection = -1;
         isPlayerWindowOpen = false;
+        chatController = null;
 
         //Add buttons functionalities
         cancel.setOnMouseClicked(e -> {
@@ -205,9 +208,6 @@ public class MainSceneController implements Client, Initializable {
 
     @Override
     public void showOutput(String jsonMessage) {
-
-        //TODO: IMPROVE TO ADAPT TO NEW MESSAGING METHOD
-        //Temporary variables
         String tempNickname = "";
         int[][] tempTiles = null;
         int tempPersonalCard = -1;
@@ -266,6 +266,16 @@ public class MainSceneController implements Client, Initializable {
                     case "message" -> {
                         String nextString = jsonReader.nextString();
                         Platform.runLater(() -> messages.setText(nextString));
+                    }
+                    case "messages" -> {
+                        if (chatController != null) {
+                            List<String> messages = new ArrayList<>();
+                            jsonReader.beginArray();
+                            while (jsonReader.hasNext())
+                                messages.add(jsonReader.nextString());
+                            jsonReader.endArray();
+                            chatController.setMessages(messages);
+                        }
                     }
                     case "personalCard" -> {
                         jsonReader.beginObject();
@@ -680,13 +690,13 @@ public class MainSceneController implements Client, Initializable {
     void chatButtonClicked() {
         Platform.runLater(() -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafx/Chat.fxml"));
-            Parent root = null;
+            Parent root;
             try {
                 root = loader.load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            ChatController chatController = loader.getController();
+            chatController = loader.getController();
             Stage chatStage = new Stage();
             Scene chatScene = new Scene(root);
             chatScene.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
@@ -694,8 +704,10 @@ public class MainSceneController implements Client, Initializable {
             chatStage.setTitle("Chat");
             chatStage.setResizable(false);
             chatController.setRadioButtons(nicknames);
+            chatController.setNetworkHandler(networkHandler);
             chatStage.show();
         });
+        chatController = null;
     }
 
     void showWinner(String winnerNickname){

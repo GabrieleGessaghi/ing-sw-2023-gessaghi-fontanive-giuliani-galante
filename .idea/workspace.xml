@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Finished testing model">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/saved_game.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/server/controller/ControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/server/controller/TurnControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/server/controller/login/CreationControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/server/controller/utilities/JsonToolsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_23__19_02__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_23__19_02__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_23__19_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_23__19_05__Changes_.xml" afterDir="false" />
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Probably fixed issue with jdk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/javafx/Chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/javafx/Chat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +108,7 @@
       <recent name="model.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.server.controller in 6">
+  <component name="RunManager" selected="Application.Graphics User Interface">
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -189,22 +183,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JsonToolsTest.readMatrixTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.controller.utilities.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="server.controller.utilities" />
-      <option name="MAIN_CLASS_NAME" value="server.controller.utilities.JsonToolsTest" />
-      <option name="METHOD_NAME" value="readMatrixTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TurnControllerTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="6" />
       <extension name="coverage">
@@ -235,24 +213,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="server.model in 6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server.model" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Text User Interface" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Graphics User Interface WINDOWS" />
       <item itemvalue="Application.Graphics User Interface" />
+      <item itemvalue="JUnit.server.model in 6" />
       <item itemvalue="JUnit.ControllerTest.addClientTest" />
       <item itemvalue="JUnit.ControllerTest.runTest" />
-      <item itemvalue="JUnit.JsonToolsTest.readMatrixTest" />
       <item itemvalue="JUnit.TurnControllerTest.constructorTest" />
       <item itemvalue="JUnit.server.controller in 6" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.server.model in 6" />
         <item itemvalue="JUnit.server.controller in 6" />
         <item itemvalue="JUnit.ControllerTest.addClientTest" />
         <item itemvalue="JUnit.TurnControllerTest.constructorTest" />
         <item itemvalue="JUnit.ControllerTest.runTest" />
-        <item itemvalue="JUnit.JsonToolsTest.readMatrixTest" />
       </list>
     </recent_temporary>
   </component>
@@ -299,6 +291,7 @@
       <workItem from="1685446375167" duration="12020000" />
       <workItem from="1686203953011" duration="775000" />
       <workItem from="1687930338944" duration="1005000" />
+      <workItem from="1687957780869" duration="5154000" />
     </task>
     <task id="LOCAL-00184" summary="Changed the way TUI gets user input in order to implement the chat">
       <created>1684419459076</created>
@@ -652,6 +645,11 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="11dfc8a7-7a3e-403e-98b9-2a3ad805a05c">
+          <value>
+            <State />
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -712,31 +710,31 @@
     <SUITE FILE_PATH="coverage/ing_sw_23_gessaghi_fontanive_giuliani_galante$DiagonalTest_LeftDiagonal.ic" NAME="DiagonalTest.LeftDiagonal Coverage Results" MODIFIED="1680101898169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>model.cards.concreteobjectives.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1687957749040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.model.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest.ic" NAME="BoardTest Coverage Results" MODIFIED="1687860514306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$model_in_6.ic" NAME="model in 6 Coverage Results" MODIFIED="1683035690174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Interface.ic" NAME="Text User Interface Coverage Results" MODIFIED="1684852929129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_cards_concreteobjectives_in_6.ic" NAME="server.model.cards.concreteobjectives in 6 Coverage Results" MODIFIED="1683049588320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.cards.concreteobjectives.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$All_in_6.ic" NAME="All in 6 Coverage Results" MODIFIED="1684841049657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$ConfigurationsTest.ic" NAME="ConfigurationsTest Coverage Results" MODIFIED="1683044723710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>server.model.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1687878124103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>server.model.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_controller_in_6.ic" NAME="server.controller in 6 Coverage Results" MODIFIED="1687948603537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_in_6.ic" NAME="server.model in 6 Coverage Results" MODIFIED="1687941145484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$ConfigurationsTest.ic" NAME="ConfigurationsTest Coverage Results" MODIFIED="1683044723710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$BoardTest_constructorTest.ic" NAME="BoardTest.constructorTest Coverage Results" MODIFIED="1683035634816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$All_in_6.ic" NAME="All in 6 Coverage Results" MODIFIED="1684841049657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1687878124103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>server.model.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Interface.ic" NAME="Text User Interface Coverage Results" MODIFIED="1684852929129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
