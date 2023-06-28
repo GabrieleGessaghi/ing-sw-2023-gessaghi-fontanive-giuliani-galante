@@ -33,6 +33,12 @@ public class StartingSceneController {
     @FXML
     private Label title;
 
+    /**
+     * Set the parameter for the client connection and switch to the main scene of the game.
+     * Set the class variable with given params.
+     * @param event triggered by the button action
+     * @author Gabriele Gessaghi
+     */
     @FXML
     void connectBtnClicked(ActionEvent event) throws Exception{
         GUI.playerNickname = nicknameTextField.getText();
