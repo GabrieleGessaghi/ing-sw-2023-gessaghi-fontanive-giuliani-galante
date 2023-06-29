@@ -3,16 +3,12 @@ package server.model;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import server.controller.observer.Event;
-import server.controller.observer.Observable;
-import server.controller.observer.Observer;
 import server.model.cards.Card;
 import server.model.cards.CommonCard;
 import server.model.cards.TokenTools;
 import server.model.cards.PersonalCard;
 import server.model.exceptions.IllegalColumnException;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
-import server.controller.utilities.JsonTools;
 
 import java.util.ArrayList;
 import java.util.List;

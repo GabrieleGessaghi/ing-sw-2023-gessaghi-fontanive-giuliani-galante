@@ -2,8 +2,6 @@ package server.view;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import server.Server;
-import server.controller.Controller;
 import server.controller.Prompt;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
@@ -63,7 +61,7 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
     public abstract void sendOutput(String jsonMessage);
 
     /**
-     *
+     * Sends a ping message to the respective client.
      * @author Giorgio massimo Fontanive
      */
     public void ping() {
@@ -118,6 +116,9 @@ public abstract class ClientHandler implements Observer, Observable, Runnable {
         }
     }
 
+    /**
+     * Reconnects the client to the controller.
+     */
     public void reconnect() {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("clientReconnected", index);

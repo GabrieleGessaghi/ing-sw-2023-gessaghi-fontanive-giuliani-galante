@@ -2,14 +2,10 @@ package server.model.cards;
 
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
-import server.controller.observer.Event;
-import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.Token;
-import server.controller.utilities.ConfigLoader;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;

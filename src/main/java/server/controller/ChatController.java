@@ -25,6 +25,10 @@ public class ChatController implements Observer {
         this.chat = chat;
     }
 
+    /**
+     * Receives messages regarding the chat.
+     * @param event The message to be sent to this observer.
+     */
     @Override
     public void update(Event event) {
         String currentMessageSender = null;

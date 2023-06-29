@@ -57,7 +57,7 @@ public class TurnController implements Observer {
     }
 
     /**
-     *
+     * Handles a turn from a player.
      */
     public synchronized void newTurn() {
         currentClientHandler.requestInput(Prompt.TOKENS);
@@ -83,7 +83,7 @@ public class TurnController implements Observer {
     }
 
     /**
-     *
+     * Handles the model side of the turn.
      */
     private synchronized void finalizeTurn() {
         try {
@@ -97,7 +97,7 @@ public class TurnController implements Observer {
     }
 
     /**
-     *
+     * Ends the turn no matter what.
      */
     public synchronized void skipTurn() {
         isTurnCancelled = true;

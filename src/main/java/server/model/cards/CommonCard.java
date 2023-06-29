@@ -4,15 +4,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import server.controller.observer.Event;
-import server.controller.observer.Observable;
-import server.controller.observer.Observer;
-import server.controller.utilities.JsonTools;
-import server.model.Savable;
 import server.model.Token;
 import server.model.cards.concreteobjectives.*;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import static server.controller.utilities.ConfigLoader.COMMONCARD_POINTS;

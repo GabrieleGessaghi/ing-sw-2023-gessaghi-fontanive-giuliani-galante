@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Controller of the creation of the game.
- * @author Niccolò Giuliani
+ * @author Giorgio Massimo Fontanive
  */
 public class CreationController extends LoginController {
 
@@ -24,6 +24,11 @@ public class CreationController extends LoginController {
         playersNumber = -1;
     }
 
+    /**
+     * Receives information for the game creation.
+     * @param event The message to be sent to this observer.
+     * @author Giorgio Massimo Fontanive
+     */
     @Override
     public void update(Event event) {
         int index;
@@ -42,8 +47,10 @@ public class CreationController extends LoginController {
     }
 
     /**
-     *
-     * @param nickname
+     * Checks if there's duplicate nicknames.
+     * @param nickname The last player's nickname.
+     * @param index The last player's index.
+     * @author Giorgio Massimo Fontanive
      */
     private void updateNickname(String nickname, int index) {
         ClientHandler clientHandler = Controller.findClientHandler(index);

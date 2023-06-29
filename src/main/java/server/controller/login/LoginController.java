@@ -8,10 +8,17 @@ import server.view.ClientHandler;
 
 import java.util.ArrayList;
 
+/**
+ * Controls the creation of a game.
+ * @author Giorgio Massimo Fontanive
+ */
 public abstract class LoginController implements Observer {
     protected int playersNumber;
     protected ArrayList<String> playersNicknames;
 
+    /**
+     * @return True if the game is ready to start.
+     */
     public abstract boolean isGameReady();
 
     /**
@@ -33,8 +40,8 @@ public abstract class LoginController implements Observer {
     }
 
     /**
-     *
-     * @param nickname
+     * Checks whether the given player had previously disconnected.
+     * @param nickname The player's nickname.
      */
     protected void checkDisconnection(String nickname) {
         ClientHandler clientHandler = Controller.findClientHandlerByName(nickname);

@@ -38,6 +38,7 @@ public class Controller implements Observer, Runnable {
 
     /**
      * Manages turns by sending requests and updates to client handlers.
+     * @author Giorgio Massimo Fontanive
      */
     @Override
     public void run() {
@@ -140,7 +141,8 @@ public class Controller implements Observer, Runnable {
     }
 
     /**
-     *
+     * Starts the game.
+     * @author Giorgio Massimo Fontanive
      */
     private void startGame() {
         game = loginController.createGame();
@@ -157,7 +159,9 @@ public class Controller implements Observer, Runnable {
     }
 
     /**
-     *
+     * Handles a player's disconnection.
+     * @param clientHandler The client handler that has disconnected.
+     * @author Giorgio Massimo Fontanive
      */
     private void handleDisconnection(ClientHandler clientHandler) {
         disconnectedClients.put(clientHandler.nickname, clientHandler.index);
@@ -241,6 +245,7 @@ public class Controller implements Observer, Runnable {
      * Finds the client handler with this nickname.
      * @param nickname The nickname of the wanted client handler.
      * @return The client handler with the given nickname.
+     * @author Giorgio Massimo Fontanive
      */
     public static ClientHandler findClientHandlerByName(String nickname) {
         for (ClientHandler clientHandler : clientHandlers)

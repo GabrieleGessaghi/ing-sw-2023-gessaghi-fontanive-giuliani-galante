@@ -9,6 +9,10 @@ import server.view.ClientHandler;
 
 import java.util.ArrayList;
 
+/**
+ * Controls loading a game from a save file.
+ * @author Giorgio Massimo Fontanive
+ */
 public class LoadController extends LoginController{
 
     public LoadController(ArrayList<String> nicknames) {

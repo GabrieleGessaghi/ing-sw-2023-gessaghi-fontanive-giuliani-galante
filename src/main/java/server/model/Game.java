@@ -22,6 +22,9 @@ import java.util.*;
 
 import static server.controller.utilities.ConfigLoader.NUMBER_OF_COMMON_CARDS;
 
+/**
+ * Controls a single game and its players.
+ */
 public class Game implements Savable, Observable {
     private int currentPlayerIndex;
     private int numberOfPlayers;
@@ -121,8 +124,8 @@ public class Game implements Savable, Observable {
     }
 
     /**
-     *
-     * @return
+     * Loads the nicknames from the saved game
+     * @return A list of nicknames.
      */
     public static ArrayList<String> loadNicknames() {
         Path filePath = Path.of("src/main/resources/saved_game.txt");
