@@ -29,7 +29,7 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+        ConfigLoader.loadConfiguration("/json/configuration.json");
         Parent root = FXMLLoader.load(getClass().getResource("/javafx/GUI.fxml"));
         Scene base = new Scene(root);
         base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());

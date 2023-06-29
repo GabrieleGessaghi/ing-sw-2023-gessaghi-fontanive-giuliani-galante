@@ -40,7 +40,7 @@ public class TUI implements Client {
      * @author Giorgio Massimo Fontanive
      */
     public static void startGame() {
-        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+        ConfigLoader.loadConfiguration("json/configuration.json");
         printOpening();
         Scanner scn = new Scanner(System.in);
         System.out.print("Insert nickname: ");
