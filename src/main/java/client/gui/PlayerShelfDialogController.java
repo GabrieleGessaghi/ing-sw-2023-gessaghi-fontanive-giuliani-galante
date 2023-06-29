@@ -35,6 +35,14 @@ public class PlayerShelfDialogController {
 
     public void initialize(){}
 
+    /**
+     * Initialize the shelf when the dialog is triggered form the main scene.
+     * Set the class variable with given params.
+     * @param tokens is the requested player shelf from the server.
+     * @param handler is the handler of the client who opened the dialog.
+     * @param nickname is the player nickname which shelf is requested.
+     * @author Gabriele Gessaghi
+     */
     @FXML
     public void initShelf(int [][] tokens, NetworkHandler handler, String nickname) {
         clientHandler = handler;
@@ -77,6 +85,13 @@ public class PlayerShelfDialogController {
             }
         }
     }
+
+    /**
+     * Is the function called when the reload button in the dialog is pressed.
+     * Send the request for the shelf through the client handler to the server.
+     * @param event is the event triggered by the button.
+     * @author Gabriele Gessaghi
+     */
     @FXML
     void reloadShelf(ActionEvent event) {
         requestedReload = true;
@@ -88,7 +103,12 @@ public class PlayerShelfDialogController {
         });
     }
 
-    void updateShelf(int [][] tokens){
+    /**
+     * Update the shelf with the new values.
+     * @param tokens is the updated shelf values from the server.
+     * @author Gabriele Gessaghi
+     */
+    public void updateShelf(int [][] tokens){
         for (int i = 0; i < shelfGrid.getRowCount(); i++) {
             for(int j = 0; j < shelfGrid.getColumnCount(); j++) {
                 Random rng = new Random();
@@ -130,6 +150,13 @@ public class PlayerShelfDialogController {
         }
     }
 
+    /**
+     * return a node of a gridpane by row and column
+     * @param row row of the node
+     * @param column column of the node
+     * @return Node by the row and the column
+     * @author Niccolò Giuliani
+     */
     private Node getNodeByRowColumnIndex (int row,int column) {
         Node result = null;
         int gridRow;

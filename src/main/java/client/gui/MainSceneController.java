@@ -41,6 +41,8 @@ import java.io.StringReader;
 import java.net.URL;
 import java.util.*;
 
+
+
 public class MainSceneController implements Client, Initializable {
     @FXML
     public ImageView common_goal1;
@@ -467,8 +469,7 @@ public class MainSceneController implements Client, Initializable {
     }
 
     /**
-     * Shows a popup screen asking user for player's number.
-     *
+     * Shows a popup screen asking user for player's number and send the information to the server.
      * @author Gabriele Gessaghi
      */
     private void requestPlayersNumber() {
@@ -655,8 +656,15 @@ public class MainSceneController implements Client, Initializable {
         return result;
     }
 
+    /**
+     * Create the shelf dialog by loading the FXML files and send request for the shelf of chosed player.
+     * Initialize the shelf with the values received from the server.
+     * Set the class variable isPlayerWindowOpen.
+     * @param event is the event triggered by the button action.
+     * @author Gabriele Gessaghi
+     */
     @FXML
-    void playerBtnClicked(ActionEvent event) {
+    private void playerBtnClicked(ActionEvent event) {
         Button playerBtn = (Button) event.getSource();
         String nickname = playerBtn.getText();
         Platform.runLater(() -> {
@@ -709,7 +717,12 @@ public class MainSceneController implements Client, Initializable {
         chatController = null;
     }
 
-    void showWinner(String winnerNickname){
+    /**
+     * Create and show the dialog with the game results.
+     * @param winnerNickname is the nickname of the player who win the game
+     * @author Gabriele Gessaghi
+     */
+    private void showWinner(String winnerNickname){
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setHeaderText(null);
         alert.setGraphic(null);
@@ -758,7 +771,12 @@ public class MainSceneController implements Client, Initializable {
         alert.showAndWait();
     }
 
-    void manageTilesOrder(){
+    /**
+     * Create and show the dialog for the tiles order selection during the player turn.
+     * Set the class variable tokenSelection with the ordered tiles.
+     * @author Gabriele Gessaghi
+     */
+    private void manageTilesOrder(){
         // fill arraylist with token images
         ArrayList<ImageView> tokens = new ArrayList<>();
         Map<Integer, ImageView> tokenIndexMap = new HashMap<>();
