@@ -9,20 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed ConfigLoader and the build artifacts">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed game saving and loading path">
       <change afterPath="$PROJECT_DIR$/diagrams/.$sequence_diagram_login.drawio.bkp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/server_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/server_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_graphics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_graphics.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diagrams/sequence_diagram_login.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/diagrams/sequence_diagram_login.drawio" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/cards/PersonalCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/cards/PersonalCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/utilities/ConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/utilities/ConfigLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +83,7 @@
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4608295",
+    "project.structure.side.proportion": "0.14649682",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.JavaFX",
     "vue.rearranger.settings.migration": "true"
@@ -318,13 +310,6 @@
       <workItem from="1687980262914" duration="1619000" />
       <workItem from="1688016833397" duration="7932000" />
       <workItem from="1688043354296" duration="379000" />
-    </task>
-    <task id="LOCAL-00191" summary="Fixed duplicated code and JSON parsing error in MainSceneController">
-      <created>1684508530705</created>
-      <option name="number" value="00191" />
-      <option name="presentableId" value="LOCAL-00191" />
-      <option name="project" value="LOCAL" />
-      <updated>1684508530705</updated>
     </task>
     <task id="LOCAL-00192" summary="Added messages label on top of main scene">
       <created>1684583795834</created>
@@ -662,7 +647,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688041872570</updated>
     </task>
-    <option name="localTasksCounter" value="241" />
+    <task id="LOCAL-00241" summary="Fixed game saving and loading path">
+      <created>1688054138991</created>
+      <option name="number" value="00241" />
+      <option name="presentableId" value="LOCAL-00241" />
+      <option name="project" value="LOCAL" />
+      <updated>1688054138991</updated>
+    </task>
+    <option name="localTasksCounter" value="242" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -701,7 +693,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed all personal goal jsons" />
     <MESSAGE value="Fixed chat messages not showing in GUI" />
     <MESSAGE value="Separated LoadController and CreationController for game loading or creation" />
     <MESSAGE value="Implemented resilience to server crashes" />
@@ -726,7 +717,8 @@
     <MESSAGE value="generated jar files" />
     <MESSAGE value="Finished all documentation" />
     <MESSAGE value="Fixed ConfigLoader and the build artifacts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed ConfigLoader and the build artifacts" />
+    <MESSAGE value="Fixed game saving and loading path" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed game saving and loading path" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
