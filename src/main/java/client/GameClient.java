@@ -5,6 +5,9 @@ import client.tui.TUI;
 
 import java.util.Scanner;
 
+/**
+ * Starts the requested client.
+ */
 public class GameClient {
 
     public static void main(String[] args) {

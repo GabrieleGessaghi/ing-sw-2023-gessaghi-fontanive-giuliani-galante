@@ -53,6 +53,10 @@ public class NetworkHandlerRMI extends NetworkHandler implements ServerUsable {
         this.notifyAll();
     }
 
+    /**
+     * Connects to the server and waits for its messages.
+     * @author Giorgio massimo Fontanive
+     */
     public void run() {
         super.run();
         int i;

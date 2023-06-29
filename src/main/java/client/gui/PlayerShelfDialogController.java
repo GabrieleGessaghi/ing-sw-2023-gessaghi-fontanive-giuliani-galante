@@ -1,26 +1,20 @@
 package client.gui;
 
-import client.Client;
 import client.network.NetworkHandler;
 import com.google.gson.JsonObject;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Random;
 
+/**
+ * Controls the window displaying the other players' shelves.
+ */
 public class PlayerShelfDialogController {
 
     private NetworkHandler clientHandler;
@@ -30,10 +24,6 @@ public class PlayerShelfDialogController {
 
     @FXML
     private GridPane shelfGrid;
-    @FXML
-    private Button shelfReloadBtn;
-
-    public void initialize(){}
 
     /**
      * Initialize the shelf when the dialog is triggered form the main scene.

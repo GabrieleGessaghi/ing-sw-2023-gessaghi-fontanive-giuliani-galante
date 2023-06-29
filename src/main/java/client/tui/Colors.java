@@ -1,5 +1,9 @@
 package client.tui;
 
+/**
+ * Saves the codes for all text user interface colors.
+ * @author Niccolò Galante
+ */
 public class Colors {
     public static final String COLOUR_RESET = "\u001B[0m";
     public static final String BLACK_BACKGROUND = "\u001B[40m";

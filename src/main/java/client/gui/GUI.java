@@ -9,7 +9,10 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import server.controller.utilities.ConfigLoader;
 
-
+/**
+ * Loads the starting scene asking the player for the required information.
+ * @author Gabriele Gessaghi
+ */
 public class GUI extends Application {
 
     //Starting constants
@@ -17,6 +20,9 @@ public class GUI extends Application {
     public static int connectionType;
     public static String host;
 
+    /**
+     * Starts the GUI.
+     */
     public static void startGame(String[] args) {
         launch(args);
     }
@@ -32,7 +38,6 @@ public class GUI extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
         primaryStage.setOnCloseRequest(e -> {
-
         });
     }
 }

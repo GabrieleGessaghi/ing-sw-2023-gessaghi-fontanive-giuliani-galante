@@ -30,8 +30,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
-import server.controller.ChatController;
 import server.controller.Prompt;
 import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
@@ -41,8 +39,9 @@ import java.io.StringReader;
 import java.net.URL;
 import java.util.*;
 
-
-
+/**
+ * Controls the main scene where the game is played.
+ */
 public class MainSceneController implements Client, Initializable {
     @FXML
     public ImageView common_goal1;
@@ -108,6 +107,10 @@ public class MainSceneController implements Client, Initializable {
     PlayerShelfDialogController playerShelfController;
     List<String> nicknames = new ArrayList<>();
 
+    /**
+     * Initialized the variable and some event handlers when this stage starts.
+     * @author Giorgio Massimo Fontanive
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Node> selectedNodes = new ArrayList<>();
@@ -185,6 +188,11 @@ public class MainSceneController implements Client, Initializable {
         new Thread(networkHandler).start();
     }
 
+    /**
+     * Request the information the server needs.
+     * @param prompt The type of information the server needs.
+     * @author Giorgio Massimo Fontanive
+     */
     @Override
     public void requestInput(Prompt prompt) {
         switch (prompt) {
@@ -208,6 +216,10 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
+    /**
+     * Updates the information visible on screen based on the received message from the server.
+     * @param jsonMessage The json message received from the server.
+     */
     @Override
     public void showOutput(String jsonMessage) {
         String tempNickname = "";
@@ -344,6 +356,10 @@ public class MainSceneController implements Client, Initializable {
         }
     }
 
+    /**
+     * Changes the visible parts of the screen when the game starts.
+     * @author Giorgio Massimo Fontanive
+     */
     private void startGame() {
         Platform.runLater(() -> {
             JsonObject jsonObject = new JsonObject();
@@ -503,7 +519,8 @@ public class MainSceneController implements Client, Initializable {
     }
 
     /**
-     *
+     * Starts the tile selection process.
+     * @author Giorgio Massimo Fontanive
      */
     private void requestTiles() {
         Platform.runLater(() -> {
@@ -519,7 +536,8 @@ public class MainSceneController implements Client, Initializable {
     }
 
     /**
-     *
+     * Starts the column selection process.
+     * @author Giorgio Massimo Fontanive
      */
     private void requestColumn() {
         Platform.runLater(() -> {
@@ -693,6 +711,10 @@ public class MainSceneController implements Client, Initializable {
         isPlayerWindowOpen = false;
     }
 
+    /**
+     * Opens the chat when its button is clicked.
+     * @author Niccolò Galante
+     */
     @FXML
     void chatButtonClicked() {
         Platform.runLater(() -> {
