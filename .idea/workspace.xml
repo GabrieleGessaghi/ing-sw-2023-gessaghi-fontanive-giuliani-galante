@@ -113,7 +113,7 @@
       <recent name="model.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Graphics User Interface">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.GameClient" />
       <module name="6" />
