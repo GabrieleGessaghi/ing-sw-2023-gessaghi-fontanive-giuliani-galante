@@ -105,7 +105,7 @@ public class Game implements Savable, Observable {
      */
     private void saveGame() throws IOException {
         String gameState = getState().toString();
-        try (PrintWriter out = new PrintWriter("src/main/resources/saved_game.txt")) {
+        try (PrintWriter out = new PrintWriter("/saved_game.txt")) {
             out.println(gameState);
         }
     }
@@ -115,12 +115,10 @@ public class Game implements Savable, Observable {
      * @author Gabriele Gessaghi
      */
     public void loadGame() {
-        Path filePath = Path.of("src/main/resources/saved_game.txt");
+        Path filePath = Path.of("/saved_game.txt");
         String gameState;
         try {
-            InputStream inputStream = ConfigLoader.class.getResourceAsStream("/saved_game.txt");
-            gameState = IOUtils.toString(inputStream);
-            //gameState = Files.readString(filePath);
+            gameState = Files.readString(filePath);
             loadState(JsonParser.parseString(gameState).getAsJsonObject());
         } catch (IOException e) {
             System.out.println("Save not found");
@@ -132,12 +130,10 @@ public class Game implements Savable, Observable {
      * @return A list of nicknames.
      */
     public static ArrayList<String> loadNicknames() {
-        Path filePath = Path.of("src/main/resources/saved_game.txt");
+        Path filePath = Path.of("/saved_game.txt");
         String gameState;
         try {
-            InputStream inputStream = ConfigLoader.class.getResourceAsStream("/saved_game.txt");
-            gameState = IOUtils.toString(inputStream);
-            //gameState = Files.readString(filePath);
+            gameState = Files.readString(filePath);
             JsonObject jsonObject = JsonParser.parseString(gameState).getAsJsonObject();
             ArrayList<String> nicknames = new ArrayList<>();
             int i = 0;
@@ -158,13 +154,11 @@ public class Game implements Savable, Observable {
      * @return True if the file containing the game state is found
      */
     public static boolean isThereGameSaved() {
-        Path filePath = Path.of("src/main/resources/saved_game.txt");
+        Path filePath = Path.of("/saved_game.txt");
         try {
-            InputStream inputStream = ConfigLoader.class.getResourceAsStream("/saved_game.txt");
-            String gameState = IOUtils.toString(inputStream);
-            //String gameState = Files.readString(filePath);
+            String gameState = Files.readString(filePath);
             return true;
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             return false;
         }
     }
