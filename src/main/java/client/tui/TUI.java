@@ -39,7 +39,7 @@ public class TUI implements Client {
      * Asks user for initial information then runs a loop scanning for user input.
      * @author Giorgio Massimo Fontanive
      */
-    public static void main(String[] args) {
+    public static void startGame() {
         ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
         printOpening();
         Scanner scn = new Scanner(System.in);

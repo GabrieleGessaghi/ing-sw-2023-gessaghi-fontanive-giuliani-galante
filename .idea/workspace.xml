@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed bug with games not restarting after all players disconnected">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Implemented request view in TUI">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json/json_field_client.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/json/json_fields_server.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +31,8 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -107,7 +113,14 @@
       <recent name="model.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Text User Interface">
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false">
+      <option name="MAIN_CLASS_NAME" value="client.GameClient" />
+      <module name="6" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Graphics User Interface WINDOWS" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="client.gui.GUI" />
       <module name="6" />
@@ -231,6 +244,7 @@
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Graphics User Interface WINDOWS" />
       <item itemvalue="Application.Graphics User Interface" />
+      <item itemvalue="Application.Client" />
       <item itemvalue="JUnit.server.model in 6" />
       <item itemvalue="JUnit.ControllerTest.addClientTest" />
       <item itemvalue="JUnit.ControllerTest.runTest" />
@@ -292,14 +306,7 @@
       <workItem from="1687930338944" duration="1005000" />
       <workItem from="1687957780869" duration="6713000" />
       <workItem from="1687980262914" duration="1619000" />
-      <workItem from="1688016833397" duration="3984000" />
-    </task>
-    <task id="LOCAL-00187" summary="number of players dialog custom style">
-      <created>1684497051034</created>
-      <option name="number" value="00187" />
-      <option name="presentableId" value="LOCAL-00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1684497051035</updated>
+      <workItem from="1688016833397" duration="4496000" />
     </task>
     <task id="LOCAL-00188" summary="finished player dialog and server side update">
       <created>1684497668362</created>
@@ -637,7 +644,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687983158468</updated>
     </task>
-    <option name="localTasksCounter" value="236" />
+    <task id="LOCAL-00236" summary="Implemented request view in TUI">
+      <created>1688028434684</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1688028434684</updated>
+    </task>
+    <option name="localTasksCounter" value="237" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,7 +690,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Common cards now update the clients upon an objective completion" />
     <MESSAGE value="Began implementing chat GUI" />
     <MESSAGE value="Fixed small mistake" />
     <MESSAGE value="Board should now reset at the correct time" />
@@ -701,7 +714,8 @@
     <MESSAGE value="Implemented Chat in GUI" />
     <MESSAGE value="Fixed bug with chat messages not appearing in TUI" />
     <MESSAGE value="Fixed bug with games not restarting after all players disconnected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with games not restarting after all players disconnected" />
+    <MESSAGE value="Implemented request view in TUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented request view in TUI" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

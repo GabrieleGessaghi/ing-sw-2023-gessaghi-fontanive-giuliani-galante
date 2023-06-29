@@ -17,7 +17,7 @@ public class GUI extends Application {
     public static int connectionType;
     public static String host;
 
-    public static void main(String[] args) {
+    public static void startGame(String[] args) {
         launch(args);
     }
 
