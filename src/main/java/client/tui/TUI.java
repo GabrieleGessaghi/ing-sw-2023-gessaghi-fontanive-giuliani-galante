@@ -64,6 +64,9 @@ public class TUI implements Client {
         this.networkHandler = networkHandler;
     }
 
+    /**
+     * Asks the player for connection information.
+     */
     public void connect() {
         Scanner scn = new Scanner(System.in);
         System.out.print("Insert host's IP address: ");
@@ -128,7 +131,8 @@ public class TUI implements Client {
     }
 
     /**
-     *
+     * Allows the player to view the requested information.
+     * @author Giorgio Massimo Fontanive
      */
     public void requestNewView() {
         Scanner scn = new Scanner(System.in);
@@ -395,6 +399,13 @@ public class TUI implements Client {
         return toPrint;
     }
 
+    /**
+     * Prints information regarding the common cards.
+     * @param jsonReader The current json reader being used
+     * @return The string to be printed.
+     * @throws IOException When there's an error reading the json.
+     * @author Giorgio Massimo Fontanive
+     */
     private StringBuilder printCommonCard(JsonReader jsonReader) throws IOException {
         StringBuilder toPrint = new StringBuilder();
         jsonReader.beginObject();

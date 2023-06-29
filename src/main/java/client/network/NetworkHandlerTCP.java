@@ -1,6 +1,5 @@
 package client.network;
 
-import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import server.controller.Prompt;
 

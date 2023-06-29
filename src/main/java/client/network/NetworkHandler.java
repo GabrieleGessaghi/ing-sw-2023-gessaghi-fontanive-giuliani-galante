@@ -3,13 +3,14 @@ package client.network;
 import client.Client;
 import com.google.gson.JsonObject;
 import server.controller.utilities.ConfigLoader;
-import server.model.View;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-//TODO: Documents this
-
+/**
+ * Defines a module for the client to communicate with the server.
+ * @author Giorgio Massimo Fontanive
+ */
 public abstract class NetworkHandler implements Runnable {
 
     protected Client client;
@@ -29,6 +30,9 @@ public abstract class NetworkHandler implements Runnable {
         this.host = host;
     }
 
+    /**
+     * Sets a heartbeat to detect disconnections.
+     */
     @Override
     public void run() {
         timer = new Timer();
@@ -41,7 +45,7 @@ public abstract class NetworkHandler implements Runnable {
     }
 
     /**
-     *
+     * Sends a ping message to the server.
      * @author Giorgio massimo Fontanive
      */
     public void ping() {
@@ -50,33 +54,18 @@ public abstract class NetworkHandler implements Runnable {
         sendInput(jsonObject.toString());
     }
 
+    /**
+     * Sends a message to server in json format.
+     * @param input The json message to be sent to the server.
+     */
     public abstract void sendInput(String input);
-
-    public void requestView(View view, String playerNickname) {
-        JsonObject jsonObject = new JsonObject();
-        String request = null;
-        switch (view) {
-            case BOARD -> request = "requestBoard";
-            case CURRENT_PLAYER -> request = "currentPlayer";
-            case SPECIFIC_PLAYER -> request = "requestPlayer";
-            case COMMON_CARDS -> request = "requestCommonCards";
-            case PERSONAL_CARD -> request = "requestPersonalCard";
-            case CHAT -> request = "requestChat";
-            case SHELF -> request = "requestShelf";
-        }
-        if (request != null)
-            jsonObject.addProperty(request, true);
-        if (playerNickname != null)
-            jsonObject.addProperty("requestedPlayerNickname", playerNickname);
-        sendInput(jsonObject.toString());
-    }
 
     public boolean isConnected() {
         return isConnected;
     }
 
     /**
-     *
+     * Stops all networking for this client.
      */
     public void disconnect() {
         isConnected = false;

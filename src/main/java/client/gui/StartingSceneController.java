@@ -7,31 +7,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Sets up the scene asking the player for information and connecting to the server.
+ */
 public class StartingSceneController {
-
-    @FXML
-    private Button connectBtn;
-
     @FXML
     private TextField hostTextField;
-
     @FXML
     private TextField nicknameTextField;
-
     @FXML
     private RadioButton rmiSelection;
-
     @FXML
     private RadioButton socketSelection;
-
-    @FXML
-    private Label title;
 
     /**
      * Set the parameter for the client connection and switch to the main scene of the game.

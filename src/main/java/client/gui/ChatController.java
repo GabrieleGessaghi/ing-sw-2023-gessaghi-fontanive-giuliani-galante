@@ -3,25 +3,19 @@ package client.gui;
 import client.network.NetworkHandler;
 import com.google.gson.JsonObject;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 
-import java.awt.*;
 import java.util.List;
-import java.util.Objects;
 
 import static client.gui.GUI.playerNickname;
 
+/**
+ * Controls the GUI chat.
+ * @author Giorgio Massimo Fontanive
+ */
 public class ChatController {
-    @FXML
-    private ImageView ChatBackground;
-    @FXML
-    private ToggleGroup ChatButtons;
     @FXML
     private TextArea ChatField;
     @FXML
@@ -34,11 +28,12 @@ public class ChatController {
     private RadioButton Player3Button;
     @FXML
     private RadioButton PublicButton;
-    @FXML
-    private Button SendButton;
     private NetworkHandler networkHandler;
     private String receiverNickname;
 
+    /**
+     * Sends a message to the chat controller when the button is clicked.
+     */
     @FXML
     public void sendButtonClicked(){
         String message = MessageField.getText();
@@ -53,6 +48,9 @@ public class ChatController {
         MessageField.setText("");
     }
 
+    /**
+     * Switches the displayed chat and the message receiver.
+     */
     @FXML
     public void radioButtonSelected(){
         if(Player1Button.isSelected())
@@ -71,6 +69,10 @@ public class ChatController {
         networkHandler.sendInput(jsonObject.toString());
     }
 
+    /**
+     * Sets the different messages for each chat.
+     * @param messages The list of messages to be displayed.
+     */
     public void setMessages(List<String> messages) {
         StringBuilder chat = new StringBuilder();
         for (String message : messages)
@@ -78,6 +80,9 @@ public class ChatController {
         ChatField.setText(chat.toString());
     }
 
+    /**
+     * Sets a reference to the network handler for requests.
+     */
     public void setNetworkHandler(NetworkHandler networkHandler) {
         this.networkHandler = networkHandler;
         JsonObject jsonObject = new JsonObject();
@@ -85,6 +90,10 @@ public class ChatController {
         networkHandler.sendInput(jsonObject.toString());
     }
 
+    /**
+     * Sets each player's chat name.
+     * @param nicknames The list of nicknames in the game.
+     */
     public void setRadioButtons(List<String> nicknames){
         receiverNickname = null;
         switch (nicknames.size()){
