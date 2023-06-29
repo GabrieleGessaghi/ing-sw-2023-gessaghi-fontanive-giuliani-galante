@@ -4,9 +4,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.apache.commons.io.IOUtils;
 import server.controller.observer.Event;
 import server.controller.observer.Observable;
 import server.controller.observer.Observer;
+import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
 import server.model.cards.CommonCard;
 import server.model.cards.CommonType;
@@ -116,7 +118,9 @@ public class Game implements Savable, Observable {
         Path filePath = Path.of("src/main/resources/saved_game.txt");
         String gameState;
         try {
-            gameState = Files.readString(filePath);
+            InputStream inputStream = ConfigLoader.class.getResourceAsStream("/saved_game.txt");
+            gameState = IOUtils.toString(inputStream);
+            //gameState = Files.readString(filePath);
             loadState(JsonParser.parseString(gameState).getAsJsonObject());
         } catch (IOException e) {
             System.out.println("Save not found");
@@ -131,7 +135,9 @@ public class Game implements Savable, Observable {
         Path filePath = Path.of("src/main/resources/saved_game.txt");
         String gameState;
         try {
-            gameState = Files.readString(filePath);
+            InputStream inputStream = ConfigLoader.class.getResourceAsStream("/saved_game.txt");
+            gameState = IOUtils.toString(inputStream);
+            //gameState = Files.readString(filePath);
             JsonObject jsonObject = JsonParser.parseString(gameState).getAsJsonObject();
             ArrayList<String> nicknames = new ArrayList<>();
             int i = 0;
@@ -154,7 +160,9 @@ public class Game implements Savable, Observable {
     public static boolean isThereGameSaved() {
         Path filePath = Path.of("src/main/resources/saved_game.txt");
         try {
-            String gameState = Files.readString(filePath);
+            InputStream inputStream = ConfigLoader.class.getResourceAsStream("/saved_game.txt");
+            String gameState = IOUtils.toString(inputStream);
+            //String gameState = Files.readString(filePath);
             return true;
         } catch (IOException e) {
             return false;

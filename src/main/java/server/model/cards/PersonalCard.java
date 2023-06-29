@@ -2,10 +2,13 @@ package server.model.cards;
 
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
+import org.apache.commons.io.IOUtils;
+import server.controller.utilities.ConfigLoader;
 import server.controller.utilities.JsonTools;
 import server.model.Token;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -31,21 +34,23 @@ public class PersonalCard extends Card {
         String jsonFilePath = "";
         JsonReader jsonReader;
         switch (index) {
-            case 1 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal1.json";
-            case 2 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal2.json";
-            case 3 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal3.json";
-            case 4 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal4.json";
-            case 5 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal5.json";
-            case 6 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal6.json";
-            case 7 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal7.json";
-            case 8 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal8.json";
-            case 9 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal9.json";
-            case 10 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal10.json";
-            case 11 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal11.json";
-            case 12 -> jsonFilePath = "src/main/resources/personalcards/PersonalGoal12.json";
+            case 1 -> jsonFilePath = "/personalcards/PersonalGoal1.json";
+            case 2 -> jsonFilePath = "/personalcards/PersonalGoal2.json";
+            case 3 -> jsonFilePath = "/personalcards/PersonalGoal3.json";
+            case 4 -> jsonFilePath = "/personalcards/PersonalGoal4.json";
+            case 5 -> jsonFilePath = "/personalcards/PersonalGoal5.json";
+            case 6 -> jsonFilePath = "/personalcards/PersonalGoal6.json";
+            case 7 -> jsonFilePath = "/personalcards/PersonalGoal7.json";
+            case 8 -> jsonFilePath = "/personalcards/PersonalGoal8.json";
+            case 9 -> jsonFilePath = "/personalcards/PersonalGoal9.json";
+            case 10 -> jsonFilePath = "/personalcards/PersonalGoal10.json";
+            case 11 -> jsonFilePath = "/personalcards/PersonalGoal11.json";
+            case 12 -> jsonFilePath = "/personalcards/PersonalGoal12.json";
         }
         try {
-            jsonFile = Files.readString(Paths.get(jsonFilePath));
+            InputStream inputStream = ConfigLoader.class.getResourceAsStream(jsonFilePath);
+            jsonFile = IOUtils.toString(inputStream);
+            //jsonFile = Files.readString(Paths.get(jsonFilePath));
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();

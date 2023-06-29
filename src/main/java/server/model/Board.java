@@ -3,12 +3,14 @@ package server.model;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
+import org.apache.commons.io.IOUtils;
 import server.controller.observer.Observer;
 import server.controller.utilities.JsonTools;
 import server.model.exceptions.IllegalMoveException;
 import server.controller.utilities.ConfigLoader;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -40,12 +42,14 @@ public class Board implements Savable {
         String jsonFilePath = "";
         JsonReader jsonReader;
         switch (numberOfPlayers) {
-            case 2 -> jsonFilePath = "src/main/resources/boards/twoPlayersBoard.json";
-            case 3 -> jsonFilePath = "src/main/resources/boards/threePlayersBoard.json";
-            case 4 -> jsonFilePath = "src/main/resources/boards/fourPlayersBoard.json";
+            case 2 -> jsonFilePath = "/boards/twoPlayersBoard.json";
+            case 3 -> jsonFilePath = "/boards/threePlayersBoard.json";
+            case 4 -> jsonFilePath = "/boards/fourPlayersBoard.json";
         }
         try {
-            jsonFile = Files.readString(Paths.get(jsonFilePath));
+            InputStream inputStream = ConfigLoader.class.getResourceAsStream(jsonFilePath);
+            jsonFile = IOUtils.toString(inputStream);
+            //jsonFile = Files.readString(Paths.get(jsonFilePath));
             jsonReader = new JsonReader(new StringReader(jsonFile));
             jsonReader.beginObject();
             jsonReader.nextName();
