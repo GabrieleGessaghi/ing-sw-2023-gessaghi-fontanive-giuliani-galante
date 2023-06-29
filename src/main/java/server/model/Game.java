@@ -105,7 +105,8 @@ public class Game implements Savable, Observable {
      */
     private void saveGame() throws IOException {
         String gameState = getState().toString();
-        try (PrintWriter out = new PrintWriter("/saved_game.txt")) {
+        String filePath = Path.of("/saved_game.txt").toString();
+        try (PrintWriter out = new PrintWriter(filePath)) {
             out.println(gameState);
         }
     }
