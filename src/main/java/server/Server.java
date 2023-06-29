@@ -40,7 +40,7 @@ public class Server {
      * Loads the configuration file, starts the controller and the connection acceptance methods.
      */
     public static void main(String[] args) throws IOException {
-        ConfigLoader.loadConfiguration("src/main/resources/json/configuration.json");
+        ConfigLoader.loadConfiguration("/json/configuration.json");
         controller = new Controller();
         Server server = new Server();
         new Thread(controller).start();
