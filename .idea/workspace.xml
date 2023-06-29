@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed bug with chat messages not appearing in TUI">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="Fixed bug with games not restarting after all players disconnected">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/tui/TUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controller/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -289,14 +291,8 @@
       <workItem from="1686203953011" duration="775000" />
       <workItem from="1687930338944" duration="1005000" />
       <workItem from="1687957780869" duration="6713000" />
-      <workItem from="1687980262914" duration="1412000" />
-    </task>
-    <task id="LOCAL-00186" summary="gui first player connceted dialog for server players number request">
-      <created>1684494584728</created>
-      <option name="number" value="00186" />
-      <option name="presentableId" value="LOCAL-00186" />
-      <option name="project" value="LOCAL" />
-      <updated>1684494584728</updated>
+      <workItem from="1687980262914" duration="1619000" />
+      <workItem from="1688016833397" duration="3984000" />
     </task>
     <task id="LOCAL-00187" summary="number of players dialog custom style">
       <created>1684497051034</created>
@@ -634,7 +630,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687982487768</updated>
     </task>
-    <option name="localTasksCounter" value="235" />
+    <task id="LOCAL-00235" summary="Fixed bug with games not restarting after all players disconnected">
+      <created>1687983158468</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
+      <option name="project" value="LOCAL" />
+      <updated>1687983158468</updated>
+    </task>
+    <option name="localTasksCounter" value="236" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +676,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Further improved player reconnection" />
     <MESSAGE value="Common cards now update the clients upon an objective completion" />
     <MESSAGE value="Began implementing chat GUI" />
     <MESSAGE value="Fixed small mistake" />
@@ -698,7 +700,8 @@
     <MESSAGE value="Finished testing model" />
     <MESSAGE value="Implemented Chat in GUI" />
     <MESSAGE value="Fixed bug with chat messages not appearing in TUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with chat messages not appearing in TUI" />
+    <MESSAGE value="Fixed bug with games not restarting after all players disconnected" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with games not restarting after all players disconnected" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -222,7 +222,6 @@ public class MainSceneController implements Client, Initializable {
                     case "nickname" -> tempNickname = jsonReader.nextString();
                     case "newNickname" -> GUI.playerNickname = jsonReader.nextString();
                     case "nicknames" -> {
-
                         jsonReader.beginArray();
                         while (jsonReader.hasNext())
                             nicknames.add(jsonReader.nextString());

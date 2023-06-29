@@ -175,7 +175,6 @@ public class Controller implements Observer, Runnable {
         //Checks if there's no client left
         else if (clientHandlers.size() == 0) {
             turnController.skipTurn();
-            Game.deleteSave();
             reset();
         }
 

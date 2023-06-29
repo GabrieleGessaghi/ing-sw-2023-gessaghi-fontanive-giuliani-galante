@@ -14,7 +14,9 @@ import server.model.View;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static client.tui.Colors.*;
@@ -130,6 +132,25 @@ public class TUI implements Client {
      */
     public void requestNewView() {
         Scanner scn = new Scanner(System.in);
+        System.out.println("What do you want to see?");
+        String request = scn.nextLine();
+        JsonObject jsonObject = new JsonObject();
+        switch (request) {
+            case "board" -> jsonObject.addProperty("requestBoard", true);
+            case "common cards" -> jsonObject.addProperty("requestCommonCards", true);
+            case "chat" -> jsonObject.addProperty("requestChat", true);
+            case "shelf" -> jsonObject.addProperty("requestShelf", true);
+            case "personal card" -> jsonObject.addProperty("requestPersonalCard", true);
+        }
+        if (request.equals("chat")) {
+            System.out.println("Which chat do you want to see?");
+            jsonObject.addProperty("requestedPlayerNickname", scn.nextLine());
+        }
+        if (request.equals("shelf")) {
+            System.out.println("Whose shelf do you want to see?");
+            jsonObject.addProperty("requestedPlayerNickname", scn.nextLine());
+        }
+        networkHandler.sendInput(jsonObject.toString());
     }
 
     /**
@@ -153,7 +174,12 @@ public class TUI implements Client {
                     case "isFirstPlayer" -> toPrint.append(jsonReader.nextBoolean() ? "First player" : "Not first player").append("\n");
                     case "commonCard0", "commonCard1" -> toPrint.append(printCommonCard(jsonReader)).append("\n");
                     case "message", "privateMessage", "publicMessage", "error" -> toPrint.append(jsonReader.nextString()).append("\n");
-                    case "messages" -> jsonReader.skipValue();
+                    case "messages" -> {
+                        jsonReader.beginArray();
+                        while (jsonReader.hasNext())
+                            toPrint.append(jsonReader.nextString()).append("\n");
+                        jsonReader.endArray();
+                    }
                     case "tiles" -> toPrint.append(printTiles(jsonReader));
                     case "shelf" -> toPrint.append(printShelf(jsonReader));
                     case "personalCard" -> toPrint.append(printPersonalCard(jsonReader));
