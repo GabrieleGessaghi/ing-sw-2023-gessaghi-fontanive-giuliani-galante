@@ -227,7 +227,7 @@ public class Controller implements Observer, Runnable {
         disconnectedClients = new HashMap<>();
         game = null;
         chat = null;
-        if (isPreviousGameSaved)
+        if (isPreviousGameSaved && Game.loadNicknames()!= null)
             loginController = new LoadController(Game.loadNicknames());
         else
             loginController = new CreationController();
