@@ -33,6 +33,7 @@ public class Controller implements Observer, Runnable {
     private Chat chat;
 
     public Controller() {
+        isPreviousGameSaved = Game.isThereGameSaved();
         reset();
     }
 
@@ -42,7 +43,6 @@ public class Controller implements Observer, Runnable {
      */
     @Override
     public void run() {
-        isPreviousGameSaved = Game.isThereGameSaved();
         while(true) {
 
             //Waits for the game to be running
