@@ -102,6 +102,7 @@ public class MainSceneController implements Client, Initializable {
     boolean selectingTokens;
     boolean selectingColumn;
     boolean isPlayerWindowOpen;
+    boolean isWinnerWindowOpen;
     client.gui.ChatController chatController;
     int[][] tempPlayerShelf;
     PlayerShelfDialogController playerShelfController;
@@ -745,6 +746,7 @@ public class MainSceneController implements Client, Initializable {
      * @author Gabriele Gessaghi
      */
     private void showWinner(String winnerNickname){
+        isWinnerWindowOpen = true;
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setHeaderText(null);
         alert.setGraphic(null);
@@ -767,6 +769,7 @@ public class MainSceneController implements Client, Initializable {
         backButton.setOnAction(event -> {
             alert.setResult(ButtonType.CLOSE);
             alert.close();
+            isWinnerWindowOpen = false;
             Platform.runLater(() -> {
                 Parent root = null;
                 try {
