@@ -28,7 +28,7 @@
 
 ## Instructions on how to run the project with JAR:
 
-### In the deliverables folder you will find a Client jar file foreach operating system (Linux, MACos, Windows) and a Server jar file valid for all operating systems.Once you have started the server on one device, you can start the Client from any device. 
+### In the deliverables folder you will find a Client jar file for each operating system (Linux, MACos, Windows) and a Server jar file valid for all operating systems.Once you have started the server on one device, you can start the Client from any device. 
 ### After the Client has opened you will be asked if you want to use the TUI or GUI game mode. Once the mode has been chosen, the game will start.
 ### The game save file will be saved in the "Server" folder with the name "Saved_game.txt"
 
