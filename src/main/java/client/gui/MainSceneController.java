@@ -320,21 +320,25 @@ public class MainSceneController implements Client, Initializable {
                         jsonReader.endObject();
                     }
                     case "connectionError" -> {
-                        Platform.runLater(() -> {
-                            Parent root = null;
-                            try {
-                                root = FXMLLoader.load(getClass().getResource("/javafx/GUI.fxml"));
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                            Scene base = new Scene(root);
-                            base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
-                            Stage currentWindow = (Stage) ChatButton.getScene().getWindow();
-                            currentWindow.setScene(base);
-                            currentWindow.setResizable(true);
-                            currentWindow.show();
-                        });
-                        jsonReader.skipValue();
+                        if (isWinnerWindowOpen){
+                            jsonReader.skipValue();
+                        }else {
+                            Platform.runLater(() -> {
+                                Parent root = null;
+                                try {
+                                    root = FXMLLoader.load(getClass().getResource("/javafx/GUI.fxml"));
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Scene base = new Scene(root);
+                                base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
+                                Stage currentWindow = (Stage) ChatButton.getScene().getWindow();
+                                currentWindow.setScene(base);
+                                currentWindow.setResizable(true);
+                                currentWindow.show();
+                            });
+                            jsonReader.skipValue();
+                        }
                     }
                     case "winnerNickname" -> {
                         showWinner(jsonReader.nextName());
