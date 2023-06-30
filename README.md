@@ -1,34 +1,41 @@
 # ing-sw-23-gessaghi-fontanive-giuliani-galante
 
-# Software Engineering Project by Gabriele Gessaghi, Giorgio Massimo Fontanive, Niccolo Giuliani and Niccolo Galante
+# Software Engineering Project by Gabriele Gessaghi, Giorgio Massimo Fontanive, Niccolò Giuliani and Niccolò Galante
 
 ## Base functionalities:
 
-###  -Complete rules
+###  - Complete rules
 
 ## Advanced functionalities:
 
-### -Chat
+### - Chat
 
-### -Persistence
+### - Persistence
 
-### -Resilience to disconnections
+### - Resilience to disconnections
 
 ## Types of connections implemented:
 
-### -Socket 
+### - Socket 
 
-### -Rmi
+### - Rmi
 
 ## Game modes:
 
-### -CLI
+### - CLI
 
-### -GUI
+### - GUI
 
 ## Instructions on how to run the project with JAR:
 
-### In the deliverables folder you will find a Client jar file for each operating system (Linux, macOS, Windows) and a Server jar file valid for all operating systems. Once you have started the server on one device, you can start the Client from any device. 
-### After the Client has opened you will be asked if you want to use the TUI or GUI game mode. Once the mode has been chosen, the game will start.
-### The game save file will be saved in the "Server" folder with the name "Saved_game.txt"
+ In the deliverables folder you will find a Client jar file for each operating system (Linux, macOS, Windows) and a Server jar file valid for all operating systems.
+ You can execute the jar files in a terminal by typing:
+ ```
+ java -jar Client.jar/Server.jar
+ ```
+ Once you have started the server on one device, you can start the Client from any device. 
+
+ After the Client has opened you will be asked if you want to use the TUI or GUI game mode. Once the mode has been chosen, the game will start.
+
+ The game save file will be saved in the same folder as the Server.jar with the name "saved_game.txt"
 
