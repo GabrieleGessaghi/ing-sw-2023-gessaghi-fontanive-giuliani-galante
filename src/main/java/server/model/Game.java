@@ -120,8 +120,16 @@ public class Game implements Savable, Observable {
      * Reload a saved state of a previous game.
      * @author Gabriele Gessaghi
      */
-    public void loadGame() {
-        Path filePath = Path.of("/saved_game.txt");
+    public void loadGame(){
+        //Path filePath = Path.of("/saved_game.txt");
+        String jarPath = null;
+        try {
+            jarPath = Game.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        Path jarDirectory = Paths.get(jarPath).getParent();
+        Path filePath = jarDirectory.resolve("saved_game.txt");
         String gameState;
         try {
             gameState = Files.readString(filePath);
@@ -136,7 +144,15 @@ public class Game implements Savable, Observable {
      * @return A list of nicknames.
      */
     public static ArrayList<String> loadNicknames() {
-        Path filePath = Path.of("/saved_game.txt");
+        //Path filePath = Path.of("/saved_game.txt");
+        String jarPath = null;
+        try {
+            jarPath = Game.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        Path jarDirectory = Paths.get(jarPath).getParent();
+        Path filePath = jarDirectory.resolve("saved_game.txt");
         String gameState;
         try {
             gameState = Files.readString(filePath);
@@ -160,13 +176,16 @@ public class Game implements Savable, Observable {
      * @return True if the file containing the game state is found
      */
     public static boolean isThereGameSaved() {
-        Path filePath = Path.of("/saved_game.txt");
+        //Path filePath = Path.of("/saved_game.txt");
+        String jarPath = null;
         try {
-            String gameState = Files.readString(filePath);
-            return true;
-        } catch (IOException | NullPointerException e) {
-            return false;
+            jarPath = Game.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
+        Path jarDirectory = Paths.get(jarPath).getParent();
+        Path filePath = jarDirectory.resolve("saved_game.txt");
+        return Files.exists(filePath);
     }
 
     /**
@@ -371,17 +390,22 @@ public class Game implements Savable, Observable {
 
     @Override
     public JsonObject getState() {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("numberOfPlayers", numberOfPlayers);
-        jsonObject.addProperty("isLastRound", isLastRound);
-        jsonObject.addProperty("currentPlayerIndex", currentPlayerIndex);
-        jsonObject.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
-        jsonObject.add("board", board.getState());
-        for (int i = 0; i < players.length; i++)
-            jsonObject.add("player" + i, players[i].getState());
-        for (int i =0; i < commonCards.length; i++)
-            jsonObject.add("commonCard" + i, commonCards[i].getState());
-        return jsonObject;
+        try {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("numberOfPlayers", numberOfPlayers);
+            jsonObject.addProperty("isLastRound", isLastRound);
+            jsonObject.addProperty("currentPlayerIndex", currentPlayerIndex);
+            jsonObject.addProperty("currentPlayerNickname", players[currentPlayerIndex].getNickname());
+            jsonObject.add("board", board.getState());
+            for (int i = 0; i < players.length; i++)
+                jsonObject.add("player" + i, players[i].getState());
+            for (int i =0; i < commonCards.length; i++)
+                jsonObject.add("commonCard" + i, commonCards[i].getState());
+            return jsonObject;
+        }
+        catch (IndexOutOfBoundsException e){
+            return null;
+        }
     }
 
     @Override
