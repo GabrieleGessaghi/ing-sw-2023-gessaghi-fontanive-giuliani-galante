@@ -9,11 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="added boolean for winner">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="implemented boolean for winner">
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/client_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/server_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -309,13 +309,6 @@
       <workItem from="1687980262914" duration="1619000" />
       <workItem from="1688016833397" duration="7932000" />
       <workItem from="1688043354296" duration="379000" />
-    </task>
-    <task id="LOCAL-00192" summary="Added messages label on top of main scene">
-      <created>1684583795834</created>
-      <option name="number" value="00192" />
-      <option name="presentableId" value="LOCAL-00192" />
-      <option name="project" value="LOCAL" />
-      <updated>1684583795834</updated>
     </task>
     <task id="LOCAL-00193" summary="Fixed issue with tile selection json message">
       <created>1684593529676</created>
@@ -653,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688109842318</updated>
     </task>
-    <option name="localTasksCounter" value="245" />
+    <task id="LOCAL-00245" summary="implemented boolean for winner">
+      <created>1688110252824</created>
+      <option name="number" value="00245" />
+      <option name="presentableId" value="LOCAL-00245" />
+      <option name="project" value="LOCAL" />
+      <updated>1688110252824</updated>
+    </task>
+    <option name="localTasksCounter" value="246" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,7 +692,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Separated LoadController and CreationController for game loading or creation" />
     <MESSAGE value="Implemented resilience to server crashes" />
     <MESSAGE value="Fixed game reloading bug, now games get correctly loaded after a server crash" />
     <MESSAGE value="Finally fixed board not resetting at the right time" />
@@ -717,7 +716,8 @@
     <MESSAGE value="Fixed ConfigLoader and the build artifacts" />
     <MESSAGE value="modified README.md" />
     <MESSAGE value="added boolean for winner" />
-    <option name="LAST_COMMIT_MESSAGE" value="added boolean for winner" />
+    <MESSAGE value="implemented boolean for winner" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented boolean for winner" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
