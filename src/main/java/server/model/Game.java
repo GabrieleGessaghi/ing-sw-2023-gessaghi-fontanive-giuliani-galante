@@ -16,8 +16,10 @@ import server.model.exceptions.IllegalColumnException;
 import server.model.exceptions.IllegalMoveException;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
@@ -103,9 +105,12 @@ public class Game implements Savable, Observable {
      * @author Gabriele Gessaghi
      * @throws IOException When there's an error in the file creation.
      */
-    private void saveGame() throws IOException {
+    private void saveGame() throws IOException, URISyntaxException {
         String gameState = getState().toString();
-        String filePath = Path.of("/saved_game.txt").toString();
+        //String filePath = Path.of("/saved_game.txt").toString();
+        String jarPath = Game.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        Path jarDirectory = Paths.get(jarPath).getParent();
+        String filePath = jarDirectory.resolve("saved_game.txt").toString();
         try (PrintWriter out = new PrintWriter(filePath)) {
             out.println(gameState);
         }
@@ -234,6 +239,8 @@ public class Game implements Savable, Observable {
             saveGame();
         } catch (IOException e) {
             System.out.println("Unable to save game");
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
     }
 
