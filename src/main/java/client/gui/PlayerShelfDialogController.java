@@ -38,7 +38,6 @@ public class PlayerShelfDialogController {
         clientHandler = handler;
         this.nickname = nickname;
         requestedReload = false;
-
         for (int i = 0; i < shelfGrid.getRowCount(); i++) {
             for(int j = 0; j < shelfGrid.getColumnCount(); j++) {
                 Random rng = new Random();
