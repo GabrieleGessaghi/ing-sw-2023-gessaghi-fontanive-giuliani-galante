@@ -585,11 +585,18 @@ public class MainSceneController implements Client, Initializable {
                 if (node != null) {
 
                     switch (tokens[i][j]) {
-                        case 0 -> node.setOpacity(0);
+                        case 0 -> {
+                            if(node.getStyleClass().size() > 1)
+                             node.getStyleClass().remove(1);
+                            node.setOpacity(0);
+                        }
                         case 1 -> {
                             if (node.getOpacity() != 0){
                                 continue;
                             }
+
+                            if(node.getStyleClass().size() > 1)
+                                node.getStyleClass().remove(1);
                             node.getStyleClass().add("cat" + pictureNumber);
                             node.setOpacity(1);
                         }
@@ -597,6 +604,8 @@ public class MainSceneController implements Client, Initializable {
                             if (node.getOpacity() != 0){
                                 continue;
                             }
+                            if(node.getStyleClass().size() > 1)
+                                node.getStyleClass().remove(1);
                             node.getStyleClass().add("book" + pictureNumber);
                             node.setOpacity(1);
                         }
@@ -604,6 +613,8 @@ public class MainSceneController implements Client, Initializable {
                             if (node.getOpacity() != 0){
                                 continue;
                             }
+                            if(node.getStyleClass().size() > 1)
+                                node.getStyleClass().remove(1);
                             node.getStyleClass().add("toy" + pictureNumber);
                             node.setOpacity(1);
                         }
@@ -611,6 +622,8 @@ public class MainSceneController implements Client, Initializable {
                             if (node.getOpacity() != 0){
                                 continue;
                             }
+                            if(node.getStyleClass().size() > 1)
+                                node.getStyleClass().remove(1);
                             node.getStyleClass().add("trophy" + pictureNumber);
                             node.setOpacity(1);
                         }
@@ -618,6 +631,8 @@ public class MainSceneController implements Client, Initializable {
                             if (node.getOpacity() != 0){
                                 continue;
                             }
+                            if(node.getStyleClass().size() > 1)
+                                node.getStyleClass().remove(1);
                             node.getStyleClass().add("frame" + pictureNumber);
                             node.setOpacity(1);
                         }
@@ -625,6 +640,8 @@ public class MainSceneController implements Client, Initializable {
                             if (node.getOpacity() != 0){
                                 continue;
                             }
+                            if(node.getStyleClass().size() > 1)
+                                node.getStyleClass().remove(1);
                             node.getStyleClass().add("plant" + pictureNumber);
                             node.setOpacity(1);
                         }
@@ -812,6 +829,7 @@ public class MainSceneController implements Client, Initializable {
                     String className = cssClasses.get(1);
                     String number = className.substring(className.length() - 1);
                     String imageClassName = className.substring(0, className.length() - 1) + "_image" + number;
+                    token.getStyleClass().removeAll();
                     token.getStyleClass().addAll(imageClassName);
                     tokens.add(token);
                     tokenIndexMap.put(tokenSelection[i][j],token);

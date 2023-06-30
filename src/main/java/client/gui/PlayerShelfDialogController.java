@@ -45,29 +45,43 @@ public class PlayerShelfDialogController {
                 ImageView imageView = (ImageView) getNodeByRowColumnIndex(i,j);
                 switch (tokens[i][j]) {
                     case 0 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.setOpacity(0);
                     }
                     case 1 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("cat_image" + pictureNumber);
                         //imageView.setOpacity(1);
                     }
                     case 2 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("book_image" + pictureNumber);
                         //imageView.setOpacity(1);
                     }
                     case 3 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("toy_image" + pictureNumber);
                         //imageView.setOpacity(1);
                     }
                     case 4 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("trophy_image" + pictureNumber);
                         //imageView.setOpacity(1);
                     }
                     case 5 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("frame_image" + pictureNumber);
                         //imageView.setOpacity(1);
                     }
                     case 6 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("plant_image" + pictureNumber);
                         //imageView.setOpacity(1);
                     }
@@ -109,29 +123,43 @@ public class PlayerShelfDialogController {
                 //}
                 switch (tokens[i][j]) {
                     case 0 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.setOpacity(0);
                     }
                     case 1 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("cat_image" + pictureNumber);
                         imageView.setOpacity(1);
                     }
                     case 2 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("book_image" + pictureNumber);
                         imageView.setOpacity(1);
                     }
                     case 3 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("toy_image" + pictureNumber);
                         imageView.setOpacity(1);
                     }
                     case 4 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("trophy_image" + pictureNumber);
                         imageView.setOpacity(1);
                     }
                     case 5 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("frame_image" + pictureNumber);
                         imageView.setOpacity(1);
                     }
                     case 6 -> {
+                        if(imageView.getStyleClass().size() > 1)
+                            imageView.getStyleClass().remove(1);
                         imageView.getStyleClass().add("plant_image" + pictureNumber);
                         imageView.setOpacity(1);
                     }

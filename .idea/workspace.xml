@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="modified README.md">
+    <list default="true" id="d6d016cb-a63f-40e0-bcff-ef9c1d9c5671" name="Changes" comment="fixed update commoncards">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/gui/PlayerShelfDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/gui/PlayerShelfDialogController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -650,7 +651,7 @@
       <option name="project" value="LOCAL" />
       <updated>1688041872570</updated>
     </task>
-    <option name="localTasksCounter" value="244" />
+    <option name="localTasksCounter" value="245" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -689,7 +690,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed chat messages not showing in GUI" />
     <MESSAGE value="Separated LoadController and CreationController for game loading or creation" />
     <MESSAGE value="Implemented resilience to server crashes" />
     <MESSAGE value="Fixed game reloading bug, now games get correctly loaded after a server crash" />
@@ -714,7 +714,8 @@
     <MESSAGE value="Finished all documentation" />
     <MESSAGE value="Fixed ConfigLoader and the build artifacts" />
     <MESSAGE value="modified README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified README.md" />
+    <MESSAGE value="fixed update commoncards" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed update commoncards" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
@@ -726,6 +727,9 @@
     </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$concreteobjectives_in_6.ic" NAME="concreteobjectives in 6 Coverage Results" MODIFIED="1683044490306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$All_in_6.ic" NAME="All in 6 Coverage Results" MODIFIED="1684841049657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Graphics_User_Interface.ic" NAME="Graphics User Interface Coverage Results" MODIFIED="1688111963883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>client.gui.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$model_in_6.ic" NAME="model in 6 Coverage Results" MODIFIED="1683035690174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$Text_User_Inteface.ic" NAME="Text User Inteface Coverage Results" MODIFIED="1683181008549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ing_sw_2023_gessaghi_fontanive_giuliani_galante$server_model_cards_concreteobjectives_in_6.ic" NAME="server.model.cards.concreteobjectives in 6 Coverage Results" MODIFIED="1683049588320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
