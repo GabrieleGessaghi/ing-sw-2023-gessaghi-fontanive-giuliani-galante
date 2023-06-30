@@ -30,7 +30,6 @@ public class ChatController {
     private RadioButton PublicButton;
     private NetworkHandler networkHandler;
     private String receiverNickname;
-
     /**
      * Sends a message to the chat controller when the button is clicked.
      */

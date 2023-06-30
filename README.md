@@ -31,7 +31,7 @@
  In the deliverables folder you will find a Client jar file for each operating system (Linux, macOS, Windows) and a Server jar file valid for all operating systems.
  You can execute the jar files in a terminal opened in the same folder as the jar by typing:
  ```
- java -jar Client.jar/Server.jar
+ java -jar client_linux.jar/server.jar
  ```
  Once you have started the server on one device, you can start the Client from any device. 
 
