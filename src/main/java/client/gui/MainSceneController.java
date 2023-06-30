@@ -93,7 +93,7 @@ public class MainSceneController implements Client, Initializable {
     private Button player3Btn;
 
     @FXML
-    private Button ChatButton;
+    private Button chatButton;
 
     NetworkHandler networkHandler;
     int[][] tokenSelection;
@@ -201,10 +201,12 @@ public class MainSceneController implements Client, Initializable {
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("nickname", GUI.playerNickname);
                 networkHandler.sendInput(jsonObject.toString());
-                Stage currentWindow = (Stage) messages.getScene().getWindow();
-                currentWindow.setOnCloseRequest(e -> {
-                    Platform.exit();
-                    System.exit(0);
+                Platform.runLater(() -> {
+                    Stage currentWindow = (Stage) chatButton.getScene().getWindow();
+                    currentWindow.setOnCloseRequest(e -> {
+                        Platform.exit();
+                        System.exit(0);
+                    });
                 });
             }
             case PLAYERSNUMBER -> {
@@ -332,7 +334,7 @@ public class MainSceneController implements Client, Initializable {
                                 }
                                 Scene base = new Scene(root);
                                 base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
-                                Stage currentWindow = (Stage) ChatButton.getScene().getWindow();
+                                Stage currentWindow = (Stage) chatButton.getScene().getWindow();
                                 currentWindow.setScene(base);
                                 currentWindow.setResizable(true);
                                 currentWindow.show();
@@ -341,7 +343,8 @@ public class MainSceneController implements Client, Initializable {
                         }
                     }
                     case "winnerNickname" -> {
-                        showWinner(jsonReader.nextName());
+                        isWinnerWindowOpen = true;
+                        showWinner(jsonReader.nextString());
                     }
                     default -> jsonReader.skipValue();
                 }
@@ -767,54 +770,55 @@ public class MainSceneController implements Client, Initializable {
      * @author Gabriele Gessaghi
      */
     private void showWinner(String winnerNickname){
-        isWinnerWindowOpen = true;
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        alert.setHeaderText(null);
-        alert.setGraphic(null);
-        String imagePath = getClass().getResource("/assets/award.png").toExternalForm();
-        Image image = new Image(imagePath);
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(400);
-        imageView.setFitHeight(300);
-        Text text;
-        if (GUI.playerNickname.equals(winnerNickname)){
-            text = new Text("Congratulazioni "+winnerNickname+", hai vinto !");
-        }else {
-            text = new Text("Hai perso, il vincitore è "+winnerNickname+" !");
-        }
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.NONE);
+            alert.setHeaderText(null);
+            alert.setGraphic(null);
+            String imagePath = getClass().getResource("/assets/award.png").toExternalForm();
+            Image image = new Image(imagePath);
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(400);
+            imageView.setFitHeight(300);
+            Text text;
+            if (GUI.playerNickname.equals(winnerNickname)) {
+                text = new Text("Congratulazioni " + winnerNickname + ", hai vinto !");
+            } else {
+                text = new Text("Hai perso, il vincitore è " + winnerNickname + " !");
+            }
 
-        text.setFont(Font.font(18));
-        text.setFill(Color.WHITE);
+            text.setFont(Font.font(18));
+            text.setFill(Color.WHITE);
 
-        Button backButton = new Button("Torna alla home");
-        backButton.setOnAction(event -> {
-            alert.setResult(ButtonType.CLOSE);
-            alert.close();
-            isWinnerWindowOpen = false;
-            Platform.runLater(() -> {
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("/javafx/GUI.fxml"));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                Scene base = new Scene(root);
-                base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
-                Stage currentWindow = (Stage) ChatButton.getScene().getWindow();
-                currentWindow.setScene(base);
-                currentWindow.setResizable(true);
-                currentWindow.show();
+            Button backButton = new Button("Torna alla home");
+            backButton.setOnAction(event -> {
+                alert.setResult(ButtonType.CLOSE);
+                alert.close();
+                isWinnerWindowOpen = false;
+                Platform.runLater(() -> {
+                    Parent root = null;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("/javafx/GUI.fxml"));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Scene base = new Scene(root);
+                    base.getStylesheets().add(getClass().getResource("/javafx/Application.css").toExternalForm());
+                    Stage currentWindow = (Stage) chatButton.getScene().getWindow();
+                    currentWindow.setScene(base);
+                    currentWindow.setResizable(true);
+                    currentWindow.show();
+                });
             });
+            VBox vbox = new VBox(10);
+            vbox.getChildren().addAll(imageView, text, backButton);
+            vbox.setAlignment(Pos.CENTER);
+            BorderPane borderPane = new BorderPane();
+            borderPane.setStyle("-fx-background-image: url('/assets/misc/base_pagina2.jpg'); -fx-background-size: cover; -fx-padding: 0;");
+            borderPane.setCenter(vbox);
+            alert.getDialogPane().setContent(borderPane);
+            alert.getDialogPane().setStyle("-fx-background-image: url('/assets/misc/base_pagina2.jpg'); -fx-background-size: cover; -fx-padding: 0;");
+            alert.showAndWait();
         });
-        VBox vbox = new VBox(10);
-        vbox.getChildren().addAll(imageView, text, backButton);
-        vbox.setAlignment(Pos.CENTER);
-        BorderPane borderPane = new BorderPane();
-        borderPane.setStyle("-fx-background-image: url('/assets/misc/base_pagina2.jpg'); -fx-background-size: cover; -fx-padding: 0;");
-        borderPane.setCenter(vbox);
-        alert.getDialogPane().setContent(borderPane);
-        alert.getDialogPane().setStyle("-fx-background-image: url('/assets/misc/base_pagina2.jpg'); -fx-background-size: cover; -fx-padding: 0;");
-        alert.showAndWait();
     }
 
     /**

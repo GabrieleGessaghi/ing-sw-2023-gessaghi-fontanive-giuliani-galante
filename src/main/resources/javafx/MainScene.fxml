@@ -101,7 +101,7 @@
                 <Image url="@../assets/boards/bookshelf_orth.png" />
             </image>
         </ImageView>
-        <Button fx:id="ChatButton" layoutX="664.0" layoutY="702.0" mnemonicParsing="false" onMouseClicked="#chatButtonClicked" prefHeight="45.0" prefWidth="425.0" text="Chat" />
+        <Button fx:id="chatButton" layoutX="664.0" layoutY="702.0" mnemonicParsing="false" onMouseClicked="#chatButtonClicked" prefHeight="45.0" prefWidth="425.0" text="Chat" />
         <ImageView fx:id="common_goal1" fitHeight="150.0" fitWidth="200.0" layoutX="63.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
                 <Image url="@../assets/common_goal_cards/9.jpg" />
