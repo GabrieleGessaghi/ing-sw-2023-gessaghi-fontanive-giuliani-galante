@@ -189,6 +189,9 @@ public class Controller implements Observer, Runnable {
                         @Override
                         public void run() {
                             if (clientHandlers.size() == 1) {
+                                JsonObject jsonObject = new JsonObject();
+                                jsonObject.addProperty("winnerNickname", clientHandlers.get(0).nickname);
+                                clientHandlers.get(0).sendOutput(jsonObject.toString());
                                 clientHandlers.get(0).sendOutput(JsonTools.createMessage("You are the only player left. You win!", false));
                                 clientHandlers.get(0).sendOutput(JsonTools.createMessage("Log back in if you want to play again.", false));
                                 clientHandlers.get(0).disconnect();

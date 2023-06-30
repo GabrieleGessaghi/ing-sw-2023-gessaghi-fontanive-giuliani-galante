@@ -18,7 +18,7 @@
 
 ### - Socket 
 
-### - Rmi
+### - RMI
 
 ## Game modes:
 
@@ -29,7 +29,7 @@
 ## Instructions on how to run the project with JAR:
 
  In the deliverables folder you will find a Client jar file for each operating system (Linux, macOS, Windows) and a Server jar file valid for all operating systems.
- You can execute the jar files in a terminal by typing:
+ You can execute the jar files in a terminal opened in the same folder as the jar by typing:
  ```
  java -jar Client.jar/Server.jar
  ```
