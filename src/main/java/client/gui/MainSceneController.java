@@ -257,7 +257,7 @@ public class MainSceneController implements Client, Initializable {
                             if (field.equals("cardIndex"))
                                 setCommonCard(jsonReader.nextInt(), false);
                             else if (field.equals("nextPointsAvailable"))
-                                updatePointsCommonCards(true, jsonReader.nextInt());
+                                updatePointsCommonCards(false, jsonReader.nextInt());
                             else
                                 jsonReader.skipValue();
                         }
@@ -270,7 +270,7 @@ public class MainSceneController implements Client, Initializable {
                             if (field.equals("cardIndex"))
                                 setCommonCard(jsonReader.nextInt(), true);
                             else if (field.equals("nextPointsAvailable"))
-                                updatePointsCommonCards(false, jsonReader.nextInt());
+                                updatePointsCommonCards(true, jsonReader.nextInt());
                             else
                                 jsonReader.skipValue();
                         }
