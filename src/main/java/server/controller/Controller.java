@@ -195,8 +195,10 @@ public class Controller implements Observer, Runnable {
                                 clientHandlers.get(0).sendOutput(JsonTools.createMessage("You are the only player left. You win!", false));
                                 clientHandlers.get(0).sendOutput(JsonTools.createMessage("Log back in if you want to play again.", false));
                                 clientHandlers.get(0).disconnect();
-                                turnController.skipTurn();
                                 Game.deleteSave();
+                                if (turnController != null){
+                                    turnController.skipTurn();
+                                }
                                 reset();
                             }
                         }

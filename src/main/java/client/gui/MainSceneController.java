@@ -135,7 +135,9 @@ public class MainSceneController implements Client, Initializable {
         confirm.setOnMouseClicked(e -> {
             if (selectingTokens) {
                 // handle token order here
-                manageTilesOrder();
+                if (tokensSelected >1){
+                    manageTilesOrder();
+                }
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.add("selectedTiles", JsonTools.createJsonMatrix(tokenSelection));
                 networkHandler.sendInput(jsonObject.toString());

@@ -106,7 +106,10 @@ public class Game implements Savable, Observable {
      * @throws IOException When there's an error in the file creation.
      */
     private void saveGame() throws IOException, URISyntaxException {
-        String gameState = getState().toString();
+        String gameState = "";
+        if (getState()!= null){
+            gameState = getState().toString();
+        }
         //String filePath = Path.of("/saved_game.txt").toString();
         String jarPath = Game.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
         Path jarDirectory = Paths.get(jarPath).getParent();
@@ -192,7 +195,15 @@ public class Game implements Savable, Observable {
      * Deletes the save file if it finds one.
      */
     public static void deleteSave() {
-        Path filePath = Path.of("src/main/resources/saved_game.txt");
+        //Path filePath = Path.of("src/main/resources/saved_game.txt");
+        String jarPath = null;
+        try {
+            jarPath = Game.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        Path jarDirectory = Paths.get(jarPath).getParent();
+        Path filePath = jarDirectory.resolve("saved_game.txt");
         try {
             Files.delete(filePath);
         } catch (IOException ignored) {}
