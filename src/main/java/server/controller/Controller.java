@@ -42,6 +42,7 @@ public class Controller implements Observer, Runnable {
      */
     @Override
     public void run() {
+        isPreviousGameSaved = Game.isThereGameSaved();
         while(true) {
 
             //Waits for the game to be running
@@ -77,6 +78,7 @@ public class Controller implements Observer, Runnable {
 
             //Makes everyone disconnect after the game finishes
             if (isGameRunning) {
+                isPreviousGameSaved = false;
                 for (ClientHandler ch : clientHandlers) {
                     ch.sendOutput(JsonTools.createMessage("Log back in if you want to play again.", false));
                     ch.disconnect();
@@ -199,6 +201,7 @@ public class Controller implements Observer, Runnable {
                                 if (turnController != null){
                                     turnController.skipTurn();
                                 }
+                                isPreviousGameSaved = false;
                                 reset();
                             }
                         }
@@ -221,13 +224,12 @@ public class Controller implements Observer, Runnable {
      */
     private void reset() {
         isGameRunning = false;
-        isPreviousGameSaved = Game.isThereGameSaved();
         turnController = null;
         clientHandlers = new ArrayList<>();
         disconnectedClients = new HashMap<>();
         game = null;
         chat = null;
-        if (isPreviousGameSaved && Game.loadNicknames()!= null)
+        if (isPreviousGameSaved)
             loginController = new LoadController(Game.loadNicknames());
         else
             loginController = new CreationController();

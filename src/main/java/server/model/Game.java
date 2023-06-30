@@ -288,11 +288,11 @@ public class Game implements Savable, Observable {
                     maxPoints = player.getPoints();
                     winner = player;
                 }
+            deleteSave();
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("winnerNickname", winner.getNickname());
             jsonObject.addProperty("winnerPoints", winner.getPoints());
             updateObservers(new Event(jsonObject.toString()));
-            deleteSave();
             return true;
         }
         return false;
